@@ -73,14 +73,14 @@ const Process = () => {
 
         <div className="relative">
           {/* Timeline Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-blue-200 hidden md:block"></div>
+          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-blue-300 to-blue-600 hidden md:block"></div>
 
           {/* Process Steps */}
           <div className="space-y-12 relative">
             {processSteps.map((step, index) => (
               <div key={index} className={`flex flex-col md:flex-row ${index % 2 === 0 ? 'md:flex-row-reverse' : ''} items-center`}>
                 <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:text-right md:pr-12' : 'md:text-left md:pl-12'}`}>
-                  <Card className="border-0 shadow-md hover:shadow-lg transition-shadow duration-300 h-full">
+                  <Card className="border-0 shadow-md hover:shadow-xl transition-all duration-300 hover:translate-y-[-5px] h-full">
                     <CardContent className="p-6">
                       <div className={`flex items-center mb-4 ${index % 2 === 0 ? 'justify-end' : 'justify-start'}`}>
                         <div className="bg-blue-100 rounded-full p-3 mr-4">
@@ -97,7 +97,7 @@ const Process = () => {
                 </div>
 
                 {/* Timeline Node */}
-                <div className="relative flex items-center justify-center w-12 h-12 rounded-full bg-blue-600 text-white font-bold border-4 border-white shadow-lg z-10 my-4 md:my-0">
+                <div className="relative flex items-center justify-center w-12 h-12 rounded-full bg-blue-600 text-white font-bold border-4 border-white shadow-lg z-10 my-4 md:my-0 transition-transform duration-300 hover:scale-110 hover:bg-blue-700">
                   {step.number}
                 </div>
 
