@@ -104,7 +104,10 @@ const Team = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {teamMembers.map((member, index) => (
-            <Card key={index} className="overflow-hidden border-0 shadow-md hover:shadow-lg transition-shadow duration-300">
+            <Card 
+              key={index} 
+              className="overflow-hidden border-0 shadow-md hover:shadow-xl transition-all duration-300 hover:translate-y-[-5px]"
+            >
               <CardContent className="p-0">
                 <div className="bg-gradient-to-r from-blue-600 to-indigo-600 h-24 flex items-center justify-center">
                   <Avatar className="h-24 w-24 border-4 border-white translate-y-12">
@@ -117,7 +120,7 @@ const Team = () => {
                 <div className="pt-16 p-6 text-center">
                   <h3 className="text-xl font-bold mb-1">{member.name}</h3>
                   <p className="text-blue-600 font-medium mb-4">{member.role}</p>
-                  <p className="text-gray-600 mb-6">{member.bio}</p>
+                  <p className="text-gray-600 mb-6 text-sm md:text-base">{member.bio}</p>
                   <div className="flex justify-center space-x-4">
                     {member.socialLinks.linkedin && (
                       <a 
