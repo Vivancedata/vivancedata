@@ -116,17 +116,23 @@ const CaseStudies = () => {
                 <TabsTrigger 
                   key={study.id} 
                   value={study.id}
-                  className="flex flex-col items-center py-3 px-4 data-[state=active]:bg-blue-600 data-[state=active]:text-white"
+                  className="flex flex-col items-center py-3 px-4 data-[state=active]:bg-blue-600 data-[state=active]:text-white transition-all duration-300 hover:bg-blue-50"
                 >
-                  {study.icon}
-                  <span className="mt-2 text-sm">{study.industry}</span>
+                  <div className="transition-transform duration-300 data-[state=active]:scale-110">
+                    {study.icon}
+                  </div>
+                  <span className="mt-2 text-sm font-medium">{study.industry}</span>
                 </TabsTrigger>
               ))}
             </TabsList>
           </div>
 
           {caseStudies.map((study) => (
-            <TabsContent key={study.id} value={study.id} className="mt-0">
+            <TabsContent 
+              key={study.id} 
+              value={study.id} 
+              className="mt-0 animate-in fade-in-50 duration-300"
+            >
               <Card className="border-0 shadow-lg overflow-hidden">
                 <div className="grid grid-cols-1 lg:grid-cols-2">
                   <div className="p-6 md:p-8 lg:p-10">
