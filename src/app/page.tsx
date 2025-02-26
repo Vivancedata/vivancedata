@@ -1,16 +1,16 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import Welcome from "@/components/welcome";
-import Overview from "@/components/overview";
-import Testimonials from "@/components/Testimonials";
-import FAQ from "@/components/question";
-import { ProfileForm } from "@/components/Form";
-import Team from "@/components/Team";
-import CaseStudies from "@/components/CaseStudies";
-import Process from "@/components/Process";
-import Partners from "@/components/Partners";
-import Blog from "@/components/Blog";
-import Pricing from "@/components/Pricing";
+import Welcome from "@/components/home/welcome";
+import Overview from "@/components/home/overview";
+import Testimonials from "@/components/home/Testimonials";
+import FAQ from "@/components/common/question";
+import { ProfileForm } from "@/components/contact/Form";
+import Team from "@/components/home/Team";
+import CaseStudies from "@/components/home/CaseStudies";
+import Process from "@/components/home/Process";
+import Partners from "@/components/home/Partners";
+import Blog from "@/components/blog/Blog";
+import Pricing from "@/components/home/Pricing";
 import { ArrowRight, CheckCircle, BarChart3, Users, Clock, Award } from "lucide-react";
 
 export default function Home() {
@@ -24,17 +24,11 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
-      {/* Hero and Features */}
       <Welcome />
       <Overview />
-      
-      {/* Process Section */}
       <Process />
-      
       {/* Case Studies */}
       <CaseStudies />
-      
-      {/* Stats Section */}
       <section className="w-full bg-gradient-to-r from-blue-900 to-indigo-900 text-white py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -55,21 +49,11 @@ export default function Home() {
         </div>
       </section>
       
-      {/* Testimonials */}
       <Testimonials />
-      
-      {/* Team Section */}
       <Team />
-      
-      {/* Partners Section */}
       <Partners />
-      
-      {/* Pricing Section */}
       <Pricing />
-      
-      {/* Blog Section */}
       <Blog />
-      
       {/* FAQ Section */}
       <section className="container mx-auto py-16 px-4 md:py-24">
         <div className="text-center mb-12">

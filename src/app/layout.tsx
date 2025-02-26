@@ -1,11 +1,10 @@
-import Header from "@/components/Header";
-import Footer from "@/components/Footer"; // Import the Footer component as a named export
+import { MainNav } from "@/components/layout/main-nav";
+import { SiteFooter as Footer } from "@/components/layout/Footer"; // Import the Footer component as a named export
 import { cn } from "@/lib/utils";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/ThemeProvider";
-import Banner from "@/components/banner";
+import { ThemeProvider } from "@/components/layout/ThemeProvider";
 
 const fontSans = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -37,8 +36,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <Header />
-            <Banner />
+            <MainNav />
             <main className="flex-grow w-full px-4">
               {children}
             </main>
