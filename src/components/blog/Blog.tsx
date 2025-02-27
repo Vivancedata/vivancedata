@@ -9,7 +9,55 @@ import Image from "next/image";
 import Link from "next/link";
 import { AnimateOnScroll, StaggerContainer } from "@/hooks/useAnimateOnScroll";
 import { motion } from "framer-motion";
-import { blogPosts } from "@/constants/blog";
+
+// Sample blog posts for the homepage
+const featuredBlogPosts = [
+  {
+    id: "1",
+    title: "The Ultimate Guide to Implementing AI in Business: A Strategic Approach for 2025",
+    excerpt: "Learn how to strategically implement AI solutions in your business to improve efficiency, drive growth, and gain competitive advantage.",
+    date: "2025-02-26",
+    readTime: "8 min read",
+    author: {
+      name: "Dr. Emily Chen",
+      role: "Chief AI Officer",
+      avatar: "",
+    },
+    category: "AI Implementation",
+    image: "/images/ai-solutions.png",
+    slug: "example-post",
+  },
+  {
+    id: "2",
+    title: "Generative AI in 2025: 10 Breakthrough Trends Transforming Industries",
+    excerpt: "Discover the most significant emerging trends in generative AI and how they're reshaping industries from creative content to healthcare.",
+    date: "2025-02-15",
+    readTime: "10 min read",
+    author: {
+      name: "Michael Rodriguez",
+      role: "AI Research Director",
+      avatar: "",
+    },
+    category: "AI Trends",
+    image: "/images/ai-solutions.png",
+    slug: "future-of-generative-ai",
+  },
+  {
+    id: "3",
+    title: "The 2025 Framework for Ethical AI: Building Responsible Systems",
+    excerpt: "Learn how to develop and deploy AI systems that are not only powerful but also ethical, fair, and transparent.",
+    date: "2025-02-20",
+    readTime: "12 min read",
+    author: {
+      name: "Priya Patel",
+      role: "AI Ethics Director",
+      avatar: "",
+    },
+    category: "AI Ethics",
+    image: "/images/ai-solutions.png",
+    slug: "ai-ethics-guide",
+  },
+];
 
 const Blog = () => {
   return (
@@ -32,15 +80,17 @@ const Blog = () => {
             </p>
           </AnimateOnScroll>
           <AnimateOnScroll variant="fadeInLeft" delay={0.2} className="mt-6 md:mt-0">
-            <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50 group transition-all duration-300 px-6 py-6 h-auto">
-              <span>View All Articles</span>
-              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
-            </Button>
+            <Link href="/blog">
+              <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50 group transition-all duration-300 px-6 py-6 h-auto">
+                <span>View All Articles</span>
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
+              </Button>
+            </Link>
           </AnimateOnScroll>
         </div>
 
         <StaggerContainer staggerDelay={0.15} className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {blogPosts.map((post) => (
+          {featuredBlogPosts.map((post) => (
             <Card 
               key={post.id} 
               className="overflow-hidden border-0 bg-white/80 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-500 rounded-xl group"

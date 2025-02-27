@@ -17,6 +17,7 @@
     "examples": "@/components/examples",
     "blocks": "@/components/blocks",
     "images": "@/public/images",
-    "app": "@/src/app"
+    "app": "@/src/app",
+    "lib": "@/lib"
   }
 }

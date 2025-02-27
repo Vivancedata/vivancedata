@@ -1,89 +1,116 @@
 import fs from 'fs';
 import path from 'path';
-import Link from 'next/link';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Calendar, Clock, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Blogs } from '@/components/blog/Blogs';
+import { Container } from '@/components/common/Container';
+import { Heading } from '@/components/common/Heading';
+import { Paragraph } from '@/components/common/Paragraph';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Blog - VivaceFlow AI Solutions',
+  description: 'Explore our latest articles on AI trends, implementation strategies, and industry insights to stay ahead in the rapidly evolving world of artificial intelligence.',
+  keywords: 'AI blog, artificial intelligence trends, machine learning insights, AI implementation, business AI',
+  openGraph: {
+    title: 'AI Insights Blog - VivaceFlow',
+    description: 'Expert articles on artificial intelligence trends, implementation strategies, and industry insights.',
+    type: 'website',
+    url: 'https://vivaceflow.com/blog',
+  },
+};
 
 interface BlogPost {
   slug: string;
   title: string;
-  excerpt?: string;
-  date?: string;
+  description: string;
+  date: string;
+  image: string;
+  tags: string[];
+  content?: string;
 }
 
 async function getBlogPosts(): Promise<BlogPost[]> {
   const postsDirectory = path.join(process.cwd(), 'src', 'app', 'blog', 'posts');
-  const filenames = fs.readdirSync(postsDirectory);
-
-  return filenames.map((filename) => {
-    const slug = filename.replace(/\.mdx$/, '');
-    const filePath = path.join(postsDirectory, filename);
+  
+  // Handle both direct MDX files and MDX files in subdirectories
+  const entries = fs.readdirSync(postsDirectory, { withFileTypes: true });
+  
+  const posts: BlogPost[] = [];
+  
+  for (const entry of entries) {
+    let slug: string;
+    let filePath: string;
+    
+    if (entry.isDirectory()) {
+      // Check if there's an MDX file with the same name as the directory
+      const dirPath = path.join(postsDirectory, entry.name);
+      const mdxFile = `${entry.name}.mdx`;
+      const mdxFilePath = path.join(dirPath, mdxFile);
+      
+      if (fs.existsSync(mdxFilePath)) {
+        slug = entry.name;
+        filePath = mdxFilePath;
+      } else {
+        // Skip directories without matching MDX files
+        continue;
+      }
+    } else if (entry.name.endsWith('.mdx')) {
+      slug = entry.name.replace(/\.mdx$/, '');
+      filePath = path.join(postsDirectory, entry.name);
+    } else {
+      // Skip non-MDX files
+      continue;
+    }
+    
     const fileContents = fs.readFileSync(filePath, 'utf8');
     
     const titleMatch = fileContents.match(/title:\s*"([^"]*)"/);
     const title = titleMatch ? titleMatch[1] : slug;
     
-    const excerptMatch = fileContents.match(/excerpt:\s*"([^"]*)"/);
-    const excerpt = excerptMatch ? excerptMatch[1] : "Click to read this blog post.";
+    const descriptionMatch = fileContents.match(/description:\s*"([^"]*)"/);
+    const excerpt = fileContents.match(/excerpt:\s*"([^"]*)"/);
+    const description = descriptionMatch ? descriptionMatch[1] : 
+                        excerpt ? excerpt[1] : 
+                        "Read this insightful article on artificial intelligence and its applications.";
     
     const dateMatch = fileContents.match(/date:\s*"([^"]*)"/);
-    const date = dateMatch ? dateMatch[1] : new Date().toLocaleDateString('en-US', { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
+    const date = dateMatch ? dateMatch[1] : new Date().toISOString().split('T')[0];
+    
+    const imageMatch = fileContents.match(/image:\s*"([^"]*)"/);
+    const image = imageMatch ? imageMatch[1] : "/images/ai-solutions.png";
+    
+    const tagsMatch = fileContents.match(/tags:\s*\[(.*?)\]/);
+    const tags = tagsMatch 
+      ? tagsMatch[1].split(',').map(tag => tag.trim().replace(/"/g, '')) 
+      : ["AI", "Technology"];
+    
+    posts.push({ 
+      slug, 
+      title, 
+      description, 
+      date, 
+      image,
+      tags,
+      content: fileContents
     });
-
-    return { slug, title, excerpt, date };
-  });
+  }
+  
+  // Sort by date (newest first)
+  return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
 export default async function Blog() {
   const posts = await getBlogPosts();
 
   return (
-    <div className="container mx-auto py-12 px-4">
+    <Container className="py-16">
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold mb-4">Our Blog</h1>
-        <p className="text-gray-600 max-w-2xl mx-auto">
-          Stay updated with the latest insights, articles, and updates on AI trends.
-        </p>
+        <Heading className="text-4xl md:text-5xl mb-4">Our AI Insights Blog</Heading>
+        <Paragraph className="max-w-2xl mx-auto text-lg">
+          Stay updated with the latest insights, research, and practical applications in artificial intelligence.
+        </Paragraph>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {posts.map((post) => (
-          <Card key={post.slug} className="overflow-hidden border shadow-md hover:shadow-xl transition-all duration-300">
-            <CardHeader>
-              <CardTitle className="text-xl">
-                <Link href={`/blog/${post.slug}`} className="hover:text-blue-600 transition-colors">
-                  {post.title}
-                </Link>
-              </CardTitle>
-              <div className="flex items-center text-sm text-gray-500 space-x-4 mt-2">
-                <div className="flex items-center">
-                  <Calendar className="h-4 w-4 mr-1 text-blue-500" />
-                  <span>{post.date}</span>
-                </div>
-                <div className="flex items-center">
-                  <Clock className="h-4 w-4 mr-1 text-blue-500" />
-                  <span>5 min read</span>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <CardDescription className="text-base">
-                {post.excerpt}
-              </CardDescription>
-            </CardContent>
-            <CardFooter>
-              <Link href={`/blog/${post.slug}`} className="text-blue-600 hover:text-blue-800 text-sm font-medium flex items-center group">
-                <span>Read More</span>
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
-              </Link>
-            </CardFooter>
-          </Card>
-        ))}
-      </div>
-    </div>
+      <Blogs blogs={posts} />
+    </Container>
   );
 }
