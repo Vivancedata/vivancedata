@@ -80,7 +80,7 @@ const ServicesPage = () => {
   return (
     <main className="flex min-h-screen flex-col">
       <ServicesHero 
-        title="VivaceFlow Solutions"
+        title="VivanceData Solutions"
         description="These days, staying ahead often means turning data and AI into business value. But with countless solutions and approaches available, how do you identify and implement what truly matters for your organization?"
       />
       

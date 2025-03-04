@@ -35,7 +35,7 @@ const AboutPage = () => {
   return (
     <div>
       <AboutHero 
-        title="About VivaceFlow"
+        title="About VivanceData"
         description="AI and data reshape our world at a relentless speed, but still, most companies find themselves caught between possibility and complexity."
       />
       

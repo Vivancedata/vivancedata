@@ -1,5 +1,5 @@
-import Welcome from "@/components/home/welcome";
-import Overview from "@/components/home/overview";
+import Welcome from "@/components/home/Welcome";
+import Overview from "@/components/home/Overview";
 import Testimonials from "@/components/home/Testimonials";
 import Team from "@/components/home/Team";
 import CaseStudies from "@/components/home/CaseStudies";
@@ -11,6 +11,54 @@ import { FAQSection } from "@/components/home/FAQSection";
 import { ContactSection } from "@/components/home/ContactSection";
 import { CTASection } from "@/components/home/CTASection";
 import { Users, CheckCircle, BarChart3, Clock, Award } from "lucide-react";
+
+// JSON-LD schema for the homepage
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://vivancedata.com/#organization",
+      "name": "VivanceData",
+      "url": "https://vivancedata.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://vivancedata.com/icons/Logo.png",
+        "width": 180,
+        "height": 60
+      },
+      "description": "VivanceData provides cutting-edge AI solutions to help businesses transform through intelligent automation.",
+      "sameAs": [
+        "https://twitter.com/vivancedata",
+        "https://linkedin.com/company/vivancedata",
+        "https://github.com/vivancedata"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://vivancedata.com/#website",
+      "url": "https://vivancedata.com",
+      "name": "VivanceData - AI Solutions for Modern Businesses",
+      "description": "Transforming Businesses Through Intelligent Automation",
+      "publisher": {
+        "@id": "https://vivancedata.com/#organization"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://vivancedata.com/#webpage",
+      "url": "https://vivancedata.com",
+      "name": "VivanceData - AI Solutions for Modern Businesses",
+      "description": "We combine cutting-edge AI technology with deep industry expertise to deliver solutions that drive real business outcomes.",
+      "isPartOf": {
+        "@id": "https://vivancedata.com/#website"
+      },
+      "about": {
+        "@id": "https://vivancedata.com/#organization"
+      }
+    }
+  ]
+};
 
 export default function Home() {
   const stats = [
@@ -38,6 +86,10 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Welcome />
       <Overview />
       <Process />

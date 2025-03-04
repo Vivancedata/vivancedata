@@ -4,6 +4,7 @@ import { compileMDX } from 'next-mdx-remote/rsc';
 import { notFound } from 'next/navigation';
 import { BlogLayout } from '@/components/blog/BlogLayout';
 import { Metadata } from 'next';
+import type { BlogPost } from '@/types/blog';
 
 interface BlogPostParams {
   params: {
@@ -11,28 +12,72 @@ interface BlogPostParams {
   };
 }
 
+interface BlogFrontmatter {
+  title: string;
+  description?: string;
+  excerpt?: string;
+  date: string;
+  image?: string;
+  tags?: string[] | string;
+}
+
+/**
+ * Finds the file path for a blog post by slug
+ */
+function findBlogPostPath(slug: string): string | null {
+  try {
+    // Check if it's a direct MDX file
+    const directPath = path.join(process.cwd(), 'src', 'app', 'blog', 'posts', `${slug}.mdx`);
+    if (fs.existsSync(directPath)) {
+      return directPath;
+    }
+    
+    // Check if it's in a subdirectory
+    const dirPath = path.join(process.cwd(), 'src', 'app', 'blog', 'posts', slug);
+    if (fs.existsSync(dirPath) && fs.statSync(dirPath).isDirectory()) {
+      const mdxPath = path.join(dirPath, `${slug}.mdx`);
+      if (fs.existsSync(mdxPath)) {
+        return mdxPath;
+      }
+    }
+    
+    return null;
+  } catch (error) {
+    console.error(`Error finding blog post path for slug ${slug}:`, error);
+    return null;
+  }
+}
+
+/**
+ * Extracts frontmatter data from MDX content
+ */
+function extractFrontmatter(content: string, slug: string): Partial<BlogFrontmatter> {
+  const titleMatch = content.match(/title:\s*"([^"]*)"/);
+  const descriptionMatch = content.match(/description:\s*"([^"]*)"/);
+  const excerptMatch = content.match(/excerpt:\s*"([^"]*)"/);
+  const dateMatch = content.match(/date:\s*"([^"]*)"/);
+  const imageMatch = content.match(/image:\s*"([^"]*)"/);
+  const tagsMatch = content.match(/tags:\s*\[(.*?)\]/);
+  
+  const title = titleMatch?.[1] || slug;
+  const description = descriptionMatch?.[1] || 
+                      excerptMatch?.[1] || 
+                      `Read our article on ${title}`;
+  const date = dateMatch?.[1] || new Date().toISOString().split('T')[0];
+  const image = imageMatch?.[1] || "/images/ai-solutions.png";
+  const tags = tagsMatch 
+    ? tagsMatch[1].split(',').map(tag => tag.trim().replace(/"/g, '')) 
+    : ['AI', 'artificial intelligence', 'technology'];
+    
+  return { title, description, date, image, tags };
+}
+
 // Generate metadata for the blog post
 export async function generateMetadata({ params }: BlogPostParams): Promise<Metadata> {
   const { slug } = params;
   
   try {
-    // Try to find the blog post file
-    let filePath: string | null = null;
-    
-    // Check if it's a direct MDX file
-    const directPath = path.join(process.cwd(), 'src', 'app', 'blog', 'posts', `${slug}.mdx`);
-    if (fs.existsSync(directPath)) {
-      filePath = directPath;
-    } else {
-      // Check if it's in a subdirectory
-      const dirPath = path.join(process.cwd(), 'src', 'app', 'blog', 'posts', slug);
-      if (fs.existsSync(dirPath) && fs.statSync(dirPath).isDirectory()) {
-        const mdxPath = path.join(dirPath, `${slug}.mdx`);
-        if (fs.existsSync(mdxPath)) {
-          filePath = mdxPath;
-        }
-      }
-    }
+    const filePath = findBlogPostPath(slug);
     
     if (!filePath) {
       return {
@@ -41,93 +86,80 @@ export async function generateMetadata({ params }: BlogPostParams): Promise<Meta
     }
     
     const fileContents = fs.readFileSync(filePath, 'utf8');
+    const frontmatter = extractFrontmatter(fileContents, slug);
     
-    // Extract metadata from frontmatter
-    const titleMatch = fileContents.match(/title:\s*"([^"]*)"/);
-    const title = titleMatch ? titleMatch[1] : slug;
-    
-    const descriptionMatch = fileContents.match(/description:\s*"([^"]*)"/);
-    const excerptMatch = fileContents.match(/excerpt:\s*"([^"]*)"/);
-    const description = descriptionMatch ? descriptionMatch[1] : 
-                        excerptMatch ? excerptMatch[1] : 
-                        `Read our article on ${title}`;
-    
-    const tagsMatch = fileContents.match(/tags:\s*\[(.*?)\]/);
-    const keywords = tagsMatch 
-      ? tagsMatch[1].split(',').map(tag => tag.trim().replace(/"/g, ''))
-      : ['AI', 'artificial intelligence', 'technology'];
+    const keywords = Array.isArray(frontmatter.tags) 
+      ? frontmatter.tags 
+      : typeof frontmatter.tags === 'string' 
+        ? [frontmatter.tags] 
+        : ['AI', 'artificial intelligence', 'technology'];
     
     return {
-      title: `${title} - VivaceFlow AI Blog`,
-      description,
+      title: `${frontmatter.title} - VivanceData AI Blog`,
+      description: frontmatter.description,
       keywords: keywords.join(', '),
       openGraph: {
-        title,
-        description,
+        title: frontmatter.title,
+        description: frontmatter.description,
         type: 'article',
-        publishedTime: fileContents.match(/date:\s*"([^"]*)"/)?.at(1),
-        url: `https://vivaceflow.com/blog/${slug}`,
+        publishedTime: frontmatter.date,
+        url: `https://vivancedata.com/blog/${slug}`,
         tags: keywords,
       },
       twitter: {
         card: 'summary_large_image',
-        title,
-        description,
+        title: frontmatter.title,
+        description: frontmatter.description,
       }
     };
   } catch (error) {
+    console.error(`Error generating metadata for slug ${slug}:`, error);
     return {
-      title: 'Blog Post - VivaceFlow',
+      title: 'Blog Post - VivanceData',
     };
   }
 }
 
 export async function generateStaticParams() {
-  const postsDirectory = path.join(process.cwd(), 'src', 'app', 'blog', 'posts');
-  
-  // Handle both direct MDX files and MDX files in subdirectories
-  const entries = fs.readdirSync(postsDirectory, { withFileTypes: true });
-  
-  const params = [];
-  
-  for (const entry of entries) {
-    if (entry.isDirectory()) {
-      // Check if there's an MDX file with the same name as the directory
-      const dirPath = path.join(postsDirectory, entry.name);
-      const mdxFile = `${entry.name}.mdx`;
-      const mdxFilePath = path.join(dirPath, mdxFile);
-      
-      if (fs.existsSync(mdxFilePath)) {
-        params.push({ slug: entry.name });
+  try {
+    const postsDirectory = path.join(process.cwd(), 'src', 'app', 'blog', 'posts');
+    
+    // Handle both direct MDX files and MDX files in subdirectories
+    const entries = fs.readdirSync(postsDirectory, { withFileTypes: true });
+    
+    const params = [];
+    
+    for (const entry of entries) {
+      try {
+        if (entry.isDirectory()) {
+          // Check if there's an MDX file with the same name as the directory
+          const dirPath = path.join(postsDirectory, entry.name);
+          const mdxFile = `${entry.name}.mdx`;
+          const mdxFilePath = path.join(dirPath, mdxFile);
+          
+          if (fs.existsSync(mdxFilePath)) {
+            params.push({ slug: entry.name });
+          }
+        } else if (entry.name.endsWith('.mdx')) {
+          params.push({ slug: entry.name.replace(/\.mdx$/, '') });
+        }
+      } catch (entryError) {
+        console.error(`Error processing entry ${entry.name}:`, entryError);
+        // Continue with other entries
       }
-    } else if (entry.name.endsWith('.mdx')) {
-      params.push({ slug: entry.name.replace(/\.mdx$/, '') });
     }
+    
+    return params;
+  } catch (error) {
+    console.error("Error generating static params:", error);
+    return [];
   }
-  
-  return params;
 }
 
 export default async function BlogPost({ params }: BlogPostParams) {
   const { slug } = params;
   
-  // Try to find the blog post file
-  let filePath: string | null = null;
-  
-  // Check if it's a direct MDX file
-  const directPath = path.join(process.cwd(), 'src', 'app', 'blog', 'posts', `${slug}.mdx`);
-  if (fs.existsSync(directPath)) {
-    filePath = directPath;
-  } else {
-    // Check if it's in a subdirectory
-    const dirPath = path.join(process.cwd(), 'src', 'app', 'blog', 'posts', slug);
-    if (fs.existsSync(dirPath) && fs.statSync(dirPath).isDirectory()) {
-      const mdxPath = path.join(dirPath, `${slug}.mdx`);
-      if (fs.existsSync(mdxPath)) {
-        filePath = mdxPath;
-      }
-    }
-  }
+  const filePath = findBlogPostPath(slug);
   
   if (!filePath) {
     return notFound();
@@ -135,14 +167,7 @@ export default async function BlogPost({ params }: BlogPostParams) {
   
   try {
     const fileContents = fs.readFileSync(filePath, 'utf8');
-    const { content, frontmatter } = await compileMDX<{ 
-      title: string;
-      description?: string;
-      excerpt?: string;
-      date: string;
-      image?: string;
-      tags?: string[];
-    }>({
+    const { content, frontmatter } = await compileMDX<BlogFrontmatter>({
       source: fileContents,
       options: { parseFrontmatter: true }
     });
@@ -160,13 +185,48 @@ export default async function BlogPost({ params }: BlogPostParams) {
       tags: Array.isArray(tags) ? tags : typeof tags === 'string' ? [tags] : ["AI", "Technology"]
     };
 
+    // Create JSON-LD schema for the blog post
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": meta.title,
+      "description": meta.description,
+      "image": `https://vivancedata.com${meta.image}`,
+      "datePublished": meta.date,
+      "dateModified": meta.date,
+      "author": {
+        "@type": "Organization",
+        "name": "VivanceData",
+        "url": "https://vivancedata.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "VivanceData",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://vivancedata.com/icons/Logo.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `https://vivancedata.com/blog/${slug}`
+      },
+      "keywords": meta.tags.join(", ")
+    };
+
     return (
-      <BlogLayout meta={meta} previousPathname="/blog">
-        {content}
-      </BlogLayout>
+      <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <BlogLayout meta={meta} previousPathname="/blog">
+          {content}
+        </BlogLayout>
+      </>
     );
   } catch (error) {
-    console.error("Error loading blog post:", error);
+    console.error(`Error loading blog post for slug ${slug}:`, error);
     return notFound();
   }
 }
