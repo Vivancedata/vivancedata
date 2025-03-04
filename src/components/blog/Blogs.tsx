@@ -7,6 +7,7 @@ import { formatDate } from "@/lib/formatDate";
 import { Clock, Calendar, ArrowUpRight } from "lucide-react";
 import { useMemo, useState } from "react";
 import { BlogFilters } from "./BlogFilters";
+import { BlogPost } from "@/types/blog";
 
 const container = {
   hidden: { opacity: 0 },
@@ -23,7 +24,11 @@ const item = {
   show: { opacity: 1, y: 0 }
 };
 
-export function Blogs({ blogs }: { blogs: any[] }) {
+export interface BlogsProps {
+  blogs: BlogPost[];
+}
+
+export function Blogs({ blogs }: BlogsProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
@@ -31,7 +36,9 @@ export function Blogs({ blogs }: { blogs: any[] }) {
   const allTags = useMemo(() => {
     const tags = new Set<string>();
     blogs.forEach(blog => {
-      blog.tags?.forEach((tag: string) => tags.add(tag));
+      if (blog.tags) {
+        blog.tags.forEach((tag: string) => tags.add(tag));
+      }
     });
     return Array.from(tags);
   }, [blogs]);
@@ -44,7 +51,7 @@ export function Blogs({ blogs }: { blogs: any[] }) {
         blog.description.toLowerCase().includes(searchQuery.toLowerCase());
 
       const matchesTags = selectedTags.length === 0 ||
-        selectedTags.every(tag => blog.tags?.includes(tag));
+        (blog.tags && selectedTags.every(tag => blog.tags.includes(tag)));
 
       return matchesSearch && matchesTags;
     });
@@ -64,21 +71,23 @@ export function Blogs({ blogs }: { blogs: any[] }) {
         animate="show"
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4 mt-8"
       >
-        {filteredBlogs.map((blog) => (
+        {filteredBlogs.map((blog, index) => (
           <Link key={blog.slug} href={`/blog/${blog.slug}`}>
             <motion.article
               variants={item}
               className="group relative flex h-full flex-col overflow-hidden rounded-xl bg-secondary/50 transition-all hover:bg-secondary/70"
             >
               {blog.image && (
-                <div className="relative aspect-square w-full overflow-hidden">
-                  <Image
-                    src={blog.image}
-                    alt={blog.title}
-                    fill
-                    className="object-cover p-2 transform group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
+              <div className="relative aspect-square w-full overflow-hidden">
+                <Image
+                  src={blog.image}
+                  alt={`Featured image for ${blog.title}`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover p-2 transform group-hover:scale-105 transition-transform duration-300"
+                  priority={index < 3} // Prioritize loading for the first 3 images
+                />
+              </div>
               )}
 
               <div className="flex flex-1 flex-col justify-between p-4">
@@ -90,7 +99,7 @@ export function Blogs({ blogs }: { blogs: any[] }) {
                     </div>
                     <div className="flex items-center gap-1">
                       <Clock className="size-3" />
-                      <span>{Math.ceil(blog.content?.split(/\s+/).length / 200) || 5} min read</span>
+                      <span>{blog.content ? Math.ceil(blog.content.split(/\s+/).length / 200) : 5} min read</span>
                     </div>
                   </div>
 

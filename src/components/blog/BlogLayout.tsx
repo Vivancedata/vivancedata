@@ -11,14 +11,9 @@ import { Prose } from "@/components/blog/Prose";
 import { ArrowLeft, Share2, Clock, Calendar, Tag, Play, Pause } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect, useRef, ReactNode } from "react";
+import { BlogPost } from "@/types/blog";
 
-interface BlogMeta {
-  title: string;
-  description: string;
-  date: string;
-  image: string;
-  tags: string[];
-}
+type BlogMeta = Omit<BlogPost, 'slug' | 'content'>;
 
 interface BlogLayoutProps {
   children: ReactNode;
@@ -126,8 +121,9 @@ export function BlogLayout({
               >
                 <Image
                   src={meta.image}
-                  alt={meta.title}
+                  alt={`Featured image for ${meta.title}`}
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 800px"
                   className="object-cover"
                   priority
                 />
@@ -157,14 +153,28 @@ export function BlogLayout({
                 </Button>
                 <Button
                   onClick={() => {
-                    navigator.share({
-                      title: meta.title,
-                      text: meta.description,
-                      url: window.location.href,
-                    });
+                    if (navigator.share) {
+                      navigator.share({
+                        title: meta.title,
+                        text: meta.description,
+                        url: window.location.href,
+                      }).catch(error => {
+                        console.error('Error sharing:', error);
+                      });
+                    } else {
+                      // Fallback for browsers that don't support the Web Share API
+                      navigator.clipboard.writeText(window.location.href)
+                        .then(() => {
+                          alert('Link copied to clipboard!');
+                        })
+                        .catch(error => {
+                          console.error('Error copying to clipboard:', error);
+                        });
+                    }
                   }}
                   variant="outline"
                   className="flex items-center gap-2"
+                  aria-label="Share this article"
                 >
                   <Share2 className="h-4 w-4" /> Share
                 </Button>
