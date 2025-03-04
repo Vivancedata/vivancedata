@@ -1,7 +1,7 @@
 export const siteConfig = {
-    name: "VivaceFlow",
-    url: "https://vivaceflow.com",
-    ogImage: "https://vivaceflow.com/og.jpg",
+    name: "VivanceData",
+    url: "https://vivancedata.com",
+    ogImage: "https://vivancedata.com/og.jpg",
     description:
       "Leading AI solutions that transform businesses. Accessible. Customizable. Innovative.",
     links: {

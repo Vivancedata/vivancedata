@@ -24,6 +24,19 @@ export const navItems: NavItem[] = [
     ],
   },
   {
+    name: "Industries",
+    href: "/industries",
+    hasDropdown: true,
+    dropdownItems: [
+      { name: "Financial Services", href: "/industries/financial-services" },
+      { name: "Healthcare", href: "/industries/healthcare" },
+      { name: "Retail & E-commerce", href: "/industries/retail" },
+      { name: "Manufacturing", href: "/industries/manufacturing" },
+      { name: "Energy & Utilities", href: "/industries/energy" },
+      { name: "Public Sector", href: "/industries/public-sector" },
+    ],
+  },
+  {
     name: "Case Studies",
     href: "/case-studies",
     hasDropdown: false,
@@ -34,6 +47,8 @@ export const navItems: NavItem[] = [
     hasDropdown: true,
     dropdownItems: [
       { name: "Blog", href: "/blog" },
+      { name: "Innovation Hub", href: "/innovation-hub" },
+      { name: "Responsible AI", href: "/responsible-ai" },
       { name: "Whitepapers", href: "/resources/whitepapers" },
       { name: "Webinars", href: "/resources/webinars" },
       { name: "AI Glossary", href: "/resources/glossary" },
@@ -58,6 +73,12 @@ export const mainNavItems: NavItem[] = [
     href: "/services",
     hasDropdown: false,
     section: "overview"
+  },
+  {
+    name: "Industries",
+    href: "/industries",
+    hasDropdown: false,
+    section: "industries"
   },
   {
     name: "Case Studies",
@@ -123,10 +144,21 @@ export const footerLinks: FooterSection[] = [
     ],
   },
   {
+    title: "Industries",
+    links: [
+      { label: "Financial Services", href: "/industries/financial-services" },
+      { label: "Healthcare", href: "/industries/healthcare" },
+      { label: "Retail & E-commerce", href: "/industries/retail" },
+      { label: "Manufacturing", href: "/industries/manufacturing" },
+    ],
+  },
+  {
     title: "Resources",
     links: [
       { label: "Blog", href: "/blog" },
       { label: "Case Studies", href: "/case-studies" },
+      { label: "Innovation Hub", href: "/innovation-hub" },
+      { label: "Responsible AI", href: "/responsible-ai" },
       { label: "Whitepapers", href: "/resources" },
       { label: "FAQ", href: "/faq" },
     ],

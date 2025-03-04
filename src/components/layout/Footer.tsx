@@ -36,7 +36,7 @@ export function SiteFooter() {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center mb-6">
-              <Image src={logo} alt="VivaceFlow Logo" width={40} height={40} className="mr-2" />
+              <Image src={logo} alt="VivanceData Logo" width={40} height={40} className="mr-2" />
               <span className="text-xl font-bold">{siteConfig.name}</span>
             </Link>
             <p className="text-gray-600 mb-6 max-w-md">
@@ -67,7 +67,7 @@ export function SiteFooter() {
               </div>
               <div className="flex items-center">
                 <Mail className="h-5 w-5 text-blue-600 mr-2" />
-                <span className="text-gray-600">info@vivaceflow.com</span>
+                <span className="text-gray-600">info@vivancedata.com</span>
               </div>
             </div>
           </div>
