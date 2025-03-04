@@ -1,29 +1,14 @@
 "use client";
 
 import React from "react";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
+import { Card, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
-import image from "@/public/images/ai-solutions.png";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Bot, LineChart, Lightbulb, Code, Database, Users } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { services } from "@/constants/services";
 
-// Helper function to get the appropriate icon component based on iconType
-const getIconComponent = (iconType: string) => {
-  switch (iconType) {
-    case "bot":
-      return <Bot className="h-10 w-10 text-blue-500" />;
-    case "lightbulb":
-      return <Lightbulb className="h-10 w-10 text-blue-500" />;
-    case "code":
-      return <Code className="h-10 w-10 text-blue-500" />;
-    default:
-      return <Bot className="h-10 w-10 text-blue-500" />;
-  }
-};
-
-const Overview = () => {
+export default function Overview() {
   return (
     <section className="container mx-auto py-16 px-4 md:py-24">
       <div className="flex flex-col items-center justify-center text-center space-y-4 mb-16">
@@ -53,9 +38,6 @@ const Overview = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="p-6 md:p-8">
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="rounded-full bg-blue-100 p-3">
-                      {getIconComponent(service.icon)}
-                    </div>
                     <CardTitle className="text-2xl md:text-3xl">{service.title}</CardTitle>
                   </div>
                   <CardDescription className="text-base md:text-lg mb-6">
@@ -81,12 +63,6 @@ const Overview = () => {
                   </CardFooter>
                 </div>
                 <div className="relative h-64 md:h-auto overflow-hidden rounded-b-lg md:rounded-r-lg md:rounded-bl-none">
-                  <Image 
-                    src={image} 
-                    alt={service.title} 
-                    fill 
-                    className="object-cover"
-                  />
                   <div className="absolute inset-0 bg-gradient-to-tr from-blue-900/80 to-transparent flex items-center justify-center">
                     <div className="text-white p-6 md:p-8 max-w-md">
                       <h3 className="text-xl md:text-2xl font-bold mb-2">Ready to transform your business?</h3>
@@ -102,26 +78,6 @@ const Overview = () => {
           </TabsContent>
         ))}
       </Tabs>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-        <div className="bg-blue-50 rounded-xl p-6 flex flex-col items-center text-center">
-          <Database className="h-12 w-12 text-blue-500 mb-4" />
-          <h3 className="text-xl font-bold mb-2">Data Analysis</h3>
-          <p className="text-gray-600">Turn your raw data into actionable insights with our advanced analytics capabilities.</p>
-        </div>
-        <div className="bg-blue-50 rounded-xl p-6 flex flex-col items-center text-center">
-          <LineChart className="h-12 w-12 text-blue-500 mb-4" />
-          <h3 className="text-xl font-bold mb-2">Predictive Models</h3>
-          <p className="text-gray-600">Anticipate market trends and customer behavior with our predictive AI models.</p>
-        </div>
-        <div className="bg-blue-50 rounded-xl p-6 flex flex-col items-center text-center">
-          <Users className="h-12 w-12 text-blue-500 mb-4" />
-          <h3 className="text-xl font-bold mb-2">AI Training</h3>
-          <p className="text-gray-600">Empower your team with the knowledge and skills to leverage AI effectively.</p>
-        </div>
-      </div>
     </section>
   );
-};
-
-export default Overview;
+}
