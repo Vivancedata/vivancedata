@@ -1,5 +1,5 @@
 import React from "react";
-import FAQ from "@/components/common/question";
+import FAQ from "@/components/common/Question";
 
 interface FAQSectionProps {
   title: string;

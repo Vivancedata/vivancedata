@@ -42,7 +42,7 @@ const Partners = () => {
             <div>
               <h3 className="text-2xl md:text-3xl font-bold mb-4">Join Our Partner Network</h3>
               <p className="text-gray-700 mb-6">
-                Become a VivaceFlow partner and gain access to cutting-edge AI solutions, technical resources, and joint marketing opportunities. Together, we can deliver exceptional value to clients.
+                Become a VivanceData partner and gain access to cutting-edge AI solutions, technical resources, and joint marketing opportunities. Together, we can deliver exceptional value to clients.
               </p>
               <div className="space-y-4">
                 <div className="flex items-start">
@@ -84,7 +84,7 @@ const Partners = () => {
                 </div>
                 <h4 className="text-xl font-bold mb-2">Partner Success Story</h4>
                 <p className="text-gray-600 italic">
-                  &quot;Partnering with VivaceFlow has allowed us to offer cutting-edge AI solutions to our clients, expanding our service portfolio and increasing our revenue by 40% in the first year.&quot;
+                  &quot;Partnering with VivanceData has allowed us to offer cutting-edge AI solutions to our clients, expanding our service portfolio and increasing our revenue by 40% in the first year.&quot;
                 </p>
                 <div className="mt-4">
                   <p className="font-semibold">Sarah Thompson</p>

@@ -220,7 +220,7 @@ const CaseStudies = () => {
                                 </div>
                                 <div className="text-white">
                                   <p className="font-bold text-xl">{study.industry} Solution</p>
-                                  <p className="text-sm opacity-90">Powered by VivaceFlow AI</p>
+                                  <p className="text-sm opacity-90">Powered by VivanceData AI</p>
                                 </div>
                               </div>
                             </div>
