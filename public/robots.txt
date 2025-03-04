@@ -1,0 +1,14 @@
+# VivanceData Robots.txt
+# https://vivancedata.com
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://vivancedata.com/sitemap.xml
