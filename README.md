@@ -1,36 +1,114 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# VivanceData - AI Solutions for Modern Businesses
+
+![VivanceData](public/images/banner.png)
+
+## Overview
+
+VivanceData is a leading provider of AI solutions that transform businesses through intelligent automation. We combine cutting-edge AI technology with deep industry expertise to deliver solutions that drive real business outcomes. Our website showcases our services, case studies, and expertise in the AI space.
+
+## Key Features
+
+- **Comprehensive AI Solutions**: Presenting our AI services including Generative AI, Strategy Consulting, and more
+- **Industry-Specific Solutions**: Tailored AI implementations for Finance, Healthcare, Retail, Manufacturing, etc.
+- **Case Studies Showcase**: Real-world examples of successful AI implementations
+- **Team Highlights**: Introducing our expert team of AI professionals
+- **Client Testimonials**: Success stories from our satisfied clients
+- **Responsive Design**: Fully optimized for all devices
+- **Modern UI Components**: Using shadcn/ui and Tailwind CSS for a polished interface
+
+## Tech Stack
+
+- **Framework**: Next.js 13+ (App Router)
+- **Styling**: Tailwind CSS
+- **UI Components**: Shadcn UI (built on Radix UI)
+- **Animation**: Framer Motion
+- **TypeScript**: For type safety and better developer experience
+- **Deployment**: Vercel (recommended)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18.0 or later
+- npm, yarn, or bun package manager
+
+### Installation
+
+1. Clone the repository
+```bash
+git clone https://github.com/yourusername/vivancedata.git
+cd vivancedata
+```
+
+2. Install dependencies
+```bash
+npm install
+# or
+yarn
+# or
+bun install
+```
+
+3. Start the development server
 ```bash
 npm run dev
 # or
 yarn dev
 # or
-pnpm dev
-# or
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the site
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```
+vivancedata/
+├── public/              # Static assets
+│   ├── icons/           # Site icons
+│   └── images/          # Site images
+├── src/
+│   ├── app/             # Next.js App Router pages
+│   ├── components/      # React components
+│   │   ├── about/       # About page components
+│   │   ├── blog/        # Blog page components
+│   │   ├── common/      # Shared components
+│   │   ├── contact/     # Contact page components
+│   │   ├── home/        # Home page components
+│   │   ├── layout/      # Layout components
+│   │   ├── services/    # Services page components
+│   │   └── ui/          # UI components from shadcn
+│   ├── config/          # Site configuration
+│   ├── constants/       # Constants and data
+│   ├── hooks/           # Custom React hooks
+│   ├── lib/             # Utility functions
+│   └── types/           # TypeScript types
+```
 
-## Learn More
+## Adding New Components
 
-To learn more about Next.js, take a look at the following resources:
+To add a new shadcn UI component:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npx shadcn-ui@latest add [component-name]
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Performance Considerations
 
-## Deploy on Vercel
+- The site uses Next.js Image component for optimized image loading
+- Components are split into smaller chunks for better code-splitting
+- Animation is handled efficiently with Framer Motion
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## SEO
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- The site includes proper meta tags and structured data for SEO
+- Each page has its own meta description and title
+- JSON-LD schema is implemented for rich results in search engines
+
+## Contact
+
+For any inquiries, please reach out to us through the contact form on the website or email us at info@vivancedata.com.
+
+## License
+
+This project is proprietary and confidential. Unauthorized copying, distribution, or use is strictly prohibited.
