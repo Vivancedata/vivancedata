@@ -3,10 +3,9 @@ import { siteConfig } from "@/config/site";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/public/icons/Logo.png";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Facebook, Twitter, Linkedin, Instagram, Github, Mail, MapPin, Phone } from "lucide-react";
 import { footerLinks, socialLinks } from "@/constants/navigation";
+import { Newsletter } from "@/components/layout/Newsletter";
 
 export function SiteFooter() {
   const currentYear = new Date().getFullYear();
@@ -49,7 +48,7 @@ export function SiteFooter() {
                   href={link.href} 
                   target="_blank" 
                   rel="noreferrer" 
-                  className="bg-white p-2 rounded-full border border-gray-200 text-gray-600 hover:text-blue-600 hover:border-blue-600 transition-colors"
+                  className="bg-white p-2 rounded-full border border-gray-200 text-gray-600 hover:text-primary hover:border-primary transition-colors"
                   aria-label={link.label}
                 >
                   {getSocialIcon(link.icon)}
@@ -58,15 +57,15 @@ export function SiteFooter() {
             </div>
             <div className="space-y-3">
               <div className="flex items-start">
-                <MapPin className="h-5 w-5 text-blue-600 mr-2 mt-0.5" />
+                <MapPin className="h-5 w-5 text-primary mr-2 mt-0.5" />
                 <span className="text-gray-600">123 AI Boulevard, San Francisco, CA 94107</span>
               </div>
               <div className="flex items-center">
-                <Phone className="h-5 w-5 text-blue-600 mr-2" />
+                <Phone className="h-5 w-5 text-primary mr-2" />
                 <span className="text-gray-600">(123) 456-7890</span>
               </div>
               <div className="flex items-center">
-                <Mail className="h-5 w-5 text-blue-600 mr-2" />
+                <Mail className="h-5 w-5 text-primary mr-2" />
                 <span className="text-gray-600">info@vivancedata.com</span>
               </div>
             </div>
@@ -79,9 +78,9 @@ export function SiteFooter() {
               <ul className="space-y-3">
                 {column.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
-                    <Link 
-                      href={link.href} 
-                      className="text-gray-600 hover:text-blue-600 transition-colors"
+                    <Link
+                      href={link.href}
+                      className="text-gray-600 hover:text-primary transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -93,22 +92,7 @@ export function SiteFooter() {
         </div>
 
         {/* Newsletter */}
-        <div className="border-t border-gray-200 pt-8 mb-8">
-          <div className="max-w-md mx-auto text-center">
-            <h3 className="font-semibold text-lg mb-2">Subscribe to our newsletter</h3>
-            <p className="text-gray-600 mb-4">Stay updated with the latest in AI and receive our insights directly to your inbox.</p>
-            <div className="flex gap-2">
-              <Input 
-                type="email" 
-                placeholder="Your email address" 
-                className="bg-white"
-              />
-              <Button className="bg-blue-600 hover:bg-blue-700">
-                Subscribe
-              </Button>
-            </div>
-          </div>
-        </div>
+        <Newsletter />
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center">
@@ -116,9 +100,8 @@ export function SiteFooter() {
             © {currentYear} {siteConfig.name}. All rights reserved.
           </p>
           <div className="flex flex-wrap gap-4 text-sm text-gray-500">
-            <Link href="/privacy" className="hover:text-blue-600 transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-blue-600 transition-colors">Terms of Service</Link>
-            <Link href="/cookies" className="hover:text-blue-600 transition-colors">Cookie Policy</Link>
+            <Link href="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link>
+            <Link href="/terms-of-service" className="hover:text-primary transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>

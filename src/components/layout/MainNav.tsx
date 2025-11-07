@@ -47,7 +47,7 @@ export function MainNav() {
               >
                 <Icons.logo className="h-8 w-8" />
               </motion.div>
-              <span className="hidden font-bold text-2xl lg:inline-block bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
+              <span className="hidden font-bold text-2xl lg:inline-block bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
                 {siteConfig.name}
               </span>
             </Link>
@@ -66,11 +66,11 @@ export function MainNav() {
                   href={item.href}
                   className={cn(
                     "px-3 py-2 text-sm font-medium rounded-md transition-colors relative group",
-                    "hover:text-blue-600"
+                    "hover:text-primary"
                   )}
                 >
                   {item.name}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
                 </Link>
               </motion.div>
             ))}
@@ -82,12 +82,12 @@ export function MainNav() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Button variant="ghost" size="icon" className="text-foreground/60 hover:text-blue-600 transition-colors duration-300">
+            <Button variant="ghost" size="icon" className="text-foreground/60 hover:text-primary transition-colors duration-300">
               <Search className="h-5 w-5" />
             </Button>
             <ModeToggle />
-            <Button 
-              className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-md hover:shadow-lg transition-all duration-300"
+            <Button
+              className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground shadow-md hover:shadow-lg transition-all duration-300"
               asChild
             >
               <Link href="/contact">
