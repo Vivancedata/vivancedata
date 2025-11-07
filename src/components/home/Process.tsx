@@ -10,21 +10,21 @@ import { processSteps } from "@/constants/process";
 const getIconComponent = (iconType: string) => {
   switch (iconType) {
     case "fileSearch":
-      return <FileSearch className="h-8 w-8 text-blue-500" />;
+      return <FileSearch className="h-8 w-8 text-primary" />;
     case "lightbulb":
-      return <LightbulbIcon className="h-8 w-8 text-blue-500" />;
+      return <LightbulbIcon className="h-8 w-8 text-primary" />;
     case "settings":
-      return <Settings className="h-8 w-8 text-blue-500" />;
+      return <Settings className="h-8 w-8 text-primary" />;
     case "code":
-      return <Code className="h-8 w-8 text-blue-500" />;
+      return <Code className="h-8 w-8 text-primary" />;
     case "clipboardCheck":
-      return <ClipboardCheck className="h-8 w-8 text-blue-500" />;
+      return <ClipboardCheck className="h-8 w-8 text-primary" />;
     case "users":
-      return <Users className="h-8 w-8 text-blue-500" />;
+      return <Users className="h-8 w-8 text-primary" />;
     case "lineChart":
-      return <LineChart className="h-8 w-8 text-blue-500" />;
+      return <LineChart className="h-8 w-8 text-primary" />;
     default:
-      return <FileSearch className="h-8 w-8 text-blue-500" />;
+      return <FileSearch className="h-8 w-8 text-primary" />;
   }
 };
 
@@ -33,7 +33,7 @@ const Process = () => {
     <section className="w-full py-16 md:py-24 bg-gradient-to-b from-white to-gray-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <div className="inline-block rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-800 mb-4">
+          <div className="inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary mb-4">
             Our Approach
           </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">How We Work</h2>
@@ -44,7 +44,7 @@ const Process = () => {
 
         <div className="relative">
           {/* Timeline Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-blue-300 to-blue-600 hidden md:block"></div>
+          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary/30 to-primary hidden md:block"></div>
 
           {/* Process Steps */}
           <div className="space-y-12 relative">
@@ -54,11 +54,11 @@ const Process = () => {
                   <Card className="border-0 shadow-md hover:shadow-xl transition-all duration-300 hover:translate-y-[-5px] h-full">
                     <CardContent className="p-6">
                       <div className={`flex items-center mb-4 ${index % 2 === 0 ? 'justify-end' : 'justify-start'}`}>
-                        <div className="bg-blue-100 rounded-full p-3 mr-4">
+                        <div className="bg-primary/10 rounded-full p-3 mr-4">
                           {getIconComponent(step.iconType)}
                         </div>
                         <div>
-                          <div className="text-blue-600 font-semibold">Step {step.number}</div>
+                          <div className="text-primary font-semibold">Step {step.number}</div>
                           <h3 className="text-xl font-bold">{step.title}</h3>
                         </div>
                       </div>
@@ -68,7 +68,7 @@ const Process = () => {
                 </div>
 
                 {/* Timeline Node */}
-                <div className="relative flex items-center justify-center w-12 h-12 rounded-full bg-blue-600 text-white font-bold border-4 border-white shadow-lg z-10 my-4 md:my-0 transition-transform duration-300 hover:scale-110 hover:bg-blue-700">
+                <div className="relative flex items-center justify-center w-12 h-12 rounded-full bg-primary text-primary-foreground font-bold border-4 border-white shadow-lg z-10 my-4 md:my-0 transition-transform duration-300 hover:scale-110 hover:bg-primary/90">
                   {step.number}
                 </div>
 
@@ -82,7 +82,7 @@ const Process = () => {
           <p className="text-lg text-gray-700 mb-6 max-w-2xl mx-auto">
             Ready to transform your business with our AI solutions? Let&apos;s start the journey together.
           </p>
-          <Button className="bg-blue-600 hover:bg-blue-700">
+          <Button className="bg-primary hover:bg-primary/90">
             <span>Schedule a Consultation</span>
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>

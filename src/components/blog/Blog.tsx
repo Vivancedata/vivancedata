@@ -4,11 +4,12 @@ import React from "react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Calendar, Clock, User, ChevronRight } from "lucide-react";
+import { ArrowRight, Calendar, Clock, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimateOnScroll, StaggerContainer } from "@/hooks/useAnimateOnScroll";
 import { motion } from "framer-motion";
+import { Avatar } from "@/components/common/Avatar";
 
 // Sample blog posts for the homepage
 const featuredBlogPosts = [
@@ -131,9 +132,12 @@ const Blog = () => {
               </CardContent>
               <CardFooter className="border-t border-gray-100 pt-4 flex items-center justify-between">
                 <div className="flex items-center">
-                  <div className="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full w-10 h-10 flex items-center justify-center mr-3 shadow-md">
-                    <User className="h-5 w-5 text-white" />
-                  </div>
+                  <Avatar
+                    name={post.author.name}
+                    src={post.author.avatar}
+                    size="md"
+                    className="mr-3 shadow-md"
+                  />
                   <div>
                     <p className="text-sm font-bold">{post.author.name}</p>
                     <p className="text-xs text-gray-500">{post.author.role}</p>

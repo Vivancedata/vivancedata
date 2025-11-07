@@ -16,15 +16,15 @@ export function CTASection({
   buttonLink 
 }: CTASectionProps): React.ReactElement {
   return (
-    <section className="w-full bg-blue-600 text-white py-16">
+    <section className="w-full bg-primary text-primary-foreground py-16">
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-6">{title}</h2>
-        <p className="text-xl text-blue-100 max-w-2xl mx-auto mb-8">
+        <p className="text-xl text-primary-foreground/80 max-w-2xl mx-auto mb-8">
           {description}
         </p>
-        <Button 
-          size="lg" 
-          className="bg-white text-blue-600 hover:bg-blue-50"
+        <Button
+          size="lg"
+          className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
           asChild
         >
           <a href={buttonLink}>

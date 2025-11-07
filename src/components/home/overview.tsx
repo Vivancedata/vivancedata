@@ -12,11 +12,11 @@ export default function Overview() {
   return (
     <section className="container mx-auto py-16 px-4 md:py-24">
       <div className="flex flex-col items-center justify-center text-center space-y-4 mb-16">
-        <div className="inline-block rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-800 mb-4">
+        <div className="inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary mb-4">
           Our Services
         </div>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
-          Comprehensive <span className="text-blue-600">AI Solutions</span> for Modern Businesses
+          Comprehensive <span className="text-primary">AI Solutions</span> for Modern Businesses
         </h2>
         <p className="text-lg text-gray-600 max-w-3xl mx-auto mt-4">
           From strategy to implementation, we provide end-to-end AI services to help you stay ahead in today&apos;s competitive landscape.
@@ -56,17 +56,17 @@ export default function Overview() {
                     ))}
                   </div>
                   <CardFooter className="px-0 pt-6">
-                    <Button className="bg-blue-600 hover:bg-blue-700">
+                    <Button className="bg-primary hover:bg-primary/90">
                       {service.cta}
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </CardFooter>
                 </div>
                 <div className="relative h-64 md:h-auto overflow-hidden rounded-b-lg md:rounded-r-lg md:rounded-bl-none">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-blue-900/80 to-transparent flex items-center justify-center">
+                  <div className="absolute inset-0 bg-gradient-to-tr from-primary/80 to-transparent flex items-center justify-center">
                     <div className="text-white p-6 md:p-8 max-w-md">
                       <h3 className="text-xl md:text-2xl font-bold mb-2">Ready to transform your business?</h3>
-                      <p className="mb-4 text-blue-100">Our team of experts is ready to help you implement {service.title.toLowerCase()}.</p>
+                      <p className="mb-4 text-primary-foreground/80">Our team of experts is ready to help you implement {service.title.toLowerCase()}.</p>
                       <Button variant="outline" className="border-white text-white hover:bg-white/20">
                         Contact Us
                       </Button>

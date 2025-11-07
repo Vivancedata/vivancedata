@@ -8,6 +8,8 @@ import { Container } from "@/components/common/Container";
 import { Heading } from "@/components/common/Heading";
 import { Paragraph } from "@/components/common/Paragraph";
 import { Prose } from "@/components/blog/Prose";
+import { RelatedPosts } from "@/components/blog/RelatedPosts";
+import { ReadingProgress } from "@/components/blog/ReadingProgress";
 import { ArrowLeft, Share2, Clock, Calendar, Tag, Play, Pause } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect, useRef, ReactNode } from "react";
@@ -20,6 +22,8 @@ interface BlogLayoutProps {
   meta: BlogMeta;
   isRssFeed?: boolean;
   previousPathname?: string;
+  relatedPosts?: BlogPost[];
+  currentSlug?: string;
 }
 
 export function BlogLayout({
@@ -27,6 +31,8 @@ export function BlogLayout({
   meta,
   isRssFeed = false,
   previousPathname,
+  relatedPosts,
+  currentSlug,
 }: BlogLayoutProps) {
   const router = useRouter();
   const [isPlaying, setIsPlaying] = useState(false);
@@ -66,7 +72,9 @@ export function BlogLayout({
   }
 
   return (
-    <Container className="mt-16 lg:mt-32">
+    <>
+      <ReadingProgress />
+      <Container className="mt-16 lg:mt-32">
       <div className="xl:relative">
         <div className="mx-auto max-w-2xl">
           {previousPathname && (
@@ -95,16 +103,18 @@ export function BlogLayout({
                       {formatDate(meta.date)}
                     </time>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Tag className="h-4 w-4" />
-                    <div className="flex gap-2">
-                      {meta.tags.map((tag) => (
-                        <span key={tag} className="text-stone-600">
-                          {tag}
-                        </span>
-                      ))}
+                  {meta.tags && meta.tags.length > 0 && (
+                    <div className="flex items-center gap-2">
+                      <Tag className="h-4 w-4" />
+                      <div className="flex gap-2">
+                        {meta.tags.map((tag) => (
+                          <span key={tag} className="text-stone-600">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
                 <Heading className="mt-6 text-4xl font-bold tracking-tight text-stone-800 sm:text-5xl">
                   {meta.title}
@@ -183,16 +193,19 @@ export function BlogLayout({
                 <div ref={contentRef}>{children}</div>
               </Prose>
             </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
-              className="mt-8"
-            >
-            </motion.div>
+            {relatedPosts && relatedPosts.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+              >
+                <RelatedPosts posts={relatedPosts} currentSlug={currentSlug} />
+              </motion.div>
+            )}
           </article>
         </div>
       </div>
     </Container>
+    </>
   );
 }

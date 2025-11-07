@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { useState } from "react"
+import { toast } from "sonner"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -73,14 +74,36 @@ export function ProfileForm() {
   })
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Simulate form submission
-    setIsSubmitting(true)
-    setTimeout(() => {
-      console.log(values)
-      setIsSubmitting(false)
-      setIsSubmitted(true)
-    }, 1500)
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to submit form');
+      }
+
+      setIsSubmitted(true);
+      toast.success('Message sent successfully!', {
+        description: 'We\'ll get back to you within 24 hours.'
+      });
+    } catch (error) {
+      console.error('Form submission error:', error);
+      toast.error('Failed to submit form', {
+        description: 'Please try again or contact us directly at info@vivancedata.com'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   if (isSubmitted) {
@@ -103,8 +126,8 @@ export function ProfileForm() {
 
   return (
     <Card className="border-0 shadow-lg">
-      <CardHeader className="bg-blue-50 rounded-t-lg">
-        <CardTitle className="text-blue-800">Contact Us</CardTitle>
+      <CardHeader className="bg-primary/5 rounded-t-lg">
+        <CardTitle className="text-primary">Contact Us</CardTitle>
         <CardDescription>Fill out the form below to get started</CardDescription>
       </CardHeader>
       <CardContent className="pt-6">
@@ -207,9 +230,9 @@ export function ProfileForm() {
                 </FormItem>
               )}
             />
-            <Button 
-              type="submit" 
-              className="w-full bg-blue-600 hover:bg-blue-700"
+            <Button
+              type="submit"
+              className="w-full bg-primary hover:bg-primary/90"
               disabled={isSubmitting}
             >
               {isSubmitting ? (

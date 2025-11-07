@@ -45,8 +45,8 @@ export default function Banner() {
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
                 <div className="inline-flex items-center rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm mb-6">
-                  <Sparkles className="h-4 w-4 mr-2 text-blue-300" />
-                  <span className="text-sm font-medium text-blue-100">AI-Powered Solutions</span>
+                  <Sparkles className="h-4 w-4 mr-2 text-primary-foreground/80" />
+                  <span className="text-sm font-medium text-primary-foreground/80">AI-Powered Solutions</span>
                 </div>
               </motion.div>
               
@@ -66,8 +66,8 @@ export default function Banner() {
                 with AI
               </motion.h1>
               
-              <motion.p 
-                className="mt-6 max-w-lg text-xl text-blue-100 leading-relaxed"
+              <motion.p
+                className="mt-6 max-w-lg text-xl text-primary-foreground/80 leading-relaxed"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
@@ -114,9 +114,9 @@ export default function Banner() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.6 }}
                 >
-                  <h3 className="mb-4 text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-purple-200">Schedule a Demo</h3>
-                  <p className="mb-8 text-blue-100 text-lg">See how our AI solutions can transform your business operations.</p>
-                  <Button className="bg-white text-blue-900 hover:bg-blue-50 shadow-lg group">
+                  <h3 className="mb-4 text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-foreground/80 to-accent-foreground/80">Schedule a Demo</h3>
+                  <p className="mb-8 text-primary-foreground/80 text-lg">See how our AI solutions can transform your business operations.</p>
+                  <Button className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-lg group">
                     <span>Book Now</span>
                     <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>

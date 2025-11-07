@@ -1,4 +1,5 @@
 import aiSolutionsImage from "@/public/images/ai-solutions.png";
+import { StaticImageData } from "next/image";
 
 export type IconType = "database" | "brain" | "shield-check" | "message-square";
 
@@ -12,7 +13,7 @@ export interface CaseStudy {
   results: string[];
   technologies: string[];
   iconType: IconType;
-  image: any;
+  image: StaticImageData;
 }
 
 export const caseStudies: CaseStudy[] = [

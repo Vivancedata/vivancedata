@@ -51,7 +51,7 @@ export function Blogs({ blogs }: BlogsProps) {
         blog.description.toLowerCase().includes(searchQuery.toLowerCase());
 
       const matchesTags = selectedTags.length === 0 ||
-        (blog.tags && selectedTags.every(tag => blog.tags.includes(tag)));
+        (blog.tags && selectedTags.every(tag => blog.tags!.includes(tag)));
 
       return matchesSearch && matchesTags;
     });
