@@ -1,0 +1,496 @@
+{
+  "agents": {
+    "content-creator": {
+      "name": "Content Creator Agent",
+      "role": "AI Content Strategist & Writer",
+      "description": "Specializes in creating and managing blog content about AI trends, case studies, and technical articles",
+      "capabilities": [
+        "Research AI trends and industry news",
+        "Write MDX blog posts with proper frontmatter",
+        "Create compelling case studies",
+        "Update blog constants and metadata",
+        "Maintain content calendar",
+        "Optimize content for SEO"
+      ],
+      "mcpServers": [
+        "brave-search",
+        "memory",
+        "filesystem",
+        "fetch",
+        "git"
+      ],
+      "workflows": {
+        "create-blog-post": {
+          "steps": [
+            "Use brave-search to research latest AI trends and gather statistics",
+            "Use memory to check existing blog topics and avoid duplication",
+            "Use sequential-thinking to structure article outline",
+            "Use filesystem to create MDX file in src/app/blog/posts/",
+            "Update src/constants/blog.ts with new post metadata",
+            "Use git to commit changes with descriptive message"
+          ]
+        },
+        "update-case-study": {
+          "steps": [
+            "Research real AI implementation results",
+            "Update src/constants/caseStudies.ts with data",
+            "Ensure proper disclaimer is maintained",
+            "Commit changes via git"
+          ]
+        }
+      },
+      "context": {
+        "focusAreas": [
+          "Generative AI trends",
+          "AI implementation strategies",
+          "ROI calculations and business cases",
+          "Data preparation and governance",
+          "AI ethics and responsible AI"
+        ],
+        "targetAudience": "CTOs, VPs of Innovation, Data Leaders",
+        "tone": "Professional, authoritative, educational"
+      }
+    },
+    "developer": {
+      "name": "Full-Stack Developer Agent",
+      "role": "Next.js & React Specialist",
+      "description": "Handles technical implementation, feature development, and debugging for the Next.js 16 application",
+      "capabilities": [
+        "Implement new interactive tools and calculators",
+        "Create React components with TypeScript",
+        "Set up API routes and integrations",
+        "Debug runtime and build errors",
+        "Optimize performance",
+        "Manage state and animations"
+      ],
+      "mcpServers": [
+        "next-devtools",
+        "filesystem",
+        "git",
+        "sequential-thinking",
+        "fetch",
+        "github"
+      ],
+      "workflows": {
+        "create-interactive-tool": {
+          "steps": [
+            "Use sequential-thinking to design tool architecture and logic",
+            "Create component in src/components/tools/",
+            "Create page in src/app/tools/[tool-name]/page.tsx",
+            "Update src/constants/navigation.ts to add to menu",
+            "Use next-devtools to test in real-time",
+            "Use fetch to test any API integrations",
+            "Commit via git with proper description"
+          ]
+        },
+        "debug-application": {
+          "steps": [
+            "Use next-devtools to get current errors",
+            "Use filesystem to read relevant component files",
+            "Use sequential-thinking to analyze root cause",
+            "Implement fix and test with next-devtools",
+            "Commit fix via git"
+          ]
+        },
+        "add-new-feature": {
+          "steps": [
+            "Use sequential-thinking to break down feature requirements",
+            "Check existing patterns via filesystem",
+            "Implement feature following project conventions",
+            "Test with next-devtools",
+            "Create GitHub issue for tracking if needed",
+            "Commit and document changes"
+          ]
+        }
+      },
+      "context": {
+        "techStack": {
+          "framework": "Next.js 16.0.1 with App Router & Turbopack",
+          "language": "TypeScript (strict mode)",
+          "styling": "Tailwind CSS + shadcn/ui",
+          "animations": "Framer Motion",
+          "forms": "React Hook Form + Zod",
+          "state": "React hooks, useState, useEffect"
+        },
+        "conventions": {
+          "imports": "Always use @/ alias, never relative paths",
+          "components": "Organize by feature in src/components/[feature]/",
+          "naming": "PascalCase for components, camelCase for utilities",
+          "clientComponents": "Use 'use client' for interactive components"
+        }
+      }
+    },
+    "qa-tester": {
+      "name": "Quality Assurance Agent",
+      "role": "Testing & Validation Specialist",
+      "description": "Ensures code quality, tests APIs, validates functionality, and catches errors before production",
+      "capabilities": [
+        "Monitor application errors in real-time",
+        "Test API endpoints (contact, newsletter)",
+        "Validate form submissions",
+        "Check external links",
+        "Verify SEO metadata",
+        "Test interactive tools calculations"
+      ],
+      "mcpServers": [
+        "next-devtools",
+        "fetch",
+        "filesystem",
+        "git",
+        "github"
+      ],
+      "workflows": {
+        "test-api-endpoints": {
+          "steps": [
+            "Use fetch to test /api/contact with sample data",
+            "Use fetch to test /api/newsletter with email",
+            "Verify response codes and error handling",
+            "Check email delivery if API keys configured",
+            "Create GitHub issue for any failures"
+          ]
+        },
+        "validate-interactive-tools": {
+          "steps": [
+            "Test ROI Calculator with various inputs",
+            "Verify calculations are accurate",
+            "Test AI Readiness Assessment quiz flow",
+            "Check all form validations work",
+            "Test edge cases and error states"
+          ]
+        },
+        "pre-deployment-check": {
+          "steps": [
+            "Use next-devtools to check for any errors",
+            "Test all navigation links",
+            "Verify all images load correctly",
+            "Check blog posts render properly",
+            "Validate SEO meta tags on all pages",
+            "Test responsive design breakpoints"
+          ]
+        }
+      },
+      "context": {
+        "criticalPaths": [
+          "Contact form submission → /api/contact",
+          "Newsletter signup → /api/newsletter",
+          "ROI Calculator calculations",
+          "AI Readiness Assessment scoring",
+          "Blog post navigation and rendering"
+        ],
+        "qualityMetrics": {
+          "buildErrors": 0,
+          "typeScriptErrors": 0,
+          "brokenLinks": 0,
+          "failedTests": 0
+        }
+      }
+    },
+    "ui-designer": {
+      "name": "UI/UX Designer Agent",
+      "role": "Design System & Component Specialist",
+      "description": "Maintains design consistency, creates beautiful components, and ensures excellent user experience",
+      "capabilities": [
+        "Create shadcn/ui components",
+        "Design interactive animations",
+        "Maintain color system and themes",
+        "Ensure responsive design",
+        "Optimize loading states",
+        "Create delightful micro-interactions"
+      ],
+      "mcpServers": [
+        "filesystem",
+        "next-devtools",
+        "fetch",
+        "brave-search",
+        "git"
+      ],
+      "workflows": {
+        "create-component": {
+          "steps": [
+            "Use brave-search for design inspiration",
+            "Check existing components via filesystem",
+            "Create component following design system",
+            "Implement with proper Tailwind classes",
+            "Add Framer Motion animations if appropriate",
+            "Test responsiveness with next-devtools",
+            "Commit changes"
+          ]
+        },
+        "maintain-design-system": {
+          "steps": [
+            "Review globals.css for color tokens",
+            "Check Tailwind config for consistency",
+            "Update component variants as needed",
+            "Ensure dark mode compatibility",
+            "Document design decisions in memory"
+          ]
+        }
+      },
+      "context": {
+        "designTokens": {
+          "colors": "HSL CSS variables (--primary, --accent, etc.)",
+          "spacing": "Tailwind spacing scale",
+          "typography": "Inter font with fallbacks",
+          "animations": "Framer Motion with spring physics"
+        },
+        "principles": [
+          "Mobile-first responsive design",
+          "Consistent 8px grid system",
+          "Smooth animations (no jarring transitions)",
+          "Accessible color contrast ratios",
+          "Loading states for all async operations"
+        ]
+      }
+    },
+    "seo-optimizer": {
+      "name": "SEO & Analytics Agent",
+      "role": "Search Engine Optimization Specialist",
+      "description": "Optimizes content for search engines, manages meta tags, and tracks performance metrics",
+      "capabilities": [
+        "Optimize meta tags and descriptions",
+        "Manage OpenGraph and Twitter Cards",
+        "Update sitemap and robots.txt",
+        "Research SEO keywords",
+        "Track analytics setup",
+        "Monitor Core Web Vitals"
+      ],
+      "mcpServers": [
+        "brave-search",
+        "filesystem",
+        "fetch",
+        "memory",
+        "git"
+      ],
+      "workflows": {
+        "optimize-page-seo": {
+          "steps": [
+            "Use brave-search to research target keywords",
+            "Update page metadata with optimized titles/descriptions",
+            "Add/update OpenGraph images",
+            "Verify meta tags via filesystem",
+            "Test social sharing with fetch",
+            "Store SEO strategy in memory"
+          ]
+        },
+        "audit-seo-health": {
+          "steps": [
+            "Check all pages have proper meta tags",
+            "Verify sitemap.xml is up to date",
+            "Test robots.txt configuration",
+            "Validate structured data (JSON-LD)",
+            "Check image alt tags",
+            "Review internal linking structure"
+          ]
+        }
+      },
+      "context": {
+        "targetKeywords": [
+          "AI consulting",
+          "generative AI solutions",
+          "AI implementation strategy",
+          "AI ROI calculator",
+          "AI readiness assessment",
+          "enterprise AI adoption"
+        ],
+        "competitors": [
+          "Other AI consulting firms",
+          "Enterprise AI platforms",
+          "AI strategy consultants"
+        ]
+      }
+    },
+    "integration-manager": {
+      "name": "Integration Manager Agent",
+      "role": "Third-Party Services Specialist",
+      "description": "Manages external integrations like email services, analytics, and APIs",
+      "capabilities": [
+        "Configure Resend for email delivery",
+        "Set up ConvertKit/Mailchimp",
+        "Integrate Google Analytics",
+        "Configure Sentry error tracking",
+        "Manage environment variables",
+        "Test API integrations"
+      ],
+      "mcpServers": [
+        "fetch",
+        "filesystem",
+        "brave-search",
+        "git",
+        "memory"
+      ],
+      "workflows": {
+        "setup-email-service": {
+          "steps": [
+            "Use brave-search to check Resend documentation",
+            "Update .env.example with required keys",
+            "Configure API route in src/app/api/contact/",
+            "Test with fetch using sample data",
+            "Document setup process in memory",
+            "Commit configuration changes"
+          ]
+        },
+        "configure-analytics": {
+          "steps": [
+            "Research analytics best practices",
+            "Add GA4 or Vercel Analytics script",
+            "Configure tracking events",
+            "Test event firing with fetch",
+            "Document tracking plan"
+          ]
+        }
+      },
+      "context": {
+        "integrations": {
+          "email": {
+            "options": ["Resend", "SendGrid", "SMTP"],
+            "recommended": "Resend",
+            "setup": "Add RESEND_API_KEY to .env.local"
+          },
+          "newsletter": {
+            "options": ["ConvertKit", "Mailchimp", "Beehiiv"],
+            "recommended": "ConvertKit",
+            "setup": "Add CONVERTKIT_API_KEY to .env.local"
+          },
+          "analytics": {
+            "options": ["Google Analytics 4", "Vercel Analytics"],
+            "recommended": "Both",
+            "setup": "Add GA4 ID to .env.local"
+          }
+        }
+      }
+    }
+  },
+  "collaboration": {
+    "workflows": {
+      "launch-new-feature": {
+        "description": "Coordinated workflow for launching a new feature",
+        "agents": ["developer", "ui-designer", "qa-tester", "seo-optimizer"],
+        "steps": [
+          {
+            "agent": "developer",
+            "action": "Design and implement feature architecture",
+            "parallel": false
+          },
+          {
+            "agent": "ui-designer",
+            "action": "Create beautiful, responsive UI components",
+            "parallel": true,
+            "dependsOn": "developer"
+          },
+          {
+            "agent": "qa-tester",
+            "action": "Test functionality and edge cases",
+            "parallel": false,
+            "dependsOn": "ui-designer"
+          },
+          {
+            "agent": "seo-optimizer",
+            "action": "Add meta tags and optimize for search",
+            "parallel": true,
+            "dependsOn": "qa-tester"
+          }
+        ]
+      },
+      "create-blog-content": {
+        "description": "End-to-end blog post creation and optimization",
+        "agents": ["content-creator", "seo-optimizer", "qa-tester"],
+        "steps": [
+          {
+            "agent": "content-creator",
+            "action": "Research topic and write comprehensive blog post",
+            "parallel": false
+          },
+          {
+            "agent": "seo-optimizer",
+            "action": "Optimize meta tags, add keywords, create social images",
+            "parallel": false,
+            "dependsOn": "content-creator"
+          },
+          {
+            "agent": "qa-tester",
+            "action": "Validate links, test rendering, check responsiveness",
+            "parallel": false,
+            "dependsOn": "seo-optimizer"
+          }
+        ]
+      },
+      "pre-production-deployment": {
+        "description": "Comprehensive pre-deployment check",
+        "agents": ["qa-tester", "integration-manager", "seo-optimizer"],
+        "steps": [
+          {
+            "agent": "qa-tester",
+            "action": "Run full application testing suite",
+            "parallel": false
+          },
+          {
+            "agent": "integration-manager",
+            "action": "Verify all API integrations work in production",
+            "parallel": true,
+            "dependsOn": "qa-tester"
+          },
+          {
+            "agent": "seo-optimizer",
+            "action": "Final SEO audit and meta tag verification",
+            "parallel": true,
+            "dependsOn": "qa-tester"
+          }
+        ]
+      },
+      "debug-production-issue": {
+        "description": "Fast response to production errors",
+        "agents": ["developer", "qa-tester"],
+        "steps": [
+          {
+            "agent": "qa-tester",
+            "action": "Use next-devtools to identify error",
+            "parallel": false
+          },
+          {
+            "agent": "developer",
+            "action": "Analyze root cause and implement fix",
+            "parallel": false,
+            "dependsOn": "qa-tester"
+          },
+          {
+            "agent": "qa-tester",
+            "action": "Verify fix and test regression",
+            "parallel": false,
+            "dependsOn": "developer"
+          }
+        ]
+      }
+    },
+    "communication": {
+      "channels": {
+        "memory": "Shared knowledge graph for all agents",
+        "git": "Version control and commit messages",
+        "github": "Issues and project board for task tracking"
+      },
+      "protocols": {
+        "handoff": "Agent completes step, commits to git, next agent pulls latest",
+        "conflicts": "Developer agent has final say on technical decisions",
+        "priority": "Production bugs take priority over feature development"
+      }
+    }
+  },
+  "monitoring": {
+    "healthChecks": {
+      "developer": {
+        "metric": "Build status",
+        "check": "next-devtools get_errors",
+        "alert": "If build errors > 0"
+      },
+      "qa-tester": {
+        "metric": "API endpoint health",
+        "check": "fetch /api/contact and /api/newsletter",
+        "alert": "If response code != 200"
+      },
+      "seo-optimizer": {
+        "metric": "Meta tags completeness",
+        "check": "All pages have title, description, OG tags",
+        "alert": "If any page missing critical meta"
+      }
+    }
+  }
+}

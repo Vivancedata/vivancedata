@@ -18,11 +18,13 @@ VivanceData is a leading provider of AI solutions that transform businesses thro
 
 ## Tech Stack
 
-- **Framework**: Next.js 13+ (App Router)
-- **Styling**: Tailwind CSS
-- **UI Components**: Shadcn UI (built on Radix UI)
+- **Framework**: Next.js 16.0.1 (App Router + Turbopack)
+- **Language**: TypeScript (strict mode)
+- **Styling**: Tailwind CSS with semantic color tokens
+- **UI Components**: shadcn/ui (32+ components, Radix UI primitives)
 - **Animation**: Framer Motion
-- **TypeScript**: For type safety and better developer experience
+- **Forms**: React Hook Form + Zod validation
+- **AI Development**: Model Context Protocol (MCP) + 6 Specialized Agents
 - **Deployment**: Vercel (recommended)
 
 ## Getting Started
@@ -59,6 +61,52 @@ bun dev
 ```
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the site
+
+## 🤖 AI-Powered Development
+
+This project leverages **Model Context Protocol (MCP)** and **specialized AI agents** for enhanced development workflows.
+
+### MCP Setup (8 Servers Configured)
+
+The project includes 8 MCP servers for different capabilities:
+
+- **next-devtools** - Real-time Next.js debugging and error detection
+- **sequential-thinking** - Advanced reasoning for complex problem-solving
+- **filesystem** - Secure file operations in project directory
+- **git** - Version control operations and history
+- **memory** - Persistent knowledge graph across sessions
+- **brave-search** - Web search for research and current information
+- **github** - GitHub repository management
+- **fetch** - HTTP requests and API testing
+
+📚 **Documentation**: See [MCP_SETUP.md](./MCP_SETUP.md) for detailed setup and usage.
+
+### Specialized AI Agents (6 Configured)
+
+Work with specialized agents for different aspects of development:
+
+1. **content-creator** - AI content strategist for blog posts and case studies
+2. **developer** - Full-stack Next.js specialist
+3. **qa-tester** - Quality assurance and testing expert
+4. **ui-designer** - UI/UX design and component specialist
+5. **seo-optimizer** - SEO and search visibility expert
+6. **integration-manager** - Third-party services and API specialist
+
+📚 **Documentation**: See [AGENTS_GUIDE.md](./AGENTS_GUIDE.md) for agent workflows and examples.
+
+### Quick Start with Agents
+
+```bash
+# Using Claude Code or MCP-compatible client
+
+# Invoke specific agent
+"Developer: Create a new AI pricing calculator tool"
+"Content Creator: Write a blog post about AI ROI"
+"QA Tester: Test all API endpoints"
+
+# Multi-agent workflows
+"All agents: Launch a new blog post about AI trends"
+```
 
 ## Project Structure
 
