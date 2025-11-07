@@ -2,8 +2,24 @@ import { Container } from "@/components/common/Container";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms of Service | Lorenzo Scaturchio",
-  description: "Terms and conditions for using Lorenzo Scaturchio's data science and AI services.",
+  title: "Terms of Service | VivanceData",
+  description: "Terms and conditions for using VivanceData's AI consulting, generative AI, and training services.",
+  openGraph: {
+    title: "Terms of Service | VivanceData",
+    description: "Review our terms and conditions for AI consulting and implementation services.",
+    type: "website",
+    url: "https://vivancedata.com/terms-of-service",
+    siteName: "VivanceData",
+  },
+  twitter: {
+    card: "summary",
+    title: "Terms of Service | VivanceData",
+    description: "Terms and conditions for our AI consulting services.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function TermsOfServicePage() {

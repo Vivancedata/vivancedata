@@ -2,8 +2,24 @@ import { Container } from "@/components/common/Container";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy & Transparency | Lorenzo Scaturchio",
-  description: "Transparency about data handling, analytics, and business practices for Lorenzo Scaturchio's services.",
+  title: "Privacy Policy & Transparency | VivanceData",
+  description: "Transparency about data handling, analytics, and business practices for VivanceData's AI consulting services.",
+  openGraph: {
+    title: "Privacy Policy & Transparency | VivanceData",
+    description: "Learn about our commitment to data privacy, security, and transparent business practices in AI consulting.",
+    type: "website",
+    url: "https://vivancedata.com/privacy-policy",
+    siteName: "VivanceData",
+  },
+  twitter: {
+    card: "summary",
+    title: "Privacy Policy | VivanceData",
+    description: "Our commitment to data privacy and transparent business practices.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function PrivacyPolicyPage() {

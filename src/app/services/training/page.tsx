@@ -9,8 +9,28 @@ import { Check, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "AI Training & Workshops - VivanceData",
-  description: "Empower your team with the knowledge and skills they need to effectively leverage AI technologies in your organization.",
+  description: "Empower your team with the knowledge and skills they need to effectively leverage AI technologies in your organization. Custom training programs for all levels.",
   keywords: ["AI training", "AI workshops", "AI education", "AI skills", "AI literacy", "AI upskilling"],
+  openGraph: {
+    title: "AI Training & Workshops - VivanceData",
+    description: "Build AI capabilities across your organization. Custom training programs for executives, data teams, developers, and more.",
+    type: "website",
+    url: "https://vivancedata.com/services/training",
+    images: [
+      {
+        url: "https://vivancedata.com/images/ai-solutions.png",
+        width: 1200,
+        height: 630,
+        alt: "VivanceData AI Training & Workshops",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Training & Workshops - VivanceData",
+    description: "Build AI capabilities across your organization with custom training programs.",
+    images: ["https://vivancedata.com/images/ai-solutions.png"],
+  },
 };
 
 interface Course {

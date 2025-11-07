@@ -9,8 +9,28 @@ import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Industry Solutions - VivanceData",
-  description: "Discover our specialized AI solutions tailored to the unique challenges and opportunities in your industry.",
+  description: "Discover our specialized AI solutions tailored to the unique challenges and opportunities in your industry. Solutions for finance, healthcare, retail, and more.",
   keywords: ["industry solutions", "vertical AI", "industry-specific AI", "AI for finance", "AI for healthcare", "AI for retail", "AI for manufacturing"],
+  openGraph: {
+    title: "Industry-Specific AI Solutions - VivanceData",
+    description: "Specialized AI solutions tailored to your industry. Financial services, healthcare, retail, manufacturing, energy, and public sector.",
+    type: "website",
+    url: "https://vivancedata.com/industries",
+    images: [
+      {
+        url: "https://vivancedata.com/images/ai-solutions.png",
+        width: 1200,
+        height: 630,
+        alt: "VivanceData Industry Solutions",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Industry-Specific AI Solutions - VivanceData",
+    description: "Specialized AI solutions tailored to your industry.",
+    images: ["https://vivancedata.com/images/ai-solutions.png"],
+  },
 };
 
 interface IndustryCardProps {

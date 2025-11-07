@@ -11,6 +11,29 @@ export const metadata: Metadata = {
   title: "Innovation Hub - VivanceData",
   description: "Explore our cutting-edge research and experimentation with emerging AI technologies that are shaping the future of business and society.",
   keywords: ["AI innovation", "emerging technology", "R&D", "AI research", "technology trends", "future of AI", "AI experimentation"],
+  openGraph: {
+    title: "Innovation Hub | VivanceData - Emerging AI Technologies",
+    description: "Discover cutting-edge AI research and emerging technologies. Explore multimodal AI, quantum ML, edge computing, and AI ethics.",
+    type: "website",
+    url: "https://vivancedata.com/innovation-hub",
+    siteName: "VivanceData",
+    images: [{
+      url: "https://vivancedata.com/images/ai-solutions.png",
+      width: 1200,
+      height: 630,
+      alt: "VivanceData Innovation Hub - Emerging AI Technologies",
+    }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Innovation Hub | VivanceData",
+    description: "Cutting-edge AI research and emerging technologies shaping the future.",
+    images: ["https://vivancedata.com/images/ai-solutions.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 interface TechnologyCardProps {

@@ -5,6 +5,33 @@ import { ServicesList } from "@/components/services/ServicesList";
 import { ServicesCases } from "@/components/services/ServicesCases";
 import { FAQSection } from "@/components/home/FAQSection";
 import { CTASection } from "@/components/home/CTASection";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "AI Services - VivanceData",
+  description: "Comprehensive AI solutions including LLM engineering, AI implementation, data platform engineering, and team upskilling. Transform your business with our expert services.",
+  keywords: ["AI services", "LLM engineering", "AI implementation", "data platform", "machine learning services", "AI consulting", "team upskilling"],
+  openGraph: {
+    title: "AI Services - VivanceData",
+    description: "Comprehensive AI solutions from strategy to implementation. Expert services in LLM engineering, data platforms, and team upskilling.",
+    type: "website",
+    url: "https://vivancedata.com/services",
+    images: [
+      {
+        url: "https://vivancedata.com/images/ai-solutions.png",
+        width: 1200,
+        height: 630,
+        alt: "VivanceData AI Services",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Services - VivanceData",
+    description: "Comprehensive AI solutions from strategy to implementation.",
+    images: ["https://vivancedata.com/images/ai-solutions.png"],
+  },
+};
 
 const ServicesPage = () => {
   const services = [

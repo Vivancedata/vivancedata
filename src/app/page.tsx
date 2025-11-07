@@ -11,6 +11,33 @@ import { FAQSection } from "@/components/home/FAQSection";
 import { ContactSection } from "@/components/home/ContactSection";
 import { CTASection } from "@/components/home/CTASection";
 import { Users, CheckCircle, BarChart3, Clock, Award } from "lucide-react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "VivanceData - AI Solutions for Modern Businesses",
+  description: "We combine cutting-edge AI technology with deep industry expertise to deliver solutions that drive real business outcomes. Transform your business with intelligent automation.",
+  keywords: ["AI solutions", "artificial intelligence", "business automation", "machine learning", "generative AI", "AI consulting", "data analytics"],
+  openGraph: {
+    title: "VivanceData - AI Solutions for Modern Businesses",
+    description: "Transform your business with intelligent automation. We deliver AI solutions that drive real outcomes.",
+    type: "website",
+    url: "https://vivancedata.com",
+    images: [
+      {
+        url: "https://vivancedata.com/images/banner.png",
+        width: 1200,
+        height: 630,
+        alt: "VivanceData AI Solutions",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "VivanceData - AI Solutions for Modern Businesses",
+    description: "Transform your business with intelligent automation.",
+    images: ["https://vivancedata.com/images/banner.png"],
+  },
+};
 
 // JSON-LD schema for the homepage
 const jsonLd = {

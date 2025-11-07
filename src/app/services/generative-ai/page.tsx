@@ -9,8 +9,28 @@ import { Check, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Generative AI Solutions - VivanceData",
-  description: "Leverage the power of generative AI to create content, designs, and solutions that drive innovation for your business.",
+  description: "Leverage the power of generative AI to create content, designs, and solutions that drive innovation for your business. Custom LLM fine-tuning, image generation, and multimodal AI.",
   keywords: ["generative AI", "AI content creation", "LLM fine-tuning", "image generation", "voice synthesis", "multimodal AI"],
+  openGraph: {
+    title: "Generative AI Solutions - VivanceData",
+    description: "Harness the power of generative AI for content creation, design, and innovation. Custom LLM fine-tuning and multimodal AI applications.",
+    type: "website",
+    url: "https://vivancedata.com/services/generative-ai",
+    images: [
+      {
+        url: "https://vivancedata.com/images/ai-solutions.png",
+        width: 1200,
+        height: 630,
+        alt: "VivanceData Generative AI Solutions",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Generative AI Solutions - VivanceData",
+    description: "Harness the power of generative AI for content creation, design, and innovation.",
+    images: ["https://vivancedata.com/images/ai-solutions.png"],
+  },
 };
 
 interface Feature {

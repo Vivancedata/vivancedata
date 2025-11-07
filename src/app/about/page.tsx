@@ -1,11 +1,36 @@
-"use client";
-
 import React from "react";
 import Testimonials from "@/components/home/Testimonials";
 import { AboutHero } from "@/components/about/AboutHero";
 import { AboutDescription } from "@/components/about/AboutDescription";
 import { AboutValue } from "@/components/about/AboutValue";
 import { AboutTeam } from "@/components/about/AboutTeam";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Us - VivanceData",
+  description: "Learn about VivanceData's mission to empower businesses with practical AI value. Meet our team of systematic innovators, developers, and strategic guides.",
+  keywords: ["about VivanceData", "AI company", "AI team", "AI consultants", "machine learning experts", "data science team"],
+  openGraph: {
+    title: "About Us - VivanceData",
+    description: "Systematic innovators and strategic guides transforming how businesses harness the forces of data and AI.",
+    type: "website",
+    url: "https://vivancedata.com/about",
+    images: [
+      {
+        url: "https://vivancedata.com/images/ai-solutions.png",
+        width: 1200,
+        height: 630,
+        alt: "VivanceData Team",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Us - VivanceData",
+    description: "Systematic innovators transforming how businesses harness AI and data.",
+    images: ["https://vivancedata.com/images/ai-solutions.png"],
+  },
+};
 
 const AboutPage = () => {
   const teamMembers = [

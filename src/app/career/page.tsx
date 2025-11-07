@@ -1,5 +1,28 @@
 import React from 'react';
 import FAQ from '@/components/common/Question';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Careers at VivanceData | Join Our AI Team",
+  description: "Explore career opportunities at VivanceData. Join our team of AI consultants, data scientists, and engineers shaping the future of enterprise AI.",
+  keywords: ["AI careers", "AI consultant jobs", "data science careers", "machine learning jobs", "AI engineering"],
+  openGraph: {
+    title: "Careers at VivanceData | AI Consulting Team",
+    description: "Join our team of AI experts. Explore opportunities in AI consulting, implementation, and innovation.",
+    type: "website",
+    url: "https://vivancedata.com/career",
+    siteName: "VivanceData",
+  },
+  twitter: {
+    card: "summary",
+    title: "Careers at VivanceData",
+    description: "Join our AI consulting team. Explore open positions.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 const CareerPage = () => {
   return (

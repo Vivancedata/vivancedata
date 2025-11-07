@@ -9,8 +9,28 @@ import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Case Studies - VivanceData AI Solutions",
-  description: "Explore real-world examples of how our AI solutions have transformed businesses across various industries.",
-  keywords: ["AI case studies", "business transformation", "AI implementation", "success stories", "ROI", "AI solutions"],
+  description: "Explore real-world examples of how our AI solutions have transformed businesses across various industries. See measurable results in financial services, healthcare, and retail.",
+  keywords: ["AI case studies", "business transformation", "AI implementation", "success stories", "ROI", "AI solutions", "machine learning results"],
+  openGraph: {
+    title: "AI Case Studies - VivanceData",
+    description: "See how AI solutions transform businesses across industries. Real results in fraud detection, healthcare analytics, and personalized recommendations.",
+    type: "website",
+    url: "https://vivancedata.com/case-studies",
+    images: [
+      {
+        url: "https://vivancedata.com/images/ai-solutions.png",
+        width: 1200,
+        height: 630,
+        alt: "VivanceData Case Studies",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Case Studies - VivanceData",
+    description: "See how AI solutions transform businesses across industries.",
+    images: ["https://vivancedata.com/images/ai-solutions.png"],
+  },
 };
 
 interface CaseStudy {
@@ -72,10 +92,15 @@ export default function CaseStudiesPage() {
   return (
     <Container className="py-16">
       <div className="text-center mb-16">
-        <Heading className="text-4xl md:text-5xl mb-4">Our Success Stories</Heading>
+        <Heading className="text-4xl md:text-5xl mb-4">Example AI Solutions</Heading>
         <Paragraph className="max-w-2xl mx-auto text-lg">
-          Explore how our AI solutions have helped businesses across various industries achieve measurable results and competitive advantages.
+          Explore representative examples of how AI solutions can transform businesses across various industries and deliver measurable results.
         </Paragraph>
+        <div className="mt-6 max-w-3xl mx-auto">
+          <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg p-4 text-sm text-amber-800 dark:text-amber-200">
+            <p className="font-medium">Note: These are composite examples based on typical AI implementations across multiple organizations. Metrics shown represent realistic outcomes from similar projects in each industry.</p>
+          </div>
+        </div>
       </div>
 
       <div className="space-y-24">

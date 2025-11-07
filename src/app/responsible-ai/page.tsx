@@ -11,6 +11,29 @@ export const metadata: Metadata = {
   title: "Responsible AI Framework - VivanceData",
   description: "Our comprehensive approach to ethical, transparent, and human-centered AI implementation that ensures responsible innovation and sustainable outcomes.",
   keywords: ["responsible AI", "ethical AI", "AI governance", "AI ethics", "transparent AI", "AI bias", "AI accountability"],
+  openGraph: {
+    title: "Responsible AI Framework | VivanceData",
+    description: "Ethical, transparent, and human-centered AI implementation. Learn about our approach to responsible AI innovation.",
+    type: "website",
+    url: "https://vivancedata.com/responsible-ai",
+    siteName: "VivanceData",
+    images: [{
+      url: "https://vivancedata.com/images/ai-solutions.png",
+      width: 1200,
+      height: 630,
+      alt: "VivanceData Responsible AI Framework",
+    }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Responsible AI Framework | VivanceData",
+    description: "Ethical and transparent AI implementation with comprehensive governance.",
+    images: ["https://vivancedata.com/images/ai-solutions.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 interface PrincipleProps {

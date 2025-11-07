@@ -58,18 +58,96 @@ function extractFrontmatter(content: string, slug: string): Partial<BlogFrontmat
   const dateMatch = content.match(/date:\s*"([^"]*)"/);
   const imageMatch = content.match(/image:\s*"([^"]*)"/);
   const tagsMatch = content.match(/tags:\s*\[(.*?)\]/);
-  
+
   const title = titleMatch?.[1] || slug;
-  const description = descriptionMatch?.[1] || 
-                      excerptMatch?.[1] || 
+  const description = descriptionMatch?.[1] ||
+                      excerptMatch?.[1] ||
                       `Read our article on ${title}`;
   const date = dateMatch?.[1] || new Date().toISOString().split('T')[0];
   const image = imageMatch?.[1] || "/images/ai-solutions.png";
-  const tags = tagsMatch 
-    ? tagsMatch[1].split(',').map(tag => tag.trim().replace(/"/g, '')) 
+  const tags = tagsMatch
+    ? tagsMatch[1].split(',').map(tag => tag.trim().replace(/"/g, ''))
     : ['AI', 'artificial intelligence', 'technology'];
-    
+
   return { title, description, date, image, tags };
+}
+
+/**
+ * Gets all blog posts with error handling
+ */
+async function getAllBlogPosts(): Promise<BlogPost[]> {
+  try {
+    const postsDirectory = path.join(process.cwd(), 'src', 'app', 'blog', 'posts');
+    const entries = fs.readdirSync(postsDirectory, { withFileTypes: true });
+
+    const posts: BlogPost[] = [];
+
+    for (const entry of entries) {
+      try {
+        let slug: string;
+        let filePath: string;
+
+        if (entry.isDirectory()) {
+          const dirPath = path.join(postsDirectory, entry.name);
+          const mdxFile = `${entry.name}.mdx`;
+          const mdxFilePath = path.join(dirPath, mdxFile);
+
+          if (fs.existsSync(mdxFilePath)) {
+            slug = entry.name;
+            filePath = mdxFilePath;
+          } else {
+            continue;
+          }
+        } else if (entry.name.endsWith('.mdx')) {
+          slug = entry.name.replace(/\.mdx$/, '');
+          filePath = path.join(postsDirectory, entry.name);
+        } else {
+          continue;
+        }
+
+        const fileContents = fs.readFileSync(filePath, 'utf8');
+        const frontmatter = extractFrontmatter(fileContents, slug);
+
+        posts.push({
+          slug,
+          title: frontmatter.title || slug,
+          description: frontmatter.description || '',
+          date: frontmatter.date || new Date().toISOString().split('T')[0],
+          image: frontmatter.image || "/images/ai-solutions.png",
+          tags: Array.isArray(frontmatter.tags) ? frontmatter.tags : ["AI", "Technology"],
+          content: fileContents
+        });
+      } catch (entryError) {
+        console.error(`Error processing entry ${entry.name}:`, entryError);
+      }
+    }
+
+    return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  } catch (error) {
+    console.error("Error getting blog posts:", error);
+    return [];
+  }
+}
+
+/**
+ * Finds related posts based on shared tags
+ */
+function getRelatedPosts(currentSlug: string, currentTags: string[], allPosts: BlogPost[]): BlogPost[] {
+  return allPosts
+    .filter(post => post.slug !== currentSlug)
+    .map(post => {
+      const matchingTags = post.tags?.filter(tag =>
+        currentTags.some(currentTag =>
+          currentTag.toLowerCase() === tag.toLowerCase()
+        )
+      ).length || 0;
+
+      return { post, matchingTags };
+    })
+    .filter(({ matchingTags }) => matchingTags > 0)
+    .sort((a, b) => b.matchingTags - a.matchingTags)
+    .slice(0, 3)
+    .map(({ post }) => post);
 }
 
 // Generate metadata for the blog post
@@ -158,13 +236,13 @@ export async function generateStaticParams() {
 
 export default async function BlogPost({ params }: BlogPostParams) {
   const { slug } = params;
-  
+
   const filePath = findBlogPostPath(slug);
-  
+
   if (!filePath) {
     return notFound();
   }
-  
+
   try {
     const fileContents = fs.readFileSync(filePath, 'utf8');
     const { content, frontmatter } = await compileMDX<BlogFrontmatter>({
@@ -184,6 +262,10 @@ export default async function BlogPost({ params }: BlogPostParams) {
       image,
       tags: Array.isArray(tags) ? tags : typeof tags === 'string' ? [tags] : ["AI", "Technology"]
     };
+
+    // Get all blog posts and find related ones
+    const allPosts = await getAllBlogPosts();
+    const relatedPosts = getRelatedPosts(slug, meta.tags, allPosts);
 
     // Create JSON-LD schema for the blog post
     const jsonLd = {
@@ -220,7 +302,7 @@ export default async function BlogPost({ params }: BlogPostParams) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <BlogLayout meta={meta} previousPathname="/blog">
+        <BlogLayout meta={meta} previousPathname="/blog" relatedPosts={relatedPosts} currentSlug={slug}>
           {content}
         </BlogLayout>
       </>
