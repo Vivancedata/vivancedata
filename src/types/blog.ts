@@ -1,19 +1,35 @@
+import { StaticImageData } from "next/image";
+
 /**
- * Represents a blog post with metadata and content
+ * Unified blog post interface supporting both MDX files and static blog posts
  */
 export interface BlogPost {
-  /** Unique identifier and URL slug for the blog post */
+  /** Unique identifier (optional, for static posts) */
+  id?: string;
+  /** URL slug for the blog post */
   slug: string;
   /** Title of the blog post */
   title: string;
-  /** Short description or summary of the blog post */
+  /** Short description or summary - used as 'excerpt' in some contexts */
   description: string;
-  /** Publication date in ISO format (YYYY-MM-DD) */
+  /** Optional longer excerpt */
+  excerpt?: string;
+  /** Publication date in ISO format (YYYY-MM-DD) or formatted string */
   date: string;
-  /** Path to the featured image */
-  image: string;
-  /** Array of tags/categories for the blog post */
-  tags: string[];
-  /** Optional raw content of the blog post */
+  /** Featured image - can be path string or Next.js StaticImageData */
+  image: string | StaticImageData;
+  /** Array of tags/categories */
+  tags?: string[];
+  /** Single category (alternative to tags) */
+  category?: string;
+  /** Optional estimated read time */
+  readTime?: string;
+  /** Optional author information */
+  author?: {
+    name: string;
+    role: string;
+    avatar: string;
+  };
+  /** Optional raw MDX/markdown content */
   content?: string;
 }

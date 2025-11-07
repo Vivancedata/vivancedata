@@ -1,25 +1,81 @@
 import aiSolutionsImage from "@/public/images/ai-solutions.png";
-
-export interface BlogPost {
-  id: string;
-  title: string;
-  excerpt: string;
-  date: string;
-  readTime: string;
-  author: {
-    name: string;
-    role: string;
-    avatar: string;
-  };
-  category: string;
-  image: any;
-  slug: string;
-}
+import { BlogPost } from "@/types/blog";
 
 export const blogPosts: BlogPost[] = [
+  // New comprehensive blog posts with full content
+  {
+    id: "future-of-generative-ai",
+    title: "The Future of Generative AI: Trends and Predictions",
+    description: "Explore the cutting-edge trends in generative AI and discover how they're reshaping business operations across every industry in 2025 and beyond.",
+    excerpt: "Generative AI is no longer a futuristic concept—it's here, transforming how businesses operate. Explore the latest trends, real-world applications, and predictions for the future.",
+    date: "January 22, 2025",
+    readTime: "12 min read",
+    author: {
+      name: "Dr. Sarah Mitchell",
+      role: "AI Research Director",
+      avatar: "", // Will use Avatar component with initials
+    },
+    category: "AI Trends",
+    image: aiSolutionsImage,
+    slug: "future-of-generative-ai",
+    tags: ["Generative AI", "Trends", "Innovation"],
+  },
+  {
+    id: "ai-implementation-guide",
+    title: "AI Implementation Guide: From Strategy to Production",
+    description: "A comprehensive 6-phase roadmap for successfully implementing AI solutions in your organization, from initial strategy to production deployment.",
+    excerpt: "Implementing AI successfully requires more than just technology—it requires a structured approach. Learn our proven 6-phase methodology.",
+    date: "January 25, 2025",
+    readTime: "15 min read",
+    author: {
+      name: "Michael Chen",
+      role: "VP of AI Implementation",
+      avatar: "",
+    },
+    category: "Implementation",
+    image: aiSolutionsImage,
+    slug: "ai-implementation-guide",
+    tags: ["Implementation", "Strategy", "Best Practices"],
+  },
+  {
+    id: "ai-roi-business-case",
+    title: "Measuring AI ROI: Building a Compelling Business Case",
+    description: "Learn how to quantify AI investment returns and build data-driven business cases that secure stakeholder buy-in and funding.",
+    excerpt: "Securing AI project funding requires clear ROI calculations. Learn frameworks, real examples, and templates for building compelling business cases.",
+    date: "January 22, 2025",
+    readTime: "18 min read",
+    author: {
+      name: "Jennifer Rodriguez",
+      role: "Chief Financial Strategist",
+      avatar: "",
+    },
+    category: "Business Strategy",
+    image: aiSolutionsImage,
+    slug: "ai-roi-business-case",
+    tags: ["ROI", "Business Case", "Finance"],
+  },
+  {
+    id: "data-preparation-for-ai",
+    title: "Data Preparation for AI: The Foundation of Success",
+    description: "Master the critical but often overlooked process of preparing your data for AI implementation. Learn strategies for data collection, cleaning, and quality assurance.",
+    excerpt: "Data preparation consumes 50-70% of AI project timelines. Learn how to do it right with our comprehensive 5-stage framework.",
+    date: "January 29, 2025",
+    readTime: "20 min read",
+    author: {
+      name: "Dr. Aisha Okonkwo",
+      role: "Chief Data Officer",
+      avatar: "",
+    },
+    category: "Data Science",
+    image: aiSolutionsImage,
+    slug: "data-preparation-for-ai",
+    tags: ["Data Preparation", "Data Quality", "Best Practices"],
+  },
+  // Legacy placeholder posts (keep for structure)
   {
     id: "1",
     title: "The Future of Generative AI in Business: Trends to Watch",
+    description: "Explore the emerging trends in generative AI and how they're reshaping business operations across industries.",
     excerpt: "Explore the emerging trends in generative AI and how they're reshaping business operations across industries.",
     date: "February 15, 2025",
     readTime: "8 min read",
@@ -35,6 +91,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: "2",
     title: "Implementing Ethical AI: A Framework for Responsible Innovation",
+    description: "Learn how to develop and deploy AI solutions that are not only powerful but also ethical and responsible.",
     excerpt: "Learn how to develop and deploy AI solutions that are not only powerful but also ethical and responsible.",
     date: "February 8, 2025",
     readTime: "10 min read",
@@ -50,6 +107,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: "3",
     title: "How Predictive Analytics is Transforming Supply Chain Management",
+    description: "Discover how AI-powered predictive analytics is helping businesses optimize their supply chains and reduce costs.",
     excerpt: "Discover how AI-powered predictive analytics is helping businesses optimize their supply chains and reduce costs.",
     date: "January 30, 2025",
     readTime: "7 min read",

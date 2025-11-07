@@ -19,7 +19,6 @@ export const navItems: NavItem[] = [
     dropdownItems: [
       { name: "Generative AI Solutions", href: "/services/generative-ai" },
       { name: "AI Strategy Consulting", href: "/services/consulting" },
-      { name: "Pre-built AI Solutions", href: "/services/solutions" },
       { name: "AI Training & Workshops", href: "/services/training" },
     ],
   },
@@ -29,11 +28,7 @@ export const navItems: NavItem[] = [
     hasDropdown: true,
     dropdownItems: [
       { name: "Financial Services", href: "/industries/financial-services" },
-      { name: "Healthcare", href: "/industries/healthcare" },
-      { name: "Retail & E-commerce", href: "/industries/retail" },
-      { name: "Manufacturing", href: "/industries/manufacturing" },
-      { name: "Energy & Utilities", href: "/industries/energy" },
-      { name: "Public Sector", href: "/industries/public-sector" },
+      { name: "All Industries", href: "/industries" },
     ],
   },
   {
@@ -47,11 +42,10 @@ export const navItems: NavItem[] = [
     hasDropdown: true,
     dropdownItems: [
       { name: "Blog", href: "/blog" },
+      { name: "ROI Calculator", href: "/tools/roi-calculator" },
+      { name: "AI Readiness Assessment", href: "/tools/ai-readiness" },
       { name: "Innovation Hub", href: "/innovation-hub" },
       { name: "Responsible AI", href: "/responsible-ai" },
-      { name: "Whitepapers", href: "/resources/whitepapers" },
-      { name: "Webinars", href: "/resources/webinars" },
-      { name: "AI Glossary", href: "/resources/glossary" },
     ],
   },
   {
@@ -60,8 +54,7 @@ export const navItems: NavItem[] = [
     hasDropdown: true,
     dropdownItems: [
       { name: "Our Story", href: "/about" },
-      { name: "Team", href: "/about/team" },
-      { name: "Careers", href: "/about/careers" },
+      { name: "Careers", href: "/career" },
       { name: "Contact", href: "/contact" },
     ],
   },
@@ -107,11 +100,8 @@ export interface SocialLink {
 }
 
 export const socialLinks: SocialLink[] = [
-  { icon: "linkedin", href: "#", label: "LinkedIn" },
-  { icon: "twitter", href: "#", label: "Twitter" },
-  { icon: "facebook", href: "#", label: "Facebook" },
-  { icon: "instagram", href: "#", label: "Instagram" },
-  { icon: "github", href: "#", label: "GitHub" },
+  { icon: "linkedin", href: "https://www.linkedin.com/in/lorenzo-scaturchio", label: "LinkedIn" },
+  { icon: "github", href: "https://github.com/gr8monk3ys", label: "GitHub" },
 ];
 
 export interface FooterLink {
@@ -129,8 +119,7 @@ export const footerLinks: FooterSection[] = [
     title: "Company",
     links: [
       { label: "About Us", href: "/about" },
-      { label: "Our Team", href: "/team" },
-      { label: "Careers", href: "/careers" },
+      { label: "Careers", href: "/career" },
       { label: "Contact", href: "/contact" },
     ],
   },
@@ -139,7 +128,6 @@ export const footerLinks: FooterSection[] = [
     links: [
       { label: "Generative AI", href: "/services/generative-ai" },
       { label: "AI Consulting", href: "/services/consulting" },
-      { label: "Custom Solutions", href: "/services/custom" },
       { label: "Training", href: "/services/training" },
     ],
   },
@@ -147,20 +135,18 @@ export const footerLinks: FooterSection[] = [
     title: "Industries",
     links: [
       { label: "Financial Services", href: "/industries/financial-services" },
-      { label: "Healthcare", href: "/industries/healthcare" },
-      { label: "Retail & E-commerce", href: "/industries/retail" },
-      { label: "Manufacturing", href: "/industries/manufacturing" },
+      { label: "All Industries", href: "/industries" },
     ],
   },
   {
     title: "Resources",
     links: [
       { label: "Blog", href: "/blog" },
+      { label: "ROI Calculator", href: "/tools/roi-calculator" },
+      { label: "AI Readiness Assessment", href: "/tools/ai-readiness" },
       { label: "Case Studies", href: "/case-studies" },
       { label: "Innovation Hub", href: "/innovation-hub" },
       { label: "Responsible AI", href: "/responsible-ai" },
-      { label: "Whitepapers", href: "/resources" },
-      { label: "FAQ", href: "/faq" },
     ],
   },
 ];
