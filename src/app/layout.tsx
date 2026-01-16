@@ -2,6 +2,7 @@ import { MainNav } from "@/components/layout/MainNav";
 import { SiteFooter as Footer } from "@/components/layout/Footer";
 import PageWrapper from "@/components/layout/PageWrapper";
 import { ScrollToTop } from "@/components/common/ScrollToTop";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { Toaster } from "sonner";
 import { cn } from "@/lib/utils";
 import type { Metadata, Viewport } from "next";
@@ -105,6 +106,7 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+        <GoogleAnalytics />
       </head>
       <body className="min-h-screen flex flex-col bg-background text-foreground">
         <ThemeProvider
