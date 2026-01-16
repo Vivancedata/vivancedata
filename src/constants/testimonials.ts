@@ -1,3 +1,10 @@
+export interface TestimonialMetrics {
+  percentImprovement?: string;
+  hoursSaved?: string;
+  costReduction?: string;
+  speedIncrease?: string;
+}
+
 export interface Testimonial {
   name: string;
   role: string;
@@ -6,6 +13,7 @@ export interface Testimonial {
   image: string;
   initials: string;
   company: string;
+  metrics: TestimonialMetrics;
 }
 
 export const testimonials: Testimonial[] = [
@@ -16,7 +24,12 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     image: "",
     initials: "SJ",
-    company: "TechVision Inc."
+    company: "TechVision Inc.",
+    metrics: {
+      percentImprovement: "40% faster response times",
+      hoursSaved: "12+ hours saved weekly",
+      costReduction: "$85K annual savings"
+    }
   },
   {
     name: "Michael Chen",
@@ -25,7 +38,12 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     image: "",
     initials: "MC",
-    company: "Global Retail Solutions"
+    company: "Global Retail Solutions",
+    metrics: {
+      percentImprovement: "30% less overstock",
+      costReduction: "$120K inventory savings",
+      speedIncrease: "3x faster forecasting"
+    }
   },
   {
     name: "Emily Rodriguez",
@@ -34,7 +52,12 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     image: "",
     initials: "ER",
-    company: "HealthPlus"
+    company: "HealthPlus",
+    metrics: {
+      percentImprovement: "45% more engagement",
+      hoursSaved: "8-10 hours saved weekly",
+      speedIncrease: "5x content output"
+    }
   },
   {
     name: "David Wilson",
@@ -43,6 +66,11 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     image: "",
     initials: "DW",
-    company: "FinTech Innovations"
+    company: "FinTech Innovations",
+    metrics: {
+      percentImprovement: "43% better accuracy",
+      costReduction: "$50K annual cost savings",
+      speedIncrease: "2.5x faster analysis"
+    }
   },
 ];
