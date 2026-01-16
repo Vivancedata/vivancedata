@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -49,6 +49,14 @@ export function ROICalculator() {
   });
 
   const [showResults, setShowResults] = useState(false);
+  const resultsRef = useRef<HTMLDivElement>(null);
+
+  // Focus on results when they appear
+  useEffect(() => {
+    if (showResults && resultsRef.current) {
+      resultsRef.current.focus();
+    }
+  }, [showResults]);
 
   const calculateROI = (): ROIResults => {
     const multiplier = useCaseMultipliers[inputs.useCase] || useCaseMultipliers["process-automation"];
@@ -117,11 +125,11 @@ export function ROICalculator() {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8" role="region" aria-label="ROI Calculator">
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Calculator className="h-5 w-5" />
+          <CardTitle as="h2" className="flex items-center gap-2">
+            <Calculator className="h-5 w-5" aria-hidden="true" />
             Business Inputs
           </CardTitle>
           <CardDescription>
@@ -133,7 +141,7 @@ export function ROICalculator() {
             <div className="space-y-2">
               <Label htmlFor="revenue">Annual Revenue</Label>
               <div className="relative">
-                <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
+                <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" aria-hidden="true" />
                 <Input
                   id="revenue"
                   type="number"
@@ -141,14 +149,16 @@ export function ROICalculator() {
                   onChange={(e) => handleInputChange('annualRevenue', e.target.value)}
                   className="pl-10"
                   placeholder="5000000"
+                  aria-describedby="revenue-hint"
                 />
               </div>
+              <span id="revenue-hint" className="sr-only">Enter your company&apos;s annual revenue in US dollars</span>
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="employees">Number of Employees</Label>
               <div className="relative">
-                <Users className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
+                <Users className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" aria-hidden="true" />
                 <Input
                   id="employees"
                   type="number"
@@ -156,14 +166,16 @@ export function ROICalculator() {
                   onChange={(e) => handleInputChange('employeeCount', e.target.value)}
                   className="pl-10"
                   placeholder="50"
+                  aria-describedby="employees-hint"
                 />
               </div>
+              <span id="employees-hint" className="sr-only">Enter the total number of employees in your organization</span>
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="hourlyRate">Average Hourly Rate ($)</Label>
               <div className="relative">
-                <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
+                <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" aria-hidden="true" />
                 <Input
                   id="hourlyRate"
                   type="number"
@@ -171,14 +183,16 @@ export function ROICalculator() {
                   onChange={(e) => handleInputChange('avgHourlyRate', e.target.value)}
                   className="pl-10"
                   placeholder="50"
+                  aria-describedby="hourly-rate-hint"
                 />
               </div>
+              <span id="hourly-rate-hint" className="sr-only">Enter the average hourly rate for employees in US dollars</span>
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="inefficiencyHours">Inefficiency Hours/Week per Employee</Label>
               <div className="relative">
-                <Clock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" />
+                <Clock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" aria-hidden="true" />
                 <Input
                   id="inefficiencyHours"
                   type="number"
@@ -186,14 +200,16 @@ export function ROICalculator() {
                   onChange={(e) => handleInputChange('inefficiencyHours', e.target.value)}
                   className="pl-10"
                   placeholder="10"
+                  aria-describedby="inefficiency-hint"
                 />
               </div>
+              <span id="inefficiency-hint" className="sr-only">Estimate the number of hours per week each employee spends on tasks that could be automated</span>
             </div>
 
             <div className="space-y-2 md:col-span-2">
               <Label htmlFor="useCase">AI Use Case</Label>
               <Select value={inputs.useCase} onValueChange={(value) => handleInputChange('useCase', value)}>
-                <SelectTrigger id="useCase">
+                <SelectTrigger id="useCase" aria-describedby="usecase-hint">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -205,6 +221,7 @@ export function ROICalculator() {
                   <SelectItem value="recommendation-engine">Recommendation Engine</SelectItem>
                 </SelectContent>
               </Select>
+              <span id="usecase-hint" className="sr-only">Select the primary AI use case you are considering</span>
             </div>
           </div>
 
@@ -213,7 +230,7 @@ export function ROICalculator() {
             className="w-full mt-6 bg-primary hover:bg-primary/90"
             size="lg"
           >
-            <Calculator className="mr-2 h-4 w-4" />
+            <Calculator className="mr-2 h-4 w-4" aria-hidden="true" />
             Calculate ROI
           </Button>
         </CardContent>
@@ -222,12 +239,18 @@ export function ROICalculator() {
       <AnimatePresence>
         {showResults && (
           <motion.div
+            ref={resultsRef}
+            tabIndex={-1}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4 }}
-            className="space-y-6"
+            className="space-y-6 outline-none"
+            role="region"
+            aria-label="ROI calculation results"
+            aria-live="polite"
           >
+            <h2 className="sr-only">ROI Calculation Results</h2>
             {/* Key Metrics */}
             <div className="grid md:grid-cols-3 gap-6">
               <motion.div
@@ -237,13 +260,13 @@ export function ROICalculator() {
               >
                 <Card className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border-green-200 dark:border-green-800">
                   <CardHeader>
-                    <CardTitle className="text-lg flex items-center gap-2">
-                      <TrendingUp className="h-5 w-5 text-green-600" />
+                    <CardTitle as="h3" className="text-lg flex items-center gap-2">
+                      <TrendingUp className="h-5 w-5 text-green-600" aria-hidden="true" />
                       3-Year ROI
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-3xl font-bold text-green-600">{results.roiPercentage}%</div>
+                    <div className="text-3xl font-bold text-green-600" aria-label={`3-Year ROI: ${results.roiPercentage} percent`}>{results.roiPercentage}%</div>
                     <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
                       {formatCurrency(results.netROI)} net return
                     </p>
@@ -258,13 +281,13 @@ export function ROICalculator() {
               >
                 <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border-blue-200 dark:border-blue-800">
                   <CardHeader>
-                    <CardTitle className="text-lg flex items-center gap-2">
-                      <Clock className="h-5 w-5 text-blue-600" />
+                    <CardTitle as="h3" className="text-lg flex items-center gap-2">
+                      <Clock className="h-5 w-5 text-blue-600" aria-hidden="true" />
                       Payback Period
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-3xl font-bold text-blue-600">{results.paybackMonths} mo</div>
+                    <div className="text-3xl font-bold text-blue-600" aria-label={`Payback period: ${results.paybackMonths} months`}>{results.paybackMonths} mo</div>
                     <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
                       Break-even timeline
                     </p>
@@ -279,13 +302,13 @@ export function ROICalculator() {
               >
                 <Card className="bg-gradient-to-br from-purple-50 to-violet-50 dark:from-purple-900/20 dark:to-violet-900/20 border-purple-200 dark:border-purple-800">
                   <CardHeader>
-                    <CardTitle className="text-lg flex items-center gap-2">
-                      <Zap className="h-5 w-5 text-purple-600" />
+                    <CardTitle as="h3" className="text-lg flex items-center gap-2">
+                      <Zap className="h-5 w-5 text-purple-600" aria-hidden="true" />
                       Efficiency Gain
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-3xl font-bold text-purple-600">{results.efficiencyGainPercent}%</div>
+                    <div className="text-3xl font-bold text-purple-600" aria-label={`Efficiency gain: ${results.efficiencyGainPercent} percent`}>{results.efficiencyGainPercent}%</div>
                     <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
                       {formatNumber(results.hoursSaved)} hours/year saved
                     </p>
@@ -302,14 +325,14 @@ export function ROICalculator() {
             >
               <Card>
                 <CardHeader>
-                  <CardTitle>Financial Breakdown</CardTitle>
+                  <CardTitle as="h3">Financial Breakdown</CardTitle>
                   <CardDescription>Detailed cost and savings analysis</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-6">
                     {/* Investment */}
                     <div>
-                      <h3 className="font-semibold mb-3 text-red-600 dark:text-red-400">Total Investment</h3>
+                      <h4 className="font-semibold mb-3 text-red-600 dark:text-red-400">Total Investment</h4>
                       <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-4">
                         <div className="flex justify-between items-center">
                           <span className="text-gray-700 dark:text-gray-300">Implementation Cost</span>
@@ -320,7 +343,7 @@ export function ROICalculator() {
 
                     {/* Savings by Year */}
                     <div>
-                      <h3 className="font-semibold mb-3 text-green-600 dark:text-green-400">Projected Savings</h3>
+                      <h4 className="font-semibold mb-3 text-green-600 dark:text-green-400">Projected Savings</h4>
                       <div className="space-y-3">
                         <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-4">
                           <div className="flex justify-between items-center">
@@ -376,7 +399,7 @@ export function ROICalculator() {
                     Schedule a consultation to discuss how we can help you achieve these results with a customized AI solution.
                   </p>
                   <Button asChild size="lg" variant="secondary">
-                    <a href="/contact">Schedule Free Consultation</a>
+                    <a href="/contact" aria-label="Schedule a free consultation to discuss your AI ROI potential">Schedule Free Consultation</a>
                   </Button>
                 </CardContent>
               </Card>

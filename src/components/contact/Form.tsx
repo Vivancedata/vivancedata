@@ -3,14 +3,13 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import { toast } from "sonner"
 
 import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -59,6 +58,14 @@ const formSchema = z.object({
 export function ProfileForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const successHeadingRef = useRef<HTMLHeadingElement>(null)
+
+  // Focus on success message heading when form is submitted successfully
+  useEffect(() => {
+    if (isSubmitted && successHeadingRef.current) {
+      successHeadingRef.current.focus()
+    }
+  }, [isSubmitted])
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
@@ -108,14 +115,20 @@ export function ProfileForm() {
 
   if (isSubmitted) {
     return (
-      <Card className="border-0 shadow-lg">
+      <Card className="border-0 shadow-lg" role="status" aria-live="polite">
         <CardContent className="pt-6">
           <div className="flex flex-col items-center justify-center text-center py-10">
-            <div className="rounded-full bg-green-100 p-3 mb-4">
+            <div className="rounded-full bg-green-100 p-3 mb-4" aria-hidden="true">
               <CheckCircle className="h-8 w-8 text-green-600" />
             </div>
-            <h3 className="text-2xl font-bold mb-2">Thank You!</h3>
-            <p className="text-gray-600 max-w-md">
+            <h2
+              ref={successHeadingRef}
+              tabIndex={-1}
+              className="text-2xl font-bold mb-2 outline-none"
+            >
+              Thank You!
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300 max-w-md">
               Your message has been received. One of our AI consultants will contact you shortly to discuss how we can help your business.
             </p>
           </div>
@@ -127,12 +140,17 @@ export function ProfileForm() {
   return (
     <Card className="border-0 shadow-lg">
       <CardHeader className="bg-primary/5 rounded-t-lg">
-        <CardTitle className="text-primary">Contact Us</CardTitle>
+        <CardTitle as="h2" className="text-primary">Contact Us</CardTitle>
         <CardDescription>Fill out the form below to get started</CardDescription>
       </CardHeader>
       <CardContent className="pt-6">
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="space-y-6"
+            aria-label="Contact form"
+            noValidate
+          >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <FormField
                 control={form.control}
@@ -234,11 +252,13 @@ export function ProfileForm() {
               type="submit"
               className="w-full bg-primary hover:bg-primary/90"
               disabled={isSubmitting}
+              aria-disabled={isSubmitting}
             >
               {isSubmitting ? (
                 <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Submitting...
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden="true" />
+                  <span>Submitting...</span>
+                  <span className="sr-only">Please wait while your form is being submitted</span>
                 </>
               ) : (
                 "Submit Request"
@@ -247,7 +267,7 @@ export function ProfileForm() {
           </form>
         </Form>
       </CardContent>
-      <CardFooter className="bg-gray-50 rounded-b-lg text-sm text-gray-500 text-center">
+      <CardFooter className="bg-gray-50 dark:bg-gray-800 rounded-b-lg text-sm text-gray-500 dark:text-gray-400 text-center">
         <p className="w-full">We respect your privacy and will never share your information.</p>
       </CardFooter>
     </Card>

@@ -1,19 +1,17 @@
 "use client"
 
 import Link from "next/link"
-import { usePathname } from "next/navigation"
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/common/Icons"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ModeToggle } from "@/components/common/ModeToggle"
-import { Search, Menu, ChevronDown } from "lucide-react"
+import { Search, Menu } from "lucide-react"
 import { useState, useEffect } from "react"
 import { mainNavItems } from "@/constants/navigation"
 
 export function MainNav() {
-  const pathname = usePathname()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
@@ -54,7 +52,7 @@ export function MainNav() {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden md:flex items-center gap-1" aria-label="Main navigation">
             {mainNavItems.map((item, index) => (
               <motion.div
                 key={item.name}
@@ -76,13 +74,18 @@ export function MainNav() {
             ))}
           </nav>
 
-          <motion.div 
+          <motion.div
             className="hidden md:flex items-center gap-4"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Button variant="ghost" size="icon" className="text-foreground/60 hover:text-primary transition-colors duration-300">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-foreground/60 hover:text-primary transition-colors duration-300"
+              aria-label="Search"
+            >
               <Search className="h-5 w-5" />
             </Button>
             <ModeToggle />
@@ -99,11 +102,14 @@ export function MainNav() {
           {/* Mobile Menu Button */}
           <div className="flex items-center md:hidden">
             <ModeToggle />
-            <Button 
-              variant="ghost" 
-              size="icon" 
+            <Button
+              variant="ghost"
+              size="icon"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="ml-2"
+              aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-navigation"
             >
               <Menu className="h-6 w-6" />
             </Button>
@@ -112,12 +118,14 @@ export function MainNav() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <motion.div
+          <motion.nav
+            id="mobile-navigation"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
             className="md:hidden py-4"
+            aria-label="Mobile navigation"
           >
             <div className="flex flex-col space-y-3">
               {mainNavItems.map((item, index) => (
@@ -129,7 +137,7 @@ export function MainNav() {
                 >
                   <Link
                     href={item.href}
-                    className="block py-2 px-4 text-foreground/80 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors"
+                    className="block py-2 px-4 text-foreground/80 hover:text-primary hover:bg-primary/10 rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.name}
@@ -142,8 +150,8 @@ export function MainNav() {
                 transition={{ duration: 0.2, delay: 0.35 }}
                 className="pt-2"
               >
-                <Button 
-                  className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white"
+                <Button
+                  className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground"
                   asChild
                 >
                   <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
@@ -152,7 +160,7 @@ export function MainNav() {
                 </Button>
               </motion.div>
             </div>
-          </motion.div>
+          </motion.nav>
         )}
       </div>
     </header>
