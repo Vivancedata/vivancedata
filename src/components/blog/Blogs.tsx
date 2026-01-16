@@ -46,10 +46,15 @@ export function Blogs({ blogs }: BlogsProps) {
   // Filter blogs based on search query and selected tags
   const filteredBlogs = useMemo(() => {
     return blogs.filter(blog => {
-      const matchesSearch = searchQuery === "" || 
-        blog.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        blog.description.toLowerCase().includes(searchQuery.toLowerCase());
+      const query = searchQuery.toLowerCase().trim();
 
+      // Check if search query matches title, description, or tags
+      const matchesSearch = query === "" ||
+        blog.title.toLowerCase().includes(query) ||
+        blog.description.toLowerCase().includes(query) ||
+        (blog.tags && blog.tags.some(tag => tag.toLowerCase().includes(query)));
+
+      // Check if blog has all selected tag filters
       const matchesTags = selectedTags.length === 0 ||
         (blog.tags && selectedTags.every(tag => blog.tags!.includes(tag)));
 

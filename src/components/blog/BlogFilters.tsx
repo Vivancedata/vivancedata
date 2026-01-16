@@ -1,8 +1,9 @@
 "use client";
 
+import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";
 import { Search, Tag as TagIcon, X } from "lucide-react";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 interface BlogFiltersProps {
   allTags: string[];
@@ -10,14 +11,49 @@ interface BlogFiltersProps {
   onTagsChange: (tags: string[]) => void;
 }
 
+/**
+ * Custom hook for debouncing a value
+ * @param value - The value to debounce
+ * @param delay - Delay in milliseconds
+ * @returns The debounced value
+ */
+function useDebounce<T>(value: T, delay: number): T {
+  const [debouncedValue, setDebouncedValue] = useState<T>(value);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [value, delay]);
+
+  return debouncedValue;
+}
+
 export function BlogFilters({ allTags, onSearch, onTagsChange }: BlogFiltersProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleSearch = useCallback((query: string) => {
-    setSearchQuery(query);
-    onSearch(query);
-  }, [onSearch]);
+  // Debounce search query with 300ms delay for better UX
+  const debouncedSearchQuery = useDebounce(searchQuery, 300);
+
+  // Trigger search callback when debounced value changes
+  useEffect(() => {
+    onSearch(debouncedSearchQuery);
+  }, [debouncedSearchQuery, onSearch]);
+
+  const handleSearchChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+  }, []);
+
+  const handleClearSearch = useCallback(() => {
+    setSearchQuery("");
+    inputRef.current?.focus();
+  }, []);
 
   const handleTagToggle = useCallback((tag: string) => {
     setSelectedTags(prev => {
@@ -40,15 +76,26 @@ export function BlogFilters({ allTags, onSearch, onTagsChange }: BlogFiltersProp
         animate={{ opacity: 1, y: 0 }}
         className="relative"
       >
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" aria-hidden="true" />
-        <input
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground pointer-events-none" aria-hidden="true" />
+        <Input
+          ref={inputRef}
           type="text"
-          placeholder="Search blogs..."
+          placeholder="Search by title, description, or tags..."
           value={searchQuery}
-          onChange={(e) => handleSearch(e.target.value)}
-          className="w-full rounded-lg bg-secondary/50 py-2 pl-10 pr-4 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20"
-          aria-label="Search blogs"
+          onChange={handleSearchChange}
+          className="w-full pl-10 pr-10 bg-secondary/50 border-0 focus-visible:ring-2 focus-visible:ring-primary/20"
+          aria-label="Search blogs by title, description, or tags"
         />
+        {searchQuery && (
+          <button
+            type="button"
+            onClick={handleClearSearch}
+            className="absolute right-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground hover:text-foreground transition-colors"
+            aria-label="Clear search"
+          >
+            <X className="size-4" aria-hidden="true" />
+          </button>
+        )}
       </motion.div>
 
       {/* Tags */}
