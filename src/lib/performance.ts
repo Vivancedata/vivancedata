@@ -26,23 +26,29 @@ export function getOptimalAnimationSettings() {
   };
 }
 
+// Extend Navigator interface for deviceMemory (non-standard API)
+interface NavigatorWithDeviceMemory extends Navigator {
+  deviceMemory?: number;
+}
+
 // Detect if the device is likely a low-end device
 function isLowEndDevice(): boolean {
   if (typeof window === 'undefined') {
     return false;
   }
-  
+
   // Check for hardware concurrency (CPU cores)
-  const lowCPUCores = navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4;
-  
-  // Check for device memory (if available)
-  const lowMemory = (navigator as any).deviceMemory && (navigator as any).deviceMemory < 4;
-  
+  const lowCPUCores = navigator.hardwareConcurrency ? navigator.hardwareConcurrency < 4 : false;
+
+  // Check for device memory (if available - non-standard API)
+  const navigatorWithMemory = navigator as NavigatorWithDeviceMemory;
+  const lowMemory = navigatorWithMemory.deviceMemory ? navigatorWithMemory.deviceMemory < 4 : false;
+
   // Check if the device is mobile
   const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
     navigator.userAgent
   );
-  
+
   return (lowCPUCores || lowMemory) && isMobile;
 }
 

@@ -1,5 +1,3 @@
-import { ClipboardCheck, Code, FileSearch, LightbulbIcon, LineChart, Settings, Users } from "lucide-react";
-
 export interface ProcessStep {
   number: number;
   title: string;

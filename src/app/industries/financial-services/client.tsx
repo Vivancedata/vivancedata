@@ -6,7 +6,7 @@ import { Paragraph } from "@/components/common/Paragraph";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, BarChart3, Shield, Clock, Users, FileText } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { AnimateOnScroll, StaggerContainer } from "@/hooks/useAnimateOnScroll";
 import { motion } from "framer-motion";
 

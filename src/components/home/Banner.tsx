@@ -1,31 +1,15 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ChevronRight, Sparkles } from "lucide-react";
 
 export default function Banner() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const bannerRef = useRef<HTMLDivElement>(null);
-
   return (
-    <div 
-      ref={bannerRef}
-      className="relative w-full overflow-hidden bg-gradient-to-r from-blue-900 via-indigo-900 to-purple-900 text-white"
-    >
+    <div className="relative w-full overflow-hidden bg-gradient-to-r from-blue-900 via-indigo-900 to-purple-900 text-white">
       {/* Background elements */}
-      <div className="absolute inset-0 opacity-20">
-        <motion.div
-          style={{
-            x: mousePosition.x * 20,
-            y: mousePosition.y * 20,
-          }}
-          transition={{ type: "spring", damping: 15 }}
-        >
-          {/* Background image would go here */}
-        </motion.div>
-      </div>
+      <div className="absolute inset-0 opacity-20" aria-hidden="true" />
       
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-blue-900/50" />
@@ -108,13 +92,13 @@ export default function Banner() {
             <div className="relative h-72 w-full max-w-md rounded-2xl bg-white/10 p-6 backdrop-blur-md sm:h-80 md:h-96 border border-white/20 shadow-2xl">
               {/* Card content would go here */}
               <div className="relative z-10 flex h-full w-full items-center justify-center rounded-xl border border-white/20 bg-white/5 p-8 backdrop-blur-md">
-                <motion.div 
+                <motion.div
                   className="text-center"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.6 }}
                 >
-                  <h3 className="mb-4 text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-purple-200">Schedule a Demo</h3>
+                  <h2 className="mb-4 text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-purple-200">Schedule a Demo</h2>
                   <p className="mb-8 text-blue-100 text-lg">See how our AI solutions can transform your business operations.</p>
                   <Button className="bg-white text-blue-900 hover:bg-blue-50 shadow-lg group">
                     <span>Book Now</span>

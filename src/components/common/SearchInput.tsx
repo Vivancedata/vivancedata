@@ -36,7 +36,7 @@ export default function SearchInput() {
     try {
       const productSlug = await getProductSlugByID(id);
       router.push(`/product/${productSlug.slug.current}`);
-    } catch (error) {
+    } catch {
       toast({
         variant: "destructive",
         title: "Invalid Product Code",

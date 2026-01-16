@@ -14,6 +14,7 @@ export function HoverCard({ children, className = "" }: HoverCardProps) {
   const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Intentional: detecting user's reduced motion preference on mount, runs once
     setReducedMotion(prefersReducedMotion());
   }, []);
 
@@ -63,11 +64,13 @@ export function Pulse({
   const [isPulsing, setIsPulsing] = useState(true);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Intentional: detecting user's reduced motion preference on mount, runs once
     setReducedMotion(prefersReducedMotion());
   }, []);
 
   useEffect(() => {
     if (reducedMotion) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- Intentional: disabling pulse animation when user prefers reduced motion
       setIsPulsing(false);
       return;
     }
@@ -154,6 +157,7 @@ export function TextReveal({
   const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Intentional: detecting user's reduced motion preference on mount, runs once
     setReducedMotion(prefersReducedMotion());
   }, []);
 
@@ -263,6 +267,7 @@ export function AnimatedButton({
   const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Intentional: detecting user's reduced motion preference on mount, runs once
     setReducedMotion(prefersReducedMotion());
   }, []);
 

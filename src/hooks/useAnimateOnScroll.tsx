@@ -177,12 +177,13 @@ export const AnimateOnScroll: React.FC<AnimateOnScrollProps> = ({
     
     // If custom duration is provided, create a modified variant
     if (duration && baseVariant.visible && typeof baseVariant.visible === 'object' && 'transition' in baseVariant.visible) {
+      const visibleVariant = baseVariant.visible as { transition?: Record<string, unknown> };
       return {
         ...baseVariant,
         visible: {
           ...baseVariant.visible,
           transition: {
-            ...(baseVariant.visible as any).transition,
+            ...visibleVariant.transition,
             duration
           }
         }
