@@ -20,6 +20,7 @@ export const navItems: NavItem[] = [
       { name: "Generative AI Solutions", href: "/services/generative-ai" },
       { name: "AI Strategy Consulting", href: "/services/consulting" },
       { name: "AI Training & Workshops", href: "/services/training" },
+      { name: "RAPID AI Framework", href: "/methodology" },
     ],
   },
   {
@@ -44,6 +45,7 @@ export const navItems: NavItem[] = [
       { name: "Blog", href: "/blog" },
       { name: "ROI Calculator", href: "/tools/roi-calculator" },
       { name: "AI Readiness Assessment", href: "/tools/ai-readiness" },
+      { name: "AI Use Cases Explorer", href: "/tools/use-cases" },
       { name: "Innovation Hub", href: "/innovation-hub" },
       { name: "Responsible AI", href: "/responsible-ai" },
     ],
@@ -129,6 +131,7 @@ export const footerLinks: FooterSection[] = [
       { label: "Generative AI", href: "/services/generative-ai" },
       { label: "AI Consulting", href: "/services/consulting" },
       { label: "Training", href: "/services/training" },
+      { label: "RAPID Framework", href: "/methodology" },
     ],
   },
   {
@@ -144,6 +147,7 @@ export const footerLinks: FooterSection[] = [
       { label: "Blog", href: "/blog" },
       { label: "ROI Calculator", href: "/tools/roi-calculator" },
       { label: "AI Readiness Assessment", href: "/tools/ai-readiness" },
+      { label: "Use Cases Explorer", href: "/tools/use-cases" },
       { label: "Case Studies", href: "/case-studies" },
       { label: "Innovation Hub", href: "/innovation-hub" },
       { label: "Responsible AI", href: "/responsible-ai" },

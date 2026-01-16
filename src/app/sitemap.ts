@@ -46,6 +46,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { route: '/services/generative-ai', priority: 0.8, changeFreq: 'monthly' },
     { route: '/services/consulting', priority: 0.8, changeFreq: 'monthly' },
     { route: '/services/training', priority: 0.8, changeFreq: 'monthly' },
+    { route: '/methodology', priority: 0.8, changeFreq: 'monthly' },
 
     // Industries
     { route: '/industries', priority: 0.8, changeFreq: 'monthly' },
@@ -63,6 +64,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Tools
     { route: '/tools/roi-calculator', priority: 0.8, changeFreq: 'monthly' },
     { route: '/tools/ai-readiness', priority: 0.8, changeFreq: 'monthly' },
+    { route: '/tools/use-cases', priority: 0.8, changeFreq: 'monthly' },
 
     // Other pages
     { route: '/innovation-hub', priority: 0.7, changeFreq: 'monthly' },
