@@ -54,6 +54,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Case Studies
     { route: '/case-studies', priority: 0.8, changeFreq: 'weekly' },
 
+    // Resources
+    { route: '/resources', priority: 0.8, changeFreq: 'monthly' },
+
     // Blog
     { route: '/blog', priority: 0.9, changeFreq: 'daily' },
 
