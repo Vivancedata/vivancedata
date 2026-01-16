@@ -1,15 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, BarChart, Brain, Database, LineChart, MessageSquare, ShieldCheck, ChevronRight } from "lucide-react";
 import Image from "next/image";
-import { AnimateOnScroll, StaggerContainer } from "@/hooks/useAnimateOnScroll";
+import { AnimateOnScroll } from "@/hooks/useAnimateOnScroll";
 import { motion } from "framer-motion";
 import { caseStudies, IconType } from "@/constants/caseStudies";
+import { prefersReducedMotion } from "@/lib/performance";
 
 // Helper function to get the appropriate icon component based on iconType
 const getIconComponent = (iconType: IconType) => {
@@ -27,24 +28,16 @@ const getIconComponent = (iconType: IconType) => {
   }
 };
 
-// Helper function to get industry-specific icon
-const getIndustryIcon = (industry: string) => {
-  switch (industry) {
-    case "Retail":
-      return <BarChart className="h-7 w-7 text-blue-600" />;
-    case "Healthcare":
-      return <Brain className="h-7 w-7 text-blue-600" />;
-    case "Finance":
-      return <LineChart className="h-7 w-7 text-blue-600" />;
-    case "E-commerce":
-      return <MessageSquare className="h-7 w-7 text-blue-600" />;
-    default:
-      return <BarChart className="h-7 w-7 text-blue-600" />;
-  }
-};
-
 const CaseStudies = () => {
-  const [activeTab, setActiveTab] = useState(caseStudies[0].id);
+  const [reducedMotion, setReducedMotion] = useState(false);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Intentional: detecting user's reduced motion preference on mount, runs once
+    setReducedMotion(prefersReducedMotion());
+  }, []);
+
+  // reducedMotion is available for future animation enhancements
+  void reducedMotion;
 
   return (
     <section className="w-full py-20 md:py-32 overflow-hidden bg-gradient-to-b from-white to-slate-50">
@@ -66,10 +59,10 @@ const CaseStudies = () => {
         </AnimateOnScroll>
 
         <AnimateOnScroll variant="fadeIn" delay={0.2}>
-          <Tabs defaultValue={caseStudies[0].id} className="w-full" onValueChange={setActiveTab}>
+          <Tabs defaultValue={caseStudies[0].id} className="w-full">
             <div className="flex justify-center mb-12">
               <TabsList className="grid grid-cols-2 md:grid-cols-4 gap-3 p-1 bg-slate-100/80 backdrop-blur-sm rounded-2xl">
-                {caseStudies.map((study, index) => (
+                {caseStudies.map((study) => (
                   <TabsTrigger 
                     key={study.id} 
                     value={study.id}
@@ -110,40 +103,25 @@ const CaseStudies = () => {
                           </div>
                         </CardHeader>
                         <CardContent className="p-0 space-y-8">
-                          <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.1 }}
-                          >
+                          <div>
                             <h4 className="font-bold text-xl mb-3 text-blue-800">Challenge</h4>
                             <CardDescription className="text-base text-gray-600">
                               {study.challenge}
                             </CardDescription>
-                          </motion.div>
-                          <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.2 }}
-                          >
+                          </div>
+                          <div>
                             <h4 className="font-bold text-xl mb-3 text-blue-800">Solution</h4>
                             <CardDescription className="text-base text-gray-600">
                               {study.solution}
                             </CardDescription>
-                          </motion.div>
-                          <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.3 }}
-                          >
+                          </div>
+                          <div>
                             <h4 className="font-bold text-xl mb-3 text-blue-800">Results</h4>
                             <ul className="space-y-3">
                               {study.results.map((result, index) => (
-                                <motion.li 
-                                  key={index} 
+                                <li
+                                  key={index}
                                   className="flex items-start"
-                                  initial={{ opacity: 0, x: -20 }}
-                                  animate={{ opacity: 1, x: 0 }}
-                                  transition={{ duration: 0.3, delay: 0.4 + (index * 0.1) }}
                                 >
                                   <div className="rounded-full bg-green-100 p-1 mr-3 mt-1 shadow-sm">
                                     <svg className="h-4 w-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -151,28 +129,24 @@ const CaseStudies = () => {
                                     </svg>
                                   </div>
                                   <span className="text-gray-700 text-lg">{result}</span>
-                                </motion.li>
+                                </li>
                               ))}
                             </ul>
-                          </motion.div>
-                          <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.4 }}
-                          >
+                          </div>
+                          <div>
                             <h4 className="font-bold text-xl mb-3 text-blue-800">Technologies Used</h4>
                             <div className="flex flex-wrap gap-2">
                               {study.technologies.map((tech, index) => (
-                                <Badge 
-                                  key={index} 
-                                  variant="outline" 
+                                <Badge
+                                  key={index}
+                                  variant="outline"
                                   className="bg-blue-50 border-blue-200 text-blue-700 px-3 py-1 text-sm"
                                 >
                                   {tech}
                                 </Badge>
                               ))}
                             </div>
-                          </motion.div>
+                          </div>
                         </CardContent>
                         <CardFooter className="p-0 mt-10">
                           <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg shadow-blue-500/20 px-8 py-6 h-auto text-lg rounded-xl group transition-all duration-300">
@@ -204,11 +178,12 @@ const CaseStudies = () => {
                             whileHover={{ scale: 1.03 }}
                             transition={{ type: "spring", stiffness: 300 }}
                           >
-                            <Image 
-                              src={study.image} 
-                              alt={study.title}
+                            <Image
+                              src={study.image}
+                              alt={`${study.title} - ${study.industry} case study showcasing ${study.client}'s AI transformation`}
                               className="object-cover rounded-xl shadow-2xl"
                               fill
+                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-xl flex items-end p-8">
                               <div className="flex items-center space-x-4">

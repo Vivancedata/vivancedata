@@ -23,8 +23,9 @@ export function BlogCard({ slug, title, description, date, image, tags }: BlogCa
   const [formattedDate, setFormattedDate] = useState("");
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Intentional: detecting user's reduced motion preference on mount, runs once
     setReducedMotion(prefersReducedMotion());
-    
+
     // Format date with proper localization
     try {
       const dateObj = new Date(date);
@@ -35,7 +36,7 @@ export function BlogCard({ slug, title, description, date, image, tags }: BlogCa
           day: "numeric",
         })
       );
-    } catch (e) {
+    } catch {
       setFormattedDate(date);
     }
   }, [date]);
@@ -52,7 +53,7 @@ export function BlogCard({ slug, title, description, date, image, tags }: BlogCa
             >
               <Image
                 src={image}
-                alt={title}
+                alt={`Featured image for blog post: ${title}`}
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

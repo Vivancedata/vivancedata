@@ -32,9 +32,10 @@ export function ServicesStack({
               <div className="relative w-16 h-16 md:w-20 md:h-20 mb-3">
                 <Image
                   src={tech.icon}
-                  alt={tech.name}
+                  alt={`${tech.name} technology logo`}
                   fill
                   className="object-contain"
+                  sizes="80px"
                 />
               </div>
               <span className="text-sm font-medium">{tech.name}</span>

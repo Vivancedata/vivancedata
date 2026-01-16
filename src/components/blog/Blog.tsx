@@ -97,11 +97,13 @@ const Blog = () => {
               className="overflow-hidden border-0 bg-white/80 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-500 rounded-xl group"
             >
               <div className="relative h-56 w-full overflow-hidden">
-                <Image 
-                  src={post.image} 
-                  alt={post.title}
+                <Image
+                  src={post.image}
+                  alt={`Featured image for ${post.title}`}
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  priority={post.id === "1"}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60" />
                 <div className="absolute top-4 left-4">

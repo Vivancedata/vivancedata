@@ -32,9 +32,10 @@ export function AboutTeam({ title, description, members }: AboutTeamProps): Reac
               <div className="relative h-64 w-full">
                 <Image
                   src={member.imageSrc}
-                  alt={member.name}
+                  alt={`${member.name}, ${member.role} at VivanceData`}
                   fill
                   className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </div>
               <div className="p-6">

@@ -21,9 +21,10 @@ export function AboutValue({ title, description, imageSrc }: AboutValueProps): R
           <div className="relative h-[300px] md:h-[400px] rounded-lg overflow-hidden">
             <Image
               src={imageSrc}
-              alt={title}
+              alt={`Illustration representing ${title}`}
               fill
               className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
         )}

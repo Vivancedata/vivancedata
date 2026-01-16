@@ -10,7 +10,7 @@ import { Paragraph } from "@/components/common/Paragraph";
 import { Prose } from "@/components/blog/Prose";
 import { RelatedPosts } from "@/components/blog/RelatedPosts";
 import { ReadingProgress } from "@/components/blog/ReadingProgress";
-import { ArrowLeft, Share2, Clock, Calendar, Tag, Play, Pause } from "lucide-react";
+import { ArrowLeft, Share2, Calendar, Tag, Play, Pause } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect, useRef, ReactNode } from "react";
 import { BlogPost } from "@/types/blog";
