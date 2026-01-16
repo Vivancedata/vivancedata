@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-VivanceData is a Next.js 13+ App Router-based marketing website showcasing AI solutions for businesses. The site uses TypeScript, Tailwind CSS, shadcn/ui components, and Framer Motion for animations.
+VivanceData is a Next.js 16 App Router-based marketing website showcasing AI solutions for businesses. The site uses TypeScript, Tailwind CSS, shadcn/ui components, and Framer Motion for animations. It includes interactive tools (ROI Calculator, AI Readiness Assessment) and a content-driven blog system.
 
 ## Development Commands
 
@@ -51,27 +51,33 @@ export const services: Service[] = [
 
 ### App Router Structure
 
-Routes are defined in `src/app/` using Next.js 13+ App Router:
+Routes are defined in `src/app/` using Next.js App Router:
 
 ```
 src/app/
 ├── page.tsx                           # Home page
 ├── layout.tsx                         # Root layout (MainNav + Footer)
 ├── about/page.tsx
+├── api/
+│   ├── contact/route.ts              # Contact form API
+│   └── newsletter/route.ts           # Newsletter subscription API
 ├── blog/
 │   ├── page.tsx                      # Blog listing
 │   ├── [slug]/page.tsx               # Dynamic blog post
-│   └── posts/ai-ethics-guide/page.tsx
+│   └── posts/[post-name]/page.tsx    # Static MDX blog posts
 ├── case-studies/page.tsx
 ├── contact/page.tsx
 ├── industries/
 │   ├── page.tsx
 │   └── financial-services/page.tsx
-└── services/
-    ├── page.tsx
-    ├── consulting/page.tsx
-    ├── generative-ai/page.tsx
-    └── training/page.tsx
+├── services/
+│   ├── page.tsx
+│   ├── consulting/page.tsx
+│   ├── generative-ai/page.tsx
+│   └── training/page.tsx
+└── tools/
+    ├── roi-calculator/page.tsx       # AI ROI Calculator tool
+    └── ai-readiness/page.tsx         # AI Readiness Assessment tool
 ```
 
 ### Component Organization
@@ -147,9 +153,42 @@ SEO features in `src/app/layout.tsx`:
 - `src/app/layout.tsx` - Root layout with navigation, theme provider, and SEO metadata
 - `src/components/layout/MainNav.tsx` - Main navigation component
 - `src/constants/navigation.ts` - Navigation structure and links
+- `src/config/site.ts` - Site-wide configuration (name, URL, social links)
 - `next.config.mjs` - Next.js configuration with optimization settings
 - `tailwind.config.ts` - Tailwind configuration with theme tokens
 - `src/lib/utils.ts` - Utility function `cn()` for merging Tailwind classes
+
+## API Routes
+
+The site has two API routes for form handling:
+
+### Contact Form (`/api/contact`)
+- Handles contact form submissions
+- Integrates with Resend for email delivery
+- Requires `RESEND_API_KEY` environment variable
+
+### Newsletter (`/api/newsletter`)
+- Handles newsletter subscriptions
+- Can integrate with ConvertKit or similar services
+
+## Form Handling
+
+Forms use React Hook Form with Zod validation:
+
+```typescript
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+
+const schema = z.object({
+  email: z.string().email(),
+  // ... other fields
+});
+
+const form = useForm({
+  resolver: zodResolver(schema),
+});
+```
 
 ## Common Patterns
 
@@ -214,6 +253,31 @@ Blog post list in `src/constants/blog.ts`.
 
 Recent case sensitivity fixes were applied - ensure consistent casing in file references.
 
+## Interactive Tools
+
+The `/tools/` directory contains interactive calculators and assessments:
+
+### ROI Calculator (`/tools/roi-calculator`)
+- Calculates AI implementation ROI based on user inputs
+- Uses client-side state management for calculations
+- Displays results with animated visualizations
+
+### AI Readiness Assessment (`/tools/ai-readiness`)
+- Multi-step assessment form
+- Calculates readiness score based on responses
+- Provides recommendations based on results
+
+**When creating new tools**: Add the page to `src/app/tools/[tool-name]/page.tsx` and update navigation.
+
+## Environment Variables
+
+Required for production:
+- `RESEND_API_KEY` - For contact form email delivery
+
+Optional:
+- `BRAVE_API_KEY` - For Brave Search MCP server
+- `GITHUB_PERSONAL_ACCESS_TOKEN` - For GitHub MCP server
+
 ## Important Notes
 
 - The site is primarily static with data in constants - it's not connected to a CMS
@@ -222,3 +286,5 @@ Recent case sensitivity fixes were applied - ensure consistent casing in file re
 - Always use `@/` path alias for imports
 - Theme colors use CSS variables - reference design tokens, not hardcoded colors
 - Navigation structure is centralized in one file for easy maintenance
+- See `AGENTS_GUIDE.md` for specialized AI agent workflows
+- See `MCP_SETUP.md` for MCP server configuration details
