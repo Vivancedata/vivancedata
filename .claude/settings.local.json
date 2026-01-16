@@ -18,9 +18,28 @@
       "Bash(taskkill:*)",
       "Bash(del .nextdevlock 2)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(npx eslint:*)",
+      "Bash(npx next lint:*)",
+      "WebFetch(domain:www.datalumina.com)",
+      "WebFetch(domain:www.morningside.ai)",
+      "mcp__brave-search__brave_web_search",
+      "WebSearch",
+      "WebFetch(domain:academy.datalumina.com)",
+      "mcp__ide__getDiagnostics"
     ],
     "deny": [],
     "ask": []
-  }
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "next-devtools",
+    "sequential-thinking",
+    "filesystem",
+    "git",
+    "memory",
+    "brave-search",
+    "github",
+    "fetch"
+  ]
 }
