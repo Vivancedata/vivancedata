@@ -2,7 +2,7 @@ import aiSolutionsImage from "@/public/images/ai-solutions.png";
 import { BlogPost } from "@/types/blog";
 
 export const blogPosts: BlogPost[] = [
-  // New comprehensive blog posts with full content
+  // Comprehensive blog posts with full MDX content
   {
     id: "future-of-generative-ai",
     title: "The Future of Generative AI: Trends and Predictions",
@@ -13,7 +13,7 @@ export const blogPosts: BlogPost[] = [
     author: {
       name: "Dr. Sarah Mitchell",
       role: "AI Research Director",
-      avatar: "", // Will use Avatar component with initials
+      avatar: "",
     },
     category: "AI Trends",
     image: aiSolutionsImage,
@@ -71,30 +71,13 @@ export const blogPosts: BlogPost[] = [
     slug: "data-preparation-for-ai",
     tags: ["Data Preparation", "Data Quality", "Best Practices"],
   },
-  // Legacy placeholder posts (keep for structure)
   {
-    id: "1",
-    title: "The Future of Generative AI in Business: Trends to Watch",
-    description: "Explore the emerging trends in generative AI and how they're reshaping business operations across industries.",
-    excerpt: "Explore the emerging trends in generative AI and how they're reshaping business operations across industries.",
-    date: "February 15, 2025",
-    readTime: "8 min read",
-    author: {
-      name: "Dr. Emily Chen",
-      role: "Chief AI Officer",
-      avatar: "",
-    },
-    category: "AI Trends",
-    image: aiSolutionsImage,
-    slug: "future-of-generative-ai-in-business",
-  },
-  {
-    id: "2",
-    title: "Implementing Ethical AI: A Framework for Responsible Innovation",
-    description: "Learn how to develop and deploy AI solutions that are not only powerful but also ethical and responsible.",
-    excerpt: "Learn how to develop and deploy AI solutions that are not only powerful but also ethical and responsible.",
-    date: "February 8, 2025",
-    readTime: "10 min read",
+    id: "ai-ethics-guide",
+    title: "A Comprehensive Guide to AI Ethics in Enterprise",
+    description: "Navigate the complex landscape of AI ethics with our comprehensive guide covering bias mitigation, transparency, and responsible AI practices.",
+    excerpt: "As AI becomes more prevalent in business decisions, understanding and implementing ethical AI practices is crucial for sustainable success.",
+    date: "January 20, 2025",
+    readTime: "14 min read",
     author: {
       name: "Priya Patel",
       role: "AI Ethics Director",
@@ -102,22 +85,24 @@ export const blogPosts: BlogPost[] = [
     },
     category: "AI Ethics",
     image: aiSolutionsImage,
-    slug: "implementing-ethical-ai-framework",
+    slug: "ai-ethics-guide",
+    tags: ["AI Ethics", "Responsible AI", "Governance"],
   },
   {
-    id: "3",
-    title: "How Predictive Analytics is Transforming Supply Chain Management",
-    description: "Discover how AI-powered predictive analytics is helping businesses optimize their supply chains and reduce costs.",
-    excerpt: "Discover how AI-powered predictive analytics is helping businesses optimize their supply chains and reduce costs.",
-    date: "January 30, 2025",
-    readTime: "7 min read",
+    id: "ai-customer-service",
+    title: "Transforming Customer Service with AI: A Complete Guide",
+    description: "Discover how AI is revolutionizing customer service operations, from chatbots to sentiment analysis and predictive support.",
+    excerpt: "Learn how leading companies are using AI to deliver exceptional customer experiences while reducing costs and improving efficiency.",
+    date: "January 18, 2025",
+    readTime: "16 min read",
     author: {
       name: "David Kim",
       role: "Lead Data Scientist",
       avatar: "",
     },
-    category: "Predictive Analytics",
+    category: "Customer Experience",
     image: aiSolutionsImage,
-    slug: "predictive-analytics-supply-chain-management",
+    slug: "ai-customer-service",
+    tags: ["Customer Service", "AI Chatbots", "Automation"],
   },
 ];

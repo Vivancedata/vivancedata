@@ -234,81 +234,87 @@ export async function generateStaticParams() {
   }
 }
 
+async function getBlogPostData(slug: string, filePath: string) {
+  const fileContents = fs.readFileSync(filePath, 'utf8');
+  const { content, frontmatter } = await compileMDX<BlogFrontmatter>({
+    source: fileContents,
+    options: { parseFrontmatter: true }
+  });
+
+  const description = frontmatter.description || frontmatter.excerpt || `Read our article on ${frontmatter.title}`;
+  const image = frontmatter.image || "/images/ai-solutions.png";
+  const tags = frontmatter.tags || ["AI", "Technology"];
+
+  const meta = {
+    title: frontmatter.title,
+    description,
+    date: frontmatter.date,
+    image,
+    tags: Array.isArray(tags) ? tags : typeof tags === 'string' ? [tags] : ["AI", "Technology"]
+  };
+
+  const allPosts = await getAllBlogPosts();
+  const relatedPosts = getRelatedPosts(slug, meta.tags, allPosts);
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": meta.title,
+    "description": meta.description,
+    "image": `https://vivancedata.com${meta.image}`,
+    "datePublished": meta.date,
+    "dateModified": meta.date,
+    "author": {
+      "@type": "Organization",
+      "name": "VivanceData",
+      "url": "https://vivancedata.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "VivanceData",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://vivancedata.com/icons/Logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://vivancedata.com/blog/${slug}`
+    },
+    "keywords": meta.tags.join(", ")
+  };
+
+  return { content, meta, relatedPosts, jsonLd };
+}
+
 export default async function BlogPost({ params }: BlogPostParams) {
   const { slug } = params;
-
   const filePath = findBlogPostPath(slug);
 
   if (!filePath) {
     return notFound();
   }
 
+  let blogData;
   try {
-    const fileContents = fs.readFileSync(filePath, 'utf8');
-    const { content, frontmatter } = await compileMDX<BlogFrontmatter>({
-      source: fileContents,
-      options: { parseFrontmatter: true }
-    });
-
-    // Extract or provide default values
-    const description = frontmatter.description || frontmatter.excerpt || `Read our article on ${frontmatter.title}`;
-    const image = frontmatter.image || "/images/ai-solutions.png";
-    const tags = frontmatter.tags || ["AI", "Technology"];
-
-    const meta = {
-      title: frontmatter.title,
-      description,
-      date: frontmatter.date,
-      image,
-      tags: Array.isArray(tags) ? tags : typeof tags === 'string' ? [tags] : ["AI", "Technology"]
-    };
-
-    // Get all blog posts and find related ones
-    const allPosts = await getAllBlogPosts();
-    const relatedPosts = getRelatedPosts(slug, meta.tags, allPosts);
-
-    // Create JSON-LD schema for the blog post
-    const jsonLd = {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": meta.title,
-      "description": meta.description,
-      "image": `https://vivancedata.com${meta.image}`,
-      "datePublished": meta.date,
-      "dateModified": meta.date,
-      "author": {
-        "@type": "Organization",
-        "name": "VivanceData",
-        "url": "https://vivancedata.com"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "VivanceData",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://vivancedata.com/icons/Logo.png"
-        }
-      },
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": `https://vivancedata.com/blog/${slug}`
-      },
-      "keywords": meta.tags.join(", ")
-    };
-
-    return (
-      <>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-        <BlogLayout meta={meta} previousPathname="/blog" relatedPosts={relatedPosts} currentSlug={slug}>
-          {content}
-        </BlogLayout>
-      </>
-    );
+    blogData = await getBlogPostData(slug, filePath);
   } catch (error) {
     console.error(`Error loading blog post for slug ${slug}:`, error);
     return notFound();
   }
+
+  const { content, meta, relatedPosts, jsonLd } = blogData;
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        // JSON-LD is safe as it's generated from our own data
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <BlogLayout meta={meta} previousPathname="/blog" relatedPosts={relatedPosts} currentSlug={slug}>
+        {content}
+      </BlogLayout>
+    </>
+  );
 }

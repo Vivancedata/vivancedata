@@ -36,30 +36,27 @@ export function BlogLayout({
 }: BlogLayoutProps) {
   const router = useRouter();
   const [isPlaying, setIsPlaying] = useState(false);
-  const [utterance, setUtterance] = useState<SpeechSynthesisUtterance | null>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (typeof window !== "undefined" && window.speechSynthesis) {
-      const newUtterance = new SpeechSynthesisUtterance();
-      newUtterance.rate = 0.9;
-      setUtterance(newUtterance);
-
-      return () => {
-        if (isPlaying) {
-          window.speechSynthesis.cancel();
-          setIsPlaying(false);
-        }
-      };
-    }
-  }, [isPlaying]);
+    // Cleanup speech synthesis on unmount
+    return () => {
+      if (typeof window !== "undefined" && window.speechSynthesis) {
+        window.speechSynthesis.cancel();
+      }
+    };
+  }, []);
 
   const handlePlay = () => {
-    if (!contentRef.current || !utterance) return;
+    if (!contentRef.current) return;
 
     if (!isPlaying) {
-      utterance.text = contentRef.current.textContent || "";
-      window.speechSynthesis.speak(utterance);
+      // Create a new utterance each time to avoid mutation issues
+      const newUtterance = new SpeechSynthesisUtterance();
+      newUtterance.rate = 0.9;
+      newUtterance.text = contentRef.current.textContent || "";
+      newUtterance.onend = () => setIsPlaying(false);
+      window.speechSynthesis.speak(newUtterance);
       setIsPlaying(true);
     } else {
       window.speechSynthesis.cancel();
