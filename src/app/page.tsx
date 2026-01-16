@@ -1,4 +1,5 @@
 import Welcome from "@/components/home/Welcome";
+import ClientLogos from "@/components/home/ClientLogos";
 import Overview from "@/components/home/Overview";
 import Testimonials from "@/components/home/Testimonials";
 import Team from "@/components/home/Team";
@@ -118,6 +119,7 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Welcome />
+      <ClientLogos />
       <Overview />
       <Process />
       <CaseStudies />
