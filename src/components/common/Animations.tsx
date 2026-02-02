@@ -220,10 +220,10 @@ interface ShimmerProps {
   height?: string | number;
 }
 
-export function Shimmer({ 
-  className = "", 
-  width = "100%", 
-  height = "100%" 
+export function Shimmer({
+  className = "",
+  width = "100%",
+  height = "100%"
 }: ShimmerProps) {
   const shimmerVariants: Variants = {
     initial: {
@@ -241,7 +241,7 @@ export function Shimmer({
 
   return (
     <motion.div
-      className={`bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 bg-[length:500px_100%] ${className}`}
+      className={`bg-gradient-to-r from-muted via-muted/50 to-muted bg-[length:500px_100%] ${className}`}
       style={{ width, height }}
       variants={shimmerVariants}
       initial="initial"
@@ -323,7 +323,7 @@ export function ScrollProgress() {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 h-1 bg-blue-600 z-50 origin-left"
+      className="fixed top-0 left-0 right-0 h-1 bg-primary z-50 origin-left"
       style={{ width: `${scrollProgress}%` }}
     />
   );

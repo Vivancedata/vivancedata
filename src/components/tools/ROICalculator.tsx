@@ -79,8 +79,11 @@ export function ROICalculator() {
     const netROI = totalThreeYearSavings - totalCost;
     const roiPercentage = ((netROI / totalCost) * 100);
 
-    const monthlyBreakeven = totalCost / (yearOneSavings / 12);
-    const paybackMonths = Math.ceil(monthlyBreakeven);
+    // Calculate payback period with safeguard for zero savings
+    const monthlySavings = yearOneSavings / 12;
+    const paybackMonths = monthlySavings > 0
+      ? Math.ceil(totalCost / monthlySavings)
+      : 999; // Return a high number if no savings to avoid Infinity
 
     const hoursSaved = (inputs.employeeCount * inputs.inefficiencyHours * 52 * efficiencyGainPercent) / 100;
 

@@ -16,15 +16,15 @@ import { prefersReducedMotion } from "@/lib/performance";
 const getIconComponent = (iconType: IconType) => {
   switch (iconType) {
     case "database":
-      return <Database className="h-10 w-10 text-blue-500" />;
+      return <Database className="h-10 w-10 text-primary" />;
     case "brain":
-      return <Brain className="h-10 w-10 text-blue-500" />;
+      return <Brain className="h-10 w-10 text-primary" />;
     case "shield-check":
-      return <ShieldCheck className="h-10 w-10 text-blue-500" />;
+      return <ShieldCheck className="h-10 w-10 text-primary" />;
     case "message-square":
-      return <MessageSquare className="h-10 w-10 text-blue-500" />;
+      return <MessageSquare className="h-10 w-10 text-primary" />;
     default:
-      return <Database className="h-10 w-10 text-blue-500" />;
+      return <Database className="h-10 w-10 text-primary" />;
   }
 };
 
@@ -40,20 +40,20 @@ const CaseStudies = () => {
   void reducedMotion;
 
   return (
-    <section className="w-full py-20 md:py-32 overflow-hidden bg-gradient-to-b from-white to-slate-50">
+    <section className="w-full py-20 md:py-32 overflow-hidden bg-gradient-to-b from-background to-muted/50">
       <div className="container mx-auto px-4 relative">
         {/* Background elements */}
-        <div className="absolute top-40 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl -z-10" />
-        <div className="absolute bottom-20 right-0 w-80 h-80 bg-indigo-500/5 rounded-full blur-3xl -z-10" />
-        
+        <div className="absolute top-40 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -z-10" />
+        <div className="absolute bottom-20 right-0 w-80 h-80 bg-accent/5 rounded-full blur-3xl -z-10" />
+
         <AnimateOnScroll variant="fadeInUp" className="text-center mb-16">
-          <div className="inline-block rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-800 mb-4">
+          <div className="inline-block rounded-full bg-primary/10 dark:bg-primary/20 px-3 py-1 text-sm font-medium text-primary mb-4">
             Success Stories
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
             Case Studies
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             Explore how our AI solutions have transformed businesses across industries, delivering measurable results and competitive advantages.
           </p>
         </AnimateOnScroll>
@@ -61,14 +61,14 @@ const CaseStudies = () => {
         <AnimateOnScroll variant="fadeIn" delay={0.2}>
           <Tabs defaultValue={caseStudies[0].id} className="w-full">
             <div className="flex justify-center mb-12">
-              <TabsList className="grid grid-cols-2 md:grid-cols-4 gap-3 p-1 bg-slate-100/80 backdrop-blur-sm rounded-2xl">
+              <TabsList className="grid grid-cols-2 md:grid-cols-4 gap-3 p-1 bg-muted/80 dark:bg-muted/40 backdrop-blur-sm rounded-2xl">
                 {caseStudies.map((study) => (
-                  <TabsTrigger 
-                    key={study.id} 
+                  <TabsTrigger
+                    key={study.id}
                     value={study.id}
-                    className="flex flex-col items-center py-4 px-6 rounded-xl data-[state=active]:bg-gradient-to-br data-[state=active]:from-blue-600 data-[state=active]:to-indigo-600 data-[state=active]:text-white transition-all duration-500 hover:bg-blue-50"
+                    className="flex flex-col items-center py-4 px-6 rounded-xl data-[state=active]:bg-gradient-to-br data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-primary-foreground transition-all duration-500 hover:bg-primary/10"
                   >
-                    <motion.div 
+                    <motion.div
                       className="transition-all duration-300 data-[state=active]:scale-110"
                       whileHover={{ scale: 1.1 }}
                       transition={{ type: "spring", stiffness: 400 }}
@@ -82,65 +82,65 @@ const CaseStudies = () => {
             </div>
 
             {caseStudies.map((study) => (
-              <TabsContent 
-                key={study.id} 
-                value={study.id} 
+              <TabsContent
+                key={study.id}
+                value={study.id}
                 className="mt-0"
               >
                 <AnimateOnScroll variant="fadeInUp" className="mt-0">
-                  <Card className="border-0 shadow-2xl overflow-hidden rounded-2xl bg-white/90 backdrop-blur-sm">
+                  <Card className="border-0 shadow-2xl overflow-hidden rounded-2xl bg-card/90 dark:bg-card/50 backdrop-blur-sm">
                     <div className="grid grid-cols-1 lg:grid-cols-2">
                       <div className="p-8 md:p-10 lg:p-12">
                         <CardHeader className="p-0 mb-8">
                           <div className="mb-6">
-                            <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100 mb-3 px-3 py-1">
+                            <Badge className="bg-primary/10 dark:bg-primary/20 text-primary hover:bg-primary/10 mb-3 px-3 py-1">
                               {study.industry}
                             </Badge>
-                            <CardTitle className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
+                            <CardTitle className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
                               {study.title}
                             </CardTitle>
-                            <p className="text-gray-500 mt-2 text-lg">Client: {study.client}</p>
+                            <p className="text-muted-foreground mt-2 text-lg">Client: {study.client}</p>
                           </div>
                         </CardHeader>
                         <CardContent className="p-0 space-y-8">
                           <div>
-                            <h4 className="font-bold text-xl mb-3 text-blue-800">Challenge</h4>
-                            <CardDescription className="text-base text-gray-600">
+                            <h4 className="font-bold text-xl mb-3 text-primary">Challenge</h4>
+                            <CardDescription className="text-base text-muted-foreground">
                               {study.challenge}
                             </CardDescription>
                           </div>
                           <div>
-                            <h4 className="font-bold text-xl mb-3 text-blue-800">Solution</h4>
-                            <CardDescription className="text-base text-gray-600">
+                            <h4 className="font-bold text-xl mb-3 text-primary">Solution</h4>
+                            <CardDescription className="text-base text-muted-foreground">
                               {study.solution}
                             </CardDescription>
                           </div>
                           <div>
-                            <h4 className="font-bold text-xl mb-3 text-blue-800">Results</h4>
+                            <h4 className="font-bold text-xl mb-3 text-primary">Results</h4>
                             <ul className="space-y-3">
                               {study.results.map((result, index) => (
                                 <li
                                   key={index}
                                   className="flex items-start"
                                 >
-                                  <div className="rounded-full bg-green-100 p-1 mr-3 mt-1 shadow-sm">
-                                    <svg className="h-4 w-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <div className="rounded-full bg-green-100 dark:bg-green-900/30 p-1 mr-3 mt-1 shadow-sm">
+                                    <svg className="h-4 w-4 text-green-600 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
                                     </svg>
                                   </div>
-                                  <span className="text-gray-700 text-lg">{result}</span>
+                                  <span className="text-foreground/80 text-lg">{result}</span>
                                 </li>
                               ))}
                             </ul>
                           </div>
                           <div>
-                            <h4 className="font-bold text-xl mb-3 text-blue-800">Technologies Used</h4>
+                            <h4 className="font-bold text-xl mb-3 text-primary">Technologies Used</h4>
                             <div className="flex flex-wrap gap-2">
                               {study.technologies.map((tech, index) => (
                                 <Badge
                                   key={index}
                                   variant="outline"
-                                  className="bg-blue-50 border-blue-200 text-blue-700 px-3 py-1 text-sm"
+                                  className="bg-primary/5 dark:bg-primary/10 border-primary/20 text-primary px-3 py-1 text-sm"
                                 >
                                   {tech}
                                 </Badge>
@@ -149,21 +149,21 @@ const CaseStudies = () => {
                           </div>
                         </CardContent>
                         <CardFooter className="p-0 mt-10">
-                          <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg shadow-blue-500/20 px-8 py-6 h-auto text-lg rounded-xl group transition-all duration-300">
+                          <Button className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground shadow-lg shadow-primary/20 px-8 py-6 h-auto text-lg rounded-xl group transition-all duration-300">
                             <span>Read Full Case Study</span>
                             <ChevronRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
                           </Button>
                         </CardFooter>
                       </div>
                       <div className="relative h-80 lg:h-auto overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-indigo-600">
-                          <motion.div 
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary to-accent">
+                          <motion.div
                             className="absolute inset-0 opacity-30"
-                            animate={{ 
+                            animate={{
                               backgroundPosition: ['0% 0%', '100% 100%'],
                             }}
-                            transition={{ 
-                              duration: 20, 
+                            transition={{
+                              duration: 20,
                               repeat: Infinity,
                               repeatType: "reverse",
                             }}
@@ -173,7 +173,7 @@ const CaseStudies = () => {
                           />
                         </div>
                         <div className="absolute inset-0 flex items-center justify-center p-8">
-                          <motion.div 
+                          <motion.div
                             className="relative w-full h-full max-w-md"
                             whileHover={{ scale: 1.03 }}
                             transition={{ type: "spring", stiffness: 300 }}
@@ -187,11 +187,11 @@ const CaseStudies = () => {
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-xl flex items-end p-8">
                               <div className="flex items-center space-x-4">
-                                <div className="bg-white rounded-full p-3 shadow-lg">
-                                  {study.industry === "Retail" && <BarChart className="h-7 w-7 text-blue-600" />}
-                                  {study.industry === "Healthcare" && <Brain className="h-7 w-7 text-blue-600" />}
-                                  {study.industry === "Finance" && <LineChart className="h-7 w-7 text-blue-600" />}
-                                  {study.industry === "E-commerce" && <MessageSquare className="h-7 w-7 text-blue-600" />}
+                                <div className="bg-background rounded-full p-3 shadow-lg">
+                                  {study.industry === "Retail" && <BarChart className="h-7 w-7 text-primary" />}
+                                  {study.industry === "Healthcare" && <Brain className="h-7 w-7 text-primary" />}
+                                  {study.industry === "Finance" && <LineChart className="h-7 w-7 text-primary" />}
+                                  {study.industry === "E-commerce" && <MessageSquare className="h-7 w-7 text-primary" />}
                                 </div>
                                 <div className="text-white">
                                   <p className="font-bold text-xl">{study.industry} Solution</p>
@@ -211,9 +211,9 @@ const CaseStudies = () => {
         </AnimateOnScroll>
 
         <AnimateOnScroll variant="fadeInUp" delay={0.4} className="text-center mt-16">
-          <Button 
-            variant="outline" 
-            className="border-blue-600 text-blue-600 hover:bg-blue-50 group transition-all duration-300 px-6 py-6 h-auto"
+          <Button
+            variant="outline"
+            className="border-primary text-primary hover:bg-primary/10 group transition-all duration-300 px-6 py-6 h-auto"
           >
             <span>View All Case Studies</span>
             <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />

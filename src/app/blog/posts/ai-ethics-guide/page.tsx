@@ -4,6 +4,29 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "The Ethics of Artificial Intelligence - VivanceData",
   description: "Discussing the ethical considerations surrounding the development and deployment of artificial intelligence.",
+  keywords: ["AI ethics", "artificial intelligence ethics", "responsible AI", "AI governance", "AI fairness", "AI transparency"],
+  openGraph: {
+    title: "The Ethics of Artificial Intelligence - VivanceData",
+    description: "A comprehensive guide to ethical considerations in AI development and deployment, covering transparency, fairness, privacy, and accountability.",
+    type: "article",
+    url: "https://vivancedata.com/blog/posts/ai-ethics-guide",
+    images: [
+      {
+        url: "https://vivancedata.com/images/ai-solutions.png",
+        width: 1200,
+        height: 630,
+        alt: "The Ethics of Artificial Intelligence",
+      },
+    ],
+    publishedTime: "2025-02-23",
+    authors: ["VivanceData Team"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "The Ethics of Artificial Intelligence",
+    description: "A comprehensive guide to ethical considerations in AI development and deployment.",
+    images: ["https://vivancedata.com/images/ai-solutions.png"],
+  },
 };
 
 const meta = {

@@ -1,13 +1,18 @@
 import { withSentryConfig } from '@sentry/nextjs';
+import bundleAnalyzer from '@next/bundle-analyzer';
+
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+});
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Enable image optimization
+  // Enable image optimization with aggressive caching
   images: {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    minimumCacheTTL: 60,
+    minimumCacheTTL: 31536000, // 1 year cache for optimized images
     remotePatterns: [
       {
         protocol: 'https',
@@ -19,7 +24,7 @@ const nextConfig = {
   // Enable React strict mode for better development experience
   reactStrictMode: true,
 
-  // Configure compiler options
+  // Configure compiler options for better performance
   compiler: {
     // Remove console.log in production
     removeConsole: process.env.NODE_ENV === 'production' ? {
@@ -27,11 +32,25 @@ const nextConfig = {
     } : false,
   },
 
-  // Enable experimental features
+  // Enable experimental features for performance
   experimental: {
     // Enable scroll restoration
     scrollRestoration: true,
+    // Optimize package imports for smaller bundles
+    optimizePackageImports: ['lucide-react', 'framer-motion', '@radix-ui/react-icons'],
   },
+
+  // Enable gzip compression
+  compress: true,
+
+  // Generate ETags for caching
+  generateEtags: true,
+
+  // Optimize production builds
+  productionBrowserSourceMaps: false,
+
+  // Power optimizations
+  poweredByHeader: false,
 
   // Configure headers for better security and performance
   async headers() {
@@ -124,9 +143,15 @@ const sentryWebpackPluginOptions = {
   automaticVercelMonitors: true,
 };
 
-// Only wrap with Sentry if SENTRY_DSN is configured
-const config = process.env.SENTRY_DSN
-  ? withSentryConfig(nextConfig, sentryWebpackPluginOptions)
-  : nextConfig;
+// Build configuration with optional Sentry and Bundle Analyzer
+let config = nextConfig;
+
+// Wrap with Sentry if configured
+if (process.env.SENTRY_DSN) {
+  config = withSentryConfig(config, sentryWebpackPluginOptions);
+}
+
+// Wrap with Bundle Analyzer
+config = withBundleAnalyzer(config);
 
 export default config;
