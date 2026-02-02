@@ -2,6 +2,7 @@ import { MainNav } from "@/components/layout/MainNav";
 import { SiteFooter as Footer } from "@/components/layout/Footer";
 import PageWrapper from "@/components/layout/PageWrapper";
 import { ScrollToTop } from "@/components/common/ScrollToTop";
+import { CookieConsent } from "@/components/common/CookieConsent";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { Toaster } from "sonner";
 import { cn } from "@/lib/utils";
@@ -132,6 +133,7 @@ export default function RootLayout({
           </PageWrapper>
           <Footer />
           <ScrollToTop />
+          <CookieConsent />
           <Toaster position="top-right" richColors closeButton />
         </ThemeProvider>
       </body>

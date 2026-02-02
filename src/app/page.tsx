@@ -2,13 +2,17 @@ import Welcome from "@/components/home/Welcome";
 import ClientLogos from "@/components/home/ClientLogos";
 import Overview from "@/components/home/Overview";
 import Testimonials from "@/components/home/Testimonials";
+import { TrustSection } from "@/components/home/TrustSection";
 import Team from "@/components/home/Team";
 import CaseStudies from "@/components/home/CaseStudies";
 import Process from "@/components/home/Process";
+import Integrations from "@/components/home/Integrations";
 import Blog from "@/components/blog/Blog";
+import ResourcesSection from "@/components/home/ResourcesSection";
 import Pricing from "@/components/home/Pricing";
 import { StatsSection } from "@/components/home/StatsSection";
 import { FAQSection } from "@/components/home/FAQSection";
+import { DemoBooking } from "@/components/home/DemoBooking";
 import { ContactSection } from "@/components/home/ContactSection";
 import { CTASection } from "@/components/home/CTASection";
 import { Users, CheckCircle, BarChart3, Clock, Award } from "lucide-react";
@@ -120,33 +124,38 @@ export default function Home() {
       />
       <Welcome />
       <ClientLogos />
+      <TrustSection />
       <Overview />
       <Process />
+      <Integrations />
       <CaseStudies />
-      
-      <StatsSection 
+
+      <StatsSection
         title="Our Impact By The Numbers"
         description="We've helped hundreds of businesses achieve measurable results through our AI solutions."
         stats={stats}
       />
-      
+
       <Testimonials />
       <Team />
       <Pricing />
       <Blog />
-      
-      <FAQSection 
+      <ResourcesSection />
+
+      <FAQSection
         title="Common Questions About Our AI Services"
         description="Find answers to the most common questions about our services and how we can help your business."
       />
-      
-      <ContactSection 
+
+      <DemoBooking />
+
+      <ContactSection
         title="Ready to Transform Your Business with AI?"
         description="Fill out the form to schedule a free consultation with our AI experts. We'll analyze your business needs and recommend the best solutions for your specific challenges."
         benefits={contactBenefits}
       />
-      
-      <CTASection 
+
+      <CTASection
         title="Ready to Get Started?"
         description="Join hundreds of forward-thinking businesses that are already leveraging our AI solutions."
         buttonText="Schedule a Demo"
