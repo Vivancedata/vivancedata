@@ -1,12 +1,16 @@
 {
-  "name": "vivace-flow",
+  "name": "vivancedata",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "type-check": "tsc --noEmit",
+    "analyze": "ANALYZE=true next build",
+    "clean": "rm -rf .next node_modules/.cache"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
@@ -49,6 +53,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.3",
+    "@next/bundle-analyzer": "16.1.6",
     "@next/eslint-plugin-next": "^16.1.2",
     "@types/node": "^20",
     "@types/react": "^18",

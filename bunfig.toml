@@ -1,0 +1,14 @@
+# Bun configuration for VivanceData
+# https://bun.sh/docs/runtime/bunfig
+
+[install]
+# Use exact versions for reproducibility
+exact = true
+
+[install.lockfile]
+# Save lockfile
+save = true
+
+[run]
+# Silence the bun:// prefix in stack traces
+silent = false

@@ -6,6 +6,26 @@ export const metadata: Metadata = {
   title: "AI Solutions for Financial Services - VivanceData",
   description: "Transform your financial institution with our AI solutions for risk management, fraud detection, customer experience, and regulatory compliance.",
   keywords: ["financial services AI", "banking AI", "insurance AI", "fintech", "fraud detection", "risk management", "regulatory compliance", "customer experience"],
+  openGraph: {
+    title: "AI Solutions for Financial Services - VivanceData",
+    description: "Transform your financial institution with AI-powered risk management, fraud detection, customer experience, and regulatory compliance solutions.",
+    type: "website",
+    url: "https://vivancedata.com/industries/financial-services",
+    images: [
+      {
+        url: "https://vivancedata.com/images/ai-solutions.png",
+        width: 1200,
+        height: 630,
+        alt: "VivanceData Financial Services AI Solutions",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Solutions for Financial Services - VivanceData",
+    description: "Transform your financial institution with AI-powered solutions for risk, fraud, compliance, and customer experience.",
+    images: ["https://vivancedata.com/images/ai-solutions.png"],
+  },
 };
 
 export default function FinancialServicesPage() {

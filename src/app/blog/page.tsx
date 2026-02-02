@@ -16,6 +16,20 @@ export const metadata: Metadata = {
     description: 'Expert articles on artificial intelligence trends, implementation strategies, and industry insights.',
     type: 'website',
     url: 'https://vivancedata.com/blog',
+    images: [
+      {
+        url: 'https://vivancedata.com/images/ai-solutions.png',
+        width: 1200,
+        height: 630,
+        alt: 'VivanceData AI Insights Blog',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AI Insights Blog - VivanceData',
+    description: 'Expert articles on AI trends, implementation strategies, and industry insights.',
+    images: ['https://vivancedata.com/images/ai-solutions.png'],
   },
 };
 
