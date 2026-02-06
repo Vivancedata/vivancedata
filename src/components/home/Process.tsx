@@ -30,7 +30,7 @@ const getIconComponent = (iconType: string) => {
 
 const Process = () => {
   return (
-    <section className="w-full py-16 md:py-24 bg-gradient-to-b from-background to-muted/50">
+    <section className="w-full py-16 md:py-24 bg-muted/20">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <div className="inline-block rounded-full bg-primary/10 dark:bg-primary/20 px-3 py-1 text-sm font-medium text-primary mb-4">
@@ -44,7 +44,7 @@ const Process = () => {
 
         <div className="relative">
           {/* Timeline Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary/30 to-primary hidden md:block"></div>
+          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-primary/30 hidden md:block"></div>
 
           {/* Process Steps */}
           <div className="space-y-12 relative">

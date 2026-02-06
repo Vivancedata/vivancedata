@@ -34,7 +34,7 @@ const CertificationCard = ({ certification }: CertificationCardProps): React.Rea
 export function TrustSection(): React.ReactElement {
   return (
     <section
-      className="w-full py-16 md:py-24 bg-gradient-to-b from-muted/30 to-background overflow-hidden"
+      className="w-full py-16 md:py-24 bg-muted/20 overflow-hidden"
       aria-labelledby="trust-section-title"
     >
       <div className="container mx-auto px-4 relative">
@@ -48,7 +48,7 @@ export function TrustSection(): React.ReactElement {
           </div>
           <h2
             id="trust-section-title"
-            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground"
           >
             {trustSectionContent.title}
           </h2>

@@ -40,7 +40,7 @@ const CaseStudies = () => {
   void reducedMotion;
 
   return (
-    <section className="w-full py-20 md:py-32 overflow-hidden bg-gradient-to-b from-background to-muted/50">
+    <section className="w-full py-20 md:py-32 overflow-hidden bg-muted/20">
       <div className="container mx-auto px-4 relative">
         {/* Background elements */}
         <div className="absolute top-40 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -z-10" />
@@ -50,7 +50,7 @@ const CaseStudies = () => {
           <div className="inline-block rounded-full bg-primary/10 dark:bg-primary/20 px-3 py-1 text-sm font-medium text-primary mb-4">
             Success Stories
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
             Case Studies
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
@@ -66,7 +66,7 @@ const CaseStudies = () => {
                   <TabsTrigger
                     key={study.id}
                     value={study.id}
-                    className="flex flex-col items-center py-4 px-6 rounded-xl data-[state=active]:bg-gradient-to-br data-[state=active]:from-primary data-[state=active]:to-accent data-[state=active]:text-primary-foreground transition-all duration-500 hover:bg-primary/10"
+                    className="flex flex-col items-center py-4 px-6 rounded-xl data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all duration-500 hover:bg-primary/10"
                   >
                     <motion.div
                       className="transition-all duration-300 data-[state=active]:scale-110"
@@ -96,7 +96,7 @@ const CaseStudies = () => {
                             <Badge className="bg-primary/10 dark:bg-primary/20 text-primary hover:bg-primary/10 mb-3 px-3 py-1">
                               {study.industry}
                             </Badge>
-                            <CardTitle className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+                            <CardTitle className="text-3xl md:text-4xl font-bold text-foreground">
                               {study.title}
                             </CardTitle>
                             <p className="text-muted-foreground mt-2 text-lg">Client: {study.client}</p>
@@ -149,14 +149,14 @@ const CaseStudies = () => {
                           </div>
                         </CardContent>
                         <CardFooter className="p-0 mt-10">
-                          <Button className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground shadow-lg shadow-primary/20 px-8 py-6 h-auto text-lg rounded-xl group transition-all duration-300">
+                          <Button className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20 px-8 py-6 h-auto text-lg rounded-xl group transition-all duration-300">
                             <span>Read Full Case Study</span>
                             <ChevronRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
                           </Button>
                         </CardFooter>
                       </div>
                       <div className="relative h-80 lg:h-auto overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-br from-primary to-accent">
+                        <div className="absolute inset-0 bg-primary">
                           <motion.div
                             className="absolute inset-0 opacity-30"
                             animate={{
@@ -185,7 +185,7 @@ const CaseStudies = () => {
                               fill
                               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-xl flex items-end p-8">
+                            <div className="absolute inset-0 bg-black/55 rounded-xl flex items-end p-8">
                               <div className="flex items-center space-x-4">
                                 <div className="bg-background rounded-full p-3 shadow-lg">
                                   {study.industry === "Retail" && <BarChart className="h-7 w-7 text-primary" />}

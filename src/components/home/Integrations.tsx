@@ -55,7 +55,7 @@ const IntegrationCard: React.FC<{ integration: Integration; index: number }> = (
           <motion.div
             className={cn(
               "w-14 h-14 rounded-full flex items-center justify-center mb-4",
-              "bg-gradient-to-br from-primary to-accent text-primary-foreground",
+              "bg-primary text-primary-foreground",
               "text-lg font-bold shadow-md"
             )}
             animate={{
@@ -113,7 +113,7 @@ const Integrations: React.FC = () => {
   }, [activeCategory]);
 
   return (
-    <section className="w-full py-16 md:py-24 bg-gradient-to-b from-muted/30 to-background overflow-hidden">
+    <section className="w-full py-16 md:py-24 bg-muted/20 overflow-hidden">
       <div className="container mx-auto px-4 relative">
         {/* Background decorative elements */}
         <div className="absolute top-20 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl -z-10" />
@@ -124,7 +124,7 @@ const Integrations: React.FC = () => {
           <div className="inline-block rounded-full bg-primary/10 dark:bg-primary/20 px-3 py-1 text-sm font-medium text-primary mb-4">
             Technology Stack
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
             Seamless Integrations
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
@@ -145,7 +145,7 @@ const Integrations: React.FC = () => {
                 value="All"
                 className={cn(
                   "px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300",
-                  "data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent",
+                  "data-[state=active]:bg-primary data-[state=active]:text-primary-foreground",
                   "data-[state=active]:text-primary-foreground data-[state=active]:shadow-md",
                   "hover:bg-primary/10"
                 )}
@@ -158,7 +158,7 @@ const Integrations: React.FC = () => {
                   value={category}
                   className={cn(
                     "px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300",
-                    "data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-accent",
+                    "data-[state=active]:bg-primary data-[state=active]:text-primary-foreground",
                     "data-[state=active]:text-primary-foreground data-[state=active]:shadow-md",
                     "hover:bg-primary/10"
                   )}
