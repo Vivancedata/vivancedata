@@ -19,7 +19,7 @@ const ClientLogoItem: React.FC<ClientLogoItemProps> = ({ client }) => {
       <div className="flex flex-col items-center justify-center h-20 w-32 md:w-40 group">
         {/* Placeholder logo using icon and text - replace with actual logos */}
         <div className="flex flex-col items-center justify-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500 ease-out">
-          <div className="flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-xl bg-gradient-to-br from-muted to-muted/80 group-hover:from-primary/10 group-hover:to-accent/10 dark:from-muted/50 dark:to-muted/30 dark:group-hover:from-primary/20 dark:group-hover:to-accent/20 transition-all duration-500 shadow-sm group-hover:shadow-md">
+          <div className="flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-xl bg-muted/60 group-hover:bg-primary/10 dark:bg-muted/40 transition-all duration-500 shadow-sm group-hover:shadow-md">
             <Building2 className="w-6 h-6 md:w-7 md:h-7 text-muted-foreground group-hover:text-primary transition-colors duration-500" />
           </div>
           <span className="mt-2 text-xs md:text-sm font-semibold text-muted-foreground group-hover:text-foreground transition-colors duration-500 whitespace-nowrap">
@@ -37,7 +37,7 @@ const ClientLogos: React.FC = () => {
 
   return (
     <section
-      className="w-full py-16 md:py-24 bg-gradient-to-b from-muted/50 to-background overflow-hidden"
+      className="w-full py-16 md:py-24 bg-muted/20 overflow-hidden"
       aria-label="Our clients"
     >
       <div className="container mx-auto px-4">
@@ -45,7 +45,7 @@ const ClientLogos: React.FC = () => {
           <div className="inline-block rounded-full bg-primary/10 dark:bg-primary/20 px-3 py-1 text-sm font-medium text-primary mb-4">
             Our Clients
           </div>
-          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
             Trusted by Industry Leaders
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg">
@@ -57,8 +57,8 @@ const ClientLogos: React.FC = () => {
         <AnimateOnScroll variant="fadeIn" delay={0.2}>
           <div className="relative hidden md:block">
             {/* Gradient overlays for fade effect */}
-            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-muted/50 to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+            <div className="absolute left-0 top-0 bottom-0 w-32 bg-muted/40 z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-32 bg-background/80 z-10 pointer-events-none" />
 
             {/* Marquee container */}
             <div
@@ -86,7 +86,7 @@ const ClientLogos: React.FC = () => {
                 aria-label={`${client.name} - ${client.industry}`}
               >
                 <div className="flex flex-col items-center justify-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
-                  <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-muted to-muted/80 dark:from-muted/50 dark:to-muted/30 shadow-sm">
+                  <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-muted/60 dark:bg-muted/40 shadow-sm">
                     <Building2 className="w-6 h-6 text-muted-foreground" />
                   </div>
                   <span className="mt-2 text-xs font-semibold text-muted-foreground whitespace-nowrap">
@@ -103,25 +103,25 @@ const ClientLogos: React.FC = () => {
           <div className="mt-12 md:mt-16 pt-8 border-t border-border">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
               <div className="space-y-1">
-                <p className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+                <p className="text-2xl md:text-3xl font-bold text-foreground">
                   500+
                 </p>
                 <p className="text-sm text-muted-foreground">Enterprise Clients</p>
               </div>
               <div className="space-y-1">
-                <p className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+                <p className="text-2xl md:text-3xl font-bold text-foreground">
                   50+
                 </p>
                 <p className="text-sm text-muted-foreground">Countries Served</p>
               </div>
               <div className="space-y-1">
-                <p className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+                <p className="text-2xl md:text-3xl font-bold text-foreground">
                   $2B+
                 </p>
                 <p className="text-sm text-muted-foreground">Client Revenue Impact</p>
               </div>
               <div className="space-y-1">
-                <p className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+                <p className="text-2xl md:text-3xl font-bold text-foreground">
                   98%
                 </p>
                 <p className="text-sm text-muted-foreground">Client Retention</p>

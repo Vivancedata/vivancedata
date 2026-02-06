@@ -200,6 +200,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    if (process.env.NODE_ENV === 'production') {
+      return NextResponse.json(
+        { error: 'Newsletter service not configured. Please try again later.' },
+        { status: 503 }
+      );
+    }
+
     // No provider configured - log for development
     console.log('Newsletter subscription (no provider configured):', {
       email,

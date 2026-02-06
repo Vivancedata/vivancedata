@@ -12,10 +12,11 @@ const Pricing = () => {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "annually">("monthly");
 
   return (
-    <section className="w-full py-16 md:py-24">
-      <div className="container mx-auto px-4">
+    <section className="w-full py-16 md:py-24 relative overflow-hidden">
+      <div className="absolute inset-x-0 -top-20 h-64 bg-primary/5 blur-3xl" aria-hidden="true" />
+      <div className="container mx-auto px-4 relative">
         <div className="text-center mb-12">
-          <div className="inline-block rounded-full bg-primary/10 dark:bg-primary/20 px-3 py-1 text-sm font-medium text-primary mb-4">
+          <div className="inline-flex items-center rounded-full border border-white/40 bg-white/70 px-4 py-1 text-sm font-medium text-foreground backdrop-blur dark:border-white/10 dark:bg-white/10 mb-4">
             Pricing Plans
           </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Transparent Pricing for Your AI Journey</h2>
@@ -44,11 +45,11 @@ const Pricing = () => {
           {pricingTiers.map((tier, index) => (
             <Card
               key={index}
-              className={`border ${tier.popular ? 'border-primary shadow-lg shadow-primary/20' : 'border-border'} relative bg-card`}
+              className={`relative ${tier.popular ? 'ring-1 ring-primary/40 shadow-[0_35px_80px_-50px_rgba(13,148,136,0.55)]' : 'shadow-[0_25px_60px_-45px_rgba(15,118,110,0.35)]'} transition-transform duration-300 hover:-translate-y-2`}
             >
               {tier.popular && (
                 <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                  <Badge className="bg-primary hover:bg-primary/90 px-3 py-1 text-primary-foreground">Most Popular</Badge>
+                  <Badge className="bg-primary hover:bg-primary/90 px-3 py-1 text-primary-foreground shadow-[0_10px_25px_-15px_rgba(13,148,136,0.6)]">Most Popular</Badge>
                 </div>
               )}
               <CardHeader>
@@ -75,7 +76,7 @@ const Pricing = () => {
                   {tier.features.map((feature, featureIndex) => (
                     <div key={featureIndex} className="flex items-start">
                       {feature.included ? (
-                        <Check className="h-5 w-5 text-green-500 dark:text-green-400 mr-2 mt-0.5 flex-shrink-0" />
+                        <Check className="h-5 w-5 text-emerald-500 dark:text-emerald-300 mr-2 mt-0.5 flex-shrink-0" />
                       ) : (
                         <X className="h-5 w-5 text-muted-foreground/50 mr-2 mt-0.5 flex-shrink-0" />
                       )}
@@ -86,7 +87,7 @@ const Pricing = () => {
                         {feature.tooltip && (
                           <div className="group relative inline-block ml-1">
                             <HelpCircle className="h-4 w-4 text-muted-foreground inline-block" />
-                            <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-popover text-popover-foreground text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity z-10 border border-border">
+                            <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 glass-panel text-xs opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity z-10">
                               {feature.tooltip}
                               <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-popover"></div>
                             </div>
@@ -110,7 +111,7 @@ const Pricing = () => {
           ))}
         </div>
 
-        <div className="mt-16 bg-muted/50 dark:bg-muted/20 rounded-xl p-8 md:p-12">
+        <div className="mt-16 glass-panel p-8 md:p-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div>
               <h3 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">Need a Custom Solution?</h3>
@@ -119,7 +120,7 @@ const Pricing = () => {
               </p>
               <div className="space-y-4">
                 <div className="flex items-start">
-                  <div className="rounded-full bg-primary/10 dark:bg-primary/20 p-1 mr-3 mt-1">
+                  <div className="rounded-full bg-white/70 dark:bg-white/10 p-1 mr-3 mt-1 border border-white/40 dark:border-white/10">
                     <svg className="h-3 w-3 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
                     </svg>
@@ -127,7 +128,7 @@ const Pricing = () => {
                   <p className="text-foreground/80">Custom AI model development and training</p>
                 </div>
                 <div className="flex items-start">
-                  <div className="rounded-full bg-primary/10 dark:bg-primary/20 p-1 mr-3 mt-1">
+                  <div className="rounded-full bg-white/70 dark:bg-white/10 p-1 mr-3 mt-1 border border-white/40 dark:border-white/10">
                     <svg className="h-3 w-3 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
                     </svg>
@@ -135,7 +136,7 @@ const Pricing = () => {
                   <p className="text-foreground/80">Specialized integration with your existing systems</p>
                 </div>
                 <div className="flex items-start">
-                  <div className="rounded-full bg-primary/10 dark:bg-primary/20 p-1 mr-3 mt-1">
+                  <div className="rounded-full bg-white/70 dark:bg-white/10 p-1 mr-3 mt-1 border border-white/40 dark:border-white/10">
                     <svg className="h-3 w-3 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
                     </svg>
@@ -148,9 +149,9 @@ const Pricing = () => {
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </div>
-            <div className="bg-card rounded-xl p-6 shadow-md border border-border">
+            <div className="glass-card p-6">
               <div className="text-center mb-6">
-                <div className="inline-block bg-primary/10 dark:bg-primary/20 rounded-full p-3 mb-4">
+                <div className="inline-block bg-white/70 dark:bg-white/10 rounded-full p-3 mb-4 border border-white/40 dark:border-white/10">
                   <svg className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
@@ -160,7 +161,7 @@ const Pricing = () => {
                   We&apos;re confident in our solutions. If you&apos;re not satisfied within the first 30 days, we&apos;ll work with you to make it right or provide a full refund.
                 </p>
               </div>
-              <div className="border-t border-border pt-6">
+              <div className="border-t border-white/30 dark:border-white/10 pt-6">
                 <p className="text-center text-foreground/80 mb-4">
                   Have questions about our pricing or need help choosing the right plan?
                 </p>

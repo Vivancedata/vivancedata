@@ -57,7 +57,7 @@ const MetricsDisplay = ({ metrics }: { metrics: TestimonialMetrics }) => {
 
 const Testimonials = () => {
   return (
-    <section className="w-full py-20 md:py-32 bg-gradient-to-b from-background to-muted/50 overflow-hidden">
+    <section className="w-full py-20 md:py-32 bg-muted/20 overflow-hidden">
       <div className="container mx-auto px-4 relative">
         {/* Background elements */}
         <div className="absolute top-0 right-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl -z-10" />
@@ -67,7 +67,7 @@ const Testimonials = () => {
           <div className="inline-block rounded-full bg-primary/10 dark:bg-primary/20 px-3 py-1 text-sm font-medium text-primary mb-4">
             Client Success Stories
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
             What Our Clients Say
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
@@ -90,7 +90,7 @@ const Testimonials = () => {
                       <div className="flex items-center mb-6">
                         <Avatar className="h-14 w-14 mr-4 border-2 border-primary/20 shadow-md">
                           <AvatarImage src={testimonial.image} alt={testimonial.name} />
-                          <AvatarFallback className="bg-gradient-to-br from-primary to-accent text-primary-foreground text-xl font-semibold">
+                          <AvatarFallback className="bg-primary text-primary-foreground text-xl font-semibold">
                             {testimonial.initials}
                           </AvatarFallback>
                         </Avatar>
@@ -109,7 +109,7 @@ const Testimonials = () => {
                         &quot;{testimonial.text}&quot;
                       </blockquote>
                       <div className="mt-auto pt-4 border-t border-border">
-                        <p className="text-sm font-medium bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+                        <p className="text-sm font-medium text-primary">
                           {testimonial.company}
                         </p>
                       </div>

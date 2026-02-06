@@ -205,6 +205,13 @@ export async function POST(request: NextRequest) {
         `,
       });
     } else {
+      if (process.env.NODE_ENV === 'production') {
+        return NextResponse.json(
+          { error: 'Email service not configured. Please try again later.' },
+          { status: 503 }
+        );
+      }
+
       // Log submission if Resend is not configured (development mode)
       console.log('Contact form submission (Resend not configured):', {
         name: `${body.firstName} ${body.lastName}`,

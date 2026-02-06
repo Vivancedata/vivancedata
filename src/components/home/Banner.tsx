@@ -7,12 +7,12 @@ import { ChevronRight, Sparkles } from "lucide-react";
 
 export default function Banner() {
   return (
-    <div className="relative w-full overflow-hidden bg-gradient-to-r from-primary/90 via-primary to-primary/80 dark:from-primary/80 dark:via-primary/90 dark:to-primary/70 text-primary-foreground">
+    <div className="relative w-full overflow-hidden bg-primary text-primary-foreground">
       {/* Background elements */}
       <div className="absolute inset-0 opacity-20" aria-hidden="true" />
 
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary/30" />
+      {/* Accent overlay */}
+      <div className="absolute inset-0 bg-primary/10" />
 
       <div className="container relative mx-auto px-6 py-24 md:py-32 lg:py-40">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-8">
@@ -42,7 +42,7 @@ export default function Banner() {
               >
                 Transform Your
                 <span className="relative">
-                  <span className="relative z-10 bg-clip-text text-transparent bg-gradient-to-r from-primary-foreground via-primary-foreground/80 to-primary-foreground">
+                  <span className="relative z-10 text-primary-foreground">
                     {" "}Business{" "}
                   </span>
                   <span className="absolute -bottom-2 left-0 w-full h-3 bg-primary-foreground/20 rounded-full blur-sm"></span>

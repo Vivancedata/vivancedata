@@ -73,7 +73,7 @@ const getResourceCardIcon = (type: ResourceType) => {
 
 const ResourcesSection = () => {
   return (
-    <section className="w-full py-20 md:py-32 overflow-hidden bg-gradient-to-b from-muted/50 to-background">
+    <section className="w-full py-20 md:py-32 overflow-hidden bg-muted/20">
       <div className="container mx-auto px-4 relative">
         {/* Background elements */}
         <div className="absolute top-40 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -z-10" />
@@ -84,7 +84,7 @@ const ResourcesSection = () => {
             <div className="inline-block rounded-full bg-primary/10 dark:bg-primary/20 px-3 py-1 text-sm font-medium text-primary mb-4">
               Free Resources
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-foreground">
               Learn From Our Experts
             </h2>
             <p className="text-muted-foreground max-w-2xl text-lg">
@@ -119,8 +119,8 @@ const ResourcesSection = () => {
               className="overflow-hidden border border-border bg-card/90 dark:bg-card/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-500 rounded-xl group flex flex-col"
             >
               {/* Icon Header */}
-              <div className="relative h-32 w-full overflow-hidden bg-gradient-to-br from-primary/10 to-accent/10 dark:from-primary/20 dark:to-accent/20 flex items-center justify-center">
-                <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent" />
+              <div className="relative h-32 w-full overflow-hidden bg-primary/10 dark:bg-primary/20 flex items-center justify-center">
+                <div className="absolute inset-0 bg-background/20" />
                 <div className="text-primary/80 dark:text-primary group-hover:scale-110 transition-transform duration-500">
                   {getResourceCardIcon(resource.type)}
                 </div>
@@ -160,7 +160,7 @@ const ResourcesSection = () => {
               <CardFooter className="pt-0 mt-auto">
                 <Button
                   asChild
-                  className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground shadow-md shadow-primary/10 group/btn transition-all duration-300"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-md shadow-primary/10 group/btn transition-all duration-300"
                 >
                   <Link href={resource.downloadUrl}>
                     <Download className="mr-2 h-4 w-4 transition-transform duration-300 group-hover/btn:-translate-y-0.5" />
@@ -174,7 +174,7 @@ const ResourcesSection = () => {
 
         {/* Bottom CTA */}
         <AnimateOnScroll variant="fadeInUp" delay={0.4} className="mt-16">
-          <div className="bg-gradient-to-r from-primary/10 to-accent/10 dark:from-primary/20 dark:to-accent/20 rounded-2xl p-8 md:p-12 border border-border/50">
+          <div className="bg-primary/10 dark:bg-primary/20 rounded-2xl p-8 md:p-12 border border-border/50">
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
               <div className="text-center md:text-left">
                 <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
@@ -188,7 +188,7 @@ const ResourcesSection = () => {
               <Link href="/contact?inquiry=custom-research">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground shadow-lg shadow-primary/20 px-8 py-6 h-auto text-lg rounded-xl group transition-all duration-300"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20 px-8 py-6 h-auto text-lg rounded-xl group transition-all duration-300"
                 >
                   <span>Request Custom Report</span>
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />

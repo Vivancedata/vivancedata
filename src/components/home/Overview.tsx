@@ -61,8 +61,8 @@ export default function Overview() {
                     </Button>
                   </CardFooter>
                 </div>
-                <div className="relative h-64 md:h-auto overflow-hidden rounded-b-lg md:rounded-r-lg md:rounded-bl-none bg-gradient-to-tr from-primary to-accent">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-primary/80 to-transparent flex items-center justify-center">
+                <div className="relative h-64 md:h-auto overflow-hidden rounded-b-lg md:rounded-r-lg md:rounded-bl-none bg-primary">
+                  <div className="absolute inset-0 bg-primary/80 flex items-center justify-center">
                     <div className="text-primary-foreground p-6 md:p-8 max-w-md">
                       <h3 className="text-xl md:text-2xl font-bold mb-2">Ready to transform your business?</h3>
                       <p className="mb-4 text-primary-foreground/85">Our team of experts is ready to help you implement {service.title.toLowerCase()}.</p>

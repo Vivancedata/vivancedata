@@ -27,7 +27,7 @@ const Team = () => {
               className="overflow-hidden border-0 shadow-md hover:shadow-xl transition-all duration-300 hover:translate-y-[-5px] bg-card"
             >
               <CardContent className="p-0">
-                <div className="bg-gradient-to-r from-primary to-accent h-24 flex items-center justify-center">
+                <div className="bg-primary h-24 flex items-center justify-center">
                   <Avatar className="h-24 w-24 border-4 border-background translate-y-12">
                     <AvatarImage src={member.image} alt={member.name} />
                     <AvatarFallback className="bg-background text-primary text-xl font-semibold">
