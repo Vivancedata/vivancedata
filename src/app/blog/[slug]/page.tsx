@@ -7,9 +7,9 @@ import { Metadata } from 'next';
 import type { BlogPost } from '@/types/blog';
 
 interface BlogPostParams {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 interface BlogFrontmatter {
@@ -152,7 +152,7 @@ function getRelatedPosts(currentSlug: string, currentTags: string[], allPosts: B
 
 // Generate metadata for the blog post
 export async function generateMetadata({ params }: BlogPostParams): Promise<Metadata> {
-  const { slug } = params;
+  const { slug } = await params;
   
   try {
     const filePath = findBlogPostPath(slug);
@@ -288,7 +288,7 @@ async function getBlogPostData(slug: string, filePath: string) {
 }
 
 export default async function BlogPost({ params }: BlogPostParams) {
-  const { slug } = params;
+  const { slug } = await params;
   const filePath = findBlogPostPath(slug);
 
   if (!filePath) {
