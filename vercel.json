@@ -1,4 +1,4 @@
 {
   "installCommand": "npm install",
-  "buildCommand": "npm run build"
+  "buildCommand": "NEXT_DISABLE_TURBOPACK=1 NEXT_TELEMETRY_DISABLED=1 next build"
 }
