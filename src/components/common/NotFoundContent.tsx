@@ -59,7 +59,7 @@ function FloatingParticles({ reducedMotion }: { reducedMotion: boolean }) {
             duration: particle.duration,
             repeat: Infinity,
             delay: particle.delay,
-            ease: "easeInOut",
+            ease: "easeInOut" as const,
           }}
         />
       ))}
@@ -97,7 +97,7 @@ function Illustration({ reducedMotion }: { reducedMotion: boolean }) {
           fill="url(#bgGradient)"
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: reducedMotion ? 0 : 0.6, ease: "easeOut" }}
+          transition={{ duration: reducedMotion ? 0 : 0.6, ease: "easeOut" as const }}
         />
 
         {/* Inner decorative circle */}
@@ -108,7 +108,7 @@ function Illustration({ reducedMotion }: { reducedMotion: boolean }) {
           className="fill-muted/40 dark:fill-muted/20"
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
-          transition={{ duration: reducedMotion ? 0 : 0.5, delay: 0.1, ease: "easeOut" }}
+          transition={{ duration: reducedMotion ? 0 : 0.5, delay: 0.1, ease: "easeOut" as const }}
         />
 
         {/* Neural network lines */}
@@ -150,7 +150,7 @@ function Illustration({ reducedMotion }: { reducedMotion: boolean }) {
               r="6"
               className="fill-primary/40"
               animate={{ y: [0, -12, 0], opacity: [0.4, 0.8, 0.4] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" as const }}
             />
             <motion.circle
               cx="310"
@@ -158,7 +158,7 @@ function Illustration({ reducedMotion }: { reducedMotion: boolean }) {
               r="5"
               className="fill-primary/30"
               animate={{ y: [0, -8, 0], opacity: [0.3, 0.6, 0.3] }}
-              transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+              transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" as const, delay: 0.5 }}
             />
             <motion.circle
               cx="100"
@@ -166,7 +166,7 @@ function Illustration({ reducedMotion }: { reducedMotion: boolean }) {
               r="4"
               className="fill-primary/25"
               animate={{ y: [0, -10, 0], opacity: [0.25, 0.5, 0.25] }}
-              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" as const, delay: 1 }}
             />
             <motion.circle
               cx="300"
@@ -174,7 +174,7 @@ function Illustration({ reducedMotion }: { reducedMotion: boolean }) {
               r="6"
               className="fill-primary/35"
               animate={{ y: [0, -6, 0], opacity: [0.35, 0.65, 0.35] }}
-              transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
+              transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" as const, delay: 0.3 }}
             />
           </>
         )}
@@ -229,7 +229,7 @@ function Illustration({ reducedMotion }: { reducedMotion: boolean }) {
             className="fill-none stroke-primary"
             strokeWidth="2"
             animate={reducedMotion ? {} : { scale: [1, 1.1, 1] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" as const }}
           />
           {/* Inner brain pattern */}
           <motion.path
@@ -298,7 +298,7 @@ export function NotFoundContent() {
       y: 0,
       transition: {
         duration: reducedMotion ? 0 : 0.5,
-        ease: "easeOut",
+        ease: "easeOut" as const,
       },
     },
   }

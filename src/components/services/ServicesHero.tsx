@@ -44,7 +44,7 @@ export function ServicesHero({ title, description }: ServicesHeroProps): React.R
           transition={{
             duration: 8,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut" as const
           }}
         />
         
@@ -57,7 +57,7 @@ export function ServicesHero({ title, description }: ServicesHeroProps): React.R
           transition={{
             duration: 10,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut" as const
           }}
         />
       </motion.div>
@@ -93,7 +93,7 @@ export function ServicesHero({ title, description }: ServicesHeroProps): React.R
           transition={{
             duration: 1.5,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut" as const
           }}
         >
           <div className="flex flex-col items-center">

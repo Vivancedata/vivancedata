@@ -20,7 +20,7 @@ export default function Banner() {
             className="flex flex-col justify-center space-y-8"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.8, ease: "easeOut" as const }}
           >
             <div>
               <motion.div

@@ -11,7 +11,7 @@ const fadeInUpVariants: Variants = {
     y: 0,
     transition: { 
       duration: 0.6,
-      ease: "easeOut"
+      ease: "easeOut" as const
     }
   }
 };
@@ -23,7 +23,7 @@ const fadeInLeftVariants: Variants = {
     x: 0,
     transition: { 
       duration: 0.6,
-      ease: "easeOut"
+      ease: "easeOut" as const
     }
   }
 };
@@ -35,7 +35,7 @@ const fadeInRightVariants: Variants = {
     x: 0,
     transition: { 
       duration: 0.6,
-      ease: "easeOut"
+      ease: "easeOut" as const
     }
   }
 };
@@ -57,7 +57,7 @@ const scaleInVariants: Variants = {
     scale: 1,
     transition: { 
       duration: 0.6,
-      ease: "easeOut"
+      ease: "easeOut" as const
     }
   }
 };
@@ -95,7 +95,7 @@ const blurInVariants: Variants = {
     filter: "blur(0px)",
     transition: { 
       duration: 0.8,
-      ease: "easeOut"
+      ease: "easeOut" as const
     }
   }
 };
@@ -120,7 +120,7 @@ const rotateInVariants: Variants = {
     scale: 1,
     transition: { 
       duration: 0.7,
-      ease: "easeOut"
+      ease: "easeOut" as const
     }
   }
 };

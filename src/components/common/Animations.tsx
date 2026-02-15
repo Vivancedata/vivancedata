@@ -90,7 +90,7 @@ export function Pulse({
       }}
       transition={{
         duration: interval / 2000,
-        ease: "easeInOut"
+        ease: "easeInOut" as const
       }}
     >
       {children}
@@ -234,7 +234,7 @@ export function Shimmer({
       transition: {
         repeat: Infinity,
         duration: 1.5,
-        ease: "linear",
+        ease: "linear" as const,
       },
     },
   };
