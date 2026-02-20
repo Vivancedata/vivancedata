@@ -32,6 +32,14 @@ if (result.status !== 0) {
 
 const rawOutput = `${result.stdout ?? ""}\n${result.stderr ?? ""}`.trim();
 
+if (!rawOutput && diffBase) {
+  console.log(
+    `React Doctor diff scan found no changed files against ${diffBase}. ` +
+      `Treating score as ${REQUIRED_SCORE}/${REQUIRED_SCORE}.`
+  );
+  process.exit(0);
+}
+
 const scoreMatches = [...rawOutput.matchAll(/^\s*(\d+(?:\.\d+)?)\s*$/gm)];
 const parsedScore = scoreMatches.length > 0 ? Number(scoreMatches.at(-1)[1]) : NaN;
 

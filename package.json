@@ -60,6 +60,16 @@
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.23.8"
   },
+  "overrides": {
+    "@sentry/node": {
+      "minimatch": "10.2.2"
+    },
+    "@sentry/bundler-plugin-core": {
+      "glob": {
+        "minimatch": "10.2.2"
+      }
+    }
+  },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.3",
     "@next/bundle-analyzer": "16.1.6",
