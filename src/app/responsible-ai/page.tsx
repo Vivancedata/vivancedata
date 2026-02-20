@@ -72,8 +72,8 @@ const Phase = ({ number, title, description, checks }: PhaseProps) => (
     <div className="pl-16">
       <p className="text-gray-600 dark:text-gray-300 mb-4">{description}</p>
       <ul className="space-y-2">
-        {checks.map((check, index) => (
-          <li key={index} className="flex items-start">
+        {checks.map((check) => (
+          <li key={check} className="flex items-start">
             <Check className="h-5 w-5 text-blue-500 mt-0.5 mr-2 flex-shrink-0" />
             <span className="text-gray-700 dark:text-gray-200">{check}</span>
           </li>
@@ -266,9 +266,9 @@ export default function ResponsibleAIPage() {
       <div className="mb-20">
         <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Our Responsible AI Principles</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {principles.map((principle, index) => (
+          {principles.map((principle) => (
             <Principle
-              key={index}
+              key={principle.title}
               icon={principle.icon}
               title={principle.title}
               description={principle.description}
@@ -285,9 +285,9 @@ export default function ResponsibleAIPage() {
           <div className="absolute left-6 top-6 bottom-0 w-0.5 bg-blue-200 dark:bg-blue-900/50 hidden md:block"></div>
           
           <div className="space-y-12">
-            {phases.map((phase, index) => (
+            {phases.map((phase) => (
               <Phase
-                key={index}
+                key={phase.number}
                 number={phase.number}
                 title={phase.title}
                 description={phase.description}
@@ -301,9 +301,9 @@ export default function ResponsibleAIPage() {
       <div className="mb-20">
         <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Responsible AI in Action</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {caseStudies.map((study, index) => (
+          {caseStudies.map((study) => (
             <CaseStudy
-              key={index}
+              key={study.title}
               title={study.title}
               challenge={study.challenge}
               approach={study.approach}
@@ -357,13 +357,13 @@ export default function ResponsibleAIPage() {
                 "Audit trails and version control"
               ]
             }
-          ].map((tool, index) => (
-            <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+          ].map((tool) => (
+            <div key={tool.title} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
               <h3 className="text-xl font-semibold mb-3">{tool.title}</h3>
               <p className="text-gray-600 dark:text-gray-300 mb-4">{tool.description}</p>
               <ul className="space-y-2">
-                {tool.features.map((feature, i) => (
-                  <li key={i} className="flex items-start">
+                {tool.features.map((feature) => (
+                  <li key={feature} className="flex items-start">
                     <Check className="h-5 w-5 text-blue-500 mt-0.5 mr-2 flex-shrink-0" />
                     <span className="text-gray-700 dark:text-gray-200">{feature}</span>
                   </li>

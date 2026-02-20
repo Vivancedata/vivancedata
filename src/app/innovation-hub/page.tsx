@@ -106,9 +106,9 @@ const ProjectCard = ({ title, description, image, technologies, status }: Projec
         <h3 className="text-xl font-semibold mb-2">{title}</h3>
         <p className="text-gray-600 dark:text-gray-300 mb-4">{description}</p>
         <div className="flex flex-wrap gap-1.5">
-          {technologies.map((tech, index) => (
+          {technologies.map((tech) => (
             <span
-              key={index}
+              key={tech}
               className="inline-flex items-center rounded-full bg-blue-100 dark:bg-blue-900/20 px-2.5 py-0.5 text-xs font-medium text-blue-800 dark:text-blue-300"
             >
               {tech}
@@ -256,9 +256,9 @@ export default function InnovationHubPage() {
           Our technology radar tracks emerging AI technologies and their potential impact on business and society. We continuously evaluate these technologies for their maturity, applicability, and strategic value.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {emergingTechnologies.map((tech, index) => (
+          {emergingTechnologies.map((tech) => (
             <TechnologyCard
-              key={index}
+              key={tech.title}
               title={tech.title}
               description={tech.description}
               icon={tech.icon}
@@ -275,9 +275,9 @@ export default function InnovationHubPage() {
           Explore our current innovation projects where we&apos;re applying emerging technologies to solve complex business challenges and create new opportunities.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {innovationProjects.map((project, index) => (
+          {innovationProjects.map((project) => (
             <ProjectCard
-              key={index}
+              key={project.title}
               title={project.title}
               description={project.description}
               image={project.image}
@@ -308,8 +308,8 @@ export default function InnovationHubPage() {
               placeholder: "Upload an image",
               buttonText: "Identify Objects"
             }
-          ].map((demo, index) => (
-            <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+          ].map((demo) => (
+            <div key={demo.title} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
               <h3 className="text-xl font-semibold mb-3">{demo.title}</h3>
               <p className="text-gray-600 dark:text-gray-300 mb-6">{demo.description}</p>
               
@@ -356,8 +356,8 @@ export default function InnovationHubPage() {
               date: "October 2024",
               abstract: "This survey examines the current state of quantum machine learning, identifying promising applications and addressing key challenges for practical implementation."
             }
-          ].map((paper, index) => (
-            <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+          ].map((paper) => (
+            <div key={paper.title} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
               <h3 className="text-xl font-semibold mb-2">{paper.title}</h3>
               <div className="flex flex-wrap gap-x-4 gap-y-2 mb-4 text-sm">
                 <span className="text-gray-600 dark:text-gray-300">{paper.authors}</span>

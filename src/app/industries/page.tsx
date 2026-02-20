@@ -116,9 +116,9 @@ export default function IndustriesPage() {
 
       <div className="mb-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {industries.map((industry, index) => (
+          {industries.map((industry) => (
             <IndustryCard
-              key={index}
+              key={industry.title}
               title={industry.title}
               description={industry.description}
               image={industry.image}
@@ -144,8 +144,8 @@ export default function IndustriesPage() {
               title: "Tailored Outcomes",
               description: "Solutions designed to address the specific KPIs and metrics that matter most in your industry."
             }
-          ].map((benefit, index) => (
-            <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+          ].map((benefit) => (
+            <div key={benefit.title} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
               <h3 className="text-xl font-semibold mb-3">{benefit.title}</h3>
               <p className="text-gray-600 dark:text-gray-300">{benefit.description}</p>
             </div>
@@ -161,8 +161,8 @@ export default function IndustriesPage() {
             { number: "02", title: "Solution Design", description: "We design AI solutions tailored to your industry's unique requirements and regulations." },
             { number: "03", title: "Implementation", description: "We deploy industry-optimized AI systems with minimal disruption to your operations." },
             { number: "04", title: "Continuous Improvement", description: "We continuously refine and enhance your solutions based on industry developments." }
-          ].map((step, index) => (
-            <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 text-center">
+          ].map((step) => (
+            <div key={step.number} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 text-center">
               <div className="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mx-auto mb-4">
                 <span className="text-blue-600 dark:text-blue-300 font-bold">{step.number}</span>
               </div>

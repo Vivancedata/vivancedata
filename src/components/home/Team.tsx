@@ -21,9 +21,9 @@ const Team = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {teamMembers.map((member, index) => (
+          {teamMembers.map((member) => (
             <Card
-              key={index}
+              key={member.name}
               className="overflow-hidden border-0 shadow-md hover:shadow-xl transition-all duration-300 hover:translate-y-[-5px] bg-card"
             >
               <CardContent className="p-0">

@@ -49,7 +49,7 @@ const Process = () => {
           {/* Process Steps */}
           <div className="space-y-12 relative">
             {processSteps.map((step, index) => (
-              <div key={index} className={`flex flex-col md:flex-row ${index % 2 === 0 ? 'md:flex-row-reverse' : ''} items-center`}>
+              <div key={step.number} className={`flex flex-col md:flex-row ${index % 2 === 0 ? 'md:flex-row-reverse' : ''} items-center`}>
                 <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:text-right md:pr-12' : 'md:text-left md:pl-12'}`}>
                   <Card className="border-0 shadow-md hover:shadow-xl transition-all duration-300 hover:translate-y-[-5px] h-full bg-card">
                     <CardContent className="p-6">

@@ -43,8 +43,8 @@ export default function Overview() {
                     {service.description}
                   </CardDescription>
                   <div className="space-y-3">
-                    {service.features.map((feature, index) => (
-                      <div key={index} className="flex items-start gap-2">
+                    {service.features.map((feature) => (
+                      <div key={feature} className="flex items-start gap-2">
                         <div className="rounded-full bg-green-100 dark:bg-green-900/30 p-1 mt-0.5">
                           <svg className="h-3 w-3 text-green-600 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />

@@ -42,9 +42,9 @@ const Pricing = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {pricingTiers.map((tier, index) => (
+          {pricingTiers.map((tier) => (
             <Card
-              key={index}
+              key={tier.name}
               className={`relative ${tier.popular ? 'ring-1 ring-primary/40 shadow-[0_35px_80px_-50px_rgba(13,148,136,0.55)]' : 'shadow-[0_25px_60px_-45px_rgba(15,118,110,0.35)]'} transition-transform duration-300 hover:-translate-y-2`}
             >
               {tier.popular && (
@@ -73,8 +73,8 @@ const Pricing = () => {
                   )}
                 </div>
                 <div className="space-y-4">
-                  {tier.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-start">
+                  {tier.features.map((feature) => (
+                    <div key={feature.name} className="flex items-start">
                       {feature.included ? (
                         <Check className="h-5 w-5 text-emerald-500 dark:text-emerald-300 mr-2 mt-0.5 flex-shrink-0" />
                       ) : (

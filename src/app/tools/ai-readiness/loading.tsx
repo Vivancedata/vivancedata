@@ -36,10 +36,10 @@ export default function AIReadinessLoading() {
 
             {/* Radio Options Skeleton */}
             <div className="space-y-4">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <div key={i} className="flex items-start gap-3">
+              {[1, 2, 3, 4, 5].map((option) => (
+                <div key={`option-${option}`} className="flex items-start gap-3">
                   <Skeleton variant="circular" className="h-5 w-5 mt-0.5 flex-shrink-0" />
-                  <Skeleton className="h-5 w-full" style={{ maxWidth: `${85 - i * 5}%` }} />
+                  <Skeleton className="h-5 w-full" style={{ maxWidth: `${85 - option * 5}%` }} />
                 </div>
               ))}
             </div>
@@ -56,8 +56,8 @@ export default function AIReadinessLoading() {
         <div className="mt-16 rounded-xl bg-muted/50 p-8">
           <Skeleton className="h-7 w-64 mb-6" />
           <div className="grid md:grid-cols-2 gap-6">
-            {[1, 2, 3, 4].map((i) => (
-              <div key={i}>
+            {[1, 2, 3, 4].map((topic) => (
+              <div key={`topic-${topic}`}>
                 <div className="flex items-center gap-2 mb-2">
                   <Skeleton variant="circular" className="h-2 w-2" />
                   <Skeleton className="h-5 w-36" />

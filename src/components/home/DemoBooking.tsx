@@ -131,9 +131,9 @@ export function DemoBooking(): React.ReactElement {
                 staggerDelay={0.1}
                 direction="up"
               >
-                {demoFeatures.map((feature, index) => (
+                {demoFeatures.map((feature) => (
                   <div
-                    key={index}
+                    key={feature.title}
                     className="flex items-start gap-4 group"
                   >
                     <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">

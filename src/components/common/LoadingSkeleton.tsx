@@ -63,6 +63,8 @@ export function ServiceCardSkeleton() {
 }
 
 export function PageSkeleton() {
+  const cardSlots = ["slot-1", "slot-2", "slot-3", "slot-4", "slot-5", "slot-6"];
+
   return (
     <div className="container mx-auto p-6 space-y-8">
       {/* Header */}
@@ -73,8 +75,8 @@ export function PageSkeleton() {
 
       {/* Content Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {[...Array(6)].map((_, i) => (
-          <div key={i} className="space-y-3">
+        {cardSlots.map((slot) => (
+          <div key={slot} className="space-y-3">
             <Skeleton className="h-40 w-full" />
             <Skeleton className="h-4 w-full" />
             <Skeleton className="h-4 w-3/4" />

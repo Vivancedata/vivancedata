@@ -30,8 +30,8 @@ export function ContactSection({
             {description}
           </p>
           <div className="space-y-6">
-            {benefits.map((benefit, index) => (
-              <div key={index} className="flex items-start gap-3">
+            {benefits.map((benefit) => (
+              <div key={benefit.title} className="flex items-start gap-3">
                 <div className="rounded-full bg-blue-100 p-2 mt-1">
                   <CheckCircle className="h-4 w-4 text-blue-600" />
                 </div>

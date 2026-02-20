@@ -51,8 +51,8 @@ export default function ROICalculatorLoading() {
               <div>
                 <Skeleton className="h-5 w-44 mb-3" />
                 <div className="space-y-2">
-                  {[1, 2, 3, 4].map((i) => (
-                    <div key={i} className="flex items-center gap-2">
+                  {[1, 2, 3, 4].map((factor) => (
+                    <div key={`factor-${factor}`} className="flex items-center gap-2">
                       <Skeleton variant="circular" className="h-2 w-2" />
                       <Skeleton className="h-4 w-48" />
                     </div>
@@ -64,8 +64,8 @@ export default function ROICalculatorLoading() {
               <div>
                 <Skeleton className="h-5 w-40 mb-3" />
                 <div className="space-y-2">
-                  {[1, 2, 3, 4].map((i) => (
-                    <div key={i} className="flex items-center gap-2">
+                  {[1, 2, 3, 4].map((benefit) => (
+                    <div key={`benefit-${benefit}`} className="flex items-center gap-2">
                       <Skeleton variant="circular" className="h-2 w-2" />
                       <Skeleton className="h-4 w-44" />
                     </div>

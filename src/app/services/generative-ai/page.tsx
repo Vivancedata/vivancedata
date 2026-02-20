@@ -144,8 +144,8 @@ export default function GenerativeAIPage() {
       <div className="mb-20">
         <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Our Generative AI Services</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature, index) => (
-            <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+          {features.map((feature) => (
+            <div key={feature.title} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
               <div className="flex items-center mb-4">
                 {feature.icon}
                 <h3 className="text-xl font-semibold ml-2">{feature.title}</h3>
@@ -159,8 +159,8 @@ export default function GenerativeAIPage() {
       <div className="mb-20">
         <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Popular Use Cases</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {useCases.map((useCase, index) => (
-            <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+          {useCases.map((useCase) => (
+            <div key={useCase.title} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
               <div className="inline-block px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 text-sm font-medium mb-4">
                 {useCase.industry}
               </div>

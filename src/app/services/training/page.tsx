@@ -140,8 +140,8 @@ export default function TrainingPage() {
         <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Our Training Programs</h2>
         
         <div className="space-y-8">
-          {courses.map((course, index) => (
-            <div key={index} className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
+          {courses.map((course) => (
+            <div key={course.title} className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
               <div className="p-6 md:p-8">
                 <div className="flex flex-col md:flex-row gap-6">
                   <div className="w-full md:w-2/3">
@@ -163,8 +163,8 @@ export default function TrainingPage() {
                   <div className="w-full md:w-1/3">
                     <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">Key Topics</h4>
                     <ul className="space-y-1">
-                      {course.topics.map((topic, i) => (
-                        <li key={i} className="flex items-start">
+                      {course.topics.map((topic) => (
+                        <li key={topic} className="flex items-start">
                           <Check className="h-4 w-4 text-blue-500 mt-1 mr-2 flex-shrink-0" />
                           <span className="text-gray-700 dark:text-gray-200 text-sm">{topic}</span>
                         </li>
@@ -205,8 +205,8 @@ export default function TrainingPage() {
               title: "Ongoing Support",
               description: "Post-training resources and follow-up sessions ensure your team can apply what they've learned."
             }
-          ].map((item, index) => (
-            <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+          ].map((item) => (
+            <div key={item.title} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
               <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
               <p className="text-gray-600 dark:text-gray-300">{item.description}</p>
             </div>

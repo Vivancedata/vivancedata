@@ -8,10 +8,11 @@ This checklist is intentionally strict. A release should not be marked productio
 |---|---|---|---|
 | Build reliability | Production build succeeds in CI and local release pipeline | `npm run build` | Pass |
 | Static quality | Lint + typecheck pass with no errors | `npm run lint && npm run type-check` | Pass |
+| React quality score | React Doctor full-repo score is 100/100 | `npm run react-doctor:score` | Pass |
 | Unit coverage | Unit test coverage >= 85% lines/branches/functions/statements | `npm run test:unit` + coverage report | Pass |
 | Integration coverage | Integration test coverage >= 85% on critical flows | `npm run test:integration` + coverage report | Pass |
 | E2E baseline | Critical user journeys pass (home, contact, blog, tools) | `npm run test:e2e` | Pass |
-| Content credibility | No placeholder or unverifiable trust claims | Manual review of `team`, `testimonials`, `case studies`, `contact` | In progress |
+| Content credibility | No placeholder or unverifiable trust claims | Manual review of `team`, `testimonials`, `case studies`, `contact` | Pass |
 | Blog publishing integrity | Same post discovery logic for list, slug page, sitemap | Code review + tests in `tests/integration/blogPosts.test.ts` | Pass |
 | Privacy/compliance | Analytics scripts load only after explicit consent | Manual test + code review | Pass (code-level) |
 | Security baseline | No high/critical runtime vulnerabilities without explicit exception | `npm audit --omit=dev` | Pass |

@@ -25,8 +25,8 @@ export function StatsSection({
           <p className="text-primary-foreground/80 max-w-2xl mx-auto">{description}</p>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
-          {stats.map((stat, index) => (
-            <div key={index} className="flex flex-col items-center text-center">
+          {stats.map((stat) => (
+            <div key={`${stat.label}-${stat.value}`} className="flex flex-col items-center text-center">
               <div className="bg-primary-foreground/10 rounded-full p-4 mb-4">
                 {stat.icon}
               </div>

@@ -136,9 +136,9 @@ function UseCaseCard({ useCase }: { useCase: UseCase }) {
               Key Benefits:
             </p>
             <ul className="space-y-1">
-              {useCase.keyBenefits.map((benefit, index) => (
+              {useCase.keyBenefits.map((benefit) => (
                 <li
-                  key={index}
+                  key={benefit}
                   className="text-xs text-muted-foreground flex items-start"
                 >
                   <span className="text-primary mr-2">-</span>

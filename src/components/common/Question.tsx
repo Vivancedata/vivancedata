@@ -7,8 +7,8 @@ import { questions } from "@/constants/faq";
 export default function FAQ() {
   return (
     <Accordion type="single" collapsible>
-      {questions.map((item, index) => (
-        <AccordionItem key={index} value={`item-${index}`}>
+      {questions.map((item) => (
+        <AccordionItem key={item.question} value={item.question}>
           <AccordionTrigger>{item.question}</AccordionTrigger>
           <AccordionContent>{item.answer}</AccordionContent>
         </AccordionItem>

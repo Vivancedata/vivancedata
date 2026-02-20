@@ -17,16 +17,16 @@ export default function BlogLoading() {
 
         {/* Tags Skeleton */}
         <div className="flex flex-wrap gap-2">
-          {[1, 2, 3, 4, 5].map((i) => (
-            <Skeleton key={i} variant="circular" className="h-7 w-20" />
+          {[1, 2, 3, 4, 5].map((tag) => (
+            <Skeleton key={`tag-${tag}`} variant="circular" className="h-7 w-20" />
           ))}
         </div>
       </div>
 
       {/* Blog Cards Grid Skeleton */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
-        {[1, 2, 3, 4, 5, 6].map((i) => (
-          <SkeletonCard key={i} />
+        {[1, 2, 3, 4, 5, 6].map((card) => (
+          <SkeletonCard key={`card-${card}`} />
         ))}
       </div>
     </Container>

@@ -22,8 +22,8 @@ const Partners = () => {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-          {partners.map((partner, index) => (
-            <Card key={index} className="border border-border hover:border-primary/30 hover:shadow-md dark:hover:shadow-primary/5 transition-all duration-300 bg-card">
+          {partners.map((partner) => (
+            <Card key={partner.name} className="border border-border hover:border-primary/30 hover:shadow-md dark:hover:shadow-primary/5 transition-all duration-300 bg-card">
               <CardContent className="flex flex-col items-center justify-center p-6 h-32">
                 <div className="bg-primary text-primary-foreground text-2xl font-bold w-12 h-12 rounded-full flex items-center justify-center mb-3">
                   {partner.name.charAt(0)}

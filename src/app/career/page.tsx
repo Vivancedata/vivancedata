@@ -69,9 +69,9 @@ const CareerPage = () => {
         <div className="mb-16">
           <h2 className="text-2xl font-bold text-center mb-8">Why Work With Us</h2>
           <div className="grid md:grid-cols-2 gap-6">
-            {benefits.map((benefit, index) => (
+            {benefits.map((benefit) => (
               <div
-                key={index}
+                key={benefit.title}
                 className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 flex gap-4"
               >
                 <div className="bg-primary/10 p-3 rounded-lg h-fit">

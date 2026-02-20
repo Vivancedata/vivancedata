@@ -23,8 +23,8 @@ function SkeletonCard() {
       </div>
       {/* Stats grid */}
       <div className="grid grid-cols-3 gap-2 pt-3 border-t">
-        {[1, 2, 3].map((i) => (
-          <div key={i} className="text-center">
+        {[1, 2, 3].map((stat) => (
+          <div key={`stat-${stat}`} className="text-center">
             <Skeleton className="h-4 w-4 mx-auto mb-1" />
             <Skeleton className="h-3 w-12 mx-auto mb-1" />
             <Skeleton className="h-4 w-16 mx-auto" />
@@ -59,8 +59,8 @@ export default function UseCasesLoading() {
 
         {/* Filter Dropdowns */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {[1, 2, 3].map((i) => (
-            <div key={i}>
+          {[1, 2, 3].map((filter) => (
+            <div key={`filter-${filter}`}>
               <Skeleton className="h-4 w-24 mb-2" />
               <Skeleton className="h-10 w-full" />
             </div>
@@ -75,8 +75,8 @@ export default function UseCasesLoading() {
 
       {/* Use Cases Grid Skeleton */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {[1, 2, 3, 4, 5, 6].map((i) => (
-          <SkeletonCard key={i} />
+        {[1, 2, 3, 4, 5, 6].map((card) => (
+          <SkeletonCard key={`card-${card}`} />
         ))}
       </div>
 
@@ -87,8 +87,8 @@ export default function UseCasesLoading() {
         <Skeleton className="h-5 w-5/6 mb-6" />
 
         <div className="grid md:grid-cols-3 gap-6">
-          {[1, 2, 3].map((i) => (
-            <div key={i}>
+          {[1, 2, 3].map((cta) => (
+            <div key={`cta-${cta}`}>
               <Skeleton className="h-5 w-24 mb-2" />
               <Skeleton className="h-4 w-full mb-1" />
               <Skeleton className="h-4 w-5/6" />

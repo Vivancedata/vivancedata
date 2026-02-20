@@ -11,27 +11,42 @@ interface AboutHeroProps {
 }
 
 export function AboutHero({ title, description }: AboutHeroProps): React.ReactElement {
+  const particles = React.useMemo(
+    () =>
+      Array.from({ length: 20 }, (_, particleId) => ({
+        id: `particle-${particleId + 1}`,
+        width: Math.random() * 100 + 50,
+        height: Math.random() * 100 + 50,
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 100}%`,
+        yOffset: Math.random() * 30 - 15,
+        xOffset: Math.random() * 30 - 15,
+        duration: Math.random() * 5 + 5,
+      })),
+    []
+  );
+
   return (
     <section className="relative w-full bg-gradient-to-r from-blue-900 to-indigo-900 text-white py-20 md:py-28 overflow-hidden">
       {/* Background particles */}
       <div className="absolute inset-0 overflow-hidden">
-        {Array.from({ length: 20 }).map((_, i) => (
+        {particles.map((particle) => (
           <m.div
-            key={i}
+            key={particle.id}
             className="absolute rounded-full bg-white/5 backdrop-blur-sm"
             style={{
-              width: Math.random() * 100 + 50,
-              height: Math.random() * 100 + 50,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              width: particle.width,
+              height: particle.height,
+              left: particle.left,
+              top: particle.top,
             }}
             animate={{
-              y: [0, Math.random() * 30 - 15],
-              x: [0, Math.random() * 30 - 15],
+              y: [0, particle.yOffset],
+              x: [0, particle.xOffset],
               opacity: [0.1, 0.3, 0.1],
             }}
             transition={{
-              duration: Math.random() * 5 + 5,
+              duration: particle.duration,
               repeat: Infinity,
               repeatType: "reverse",
             }}

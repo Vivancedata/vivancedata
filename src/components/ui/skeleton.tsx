@@ -45,12 +45,12 @@ function SkeletonText({
 }) {
   return (
     <div className={cn("space-y-2", className)}>
-      {Array.from({ length: lines }).map((_, i) => (
+      {Array.from({ length: lines }, (_, lineNumber) => lineNumber + 1).map((lineNumber) => (
         <Skeleton
-          key={i}
+          key={`line-${lineNumber}`}
           className={cn(
             "h-4",
-            i === lines - 1 && lines > 1 ? "w-3/4" : "w-full"
+            lineNumber === lines && lines > 1 ? "w-3/4" : "w-full"
           )}
         />
       ))}

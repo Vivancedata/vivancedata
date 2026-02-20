@@ -139,8 +139,8 @@ export default function ConsultingPage() {
       <div className="mb-20">
         <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Our Consulting Services</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => (
-            <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+          {services.map((service) => (
+            <div key={service.title} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
               <div className="flex items-center mb-4">
                 {service.icon}
                 <h3 className="text-xl font-semibold ml-2">{service.title}</h3>
@@ -154,8 +154,8 @@ export default function ConsultingPage() {
       <div className="mb-20">
         <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Why Choose Our Consulting Services</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {benefits.map((benefit, index) => (
-            <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+          {benefits.map((benefit) => (
+            <div key={benefit.title} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
               <h3 className="text-xl font-semibold mb-3">{benefit.title}</h3>
               <p className="text-gray-600 dark:text-gray-300">{benefit.description}</p>
             </div>
@@ -171,8 +171,8 @@ export default function ConsultingPage() {
             { step: "2", title: "Assessment", description: "We evaluate your organization's AI readiness and identify potential high-value use cases." },
             { step: "3", title: "Strategy", description: "We develop a comprehensive AI roadmap tailored to your specific business needs." },
             { step: "4", title: "Implementation", description: "We provide ongoing guidance and support as you execute your AI strategy." }
-          ].map((phase, index) => (
-            <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 text-center">
+          ].map((phase) => (
+            <div key={phase.step} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 text-center">
               <div className="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mx-auto mb-4">
                 <span className="text-blue-600 dark:text-blue-300 font-bold">{phase.step}</span>
               </div>

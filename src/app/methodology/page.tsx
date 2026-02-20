@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import { Container } from '@/components/common/Container';
 import { Heading } from '@/components/common/Heading';
@@ -13,6 +11,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import {
   ArrowRight,
   Compass,
@@ -33,6 +32,12 @@ import {
   methodologyFAQs,
   type MethodologyPhase,
 } from '@/constants/methodology';
+
+export const metadata: Metadata = {
+  title: 'RAPID AI Framework Methodology | VivanceData',
+  description:
+    'Explore VivanceData’s RAPID AI Framework: a six-phase approach from discovery to scale for reliable, measurable AI implementation.',
+};
 
 const getPhaseIcon = (iconType: MethodologyPhase['iconType']) => {
   const iconClass = 'h-8 w-8';
@@ -233,9 +238,9 @@ export default function MethodologyPage() {
                             Key Deliverables
                           </h4>
                           <ul className="space-y-2">
-                            {phase.deliverables.map((deliverable, i) => (
+                            {phase.deliverables.map((deliverable) => (
                               <li
-                                key={i}
+                                key={deliverable}
                                 className="flex items-start gap-2 text-gray-700 dark:text-gray-300"
                               >
                                 <CheckCircle2 className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
@@ -294,9 +299,9 @@ export default function MethodologyPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {frameworkBenefits.map((benefit, index) => (
+            {frameworkBenefits.map((benefit) => (
               <Card
-                key={index}
+                key={benefit.title}
                 className="border-0 shadow-md hover:shadow-lg transition-all duration-300"
               >
                 <CardContent className="p-8">
@@ -346,9 +351,9 @@ export default function MethodologyPage() {
                     'Siloed implementation teams',
                     'Knowledge trapped with vendors',
                     'Unpredictable costs and timelines',
-                  ].map((item, i) => (
+                  ].map((item) => (
                     <li
-                      key={i}
+                      key={item}
                       className="flex items-start gap-3 text-gray-600 dark:text-gray-400"
                     >
                       <span className="text-red-500 font-bold">x</span>
@@ -373,9 +378,9 @@ export default function MethodologyPage() {
                     'Cross-functional collaboration',
                     'Knowledge transfer to your team',
                     'Predictable milestones and budget',
-                  ].map((item, i) => (
+                  ].map((item) => (
                     <li
-                      key={i}
+                      key={item}
                       className="flex items-start gap-3 text-gray-700 dark:text-gray-300"
                     >
                       <CheckCircle2 className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
@@ -403,8 +408,8 @@ export default function MethodologyPage() {
           </div>
 
           <Accordion type="single" collapsible className="w-full">
-            {methodologyFAQs.map((faq, index) => (
-              <AccordionItem key={index} value={`item-${index}`}>
+            {methodologyFAQs.map((faq) => (
+              <AccordionItem key={faq.question} value={faq.question}>
                 <AccordionTrigger className="text-left font-semibold">
                   {faq.question}
                 </AccordionTrigger>
