@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowRight, BarChart, Brain, Database, LineChart, MessageSquare, ShieldCheck, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { AnimateOnScroll } from "@/hooks/useAnimateOnScroll";
-import { motion } from "framer-motion";
+import { LazyMotion, domAnimation, m } from "framer-motion";
 import { caseStudies, IconType } from "@/constants/caseStudies";
 import { prefersReducedMotion } from "@/lib/performance";
 
@@ -29,19 +29,15 @@ const getIconComponent = (iconType: IconType) => {
 };
 
 const CaseStudies = () => {
-  const [reducedMotion, setReducedMotion] = useState(false);
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- Intentional: detecting user's reduced motion preference on mount, runs once
-    setReducedMotion(prefersReducedMotion());
-  }, []);
+  const [reducedMotion] = useState(() => prefersReducedMotion());
 
   // reducedMotion is available for future animation enhancements
   void reducedMotion;
 
   return (
-    <section className="w-full py-20 md:py-32 overflow-hidden bg-muted/20">
-      <div className="container mx-auto px-4 relative">
+    <LazyMotion features={domAnimation}>
+      <section className="w-full py-20 md:py-32 overflow-hidden bg-muted/20">
+        <div className="container mx-auto px-4 relative">
         {/* Background elements */}
         <div className="absolute top-40 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -z-10" />
         <div className="absolute bottom-20 right-0 w-80 h-80 bg-accent/5 rounded-full blur-3xl -z-10" />
@@ -54,7 +50,10 @@ const CaseStudies = () => {
             Case Studies
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Explore how our AI solutions have transformed businesses across industries, delivering measurable results and competitive advantages.
+            Representative engagement patterns across industries, showing common challenges, solution approaches, and delivery outcomes.
+          </p>
+          <p className="text-sm text-muted-foreground/90 max-w-2xl mx-auto mt-3">
+            Examples are anonymized and generalized to protect client confidentiality.
           </p>
         </AnimateOnScroll>
 
@@ -68,13 +67,13 @@ const CaseStudies = () => {
                     value={study.id}
                     className="flex flex-col items-center py-4 px-6 rounded-xl data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all duration-500 hover:bg-primary/10"
                   >
-                    <motion.div
+                    <m.div
                       className="transition-all duration-300 data-[state=active]:scale-110"
                       whileHover={{ scale: 1.1 }}
                       transition={{ type: "spring", stiffness: 400 }}
                     >
                       {getIconComponent(study.iconType)}
-                    </motion.div>
+                    </m.div>
                     <span className="mt-2 text-sm font-medium">{study.industry}</span>
                   </TabsTrigger>
                 ))}
@@ -118,9 +117,9 @@ const CaseStudies = () => {
                           <div>
                             <h4 className="font-bold text-xl mb-3 text-primary">Results</h4>
                             <ul className="space-y-3">
-                              {study.results.map((result, index) => (
+                              {study.results.map((result) => (
                                 <li
-                                  key={index}
+                                  key={`${study.id}-result-${result}`}
                                   className="flex items-start"
                                 >
                                   <div className="rounded-full bg-green-100 dark:bg-green-900/30 p-1 mr-3 mt-1 shadow-sm">
@@ -136,9 +135,9 @@ const CaseStudies = () => {
                           <div>
                             <h4 className="font-bold text-xl mb-3 text-primary">Technologies Used</h4>
                             <div className="flex flex-wrap gap-2">
-                              {study.technologies.map((tech, index) => (
+                              {study.technologies.map((tech) => (
                                 <Badge
-                                  key={index}
+                                  key={`${study.id}-tech-${tech}`}
                                   variant="outline"
                                   className="bg-primary/5 dark:bg-primary/10 border-primary/20 text-primary px-3 py-1 text-sm"
                                 >
@@ -157,7 +156,7 @@ const CaseStudies = () => {
                       </div>
                       <div className="relative h-80 lg:h-auto overflow-hidden">
                         <div className="absolute inset-0 bg-primary">
-                          <motion.div
+                          <m.div
                             className="absolute inset-0 opacity-30"
                             animate={{
                               backgroundPosition: ['0% 0%', '100% 100%'],
@@ -173,7 +172,7 @@ const CaseStudies = () => {
                           />
                         </div>
                         <div className="absolute inset-0 flex items-center justify-center p-8">
-                          <motion.div
+                          <m.div
                             className="relative w-full h-full max-w-md"
                             whileHover={{ scale: 1.03 }}
                             transition={{ type: "spring", stiffness: 300 }}
@@ -199,7 +198,7 @@ const CaseStudies = () => {
                                 </div>
                               </div>
                             </div>
-                          </motion.div>
+                          </m.div>
                         </div>
                       </div>
                     </div>
@@ -219,8 +218,9 @@ const CaseStudies = () => {
             <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
           </Button>
         </AnimateOnScroll>
-      </div>
-    </section>
+        </div>
+      </section>
+    </LazyMotion>
   );
 };
 

@@ -8,7 +8,7 @@ import { ArrowRight, Calendar, Clock, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimateOnScroll, StaggerContainer } from "@/hooks/useAnimateOnScroll";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Avatar } from "@/components/common/Avatar";
 
 // Sample blog posts for the homepage
@@ -160,7 +160,7 @@ const Blog = () => {
         <AnimateOnScroll variant="fadeInUp" delay={0.3} className="mt-20">
           <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 md:p-12 text-white shadow-xl overflow-hidden relative">
             {/* Animated background elements */}
-            <motion.div 
+            <m.div 
               className="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-white/10 blur-xl"
               animate={{ 
                 scale: [1, 1.2, 1],
@@ -172,7 +172,7 @@ const Blog = () => {
                 repeatType: "reverse",
               }}
             />
-            <motion.div 
+            <m.div 
               className="absolute -left-20 -bottom-20 w-80 h-80 rounded-full bg-white/10 blur-xl"
               animate={{ 
                 scale: [1, 1.3, 1],
@@ -218,8 +218,8 @@ const Blog = () => {
                       <h4 className="font-bold text-xl mb-4">What You&apos;ll Get:</h4>
                       <ul className="space-y-4">
                         {["Exclusive AI insights and research", "Industry case studies and success stories", "Early access to webinars and events"].map((item, index) => (
-                          <motion.li 
-                            key={index} 
+                          <m.li 
+                            key={item} 
                             className="flex items-center"
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
@@ -231,7 +231,7 @@ const Blog = () => {
                               </svg>
                             </div>
                             <span className="text-lg">{item}</span>
-                          </motion.li>
+                          </m.li>
                         ))}
                       </ul>
                     </div>

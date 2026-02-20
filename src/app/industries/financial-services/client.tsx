@@ -8,7 +8,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Check } from "lucide-react";
 import { AnimateOnScroll, StaggerContainer } from "@/hooks/useAnimateOnScroll";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 interface SolutionCardProps {
   title: string;
@@ -28,8 +28,8 @@ const SolutionCard = ({ title, description, icon, benefits }: SolutionCardProps)
     <p className="text-gray-600 dark:text-gray-300 mb-4">{description}</p>
     <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">Key Benefits</h4>
     <ul className="space-y-2">
-      {benefits.map((benefit, index) => (
-        <li key={index} className="flex items-start">
+      {benefits.map((benefit) => (
+        <li key={`${title}-benefit-${benefit}`} className="flex items-start">
           <Check className="h-5 w-5 text-blue-500 mt-0.5 mr-2 flex-shrink-0" />
           <span className="text-gray-700 dark:text-gray-200">{benefit}</span>
         </li>
@@ -64,8 +64,8 @@ const CaseStudy = ({ title, client, challenge, solution, results }: CaseStudyPro
     <div>
       <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Results</h4>
       <ul className="space-y-1">
-        {results.map((result, index) => (
-          <li key={index} className="flex items-start">
+        {results.map((result) => (
+          <li key={`${title}-result-${result}`} className="flex items-start">
             <Check className="h-5 w-5 text-blue-500 mt-0.5 mr-2 flex-shrink-0" />
             <span className="text-gray-700 dark:text-gray-200">{result}</span>
           </li>
@@ -137,7 +137,7 @@ export default function FinancialServicesClient({
           <p className="text-gray-600 dark:text-gray-300 mb-6">
             At VivanceData, we combine deep financial domain expertise with cutting-edge AI capabilities to help banks, insurers, investment firms, and fintechs harness the power of artificial intelligence to drive efficiency, reduce risk, enhance customer experiences, and create competitive advantages.
           </p>
-          <motion.div
+          <m.div
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
@@ -147,7 +147,7 @@ export default function FinancialServicesClient({
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>
-          </motion.div>
+          </m.div>
         </AnimateOnScroll>
       </div>
 
@@ -156,9 +156,9 @@ export default function FinancialServicesClient({
       </AnimateOnScroll>
       
       <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
-        {solutions.slice(0, 3).map((solution, index) => (
-          <motion.div
-            key={index}
+        {solutions.slice(0, 3).map((solution) => (
+          <m.div
+            key={`solution-primary-${solution.title}`}
             whileHover={{ y: -10, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
@@ -168,14 +168,14 @@ export default function FinancialServicesClient({
               icon={solution.icon}
               benefits={solution.benefits}
             />
-          </motion.div>
+          </m.div>
         ))}
       </StaggerContainer>
       
       <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
-        {solutions.slice(3, 5).map((solution, index) => (
-          <motion.div
-            key={index}
+        {solutions.slice(3, 5).map((solution) => (
+          <m.div
+            key={`solution-secondary-${solution.title}`}
             whileHover={{ y: -10, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
@@ -185,7 +185,7 @@ export default function FinancialServicesClient({
               icon={solution.icon}
               benefits={solution.benefits}
             />
-          </motion.div>
+          </m.div>
         ))}
       </StaggerContainer>
 
@@ -193,15 +193,15 @@ export default function FinancialServicesClient({
         <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Measurable Results for Financial Institutions</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {stats.map((stat, index) => (
-            <AnimateOnScroll key={index} variant="scaleIn" delay={index * 0.1} className="text-center">
-              <motion.div 
+            <AnimateOnScroll key={stat.label} variant="scaleIn" delay={index * 0.1} className="text-center">
+              <m.div 
                 className="text-4xl md:text-5xl font-bold text-blue-600 dark:text-blue-400 mb-2"
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 {stat.value}
-              </motion.div>
+              </m.div>
               <p className="text-gray-700 dark:text-gray-200">{stat.label}</p>
             </AnimateOnScroll>
           ))}
@@ -213,9 +213,9 @@ export default function FinancialServicesClient({
       </AnimateOnScroll>
       
       <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
-        {caseStudies.map((study, index) => (
-          <motion.div
-            key={index}
+        {caseStudies.map((study) => (
+          <m.div
+            key={`${study.client}-${study.title}`}
             whileHover={{ y: -10, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
@@ -226,7 +226,7 @@ export default function FinancialServicesClient({
               solution={study.solution}
               results={study.results}
             />
-          </motion.div>
+          </m.div>
         ))}
       </StaggerContainer>
 
@@ -285,23 +285,23 @@ export default function FinancialServicesClient({
               ]
             }
           ].map((phase, index) => (
-            <AnimateOnScroll key={index} variant="fadeInLeft" delay={index * 0.2} className="relative">
+            <AnimateOnScroll key={phase.number} variant="fadeInLeft" delay={index * 0.2} className="relative">
               <div className="flex items-center mb-4">
-                <motion.div 
+                <m.div 
                   className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-lg mr-4 flex-shrink-0"
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 >
                   {phase.number}
-                </motion.div>
+                </m.div>
                 <h3 className="text-xl font-semibold">{phase.title}</h3>
               </div>
               <div className="pl-16">
                 <p className="text-gray-600 dark:text-gray-300 mb-4">{phase.description}</p>
                 <ul className="space-y-2">
                   {phase.checks.map((check, i) => (
-                    <motion.li 
-                      key={i} 
+                    <m.li 
+                      key={`${phase.number}-${check}`} 
                       className="flex items-start"
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
@@ -309,7 +309,7 @@ export default function FinancialServicesClient({
                     >
                       <Check className="h-5 w-5 text-blue-500 mt-0.5 mr-2 flex-shrink-0" />
                       <span className="text-gray-700 dark:text-gray-200">{check}</span>
-                    </motion.li>
+                    </m.li>
                   ))}
                 </ul>
               </div>
@@ -323,7 +323,7 @@ export default function FinancialServicesClient({
         <p className="text-lg mb-8 max-w-2xl mx-auto">
           Let&apos;s discuss how our AI solutions can help your financial institution reduce risk, improve efficiency, enhance customer experiences, and ensure regulatory compliance.
         </p>
-        <motion.div
+        <m.div
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -331,7 +331,7 @@ export default function FinancialServicesClient({
           <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
             <Link href="/contact">Schedule a Consultation</Link>
           </Button>
-        </motion.div>
+        </m.div>
       </AnimateOnScroll>
     </Container>
   );

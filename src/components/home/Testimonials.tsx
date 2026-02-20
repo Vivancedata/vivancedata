@@ -71,7 +71,10 @@ const Testimonials = () => {
             What Our Clients Say
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Don&apos;t just take our word for it. Hear from businesses that have transformed their operations with our AI solutions.
+            Feedback from recent delivery engagements focused on execution quality, adoption, and measurable outcomes.
+          </p>
+          <p className="text-sm text-muted-foreground/90 max-w-2xl mx-auto mt-3">
+            Testimonials are anonymized to respect client confidentiality.
           </p>
         </AnimateOnScroll>
 
@@ -82,8 +85,11 @@ const Testimonials = () => {
             aria-roledescription="carousel"
           >
             <CarouselContent>
-              {testimonials.map((testimonial, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/2 pl-4">
+              {testimonials.map((testimonial) => (
+                <CarouselItem
+                  key={`${testimonial.name}-${testimonial.company}`}
+                  className="md:basis-1/2 lg:basis-1/2 pl-4"
+                >
                   <Card className="border-0 bg-card/80 dark:bg-card/50 backdrop-blur-sm shadow-xl hover:shadow-2xl transition-all duration-500 h-full rounded-xl overflow-hidden">
                     <CardContent className="p-8 flex flex-col h-full relative">
                       <Quote className="absolute top-4 right-4 h-12 w-12 text-primary/10 dark:text-primary/20" />
@@ -100,8 +106,11 @@ const Testimonials = () => {
                         </div>
                       </div>
                       <div className="flex mb-4">
-                        {[...Array(testimonial.rating)].map((_, i) => (
-                          <StarIcon key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                        {Array.from({ length: testimonial.rating }, (_, starNumber) => (
+                          <StarIcon
+                            key={`${testimonial.name}-star-${starNumber + 1}`}
+                            className="h-5 w-5 fill-yellow-400 text-yellow-400"
+                          />
                         ))}
                       </div>
                       <MetricsDisplay metrics={testimonial.metrics} />

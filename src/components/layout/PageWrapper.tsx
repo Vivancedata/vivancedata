@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { ScrollProgress } from "@/components/common/Animations";
 import { getOptimalAnimationSettings, preloadCriticalResources } from "@/lib/performance";
 
@@ -11,10 +11,12 @@ interface PageWrapperProps {
   preloadResources?: string[];
 }
 
+const EMPTY_PRELOAD_RESOURCES: string[] = [];
+
 export default function PageWrapper({ 
   children, 
   className = "",
-  preloadResources = []
+  preloadResources = EMPTY_PRELOAD_RESOURCES
 }: PageWrapperProps) {
   const { enableAnimations, duration } = getOptimalAnimationSettings();
 
@@ -32,7 +34,7 @@ export default function PageWrapper({
       
       {/* Page content with enter/exit animations */}
       <AnimatePresence mode="wait">
-        <motion.div
+        <m.div
           className={className}
           initial={enableAnimations ? { opacity: 0, y: 20 } : undefined}
           animate={enableAnimations ? { opacity: 1, y: 0 } : undefined}
@@ -40,7 +42,7 @@ export default function PageWrapper({
           transition={{ duration: duration * 0.8 }}
         >
           {children}
-        </motion.div>
+        </m.div>
       </AnimatePresence>
     </>
   );

@@ -62,6 +62,22 @@ bun dev
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the site
 
+## Testing
+
+```bash
+# Unit tests (with coverage)
+npm run test:unit
+
+# Integration tests
+npm run test:integration
+
+# E2E tests (Playwright)
+npm run test:e2e
+```
+
+Production release gates are documented in:
+- `docs/production-go-live-checklist.md`
+
 ## 🤖 AI-Powered Development
 
 This project leverages **Model Context Protocol (MCP)** and **specialized AI agents** for enhanced development workflows.

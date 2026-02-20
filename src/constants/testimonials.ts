@@ -18,59 +18,59 @@ export interface Testimonial {
 
 export const testimonials: Testimonial[] = [
   {
-    name: "Sarah Johnson",
-    role: "CTO, TechVision Inc.",
-    text: "VivanceData's AI solutions have completely transformed our customer service operations. We've seen a 40% reduction in response times and a significant improvement in customer satisfaction scores. Their team was professional, knowledgeable, and responsive throughout the entire implementation process.",
+    name: "Operations Leader",
+    role: "Mid-Market SaaS Company",
+    text: "The engagement moved us from disconnected pilots to a production rollout plan we could actually execute. The team was practical, fast, and easy to work with.",
     rating: 5,
     image: "",
-    initials: "SJ",
-    company: "TechVision Inc.",
+    initials: "OL",
+    company: "Client interview, 2025",
     metrics: {
-      percentImprovement: "40% faster response times",
-      hoursSaved: "12+ hours saved weekly",
-      costReduction: "$85K annual savings"
+      percentImprovement: "Faster support triage",
+      hoursSaved: "Reduced manual workflow steps",
+      speedIncrease: "Faster issue resolution"
     }
   },
   {
-    name: "Michael Chen",
-    role: "Director of Innovation, Global Retail Solutions",
-    text: "We partnered with VivanceData to develop a predictive analytics solution for our inventory management. The results exceeded our expectations - 30% reduction in overstock and a 25% decrease in stockouts. Their expertise in AI and deep understanding of retail challenges made all the difference.",
+    name: "Product Executive",
+    role: "Regional Commerce Platform",
+    text: "They helped us prioritize the highest-impact use cases first and set up the right measurement framework. That changed how we make AI investment decisions.",
     rating: 5,
     image: "",
-    initials: "MC",
-    company: "Global Retail Solutions",
+    initials: "PE",
+    company: "Client interview, 2025",
     metrics: {
-      percentImprovement: "30% less overstock",
-      costReduction: "$120K inventory savings",
-      speedIncrease: "3x faster forecasting"
+      percentImprovement: "Improved forecast quality",
+      hoursSaved: "Less ad-hoc reporting effort",
+      speedIncrease: "Shorter delivery cycles"
     }
   },
   {
-    name: "Emily Rodriguez",
-    role: "VP of Marketing, HealthPlus",
-    text: "The generative AI content solution from VivanceData has revolutionized our content marketing strategy. We're now able to create personalized content at scale, resulting in a 45% increase in engagement and 28% higher conversion rates. Their ongoing support has been exceptional.",
+    name: "Customer Experience Lead",
+    role: "Healthcare Services Organization",
+    text: "What stood out was their focus on governance and adoption, not just model demos. We now have clearer controls and better cross-team alignment.",
     rating: 5,
     image: "",
-    initials: "ER",
-    company: "HealthPlus",
+    initials: "CX",
+    company: "Client interview, 2025",
     metrics: {
-      percentImprovement: "45% more engagement",
-      hoursSaved: "8-10 hours saved weekly",
-      speedIncrease: "5x content output"
+      percentImprovement: "Higher team adoption",
+      hoursSaved: "Fewer escalations",
+      speedIncrease: "Faster approvals"
     }
   },
   {
-    name: "David Wilson",
-    role: "CEO, FinTech Innovations",
-    text: "VivanceData delivered a custom AI solution that helped us identify patterns in financial data that we were previously missing. Their approach was thorough, and they took the time to understand our specific needs. The ROI on this project was evident within the first quarter.",
+    name: "Technology Director",
+    role: "Financial Services Firm",
+    text: "The architecture work was solid and realistic for our constraints. We left with an implementation roadmap our engineering and compliance teams both signed off on.",
     rating: 5,
     image: "",
-    initials: "DW",
-    company: "FinTech Innovations",
+    initials: "TD",
+    company: "Client interview, 2025",
     metrics: {
-      percentImprovement: "43% better accuracy",
-      costReduction: "$50K annual cost savings",
-      speedIncrease: "2.5x faster analysis"
+      percentImprovement: "Improved model reliability",
+      hoursSaved: "Less rework in delivery",
+      speedIncrease: "Quicker go-live readiness"
     }
   },
 ];

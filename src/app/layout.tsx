@@ -3,23 +3,12 @@ import { SiteFooter as Footer } from "@/components/layout/Footer";
 import PageWrapper from "@/components/layout/PageWrapper";
 import { ScrollToTop } from "@/components/common/ScrollToTop";
 import { CookieConsent } from "@/components/common/CookieConsent";
+import { MotionProvider } from "@/components/common/MotionProvider";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { Toaster } from "sonner";
-import { cn } from "@/lib/utils";
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
-
-// Optimize font loading
-const fontSans = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  display: "swap",
-  preload: true,
-  fallback: ["system-ui", "sans-serif"],
-  adjustFontFallback: true,
-});
 
 export const metadata: Metadata = {
   title: {
@@ -39,9 +28,6 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://vivancedata.com"),
   alternates: {
     canonical: "/",
-    languages: {
-      "en-US": "/en-US",
-    },
   },
   openGraph: {
     type: "website",
@@ -101,10 +87,9 @@ export default function RootLayout({
   ];
 
   return (
-    <html lang="en" suppressHydrationWarning className={cn("antialiased", fontSans.variable)}>
+    <html lang="en" suppressHydrationWarning className="antialiased">
       <head>
         <link rel="icon" href="/favicon.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
         <GoogleAnalytics />
@@ -123,18 +108,20 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <header>
-            <MainNav />
-          </header>
-          <PageWrapper preloadResources={criticalResources} className="flex-grow w-full">
-            <main className="w-full px-4" id="main-content">
-              {children}
-            </main>
-          </PageWrapper>
-          <Footer />
-          <ScrollToTop />
-          <CookieConsent />
-          <Toaster position="top-right" richColors closeButton />
+          <MotionProvider>
+            <header>
+              <MainNav />
+            </header>
+            <PageWrapper preloadResources={criticalResources} className="flex-grow w-full">
+              <main className="w-full px-4" id="main-content">
+                {children}
+              </main>
+            </PageWrapper>
+            <Footer />
+            <ScrollToTop />
+            <CookieConsent />
+            <Toaster position="top-right" richColors closeButton />
+          </MotionProvider>
         </ThemeProvider>
       </body>
     </html>

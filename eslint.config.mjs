@@ -10,6 +10,8 @@ export default [
       ".next/",
       "out/",
       "public/",
+      "coverage/",
+      "playwright-report/",
       "*.config.js",
       "*.config.mjs",
       "*.config.ts",

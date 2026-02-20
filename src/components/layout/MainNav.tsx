@@ -4,7 +4,7 @@ import Link from "next/link"
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/common/Icons"
-import { motion } from "framer-motion"
+import { m } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ModeToggle } from "@/components/common/ModeToggle"
 import { Search, Menu } from "lucide-react"
@@ -19,7 +19,7 @@ export function MainNav() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10)
     }
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
@@ -32,29 +32,29 @@ export function MainNav() {
     )}>
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             className="flex items-center"
           >
             <Link href="/" className="mr-6 flex items-center space-x-2">
-              <motion.div
+              <m.div
                 whileHover={{ rotate: [0, -10, 10, -10, 0] }}
                 transition={{ duration: 0.5 }}
               >
                 <Icons.logo className="h-8 w-8" />
-              </motion.div>
+              </m.div>
               <span className="hidden font-bold text-2xl lg:inline-block bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
                 {siteConfig.name}
               </span>
             </Link>
-          </motion.div>
+          </m.div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-1" aria-label="Main navigation">
             {mainNavItems.map((item, index) => (
-              <motion.div
+              <m.div
                 key={item.name}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -70,11 +70,11 @@ export function MainNav() {
                   {item.name}
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
                 </Link>
-              </motion.div>
+              </m.div>
             ))}
           </nav>
 
-          <motion.div
+          <m.div
             className="hidden md:flex items-center gap-4"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -97,7 +97,7 @@ export function MainNav() {
                 Contact Us
               </Link>
             </Button>
-          </motion.div>
+          </m.div>
 
           {/* Mobile Menu Button */}
           <div className="flex items-center md:hidden">
@@ -118,7 +118,7 @@ export function MainNav() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <motion.nav
+          <m.nav
             id="mobile-navigation"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
@@ -129,7 +129,7 @@ export function MainNav() {
           >
             <div className="flex flex-col space-y-3">
               {mainNavItems.map((item, index) => (
-                <motion.div
+                <m.div
                   key={item.name}
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -142,9 +142,9 @@ export function MainNav() {
                   >
                     {item.name}
                   </Link>
-                </motion.div>
+                </m.div>
               ))}
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.2, delay: 0.35 }}
@@ -158,9 +158,9 @@ export function MainNav() {
                     Contact Us
                   </Link>
                 </Button>
-              </motion.div>
+              </m.div>
             </div>
-          </motion.nav>
+          </m.nav>
         )}
       </div>
     </header>

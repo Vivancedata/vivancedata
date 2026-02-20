@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { AnimateOnScroll, Parallax } from "@/hooks/useAnimateOnScroll";
 import { TextReveal } from "@/components/common/Animations";
 
@@ -16,7 +16,7 @@ export function AboutHero({ title, description }: AboutHeroProps): React.ReactEl
       {/* Background particles */}
       <div className="absolute inset-0 overflow-hidden">
         {Array.from({ length: 20 }).map((_, i) => (
-          <motion.div
+          <m.div
             key={i}
             className="absolute rounded-full bg-white/5 backdrop-blur-sm"
             style={{
@@ -71,7 +71,7 @@ export function AboutHero({ title, description }: AboutHeroProps): React.ReactEl
           className="w-full h-auto"
           preserveAspectRatio="none"
         >
-          <motion.path 
+          <m.path 
             d="M0 120L48 110C96 100 192 80 288 70C384 60 480 60 576 65C672 70 768 80 864 85C960 90 1056 90 1152 85C1248 80 1344 70 1392 65L1440 60V120H1392C1344 120 1248 120 1152 120C1056 120 960 120 864 120C768 120 672 120 576 120C480 120 384 120 288 120C192 120 96 120 48 120H0V120Z" 
             fill="white"
             fillOpacity="0.05"
@@ -79,7 +79,7 @@ export function AboutHero({ title, description }: AboutHeroProps): React.ReactEl
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1, delay: 0.5 }}
           />
-          <motion.path 
+          <m.path 
             d="M0 120L48 115C96 110 192 100 288 95C384 90 480 90 576 95C672 100 768 110 864 110C960 110 1056 100 1152 95C1248 90 1344 90 1392 90L1440 90V120H1392C1344 120 1248 120 1152 120C1056 120 960 120 864 120C768 120 672 120 576 120C480 120 384 120 288 120C192 120 96 120 48 120H0V120Z" 
             fill="white"
             fillOpacity="0.1"

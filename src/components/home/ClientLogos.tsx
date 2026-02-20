@@ -33,7 +33,10 @@ const ClientLogoItem: React.FC<ClientLogoItemProps> = ({ client }) => {
 
 const ClientLogos: React.FC = () => {
   // Duplicate clients for seamless infinite scroll
-  const duplicatedClients = [...clients, ...clients];
+  const duplicatedClients: Client[] = [
+    ...clients.map((client) => ({ ...client, id: `${client.id}-a` })),
+    ...clients.map((client) => ({ ...client, id: `${client.id}-b` })),
+  ];
 
   return (
     <section
@@ -43,13 +46,13 @@ const ClientLogos: React.FC = () => {
       <div className="container mx-auto px-4">
         <AnimateOnScroll variant="fadeInUp" className="text-center mb-12 md:mb-16">
           <div className="inline-block rounded-full bg-primary/10 dark:bg-primary/20 px-3 py-1 text-sm font-medium text-primary mb-4">
-            Our Clients
+            Industries We Support
           </div>
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
-            Trusted by Industry Leaders
+            Teams We Build With
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg">
-            Join hundreds of forward-thinking companies that trust VivanceData to power their AI transformation.
+            Representative sectors where we deliver AI strategy and implementation support.
           </p>
         </AnimateOnScroll>
 
@@ -66,8 +69,8 @@ const ClientLogos: React.FC = () => {
               role="list"
               aria-label="Client logos scrolling"
             >
-              {duplicatedClients.map((client, index) => (
-                <ClientLogoItem key={`${client.id}-${index}`} client={client} />
+              {duplicatedClients.map((client) => (
+                <ClientLogoItem key={client.id} client={client} />
               ))}
             </div>
           </div>
@@ -98,33 +101,21 @@ const ClientLogos: React.FC = () => {
           </div>
         </AnimateOnScroll>
 
-        {/* Stats bar */}
+        {/* Context */}
         <AnimateOnScroll variant="fadeInUp" delay={0.4}>
           <div className="mt-12 md:mt-16 pt-8 border-t border-border">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 text-center">
               <div className="space-y-1">
-                <p className="text-2xl md:text-3xl font-bold text-foreground">
-                  500+
-                </p>
-                <p className="text-sm text-muted-foreground">Enterprise Clients</p>
+                <p className="text-sm md:text-base font-semibold text-foreground">Advisory + Delivery</p>
+                <p className="text-sm text-muted-foreground">From strategy through implementation support.</p>
               </div>
               <div className="space-y-1">
-                <p className="text-2xl md:text-3xl font-bold text-foreground">
-                  50+
-                </p>
-                <p className="text-sm text-muted-foreground">Countries Served</p>
+                <p className="text-sm md:text-base font-semibold text-foreground">Cross-Functional Enablement</p>
+                <p className="text-sm text-muted-foreground">Product, engineering, operations, and governance stakeholders.</p>
               </div>
               <div className="space-y-1">
-                <p className="text-2xl md:text-3xl font-bold text-foreground">
-                  $2B+
-                </p>
-                <p className="text-sm text-muted-foreground">Client Revenue Impact</p>
-              </div>
-              <div className="space-y-1">
-                <p className="text-2xl md:text-3xl font-bold text-foreground">
-                  98%
-                </p>
-                <p className="text-sm text-muted-foreground">Client Retention</p>
+                <p className="text-sm md:text-base font-semibold text-foreground">Industry-Aware Workflows</p>
+                <p className="text-sm text-muted-foreground">Use-case design tailored to domain and compliance constraints.</p>
               </div>
             </div>
           </div>
@@ -132,7 +123,7 @@ const ClientLogos: React.FC = () => {
       </div>
 
       {/* CSS for marquee animation */}
-      <style jsx>{`
+      <style>{`
         @keyframes marquee {
           0% {
             transform: translateX(0);

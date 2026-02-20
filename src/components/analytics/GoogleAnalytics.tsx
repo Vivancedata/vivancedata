@@ -1,6 +1,8 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Script from 'next/script';
+import { CONSENT_UPDATED_EVENT, hasAnalyticsConsent } from '@/lib/cookieConsent';
 
 interface GoogleAnalyticsProps {
   measurementId?: string;
@@ -8,8 +10,22 @@ interface GoogleAnalyticsProps {
 
 export function GoogleAnalytics({ measurementId }: GoogleAnalyticsProps) {
   const gaId = measurementId || process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+  const [isAnalyticsAllowed, setIsAnalyticsAllowed] = useState(false);
 
-  if (!gaId) {
+  useEffect(() => {
+    const syncConsent = () => {
+      setIsAnalyticsAllowed(hasAnalyticsConsent());
+    };
+
+    syncConsent();
+    window.addEventListener(CONSENT_UPDATED_EVENT, syncConsent);
+
+    return () => {
+      window.removeEventListener(CONSENT_UPDATED_EVENT, syncConsent);
+    };
+  }, []);
+
+  if (!gaId || !isAnalyticsAllowed) {
     return null;
   }
 
@@ -40,7 +56,11 @@ export function trackEvent(
   label?: string,
   value?: number
 ) {
-  if (typeof window !== 'undefined' && 'gtag' in window) {
+  if (
+    typeof window !== 'undefined' &&
+    hasAnalyticsConsent() &&
+    'gtag' in window
+  ) {
     (window as typeof window & { gtag: (...args: unknown[]) => void }).gtag('event', action, {
       event_category: category,
       event_label: label,
@@ -51,7 +71,11 @@ export function trackEvent(
 
 // Helper function for tracking page views
 export function trackPageView(url: string) {
-  if (typeof window !== 'undefined' && 'gtag' in window) {
+  if (
+    typeof window !== 'undefined' &&
+    hasAnalyticsConsent() &&
+    'gtag' in window
+  ) {
     const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
     if (gaId) {
       (window as typeof window & { gtag: (...args: unknown[]) => void }).gtag('config', gaId, {

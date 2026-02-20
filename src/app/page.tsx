@@ -17,6 +17,7 @@ import { ContactSection } from "@/components/home/ContactSection";
 import { CTASection } from "@/components/home/CTASection";
 import { Users, CheckCircle, BarChart3, Clock, Award } from "lucide-react";
 import { Metadata } from "next";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "VivanceData - AI Solutions for Modern Businesses",
@@ -94,11 +95,11 @@ const jsonLd = {
 
 export default function Home() {
   const stats = [
-    { icon: <Users className="h-8 w-8 text-blue-500" />, value: "500+", label: "Clients Served" },
-    { icon: <CheckCircle className="h-8 w-8 text-blue-500" />, value: "98%", label: "Client Satisfaction" },
-    { icon: <BarChart3 className="h-8 w-8 text-blue-500" />, value: "35%", label: "Average ROI Increase" },
-    { icon: <Clock className="h-8 w-8 text-blue-500" />, value: "10+", label: "Years Experience" },
-    { icon: <Award className="h-8 w-8 text-blue-500" />, value: "25+", label: "Industry Awards" }
+    { icon: <Users className="h-8 w-8 text-blue-500" />, value: "Advisory + Build", label: "Engagement Model" },
+    { icon: <CheckCircle className="h-8 w-8 text-blue-500" />, value: "Roadmap to Rollout", label: "Delivery Scope" },
+    { icon: <BarChart3 className="h-8 w-8 text-blue-500" />, value: "Outcome-Driven", label: "Measurement Focus" },
+    { icon: <Clock className="h-8 w-8 text-blue-500" />, value: "Fast Iteration", label: "Execution Style" },
+    { icon: <Award className="h-8 w-8 text-blue-500" />, value: "Responsible AI", label: "Governance Standard" }
   ];
 
   const contactBenefits = [
@@ -118,10 +119,9 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <Script id="homepage-jsonld" type="application/ld+json">
+        {JSON.stringify(jsonLd)}
+      </Script>
       <Welcome />
       <ClientLogos />
       <TrustSection />
@@ -131,8 +131,8 @@ export default function Home() {
       <CaseStudies />
 
       <StatsSection
-        title="Our Impact By The Numbers"
-        description="We've helped hundreds of businesses achieve measurable results through our AI solutions."
+        title="How We Work"
+        description="Every engagement is scoped around measurable outcomes, responsible delivery, and clear operational handoff."
         stats={stats}
       />
 

@@ -1,8 +1,8 @@
 "use client"
 
-import React, { useState, useEffect } from "react"
+import { useState } from "react"
 import Link from "next/link"
-import { motion } from "framer-motion"
+import { LazyMotion, domAnimation, m } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { prefersReducedMotion } from "@/lib/performance"
@@ -40,9 +40,9 @@ function FloatingParticles({ reducedMotion }: { reducedMotion: boolean }) {
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-      {particles.map((particle, i) => (
-        <motion.div
-          key={i}
+      {particles.map((particle) => (
+        <m.div
+          key={`${particle.x}-${particle.y}`}
           className="absolute w-1 h-1 rounded-full bg-primary/30"
           style={{
             left: `${particle.x}%`,
@@ -90,23 +90,23 @@ function Illustration({ reducedMotion }: { reducedMotion: boolean }) {
         </defs>
 
         {/* Outer glow circle */}
-        <motion.circle
+        <m.circle
           cx="200"
           cy="130"
           r="110"
           fill="url(#bgGradient)"
-          initial={{ scale: 0, opacity: 0 }}
+          initial={{ scale: 0.95, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: reducedMotion ? 0 : 0.6, ease: "easeOut" as const }}
         />
 
         {/* Inner decorative circle */}
-        <motion.circle
+        <m.circle
           cx="200"
           cy="130"
           r="85"
           className="fill-muted/40 dark:fill-muted/20"
-          initial={{ scale: 0 }}
+          initial={{ scale: 0.95 }}
           animate={{ scale: 1 }}
           transition={{ duration: reducedMotion ? 0 : 0.5, delay: 0.1, ease: "easeOut" as const }}
         />
@@ -114,25 +114,25 @@ function Illustration({ reducedMotion }: { reducedMotion: boolean }) {
         {/* Neural network lines */}
         {!reducedMotion && (
           <g className="stroke-primary/20" strokeWidth="1">
-            <motion.line
+            <m.line
               x1="120" y1="80" x2="160" y2="110"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             />
-            <motion.line
+            <m.line
               x1="240" y1="80" x2="280" y2="110"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             />
-            <motion.line
+            <m.line
               x1="130" y1="170" x2="170" y2="150"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             />
-            <motion.line
+            <m.line
               x1="230" y1="150" x2="270" y2="170"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
@@ -144,7 +144,7 @@ function Illustration({ reducedMotion }: { reducedMotion: boolean }) {
         {/* Animated floating particles */}
         {!reducedMotion && (
           <>
-            <motion.circle
+            <m.circle
               cx="90"
               cy="70"
               r="6"
@@ -152,7 +152,7 @@ function Illustration({ reducedMotion }: { reducedMotion: boolean }) {
               animate={{ y: [0, -12, 0], opacity: [0.4, 0.8, 0.4] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" as const }}
             />
-            <motion.circle
+            <m.circle
               cx="310"
               cy="90"
               r="5"
@@ -160,7 +160,7 @@ function Illustration({ reducedMotion }: { reducedMotion: boolean }) {
               animate={{ y: [0, -8, 0], opacity: [0.3, 0.6, 0.3] }}
               transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" as const, delay: 0.5 }}
             />
-            <motion.circle
+            <m.circle
               cx="100"
               cy="190"
               r="4"
@@ -168,7 +168,7 @@ function Illustration({ reducedMotion }: { reducedMotion: boolean }) {
               animate={{ y: [0, -10, 0], opacity: [0.25, 0.5, 0.25] }}
               transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" as const, delay: 1 }}
             />
-            <motion.circle
+            <m.circle
               cx="300"
               cy="200"
               r="6"
@@ -180,7 +180,7 @@ function Illustration({ reducedMotion }: { reducedMotion: boolean }) {
         )}
 
         {/* 404 Text with gradient */}
-        <motion.text
+        <m.text
           x="200"
           y="145"
           textAnchor="middle"
@@ -193,10 +193,10 @@ function Illustration({ reducedMotion }: { reducedMotion: boolean }) {
           transition={{ duration: reducedMotion ? 0 : 0.6, delay: 0.2 }}
         >
           404
-        </motion.text>
+        </m.text>
 
         {/* Decorative underline */}
-        <motion.rect
+        <m.rect
           x="140"
           y="160"
           width="120"
@@ -210,7 +210,7 @@ function Illustration({ reducedMotion }: { reducedMotion: boolean }) {
         />
 
         {/* AI Brain icon representation */}
-        <motion.g
+        <m.g
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: reducedMotion ? 0 : 0.5, delay: 0.6 }}
@@ -222,7 +222,7 @@ function Illustration({ reducedMotion }: { reducedMotion: boolean }) {
             className="fill-primary/10 stroke-primary/40"
             strokeWidth="2"
           />
-          <motion.circle
+          <m.circle
             cx="200"
             cy="220"
             r="14"
@@ -232,7 +232,7 @@ function Illustration({ reducedMotion }: { reducedMotion: boolean }) {
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" as const }}
           />
           {/* Inner brain pattern */}
-          <motion.path
+          <m.path
             d="M192 216 Q200 212 208 216 M194 224 Q200 228 206 224"
             className="fill-none stroke-primary"
             strokeWidth="1.5"
@@ -241,10 +241,10 @@ function Illustration({ reducedMotion }: { reducedMotion: boolean }) {
             animate={{ pathLength: 1 }}
             transition={{ duration: reducedMotion ? 0 : 1, delay: 0.8 }}
           />
-        </motion.g>
+        </m.g>
 
         {/* Question marks */}
-        <motion.text
+        <m.text
           x="270"
           y="100"
           className="fill-primary/15 dark:fill-primary/10"
@@ -255,8 +255,8 @@ function Illustration({ reducedMotion }: { reducedMotion: boolean }) {
           transition={{ duration: reducedMotion ? 0 : 0.5, delay: 0.7 }}
         >
           ?
-        </motion.text>
-        <motion.text
+        </m.text>
+        <m.text
           x="115"
           y="195"
           className="fill-primary/10 dark:fill-primary/8"
@@ -267,18 +267,14 @@ function Illustration({ reducedMotion }: { reducedMotion: boolean }) {
           transition={{ duration: reducedMotion ? 0 : 0.5, delay: 0.9 }}
         >
           ?
-        </motion.text>
+        </m.text>
       </svg>
     </div>
   )
 }
 
 export function NotFoundContent() {
-  const [reducedMotion, setReducedMotion] = useState(false)
-
-  useEffect(() => {
-    setReducedMotion(prefersReducedMotion())
-  }, [])
+  const [reducedMotion] = useState(() => prefersReducedMotion())
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -304,41 +300,42 @@ export function NotFoundContent() {
   }
 
   return (
-    <div className="relative min-h-[calc(100vh-200px)] flex items-center justify-center bg-background overflow-hidden">
-      {/* Floating particles background */}
-      <FloatingParticles reducedMotion={reducedMotion} />
+    <LazyMotion features={domAnimation}>
+      <div className="relative min-h-[calc(100vh-200px)] flex items-center justify-center bg-background overflow-hidden">
+        {/* Floating particles background */}
+        <FloatingParticles reducedMotion={reducedMotion} />
 
-      <div className="container relative mx-auto px-4 py-12 md:py-20">
-        <motion.div
-          className="max-w-3xl mx-auto text-center"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          {/* Animated Illustration */}
-          <motion.div variants={itemVariants}>
-            <Illustration reducedMotion={reducedMotion} />
-          </motion.div>
+        <div className="container relative mx-auto px-4 py-12 md:py-20">
+          <m.div
+            className="max-w-3xl mx-auto text-center"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            {/* Animated Illustration */}
+            <m.div variants={itemVariants}>
+              <Illustration reducedMotion={reducedMotion} />
+            </m.div>
 
           {/* Heading */}
-          <motion.h1
+          <m.h1
             variants={itemVariants}
             className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4"
           >
             Oops! Lost in the Data
-          </motion.h1>
+          </m.h1>
 
           {/* Description */}
-          <motion.p
+          <m.p
             variants={itemVariants}
             className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 max-w-lg mx-auto leading-relaxed"
           >
             The page you are looking for seems to have wandered off into the digital void.
             Do not worry, our AI is still here to help you find your way.
-          </motion.p>
+          </m.p>
 
           {/* Primary Action Buttons */}
-          <motion.div
+          <m.div
             variants={itemVariants}
             className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-10"
           >
@@ -354,10 +351,10 @@ export function NotFoundContent() {
                 <span>Contact Support</span>
               </Link>
             </Button>
-          </motion.div>
+          </m.div>
 
           {/* Search Suggestion */}
-          <motion.div
+          <m.div
             variants={itemVariants}
             className="mb-10"
           >
@@ -365,10 +362,10 @@ export function NotFoundContent() {
               <Search className="h-4 w-4 text-primary/70" />
               <span>Try using the navigation menu to find what you need</span>
             </div>
-          </motion.div>
+          </m.div>
 
           {/* Popular Pages */}
-          <motion.div variants={itemVariants}>
+          <m.div variants={itemVariants}>
             <div className="flex items-center justify-center gap-2 mb-5">
               <Sparkles className="h-5 w-5 text-primary" aria-hidden="true" />
               <h2 className="text-lg font-semibold text-foreground">
@@ -403,32 +400,33 @@ export function NotFoundContent() {
                 )
               })}
             </div>
-          </motion.div>
+          </m.div>
 
           {/* Back Navigation */}
-          <motion.div
-            variants={itemVariants}
-            className="mt-10"
-          >
-            <button
-              onClick={() => {
-                if (typeof window !== "undefined" && window.history.length > 1) {
-                  window.history.back()
-                }
-              }}
-              className={cn(
-                "inline-flex items-center text-sm text-muted-foreground",
-                "hover:text-foreground transition-colors",
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-md px-2 py-1"
-              )}
-              type="button"
+            <m.div
+              variants={itemVariants}
+              className="mt-10"
             >
-              <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" aria-hidden="true" />
-              <span>Go back to previous page</span>
-            </button>
-          </motion.div>
-        </motion.div>
+              <button
+                onClick={() => {
+                  if (typeof window !== "undefined" && window.history.length > 1) {
+                    window.history.back()
+                  }
+                }}
+                className={cn(
+                  "inline-flex items-center text-sm text-muted-foreground",
+                  "hover:text-foreground transition-colors",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-md px-2 py-1"
+                )}
+                type="button"
+              >
+                <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" aria-hidden="true" />
+                <span>Go back to previous page</span>
+              </button>
+            </m.div>
+          </m.div>
+        </div>
       </div>
-    </div>
+    </LazyMotion>
   )
 }

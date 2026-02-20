@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { ChevronRight, Sparkles } from "lucide-react";
 
 export default function Banner() {
@@ -16,14 +16,14 @@ export default function Banner() {
 
       <div className="container relative mx-auto px-6 py-24 md:py-32 lg:py-40">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-8">
-          <motion.div
+          <m.div
             className="flex flex-col justify-center space-y-8"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" as const }}
           >
             <div>
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
@@ -32,9 +32,9 @@ export default function Banner() {
                   <Sparkles className="h-4 w-4 mr-2 text-primary-foreground/80" />
                   <span className="text-sm font-medium text-primary-foreground/90">AI-Powered Solutions</span>
                 </div>
-              </motion.div>
+              </m.div>
 
-              <motion.h1
+              <m.h1
                 className="mb-6 text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl leading-tight"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -48,19 +48,19 @@ export default function Banner() {
                   <span className="absolute -bottom-2 left-0 w-full h-3 bg-primary-foreground/20 rounded-full blur-sm"></span>
                 </span>
                 with AI
-              </motion.h1>
+              </m.h1>
 
-              <motion.p
+              <m.p
                 className="mt-6 max-w-lg text-xl text-primary-foreground/85 leading-relaxed"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
                 Unlock the power of artificial intelligence to drive innovation, efficiency, and growth for your organization.
-              </motion.p>
+              </m.p>
             </div>
 
-            <motion.div
+            <m.div
               className="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -80,10 +80,10 @@ export default function Banner() {
               >
                 Learn More
               </Button>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             className="flex items-center justify-center"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -92,7 +92,7 @@ export default function Banner() {
             <div className="relative h-72 w-full max-w-md rounded-2xl bg-primary-foreground/10 p-6 backdrop-blur-md sm:h-80 md:h-96 border border-primary-foreground/20 shadow-2xl">
               {/* Card content would go here */}
               <div className="relative z-10 flex h-full w-full items-center justify-center rounded-xl border border-primary-foreground/20 bg-primary-foreground/5 p-8 backdrop-blur-md">
-                <motion.div
+                <m.div
                   className="text-center"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -104,10 +104,10 @@ export default function Banner() {
                     <span>Book Now</span>
                     <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>
-                </motion.div>
+                </m.div>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </div>

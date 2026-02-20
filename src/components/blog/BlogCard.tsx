@@ -1,13 +1,13 @@
 "use client";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { HoverCard } from "@/components/common/Animations";
 import { prefersReducedMotion } from "@/lib/performance";
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 
 interface BlogCardProps {
   slug: string;
@@ -19,25 +19,18 @@ interface BlogCardProps {
 }
 
 export function BlogCard({ slug, title, description, date, image, tags }: BlogCardProps) {
-  const [reducedMotion, setReducedMotion] = useState(false);
-  const [formattedDate, setFormattedDate] = useState("");
+  const [reducedMotion] = useState(() => prefersReducedMotion());
 
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- Intentional: detecting user's reduced motion preference on mount, runs once
-    setReducedMotion(prefersReducedMotion());
-
-    // Format date with proper localization
+  const formattedDate = useMemo(() => {
     try {
       const dateObj = new Date(date);
-      setFormattedDate(
-        dateObj.toLocaleDateString(undefined, {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        })
-      );
+      return dateObj.toLocaleDateString(undefined, {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
     } catch {
-      setFormattedDate(date);
+      return date;
     }
   }, [date]);
 
@@ -46,7 +39,7 @@ export function BlogCard({ slug, title, description, date, image, tags }: BlogCa
       <HoverCard className="h-full">
         <Card className="flex flex-col h-full overflow-hidden group cursor-pointer border border-border/40 bg-card/60 backdrop-blur-sm transition-all duration-300 hover:border-primary/20 hover:shadow-lg dark:hover:shadow-primary/5">
           <div className="relative w-full h-52 overflow-hidden">
-            <motion.div
+            <m.div
               whileHover={{ scale: reducedMotion ? 1 : 1.05 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               className="h-full w-full"
@@ -60,7 +53,7 @@ export function BlogCard({ slug, title, description, date, image, tags }: BlogCa
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-            </motion.div>
+            </m.div>
             
             <div className="absolute top-4 left-4 z-10 flex gap-2 flex-wrap">
               {tags.slice(0, 3).map((tag) => (

@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import { AnimateOnScroll, StaggerContainer } from "@/hooks/useAnimateOnScroll";
@@ -9,12 +9,7 @@ import { prefersReducedMotion } from "@/lib/performance";
 import Link from "next/link";
 
 export default function Welcome() {
-  const [reducedMotion, setReducedMotion] = useState(false);
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- Intentional: detecting user's reduced motion preference on mount, runs once
-    setReducedMotion(prefersReducedMotion());
-  }, []);
+  const [reducedMotion] = useState(() => prefersReducedMotion());
 
   // reducedMotion is available for future animation enhancements
   void reducedMotion;
@@ -40,9 +35,9 @@ export default function Welcome() {
         </AnimateOnScroll>
 
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
-          {features.map((feature, index) => (
+          {features.map((feature) => (
             <div
-              key={index}
+              key={feature.title}
               className="glass-card flex flex-col p-8 transition-all duration-500 group hover:-translate-y-2 hover:shadow-[0_35px_80px_-50px_rgba(13,148,136,0.45)]"
             >
               <div className="rounded-2xl bg-white/70 dark:bg-white/10 p-4 w-fit mb-6 border border-white/40 dark:border-white/10 group-hover:border-primary/40 transition-colors duration-300">

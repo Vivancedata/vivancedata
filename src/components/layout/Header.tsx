@@ -9,7 +9,7 @@ import logo from "@/public/icons/Logo.png";
 import { Menu, X, ChevronDown, Search, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/config/site";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { navItems } from "@/constants/navigation";
 
 export default function Header() {
@@ -21,7 +21,7 @@ export default function Header() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -40,7 +40,7 @@ export default function Header() {
     >
       <div className="container mx-auto px-4 py-4">
         <nav className="flex items-center justify-between">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
@@ -59,12 +59,12 @@ export default function Header() {
                 {siteConfig.name}
               </span>
             </Link>
-          </motion.div>
+          </m.div>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-2">
             {navItems.map((item, index) => (
-              <motion.div 
+              <m.div 
                 key={item.name} 
                 className="relative group"
                 initial={{ opacity: 0, y: -10 }}
@@ -93,7 +93,7 @@ export default function Header() {
                   <div className="absolute left-0 mt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform group-hover:translate-y-0 translate-y-2">
                     <div className="py-3 bg-white rounded-xl shadow-xl border border-gray-100">
                       {item.dropdownItems?.map((dropdownItem, idx) => (
-                        <motion.div
+                        <m.div
                           key={dropdownItem.name}
                           initial={{ opacity: 0, x: -10 }}
                           animate={{ opacity: 1, x: 0 }}
@@ -106,16 +106,16 @@ export default function Header() {
                             <span>{dropdownItem.name}</span>
                             <ChevronRight className="ml-auto h-4 w-4 opacity-0 transition-all duration-300 group-hover/item:opacity-100 group-hover/item:translate-x-1" />
                           </Link>
-                        </motion.div>
+                        </m.div>
                       ))}
                     </div>
                   </div>
                 )}
-              </motion.div>
+              </m.div>
             ))}
           </div>
 
-          <motion.div 
+          <m.div 
             className="hidden lg:flex items-center gap-4"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -128,7 +128,7 @@ export default function Header() {
             <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-md hover:shadow-lg transition-all duration-300">
               Contact Us
             </Button>
-          </motion.div>
+          </m.div>
 
           {/* Mobile Navigation Toggle */}
           <div className="flex items-center gap-4 lg:hidden">
@@ -151,7 +151,7 @@ export default function Header() {
       {/* Mobile Navigation Menu */}
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div 
+          <m.div 
             className="fixed inset-0 z-40 bg-white/95 backdrop-blur-md pt-20 px-6 overflow-y-auto lg:hidden"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -160,7 +160,7 @@ export default function Header() {
           >
             <div className="space-y-5 py-6">
               {navItems.map((item, index) => (
-                <motion.div 
+                <m.div 
                   key={item.name} 
                   className="border-b border-gray-100 pb-5"
                   initial={{ opacity: 0, y: 20 }}
@@ -183,7 +183,7 @@ export default function Header() {
                       </button>
                       <AnimatePresence>
                         {activeDropdown === item.name && (
-                          <motion.div 
+                          <m.div 
                             className="mt-3 pl-4 space-y-3"
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: "auto" }}
@@ -191,7 +191,7 @@ export default function Header() {
                             transition={{ duration: 0.3 }}
                           >
                             {item.dropdownItems?.map((dropdownItem, idx) => (
-                              <motion.div
+                              <m.div
                                 key={dropdownItem.name}
                                 initial={{ opacity: 0, x: -10 }}
                                 animate={{ opacity: 1, x: 0 }}
@@ -205,9 +205,9 @@ export default function Header() {
                                   <ChevronRight className="mr-2 h-4 w-4 text-blue-400" />
                                   <span>{dropdownItem.name}</span>
                                 </Link>
-                              </motion.div>
+                              </m.div>
                             ))}
-                          </motion.div>
+                          </m.div>
                         )}
                       </AnimatePresence>
                     </>
@@ -220,9 +220,9 @@ export default function Header() {
                       {item.name}
                     </Link>
                   )}
-                </motion.div>
+                </m.div>
               ))}
-              <motion.div 
+              <m.div 
                 className="pt-5"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -231,9 +231,9 @@ export default function Header() {
                 <Button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white py-6 h-auto text-lg font-medium rounded-xl shadow-lg transition-all duration-300">
                   Contact Us
                 </Button>
-              </motion.div>
+              </m.div>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </header>

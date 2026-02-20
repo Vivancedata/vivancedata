@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { formatDate } from "@/lib/formatDate";
@@ -41,7 +41,7 @@ export function RelatedPosts({ posts, currentSlug }: RelatedPostsProps) {
     <section className="mt-16 pt-16 border-t border-gray-200 dark:border-gray-700">
       <h2 className="text-2xl md:text-3xl font-bold mb-8">Related Articles</h2>
 
-      <motion.div
+      <m.div
         variants={container}
         initial="hidden"
         animate="show"
@@ -49,7 +49,7 @@ export function RelatedPosts({ posts, currentSlug }: RelatedPostsProps) {
       >
         {relatedPosts.map((post) => (
           <Link key={post.slug} href={`/blog/${post.slug}`}>
-            <motion.article
+            <m.article
               variants={item}
               className="group relative flex h-full flex-col overflow-hidden rounded-xl bg-secondary/50 transition-all hover:bg-secondary/70"
             >
@@ -106,10 +106,10 @@ export function RelatedPosts({ posts, currentSlug }: RelatedPostsProps) {
                   <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </div>
               </div>
-            </motion.article>
+            </m.article>
           </Link>
         ))}
-      </motion.div>
+      </m.div>
     </section>
   );
 }

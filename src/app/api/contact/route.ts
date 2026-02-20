@@ -196,7 +196,7 @@ export async function POST(request: NextRequest) {
                 </p>
                 <div class="footer">
                   <p>VivanceData - Transforming Businesses with AI</p>
-                  <p>123 AI Boulevard, San Francisco, CA 94107</p>
+                  <p>https://vivancedata.com</p>
                 </div>
               </div>
             </div>
