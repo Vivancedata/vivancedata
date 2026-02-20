@@ -1,0 +1,25 @@
+name: Production Smoke Checks
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "12 * * * *"
+
+concurrency:
+  group: production-smoke
+  cancel-in-progress: true
+
+jobs:
+  production_smoke:
+    name: Production Smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run production smoke checks
+        env:
+          BASE_URL: https://www.vivancedata.com
+          CANONICAL_BASE_URL: https://vivancedata.com
+        run: bash scripts/production_smoke_check.sh
