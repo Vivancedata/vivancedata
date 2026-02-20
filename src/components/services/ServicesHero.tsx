@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { m, useScroll, useTransform } from "framer-motion";
 import { AnimateOnScroll } from "@/hooks/useAnimateOnScroll";
 import { TextReveal } from "@/components/common/Animations";
 
@@ -27,7 +27,7 @@ export function ServicesHero({ title, description }: ServicesHeroProps): React.R
       className="relative w-full bg-gradient-to-r from-blue-900 to-indigo-900 text-white py-20 md:py-32 overflow-hidden"
     >
       {/* Animated background elements */}
-      <motion.div 
+      <m.div 
         className="absolute inset-0 z-0"
         style={{ y: backgroundY }}
       >
@@ -35,7 +35,7 @@ export function ServicesHero({ title, description }: ServicesHeroProps): React.R
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(76,29,149,0.3),transparent_50%)]"></div>
         
         {/* Floating shapes */}
-        <motion.div 
+        <m.div 
           className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-blue-600/10 blur-3xl"
           animate={{ 
             x: [0, 30, 0],
@@ -48,7 +48,7 @@ export function ServicesHero({ title, description }: ServicesHeroProps): React.R
           }}
         />
         
-        <motion.div 
+        <m.div 
           className="absolute bottom-1/3 right-1/4 w-96 h-96 rounded-full bg-indigo-600/10 blur-3xl"
           animate={{ 
             x: [0, -40, 0],
@@ -60,10 +60,10 @@ export function ServicesHero({ title, description }: ServicesHeroProps): React.R
             ease: "easeInOut" as const
           }}
         />
-      </motion.div>
+      </m.div>
       
       {/* Content */}
-      <motion.div 
+      <m.div 
         className="container relative z-10 mx-auto px-4 text-center"
         style={{ y: textY, opacity }}
       >
@@ -87,7 +87,7 @@ export function ServicesHero({ title, description }: ServicesHeroProps): React.R
         </AnimateOnScroll>
         
         {/* Scroll indicator */}
-        <motion.div 
+        <m.div 
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
           animate={{ y: [0, 10, 0] }}
           transition={{
@@ -115,8 +115,8 @@ export function ServicesHero({ title, description }: ServicesHeroProps): React.R
               />
             </svg>
           </div>
-        </motion.div>
-      </motion.div>
+        </m.div>
+      </m.div>
     </section>
   );
 }

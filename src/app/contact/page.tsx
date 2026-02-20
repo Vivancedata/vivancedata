@@ -4,7 +4,7 @@ import { Container } from '@/components/common/Container';
 import { Heading } from '@/components/common/Heading';
 import { Paragraph } from '@/components/common/Paragraph';
 import { Metadata } from 'next';
-import { Mail, MapPin, Phone, Clock } from 'lucide-react';
+import { Mail, Clock } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: "Contact Us - VivanceData",
@@ -61,31 +61,6 @@ const ContactPage = () => {
                     <a href="mailto:info@vivancedata.com" className="text-gray-600 dark:text-gray-400 hover:text-primary">
                       info@vivancedata.com
                     </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="bg-primary/10 p-2 rounded-lg">
-                    <Phone className="h-5 w-5 text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-medium">Phone</p>
-                    <a href="tel:+11234567890" className="text-gray-600 dark:text-gray-400 hover:text-primary">
-                      (123) 456-7890
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="bg-primary/10 p-2 rounded-lg">
-                    <MapPin className="h-5 w-5 text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-medium">Address</p>
-                    <p className="text-gray-600 dark:text-gray-400">
-                      123 AI Boulevard<br />
-                      San Francisco, CA 94107
-                    </p>
                   </div>
                 </div>
 

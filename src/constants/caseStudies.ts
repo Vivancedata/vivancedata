@@ -19,16 +19,16 @@ export interface CaseStudy {
 export const caseStudies: CaseStudy[] = [
   {
     id: "retail-analytics",
-    title: "AI-Powered Inventory Optimization",
-    client: "Global Retail Chain",
+    title: "Inventory Planning Optimization",
+    client: "Illustrative Retail Operator",
     industry: "Retail",
-    challenge: "The client was struggling with inventory management across 500+ stores, leading to frequent stockouts and overstock situations that were costing millions annually.",
-    solution: "We implemented a predictive analytics solution that uses machine learning to forecast demand patterns based on historical data, seasonal trends, and external factors like weather and local events.",
+    challenge: "Teams were balancing frequent stockouts with excess inventory and lacked confidence in planning decisions across locations.",
+    solution: "Implemented demand forecasting workflows that combine historical transactions, seasonality, and external signals to improve planning accuracy.",
     results: [
-      "30% reduction in stockouts",
-      "25% decrease in excess inventory",
-      "$4.2M annual savings in inventory costs",
-      "15% improvement in customer satisfaction scores"
+      "Lower stockout frequency in pilot categories",
+      "Reduced excess inventory carrying pressure",
+      "Improved replenishment confidence for planners",
+      "Clear KPI tracking for ongoing iteration"
     ],
     technologies: ["Predictive Analytics", "Machine Learning", "Computer Vision", "Cloud Computing"],
     iconType: "database",
@@ -36,16 +36,16 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: "healthcare-nlp",
-    title: "Medical Records Analysis System",
-    client: "National Healthcare Provider",
+    title: "Clinical Notes Summarization Support",
+    client: "Illustrative Healthcare Network",
     industry: "Healthcare",
-    challenge: "Physicians were spending 40% of their time on documentation and manual review of patient records, reducing patient care time and causing burnout.",
-    solution: "We developed an NLP-based system that automatically extracts and categorizes key information from medical records, providing physicians with instant access to relevant patient data and insights.",
+    challenge: "Clinical teams were spending significant time navigating fragmented records and repetitive note review.",
+    solution: "Built NLP-assisted summarization and extraction workflows to surface relevant context faster while keeping human review in the loop.",
     results: [
-      "60% reduction in documentation time",
-      "35% increase in patient consultation time",
-      "93% accuracy in information extraction",
-      "Significant improvement in physician satisfaction"
+      "Faster retrieval of relevant patient context",
+      "Reduced repetitive documentation effort",
+      "Higher consistency in structured data capture",
+      "Improved clinician workflow satisfaction"
     ],
     technologies: ["Natural Language Processing", "Machine Learning", "Healthcare AI", "HIPAA-Compliant Cloud"],
     iconType: "brain",
@@ -53,16 +53,16 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: "finance-fraud",
-    title: "Real-time Fraud Detection System",
-    client: "International Financial Institution",
+    title: "Transaction Risk Prioritization",
+    client: "Illustrative Financial Institution",
     industry: "Finance",
-    challenge: "The client was experiencing increasing fraud losses despite existing rule-based detection systems, with fraudulent transactions often being identified too late.",
-    solution: "We implemented an advanced AI fraud detection system that analyzes transaction patterns in real-time, using anomaly detection and behavioral analysis to identify suspicious activities instantly.",
+    challenge: "Existing rule sets generated large alert volumes, making it difficult for risk teams to prioritize true positives quickly.",
+    solution: "Introduced anomaly scoring and behavioral signals to rank transaction risk and improve investigator triage workflows.",
     results: [
-      "82% reduction in fraud losses",
-      "95% accuracy in fraud detection",
-      "Reduced false positives by 67%",
-      "Real-time alerts for suspicious activities"
+      "Higher precision in alert triage",
+      "Faster investigator response time",
+      "Reduced noise from low-confidence alerts",
+      "Improved explainability for analyst review"
     ],
     technologies: ["Anomaly Detection", "Behavioral Analytics", "Real-time Processing", "Secure API Integration"],
     iconType: "shield-check",
@@ -70,16 +70,16 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: "customer-service",
-    title: "AI Customer Service Automation",
-    client: "E-commerce Platform",
+    title: "Customer Support Workflow Automation",
+    client: "Illustrative Commerce Platform",
     industry: "E-commerce",
-    challenge: "The client's customer service team was overwhelmed with repetitive inquiries, leading to long response times and customer dissatisfaction.",
-    solution: "We developed an AI-powered customer service solution with intelligent chatbots and automated response systems that handle routine inquiries while seamlessly escalating complex issues to human agents.",
+    challenge: "Support teams were overloaded by repetitive requests, causing long queue times and inconsistent handoffs.",
+    solution: "Implemented intent routing and guided response automation for routine requests with explicit escalation paths to human agents.",
     results: [
-      "75% of customer inquiries resolved automatically",
-      "Average response time reduced from hours to seconds",
-      "40% reduction in customer service costs",
-      "Customer satisfaction increased by 35%"
+      "Faster first-response handling for common requests",
+      "More consistent escalation to specialist teams",
+      "Reduced manual queue pressure",
+      "Improved support quality visibility"
     ],
     technologies: ["Natural Language Understanding", "Conversational AI", "Sentiment Analysis", "Integration APIs"],
     iconType: "message-square",

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence, Variants } from "framer-motion";
+import { m, AnimatePresence, Variants } from "framer-motion";
 import { prefersReducedMotion } from "@/lib/performance";
 
 // Hover card animation
@@ -11,12 +11,7 @@ interface HoverCardProps {
 }
 
 export function HoverCard({ children, className = "" }: HoverCardProps) {
-  const [reducedMotion, setReducedMotion] = useState(false);
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- Intentional: detecting user's reduced motion preference on mount, runs once
-    setReducedMotion(prefersReducedMotion());
-  }, []);
+  const [reducedMotion] = useState(() => prefersReducedMotion());
 
   const cardVariants: Variants = {
     initial: {
@@ -35,14 +30,14 @@ export function HoverCard({ children, className = "" }: HoverCardProps) {
   };
 
   return (
-    <motion.div
+    <m.div
       className={className}
       variants={cardVariants}
       initial="initial"
       whileHover="hover"
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -60,41 +55,25 @@ export function Pulse({
   interval = 2000, 
   scale = 1.05 
 }: PulseProps) {
-  const [reducedMotion, setReducedMotion] = useState(false);
-  const [isPulsing, setIsPulsing] = useState(true);
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- Intentional: detecting user's reduced motion preference on mount, runs once
-    setReducedMotion(prefersReducedMotion());
-  }, []);
-
-  useEffect(() => {
-    if (reducedMotion) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- Intentional: disabling pulse animation when user prefers reduced motion
-      setIsPulsing(false);
-      return;
-    }
-
-    const timer = setInterval(() => {
-      setIsPulsing(prev => !prev);
-    }, interval / 2);
-
-    return () => clearInterval(timer);
-  }, [interval, reducedMotion]);
+  const [reducedMotion] = useState(() => prefersReducedMotion());
 
   return (
-    <motion.div
+    <m.div
       className={className}
-      animate={{
-        scale: isPulsing ? scale : 1
-      }}
-      transition={{
-        duration: interval / 2000,
-        ease: "easeInOut" as const
-      }}
+      animate={reducedMotion ? { scale: 1 } : { scale: [1, scale, 1] }}
+      transition={
+        reducedMotion
+          ? { duration: 0 }
+          : {
+              duration: interval / 1000,
+              ease: "easeInOut" as const,
+              repeat: Infinity,
+              repeatType: "loop",
+            }
+      }
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -126,7 +105,7 @@ export function Fade({
   return (
     <AnimatePresence mode="wait">
       {show && (
-        <motion.div
+        <m.div
           className={className}
           initial="hidden"
           animate="visible"
@@ -134,7 +113,7 @@ export function Fade({
           variants={variants}
         >
           {children}
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
   );
@@ -154,12 +133,7 @@ export function TextReveal({
   staggerChildren = 0.03,
   once = true
 }: TextRevealProps) {
-  const [reducedMotion, setReducedMotion] = useState(false);
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- Intentional: detecting user's reduced motion preference on mount, runs once
-    setReducedMotion(prefersReducedMotion());
-  }, []);
+  const [reducedMotion] = useState(() => prefersReducedMotion());
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -189,7 +163,7 @@ export function TextReveal({
   };
 
   return (
-    <motion.div
+    <m.div
       className={`${className} overflow-hidden`}
       initial="hidden"
       whileInView="visible"
@@ -199,17 +173,17 @@ export function TextReveal({
       {text.split(" ").map((word, wordIndex) => (
         <span key={`word-${wordIndex}`} className="inline-block whitespace-nowrap mr-1.5">
           {word.split("").map((char, charIndex) => (
-            <motion.span
+            <m.span
               key={`char-${wordIndex}-${charIndex}`}
               className="inline-block"
               variants={childVariants}
             >
               {char}
-            </motion.span>
+            </m.span>
           ))}
         </span>
       ))}
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -240,7 +214,7 @@ export function Shimmer({
   };
 
   return (
-    <motion.div
+    <m.div
       className={`bg-gradient-to-r from-muted via-muted/50 to-muted bg-[length:500px_100%] ${className}`}
       style={{ width, height }}
       variants={shimmerVariants}
@@ -264,12 +238,7 @@ export function AnimatedButton({
   className = "",
   disabled = false
 }: AnimatedButtonProps) {
-  const [reducedMotion, setReducedMotion] = useState(false);
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- Intentional: detecting user's reduced motion preference on mount, runs once
-    setReducedMotion(prefersReducedMotion());
-  }, []);
+  const [reducedMotion] = useState(() => prefersReducedMotion());
 
   const buttonVariants: Variants = {
     initial: { scale: 1 },
@@ -292,7 +261,7 @@ export function AnimatedButton({
   };
 
   return (
-    <motion.button
+    <m.button
       className={className}
       onClick={onClick}
       disabled={disabled}
@@ -302,7 +271,7 @@ export function AnimatedButton({
       whileTap={disabled ? "initial" : "tap"}
     >
       {children}
-    </motion.button>
+    </m.button>
   );
 }
 
@@ -317,12 +286,12 @@ export function ScrollProgress() {
       setScrollProgress(progress);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <motion.div
+    <m.div
       className="fixed top-0 left-0 right-0 h-1 bg-primary z-50 origin-left"
       style={{ width: `${scrollProgress}%` }}
     />
@@ -345,7 +314,7 @@ export function Counter({
   className = "",
   formatter = (value) => Math.round(value).toString()
 }: CounterProps) {
-  const [count, setCount] = useState(from);
+  const [count, setCount] = useState(0);
   const [inView, setInView] = useState(false);
   const ref = React.useRef<HTMLDivElement>(null);
 
@@ -369,6 +338,7 @@ export function Counter({
 
   useEffect(() => {
     if (!inView) return;
+    setCount(from);
 
     let startTime: number;
     let animationFrame: number;

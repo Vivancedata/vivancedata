@@ -3,7 +3,7 @@
 import React, { useState, useMemo } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { AnimateOnScroll, StaggerContainer } from "@/hooks/useAnimateOnScroll";
 import {
   integrations,
@@ -36,7 +36,7 @@ const IntegrationCard: React.FC<{ integration: Integration; index: number }> = (
   const colors = categoryColors[integration.category];
 
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
@@ -52,7 +52,7 @@ const IntegrationCard: React.FC<{ integration: Integration; index: number }> = (
       >
         <CardContent className="flex flex-col items-center p-6 h-full">
           {/* Icon placeholder */}
-          <motion.div
+          <m.div
             className={cn(
               "w-14 h-14 rounded-full flex items-center justify-center mb-4",
               "bg-primary text-primary-foreground",
@@ -65,7 +65,7 @@ const IntegrationCard: React.FC<{ integration: Integration; index: number }> = (
             transition={{ type: "spring", stiffness: 400, damping: 15 }}
           >
             {getIconLetters(integration.name)}
-          </motion.div>
+          </m.div>
 
           {/* Name */}
           <h3 className="font-semibold text-foreground text-center mb-2">
@@ -84,7 +84,7 @@ const IntegrationCard: React.FC<{ integration: Integration; index: number }> = (
           </span>
 
           {/* Description - visible on hover or always on mobile */}
-          <motion.p
+          <m.p
             className="text-sm text-muted-foreground text-center leading-relaxed"
             initial={{ opacity: 0, height: 0 }}
             animate={{
@@ -94,10 +94,10 @@ const IntegrationCard: React.FC<{ integration: Integration; index: number }> = (
             transition={{ duration: 0.2 }}
           >
             {integration.description}
-          </motion.p>
+          </m.p>
         </CardContent>
       </Card>
-    </motion.div>
+    </m.div>
   );
 };
 

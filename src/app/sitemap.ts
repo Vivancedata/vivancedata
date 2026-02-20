@@ -1,33 +1,7 @@
 import { MetadataRoute } from 'next';
-import fs from 'fs';
-import path from 'path';
+import { getBlogSlugs } from '@/lib/blogPosts';
 
 const BASE_URL = 'https://vivancedata.com';
-
-// Get all blog post slugs dynamically
-function getBlogSlugs(): string[] {
-  try {
-    const postsDirectory = path.join(process.cwd(), 'src', 'app', 'blog', 'posts');
-    const entries = fs.readdirSync(postsDirectory, { withFileTypes: true });
-    const slugs: string[] = [];
-
-    for (const entry of entries) {
-      if (entry.isDirectory()) {
-        const mdxPath = path.join(postsDirectory, entry.name, `${entry.name}.mdx`);
-        const pageMdxPath = path.join(postsDirectory, entry.name, 'page.mdx');
-        if (fs.existsSync(mdxPath) || fs.existsSync(pageMdxPath)) {
-          slugs.push(entry.name);
-        }
-      } else if (entry.name.endsWith('.mdx')) {
-        slugs.push(entry.name.replace(/\.mdx$/, ''));
-      }
-    }
-
-    return slugs;
-  } catch {
-    return [];
-  }
-}
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const blogSlugs = getBlogSlugs();

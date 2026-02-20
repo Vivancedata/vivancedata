@@ -3,7 +3,7 @@ import { siteConfig } from "@/config/site";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/public/icons/Logo.png";
-import { Facebook, Twitter, Linkedin, Instagram, Github, Mail, MapPin, Phone } from "lucide-react";
+import { Facebook, Twitter, Linkedin, Instagram, Github, Mail } from "lucide-react";
 import { footerLinks, socialLinks } from "@/constants/navigation";
 import { Newsletter } from "@/components/layout/Newsletter";
 
@@ -42,9 +42,9 @@ export function SiteFooter() {
               {siteConfig.description}
             </p>
             <div className="flex space-x-4 mb-6">
-              {socialLinks.map((link, index) => (
+              {socialLinks.map((link) => (
                 <a 
-                  key={index} 
+                  key={link.label}
                   href={link.href} 
                   target="_blank" 
                   rel="noreferrer" 
@@ -56,28 +56,22 @@ export function SiteFooter() {
               ))}
             </div>
             <div className="space-y-3">
-              <div className="flex items-start">
-                <MapPin className="h-5 w-5 text-primary mr-2 mt-0.5" />
-                <span className="text-gray-600">123 AI Boulevard, San Francisco, CA 94107</span>
-              </div>
-              <div className="flex items-center">
-                <Phone className="h-5 w-5 text-primary mr-2" />
-                <span className="text-gray-600">(123) 456-7890</span>
-              </div>
               <div className="flex items-center">
                 <Mail className="h-5 w-5 text-primary mr-2" />
-                <span className="text-gray-600">info@vivancedata.com</span>
+                <a href="mailto:info@vivancedata.com" className="text-gray-600 hover:text-primary transition-colors">
+                  info@vivancedata.com
+                </a>
               </div>
             </div>
           </div>
 
           {/* Links */}
-          {footerLinks.map((column, index) => (
-            <div key={index}>
+          {footerLinks.map((column) => (
+            <div key={column.title}>
               <h3 className="font-semibold text-lg mb-4">{column.title}</h3>
               <ul className="space-y-3">
-                {column.links.map((link, linkIndex) => (
-                  <li key={linkIndex}>
+                {column.links.map((link) => (
+                  <li key={`${column.title}-${link.href}`}>
                     <Link
                       href={link.href}
                       className="text-gray-600 hover:text-primary transition-colors"

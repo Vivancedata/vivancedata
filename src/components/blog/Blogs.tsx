@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { formatDate } from "@/lib/formatDate";
@@ -70,7 +70,7 @@ export function Blogs({ blogs }: BlogsProps) {
         onTagsChange={setSelectedTags}
       />
 
-      <motion.div
+      <m.div
         variants={container}
         initial="hidden"
         animate="show"
@@ -78,7 +78,7 @@ export function Blogs({ blogs }: BlogsProps) {
       >
         {filteredBlogs.map((blog, index) => (
           <Link key={blog.slug} href={`/blog/${blog.slug}`}>
-            <motion.article
+            <m.article
               variants={item}
               className="group relative flex h-full flex-col overflow-hidden rounded-xl bg-secondary/50 transition-all hover:bg-secondary/70"
             >
@@ -136,13 +136,13 @@ export function Blogs({ blogs }: BlogsProps) {
                   <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </div>
               </div>
-            </motion.article>
+            </m.article>
           </Link>
         ))}
-      </motion.div>
+      </m.div>
 
       {filteredBlogs.length === 0 && (
-        <motion.div
+        <m.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           className="text-center mt-8"
@@ -150,7 +150,7 @@ export function Blogs({ blogs }: BlogsProps) {
           <p className="text-muted-foreground">
             No blogs found matching your criteria.
           </p>
-        </motion.div>
+        </m.div>
       )}
     </div>
   );

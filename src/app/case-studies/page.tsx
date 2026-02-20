@@ -46,43 +46,43 @@ interface CaseStudy {
 const caseStudies: CaseStudy[] = [
   {
     id: "financial-services",
-    title: "AI-Powered Fraud Detection for Major Bank",
+    title: "Transaction Risk Prioritization Workflow",
     industry: "Financial Services",
-    challenge: "A leading bank was struggling with high false positive rates in their fraud detection system, causing customer frustration and operational inefficiencies.",
-    solution: "We implemented a custom machine learning model that analyzed transaction patterns and customer behavior to more accurately identify fraudulent activities.",
+    challenge: "Risk teams were spending too much effort reviewing low-confidence alerts and missing opportunities to prioritize high-risk cases faster.",
+    solution: "We designed a scored triage workflow using anomaly signals and behavior patterns to improve review prioritization and explainability.",
     results: [
-      "Reduced false positives by 35%",
-      "Improved fraud detection rate by 28%",
-      "Saved $2.4M annually in operational costs",
-      "Enhanced customer satisfaction scores by 18%"
+      "Higher precision in alert triage",
+      "Faster analyst response on high-risk events",
+      "Reduced low-value manual investigations",
+      "Improved auditability of risk decisions"
     ],
     image: "/images/ai-solutions.png"
   },
   {
     id: "healthcare",
-    title: "Predictive Analytics Platform for Healthcare Provider",
+    title: "Clinical Notes Summarization Support",
     industry: "Healthcare",
-    challenge: "A healthcare network needed to improve patient outcomes while reducing readmission rates and operational costs.",
-    solution: "We developed a HIPAA-compliant data platform that used machine learning to predict patient risks and recommend preventive interventions.",
+    challenge: "Clinical staff needed quicker access to relevant chart history without increasing documentation burden.",
+    solution: "We implemented NLP-assisted extraction and summarization patterns integrated into existing review workflows.",
     results: [
-      "Decreased readmission rates by 22%",
-      "Reduced average length of stay by 1.5 days",
-      "Improved resource allocation efficiency by 15%",
-      "Generated $3.2M in annual savings"
+      "Faster retrieval of key patient context",
+      "Reduced repetitive note review effort",
+      "More consistent documentation structure",
+      "Improved clinician workflow satisfaction"
     ],
     image: "/images/ai-solutions.png"
   },
   {
     id: "retail",
-    title: "Personalized Recommendation Engine for E-commerce",
+    title: "Merchandising & Inventory Decision Support",
     industry: "Retail",
-    challenge: "An e-commerce retailer wanted to increase conversion rates and average order value through more relevant product recommendations.",
-    solution: "We built a sophisticated recommendation system that analyzed browsing behavior, purchase history, and product attributes to deliver highly personalized suggestions.",
+    challenge: "Merchandising and planning teams lacked a unified view for demand shifts and category-level risk.",
+    solution: "We built decision support dashboards and forecast signals to improve replenishment and promotion planning.",
     results: [
-      "Increased conversion rates by 28%",
-      "Boosted average order value by 15%",
-      "Improved customer retention by 12%",
-      "Generated $5.7M in incremental revenue"
+      "Reduced category-level stock pressure",
+      "Improved forecast-driven planning confidence",
+      "Better cross-team visibility on inventory risk",
+      "Faster promotion planning cycles"
     ],
     image: "/images/ai-solutions.png"
   }
@@ -140,8 +140,8 @@ export default function CaseStudiesPage() {
               <div className="mb-6">
                 <h3 className="text-lg font-semibold mb-2">Results</h3>
                 <ul className="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-1">
-                  {study.results.map((result, i) => (
-                    <li key={i}>{result}</li>
+                  {study.results.map((result) => (
+                    <li key={`${study.id}-${result}`}>{result}</li>
                   ))}
                 </ul>
               </div>

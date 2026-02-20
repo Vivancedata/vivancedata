@@ -1,12 +1,13 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, type RefObject } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 import {
   CheckCircle2,
   ChevronRight,
@@ -236,248 +237,278 @@ const categoryInfo = {
   strategy: { icon: Target, color: "orange", label: "Strategic Alignment" },
 };
 
-export function AIReadinessQuiz() {
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [answers, setAnswers] = useState<Record<string, number>>({});
-  const [showResults, setShowResults] = useState(false);
-  const resultsRef = useRef<HTMLDivElement>(null);
-  const questionRef = useRef<HTMLDivElement>(null);
+type Category = Question["category"];
+type CategoryAverages = Record<Category, number>;
 
-  // Focus on results when they appear
-  useEffect(() => {
-    if (showResults && resultsRef.current) {
-      resultsRef.current.focus();
+interface QuizAssessmentResults {
+  categoryAverages: CategoryAverages;
+  totalScore: number;
+  percentageScore: number;
+}
+
+interface ReadinessLevel {
+  level: string;
+  color: "green" | "blue" | "yellow" | "orange";
+  icon: typeof Award;
+}
+
+const EMPTY_CATEGORY_SCORES: CategoryAverages = {
+  data: 0,
+  infrastructure: 0,
+  culture: 0,
+  strategy: 0,
+};
+
+const questionCategories = new Map(questions.map((question) => [question.id, question.category]));
+
+const calculateResults = (answers: Record<string, number>): QuizAssessmentResults => {
+  const categoryScores: CategoryAverages = { ...EMPTY_CATEGORY_SCORES };
+  const categoryCounts: CategoryAverages = { ...EMPTY_CATEGORY_SCORES };
+
+  Object.entries(answers).forEach(([questionId, score]) => {
+    const category = questionCategories.get(questionId);
+    if (!category) {
+      return;
     }
-  }, [showResults]);
+    categoryScores[category] += score;
+    categoryCounts[category] += 1;
+  });
 
-  // Focus on question card when question changes
-  useEffect(() => {
-    if (!showResults && questionRef.current) {
-      questionRef.current.focus();
-    }
-  }, [currentQuestion, showResults]);
-
-  const handleAnswer = (questionId: string, value: number) => {
-    setAnswers(prev => ({ ...prev, [questionId]: value }));
+  const categoryAverages: CategoryAverages = {
+    data: categoryCounts.data > 0 ? categoryScores.data / categoryCounts.data : 0,
+    infrastructure: categoryCounts.infrastructure > 0 ? categoryScores.infrastructure / categoryCounts.infrastructure : 0,
+    culture: categoryCounts.culture > 0 ? categoryScores.culture / categoryCounts.culture : 0,
+    strategy: categoryCounts.strategy > 0 ? categoryScores.strategy / categoryCounts.strategy : 0,
   };
+  const totalScore = Object.values(categoryAverages).reduce((sum, score) => sum + score, 0) / 4;
+  const percentageScore = (totalScore / 5) * 100;
 
-  const handleNext = () => {
-    if (currentQuestion < questions.length - 1) {
-      setCurrentQuestion(prev => prev + 1);
-    } else {
-      setShowResults(true);
-    }
-  };
+  return { categoryAverages, totalScore, percentageScore };
+};
 
-  const handlePrevious = () => {
-    if (currentQuestion > 0) {
-      setCurrentQuestion(prev => prev - 1);
-    }
-  };
+const getReadinessLevel = (percentage: number): ReadinessLevel => {
+  if (percentage >= 80) {
+    return { level: "Excellent", color: "green", icon: Award };
+  }
+  if (percentage >= 60) {
+    return { level: "Good", color: "blue", icon: TrendingUp };
+  }
+  if (percentage >= 40) {
+    return { level: "Moderate", color: "yellow", icon: CheckCircle2 };
+  }
+  return { level: "Beginning", color: "orange", icon: AlertCircle };
+};
 
-  const calculateResults = () => {
-    const categoryScores = {
-      data: 0,
-      infrastructure: 0,
-      culture: 0,
-      strategy: 0,
-    };
+const getRecommendations = (categoryAverages: CategoryAverages): string[] => {
+  const recommendations: string[] = [];
 
-    const categoryCounts = {
-      data: 0,
-      infrastructure: 0,
-      culture: 0,
-      strategy: 0,
-    };
-
-    Object.entries(answers).forEach(([questionId, score]) => {
-      const question = questions.find(q => q.id === questionId);
-      if (question) {
-        categoryScores[question.category] += score;
-        categoryCounts[question.category] += 1;
-      }
-    });
-
-    const categoryAverages = {
-      data: categoryCounts.data > 0 ? (categoryScores.data / categoryCounts.data) : 0,
-      infrastructure: categoryCounts.infrastructure > 0 ? (categoryScores.infrastructure / categoryCounts.infrastructure) : 0,
-      culture: categoryCounts.culture > 0 ? (categoryScores.culture / categoryCounts.culture) : 0,
-      strategy: categoryCounts.strategy > 0 ? (categoryScores.strategy / categoryCounts.strategy) : 0,
-    };
-
-    const totalScore = Object.values(categoryAverages).reduce((sum, score) => sum + score, 0) / 4;
-    const percentageScore = (totalScore / 5) * 100;
-
-    return { categoryAverages, totalScore, percentageScore };
-  };
-
-  const getReadinessLevel = (percentage: number) => {
-    if (percentage >= 80) return { level: "Excellent", color: "green", icon: Award };
-    if (percentage >= 60) return { level: "Good", color: "blue", icon: TrendingUp };
-    if (percentage >= 40) return { level: "Moderate", color: "yellow", icon: CheckCircle2 };
-    return { level: "Beginning", color: "orange", icon: AlertCircle };
-  };
-
-  const getRecommendations = (categoryAverages: Record<string, number>) => {
-    const recommendations: string[] = [];
-
-    if (categoryAverages.data < 3) {
-      recommendations.push("Focus on establishing a data governance framework and improving data quality before major AI initiatives.");
-    }
-    if (categoryAverages.infrastructure < 3) {
-      recommendations.push("Invest in cloud infrastructure and modern data platforms to support AI workloads.");
-    }
-    if (categoryAverages.culture < 3) {
-      recommendations.push("Build internal AI capabilities through training and hire data science talent.");
-    }
-    if (categoryAverages.strategy < 3) {
-      recommendations.push("Define clear AI use cases aligned with business objectives and establish success metrics.");
-    }
-
-    if (recommendations.length === 0) {
-      recommendations.push("Your organization is well-positioned for AI adoption. Consider starting with a pilot project in your strongest area.");
-      recommendations.push("Focus on scaling existing capabilities and building an AI center of excellence.");
-    }
-
-    return recommendations;
-  };
-
-  const progress = ((currentQuestion + 1) / questions.length) * 100;
-  const currentQ = questions[currentQuestion];
-  const hasAnswer = answers[currentQ?.id] !== undefined;
-
-  if (showResults) {
-    const results = calculateResults();
-    const readinessLevel = getReadinessLevel(results.percentageScore);
-    const recommendations = getRecommendations(results.categoryAverages);
-    const ReadinessIcon = readinessLevel.icon;
-
-    return (
-      <motion.div
-        ref={resultsRef}
-        tabIndex={-1}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="space-y-8 outline-none"
-        role="region"
-        aria-label="Assessment results"
-        aria-live="polite"
-      >
-        <Card>
-          <CardHeader className="text-center">
-            <div className="flex justify-center mb-4" aria-hidden="true">
-              <div className={`rounded-full p-4 bg-${readinessLevel.color}-100 dark:bg-${readinessLevel.color}-900/20`}>
-                <ReadinessIcon className={`h-12 w-12 text-${readinessLevel.color}-600`} />
-              </div>
-            </div>
-            <CardTitle as="h2" className="text-3xl">Your AI Readiness Score</CardTitle>
-            <CardDescription className="text-xl mt-2">
-              <span aria-label={`Score: ${Math.round(results.percentageScore)} percent, Level: ${readinessLevel.level}`}>
-                {Math.round(results.percentageScore)}% - {readinessLevel.level}
-              </span>
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-6">
-              {/* Overall Progress */}
-              <div>
-                <div className="flex justify-between mb-2">
-                  <span className="text-sm font-medium" id="overall-readiness-label">Overall Readiness</span>
-                  <span className="text-sm font-medium">{Math.round(results.percentageScore)}%</span>
-                </div>
-                <Progress
-                  value={results.percentageScore}
-                  className="h-3"
-                  aria-labelledby="overall-readiness-label"
-                  aria-valuenow={Math.round(results.percentageScore)}
-                  aria-valuemin={0}
-                  aria-valuemax={100}
-                />
-              </div>
-
-              {/* Category Breakdown */}
-              <div className="grid md:grid-cols-2 gap-4 mt-8" role="list" aria-label="Category breakdown">
-                {Object.entries(results.categoryAverages).map(([category, score]) => {
-                  const info = categoryInfo[category as keyof typeof categoryInfo];
-                  const CategoryIcon = info.icon;
-                  const percentage = (score / 5) * 100;
-                  const labelId = `category-${category}-label`;
-
-                  return (
-                    <Card key={category} role="listitem">
-                      <CardContent className="p-4">
-                        <div className="flex items-center gap-3 mb-3">
-                          <div className={`rounded-full p-2 bg-${info.color}-100 dark:bg-${info.color}-900/20`} aria-hidden="true">
-                            <CategoryIcon className={`h-4 w-4 text-${info.color}-600`} />
-                          </div>
-                          <span className="font-semibold" id={labelId}>{info.label}</span>
-                        </div>
-                        <div className="flex justify-between mb-2">
-                          <span className="text-sm">{score.toFixed(1)} / 5.0</span>
-                          <span className="text-sm">{Math.round(percentage)}%</span>
-                        </div>
-                        <Progress
-                          value={percentage}
-                          className="h-2"
-                          aria-labelledby={labelId}
-                          aria-valuenow={Math.round(percentage)}
-                          aria-valuemin={0}
-                          aria-valuemax={100}
-                        />
-                      </CardContent>
-                    </Card>
-                  );
-                })}
-              </div>
-
-              {/* Recommendations */}
-              <div className="mt-8">
-                <h3 className="text-xl font-bold mb-4">Personalized Recommendations</h3>
-                <ul className="space-y-3" role="list" aria-label="Personalized recommendations">
-                  {recommendations.map((rec, index) => (
-                    <li key={index} className="flex gap-3 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                      <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" aria-hidden="true" />
-                      <p className="text-sm">{rec}</p>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Next Steps */}
-              <div className="mt-8 p-6 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl">
-                <h3 className="text-xl font-bold mb-3">Ready to Take the Next Step?</h3>
-                <p className="mb-4">
-                  Our AI consultants can help you create a customized roadmap based on your assessment results.
-                </p>
-                <div className="flex gap-4">
-                  <Button asChild variant="secondary">
-                    <a href="/contact">Schedule Consultation</a>
-                  </Button>
-                  <Button
-                    variant="outline"
-                    className="bg-white/10 border-white/20 text-white hover:bg-white/20"
-                    onClick={() => {
-                      setShowResults(false);
-                      setCurrentQuestion(0);
-                      setAnswers({});
-                    }}
-                  >
-                    Retake Assessment
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </motion.div>
-    );
+  if (categoryAverages.data < 3) {
+    recommendations.push("Focus on establishing a data governance framework and improving data quality before major AI initiatives.");
+  }
+  if (categoryAverages.infrastructure < 3) {
+    recommendations.push("Invest in cloud infrastructure and modern data platforms to support AI workloads.");
+  }
+  if (categoryAverages.culture < 3) {
+    recommendations.push("Build internal AI capabilities through training and hire data science talent.");
+  }
+  if (categoryAverages.strategy < 3) {
+    recommendations.push("Define clear AI use cases aligned with business objectives and establish success metrics.");
   }
 
+  if (recommendations.length === 0) {
+    recommendations.push("Your organization is well-positioned for AI adoption. Consider starting with a pilot project in your strongest area.");
+    recommendations.push("Focus on scaling existing capabilities and building an AI center of excellence.");
+  }
+
+  return recommendations;
+};
+
+interface ReadinessSummaryProps {
+  results: QuizAssessmentResults;
+  readinessLevel: ReadinessLevel;
+}
+
+function ReadinessSummary({ results, readinessLevel }: ReadinessSummaryProps) {
+  const ReadinessIcon = readinessLevel.icon;
+
+  return (
+    <>
+      <CardHeader className="text-center">
+        <div className="flex justify-center mb-4" aria-hidden="true">
+          <div className={`rounded-full p-4 bg-${readinessLevel.color}-100 dark:bg-${readinessLevel.color}-900/20`}>
+            <ReadinessIcon className={`h-12 w-12 text-${readinessLevel.color}-600`} />
+          </div>
+        </div>
+        <CardTitle as="h2" className="text-3xl">Your AI Readiness Score</CardTitle>
+        <CardDescription className="text-xl mt-2">
+          <span aria-label={`Score: ${Math.round(results.percentageScore)} percent, Level: ${readinessLevel.level}`}>
+            {Math.round(results.percentageScore)}% - {readinessLevel.level}
+          </span>
+        </CardDescription>
+      </CardHeader>
+
+      <div>
+        <div className="flex justify-between mb-2">
+          <span className="text-sm font-medium" id="overall-readiness-label">Overall Readiness</span>
+          <span className="text-sm font-medium">{Math.round(results.percentageScore)}%</span>
+        </div>
+        <Progress
+          value={results.percentageScore}
+          className="h-3"
+          aria-labelledby="overall-readiness-label"
+          aria-valuenow={Math.round(results.percentageScore)}
+          aria-valuemin={0}
+          aria-valuemax={100}
+        />
+      </div>
+    </>
+  );
+}
+
+interface CategoryBreakdownProps {
+  categoryAverages: CategoryAverages;
+}
+
+function CategoryBreakdown({ categoryAverages }: CategoryBreakdownProps) {
+  return (
+    <div className="grid md:grid-cols-2 gap-4 mt-8" role="list" aria-label="Category breakdown">
+      {(Object.entries(categoryAverages) as [Category, number][]).map(([category, score]) => {
+        const info = categoryInfo[category];
+        const CategoryIcon = info.icon;
+        const percentage = (score / 5) * 100;
+        const labelId = `category-${category}-label`;
+
+        return (
+          <Card key={category} role="listitem">
+            <CardContent className="p-4">
+              <div className="flex items-center gap-3 mb-3">
+                <div className={`rounded-full p-2 bg-${info.color}-100 dark:bg-${info.color}-900/20`} aria-hidden="true">
+                  <CategoryIcon className={`h-4 w-4 text-${info.color}-600`} />
+                </div>
+                <span className="font-semibold" id={labelId}>{info.label}</span>
+              </div>
+              <div className="flex justify-between mb-2">
+                <span className="text-sm">{score.toFixed(1)} / 5.0</span>
+                <span className="text-sm">{Math.round(percentage)}%</span>
+              </div>
+              <Progress
+                value={percentage}
+                className="h-2"
+                aria-labelledby={labelId}
+                aria-valuenow={Math.round(percentage)}
+                aria-valuemin={0}
+                aria-valuemax={100}
+              />
+            </CardContent>
+          </Card>
+        );
+      })}
+    </div>
+  );
+}
+
+interface RecommendationsProps {
+  recommendations: string[];
+}
+
+function Recommendations({ recommendations }: RecommendationsProps) {
+  return (
+    <div className="mt-8">
+      <h3 className="text-xl font-bold mb-4">Personalized Recommendations</h3>
+      <ul className="space-y-3" role="list" aria-label="Personalized recommendations">
+        {recommendations.map((recommendation) => (
+          <li key={recommendation} className="flex gap-3 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+            <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" aria-hidden="true" />
+            <p className="text-sm">{recommendation}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+interface QuizResultsPanelProps {
+  results: QuizAssessmentResults;
+  readinessLevel: ReadinessLevel;
+  recommendations: string[];
+  resultsRef: RefObject<HTMLDivElement | null>;
+  onRetake: () => void;
+}
+
+function QuizResultsPanel({
+  results,
+  readinessLevel,
+  recommendations,
+  resultsRef,
+  onRetake,
+}: QuizResultsPanelProps) {
+  return (
+    <m.div
+      ref={resultsRef}
+      tabIndex={-1}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="space-y-8 outline-none"
+      role="region"
+      aria-label="Assessment results"
+      aria-live="polite"
+    >
+      <Card>
+        <ReadinessSummary results={results} readinessLevel={readinessLevel} />
+        <CardContent>
+          <div className="space-y-6">
+            <CategoryBreakdown categoryAverages={results.categoryAverages} />
+            <Recommendations recommendations={recommendations} />
+
+            <div className="mt-8 p-6 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl">
+              <h3 className="text-xl font-bold mb-3">Ready to Take the Next Step?</h3>
+              <p className="mb-4">
+                Our AI consultants can help you create a customized roadmap based on your assessment results.
+              </p>
+              <div className="flex gap-4">
+                <Button asChild variant="secondary">
+                  <Link href="/contact">Schedule Consultation</Link>
+                </Button>
+                <Button
+                  variant="outline"
+                  className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+                  onClick={onRetake}
+                >
+                  Retake Assessment
+                </Button>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    </m.div>
+  );
+}
+
+interface QuizQuestionStepProps {
+  currentQuestion: number;
+  answers: Record<string, number>;
+  questionRef: RefObject<HTMLDivElement | null>;
+  onAnswer: (questionId: string, value: number) => void;
+  onNext: () => void;
+  onPrevious: () => void;
+}
+
+function QuizQuestionStep({
+  currentQuestion,
+  answers,
+  questionRef,
+  onAnswer,
+  onNext,
+  onPrevious,
+}: QuizQuestionStepProps) {
+  const progress = ((currentQuestion + 1) / questions.length) * 100;
+  const currentQ = questions[currentQuestion];
   const CategoryIcon = categoryInfo[currentQ.category].icon;
+  const hasAnswer = answers[currentQ.id] !== undefined;
 
   return (
     <div className="space-y-6" role="region" aria-label="AI Readiness Assessment Quiz">
-      {/* Progress Bar */}
       <div>
         <div className="flex justify-between mb-2">
           <span className="text-sm font-medium" id="quiz-progress-label">
@@ -498,9 +529,8 @@ export function AIReadinessQuiz() {
         </p>
       </div>
 
-      {/* Question Card */}
       <AnimatePresence mode="wait">
-        <motion.div
+        <m.div
           ref={questionRef}
           tabIndex={-1}
           key={currentQuestion}
@@ -527,7 +557,7 @@ export function AIReadinessQuiz() {
                 <legend className="sr-only">{currentQ.question}</legend>
                 <RadioGroup
                   value={answers[currentQ.id]?.toString()}
-                  onValueChange={(value) => handleAnswer(currentQ.id, parseInt(value))}
+                  onValueChange={(value) => onAnswer(currentQ.id, parseInt(value, 10))}
                   aria-labelledby={`question-${currentQ.id}`}
                 >
                   <div className="space-y-3" role="radiogroup">
@@ -551,14 +581,13 @@ export function AIReadinessQuiz() {
               </fieldset>
             </CardContent>
           </Card>
-        </motion.div>
+        </m.div>
       </AnimatePresence>
 
-      {/* Navigation */}
       <nav className="flex justify-between" aria-label="Quiz navigation">
         <Button
           variant="outline"
-          onClick={handlePrevious}
+          onClick={onPrevious}
           disabled={currentQuestion === 0}
           aria-label="Go to previous question"
         >
@@ -566,7 +595,7 @@ export function AIReadinessQuiz() {
           Previous
         </Button>
         <Button
-          onClick={handleNext}
+          onClick={onNext}
           disabled={!hasAnswer}
           className="bg-primary hover:bg-primary/90"
           aria-label={currentQuestion === questions.length - 1 ? "View your results" : "Go to next question"}
@@ -576,5 +605,67 @@ export function AIReadinessQuiz() {
         </Button>
       </nav>
     </div>
+  );
+}
+
+export function AIReadinessQuiz() {
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [answers, setAnswers] = useState<Record<string, number>>({});
+  const [showResults, setShowResults] = useState(false);
+  const resultsRef = useRef<HTMLDivElement>(null);
+  const questionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (showResults && resultsRef.current) {
+      resultsRef.current.focus();
+    }
+  }, [showResults]);
+
+  useEffect(() => {
+    if (!showResults && questionRef.current) {
+      questionRef.current.focus();
+    }
+  }, [currentQuestion, showResults]);
+
+  const handleAnswer = (questionId: string, value: number) => {
+    setAnswers((previousAnswers) => ({ ...previousAnswers, [questionId]: value }));
+  };
+
+  const handleNext = () => {
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion((previousQuestion) => previousQuestion + 1);
+      return;
+    }
+    setShowResults(true);
+  };
+
+  const handleRetake = () => {
+    setShowResults(false);
+    setCurrentQuestion(0);
+    setAnswers({});
+  };
+
+  if (showResults) {
+    const results = calculateResults(answers);
+    return (
+      <QuizResultsPanel
+        results={results}
+        readinessLevel={getReadinessLevel(results.percentageScore)}
+        recommendations={getRecommendations(results.categoryAverages)}
+        resultsRef={resultsRef}
+        onRetake={handleRetake}
+      />
+    );
+  }
+
+  return (
+    <QuizQuestionStep
+      currentQuestion={currentQuestion}
+      answers={answers}
+      questionRef={questionRef}
+      onAnswer={handleAnswer}
+      onNext={handleNext}
+      onPrevious={() => setCurrentQuestion((previousQuestion) => Math.max(0, previousQuestion - 1))}
+    />
   );
 }

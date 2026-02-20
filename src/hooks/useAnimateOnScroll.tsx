@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useEffect, useRef, useMemo } from "react";
-import { motion, useAnimation, useInView, Variants } from "framer-motion";
+import React, { useRef, useMemo, useEffect } from "react";
+import { m, useInView, Variants } from "framer-motion";
 
 // Animation variants for different entrance effects
 const fadeInUpVariants: Variants = {
@@ -162,9 +162,8 @@ export const AnimateOnScroll: React.FC<AnimateOnScrollProps> = ({
   className = "",
   once = true,
   duration,
-  as = motion.div,
+  as = m.div,
 }) => {
-  const controls = useAnimation();
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { 
     once,
@@ -193,21 +192,13 @@ export const AnimateOnScroll: React.FC<AnimateOnScrollProps> = ({
     return baseVariant;
   }, [variant, duration]);
 
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    } else if (!once) {
-      controls.start("hidden");
-    }
-  }, [controls, inView, once]);
-
   const MotionComponent = as;
 
   return (
     <MotionComponent
       ref={ref}
       initial="hidden"
-      animate={controls}
+      animate={inView ? "visible" : "hidden"}
       variants={currentVariant}
       transition={{ delay }}
       className={className}
@@ -240,20 +231,11 @@ export const StaggerContainer: React.FC<StaggerContainerProps> = ({
   direction = "up",
   as = "div"
 }) => {
-  const controls = useAnimation();
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { 
     once,
     amount: threshold
   });
-
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    } else if (!once) {
-      controls.start("hidden");
-    }
-  }, [controls, inView, once]);
 
   // Determine animation direction
   const getDirectionVariants = useMemo(() => {
@@ -312,23 +294,38 @@ export const StaggerContainer: React.FC<StaggerContainerProps> = ({
 
   // Clone children and add staggered animation
   const childrenArray = React.Children.toArray(children);
-  const staggeredChildren = childrenArray.map((child, index) => {
-    if (React.isValidElement(child)) {
-      return (
-        <motion.div
-          key={`staggered-child-${index}`}
-          custom={index}
-          initial="hidden"
-          animate={controls}
-          variants={getDirectionVariants}
-          className={childClassName}
-        >
-          {child}
-        </motion.div>
-      );
+  const keyCounts = new Map<string, number>();
+  let order = 0;
+  const staggeredChildren: React.ReactNode[] = [];
+
+  for (const child of childrenArray) {
+    if (!React.isValidElement(child)) {
+      staggeredChildren.push(child);
+      continue;
     }
-    return child;
-  });
+
+    const baseKey =
+      child.key !== null
+        ? String(child.key)
+        : `staggered-${typeof child.type === "string" ? child.type : "child"}`;
+    const keyCount = keyCounts.get(baseKey) ?? 0;
+    keyCounts.set(baseKey, keyCount + 1);
+    const stableKey = keyCount === 0 ? baseKey : `${baseKey}-${keyCount}`;
+
+    staggeredChildren.push(
+      <m.div
+        key={stableKey}
+        custom={order}
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"}
+        variants={getDirectionVariants}
+        className={childClassName}
+      >
+        {child}
+      </m.div>
+    );
+    order += 1;
+  }
 
   const Component = as;
 
@@ -384,7 +381,7 @@ export const Parallax: React.FC<ParallaxProps> = ({
       element.style.transform = transform;
     };
     
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [speed, direction]);
   

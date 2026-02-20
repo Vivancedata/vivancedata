@@ -3,6 +3,7 @@ import { Heading } from "@/components/common/Heading";
 import { Paragraph } from "@/components/common/Paragraph";
 import { UseCasesExplorer } from "@/components/tools/UseCasesExplorer";
 import { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "AI Use Cases Repository - VivanceData",
@@ -93,12 +94,12 @@ export default function UseCasesPage() {
             </div>
           </div>
           <div className="mt-6">
-            <a
+            <Link
               href="/contact"
               className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
             >
               Schedule a Consultation
-            </a>
+            </Link>
           </div>
         </div>
       </div>

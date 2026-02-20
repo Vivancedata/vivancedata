@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { formatDate } from "@/lib/formatDate";
@@ -75,7 +75,7 @@ export function BlogLayout({
       <div className="xl:relative">
         <div className="mx-auto max-w-2xl">
           {previousPathname && (
-            <motion.button
+            <m.button
               type="button"
               onClick={() => router.back()}
               aria-label="Go back to blogs"
@@ -84,11 +84,11 @@ export function BlogLayout({
               whileTap={{ scale: 0.95 }}
             >
               <ArrowLeft className="h-4 w-4 stroke-zinc-500 transition group-hover:stroke-zinc-700 dark:stroke-zinc-500 dark:group-hover:stroke-zinc-400" />
-            </motion.button>
+            </m.button>
           )}
           <article>
             <header className="flex flex-col">
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
@@ -119,8 +119,8 @@ export function BlogLayout({
                 <Paragraph className="mt-4 text-sm leading-8 text-stone-600">
                   {meta.description}
                 </Paragraph>
-              </motion.div>
-              <motion.div
+              </m.div>
+              <m.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
@@ -134,9 +134,9 @@ export function BlogLayout({
                   className="object-cover"
                   priority
                 />
-              </motion.div>
+              </m.div>
             </header>
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
@@ -189,15 +189,15 @@ export function BlogLayout({
               <Prose>
                 <div ref={contentRef}>{children}</div>
               </Prose>
-            </motion.div>
+            </m.div>
             {relatedPosts && relatedPosts.length > 0 && (
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
                 <RelatedPosts posts={relatedPosts} currentSlug={currentSlug} />
-              </motion.div>
+              </m.div>
             )}
           </article>
         </div>

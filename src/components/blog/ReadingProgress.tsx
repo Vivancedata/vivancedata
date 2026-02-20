@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, useScroll, useSpring } from "framer-motion";
+import { m, useScroll, useSpring } from "framer-motion";
 
 interface ReadingProgressProps {
   className?: string;
@@ -30,7 +30,7 @@ export function ReadingProgress({ className }: ReadingProgressProps) {
   if (!isVisible) return null;
 
   return (
-    <motion.div
+    <m.div
       className={`fixed top-0 left-0 right-0 z-50 h-1 bg-primary origin-left ${className || ""}`}
       style={{ scaleX }}
       initial={{ opacity: 0 }}

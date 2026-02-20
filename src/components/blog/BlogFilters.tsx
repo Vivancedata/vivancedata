@@ -1,7 +1,7 @@
 "use client";
 
 import { Input } from "@/components/ui/input";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Search, Tag as TagIcon, X } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 
@@ -71,7 +71,7 @@ export function BlogFilters({ allTags, onSearch, onTagsChange }: BlogFiltersProp
   return (
     <div className="space-y-4">
       {/* Search */}
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="relative"
@@ -96,10 +96,10 @@ export function BlogFilters({ allTags, onSearch, onTagsChange }: BlogFiltersProp
             <X className="size-4" aria-hidden="true" />
           </button>
         )}
-      </motion.div>
+      </m.div>
 
       {/* Tags */}
-      <motion.div
+      <m.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.1 }}
@@ -127,7 +127,7 @@ export function BlogFilters({ allTags, onSearch, onTagsChange }: BlogFiltersProp
             </button>
           );
         })}
-      </motion.div>
+      </m.div>
     </div>
   );
 }
