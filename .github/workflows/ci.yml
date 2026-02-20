@@ -46,7 +46,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Fetch base branch for diff scan
+        run: git fetch origin main --depth=1
+
       - name: Enforce React Doctor score
+        env:
+          REACT_DOCTOR_DIFF_BASE: origin/main
         run: npm run react-doctor:ci
 
   test:

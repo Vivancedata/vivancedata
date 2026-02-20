@@ -1,7 +1,12 @@
 import { spawnSync } from "node:child_process";
 
 const REQUIRED_SCORE = 100;
+const diffBase = process.env.REACT_DOCTOR_DIFF_BASE?.trim();
 const commandArgs = ["-y", "react-doctor@latest", ".", "--score"];
+
+if (diffBase) {
+  commandArgs.push("--diff", diffBase);
+}
 
 const result = spawnSync("npx", commandArgs, {
   encoding: "utf-8",
@@ -40,9 +45,14 @@ if (!Number.isFinite(score)) {
 
 if (score !== REQUIRED_SCORE) {
   console.error(
-    `React Doctor score is ${score}. Required score is ${REQUIRED_SCORE}.`
+    `React Doctor score is ${score}. Required score is ${REQUIRED_SCORE}.` +
+      (diffBase ? ` (diff base: ${diffBase})` : "")
   );
   process.exit(1);
 }
 
-console.log(`React Doctor score check passed (${score}/${REQUIRED_SCORE}).`);
+console.log(
+  `React Doctor score check passed (${score}/${REQUIRED_SCORE})` +
+    (diffBase ? ` using diff base ${diffBase}` : "") +
+    "."
+);
