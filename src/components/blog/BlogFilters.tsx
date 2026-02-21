@@ -80,7 +80,7 @@ export function BlogFilters({ allTags, onSearch, onTagsChange }: BlogFiltersProp
         <Input
           ref={inputRef}
           type="text"
-          placeholder="Search by title, description, or tags..."
+          placeholder={"Search by title, description, or tags\u2026"}
           value={searchQuery}
           onChange={handleSearchChange}
           className="w-full pl-10 pr-10 bg-secondary/50 border-0 focus-visible:ring-2 focus-visible:ring-primary/20"

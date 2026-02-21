@@ -224,7 +224,7 @@ function PhasesTimelineSection() {
                 }`}
               >
                 <div className="w-full lg:w-5/12">
-                  <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+                  <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
                     <div
                       className={`h-2 bg-gradient-to-r ${getPhaseColor(phase.number)}`}
                     />
@@ -318,7 +318,7 @@ function BenefitsSection() {
           {frameworkBenefits.map((benefit) => (
             <Card
               key={benefit.title}
-              className="border-0 shadow-md hover:shadow-lg transition-all duration-300"
+              className="border-0 shadow-md hover:shadow-lg transition-shadow duration-300"
             >
               <CardContent className="p-8">
                 <div className="flex items-start justify-between mb-4">
