@@ -118,7 +118,7 @@ export default function Home() {
   ];
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between">
+    <div className="flex min-h-screen flex-col items-center justify-between">
       <Script id="homepage-jsonld" type="application/ld+json">
         {JSON.stringify(jsonLd)}
       </Script>
@@ -161,6 +161,6 @@ export default function Home() {
         buttonText="Schedule a Demo"
         buttonLink="/contact"
       />
-    </main>
+    </div>
   );
 }

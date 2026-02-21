@@ -90,7 +90,7 @@ export function BlogFilters({ allTags, onSearch, onTagsChange }: BlogFiltersProp
           <button
             type="button"
             onClick={handleClearSearch}
-            className="absolute right-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground hover:text-foreground transition-colors"
+            className="absolute right-1 top-1/2 -translate-y-1/2 inline-flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             aria-label="Clear search"
           >
             <X className="size-4" aria-hidden="true" />
@@ -110,6 +110,7 @@ export function BlogFilters({ allTags, onSearch, onTagsChange }: BlogFiltersProp
           return (
             <button
               key={tag}
+              type="button"
               onClick={() => handleTagToggle(tag)}
               className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium transition-colors ${
                 isSelected

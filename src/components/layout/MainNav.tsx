@@ -84,9 +84,12 @@ export function MainNav() {
               variant="ghost"
               size="icon"
               className="text-foreground/60 hover:text-primary transition-colors duration-300"
-              aria-label="Search"
+              aria-label="Search blog content"
+              asChild
             >
-              <Search className="h-5 w-5" />
+              <Link href="/blog">
+                <Search className="h-5 w-5" />
+              </Link>
             </Button>
             <ModeToggle />
             <Button
