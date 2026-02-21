@@ -68,13 +68,13 @@ const ServicesPage = () => {
   ];
 
   const technologies = [
-    { id: "1", name: "Python", icon: "/images/ai-solutions.png" },
-    { id: "2", name: "TensorFlow", icon: "/images/ai-solutions.png" },
-    { id: "3", name: "PyTorch", icon: "/images/ai-solutions.png" },
-    { id: "4", name: "Azure", icon: "/images/ai-solutions.png" },
-    { id: "5", name: "AWS", icon: "/images/ai-solutions.png" },
-    { id: "6", name: "Docker", icon: "/images/ai-solutions.png" },
-    { id: "7", name: "Kubernetes", icon: "/images/ai-solutions.png" }
+    { id: "1", name: "Python", shortLabel: "Py", tone: "bg-emerald-100 text-emerald-700" },
+    { id: "2", name: "TensorFlow", shortLabel: "TF", tone: "bg-orange-100 text-orange-700" },
+    { id: "3", name: "PyTorch", shortLabel: "PT", tone: "bg-red-100 text-red-700" },
+    { id: "4", name: "Azure", shortLabel: "Az", tone: "bg-sky-100 text-sky-700" },
+    { id: "5", name: "AWS", shortLabel: "AWS", tone: "bg-amber-100 text-amber-700" },
+    { id: "6", name: "Docker", shortLabel: "DK", tone: "bg-blue-100 text-blue-700" },
+    { id: "7", name: "Kubernetes", shortLabel: "K8s", tone: "bg-indigo-100 text-indigo-700" }
   ];
 
   const caseStudies = [
@@ -83,24 +83,24 @@ const ServicesPage = () => {
       title: "Financial Services AI Transformation",
       category: "Software Development",
       description: "Helped a major bank implement AI-driven fraud detection, reducing false positives by 35%.",
-      imageSrc: "/images/ai-solutions.png",
-      link: "/case-studies/financial-services"
+      impact: "Fraud false positives reduced by 35% in 90 days.",
+      link: "/industries/financial-services"
     },
     {
       id: "2",
       title: "Healthcare Data Platform",
       category: "AI Engineering",
       description: "Built a HIPAA-compliant data platform for a healthcare provider, enabling ML-driven patient insights.",
-      imageSrc: "/images/ai-solutions.png",
-      link: "/case-studies/healthcare"
+      impact: "HIPAA-ready analytics foundation delivered in one quarter.",
+      link: "/case-studies"
     },
     {
       id: "3",
       title: "Retail Recommendation Engine",
       category: "Machine Learning",
       description: "Developed a personalized recommendation system that increased conversion rates by 28%.",
-      imageSrc: "/images/ai-solutions.png",
-      link: "/case-studies/retail"
+      impact: "Conversion rate lifted by 28% through recommendation modeling.",
+      link: "/case-studies"
     }
   ];
 

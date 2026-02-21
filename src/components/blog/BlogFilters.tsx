@@ -34,8 +34,10 @@ function useDebounce<T>(value: T, delay: number): T {
 }
 
 export function BlogFilters({ allTags, onSearch, onTagsChange }: BlogFiltersProps) {
+  const MAX_VISIBLE_TAGS = 10;
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [showAllTags, setShowAllTags] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   // Debounce search query with 300ms delay for better UX
@@ -67,6 +69,8 @@ export function BlogFilters({ allTags, onSearch, onTagsChange }: BlogFiltersProp
   useEffect(() => {
     onTagsChange(selectedTags);
   }, [selectedTags, onTagsChange]);
+
+  const visibleTags = showAllTags ? allTags : allTags.slice(0, MAX_VISIBLE_TAGS);
 
   return (
     <div className="space-y-4">
@@ -105,7 +109,7 @@ export function BlogFilters({ allTags, onSearch, onTagsChange }: BlogFiltersProp
         transition={{ delay: 0.1 }}
         className="flex flex-wrap gap-2"
       >
-        {allTags.map((tag) => {
+        {visibleTags.map((tag) => {
           const isSelected = selectedTags.includes(tag);
           return (
             <button
@@ -128,6 +132,16 @@ export function BlogFilters({ allTags, onSearch, onTagsChange }: BlogFiltersProp
             </button>
           );
         })}
+        {allTags.length > MAX_VISIBLE_TAGS && (
+          <button
+            type="button"
+            onClick={() => setShowAllTags(prev => !prev)}
+            className="inline-flex items-center rounded-full px-3 py-1 text-xs font-medium text-primary hover:text-primary/80 hover:bg-primary/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            aria-label={showAllTags ? "Show fewer blog topics" : `Show all ${allTags.length} blog topics`}
+          >
+            {showAllTags ? "Show fewer topics" : `Show all ${allTags.length} topics`}
+          </button>
+        )}
       </m.div>
     </div>
   );

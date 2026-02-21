@@ -3,7 +3,6 @@
 import React, { useRef } from "react";
 import { m, useScroll, useTransform } from "framer-motion";
 import { AnimateOnScroll } from "@/hooks/useAnimateOnScroll";
-import { TextReveal } from "@/components/common/Animations";
 
 interface ServicesHeroProps {
   title: string;
@@ -80,42 +79,10 @@ export function ServicesHero({ title, description }: ServicesHeroProps): React.R
         </AnimateOnScroll>
         
         <AnimateOnScroll variant="fadeInUp" delay={0.2}>
-          <TextReveal 
-            text={description}
-            className="text-lg md:text-xl max-w-3xl mx-auto text-blue-100 leading-relaxed"
-          />
+          <p className="text-lg text-pretty md:text-xl max-w-3xl mx-auto text-blue-100 leading-relaxed">
+            {description}
+          </p>
         </AnimateOnScroll>
-        
-        {/* Scroll indicator */}
-        <m.div 
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          animate={{ y: [0, 10, 0] }}
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-            ease: "easeInOut" as const
-          }}
-        >
-          <div className="flex flex-col items-center">
-            <span className="text-sm text-blue-100 mb-2">Scroll to explore</span>
-            <svg 
-              width="24" 
-              height="24" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              xmlns="http://www.w3.org/2000/svg"
-              className="text-blue-100"
-            >
-              <path 
-                d="M12 5L12 19M12 19L19 12M12 19L5 12" 
-                stroke="currentColor" 
-                strokeWidth="2" 
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-        </m.div>
       </m.div>
     </section>
   );
