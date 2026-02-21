@@ -20,8 +20,8 @@ const ClientLogoItem: React.FC<ClientLogoItemProps> = ({ client }) => {
       aria-label={`${client.name} - ${client.industry}`}
     >
       <div className="flex flex-col items-center justify-center h-20 w-32 md:w-40 group">
-        <div className="flex flex-col items-center justify-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500 ease-out">
-          <div className="flex items-center justify-center h-12 md:h-14 px-2 rounded-xl bg-muted/60 group-hover:bg-primary/10 dark:bg-muted/40 transition-all duration-500 shadow-sm group-hover:shadow-md">
+        <div className="flex flex-col items-center justify-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-[opacity,filter] duration-500 ease-out">
+          <div className="flex items-center justify-center h-12 md:h-14 px-2 rounded-xl bg-muted/60 group-hover:bg-primary/10 dark:bg-muted/40 transition-[background-color,box-shadow] duration-500 shadow-sm group-hover:shadow-md">
             {logoLoadFailed ? (
               <Building2 className="w-6 h-6 md:w-7 md:h-7 text-muted-foreground group-hover:text-primary transition-colors duration-500" />
             ) : (
@@ -137,6 +137,15 @@ const ClientLogos: React.FC = () => {
         }
         .animate-marquee:hover {
           animation-play-state: paused;
+        }
+        .animate-marquee:focus-within {
+          animation-play-state: paused;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .animate-marquee {
+            animation: none;
+            transform: translateX(0);
+          }
         }
       `}</style>
     </section>

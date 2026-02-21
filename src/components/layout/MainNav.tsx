@@ -25,7 +25,7 @@ export function MainNav() {
 
   return (
     <header className={cn(
-      "sticky top-0 z-50 w-full transition-all duration-300",
+      "sticky top-0 z-50 w-full transition-[background-color,box-shadow,backdrop-filter] duration-300",
       isScrolled 
         ? "bg-background/95 shadow-md backdrop-blur-md supports-[backdrop-filter]:bg-background/80" 
         : "bg-transparent"
@@ -68,7 +68,7 @@ export function MainNav() {
                   )}
                 >
                   {item.name}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-[width] duration-300 group-hover:w-full"></span>
                 </Link>
               </m.div>
             ))}
@@ -93,7 +93,7 @@ export function MainNav() {
             </Button>
             <ModeToggle />
             <Button
-              className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground shadow-md hover:shadow-lg transition-all duration-300"
+              className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground shadow-md hover:shadow-lg transition-[background-color,box-shadow] duration-300"
               asChild
             >
               <Link href="/contact">
