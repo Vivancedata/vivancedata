@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { AnimateOnScroll } from "@/hooks/useAnimateOnScroll";
 import { clients, Client } from "@/constants/clients";
 import { Building2 } from "lucide-react";
@@ -10,17 +11,30 @@ interface ClientLogoItemProps {
 }
 
 const ClientLogoItem: React.FC<ClientLogoItemProps> = ({ client }) => {
+  const [logoLoadFailed, setLogoLoadFailed] = React.useState(false);
+
   return (
     <div
-      className="flex-shrink-0 px-8 md:px-12"
+      className="flex-shrink-0 px-2 md:px-12"
       role="listitem"
       aria-label={`${client.name} - ${client.industry}`}
     >
       <div className="flex flex-col items-center justify-center h-20 w-32 md:w-40 group">
-        {/* Placeholder logo using icon and text - replace with actual logos */}
         <div className="flex flex-col items-center justify-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500 ease-out">
-          <div className="flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-xl bg-muted/60 group-hover:bg-primary/10 dark:bg-muted/40 transition-all duration-500 shadow-sm group-hover:shadow-md">
-            <Building2 className="w-6 h-6 md:w-7 md:h-7 text-muted-foreground group-hover:text-primary transition-colors duration-500" />
+          <div className="flex items-center justify-center h-12 md:h-14 px-2 rounded-xl bg-muted/60 group-hover:bg-primary/10 dark:bg-muted/40 transition-all duration-500 shadow-sm group-hover:shadow-md">
+            {logoLoadFailed ? (
+              <Building2 className="w-6 h-6 md:w-7 md:h-7 text-muted-foreground group-hover:text-primary transition-colors duration-500" />
+            ) : (
+              <Image
+                src={client.logo}
+                alt={`${client.name} logo`}
+                width={140}
+                height={56}
+                className="h-7 w-auto md:h-8"
+                onError={() => setLogoLoadFailed(true)}
+                unoptimized
+              />
+            )}
           </div>
           <span className="mt-2 text-xs md:text-sm font-semibold text-muted-foreground group-hover:text-foreground transition-colors duration-500 whitespace-nowrap">
             {client.name}
@@ -82,21 +96,7 @@ const ClientLogos: React.FC = () => {
             aria-label="Client logos"
           >
             {clients.slice(0, 6).map((client) => (
-              <div
-                key={client.id}
-                className="flex items-center justify-center p-4"
-                role="listitem"
-                aria-label={`${client.name} - ${client.industry}`}
-              >
-                <div className="flex flex-col items-center justify-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
-                  <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-muted/60 dark:bg-muted/40 shadow-sm">
-                    <Building2 className="w-6 h-6 text-muted-foreground" />
-                  </div>
-                  <span className="mt-2 text-xs font-semibold text-muted-foreground whitespace-nowrap">
-                    {client.name}
-                  </span>
-                </div>
-              </div>
+              <ClientLogoItem key={client.id} client={client} />
             ))}
           </div>
         </AnimateOnScroll>

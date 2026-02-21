@@ -1,9 +1,4 @@
 {
   "deadCode": false,
-  "diff": false,
-  "ignore": {
-    "rules": [
-      "react-doctor/no-giant-component"
-    ]
-  }
+  "diff": false
 }

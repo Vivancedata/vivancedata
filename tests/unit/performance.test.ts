@@ -34,7 +34,7 @@ function setNavigatorSnapshot({
   deviceMemory,
 }: {
   userAgent: string;
-  hardwareConcurrency: number;
+  hardwareConcurrency?: number;
   deviceMemory?: number;
 }) {
   Object.defineProperty(navigator, "userAgent", {
@@ -144,5 +144,35 @@ describe("performance helpers", () => {
 
     vi.stubGlobal("window", currentWindow);
     vi.stubGlobal("document", currentDocument);
+  });
+
+  it("falls back to non-low-end settings when capability signals are unavailable", () => {
+    setMatchMedia(false);
+    setNavigatorSnapshot({
+      userAgent: "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X)",
+      hardwareConcurrency: undefined,
+      deviceMemory: undefined,
+    });
+
+    expect(getOptimalAnimationSettings()).toEqual({
+      enableAnimations: true,
+      simplifyAnimations: false,
+      duration: 0.6,
+      staggerDelay: 0.1,
+    });
+  });
+
+  it("keeps default animation settings when window is unavailable", () => {
+    const currentWindow = globalThis.window;
+    vi.stubGlobal("window", undefined);
+
+    expect(getOptimalAnimationSettings()).toEqual({
+      enableAnimations: true,
+      simplifyAnimations: false,
+      duration: 0.6,
+      staggerDelay: 0.1,
+    });
+
+    vi.stubGlobal("window", currentWindow);
   });
 });
