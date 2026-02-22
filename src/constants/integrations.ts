@@ -5,6 +5,7 @@ export interface Integration {
   name: string;
   category: IntegrationCategory;
   description: string;
+  logo?: string;
 }
 
 export const integrationCategories: IntegrationCategory[] = [
@@ -15,6 +16,8 @@ export const integrationCategories: IntegrationCategory[] = [
   "AI",
 ];
 
+const SI = "https://cdn.jsdelivr.net/npm/simple-icons@13/icons";
+
 export const integrations: Integration[] = [
   // Cloud Platforms
   {
@@ -22,6 +25,7 @@ export const integrations: Integration[] = [
     name: "Amazon Web Services",
     category: "Cloud",
     description: "Comprehensive cloud computing platform with AI/ML services like SageMaker and Bedrock.",
+    logo: `${SI}/amazonwebservices.svg`,
   },
   {
     id: "azure",
@@ -34,12 +38,14 @@ export const integrations: Integration[] = [
     name: "Google Cloud",
     category: "Cloud",
     description: "Cloud infrastructure with Vertex AI and BigQuery ML capabilities.",
+    logo: `${SI}/googlecloud.svg`,
   },
   {
     id: "vercel",
     name: "Vercel",
     category: "Cloud",
     description: "Frontend cloud platform for deploying AI-powered web applications.",
+    logo: `${SI}/vercel.svg`,
   },
 
   // CRM Platforms
@@ -48,12 +54,14 @@ export const integrations: Integration[] = [
     name: "Salesforce",
     category: "CRM",
     description: "Leading CRM platform with Einstein AI for predictive analytics and automation.",
+    logo: `${SI}/salesforce.svg`,
   },
   {
     id: "hubspot",
     name: "HubSpot",
     category: "CRM",
     description: "Inbound marketing and sales platform with AI-powered lead scoring.",
+    logo: `${SI}/hubspot.svg`,
   },
   {
     id: "dynamics",
@@ -66,6 +74,7 @@ export const integrations: Integration[] = [
     name: "Zoho CRM",
     category: "CRM",
     description: "Comprehensive CRM with Zia AI assistant for sales intelligence.",
+    logo: `${SI}/zoho.svg`,
   },
 
   // Data Platforms
@@ -74,24 +83,28 @@ export const integrations: Integration[] = [
     name: "Snowflake",
     category: "Data",
     description: "Cloud data warehouse with native ML capabilities and data sharing.",
+    logo: `${SI}/snowflake.svg`,
   },
   {
     id: "databricks",
     name: "Databricks",
     category: "Data",
     description: "Unified analytics platform for data engineering and machine learning.",
+    logo: `${SI}/databricks.svg`,
   },
   {
     id: "bigquery",
     name: "BigQuery",
     category: "Data",
     description: "Serverless data warehouse with built-in ML and analytics.",
+    logo: `${SI}/googlebigquery.svg`,
   },
   {
     id: "mongodb",
     name: "MongoDB",
     category: "Data",
     description: "Document database with Atlas Vector Search for AI applications.",
+    logo: `${SI}/mongodb.svg`,
   },
 
   // Communication Platforms
@@ -100,6 +113,7 @@ export const integrations: Integration[] = [
     name: "Slack",
     category: "Communication",
     description: "Collaboration hub with AI-powered workflows and integrations.",
+    logo: `${SI}/slack.svg`,
   },
   {
     id: "teams",
@@ -112,12 +126,14 @@ export const integrations: Integration[] = [
     name: "Zoom",
     category: "Communication",
     description: "Video communications with AI Companion for meeting summaries.",
+    logo: `${SI}/zoom.svg`,
   },
   {
     id: "discord",
     name: "Discord",
     category: "Communication",
     description: "Community platform with bot integrations for AI assistants.",
+    logo: `${SI}/discord.svg`,
   },
 
   // AI Platforms
@@ -126,18 +142,21 @@ export const integrations: Integration[] = [
     name: "OpenAI",
     category: "AI",
     description: "Leading AI research lab providing GPT-4 and DALL-E APIs.",
+    logo: `${SI}/openai.svg`,
   },
   {
     id: "anthropic",
     name: "Anthropic",
     category: "AI",
     description: "AI safety company providing Claude for enterprise applications.",
+    logo: `${SI}/anthropic.svg`,
   },
   {
     id: "huggingface",
     name: "Hugging Face",
     category: "AI",
     description: "Open-source AI community with thousands of pretrained models.",
+    logo: `${SI}/huggingface.svg`,
   },
   {
     id: "cohere",
