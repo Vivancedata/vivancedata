@@ -29,6 +29,11 @@ export const navItems: NavItem[] = [
     hasDropdown: true,
     dropdownItems: [
       { name: "Financial Services", href: "/industries/financial-services" },
+      { name: "Healthcare", href: "/industries/healthcare" },
+      { name: "Retail & E-Commerce", href: "/industries/retail" },
+      { name: "Manufacturing", href: "/industries/manufacturing" },
+      { name: "Energy & Utilities", href: "/industries/energy" },
+      { name: "Public Sector", href: "/industries/public-sector" },
       { name: "All Industries", href: "/industries" },
     ],
   },
@@ -138,6 +143,11 @@ export const footerLinks: FooterSection[] = [
     title: "Industries",
     links: [
       { label: "Financial Services", href: "/industries/financial-services" },
+      { label: "Healthcare", href: "/industries/healthcare" },
+      { label: "Retail & E-Commerce", href: "/industries/retail" },
+      { label: "Manufacturing", href: "/industries/manufacturing" },
+      { label: "Energy & Utilities", href: "/industries/energy" },
+      { label: "Public Sector", href: "/industries/public-sector" },
       { label: "All Industries", href: "/industries" },
     ],
   },
