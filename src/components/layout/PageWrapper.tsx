@@ -1,31 +1,20 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import { m, AnimatePresence } from "framer-motion";
 import { ScrollProgress } from "@/components/common/Animations";
-import { getOptimalAnimationSettings, preloadCriticalResources } from "@/lib/performance";
+import { getOptimalAnimationSettings } from "@/lib/performance";
 
 interface PageWrapperProps {
   children: React.ReactNode;
   className?: string;
-  preloadResources?: string[];
 }
-
-const EMPTY_PRELOAD_RESOURCES: string[] = [];
 
 export default function PageWrapper({ 
   children, 
-  className = "",
-  preloadResources = EMPTY_PRELOAD_RESOURCES
+  className = ""
 }: PageWrapperProps) {
   const { enableAnimations, duration } = getOptimalAnimationSettings();
-
-  useEffect(() => {
-    // Preload critical resources if provided
-    if (preloadResources.length > 0) {
-      preloadCriticalResources(preloadResources);
-    }
-  }, [preloadResources]);
 
   return (
     <>

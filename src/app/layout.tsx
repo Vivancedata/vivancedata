@@ -80,12 +80,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // Critical resources to preload
-  const criticalResources = [
-    "/images/banner.png",
-    "/icons/Logo.png"
-  ];
-
   return (
     <html lang="en" suppressHydrationWarning className="antialiased">
       <head>
@@ -112,7 +106,7 @@ export default function RootLayout({
             <header>
               <MainNav />
             </header>
-            <PageWrapper preloadResources={criticalResources} className="flex-grow w-full">
+            <PageWrapper className="flex-grow w-full">
               <main className="w-full px-4" id="main-content">
                 {children}
               </main>

@@ -130,7 +130,7 @@ function CookieCustomizationPanel({
           exit="exit"
           className="overflow-hidden"
         >
-          <div className="border-t border-border px-4 py-4 md:px-6">
+          <div className="border-t border-border px-3 py-3 sm:px-4">
             <div className="space-y-3">
               {COOKIE_CATEGORIES.map((category) => (
                 <div
@@ -218,29 +218,29 @@ function CookieConsentBanner({
       initial="hidden"
       animate="visible"
       exit="exit"
-      className="fixed bottom-0 left-0 right-0 z-50 p-4 md:p-6"
+      className="fixed inset-x-3 bottom-3 z-50 sm:left-6 sm:right-6 md:left-auto md:right-6 md:w-full md:max-w-xl"
       role="dialog"
       aria-labelledby="cookie-consent-title"
       aria-describedby="cookie-consent-description"
     >
-      <div className="mx-auto max-w-4xl rounded-lg border border-border bg-background/95 backdrop-blur-sm shadow-lg dark:bg-background/90">
-        <div className="p-4 md:p-6">
+      <div className="mx-auto rounded-xl border border-border bg-background/95 shadow-xl backdrop-blur-sm dark:bg-background/90 max-h-[80vh] overflow-y-auto overscroll-contain">
+        <div className="p-3 sm:p-4">
           <div className="flex items-start gap-4">
-            <div className="hidden sm:flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary dark:bg-primary/20">
+            <div className="hidden md:flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary dark:bg-primary/20">
               <Cookie className="h-5 w-5" />
             </div>
 
-            <div className="flex-1 space-y-3">
+            <div className="flex-1 space-y-2">
               <div className="flex items-start justify-between gap-2">
                 <h2
                   id="cookie-consent-title"
-                  className="text-lg font-semibold text-foreground"
+                  className="text-base font-semibold text-foreground"
                 >
                   Cookie Preferences
                 </h2>
                 <button
                   onClick={onClose}
-                  className="rounded-md p-1 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+                  className="rounded-md p-1 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                   aria-label="Close cookie consent banner"
                 >
                   <X className="h-4 w-4" />
@@ -251,9 +251,8 @@ function CookieConsentBanner({
                 id="cookie-consent-description"
                 className="text-sm text-muted-foreground leading-relaxed"
               >
-                We use cookies to enhance your browsing experience, analyze site traffic,
-                and personalize content. By clicking &quot;Accept All&quot;, you consent to our use
-                of cookies. You can manage your preferences or reject non-essential cookies.
+                We use cookies for site functionality, analytics, and personalization.
+                You can accept all, reject non-essential cookies, or customize settings.
                 Read our{" "}
                 <Link
                   href="/privacy-policy"
@@ -264,32 +263,34 @@ function CookieConsentBanner({
                 for more information.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-2 pt-2">
-                <Button onClick={onAcceptAll} className="w-full sm:w-auto" size="sm">
+              <div className="pt-1 space-y-2">
+                <Button onClick={onAcceptAll} className="w-full" size="sm">
                   Accept All
                 </Button>
-                <Button
-                  onClick={onRejectNonEssential}
-                  variant="outline"
-                  className="w-full sm:w-auto"
-                  size="sm"
-                >
-                  Reject Non-Essential
-                </Button>
-                <Button
-                  onClick={onToggleCustomize}
-                  variant="ghost"
-                  className="w-full sm:w-auto gap-1"
-                  size="sm"
-                >
-                  <Settings className="h-4 w-4" />
-                  Customize
-                  {isCustomizing ? (
-                    <ChevronUp className="h-4 w-4" />
-                  ) : (
-                    <ChevronDown className="h-4 w-4" />
-                  )}
-                </Button>
+                <div className="flex flex-wrap items-center justify-center gap-1 sm:gap-2">
+                  <Button
+                    onClick={onRejectNonEssential}
+                    variant="ghost"
+                    className="h-8 px-2 text-muted-foreground hover:text-foreground sm:h-9"
+                    size="sm"
+                  >
+                    Reject Non-Essential
+                  </Button>
+                  <Button
+                    onClick={onToggleCustomize}
+                    variant="ghost"
+                    className="h-8 px-2 gap-1 text-muted-foreground hover:text-foreground sm:h-9"
+                    size="sm"
+                  >
+                    <Settings className="h-4 w-4" />
+                    Customize
+                    {isCustomizing ? (
+                      <ChevronUp className="h-4 w-4" />
+                    ) : (
+                      <ChevronDown className="h-4 w-4" />
+                    )}
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
