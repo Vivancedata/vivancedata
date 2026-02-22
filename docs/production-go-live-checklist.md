@@ -16,7 +16,7 @@ This checklist is intentionally strict. A release should not be marked productio
 | Blog publishing integrity | Same post discovery logic for list, slug page, sitemap | Code review + tests in `tests/integration/blogPosts.test.ts` | Pass |
 | Privacy/compliance | Analytics scripts load only after explicit consent | Manual test + code review | Pass (code-level) |
 | Security baseline | No high/critical runtime vulnerabilities without explicit exception | `npm audit --omit=dev` | Pass |
-| Observability | Error tracking configured and tested in production env | Verify Sentry DSN + send a production test event | Blocked: pending production env verification |
+| Observability | Error tracking configured and tested in production env | `vercel env ls` includes Sentry DSN + `POST /api/observability/sentry-test` returns `eventId` | In progress (2026-02-22: DSN verified, token/event validation pending) |
 | Production smoke monitoring | Hourly checks across critical URLs and contact API behavior | GitHub Actions: `Production Smoke Checks` | Pass |
 
 ## Go-Live Sequence (Do in Order)
@@ -41,6 +41,16 @@ This checklist is intentionally strict. A release should not be marked productio
 1. Engineering: build/test/security gates
 2. Product/Marketing: content accuracy and claims
 3. Operations: monitoring + incident response readiness
+
+## Observability Verification
+
+1. Confirm DSN exists in deployed environment:
+   `vercel env ls`
+2. Ensure `OBSERVABILITY_TEST_TOKEN` is configured for the target environment.
+3. Send a production verification event:
+   `curl -X POST "https://www.vivancedata.com/api/observability/sentry-test" -H "x-observability-token: $OBSERVABILITY_TEST_TOKEN" -H "Content-Type: application/json" -d '{"marker":"release-verification"}'`
+4. Confirm the response includes `success: true` and an `eventId`.
+5. Confirm that same `eventId` appears in Sentry.
 
 ## Coverage Scope Note
 

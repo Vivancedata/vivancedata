@@ -65,6 +65,12 @@ bun dev
 ## Testing
 
 ```bash
+# Full release gate (unit + integration + e2e)
+npm test
+
+# Coverage gate (unit + integration)
+npm run test:coverage
+
 # Unit tests (with coverage)
 npm run test:unit
 
@@ -73,6 +79,9 @@ npm run test:integration
 
 # E2E tests (Playwright)
 npm run test:e2e
+
+# React code health score
+npm run react-doctor:ci
 ```
 
 Production release gates are documented in:
@@ -162,6 +171,14 @@ npx shadcn-ui@latest add [component-name]
 - The site uses Next.js Image component for optimized image loading
 - Components are split into smaller chunks for better code-splitting
 - Animation is handled efficiently with Framer Motion
+
+## Production Ops Notes
+
+- API rate limiting uses Upstash Redis when `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` are configured.
+- If Upstash credentials are not set, API routes fall back to in-memory rate limiting (acceptable for local/dev only).
+- Observability verification endpoint:
+  - `GET /api/observability/sentry-test` for configuration status
+  - `POST /api/observability/sentry-test` for protected manual event verification (`OBSERVABILITY_TEST_TOKEN` required)
 
 ## SEO
 

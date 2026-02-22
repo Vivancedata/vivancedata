@@ -1,31 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { buildRateLimitHeaders, enforceRateLimit } from '@/lib/rateLimit';
 
 interface NewsletterData {
   email: string;
   firstName?: string;
 }
 
-// Simple in-memory rate limiting (use Redis in production for distributed systems)
-const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
-const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
-const MAX_REQUESTS_PER_WINDOW = 5;
-
-function isRateLimited(ip: string): boolean {
-  const now = Date.now();
-  const record = rateLimitMap.get(ip);
-
-  if (!record || now > record.resetTime) {
-    rateLimitMap.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
-    return false;
-  }
-
-  if (record.count >= MAX_REQUESTS_PER_WINDOW) {
-    return true;
-  }
-
-  record.count++;
-  return false;
-}
+const NEWSLETTER_RATE_LIMIT_OPTIONS = {
+  keyPrefix: 'api:newsletter',
+  maxRequests: 5,
+  window: '1 m',
+  windowMs: 60 * 1000,
+} as const;
 
 interface ConvertKitResponse {
   subscription?: {
@@ -135,15 +121,13 @@ async function subscribeToMailchimp(email: string, firstName?: string): Promise<
 
 export async function POST(request: NextRequest) {
   try {
-    // Rate limiting check
-    const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
-               request.headers.get('x-real-ip') ||
-               'unknown';
+    const rateLimit = await enforceRateLimit(request, NEWSLETTER_RATE_LIMIT_OPTIONS);
+    const rateLimitHeaders = buildRateLimitHeaders(rateLimit);
 
-    if (isRateLimited(ip)) {
+    if (!rateLimit.success) {
       return NextResponse.json(
         { error: 'Too many requests. Please try again later.' },
-        { status: 429 }
+        { status: 429, headers: rateLimitHeaders }
       );
     }
 
@@ -154,7 +138,7 @@ export async function POST(request: NextRequest) {
     if (!body.email || !emailRegex.test(body.email)) {
       return NextResponse.json(
         { error: 'Invalid email address' },
-        { status: 400 }
+        { status: 400, headers: rateLimitHeaders }
       );
     }
 
@@ -172,14 +156,14 @@ export async function POST(request: NextRequest) {
           success: true,
           message: 'Successfully subscribed to newsletter!',
           provider: 'convertkit',
-        });
+        }, { headers: rateLimitHeaders });
       }
       // If ConvertKit fails but Mailchimp is configured, try Mailchimp
       if (!hasMailchimp) {
         console.error('ConvertKit subscription failed:', result.error);
         return NextResponse.json(
           { error: result.error || 'Failed to subscribe. Please try again.' },
-          { status: 500 }
+          { status: 500, headers: rateLimitHeaders }
         );
       }
     }
@@ -191,19 +175,19 @@ export async function POST(request: NextRequest) {
           success: true,
           message: 'Successfully subscribed to newsletter!',
           provider: 'mailchimp',
-        });
+        }, { headers: rateLimitHeaders });
       }
       console.error('Mailchimp subscription failed:', result.error);
       return NextResponse.json(
         { error: result.error || 'Failed to subscribe. Please try again.' },
-        { status: 500 }
+        { status: 500, headers: rateLimitHeaders }
       );
     }
 
     if (process.env.NODE_ENV === 'production') {
       return NextResponse.json(
         { error: 'Newsletter service not configured. Please try again later.' },
-        { status: 503 }
+        { status: 503, headers: rateLimitHeaders }
       );
     }
 
@@ -218,7 +202,7 @@ export async function POST(request: NextRequest) {
       success: true,
       message: 'Successfully subscribed to newsletter!',
       provider: 'none',
-    });
+    }, { headers: rateLimitHeaders });
   } catch (error) {
     console.error('Newsletter subscription error:', error);
     return NextResponse.json(

@@ -7,7 +7,7 @@ import { Icons } from "@/components/common/Icons"
 import { m } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ModeToggle } from "@/components/common/ModeToggle"
-import { Search, Menu } from "lucide-react"
+import { Search, Menu, X } from "lucide-react"
 import { useState, useEffect } from "react"
 import { mainNavItems } from "@/constants/navigation"
 
@@ -114,7 +114,11 @@ export function MainNav() {
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-navigation"
             >
-              <Menu className="h-6 w-6" />
+              {isMobileMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </Button>
           </div>
         </div>

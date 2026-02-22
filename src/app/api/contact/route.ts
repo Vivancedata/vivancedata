@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { buildRateLimitHeaders, enforceRateLimit } from '@/lib/rateLimit';
 
 interface ContactFormData {
   firstName: string;
@@ -22,41 +23,24 @@ function escapeHtml(str: string): string {
   return str.replace(/[&<>"']/g, (char) => htmlEscapes[char] || char);
 }
 
-// Simple in-memory rate limiting (use Redis in production for distributed systems)
-const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
-const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
-const MAX_REQUESTS_PER_WINDOW = 5;
-
-function isRateLimited(ip: string): boolean {
-  const now = Date.now();
-  const record = rateLimitMap.get(ip);
-
-  if (!record || now > record.resetTime) {
-    rateLimitMap.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
-    return false;
-  }
-
-  if (record.count >= MAX_REQUESTS_PER_WINDOW) {
-    return true;
-  }
-
-  record.count++;
-  return false;
-}
-
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
+
+const CONTACT_RATE_LIMIT_OPTIONS = {
+  keyPrefix: 'api:contact',
+  maxRequests: 5,
+  window: '1 m',
+  windowMs: 60 * 1000,
+} as const;
 
 export async function POST(request: NextRequest) {
   try {
-    // Rate limiting check
-    const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
-               request.headers.get('x-real-ip') ||
-               'unknown';
+    const rateLimit = await enforceRateLimit(request, CONTACT_RATE_LIMIT_OPTIONS);
+    const rateLimitHeaders = buildRateLimitHeaders(rateLimit);
 
-    if (isRateLimited(ip)) {
+    if (!rateLimit.success) {
       return NextResponse.json(
         { error: 'Too many requests. Please try again later.' },
-        { status: 429 }
+        { status: 429, headers: rateLimitHeaders }
       );
     }
 
@@ -66,7 +50,7 @@ export async function POST(request: NextRequest) {
     if (!body.firstName || !body.lastName || !body.email || !body.message) {
       return NextResponse.json(
         { error: 'Missing required fields' },
-        { status: 400 }
+        { status: 400, headers: rateLimitHeaders }
       );
     }
 
@@ -75,7 +59,7 @@ export async function POST(request: NextRequest) {
     if (!emailRegex.test(body.email)) {
       return NextResponse.json(
         { error: 'Invalid email address' },
-        { status: 400 }
+        { status: 400, headers: rateLimitHeaders }
       );
     }
 
@@ -208,7 +192,7 @@ export async function POST(request: NextRequest) {
       if (process.env.NODE_ENV === 'production') {
         return NextResponse.json(
           { error: 'Email service not configured. Please try again later.' },
-          { status: 503 }
+          { status: 503, headers: rateLimitHeaders }
         );
       }
 
@@ -228,7 +212,7 @@ export async function POST(request: NextRequest) {
         success: true,
         message: 'Thank you for your message. We will get back to you soon!',
       },
-      { status: 200 }
+      { status: 200, headers: rateLimitHeaders }
     );
   } catch (error) {
     console.error('Contact form error:', error);
