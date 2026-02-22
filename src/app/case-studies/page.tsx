@@ -2,10 +2,71 @@ import { Container } from "@/components/common/Container";
 import { Heading } from "@/components/common/Heading";
 import { Paragraph } from "@/components/common/Paragraph";
 import { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+
+const CaseStudyIllustration = ({ industry }: { industry: string }) => {
+  if (industry === "Financial Services") {
+    return (
+      <div className="bg-slate-900 h-full w-full relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-900/30 to-slate-900" />
+        <div className="absolute inset-0 p-8 flex flex-col justify-center">
+          <div className="text-amber-400/40 font-mono text-xs mb-4">// Risk Triage Dashboard</div>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="bg-white/5 rounded-lg p-3">
+              <div className="text-amber-400 text-2xl font-bold font-mono">↑ 68%</div>
+              <div className="text-white/30 text-xs mt-1">Alert Precision</div>
+            </div>
+            <div className="bg-white/5 rounded-lg p-3">
+              <div className="text-amber-400 text-2xl font-bold font-mono">↓ 41%</div>
+              <div className="text-white/30 text-xs mt-1">False Positives</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  if (industry === "Healthcare") {
+    return (
+      <div className="bg-slate-900 h-full w-full relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 to-slate-900" />
+        <div className="absolute inset-0 p-8 flex flex-col justify-center">
+          <div className="text-blue-400/40 font-mono text-xs mb-4">// Clinical NLP Pipeline</div>
+          <div className="space-y-3">
+            {["Chart History", "NLP Extraction", "Summarization", "Review"].map((step, i) => (
+              <div key={step} className="flex items-center gap-3">
+                <div className={`w-2 h-2 rounded-full shrink-0 ${i < 3 ? "bg-blue-400/60" : "bg-blue-400/20"}`} />
+                <div className={`h-0.5 flex-1 rounded ${i < 3 ? "bg-blue-400/30" : "bg-white/10"}`} />
+                <span className="text-white/30 text-xs w-24 text-right">{step}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+  if (industry === "Retail") {
+    return (
+      <div className="bg-slate-900 h-full w-full relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-orange-900/30 to-slate-900" />
+        <div className="absolute inset-0 p-8 flex flex-col justify-center">
+          <div className="text-orange-400/40 font-mono text-xs mb-4">// Inventory Intelligence</div>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="bg-white/5 rounded-lg p-3">
+              <div className="text-orange-400 text-2xl font-bold font-mono">↓ 23%</div>
+              <div className="text-white/30 text-xs mt-1">Overstock Risk</div>
+            </div>
+            <div className="bg-white/5 rounded-lg p-3">
+              <div className="text-orange-400 text-2xl font-bold font-mono">↑ 31%</div>
+              <div className="text-white/30 text-xs mt-1">Planning Speed</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  return <div className="bg-slate-900 h-full w-full" />;
+};
 
 export const metadata: Metadata = {
   title: "Case Studies - VivanceData AI Solutions",
@@ -40,7 +101,6 @@ interface CaseStudy {
   challenge: string;
   solution: string;
   results: string[];
-  image: string;
 }
 
 const caseStudies: CaseStudy[] = [
@@ -56,7 +116,6 @@ const caseStudies: CaseStudy[] = [
       "Reduced low-value manual investigations",
       "Improved auditability of risk decisions"
     ],
-    image: "/images/ai-solutions.png"
   },
   {
     id: "healthcare",
@@ -70,7 +129,6 @@ const caseStudies: CaseStudy[] = [
       "More consistent documentation structure",
       "Improved clinician workflow satisfaction"
     ],
-    image: "/images/ai-solutions.png"
   },
   {
     id: "retail",
@@ -84,7 +142,6 @@ const caseStudies: CaseStudy[] = [
       "Better cross-team visibility on inventory risk",
       "Faster promotion planning cycles"
     ],
-    image: "/images/ai-solutions.png"
   }
 ];
 
@@ -110,19 +167,13 @@ export default function CaseStudiesPage() {
             className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 md:gap-12`}
           >
             <div className="w-full md:w-1/2">
-              <div className="relative aspect-video overflow-hidden rounded-xl bg-blue-100 dark:bg-blue-900/20">
-                <Image
-                  src={study.image}
-                  alt={study.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover"
-                />
+              <div className="relative aspect-video overflow-hidden rounded-xl">
+                <CaseStudyIllustration industry={study.industry} />
               </div>
             </div>
             
             <div className="w-full md:w-1/2 flex flex-col justify-center">
-              <div className="inline-block px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 text-sm font-medium mb-4">
+              <div className="inline-block px-3 py-1 rounded-full bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary/80 text-sm font-medium mb-4">
                 {study.industry}
               </div>
               <h2 className="text-2xl md:text-3xl font-bold mb-4">{study.title}</h2>
@@ -145,22 +196,18 @@ export default function CaseStudiesPage() {
                   ))}
                 </ul>
               </div>
-              
-              <Button className="self-start group" variant="outline">
-                <span>Read Full Case Study</span>
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Button>
+
             </div>
           </div>
         ))}
       </div>
       
-      <div className="mt-24 text-center bg-blue-50 dark:bg-blue-900/20 rounded-xl p-8 md:p-12">
+      <div className="mt-24 text-center bg-primary/5 dark:bg-primary/10 rounded-xl p-8 md:p-12">
         <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Achieve Similar Results?</h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
           Let&apos;s discuss how our AI solutions can help your business overcome challenges and drive measurable outcomes.
         </p>
-        <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
+        <Button asChild size="lg" >
           <Link href="/contact">Schedule a Consultation</Link>
         </Button>
       </div>
