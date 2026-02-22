@@ -1,8 +1,6 @@
-import aiSolutionsImage from "@/public/images/ai-solutions.png";
 import { BlogPost } from "@/types/blog";
 
 export const blogPosts: BlogPost[] = [
-  // Comprehensive blog posts with full MDX content
   {
     id: "future-of-generative-ai",
     title: "The Future of Generative AI: Trends and Predictions",
@@ -11,12 +9,11 @@ export const blogPosts: BlogPost[] = [
     date: "January 22, 2025",
     readTime: "12 min read",
     author: {
-      name: "Dr. Sarah Mitchell",
-      role: "AI Research Director",
+      name: "Lorenzo Scaturchio",
+      role: "Founder, VivanceData",
       avatar: "",
     },
     category: "AI Trends",
-    image: aiSolutionsImage,
     slug: "future-of-generative-ai",
     tags: ["Generative AI", "Trends", "Innovation"],
   },
@@ -28,12 +25,11 @@ export const blogPosts: BlogPost[] = [
     date: "January 25, 2025",
     readTime: "15 min read",
     author: {
-      name: "Michael Chen",
-      role: "VP of AI Implementation",
+      name: "Lorenzo Scaturchio",
+      role: "Founder, VivanceData",
       avatar: "",
     },
     category: "Implementation",
-    image: aiSolutionsImage,
     slug: "ai-implementation-guide",
     tags: ["Implementation", "Strategy", "Best Practices"],
   },
@@ -45,12 +41,11 @@ export const blogPosts: BlogPost[] = [
     date: "January 22, 2025",
     readTime: "18 min read",
     author: {
-      name: "Jennifer Rodriguez",
-      role: "Chief Financial Strategist",
+      name: "Lorenzo Scaturchio",
+      role: "Founder, VivanceData",
       avatar: "",
     },
     category: "Business Strategy",
-    image: aiSolutionsImage,
     slug: "ai-roi-business-case",
     tags: ["ROI", "Business Case", "Finance"],
   },
@@ -62,47 +57,12 @@ export const blogPosts: BlogPost[] = [
     date: "January 29, 2025",
     readTime: "20 min read",
     author: {
-      name: "Dr. Aisha Okonkwo",
-      role: "Chief Data Officer",
+      name: "Lorenzo Scaturchio",
+      role: "Founder, VivanceData",
       avatar: "",
     },
     category: "Data Science",
-    image: aiSolutionsImage,
     slug: "data-preparation-for-ai",
     tags: ["Data Preparation", "Data Quality", "Best Practices"],
-  },
-  {
-    id: "ai-ethics-guide",
-    title: "A Comprehensive Guide to AI Ethics in Enterprise",
-    description: "Navigate the complex landscape of AI ethics with our comprehensive guide covering bias mitigation, transparency, and responsible AI practices.",
-    excerpt: "As AI becomes more prevalent in business decisions, understanding and implementing ethical AI practices is crucial for sustainable success.",
-    date: "January 20, 2025",
-    readTime: "14 min read",
-    author: {
-      name: "Priya Patel",
-      role: "AI Ethics Director",
-      avatar: "",
-    },
-    category: "AI Ethics",
-    image: aiSolutionsImage,
-    slug: "ai-ethics-guide",
-    tags: ["AI Ethics", "Responsible AI", "Governance"],
-  },
-  {
-    id: "ai-customer-service",
-    title: "Transforming Customer Service with AI: A Complete Guide",
-    description: "Discover how AI is revolutionizing customer service operations, from chatbots to sentiment analysis and predictive support.",
-    excerpt: "Learn how leading companies are using AI to deliver exceptional customer experiences while reducing costs and improving efficiency.",
-    date: "January 18, 2025",
-    readTime: "16 min read",
-    author: {
-      name: "David Kim",
-      role: "Lead Data Scientist",
-      avatar: "",
-    },
-    category: "Customer Experience",
-    image: aiSolutionsImage,
-    slug: "ai-customer-service",
-    tags: ["Customer Service", "AI Chatbots", "Automation"],
   },
 ];
