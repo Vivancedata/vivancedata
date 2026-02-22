@@ -2,7 +2,6 @@ import { Container } from "@/components/common/Container";
 import { Heading } from "@/components/common/Heading";
 import { Paragraph } from "@/components/common/Paragraph";
 import { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -36,20 +35,13 @@ export const metadata: Metadata = {
 interface IndustryCardProps {
   title: string;
   description: string;
-  image: string;
+  theme: string;
   href: string;
 }
 
-const IndustryCard = ({ title, description, image, href }: IndustryCardProps) => (
+const IndustryCard = ({ title, description, theme, href }: IndustryCardProps) => (
   <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden group">
-    <div className="relative aspect-video">
-      <Image
-        src={image}
-        alt={title}
-        fill
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        className="object-cover transition-transform duration-300 group-hover:scale-105"
-      />
+    <div className={`relative aspect-video bg-slate-900 bg-gradient-to-br ${theme}`}>
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
       <h3 className="absolute bottom-4 left-4 text-2xl font-bold text-white">{title}</h3>
     </div>
@@ -70,37 +62,37 @@ export default function IndustriesPage() {
     {
       title: "Financial Services",
       description: "AI solutions for risk management, fraud detection, customer experience, and regulatory compliance in banking, insurance, and investment.",
-      image: "/images/ai-solutions.png",
+      theme: "from-amber-900/40 to-slate-900",
       href: "/industries/financial-services"
     },
     {
       title: "Healthcare",
       description: "Transformative AI applications for patient care, clinical decision support, operational efficiency, and medical research.",
-      image: "/images/ai-solutions.png",
+      theme: "from-blue-900/40 to-slate-900",
       href: "/industries/healthcare"
     },
     {
       title: "Retail & E-commerce",
       description: "Intelligent solutions for personalization, inventory management, demand forecasting, and enhanced customer experiences.",
-      image: "/images/ai-solutions.png",
+      theme: "from-orange-900/40 to-slate-900",
       href: "/industries/retail"
     },
     {
       title: "Manufacturing",
       description: "AI-powered systems for predictive maintenance, quality control, supply chain optimization, and smart factory operations.",
-      image: "/images/ai-solutions.png",
+      theme: "from-slate-700 to-slate-900",
       href: "/industries/manufacturing"
     },
     {
       title: "Energy & Utilities",
       description: "Advanced AI for grid management, energy optimization, predictive maintenance, and sustainable resource planning.",
-      image: "/images/ai-solutions.png",
+      theme: "from-yellow-900/40 to-slate-900",
       href: "/industries/energy"
     },
     {
       title: "Public Sector",
       description: "AI solutions for citizen services, public safety, infrastructure management, and policy analysis.",
-      image: "/images/ai-solutions.png",
+      theme: "from-teal-900/40 to-slate-900",
       href: "/industries/public-sector"
     }
   ];
@@ -121,7 +113,7 @@ export default function IndustriesPage() {
               key={industry.title}
               title={industry.title}
               description={industry.description}
-              image={industry.image}
+              theme={industry.theme}
               href={industry.href}
             />
           ))}
@@ -163,8 +155,8 @@ export default function IndustriesPage() {
             { number: "04", title: "Continuous Improvement", description: "We continuously refine and enhance your solutions based on industry developments." }
           ].map((step) => (
             <div key={step.number} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 text-center">
-              <div className="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mx-auto mb-4">
-                <span className="text-blue-600 dark:text-blue-300 font-bold">{step.number}</span>
+              <div className="w-12 h-12 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center mx-auto mb-4">
+                <span className="text-primary font-bold">{step.number}</span>
               </div>
               <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
               <p className="text-gray-600 dark:text-gray-300">{step.description}</p>
@@ -173,12 +165,12 @@ export default function IndustriesPage() {
         </div>
       </div>
       
-      <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-8 md:p-12 text-center">
+      <div className="bg-primary/5 dark:bg-primary/10 rounded-xl p-8 md:p-12 text-center">
         <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Transform Your Industry?</h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
           Let&apos;s discuss how our industry-specific AI solutions can address your unique challenges and opportunities.
         </p>
-        <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
+        <Button asChild size="lg" >
           <Link href="/contact">Schedule a Consultation</Link>
         </Button>
       </div>

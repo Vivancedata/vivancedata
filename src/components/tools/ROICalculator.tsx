@@ -236,15 +236,15 @@ function ROIMetrics({ results }: ROIMetricsProps) {
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 0.2 }}
       >
-        <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border-blue-200 dark:border-blue-800">
+        <Card className="bg-primary/5 dark:bg-primary/10 border-primary/20 dark:border-primary/30">
           <CardHeader>
             <CardTitle as="h3" className="text-lg flex items-center gap-2">
-              <Clock className="h-5 w-5 text-blue-600" aria-hidden="true" />
+              <Clock className="h-5 w-5 text-primary" aria-hidden="true" />
               Payback Period
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-blue-600" aria-label={`Payback period: ${results.paybackMonths} months`}>{results.paybackMonths} mo</div>
+            <div className="text-3xl font-bold text-primary" aria-label={`Payback period: ${results.paybackMonths} months`}>{results.paybackMonths} mo</div>
             <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
               Break-even timeline
             </p>
@@ -335,10 +335,10 @@ function FinancialBreakdown({ results }: FinancialBreakdownProps) {
             </div>
 
             <div className="border-t pt-6">
-              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg p-6 border-2 border-blue-300 dark:border-blue-700">
+              <div className="bg-primary/5 dark:bg-primary/10 rounded-lg p-6 border-2 border-primary/30 dark:border-primary/40">
                 <div className="flex justify-between items-center">
                   <span className="text-xl font-bold text-gray-800 dark:text-gray-200">Net Return (3 Years)</span>
-                  <span className="text-3xl font-bold text-blue-600">{formatCurrency(results.netROI)}</span>
+                  <span className="text-3xl font-bold text-primary">{formatCurrency(results.netROI)}</span>
                 </div>
               </div>
             </div>
@@ -356,10 +356,10 @@ function ROICallToAction() {
       animate={{ opacity: 1 }}
       transition={{ delay: 0.5 }}
     >
-      <Card className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white border-0">
+      <Card className="bg-primary text-primary-foreground border-0">
         <CardContent className="p-8 text-center">
           <h3 className="text-2xl font-bold mb-3">Ready to Realize These Returns?</h3>
-          <p className="mb-6 text-blue-50">
+          <p className="mb-6 text-primary-foreground/80">
             Schedule a consultation to discuss how we can help you achieve these results with a customized AI solution.
           </p>
           <Button asChild size="lg" variant="secondary">

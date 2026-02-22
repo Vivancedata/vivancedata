@@ -2,7 +2,6 @@ import { Container } from "@/components/common/Container";
 import { Heading } from "@/components/common/Heading";
 import { Paragraph } from "@/components/common/Paragraph";
 import { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Lightbulb, Zap, Brain, Sparkles, Atom, Rocket } from "lucide-react";
@@ -54,7 +53,7 @@ const TechnologyCard = ({ title, description, icon, maturity, timeframe }: Techn
   return (
     <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
       <div className="flex items-center mb-4">
-        <div className="mr-4 p-3 bg-blue-100 dark:bg-blue-900/30 rounded-full">
+        <div className="mr-4 p-3 bg-primary/10 dark:bg-primary/20 rounded-full">
           {icon}
         </div>
         <h3 className="text-xl font-semibold">{title}</h3>
@@ -73,12 +72,11 @@ const TechnologyCard = ({ title, description, icon, maturity, timeframe }: Techn
 interface ProjectCardProps {
   title: string;
   description: string;
-  image: string;
   technologies: string[];
   status: "Concept" | "Research" | "Prototype" | "Pilot";
 }
 
-const ProjectCard = ({ title, description, image, technologies, status }: ProjectCardProps) => {
+const ProjectCard = ({ title, description, technologies, status }: ProjectCardProps) => {
   const statusColors = {
     Concept: "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300",
     Research: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300",
@@ -86,16 +84,16 @@ const ProjectCard = ({ title, description, image, technologies, status }: Projec
     Pilot: "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300"
   };
 
+  const statusGradients = {
+    Concept: "from-gray-800 to-slate-900",
+    Research: "from-blue-900/60 to-slate-900",
+    Prototype: "from-purple-900/60 to-slate-900",
+    Pilot: "from-primary/20 to-slate-900",
+  };
+
   return (
     <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
-      <div className="relative aspect-video">
-        <Image
-          src={image}
-          alt={title}
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover"
-        />
+      <div className={`relative aspect-video bg-gradient-to-br ${statusGradients[status]} bg-slate-900`}>
         <div className="absolute top-3 right-3">
           <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${statusColors[status]}`}>
             {status}
@@ -109,7 +107,7 @@ const ProjectCard = ({ title, description, image, technologies, status }: Projec
           {technologies.map((tech) => (
             <span
               key={tech}
-              className="inline-flex items-center rounded-full bg-blue-100 dark:bg-blue-900/20 px-2.5 py-0.5 text-xs font-medium text-blue-800 dark:text-blue-300"
+              className="inline-flex items-center rounded-full bg-primary/10 dark:bg-primary/20 px-2.5 py-0.5 text-xs font-medium text-primary"
             >
               {tech}
             </span>
@@ -125,42 +123,42 @@ export default function InnovationHubPage() {
     {
       title: "Multimodal Foundation Models",
       description: "AI systems that can process and generate multiple types of data (text, images, audio, video) with a single model architecture.",
-      icon: <Brain className="h-6 w-6 text-blue-600" />,
+      icon: <Brain className="h-6 w-6 text-primary" />,
       maturity: "Growing" as const,
       timeframe: "1-2 years"
     },
     {
       title: "Neuromorphic Computing",
       description: "Computing architectures inspired by the human brain that enable more efficient AI processing and learning capabilities.",
-      icon: <Atom className="h-6 w-6 text-blue-600" />,
+      icon: <Atom className="h-6 w-6 text-primary" />,
       maturity: "Emerging" as const,
       timeframe: "3-5 years"
     },
     {
       title: "Federated Learning",
       description: "Machine learning technique that trains algorithms across multiple devices while keeping data localized, enhancing privacy and security.",
-      icon: <Zap className="h-6 w-6 text-blue-600" />,
+      icon: <Zap className="h-6 w-6 text-primary" />,
       maturity: "Growing" as const,
       timeframe: "Now-1 year"
     },
     {
       title: "Quantum Machine Learning",
       description: "Intersection of quantum computing and machine learning that promises exponential speedups for certain AI algorithms and problems.",
-      icon: <Sparkles className="h-6 w-6 text-blue-600" />,
+      icon: <Sparkles className="h-6 w-6 text-primary" />,
       maturity: "Emerging" as const,
       timeframe: "5+ years"
     },
     {
       title: "Autonomous AI Agents",
       description: "Self-directed AI systems that can perform complex tasks with minimal human intervention through planning and reasoning capabilities.",
-      icon: <Rocket className="h-6 w-6 text-blue-600" />,
+      icon: <Rocket className="h-6 w-6 text-primary" />,
       maturity: "Emerging" as const,
       timeframe: "2-3 years"
     },
     {
       title: "Explainable AI (XAI)",
       description: "Techniques and methods that make AI decision-making processes transparent and interpretable to humans.",
-      icon: <Lightbulb className="h-6 w-6 text-blue-600" />,
+      icon: <Lightbulb className="h-6 w-6 text-primary" />,
       maturity: "Maturing" as const,
       timeframe: "Now"
     }
@@ -170,42 +168,36 @@ export default function InnovationHubPage() {
     {
       title: "Adaptive Multimodal Assistant",
       description: "An AI assistant that seamlessly combines text, voice, and visual understanding to provide context-aware support across multiple domains.",
-      image: "/images/ai-solutions.png",
       technologies: ["Multimodal AI", "NLP", "Computer Vision", "Reinforcement Learning"],
       status: "Prototype" as const
     },
     {
       title: "Privacy-Preserving Analytics Platform",
       description: "A data analytics system that enables powerful insights while maintaining strict privacy guarantees through federated learning and differential privacy.",
-      image: "/images/ai-solutions.png",
       technologies: ["Federated Learning", "Differential Privacy", "Secure Computing", "Analytics"],
       status: "Pilot" as const
     },
     {
       title: "Autonomous Decision Support System",
       description: "An AI system that provides real-time decision recommendations by continuously monitoring data streams and adapting to changing conditions.",
-      image: "/images/ai-solutions.png",
       technologies: ["Reinforcement Learning", "Time Series Analysis", "Causal Inference", "Decision Theory"],
       status: "Research" as const
     },
     {
       title: "Quantum-Enhanced Optimization Engine",
       description: "A hybrid classical-quantum system for solving complex optimization problems in logistics, finance, and resource allocation.",
-      image: "/images/ai-solutions.png",
       technologies: ["Quantum Computing", "Optimization Algorithms", "Hybrid Computing", "Operations Research"],
       status: "Concept" as const
     },
     {
       title: "Generative Design Collaborator",
       description: "An AI system that works alongside human designers to generate and refine creative solutions for product design, architecture, and visual arts.",
-      image: "/images/ai-solutions.png",
       technologies: ["Generative AI", "3D Modeling", "Human-AI Collaboration", "Design Theory"],
       status: "Prototype" as const
     },
     {
       title: "Explainable Financial Risk Assessment",
       description: "A transparent AI system for evaluating financial risks with clear explanations of its reasoning process and confidence levels.",
-      image: "/images/ai-solutions.png",
       technologies: ["Explainable AI", "Financial Modeling", "Risk Analysis", "Natural Language Generation"],
       status: "Pilot" as const
     }
@@ -222,14 +214,22 @@ export default function InnovationHubPage() {
 
       <div className="flex flex-col md:flex-row gap-12 mb-20">
         <div className="w-full md:w-1/2">
-          <div className="relative aspect-video overflow-hidden rounded-xl bg-blue-100 dark:bg-blue-900/20">
-            <Image
-              src="/images/ai-solutions.png"
-              alt="VivanceData Innovation Hub"
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover"
-            />
+          <div className="aspect-video rounded-xl shadow-xl overflow-hidden bg-slate-900 p-6 md:p-8 flex flex-col">
+            <div className="text-primary/60 text-xs font-mono mb-4">R&amp;D Pipeline</div>
+            <div className="space-y-3 flex-1">
+              {[
+                { stage: "Research", count: "12 active projects", color: "bg-purple-400/20 text-purple-300 border-purple-500/30" },
+                { stage: "Prototype", count: "7 in testing", color: "bg-blue-400/20 text-blue-300 border-blue-500/30" },
+                { stage: "Pilot", count: "3 client pilots", color: "bg-primary/20 text-primary border-primary/30" },
+                { stage: "Production", count: "18 shipped solutions", color: "bg-green-400/20 text-green-300 border-green-500/30" },
+              ].map((item) => (
+                <div key={item.stage} className={`border rounded-lg px-4 py-2.5 flex items-center justify-between ${item.color}`}>
+                  <span className="text-xs font-medium">{item.stage}</span>
+                  <span className="text-xs opacity-70">{item.count}</span>
+                </div>
+              ))}
+            </div>
+            <div className="mt-4 text-white/30 text-xs">Emerging: multimodal agents · autonomous workflows · edge AI</div>
           </div>
         </div>
         
@@ -280,7 +280,6 @@ export default function InnovationHubPage() {
               key={project.title}
               title={project.title}
               description={project.description}
-              image={project.image}
               technologies={project.technologies}
               status={project.status}
             />
@@ -317,9 +316,9 @@ export default function InnovationHubPage() {
                 <input
                   type="text"
                   placeholder={demo.placeholder}
-                  className="w-full rounded-lg bg-gray-100 dark:bg-gray-700 py-2 px-4 text-sm placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                  className="w-full rounded-lg bg-gray-100 dark:bg-gray-700 py-2 px-4 text-sm placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20"
                 />
-                <Button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
+                <Button className="w-full">
                   {demo.buttonText}
                 </Button>
                 <div className="h-32 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center">
@@ -332,29 +331,32 @@ export default function InnovationHubPage() {
       </div>
 
       <div className="mb-20">
-        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Research Publications</h2>
+        <h2 className="text-2xl md:text-3xl font-bold mb-2 text-center">Curated Research Reading</h2>
+        <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
+          Papers and publications from the broader AI research community that we track and reference in our work.
+        </p>
         <div className="space-y-6">
           {[
             {
               title: "Advancing Explainability in Multimodal Foundation Models",
-              authors: "Dr. Sarah Chen, Dr. Michael Rodriguez, et al.",
+              authors: "External research — Journal of Artificial Intelligence Research",
               publication: "Journal of Artificial Intelligence Research",
               date: "February 2025",
-              abstract: "This paper presents novel techniques for improving the explainability of decisions made by multimodal foundation models, enabling more transparent and trustworthy AI systems."
+              abstract: "Novel techniques for improving the explainability of decisions made by multimodal foundation models, enabling more transparent and trustworthy AI systems."
             },
             {
               title: "Federated Learning for Privacy-Preserving Healthcare Analytics",
-              authors: "Dr. James Wilson, Dr. Emily Patel, et al.",
+              authors: "External research — IEEE Transactions on Medical Imaging",
               publication: "IEEE Transactions on Medical Imaging",
               date: "December 2024",
-              abstract: "We propose a federated learning framework specifically designed for healthcare applications that maintains patient privacy while enabling collaborative model training across multiple institutions."
+              abstract: "A federated learning framework designed for healthcare applications that maintains patient privacy while enabling collaborative model training across multiple institutions."
             },
             {
               title: "Quantum-Enhanced Machine Learning: Opportunities and Challenges",
-              authors: "Dr. Robert Chang, Dr. Lisa Nguyen, et al.",
+              authors: "External research — Quantum Information Processing",
               publication: "Quantum Information Processing",
               date: "October 2024",
-              abstract: "This survey examines the current state of quantum machine learning, identifying promising applications and addressing key challenges for practical implementation."
+              abstract: "A survey examining the current state of quantum machine learning, identifying promising applications and addressing key challenges for practical implementation."
             }
           ].map((paper) => (
             <div key={paper.title} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
@@ -374,12 +376,12 @@ export default function InnovationHubPage() {
         </div>
       </div>
       
-      <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-8 md:p-12 text-center">
+      <div className="bg-primary/5 dark:bg-primary/10 rounded-xl p-8 md:p-12 text-center">
         <h2 className="text-2xl md:text-3xl font-bold mb-4">Collaborate with Our Innovation Team</h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
           Interested in partnering with us on cutting-edge AI research and development? Our innovation team works with clients, academic institutions, and technology partners to explore new frontiers in artificial intelligence.
         </p>
-        <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
+        <Button asChild size="lg">
           <Link href="/contact">Discuss Innovation Opportunities</Link>
         </Button>
       </div>

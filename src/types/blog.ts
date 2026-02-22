@@ -16,8 +16,8 @@ export interface BlogPost {
   excerpt?: string;
   /** Publication date in ISO format (YYYY-MM-DD) or formatted string */
   date: string;
-  /** Featured image - can be path string or Next.js StaticImageData */
-  image: string | StaticImageData;
+  /** Optional featured image - can be path string or Next.js StaticImageData */
+  image?: string | StaticImageData;
   /** Array of tags/categories */
   tags?: string[];
   /** Single category (alternative to tags) */

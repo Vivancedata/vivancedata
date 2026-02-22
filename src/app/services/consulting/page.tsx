@@ -2,10 +2,9 @@ import { Container } from "@/components/common/Container";
 import { Heading } from "@/components/common/Heading";
 import { Paragraph } from "@/components/common/Paragraph";
 import { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Check, ArrowRight } from "lucide-react";
+import { Check, ArrowRight, Target } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "AI Strategy Consulting - VivanceData",
@@ -43,32 +42,32 @@ const services: Service[] = [
   {
     title: "AI Readiness Assessment",
     description: "Evaluate your organization's current capabilities, data infrastructure, and processes to determine your readiness for AI adoption.",
-    icon: <Check className="h-5 w-5 text-blue-500" />,
+    icon: <Check className="h-5 w-5 text-primary" />,
   },
   {
     title: "Strategic AI Roadmap",
     description: "Develop a comprehensive plan for AI implementation that aligns with your business objectives and provides a clear path forward.",
-    icon: <Check className="h-5 w-5 text-blue-500" />,
+    icon: <Check className="h-5 w-5 text-primary" />,
   },
   {
     title: "Use Case Identification",
     description: "Identify high-value AI applications specific to your industry and business that will deliver the greatest ROI.",
-    icon: <Check className="h-5 w-5 text-blue-500" />,
+    icon: <Check className="h-5 w-5 text-primary" />,
   },
   {
     title: "AI Governance Framework",
     description: "Establish policies, procedures, and oversight mechanisms to ensure responsible and compliant AI implementation.",
-    icon: <Check className="h-5 w-5 text-blue-500" />,
+    icon: <Check className="h-5 w-5 text-primary" />,
   },
   {
     title: "Vendor Selection & Management",
     description: "Navigate the complex AI vendor landscape and select the right partners for your specific needs and objectives.",
-    icon: <Check className="h-5 w-5 text-blue-500" />,
+    icon: <Check className="h-5 w-5 text-primary" />,
   },
   {
     title: "Change Management",
     description: "Prepare your organization for AI adoption with strategies to address cultural shifts, skill gaps, and process changes.",
-    icon: <Check className="h-5 w-5 text-blue-500" />,
+    icon: <Check className="h-5 w-5 text-primary" />,
   },
 ];
 
@@ -108,14 +107,38 @@ export default function ConsultingPage() {
 
       <div className="flex flex-col md:flex-row gap-12 mb-20">
         <div className="w-full md:w-1/2">
-          <div className="relative aspect-video overflow-hidden rounded-xl bg-blue-100 dark:bg-blue-900/20">
-            <Image
-              src="/images/ai-solutions.png"
-              alt="AI Strategy Consulting"
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover"
-            />
+          <div className="aspect-video rounded-xl shadow-xl overflow-hidden bg-slate-900 p-6 md:p-8 flex flex-col">
+            <div className="text-primary/60 text-xs font-mono mb-5 flex items-center gap-2">
+              <Target className="w-3 h-3" /> AI Strategy Framework
+            </div>
+            <div className="flex justify-between gap-2 mb-6">
+              {[
+                { n: "1", label: "Assess" },
+                { n: "2", label: "Strategize" },
+                { n: "3", label: "Plan" },
+                { n: "4", label: "Execute" },
+              ].map(({ n, label }) => (
+                <div key={n} className="flex-1 flex flex-col items-center gap-2">
+                  <div className="w-8 h-8 rounded-full bg-primary/20 border border-primary/40 text-primary text-sm font-bold flex items-center justify-center">
+                    {n}
+                  </div>
+                  <span className="text-white/60 text-xs">{label}</span>
+                </div>
+              ))}
+            </div>
+            <div className="space-y-2">
+              {[
+                "AI Readiness Assessment",
+                "Strategic AI Roadmap",
+                "Use Case Prioritization",
+                "ROI Measurement Framework",
+              ].map((item) => (
+                <div key={item} className="flex items-center gap-2 bg-white/5 rounded-lg px-3 py-1.5">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary/70 flex-shrink-0" />
+                  <span className="text-white/60 text-xs">{item}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
         
@@ -173,8 +196,8 @@ export default function ConsultingPage() {
             { step: "4", title: "Implementation", description: "We provide ongoing guidance and support as you execute your AI strategy." }
           ].map((phase) => (
             <div key={phase.step} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 text-center">
-              <div className="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mx-auto mb-4">
-                <span className="text-blue-600 dark:text-blue-300 font-bold">{phase.step}</span>
+              <div className="w-12 h-12 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center mx-auto mb-4">
+                <span className="text-primary font-bold">{phase.step}</span>
               </div>
               <h3 className="text-xl font-semibold mb-3">{phase.title}</h3>
               <p className="text-gray-600 dark:text-gray-300">{phase.description}</p>
@@ -183,12 +206,12 @@ export default function ConsultingPage() {
         </div>
       </div>
       
-      <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-8 md:p-12 text-center">
+      <div className="bg-primary/5 dark:bg-primary/10 rounded-xl p-8 md:p-12 text-center">
         <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Develop Your AI Strategy?</h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
           Let&apos;s discuss how our consulting services can help you navigate the AI landscape and develop a strategy that drives business value.
         </p>
-        <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
+        <Button asChild size="lg">
           <Link href="/contact">Book a Consultation</Link>
         </Button>
       </div>

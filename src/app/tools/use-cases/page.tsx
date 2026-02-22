@@ -61,7 +61,7 @@ export default function UseCasesPage() {
 
       <UseCasesExplorer />
 
-      <div className="mt-16 bg-blue-50 dark:bg-blue-900/20 rounded-xl p-8">
+      <div className="mt-16 bg-primary/5 dark:bg-primary/10 rounded-xl p-8">
         <h2 className="text-2xl font-bold mb-4">Ready to Implement?</h2>
         <div className="space-y-4 text-gray-700 dark:text-gray-300">
           <p>

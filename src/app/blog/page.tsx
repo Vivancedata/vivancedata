@@ -1,7 +1,6 @@
 import { Blogs } from '@/components/blog/Blogs';
 import { Container } from '@/components/common/Container';
-import { Heading } from '@/components/common/Heading';
-import { Paragraph } from '@/components/common/Paragraph';
+import { ServicesHero } from '@/components/services/ServicesHero';
 import { Metadata } from 'next';
 import { getAllBlogPosts } from '@/lib/blogPosts';
 
@@ -35,15 +34,14 @@ export default async function Blog() {
   const posts = getAllBlogPosts();
 
   return (
-    <Container className="py-16">
-      <div className="text-center mb-12">
-        <Heading className="text-4xl md:text-5xl mb-4">Our AI Insights Blog</Heading>
-        <Paragraph className="max-w-2xl mx-auto text-lg">
-          Stay updated with the latest insights, research, and practical applications in artificial intelligence.
-        </Paragraph>
-      </div>
-
-      <Blogs blogs={posts} />
-    </Container>
+    <>
+      <ServicesHero
+        title="AI Insights Blog"
+        description="Practical perspectives on AI implementation, strategy, and the decisions that matter most when building production systems."
+      />
+      <Container className="py-16">
+        <Blogs blogs={posts} />
+      </Container>
+    </>
   );
 }

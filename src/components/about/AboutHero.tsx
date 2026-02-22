@@ -27,13 +27,13 @@ export function AboutHero({ title, description }: AboutHeroProps): React.ReactEl
   );
 
   return (
-    <section className="relative w-full bg-gradient-to-r from-blue-900 to-indigo-900 text-white py-20 md:py-28 overflow-hidden">
+    <section className="relative w-full bg-gradient-to-r from-primary to-primary/70 text-white py-20 md:py-28 overflow-hidden">
       {/* Background particles */}
       <div className="absolute inset-0 overflow-hidden">
         {particles.map((particle) => (
           <m.div
             key={particle.id}
-            className="absolute rounded-full bg-white/5 backdrop-blur-sm"
+            className="absolute rounded-full bg-primary-foreground/5 backdrop-blur-sm"
             style={{
               width: particle.width,
               height: particle.height,
@@ -57,13 +57,13 @@ export function AboutHero({ title, description }: AboutHeroProps): React.ReactEl
       <Parallax speed={0.2} direction="up" className="relative z-10">
         <div className="container mx-auto px-4 text-center">
           <AnimateOnScroll variant="fadeInUp" className="mb-6">
-            <div className="inline-flex items-center rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm mb-6">
-              <span className="text-sm font-medium text-blue-100">About Us</span>
+            <div className="inline-flex items-center rounded-full bg-primary-foreground/10 px-4 py-2 backdrop-blur-sm mb-6">
+              <span className="text-sm font-medium text-primary-foreground/80">About Us</span>
             </div>
           </AnimateOnScroll>
           
           <AnimateOnScroll variant="scaleIn" className="mb-6">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-primary-foreground/70">
               {title}
             </h1>
           </AnimateOnScroll>
@@ -71,7 +71,7 @@ export function AboutHero({ title, description }: AboutHeroProps): React.ReactEl
           <AnimateOnScroll variant="fadeInUp" delay={0.2}>
             <TextReveal 
               text={description}
-              className="text-lg md:text-xl max-w-3xl mx-auto text-blue-100 leading-relaxed"
+              className="text-lg md:text-xl max-w-3xl mx-auto text-primary-foreground/80 leading-relaxed"
             />
           </AnimateOnScroll>
         </div>

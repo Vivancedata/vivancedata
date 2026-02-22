@@ -34,7 +34,7 @@ export default function Header() {
       className={cn(
         "sticky top-0 z-50 w-full transition-all duration-300",
         isScrolled 
-          ? "bg-white/95 shadow-md backdrop-blur-md supports-[backdrop-filter]:bg-white/80" 
+          ? "bg-background/95 shadow-md backdrop-blur-md supports-[backdrop-filter]:bg-background/80 border-b border-border" 
           : "bg-transparent"
       )}
     >
@@ -55,7 +55,7 @@ export default function Header() {
                   className="transition-transform duration-300 hover:scale-110"
                 />
               </div>
-              <span className="font-bold text-xl hidden sm:inline-block bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
+              <span className="font-bold text-xl hidden sm:inline-block bg-clip-text text-transparent bg-primary">
                 {siteConfig.name}
               </span>
             </Link>
@@ -73,7 +73,7 @@ export default function Header() {
               >
                 {item.hasDropdown ? (
                   <button 
-                    className="flex items-center px-4 py-2 text-gray-700 hover:text-blue-600 rounded-md transition-colors group"
+                    className="flex items-center px-4 py-2 text-foreground hover:text-primary rounded-md transition-colors group"
                     onClick={() => toggleDropdown(item.name)}
                   >
                     {item.name}
@@ -82,16 +82,16 @@ export default function Header() {
                 ) : (
                   <Link 
                     href={item.href}
-                    className="px-4 py-2 text-gray-700 hover:text-blue-600 rounded-md transition-colors relative group"
+                    className="px-4 py-2 text-foreground hover:text-primary rounded-md transition-colors relative group"
                   >
                     {item.name}
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
                   </Link>
                 )}
 
                 {item.hasDropdown && (
                   <div className="absolute left-0 mt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform group-hover:translate-y-0 translate-y-2">
-                    <div className="py-3 bg-white rounded-xl shadow-xl border border-gray-100">
+                    <div className="py-3 bg-card rounded-xl shadow-xl border border-border">
                       {item.dropdownItems?.map((dropdownItem, idx) => (
                         <m.div
                           key={dropdownItem.name}
@@ -101,7 +101,7 @@ export default function Header() {
                         >
                           <Link
                             href={dropdownItem.href}
-                            className="flex items-center px-5 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 group/item"
+                            className="flex items-center px-5 py-2.5 text-sm text-foreground hover:bg-primary/10 hover:text-primary group/item"
                           >
                             <span>{dropdownItem.name}</span>
                             <ChevronRight className="ml-auto h-4 w-4 opacity-0 transition-all duration-300 group-hover/item:opacity-100 group-hover/item:translate-x-1" />
@@ -121,11 +121,11 @@ export default function Header() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Button variant="ghost" size="icon" className="text-gray-700 hover:text-blue-600 transition-colors duration-300">
+            <Button variant="ghost" size="icon" className="text-foreground hover:text-primary transition-colors duration-300">
               <Search className="h-5 w-5" />
             </Button>
             <ModeToggle />
-            <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-md hover:shadow-lg transition-all duration-300">
+            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-md hover:shadow-lg transition-all duration-300">
               Contact Us
             </Button>
           </m.div>
@@ -135,7 +135,7 @@ export default function Header() {
             <ModeToggle />
             <button 
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 text-gray-700 focus:outline-none transition-transform duration-300 hover:scale-110"
+              className="p-2 text-foreground focus:outline-none transition-transform duration-300 hover:scale-110"
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             >
               {isMenuOpen ? (
@@ -152,7 +152,7 @@ export default function Header() {
       <AnimatePresence>
         {isMenuOpen && (
           <m.div 
-            className="fixed inset-0 z-40 bg-white/95 backdrop-blur-md pt-20 px-6 overflow-y-auto lg:hidden"
+            className="fixed inset-0 z-40 bg-background/95 backdrop-blur-md pt-20 px-6 overflow-y-auto lg:hidden"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -162,7 +162,7 @@ export default function Header() {
               {navItems.map((item, index) => (
                 <m.div 
                   key={item.name} 
-                  className="border-b border-gray-100 pb-5"
+                  className="border-b border-border pb-5"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: 0.05 * index }}
@@ -170,13 +170,13 @@ export default function Header() {
                   {item.hasDropdown ? (
                     <>
                       <button 
-                        className="flex items-center justify-between w-full py-2 text-gray-800 font-medium"
+                        className="flex items-center justify-between w-full py-2 text-foreground font-medium"
                         onClick={() => toggleDropdown(item.name)}
                       >
                         <span className="text-lg">{item.name}</span>
                         <ChevronDown 
                           className={cn(
-                            "h-5 w-5 text-blue-500 transition-transform duration-300", 
+                            "h-5 w-5 text-primary transition-transform duration-300", 
                             activeDropdown === item.name ? "transform rotate-180" : ""
                           )} 
                         />
@@ -199,10 +199,10 @@ export default function Header() {
                               >
                                 <Link
                                   href={dropdownItem.href}
-                                  className="flex items-center py-2 text-gray-600 hover:text-blue-600 transition-colors"
+                                  className="flex items-center py-2 text-foreground/80 hover:text-primary transition-colors"
                                   onClick={() => setIsMenuOpen(false)}
                                 >
-                                  <ChevronRight className="mr-2 h-4 w-4 text-blue-400" />
+                                  <ChevronRight className="mr-2 h-4 w-4 text-primary/60" />
                                   <span>{dropdownItem.name}</span>
                                 </Link>
                               </m.div>
@@ -214,7 +214,7 @@ export default function Header() {
                   ) : (
                     <Link 
                       href={item.href}
-                      className="block py-2 text-lg font-medium text-gray-800 hover:text-blue-600 transition-colors"
+                      className="block py-2 text-lg font-medium text-foreground hover:text-primary transition-colors"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {item.name}
@@ -228,7 +228,7 @@ export default function Header() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.3 }}
               >
-                <Button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white py-6 h-auto text-lg font-medium rounded-xl shadow-lg transition-all duration-300">
+                <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-6 h-auto text-lg font-medium rounded-xl shadow-lg transition-all duration-300">
                   Contact Us
                 </Button>
               </m.div>

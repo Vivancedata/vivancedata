@@ -6,7 +6,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, BarChart, Brain, Database, LineChart, MessageSquare, ShieldCheck, ChevronRight } from "lucide-react";
-import Image from "next/image";
 import { AnimateOnScroll } from "@/hooks/useAnimateOnScroll";
 import { LazyMotion, domAnimation, m } from "framer-motion";
 import { caseStudies, IconType } from "@/constants/caseStudies";
@@ -171,34 +170,19 @@ const CaseStudies = () => {
                             }}
                           />
                         </div>
-                        <div className="absolute inset-0 flex items-center justify-center p-8">
-                          <m.div
-                            className="relative w-full h-full max-w-md"
-                            whileHover={{ scale: 1.03 }}
-                            transition={{ type: "spring", stiffness: 300 }}
-                          >
-                            <Image
-                              src={study.image}
-                              alt={`${study.title} - ${study.industry} case study showcasing ${study.client}'s AI transformation`}
-                              className="object-cover rounded-xl shadow-2xl"
-                              fill
-                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-                            />
-                            <div className="absolute inset-0 bg-black/55 rounded-xl flex items-end p-8">
-                              <div className="flex items-center space-x-4">
-                                <div className="bg-background rounded-full p-3 shadow-lg">
-                                  {study.industry === "Retail" && <BarChart className="h-7 w-7 text-primary" />}
-                                  {study.industry === "Healthcare" && <Brain className="h-7 w-7 text-primary" />}
-                                  {study.industry === "Finance" && <LineChart className="h-7 w-7 text-primary" />}
-                                  {study.industry === "E-commerce" && <MessageSquare className="h-7 w-7 text-primary" />}
-                                </div>
-                                <div className="text-white">
-                                  <p className="font-bold text-xl">{study.industry} Solution</p>
-                                  <p className="text-sm opacity-90">Powered by VivanceData AI</p>
-                                </div>
-                              </div>
+                        <div className="absolute inset-0 flex items-end p-8">
+                          <div className="flex items-center space-x-4">
+                            <div className="bg-background rounded-full p-3 shadow-lg">
+                              {study.industry === "Retail" && <BarChart className="h-7 w-7 text-primary" />}
+                              {study.industry === "Healthcare" && <Brain className="h-7 w-7 text-primary" />}
+                              {study.industry === "Finance" && <LineChart className="h-7 w-7 text-primary" />}
+                              {study.industry === "E-commerce" && <MessageSquare className="h-7 w-7 text-primary" />}
                             </div>
-                          </m.div>
+                            <div className="text-white">
+                              <p className="font-bold text-xl">{study.industry} Solution</p>
+                              <p className="text-sm opacity-90">Powered by VivanceData AI</p>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>

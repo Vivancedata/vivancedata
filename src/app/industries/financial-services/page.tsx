@@ -33,7 +33,7 @@ export default function FinancialServicesPage() {
     {
       title: "Intelligent Risk Management",
       description: "Advanced AI models that analyze vast datasets to identify, assess, and mitigate financial risks with greater accuracy and speed than traditional methods.",
-      icon: <BarChart3 className="h-6 w-6 text-blue-600" />,
+      icon: <BarChart3 className="h-6 w-6 text-primary" />,
       benefits: [
         "35% improvement in risk prediction accuracy",
         "Real-time risk monitoring and alerts",
@@ -44,7 +44,7 @@ export default function FinancialServicesPage() {
     {
       title: "Fraud Detection & Prevention",
       description: "Machine learning systems that detect patterns and anomalies to identify fraudulent transactions and activities before they cause damage.",
-      icon: <Shield className="h-6 w-6 text-blue-600" />,
+      icon: <Shield className="h-6 w-6 text-primary" />,
       benefits: [
         "Reduce false positives by up to 60%",
         "Detect new fraud patterns as they emerge",
@@ -55,7 +55,7 @@ export default function FinancialServicesPage() {
     {
       title: "Regulatory Compliance",
       description: "AI-powered compliance solutions that automate monitoring, reporting, and documentation to ensure adherence to complex and evolving regulations.",
-      icon: <FileText className="h-6 w-6 text-blue-600" />,
+      icon: <FileText className="h-6 w-6 text-primary" />,
       benefits: [
         "Automated regulatory reporting",
         "Continuous compliance monitoring",
@@ -66,7 +66,7 @@ export default function FinancialServicesPage() {
     {
       title: "Customer Experience Enhancement",
       description: "Personalized, intelligent customer interactions across channels, powered by AI that understands customer needs and preferences.",
-      icon: <Users className="h-6 w-6 text-blue-600" />,
+      icon: <Users className="h-6 w-6 text-primary" />,
       benefits: [
         "Hyper-personalized product recommendations",
         "Intelligent chatbots and virtual assistants",
@@ -77,7 +77,7 @@ export default function FinancialServicesPage() {
     {
       title: "Process Automation",
       description: "End-to-end automation of financial processes using AI, RPA, and intelligent workflows to increase efficiency and reduce operational costs.",
-      icon: <Clock className="h-6 w-6 text-blue-600" />,
+      icon: <Clock className="h-6 w-6 text-primary" />,
       benefits: [
         "70% reduction in processing time",
         "Automated document processing and data extraction",

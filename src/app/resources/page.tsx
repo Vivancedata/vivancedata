@@ -96,7 +96,7 @@ export default function ResourcesPage() {
                 <p className="text-zinc-600 dark:text-zinc-400 flex-grow">
                   {resource.description}
                 </p>
-                <div className="mt-4 flex items-center text-sm font-medium text-blue-600 dark:text-blue-400 group-hover:text-blue-500">
+                <div className="mt-4 flex items-center text-sm font-medium text-primary dark:text-primary group-hover:text-primary/80">
                   Explore
                   <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </div>

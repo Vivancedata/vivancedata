@@ -68,13 +68,13 @@ const ServicesPage = () => {
   ];
 
   const technologies = [
-    { id: "1", name: "Python", shortLabel: "Py", tone: "bg-emerald-100 text-emerald-700" },
-    { id: "2", name: "TensorFlow", shortLabel: "TF", tone: "bg-orange-100 text-orange-700" },
-    { id: "3", name: "PyTorch", shortLabel: "PT", tone: "bg-red-100 text-red-700" },
-    { id: "4", name: "Azure", shortLabel: "Az", tone: "bg-sky-100 text-sky-700" },
-    { id: "5", name: "AWS", shortLabel: "AWS", tone: "bg-amber-100 text-amber-700" },
-    { id: "6", name: "Docker", shortLabel: "DK", tone: "bg-blue-100 text-blue-700" },
-    { id: "7", name: "Kubernetes", shortLabel: "K8s", tone: "bg-indigo-100 text-indigo-700" }
+    { id: "1", name: "Python", shortLabel: "Py", tone: "bg-emerald-100 text-emerald-700", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" },
+    { id: "2", name: "TensorFlow", shortLabel: "TF", tone: "bg-orange-100 text-orange-700", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tensorflow/tensorflow-original.svg" },
+    { id: "3", name: "PyTorch", shortLabel: "PT", tone: "bg-red-100 text-red-700", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg" },
+    { id: "4", name: "Azure", shortLabel: "Az", tone: "bg-sky-100 text-sky-700", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg" },
+    { id: "5", name: "AWS", shortLabel: "AWS", tone: "bg-amber-100 text-amber-700", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" },
+    { id: "6", name: "Docker", shortLabel: "DK", tone: "bg-blue-100 text-blue-700", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" },
+    { id: "7", name: "Kubernetes", shortLabel: "K8s", tone: "bg-indigo-100 text-indigo-700", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg" },
   ];
 
   const caseStudies = [

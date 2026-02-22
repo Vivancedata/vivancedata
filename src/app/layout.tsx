@@ -15,10 +15,10 @@ export const metadata: Metadata = {
     default: "VivanceData - AI Solutions for Modern Businesses",
     template: "%s | VivanceData"
   },
-  description: "We combine cutting-edge AI technology with deep industry expertise to deliver solutions that drive real business outcomes.",
+  description: "Boutique AI consulting practice helping businesses move from strategy to production. Founded by Lorenzo Scaturchio.",
   keywords: ["AI solutions", "artificial intelligence", "business automation", "machine learning", "data analytics", "generative AI", "AI consulting"],
-  authors: [{ name: "VivanceData Team" }],
-  creator: "VivanceData",
+  authors: [{ name: "Lorenzo Scaturchio" }],
+  creator: "Lorenzo Scaturchio",
   publisher: "VivanceData",
   formatDetection: {
     email: false,

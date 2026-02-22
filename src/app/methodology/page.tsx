@@ -81,8 +81,8 @@ const getPhaseIcon = (iconType: MethodologyPhase['iconType']) => {
 
 const getPhaseColor = (number: number): string => {
   const colors = [
-    'from-blue-500 to-blue-600',
-    'from-indigo-500 to-indigo-600',
+    'from-primary to-primary/80',
+    'from-emerald-600 to-emerald-700',
     'from-violet-500 to-violet-600',
     'from-purple-500 to-purple-600',
     'from-fuchsia-500 to-fuchsia-600',
@@ -93,8 +93,8 @@ const getPhaseColor = (number: number): string => {
 
 const getPhaseAccent = (number: number): string => {
   const accents = [
-    'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300',
-    'bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-300',
+    'bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary/80',
+    'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300',
     'bg-violet-100 dark:bg-violet-900/30 text-violet-600 dark:text-violet-300',
     'bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-300',
     'bg-fuchsia-100 dark:bg-fuchsia-900/30 text-fuchsia-600 dark:text-fuchsia-300',
@@ -117,7 +117,7 @@ function MethodologyHeroSection() {
         />
       </div>
 
-      <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/30 rounded-full filter blur-[100px]" />
+      <div className="absolute top-20 left-10 w-72 h-72 bg-primary/30 rounded-full filter blur-[100px]" />
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/20 rounded-full filter blur-[120px]" />
 
       <Container className="relative z-10 max-w-6xl">
@@ -134,7 +134,7 @@ function MethodologyHeroSection() {
             {frameworkName}
           </h1>
 
-          <p className="text-xl md:text-2xl text-blue-200 font-medium mb-6">
+          <p className="text-xl md:text-2xl text-white/70 font-medium mb-6">
             {frameworkTagline}
           </p>
 
@@ -175,7 +175,7 @@ function RapidAcronymSection() {
         <div className="flex flex-wrap justify-center gap-4 md:gap-8">
           {RAPID_WORDS.map((word, index) => (
             <div key={word} className="flex items-center gap-2">
-              <span className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="text-3xl md:text-5xl font-bold text-primary">
                 {word.charAt(0)}
               </span>
               <span className="text-lg md:text-xl text-gray-600 dark:text-gray-400 font-medium">
@@ -213,7 +213,7 @@ function PhasesTimelineSection() {
         </div>
 
         <div className="relative">
-          <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500 rounded-full" />
+          <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary via-emerald-500 to-primary/60 rounded-full" />
 
           <div className="space-y-12 lg:space-y-24">
             {methodologyPhases.map((phase, index) => (
@@ -432,7 +432,7 @@ function MethodologyFaqSection() {
 
 function MethodologyCtaSection() {
   return (
-    <section className="w-full py-20 md:py-28 bg-gradient-to-br from-primary via-blue-600 to-indigo-700 text-white">
+    <section className="w-full py-20 md:py-28 bg-primary text-white">
       <Container className="max-w-4xl text-center">
         <h2 className="text-3xl md:text-5xl font-bold mb-6">
           Ready to Accelerate Your AI Journey?

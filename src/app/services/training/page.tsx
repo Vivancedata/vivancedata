@@ -2,7 +2,6 @@ import { Container } from "@/components/common/Container";
 import { Heading } from "@/components/common/Heading";
 import { Paragraph } from "@/components/common/Paragraph";
 import { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Check, ArrowRight } from "lucide-react";
@@ -108,14 +107,30 @@ export default function TrainingPage() {
 
       <div className="flex flex-col md:flex-row gap-12 mb-20">
         <div className="w-full md:w-1/2">
-          <div className="relative aspect-video overflow-hidden rounded-xl bg-blue-100 dark:bg-blue-900/20">
-            <Image
-              src="/images/ai-solutions.png"
-              alt="AI Training & Workshops"
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover"
-            />
+          <div className="aspect-video rounded-xl shadow-xl overflow-hidden bg-slate-900 p-6 md:p-8 flex flex-col">
+            <div className="text-primary/60 text-xs font-mono mb-5">AI Capability Progress</div>
+            <div className="space-y-4 flex-1">
+              {[
+                { role: "Executive Team", score: 87, color: "bg-primary" },
+                { role: "Data Scientists", score: 94, color: "bg-blue-400" },
+                { role: "Software Engineers", score: 91, color: "bg-purple-400" },
+                { role: "Operations", score: 78, color: "bg-amber-400" },
+              ].map((item) => (
+                <div key={item.role}>
+                  <div className="flex justify-between mb-1.5">
+                    <span className="text-white/70 text-xs">{item.role}</span>
+                    <span className="text-white/40 text-xs font-mono">{item.score}%</span>
+                  </div>
+                  <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
+                    <div
+                      className={`h-full ${item.color} rounded-full`}
+                      style={{ width: `${item.score}%` }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-4 text-white/30 text-xs">Avg. capability gain: +64% post-training</div>
           </div>
         </div>
         
@@ -165,7 +180,7 @@ export default function TrainingPage() {
                     <ul className="space-y-1">
                       {course.topics.map((topic) => (
                         <li key={topic} className="flex items-start">
-                          <Check className="h-4 w-4 text-blue-500 mt-1 mr-2 flex-shrink-0" />
+                          <Check className="h-4 w-4 text-primary mt-1 mr-2 flex-shrink-0" />
                           <span className="text-gray-700 dark:text-gray-200 text-sm">{topic}</span>
                         </li>
                       ))}
@@ -214,12 +229,12 @@ export default function TrainingPage() {
         </div>
       </div>
       
-      <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-8 md:p-12 text-center">
+      <div className="bg-primary/5 dark:bg-primary/10 rounded-xl p-8 md:p-12 text-center">
         <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Upskill Your Team?</h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
           Contact us to discuss your training needs and how we can help build AI capabilities across your organization.
         </p>
-        <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
+        <Button asChild size="lg">
           <Link href="/contact">Schedule a Consultation</Link>
         </Button>
       </div>

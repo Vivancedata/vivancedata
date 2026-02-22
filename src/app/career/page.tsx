@@ -92,8 +92,8 @@ const CareerPage = () => {
         <div className="mb-16">
           <h2 className="text-2xl font-bold text-center mb-8">Open Positions</h2>
 
-          <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-8 text-center">
-            <div className="bg-blue-100 dark:bg-blue-800/30 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+          <div className="bg-primary/5 dark:bg-primary/10 rounded-xl p-8 text-center">
+            <div className="bg-primary/10 dark:bg-primary/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
               <Briefcase className="h-8 w-8 text-primary" />
             </div>
             <h3 className="text-xl font-semibold mb-3">No Open Positions Right Now</h3>
@@ -113,7 +113,7 @@ const CareerPage = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="bg-gradient-to-r from-primary/10 to-blue-500/10 rounded-xl p-8 text-center">
+        <div className="bg-gradient-to-r from-primary/10 to-primary/5 rounded-xl p-8 text-center">
           <h2 className="text-2xl font-bold mb-3">Have a Project in Mind?</h2>
           <p className="text-gray-600 dark:text-gray-400 mb-6">
             While we may not be hiring right now, we&apos;re always ready to help businesses

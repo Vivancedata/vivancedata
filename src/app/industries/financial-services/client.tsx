@@ -3,7 +3,6 @@
 import { Container } from "@/components/common/Container";
 import { Heading } from "@/components/common/Heading";
 import { Paragraph } from "@/components/common/Paragraph";
-import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Check } from "lucide-react";
@@ -20,7 +19,7 @@ interface SolutionCardProps {
 const SolutionCard = ({ title, description, icon, benefits }: SolutionCardProps) => (
   <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
     <div className="flex items-center mb-4">
-      <div className="mr-4 p-3 bg-blue-100 dark:bg-blue-900/30 rounded-full">
+      <div className="mr-4 p-3 bg-primary/10 dark:bg-primary/20 rounded-full">
         {icon}
       </div>
       <h3 className="text-xl font-semibold">{title}</h3>
@@ -30,7 +29,7 @@ const SolutionCard = ({ title, description, icon, benefits }: SolutionCardProps)
     <ul className="space-y-2">
       {benefits.map((benefit) => (
         <li key={`${title}-benefit-${benefit}`} className="flex items-start">
-          <Check className="h-5 w-5 text-blue-500 mt-0.5 mr-2 flex-shrink-0" />
+          <Check className="h-5 w-5 text-primary mt-0.5 mr-2 flex-shrink-0" />
           <span className="text-gray-700 dark:text-gray-200">{benefit}</span>
         </li>
       ))}
@@ -49,7 +48,7 @@ interface CaseStudyProps {
 const CaseStudy = ({ title, client, challenge, solution, results }: CaseStudyProps) => (
   <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
     <h3 className="text-xl font-semibold mb-2">{title}</h3>
-    <p className="text-blue-600 dark:text-blue-400 text-sm mb-4">{client}</p>
+    <p className="text-primary text-sm mb-4">{client}</p>
     
     <div className="mb-4">
       <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Challenge</h4>
@@ -66,7 +65,7 @@ const CaseStudy = ({ title, client, challenge, solution, results }: CaseStudyPro
       <ul className="space-y-1">
         {results.map((result) => (
           <li key={`${title}-result-${result}`} className="flex items-start">
-            <Check className="h-5 w-5 text-blue-500 mt-0.5 mr-2 flex-shrink-0" />
+            <Check className="h-5 w-5 text-primary mt-0.5 mr-2 flex-shrink-0" />
             <span className="text-gray-700 dark:text-gray-200">{result}</span>
           </li>
         ))}
@@ -103,11 +102,11 @@ export default function FinancialServicesClient({
   return (
     <Container className="py-16 overflow-hidden">
       {/* Background elements */}
-      <div className="absolute top-40 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl -z-10" />
-      <div className="absolute bottom-40 left-0 w-80 h-80 bg-indigo-500/5 rounded-full blur-3xl -z-10" />
+      <div className="absolute top-40 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -z-10" />
+      <div className="absolute bottom-40 left-0 w-80 h-80 bg-secondary/5 rounded-full blur-3xl -z-10" />
       
       <AnimateOnScroll variant="fadeInUp" className="text-center mb-16">
-        <div className="inline-block rounded-full bg-blue-100 dark:bg-blue-900/30 px-4 py-1.5 text-sm font-medium text-blue-800 dark:text-blue-300 mb-4">
+        <div className="inline-block rounded-full bg-primary/10 dark:bg-primary/20 px-4 py-1.5 text-sm font-medium text-primary mb-4">
           Financial Services
         </div>
         <Heading className="text-4xl md:text-5xl mb-4">AI Solutions for Financial Services</Heading>
@@ -118,14 +117,32 @@ export default function FinancialServicesClient({
 
       <div className="flex flex-col md:flex-row gap-12 mb-20">
         <AnimateOnScroll variant="fadeInLeft" className="w-full md:w-1/2">
-          <div className="relative aspect-video overflow-hidden rounded-xl bg-blue-100 dark:bg-blue-900/20 shadow-xl">
-            <Image
-              src="/images/ai-solutions.png"
-              alt="AI Solutions for Financial Services"
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover"
-            />
+          <div className="aspect-video rounded-xl shadow-xl overflow-hidden bg-slate-900 p-6 md:p-8 flex flex-col">
+            <div className="text-primary/60 text-xs font-mono mb-4">Risk &amp; Analytics Dashboard</div>
+            <div className="grid grid-cols-2 gap-3 mb-4">
+              <div className="bg-white/5 rounded-lg p-3">
+                <div className="text-white/40 text-xs mb-1">Fraud Detection</div>
+                <div className="text-2xl font-bold text-primary">↓ 35%</div>
+                <div className="text-white/30 text-xs">false positives</div>
+              </div>
+              <div className="bg-white/5 rounded-lg p-3">
+                <div className="text-white/40 text-xs mb-1">Model Accuracy</div>
+                <div className="text-2xl font-bold text-blue-400">99.2%</div>
+                <div className="text-white/30 text-xs">precision score</div>
+              </div>
+            </div>
+            <div className="space-y-2">
+              {[
+                { label: "HIPAA-compliant data pipeline", color: "bg-primary" },
+                { label: "Real-time transaction monitoring", color: "bg-blue-400" },
+                { label: "Regulatory compliance automation", color: "bg-purple-400" },
+              ].map((item) => (
+                <div key={item.label} className="flex items-center gap-2">
+                  <div className={`w-2 h-2 rounded-full ${item.color} flex-shrink-0`} />
+                  <span className="text-white/60 text-xs">{item.label}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </AnimateOnScroll>
         
@@ -189,13 +206,13 @@ export default function FinancialServicesClient({
         ))}
       </StaggerContainer>
 
-      <AnimateOnScroll variant="fadeIn" className="mb-20 bg-blue-50 dark:bg-blue-900/20 rounded-xl p-8 md:p-12 shadow-lg">
+      <AnimateOnScroll variant="fadeIn" className="mb-20 bg-primary/5 dark:bg-primary/10 rounded-xl p-8 md:p-12 shadow-lg">
         <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Measurable Results for Financial Institutions</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {stats.map((stat, index) => (
             <AnimateOnScroll key={stat.label} variant="scaleIn" delay={index * 0.1} className="text-center">
               <m.div 
-                className="text-4xl md:text-5xl font-bold text-blue-600 dark:text-blue-400 mb-2"
+                className="text-4xl md:text-5xl font-bold text-primary mb-2"
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -236,7 +253,7 @@ export default function FinancialServicesClient({
       
       <div className="mb-20 relative">
         {/* Vertical line connecting phases */}
-        <div className="absolute left-6 top-6 bottom-0 w-0.5 bg-blue-200 dark:bg-blue-900/50 hidden md:block"></div>
+        <div className="absolute left-6 top-6 bottom-0 w-0.5 bg-primary/20 dark:bg-primary/30 hidden md:block"></div>
         
         <div className="space-y-12">
           {[
@@ -288,7 +305,7 @@ export default function FinancialServicesClient({
             <AnimateOnScroll key={phase.number} variant="fadeInLeft" delay={index * 0.2} className="relative">
               <div className="flex items-center mb-4">
                 <m.div 
-                  className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-lg mr-4 flex-shrink-0"
+                  className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg mr-4 flex-shrink-0"
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 >
@@ -307,7 +324,7 @@ export default function FinancialServicesClient({
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3, delay: (index * 0.2) + (i * 0.1) }}
                     >
-                      <Check className="h-5 w-5 text-blue-500 mt-0.5 mr-2 flex-shrink-0" />
+                      <Check className="h-5 w-5 text-primary mt-0.5 mr-2 flex-shrink-0" />
                       <span className="text-gray-700 dark:text-gray-200">{check}</span>
                     </m.li>
                   ))}
@@ -318,7 +335,7 @@ export default function FinancialServicesClient({
         </div>
       </div>
       
-      <AnimateOnScroll variant="scaleIn" className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-8 md:p-12 text-center shadow-xl">
+      <AnimateOnScroll variant="scaleIn" className="bg-primary/5 dark:bg-primary/10 rounded-xl p-8 md:p-12 text-center shadow-xl">
         <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Transform Your Financial Institution?</h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
           Let&apos;s discuss how our AI solutions can help your financial institution reduce risk, improve efficiency, enhance customer experiences, and ensure regulatory compliance.
@@ -328,7 +345,7 @@ export default function FinancialServicesClient({
           whileTap={{ scale: 0.95 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
         >
-          <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
+          <Button asChild size="lg">
             <Link href="/contact">Schedule a Consultation</Link>
           </Button>
         </m.div>

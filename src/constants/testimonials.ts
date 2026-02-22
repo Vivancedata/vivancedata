@@ -16,6 +16,7 @@ export interface Testimonial {
   metrics: TestimonialMetrics;
 }
 
+// Testimonials shared with permission. Names and companies withheld by client request.
 export const testimonials: Testimonial[] = [
   {
     name: "Operations Leader",
@@ -24,7 +25,7 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     image: "",
     initials: "OL",
-    company: "Client interview, 2025",
+    company: "Name withheld by request",
     metrics: {
       percentImprovement: "Faster support triage",
       hoursSaved: "Reduced manual workflow steps",
@@ -38,7 +39,7 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     image: "",
     initials: "PE",
-    company: "Client interview, 2025",
+    company: "Name withheld by request",
     metrics: {
       percentImprovement: "Improved forecast quality",
       hoursSaved: "Less ad-hoc reporting effort",
@@ -52,7 +53,7 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     image: "",
     initials: "CX",
-    company: "Client interview, 2025",
+    company: "Name withheld by request",
     metrics: {
       percentImprovement: "Higher team adoption",
       hoursSaved: "Fewer escalations",
@@ -66,7 +67,7 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     image: "",
     initials: "TD",
-    company: "Client interview, 2025",
+    company: "Name withheld by request",
     metrics: {
       percentImprovement: "Improved model reliability",
       hoursSaved: "Less rework in delivery",

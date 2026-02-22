@@ -1,6 +1,3 @@
-import aiSolutionsImage from "@/public/images/ai-solutions.png";
-import { StaticImageData } from "next/image";
-
 export type IconType = "database" | "brain" | "shield-check" | "message-square";
 
 export interface CaseStudy {
@@ -13,7 +10,6 @@ export interface CaseStudy {
   results: string[];
   technologies: string[];
   iconType: IconType;
-  image: StaticImageData;
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -32,7 +28,6 @@ export const caseStudies: CaseStudy[] = [
     ],
     technologies: ["Predictive Analytics", "Machine Learning", "Computer Vision", "Cloud Computing"],
     iconType: "database",
-    image: aiSolutionsImage
   },
   {
     id: "healthcare-nlp",
@@ -49,7 +44,6 @@ export const caseStudies: CaseStudy[] = [
     ],
     technologies: ["Natural Language Processing", "Machine Learning", "Healthcare AI", "HIPAA-Compliant Cloud"],
     iconType: "brain",
-    image: aiSolutionsImage
   },
   {
     id: "finance-fraud",
@@ -66,7 +60,6 @@ export const caseStudies: CaseStudy[] = [
     ],
     technologies: ["Anomaly Detection", "Behavioral Analytics", "Real-time Processing", "Secure API Integration"],
     iconType: "shield-check",
-    image: aiSolutionsImage
   },
   {
     id: "customer-service",
@@ -83,6 +76,5 @@ export const caseStudies: CaseStudy[] = [
     ],
     technologies: ["Natural Language Understanding", "Conversational AI", "Sentiment Analysis", "Integration APIs"],
     iconType: "message-square",
-    image: aiSolutionsImage
   }
 ];

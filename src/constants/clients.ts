@@ -5,53 +5,55 @@ export interface Client {
   industry: string;
 }
 
+// These represent the industries and sectors where VivanceData delivers AI strategy
+// and implementation work — not named client companies.
 export const clients: Client[] = [
   {
-    id: "techcorp",
-    name: "TechCorp",
-    logo: "/images/clients/techcorp.svg",
-    industry: "Technology",
-  },
-  {
-    id: "dataflow",
-    name: "DataFlow Inc",
-    logo: "/images/clients/dataflow.svg",
-    industry: "Data Analytics",
-  },
-  {
-    id: "ai-ventures",
-    name: "AI Ventures",
-    logo: "/images/clients/ai-ventures.svg",
-    industry: "Venture Capital",
-  },
-  {
-    id: "nexus-finance",
-    name: "Nexus Finance",
-    logo: "/images/clients/nexus-finance.svg",
+    id: "financial-services",
+    name: "Financial Services",
+    logo: "",
     industry: "Financial Services",
   },
   {
-    id: "cloudscale",
-    name: "CloudScale",
-    logo: "/images/clients/cloudscale.svg",
-    industry: "Cloud Infrastructure",
+    id: "healthcare",
+    name: "Healthcare",
+    logo: "",
+    industry: "Healthcare",
   },
   {
-    id: "quantum-systems",
-    name: "Quantum Systems",
-    logo: "/images/clients/quantum-systems.svg",
+    id: "retail",
+    name: "Retail & Commerce",
+    logo: "",
+    industry: "Retail",
+  },
+  {
+    id: "enterprise-software",
+    name: "Enterprise Software",
+    logo: "",
     industry: "Enterprise Software",
   },
   {
-    id: "innovate-health",
-    name: "InnovateHealth",
-    logo: "/images/clients/innovate-health.svg",
-    industry: "Healthcare Technology",
+    id: "manufacturing",
+    name: "Manufacturing",
+    logo: "",
+    industry: "Manufacturing",
   },
   {
-    id: "global-dynamics",
-    name: "Global Dynamics",
-    logo: "/images/clients/global-dynamics.svg",
-    industry: "Manufacturing",
+    id: "logistics",
+    name: "Logistics & Supply Chain",
+    logo: "",
+    industry: "Logistics",
+  },
+  {
+    id: "professional-services",
+    name: "Professional Services",
+    logo: "",
+    industry: "Professional Services",
+  },
+  {
+    id: "media-content",
+    name: "Media & Content",
+    logo: "",
+    industry: "Media",
   },
 ];

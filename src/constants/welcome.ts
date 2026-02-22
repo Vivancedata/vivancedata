@@ -22,21 +22,7 @@ export const features: Feature[] = [
   },
   {
     icon: "checkCircle",
-    title: "Proven Results",
-    description: "Join hundreds of businesses that have achieved measurable ROI with our solutions."
+    title: "Outcome-Focused Delivery",
+    description: "Every engagement is scoped around measurable business outcomes — not just outputs."
   }
-];
-
-export interface Statistic {
-  end: number;
-  label: string;
-  prefix?: string;
-  suffix?: string;
-}
-
-export const statistics: Statistic[] = [
-  { end: 500, label: "Clients Worldwide", suffix: "+" },
-  { end: 95, label: "Implementation Success Rate", suffix: "%" },
-  { end: 40, label: "Average Efficiency Gain", suffix: "%" },
-  { end: 12, label: "Industry Awards" }
 ];

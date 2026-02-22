@@ -2,7 +2,6 @@ import { Container } from "@/components/common/Container";
 import { Heading } from "@/components/common/Heading";
 import { Paragraph } from "@/components/common/Paragraph";
 import { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Check, ArrowRight } from "lucide-react";
@@ -43,32 +42,32 @@ const features: Feature[] = [
   {
     title: "Custom LLM Fine-Tuning",
     description: "Tailor large language models to your specific business domain, terminology, and use cases for more accurate and relevant outputs.",
-    icon: <Check className="h-5 w-5 text-blue-500" />,
+    icon: <Check className="h-5 w-5 text-primary" />,
   },
   {
     title: "Content Generation & Optimization",
     description: "Automate the creation of high-quality, SEO-optimized content at scale while maintaining your brand voice and standards.",
-    icon: <Check className="h-5 w-5 text-blue-500" />,
+    icon: <Check className="h-5 w-5 text-primary" />,
   },
   {
     title: "Image & Design Generation",
     description: "Create professional visuals, product mockups, and design variations that align with your brand guidelines.",
-    icon: <Check className="h-5 w-5 text-blue-500" />,
+    icon: <Check className="h-5 w-5 text-primary" />,
   },
   {
     title: "Voice & Audio Synthesis",
     description: "Develop custom voice assistants, audio content, and multilingual voice solutions for your products and services.",
-    icon: <Check className="h-5 w-5 text-blue-500" />,
+    icon: <Check className="h-5 w-5 text-primary" />,
   },
   {
     title: "Multimodal AI Applications",
     description: "Build applications that seamlessly combine text, image, audio, and video understanding for comprehensive solutions.",
-    icon: <Check className="h-5 w-5 text-blue-500" />,
+    icon: <Check className="h-5 w-5 text-primary" />,
   },
   {
     title: "Responsible AI Implementation",
     description: "Ensure your generative AI solutions are ethical, unbiased, and aligned with your organization's values and compliance requirements.",
-    icon: <Check className="h-5 w-5 text-blue-500" />,
+    icon: <Check className="h-5 w-5 text-primary" />,
   },
 ];
 
@@ -113,14 +112,32 @@ export default function GenerativeAIPage() {
 
       <div className="flex flex-col md:flex-row gap-12 mb-20">
         <div className="w-full md:w-1/2">
-          <div className="relative aspect-video overflow-hidden rounded-xl bg-blue-100 dark:bg-blue-900/20">
-            <Image
-              src="/images/ai-solutions.png"
-              alt="Generative AI Solutions"
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover"
-            />
+          <div className="aspect-video rounded-xl shadow-xl overflow-hidden bg-slate-950 p-4 md:p-6 flex flex-col font-mono text-sm">
+            <div className="flex gap-1.5 mb-4 flex-shrink-0">
+              <div className="w-3 h-3 rounded-full bg-red-500/60" />
+              <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
+              <div className="w-3 h-3 rounded-full bg-green-500/60" />
+            </div>
+            <div className="space-y-3 overflow-hidden">
+              <div>
+                <div className="text-purple-400/60 text-xs mb-1">› PROMPT</div>
+                <div className="text-slate-300 text-xs bg-white/5 rounded-lg p-2.5 leading-relaxed">
+                  &quot;Summarize customer feedback and extract key product improvement opportunities...&quot;
+                </div>
+              </div>
+              <div>
+                <div className="text-green-400/60 text-xs mb-1">← RESPONSE</div>
+                <div className="text-slate-300 text-xs bg-white/5 rounded-lg p-2.5 space-y-1.5">
+                  <div><span className="text-primary">1.</span> Checkout friction is top complaint (38%)</div>
+                  <div><span className="text-primary">2.</span> Return policy unclear (24%)</div>
+                  <div><span className="text-primary">3.</span> Mobile payment failures (19%)</div>
+                </div>
+              </div>
+              <div className="flex items-center justify-between text-slate-600 text-xs pt-1">
+                <span className="text-primary/50">fine-tuned LLM</span>
+                <span>latency: 1.2s</span>
+              </div>
+            </div>
           </div>
         </div>
         
@@ -161,7 +178,7 @@ export default function GenerativeAIPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {useCases.map((useCase) => (
             <div key={useCase.title} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-              <div className="inline-block px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 text-sm font-medium mb-4">
+              <div className="inline-block px-3 py-1 rounded-full bg-primary/10 dark:bg-primary/20 text-primary text-sm font-medium mb-4">
                 {useCase.industry}
               </div>
               <h3 className="text-xl font-semibold mb-3">{useCase.title}</h3>
@@ -171,12 +188,12 @@ export default function GenerativeAIPage() {
         </div>
       </div>
       
-      <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-8 md:p-12 text-center">
+      <div className="bg-primary/5 dark:bg-primary/10 rounded-xl p-8 md:p-12 text-center">
         <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Harness the Power of Generative AI?</h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
           Let&apos;s discuss how our generative AI solutions can help your business create better content, designs, and experiences.
         </p>
-        <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
+        <Button asChild size="lg">
           <Link href="/contact">Get Started</Link>
         </Button>
       </div>

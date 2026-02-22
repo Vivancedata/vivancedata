@@ -14,7 +14,7 @@ import {
 } from "@/constants/integrations";
 import { cn } from "@/lib/utils";
 
-// Get the first letter(s) for the icon placeholder
+// Get the first letter(s) for the icon fallback
 const getIconLetters = (name: string): string => {
   const words = name.split(" ");
   if (words.length === 1) {
@@ -33,7 +33,9 @@ const IntegrationCard: React.FC<{ integration: Integration; index: number }> = (
   index,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [logoError, setLogoError] = useState(false);
   const colors = categoryColors[integration.category];
+  const showLogo = integration.logo && !logoError;
 
   return (
     <m.div
@@ -51,12 +53,11 @@ const IntegrationCard: React.FC<{ integration: Integration; index: number }> = (
         )}
       >
         <CardContent className="flex flex-col items-center p-6 h-full">
-          {/* Icon placeholder */}
+          {/* Logo or letter fallback */}
           <m.div
             className={cn(
               "w-14 h-14 rounded-full flex items-center justify-center mb-4",
-              "bg-primary text-primary-foreground",
-              "text-lg font-bold shadow-md"
+              showLogo ? "bg-white dark:bg-gray-100 shadow-md p-2.5" : "bg-primary text-primary-foreground text-lg font-bold shadow-md"
             )}
             animate={{
               scale: isHovered ? 1.1 : 1,
@@ -64,7 +65,18 @@ const IntegrationCard: React.FC<{ integration: Integration; index: number }> = (
             }}
             transition={{ type: "spring", stiffness: 400, damping: 15 }}
           >
-            {getIconLetters(integration.name)}
+            {showLogo ? (
+              <img
+                src={integration.logo}
+                alt={`${integration.name} logo`}
+                width={36}
+                height={36}
+                className="w-full h-full object-contain"
+                onError={() => setLogoError(true)}
+              />
+            ) : (
+              getIconLetters(integration.name)
+            )}
           </m.div>
 
           {/* Name */}

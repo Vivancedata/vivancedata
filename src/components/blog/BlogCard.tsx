@@ -60,7 +60,7 @@ export function BlogCard({ slug, title, description, date, image, tags }: BlogCa
                 <Badge 
                   key={tag} 
                   variant="secondary" 
-                  className="text-xs bg-white/90 text-gray-800 dark:bg-gray-800/90 dark:text-gray-200 shadow-sm backdrop-blur-sm"
+                  className="text-xs bg-card/90 text-foreground dark:bg-muted/90 dark:text-foreground shadow-sm backdrop-blur-sm"
                 >
                   {tag}
                 </Badge>
@@ -68,7 +68,7 @@ export function BlogCard({ slug, title, description, date, image, tags }: BlogCa
               {tags.length > 3 && (
                 <Badge 
                   variant="secondary" 
-                  className="text-xs bg-white/90 text-gray-800 dark:bg-gray-800/90 dark:text-gray-200 shadow-sm backdrop-blur-sm"
+                  className="text-xs bg-card/90 text-foreground dark:bg-muted/90 dark:text-foreground shadow-sm backdrop-blur-sm"
                 >
                   +{tags.length - 3}
                 </Badge>

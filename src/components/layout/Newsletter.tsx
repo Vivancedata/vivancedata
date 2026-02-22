@@ -57,7 +57,7 @@ export function Newsletter() {
 
   if (isSubscribed) {
     return (
-      <div className="border-t border-gray-200 pt-8 mb-8">
+      <div className="border-t border-border pt-8 mb-8">
         <div className="max-w-md mx-auto text-center">
           <div className="flex flex-col items-center gap-3">
             <div className="rounded-full bg-green-100 p-3">
@@ -65,7 +65,7 @@ export function Newsletter() {
             </div>
             <div>
               <h3 className="font-semibold text-lg mb-1">Thank you for subscribing!</h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-muted-foreground text-sm">
                 You&apos;ll receive our latest AI insights and updates.
               </p>
             </div>
@@ -76,10 +76,10 @@ export function Newsletter() {
   }
 
   return (
-    <div className="border-t border-gray-200 pt-8 mb-8">
+    <div className="border-t border-border pt-8 mb-8">
       <div className="max-w-md mx-auto text-center">
         <h3 className="font-semibold text-lg mb-2">Subscribe to our newsletter</h3>
-        <p className="text-gray-600 mb-4">
+        <p className="text-muted-foreground mb-4">
           Stay updated with the latest in AI and receive our insights directly to your inbox.
         </p>
         <form onSubmit={handleSubmit} className="space-y-2">
@@ -87,14 +87,13 @@ export function Newsletter() {
             <Input
               type="email"
               placeholder="Your email address"
-              className="bg-white"
+              className="bg-card"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               disabled={isSubmitting}
             />
             <Button
               type="submit"
-              className="bg-blue-600 hover:bg-blue-700"
               disabled={isSubmitting}
             >
               {isSubmitting ? "Subscribing..." : "Subscribe"}

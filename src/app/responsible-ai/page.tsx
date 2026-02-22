@@ -2,7 +2,6 @@ import { Container } from "@/components/common/Container";
 import { Heading } from "@/components/common/Heading";
 import { Paragraph } from "@/components/common/Paragraph";
 import { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Check, Shield, Users, Eye, BarChart3, Scale, FileText } from "lucide-react";
@@ -45,7 +44,7 @@ interface PrincipleProps {
 const Principle = ({ icon, title, description }: PrincipleProps) => (
   <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
     <div className="flex items-center mb-4">
-      <div className="mr-4 p-3 bg-blue-100 dark:bg-blue-900/30 rounded-full">
+      <div className="mr-4 p-3 bg-primary/10 dark:bg-primary/20 rounded-full">
         {icon}
       </div>
       <h3 className="text-xl font-semibold">{title}</h3>
@@ -64,7 +63,7 @@ interface PhaseProps {
 const Phase = ({ number, title, description, checks }: PhaseProps) => (
   <div className="relative">
     <div className="flex items-center mb-4">
-      <div className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-lg mr-4 flex-shrink-0">
+      <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg mr-4 flex-shrink-0">
         {number}
       </div>
       <h3 className="text-xl font-semibold">{title}</h3>
@@ -74,7 +73,7 @@ const Phase = ({ number, title, description, checks }: PhaseProps) => (
       <ul className="space-y-2">
         {checks.map((check) => (
           <li key={check} className="flex items-start">
-            <Check className="h-5 w-5 text-blue-500 mt-0.5 mr-2 flex-shrink-0" />
+            <Check className="h-5 w-5 text-primary mt-0.5 mr-2 flex-shrink-0" />
             <span className="text-gray-700 dark:text-gray-200">{check}</span>
           </li>
         ))}
@@ -114,32 +113,32 @@ const CaseStudy = ({ title, challenge, approach, outcome }: CaseStudyProps) => (
 export default function ResponsibleAIPage() {
   const principles = [
     {
-      icon: <Users className="h-6 w-6 text-blue-600" />,
+      icon: <Users className="h-6 w-6 text-primary" />,
       title: "Human-Centered & Inclusive",
       description: "We design AI systems that augment human capabilities, respect human autonomy, and consider the needs of all stakeholders, including underrepresented groups."
     },
     {
-      icon: <Eye className="h-6 w-6 text-blue-600" />,
+      icon: <Eye className="h-6 w-6 text-primary" />,
       title: "Transparent & Explainable",
       description: "We ensure AI systems are understandable, with clear documentation of how decisions are made and the ability to explain outcomes in human terms."
     },
     {
-      icon: <Shield className="h-6 w-6 text-blue-600" />,
+      icon: <Shield className="h-6 w-6 text-primary" />,
       title: "Fair & Unbiased",
       description: "We actively identify and mitigate biases in data and algorithms to ensure equitable outcomes across different demographic groups."
     },
     {
-      icon: <BarChart3 className="h-6 w-6 text-blue-600" />,
+      icon: <BarChart3 className="h-6 w-6 text-primary" />,
       title: "Robust & Reliable",
       description: "We build AI systems that perform consistently, handle edge cases gracefully, and maintain accuracy over time with changing conditions."
     },
     {
-      icon: <Scale className="h-6 w-6 text-blue-600" />,
+      icon: <Scale className="h-6 w-6 text-primary" />,
       title: "Accountable & Governed",
       description: "We establish clear lines of responsibility for AI systems, with appropriate oversight and governance throughout the lifecycle."
     },
     {
-      icon: <FileText className="h-6 w-6 text-blue-600" />,
+      icon: <FileText className="h-6 w-6 text-primary" />,
       title: "Privacy & Security",
       description: "We implement strong data protection measures and ensure AI systems respect privacy rights while maintaining security against threats."
     }
@@ -235,14 +234,29 @@ export default function ResponsibleAIPage() {
 
       <div className="flex flex-col md:flex-row gap-12 mb-20">
         <div className="w-full md:w-1/2">
-          <div className="relative aspect-video overflow-hidden rounded-xl bg-blue-100 dark:bg-blue-900/20">
-            <Image
-              src="/images/ai-solutions.png"
-              alt="Responsible AI Framework"
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover"
-            />
+          <div className="aspect-video rounded-xl shadow-xl overflow-hidden bg-slate-900 p-6 md:p-8 flex flex-col">
+            <div className="text-primary/60 text-xs font-mono mb-4">Responsible AI Principles</div>
+            <div className="flex items-center gap-4 mb-5">
+              <div className="w-14 h-14 rounded-full bg-primary/20 border-2 border-primary/40 flex items-center justify-center flex-shrink-0">
+                <Shield className="w-7 h-7 text-primary" />
+              </div>
+              <p className="text-white/60 text-xs leading-relaxed">
+                Ethical guidelines built in at every stage — from data collection to deployment and monitoring.
+              </p>
+            </div>
+            <div className="space-y-2">
+              {[
+                "Bias detection and mitigation",
+                "Explainability by design",
+                "Privacy preservation",
+                "Human oversight preserved",
+              ].map((principle) => (
+                <div key={principle} className="flex items-center gap-2 bg-white/5 rounded-lg px-3 py-1.5">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary/70 flex-shrink-0" />
+                  <span className="text-white/60 text-xs">{principle}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
         
@@ -282,7 +296,7 @@ export default function ResponsibleAIPage() {
         
         <div className="relative">
           {/* Vertical line connecting phases */}
-          <div className="absolute left-6 top-6 bottom-0 w-0.5 bg-blue-200 dark:bg-blue-900/50 hidden md:block"></div>
+          <div className="absolute left-6 top-6 bottom-0 w-0.5 bg-primary/20 dark:bg-primary/30 hidden md:block"></div>
           
           <div className="space-y-12">
             {phases.map((phase) => (
@@ -364,7 +378,7 @@ export default function ResponsibleAIPage() {
               <ul className="space-y-2">
                 {tool.features.map((feature) => (
                   <li key={feature} className="flex items-start">
-                    <Check className="h-5 w-5 text-blue-500 mt-0.5 mr-2 flex-shrink-0" />
+                    <Check className="h-5 w-5 text-primary mt-0.5 mr-2 flex-shrink-0" />
                     <span className="text-gray-700 dark:text-gray-200">{feature}</span>
                   </li>
                 ))}
@@ -374,12 +388,12 @@ export default function ResponsibleAIPage() {
         </div>
       </div>
       
-      <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-8 md:p-12 text-center">
+      <div className="bg-primary/5 dark:bg-primary/10 rounded-xl p-8 md:p-12 text-center">
         <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Implement Responsible AI?</h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
           Let&apos;s discuss how our Responsible AI Framework can help your organization develop and deploy ethical, transparent, and human-centered AI solutions.
         </p>
-        <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
+        <Button asChild size="lg">
           <Link href="/contact">Schedule a Consultation</Link>
         </Button>
       </div>

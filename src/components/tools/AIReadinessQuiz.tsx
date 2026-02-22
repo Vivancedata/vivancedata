@@ -417,8 +417,8 @@ function Recommendations({ recommendations }: RecommendationsProps) {
       <h3 className="text-xl font-bold mb-4">Personalized Recommendations</h3>
       <ul className="space-y-3" role="list" aria-label="Personalized recommendations">
         {recommendations.map((recommendation) => (
-          <li key={recommendation} className="flex gap-3 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-            <CheckCircle2 className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" aria-hidden="true" />
+          <li key={recommendation} className="flex gap-3 p-4 bg-primary/5 dark:bg-primary/10 rounded-lg">
+            <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" aria-hidden="true" />
             <p className="text-sm">{recommendation}</p>
           </li>
         ))}
@@ -460,7 +460,7 @@ function QuizResultsPanel({
             <CategoryBreakdown categoryAverages={results.categoryAverages} />
             <Recommendations recommendations={recommendations} />
 
-            <div className="mt-8 p-6 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl">
+            <div className="mt-8 p-6 bg-primary text-primary-foreground rounded-xl">
               <h3 className="text-xl font-bold mb-3">Ready to Take the Next Step?</h3>
               <p className="mb-4">
                 Our AI consultants can help you create a customized roadmap based on your assessment results.

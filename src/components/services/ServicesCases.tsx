@@ -49,11 +49,11 @@ export function ServicesCases({
   };
 
   return (
-    <section className="bg-gray-50 py-16 md:py-24">
+    <section className="bg-muted/30 py-16 md:py-24">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">{title}</h2>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             {description}
           </p>
         </div>
@@ -62,15 +62,15 @@ export function ServicesCases({
           {cases.map((caseItem) => {
             const visual = getCaseVisual(caseItem.category);
             return (
-              <div key={caseItem.id} className="bg-white rounded-lg shadow-md overflow-hidden border border-border/60">
+              <div key={caseItem.id} className="bg-card rounded-lg shadow-md overflow-hidden border border-border/60">
                 <div className={`h-44 w-full bg-gradient-to-br ${visual.gradient} p-6 flex flex-col justify-between`}>
                   {visual.icon}
                   <p className="text-sm font-medium text-white/90">{caseItem.impact}</p>
                 </div>
                 <div className="p-6">
-                  <div className="text-sm font-medium text-blue-600 mb-2">{caseItem.category}</div>
+                  <div className="text-sm font-medium text-primary mb-2">{caseItem.category}</div>
                   <h3 className="text-xl font-bold mb-3">{caseItem.title}</h3>
-                  <p className="text-gray-700 mb-4">{caseItem.description}</p>
+                  <p className="text-muted-foreground mb-4">{caseItem.description}</p>
                   <Button variant="outline" size="sm" asChild>
                     <Link href={caseItem.link} className="inline-flex items-center">
                       Read Case Study <ArrowRight className="ml-2 h-4 w-4" />

@@ -29,7 +29,7 @@ export function SiteFooter() {
   };
 
   return (
-    <footer className="bg-gray-50 border-t border-gray-200">
+    <footer className="bg-muted/30 border-t border-border">
       <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           {/* Company Info */}
@@ -38,7 +38,7 @@ export function SiteFooter() {
               <Image src={logo} alt="VivanceData Logo" width={40} height={40} className="mr-2" />
               <span className="text-xl font-bold">{siteConfig.name}</span>
             </Link>
-            <p className="text-gray-600 mb-6 max-w-md">
+            <p className="text-muted-foreground mb-6 max-w-md">
               {siteConfig.description}
             </p>
             <div className="flex space-x-4 mb-6">
@@ -48,7 +48,7 @@ export function SiteFooter() {
                   href={link.href} 
                   target="_blank" 
                   rel="noreferrer" 
-                  className="bg-white p-2 rounded-full border border-gray-200 text-gray-600 hover:text-primary hover:border-primary transition-colors"
+                  className="bg-card p-2 rounded-full border border-border text-muted-foreground hover:text-primary hover:border-primary transition-colors"
                   aria-label={link.label}
                 >
                   {getSocialIcon(link.icon)}
@@ -58,7 +58,7 @@ export function SiteFooter() {
             <div className="space-y-3">
               <div className="flex items-center">
                 <Mail className="h-5 w-5 text-primary mr-2" />
-                <a href="mailto:info@vivancedata.com" className="text-gray-600 hover:text-primary transition-colors">
+                <a href="mailto:info@vivancedata.com" className="text-muted-foreground hover:text-primary transition-colors">
                   info@vivancedata.com
                 </a>
               </div>
@@ -74,7 +74,7 @@ export function SiteFooter() {
                   <li key={`${column.title}-${link.href}`}>
                     <Link
                       href={link.href}
-                      className="text-gray-600 hover:text-primary transition-colors"
+                      className="text-muted-foreground hover:text-primary transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -89,11 +89,11 @@ export function SiteFooter() {
         <Newsletter />
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-500 text-sm mb-4 md:mb-0">
+        <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-muted-foreground text-sm mb-4 md:mb-0">
             © {currentYear} {siteConfig.name}. All rights reserved.
           </p>
-          <div className="flex flex-wrap gap-4 text-sm text-gray-500">
+          <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
             <Link href="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link>
             <Link href="/terms-of-service" className="hover:text-primary transition-colors">Terms of Service</Link>
           </div>

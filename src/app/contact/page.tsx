@@ -78,7 +78,7 @@ const ContactPage = () => {
               </div>
             </div>
 
-            <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-6">
+            <div className="bg-primary/5 dark:bg-primary/10 rounded-xl p-6">
               <h3 className="text-lg font-semibold mb-3">What to Expect</h3>
               <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
                 <li className="flex items-center gap-2">

@@ -79,7 +79,7 @@ export function BlogLayout({
               type="button"
               onClick={() => router.back()}
               aria-label="Go back to blogs"
-              className="group mb-8 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 transition dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0 dark:ring-white/10 dark:hover:border-zinc-700 dark:hover:ring-white/20"
+              className="group mb-8 flex h-10 w-10 items-center justify-center rounded-full bg-card shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 transition dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0 dark:ring-white/10 dark:hover:border-zinc-700 dark:hover:ring-white/20"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -96,7 +96,7 @@ export function BlogLayout({
                 <div className="flex items-center gap-4 text-sm">
                   <div className="flex items-center gap-2">
                     <Calendar className="h-4 w-4" />
-                    <time dateTime={meta.date} className="text-stone-600">
+                    <time dateTime={meta.date} className="text-muted-foreground">
                       {formatDate(meta.date)}
                     </time>
                   </div>
@@ -105,7 +105,7 @@ export function BlogLayout({
                       <Tag className="h-4 w-4" />
                       <div className="flex gap-2">
                         {meta.tags.map((tag) => (
-                          <span key={tag} className="text-stone-600">
+                          <span key={tag} className="text-muted-foreground">
                             {tag}
                           </span>
                         ))}
@@ -113,28 +113,30 @@ export function BlogLayout({
                     </div>
                   )}
                 </div>
-                <Heading className="mt-6 text-4xl font-bold tracking-tight text-stone-800 sm:text-5xl">
+                <Heading className="mt-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
                   {meta.title}
                 </Heading>
-                <Paragraph className="mt-4 text-sm leading-8 text-stone-600">
+                <Paragraph className="mt-4 text-sm leading-8 text-muted-foreground">
                   {meta.description}
                 </Paragraph>
               </m.div>
-              <m.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="mt-8 aspect-video relative overflow-hidden rounded-2xl bg-stone-100"
-              >
-                <Image
-                  src={meta.image}
-                  alt={`Featured image for ${meta.title}`}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 800px"
-                  className="object-cover"
-                  priority
-                />
-              </m.div>
+              {meta.image && (
+                <m.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="mt-8 aspect-video relative overflow-hidden rounded-2xl bg-muted/30"
+                >
+                  <Image
+                    src={meta.image}
+                    alt={`Featured image for ${meta.title}`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 800px"
+                    className="object-cover"
+                    priority
+                  />
+                </m.div>
+              )}
             </header>
             <m.div
               initial={{ opacity: 0, y: 20 }}

@@ -60,13 +60,13 @@ const ClientLogos: React.FC = () => {
       <div className="container mx-auto px-4">
         <AnimateOnScroll variant="fadeInUp" className="text-center mb-12 md:mb-16">
           <div className="inline-block rounded-full bg-primary/10 dark:bg-primary/20 px-3 py-1 text-sm font-medium text-primary mb-4">
-            Industries We Support
+            Industries We Serve
           </div>
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
-            Teams We Build With
+            Sectors We Work In
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg">
-            Representative sectors where we deliver AI strategy and implementation support.
+            I work with teams across these sectors to design and implement practical AI solutions.
           </p>
         </AnimateOnScroll>
 
