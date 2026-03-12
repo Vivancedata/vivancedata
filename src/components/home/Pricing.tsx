@@ -1,182 +1,144 @@
-"use client";
-
-import React, { useState } from "react";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { ArrowRight, Check, X } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Check, HelpCircle, X } from "lucide-react";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { pricingTiers } from "@/constants/pricing";
 
-const Pricing = () => {
-  const [billingCycle, setBillingCycle] = useState<"monthly" | "annually">("monthly");
-
+export default function Pricing() {
   return (
-    <section className="w-full py-16 md:py-24 relative overflow-hidden">
+    <section className="relative overflow-hidden py-16 md:py-24">
       <div className="absolute inset-x-0 -top-20 h-64 bg-primary/5 blur-3xl" aria-hidden="true" />
-      <div className="container mx-auto px-4 relative">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center rounded-full border border-white/40 bg-white/70 px-4 py-1 text-sm font-medium text-foreground backdrop-blur dark:border-white/10 dark:bg-white/10 mb-4">
+      <div className="container relative mx-auto px-4">
+        <div className="mx-auto mb-12 max-w-3xl text-center">
+          <div className="mb-4 inline-flex items-center rounded-full border border-border/70 bg-card/80 px-4 py-1 text-sm font-medium text-foreground shadow-sm">
             Pricing Plans
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Transparent Pricing for Your AI Journey</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Choose the plan that best fits your business needs. All plans include our core AI platform and can be customized to your specific requirements.
+          <h2 className="text-3xl font-bold text-foreground md:text-4xl">
+            Transparent Pricing for Your AI Journey
+          </h2>
+          <p className="mt-4 text-muted-foreground">
+            Engagements are structured around how much support your team needs, from strategic
+            advisory through embedded delivery partnership.
           </p>
-
-          <div className="mt-8 inline-block">
-            <Tabs
-              defaultValue="monthly"
-              className="w-[300px]"
-              onValueChange={(value) => setBillingCycle(value as "monthly" | "annually")}
-            >
-              <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="monthly">Monthly</TabsTrigger>
-                <TabsTrigger value="annually">
-                  Annually
-                  <Badge className="ml-2 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400 hover:bg-green-100 dark:hover:bg-green-900/30">Save 20%</Badge>
-                </TabsTrigger>
-              </TabsList>
-            </Tabs>
-          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid gap-8 md:grid-cols-3">
           {pricingTiers.map((tier) => (
             <Card
               key={tier.name}
-              className={`relative ${tier.popular ? 'ring-1 ring-primary/40 shadow-[0_35px_80px_-50px_rgba(13,148,136,0.55)]' : 'shadow-[0_25px_60px_-45px_rgba(15,118,110,0.35)]'} transition-transform duration-300 hover:-translate-y-2`}
+              className={`relative flex h-full flex-col ${
+                tier.popular
+                  ? "border-primary shadow-[0_35px_80px_-50px_rgba(13,148,136,0.55)]"
+                  : "border-border/70 shadow-[0_25px_60px_-45px_rgba(15,118,110,0.22)]"
+              }`}
             >
               {tier.popular && (
-                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                  <Badge className="bg-primary hover:bg-primary/90 px-3 py-1 text-primary-foreground shadow-[0_10px_25px_-15px_rgba(13,148,136,0.6)]">Most Popular</Badge>
+                <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2">
+                  <Badge className="bg-primary px-3 py-1 text-primary-foreground">Most Popular</Badge>
                 </div>
               )}
               <CardHeader>
                 <CardTitle className="text-2xl text-foreground">{tier.name}</CardTitle>
-                <CardDescription className="mt-2">{tier.description}</CardDescription>
+                <CardDescription className="mt-2 text-base">{tier.description}</CardDescription>
               </CardHeader>
-              <CardContent>
-                <div className="mb-6">
-                  <p className="text-4xl font-bold text-foreground">
-                    {billingCycle === "monthly" ? tier.price.monthly : tier.price.annually}
-                    {tier.name !== "Enterprise" && (
-                      <span className="text-base font-normal text-muted-foreground">
-                        /{billingCycle === "monthly" ? "month" : "year"}
-                      </span>
-                    )}
+              <CardContent className="flex flex-1 flex-col">
+                <div className="rounded-2xl bg-muted/40 p-5">
+                  <p className="text-3xl font-bold text-foreground">{tier.price.monthly}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    Project cadence: {tier.price.annually}
                   </p>
-                  {tier.name !== "Enterprise" && (
-                    <p className="text-sm text-muted-foreground mt-1">
-                      Billed {billingCycle === "monthly" ? "monthly" : "annually"}
-                    </p>
-                  )}
                 </div>
-                <div className="space-y-4">
+
+                <ul className="mt-6 space-y-4">
                   {tier.features.map((feature) => (
-                    <div key={feature.name} className="flex items-start">
+                    <li key={feature.name} className="flex items-start gap-3">
                       {feature.included ? (
-                        <Check className="h-5 w-5 text-emerald-500 dark:text-emerald-300 mr-2 mt-0.5 flex-shrink-0" />
+                        <Check className="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" aria-hidden="true" />
                       ) : (
-                        <X className="h-5 w-5 text-muted-foreground/50 mr-2 mt-0.5 flex-shrink-0" />
+                        <X className="mt-0.5 h-5 w-5 shrink-0 text-muted-foreground/60" aria-hidden="true" />
                       )}
                       <div>
-                        <span className={feature.included ? "text-foreground/80" : "text-muted-foreground/60"}>
+                        <p className={feature.included ? "text-foreground/85" : "text-muted-foreground/75"}>
                           {feature.name}
-                        </span>
-                        {feature.tooltip && (
-                          <div className="group relative inline-block ml-1">
-                            <HelpCircle className="h-4 w-4 text-muted-foreground inline-block" />
-                            <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 glass-panel text-xs opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity z-10">
-                              {feature.tooltip}
-                              <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-popover"></div>
-                            </div>
-                          </div>
-                        )}
+                        </p>
+                        {feature.tooltip ? (
+                          <p className="mt-1 text-xs text-muted-foreground">{feature.tooltip}</p>
+                        ) : null}
                       </div>
-                    </div>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </CardContent>
-              <CardFooter>
+              <CardFooter className="pt-2">
                 <Button
-                  className={`w-full ${tier.popular ? 'bg-primary hover:bg-primary/90 text-primary-foreground' : ''}`}
+                  className={tier.popular ? "w-full bg-primary text-primary-foreground hover:bg-primary/90" : "w-full"}
                   variant={tier.popular ? "default" : "outline"}
+                  asChild
                 >
-                  {tier.cta}
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <Link href="/contact">
+                    <span>{tier.cta}</span>
+                    <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                  </Link>
                 </Button>
               </CardFooter>
             </Card>
           ))}
         </div>
 
-        <div className="mt-16 glass-panel p-8 md:p-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h3 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">Need a Custom Solution?</h3>
-              <p className="text-muted-foreground mb-6">
-                We understand that every business has unique needs. Our team can create a tailored AI solution specifically designed for your organization.
-              </p>
-              <div className="space-y-4">
-                <div className="flex items-start">
-                  <div className="rounded-full bg-white/70 dark:bg-white/10 p-1 mr-3 mt-1 border border-white/40 dark:border-white/10">
-                    <svg className="h-3 w-3 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <p className="text-foreground/80">Custom AI model development and training</p>
-                </div>
-                <div className="flex items-start">
-                  <div className="rounded-full bg-white/70 dark:bg-white/10 p-1 mr-3 mt-1 border border-white/40 dark:border-white/10">
-                    <svg className="h-3 w-3 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <p className="text-foreground/80">Specialized integration with your existing systems</p>
-                </div>
-                <div className="flex items-start">
-                  <div className="rounded-full bg-white/70 dark:bg-white/10 p-1 mr-3 mt-1 border border-white/40 dark:border-white/10">
-                    <svg className="h-3 w-3 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <p className="text-foreground/80">Flexible pricing based on your specific requirements</p>
-                </div>
-              </div>
-              <Button className="mt-6 bg-primary hover:bg-primary/90 text-primary-foreground">
+        <div className="mt-16 grid gap-8 rounded-3xl border border-border/70 bg-card/90 p-8 shadow-lg md:grid-cols-2 md:p-12">
+          <div>
+            <h3 className="text-2xl font-bold text-foreground md:text-3xl">Need a Custom Solution?</h3>
+            <p className="mt-4 text-muted-foreground">
+              Every engagement is tailored around your data, workflows, and internal capacity. We
+              can scope advisory, delivery, governance, or capability-building support to fit.
+            </p>
+            <ul className="mt-6 space-y-4">
+              {[
+                "Custom AI model development and evaluation",
+                "Integration with existing software and data systems",
+                "Flexible pricing aligned to scope and timeline",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <span className="mt-1 h-2.5 w-2.5 rounded-full bg-primary" aria-hidden="true" />
+                  <span className="text-foreground/85">{item}</span>
+                </li>
+              ))}
+            </ul>
+            <Button className="mt-6 bg-primary text-primary-foreground hover:bg-primary/90" asChild>
+              <Link href="/contact">
                 <span>Schedule a Consultation</span>
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+              </Link>
+            </Button>
+          </div>
+          <div className="rounded-2xl bg-primary p-8 text-primary-foreground">
+            <h4 className="text-xl font-bold">Delivery Confidence Guarantee</h4>
+            <p className="mt-3 text-primary-foreground">
+              We scope projects around measurable outcomes and explicit checkpoints, so your team
+              always knows what success looks like before implementation begins.
+            </p>
+            <div className="mt-8 border-t border-primary-foreground/20 pt-6">
+              <p className="text-primary-foreground">
+                Have questions about pricing or want help choosing the right engagement model?
+              </p>
+              <Button
+                className="mt-4 bg-primary-foreground text-primary hover:bg-primary-foreground/90"
+                asChild
+              >
+                <Link href="/contact">Contact Our Team</Link>
               </Button>
-            </div>
-            <div className="glass-card p-6">
-              <div className="text-center mb-6">
-                <div className="inline-block bg-white/70 dark:bg-white/10 rounded-full p-3 mb-4 border border-white/40 dark:border-white/10">
-                  <svg className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
-                </div>
-                <h4 className="text-xl font-bold mb-2 text-foreground">100% Satisfaction Guarantee</h4>
-                <p className="text-muted-foreground">
-                  We&apos;re confident in our solutions. If you&apos;re not satisfied within the first 30 days, we&apos;ll work with you to make it right or provide a full refund.
-                </p>
-              </div>
-              <div className="border-t border-white/30 dark:border-white/10 pt-6">
-                <p className="text-center text-foreground/80 mb-4">
-                  Have questions about our pricing or need help choosing the right plan?
-                </p>
-                <div className="flex justify-center">
-                  <Button variant="outline" className="border-primary text-primary hover:bg-primary/10">
-                    Contact Our Sales Team
-                  </Button>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
   );
-};
-
-export default Pricing;
+}

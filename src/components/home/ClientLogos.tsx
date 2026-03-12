@@ -1,155 +1,64 @@
-"use client";
-
-import React from "react";
-import Image from "next/image";
-import { AnimateOnScroll } from "@/hooks/useAnimateOnScroll";
-import { clients, Client } from "@/constants/clients";
 import { Building2 } from "lucide-react";
+import { clients } from "@/constants/clients";
 
-interface ClientLogoItemProps {
-  client: Client;
-}
-
-const ClientLogoItem: React.FC<ClientLogoItemProps> = ({ client }) => {
-  const [logoLoadFailed, setLogoLoadFailed] = React.useState(false);
-
-  return (
-    <div
-      className="flex-shrink-0 px-2 md:px-12"
-      role="listitem"
-      aria-label={`${client.name} - ${client.industry}`}
-    >
-      <div className="flex flex-col items-center justify-center h-20 w-32 md:w-40 group">
-        <div className="flex flex-col items-center justify-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-[opacity,filter] duration-500 ease-out">
-          <div className="flex items-center justify-center h-12 md:h-14 px-2 rounded-xl bg-muted/60 group-hover:bg-primary/10 dark:bg-muted/40 transition-[background-color,box-shadow] duration-500 shadow-sm group-hover:shadow-md">
-            {logoLoadFailed ? (
-              <Building2 className="w-6 h-6 md:w-7 md:h-7 text-muted-foreground group-hover:text-primary transition-colors duration-500" />
-            ) : (
-              <Image
-                src={client.logo}
-                alt={`${client.name} logo`}
-                width={140}
-                height={56}
-                className="h-7 w-auto md:h-8"
-                onError={() => setLogoLoadFailed(true)}
-                unoptimized
-              />
-            )}
-          </div>
-          <span className="mt-2 text-xs md:text-sm font-semibold text-muted-foreground group-hover:text-foreground transition-colors duration-500 whitespace-nowrap">
-            {client.name}
-          </span>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const ClientLogos: React.FC = () => {
-  // Duplicate clients for seamless infinite scroll
-  const duplicatedClients: Client[] = [
-    ...clients.map((client) => ({ ...client, id: `${client.id}-a` })),
-    ...clients.map((client) => ({ ...client, id: `${client.id}-b` })),
-  ];
-
+export default function ClientLogos() {
   return (
     <section
-      className="w-full py-16 md:py-24 bg-muted/20 overflow-hidden"
-      aria-label="Our clients"
+      className="w-full overflow-hidden bg-muted/20 py-16 md:py-24"
+      aria-label="Industries we serve"
+      style={{ contentVisibility: "auto", containIntrinsicSize: "720px" }}
     >
       <div className="container mx-auto px-4">
-        <AnimateOnScroll variant="fadeInUp" className="text-center mb-12 md:mb-16">
-          <div className="inline-block rounded-full bg-primary/10 dark:bg-primary/20 px-3 py-1 text-sm font-medium text-primary mb-4">
+        <div className="mb-12 text-center md:mb-16">
+          <div className="mb-4 inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
             Industries We Serve
           </div>
-          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
+          <h2 className="mb-4 text-2xl font-bold text-foreground md:text-4xl lg:text-5xl">
             Sectors We Work In
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg">
-            I work with teams across these sectors to design and implement practical AI solutions.
+          <p className="mx-auto max-w-2xl text-base text-muted-foreground md:text-lg">
+            We partner with teams across regulated, operationally complex, and customer-facing
+            environments to ship practical AI systems.
           </p>
-        </AnimateOnScroll>
+        </div>
 
-        {/* Desktop: Animated marquee */}
-        <AnimateOnScroll variant="fadeIn" delay={0.2}>
-          <div className="relative hidden md:block">
-            {/* Gradient overlays for fade effect */}
-            <div className="absolute left-0 top-0 bottom-0 w-32 bg-muted/40 z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-32 bg-background/80 z-10 pointer-events-none" />
+        <ul className="grid grid-cols-2 gap-6 md:grid-cols-4">
+          {clients.map((client) => (
+            <li key={client.id}>
+              <div className="flex h-full flex-col items-center justify-center rounded-2xl border border-border/60 bg-card/70 px-4 py-6 text-center shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-md">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                  <Building2 className="h-7 w-7" aria-hidden="true" />
+                </div>
+                <p className="mt-4 text-sm font-semibold text-foreground md:text-base">{client.name}</p>
+                <p className="mt-1 text-xs text-muted-foreground md:text-sm">{client.industry}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
 
-            {/* Marquee container */}
-            <div
-              className="flex animate-marquee"
-              role="list"
-              aria-label="Client logos scrolling"
-            >
-              {duplicatedClients.map((client) => (
-                <ClientLogoItem key={client.id} client={client} />
-              ))}
+        <div className="mt-12 border-t border-border pt-8 md:mt-16">
+          <div className="grid grid-cols-1 gap-6 text-center md:grid-cols-3 md:gap-8">
+            <div className="space-y-1">
+              <p className="text-sm font-semibold text-foreground md:text-base">Advisory + Delivery</p>
+              <p className="text-sm text-muted-foreground">
+                From strategy through implementation support.
+              </p>
+            </div>
+            <div className="space-y-1">
+              <p className="text-sm font-semibold text-foreground md:text-base">Cross-Functional Enablement</p>
+              <p className="text-sm text-muted-foreground">
+                Product, engineering, operations, and governance stakeholders.
+              </p>
+            </div>
+            <div className="space-y-1">
+              <p className="text-sm font-semibold text-foreground md:text-base">Industry-Aware Workflows</p>
+              <p className="text-sm text-muted-foreground">
+                Use-case design tailored to domain and compliance constraints.
+              </p>
             </div>
           </div>
-
-          {/* Mobile: Static grid */}
-          <div
-            className="grid grid-cols-2 gap-6 md:hidden"
-            role="list"
-            aria-label="Client logos"
-          >
-            {clients.slice(0, 6).map((client) => (
-              <ClientLogoItem key={client.id} client={client} />
-            ))}
-          </div>
-        </AnimateOnScroll>
-
-        {/* Context */}
-        <AnimateOnScroll variant="fadeInUp" delay={0.4}>
-          <div className="mt-12 md:mt-16 pt-8 border-t border-border">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 text-center">
-              <div className="space-y-1">
-                <p className="text-sm md:text-base font-semibold text-foreground">Advisory + Delivery</p>
-                <p className="text-sm text-muted-foreground">From strategy through implementation support.</p>
-              </div>
-              <div className="space-y-1">
-                <p className="text-sm md:text-base font-semibold text-foreground">Cross-Functional Enablement</p>
-                <p className="text-sm text-muted-foreground">Product, engineering, operations, and governance stakeholders.</p>
-              </div>
-              <div className="space-y-1">
-                <p className="text-sm md:text-base font-semibold text-foreground">Industry-Aware Workflows</p>
-                <p className="text-sm text-muted-foreground">Use-case design tailored to domain and compliance constraints.</p>
-              </div>
-            </div>
-          </div>
-        </AnimateOnScroll>
+        </div>
       </div>
-
-      {/* CSS for marquee animation */}
-      <style>{`
-        @keyframes marquee {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-        .animate-marquee {
-          animation: marquee 30s linear infinite;
-        }
-        .animate-marquee:hover {
-          animation-play-state: paused;
-        }
-        .animate-marquee:focus-within {
-          animation-play-state: paused;
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .animate-marquee {
-            animation: none;
-            transform: translateX(0);
-          }
-        }
-      `}</style>
     </section>
   );
-};
-
-export default ClientLogos;
+}

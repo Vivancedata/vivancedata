@@ -1,25 +1,19 @@
-"use client";
-
-import React, { useState, useMemo } from "react";
+import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { m } from "framer-motion";
-import { AnimateOnScroll, StaggerContainer } from "@/hooks/useAnimateOnScroll";
 import {
-  integrations,
-  integrationCategories,
   categoryColors,
+  getIntegrationsByCategory,
+  integrationCategories,
   type Integration,
-  type IntegrationCategory,
 } from "@/constants/integrations";
 import { cn } from "@/lib/utils";
 
-// Get the first letter(s) for the icon fallback
 const getIconLetters = (name: string): string => {
   const words = name.split(" ");
   if (words.length === 1) {
     return name.substring(0, 2).toUpperCase();
   }
+
   return words
     .slice(0, 2)
     .map((word) => word.charAt(0))
@@ -27,209 +21,113 @@ const getIconLetters = (name: string): string => {
     .toUpperCase();
 };
 
-// Integration card component
-const IntegrationCard: React.FC<{ integration: Integration; index: number }> = ({
-  integration,
-  index,
-}) => {
-  const [isHovered, setIsHovered] = useState(false);
-  const [logoError, setLogoError] = useState(false);
+function IntegrationCard({ integration }: { integration: Integration }) {
   const colors = categoryColors[integration.category];
-  const showLogo = integration.logo && !logoError;
 
   return (
-    <m.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: index * 0.05 }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <Card
-        className={cn(
-          "border border-border hover:border-primary/40 transition-all duration-300 bg-card h-full",
-          "hover:shadow-lg dark:hover:shadow-primary/5",
-          isHovered && "scale-[1.02]"
-        )}
-      >
-        <CardContent className="flex flex-col items-center p-6 h-full">
-          {/* Logo or letter fallback */}
-          <m.div
+    <li>
+      <Card className="h-full border border-border/70 bg-card/95 shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:border-primary/30">
+        <CardContent className="flex h-full flex-col items-start p-6">
+          <div
             className={cn(
-              "w-14 h-14 rounded-full flex items-center justify-center mb-4",
-              showLogo ? "bg-white dark:bg-gray-100 shadow-md p-2.5" : "bg-primary text-primary-foreground text-lg font-bold shadow-md"
+              "mb-4 flex h-14 w-14 items-center justify-center rounded-2xl shadow-sm",
+              integration.logo
+                ? "bg-white p-2.5"
+                : "bg-primary text-lg font-bold text-primary-foreground"
             )}
-            animate={{
-              scale: isHovered ? 1.1 : 1,
-              rotate: isHovered ? 5 : 0,
-            }}
-            transition={{ type: "spring", stiffness: 400, damping: 15 }}
           >
-            {showLogo ? (
-              <img
+            {integration.logo ? (
+              <Image
                 src={integration.logo}
                 alt={`${integration.name} logo`}
                 width={36}
                 height={36}
-                className="w-full h-full object-contain"
-                onError={() => setLogoError(true)}
+                className="h-full w-full object-contain"
+                unoptimized
               />
             ) : (
-              getIconLetters(integration.name)
+              <span aria-hidden="true">{getIconLetters(integration.name)}</span>
             )}
-          </m.div>
+          </div>
 
-          {/* Name */}
-          <h3 className="font-semibold text-foreground text-center mb-2">
-            {integration.name}
-          </h3>
-
-          {/* Category badge */}
           <span
             className={cn(
-              "text-xs px-2 py-1 rounded-full mb-3",
+              "mb-3 rounded-full border px-2.5 py-1 text-xs font-semibold",
               colors.bg,
-              colors.text
+              colors.text,
+              colors.border
             )}
           >
             {integration.category}
           </span>
 
-          {/* Description - visible on hover or always on mobile */}
-          <m.p
-            className="text-sm text-muted-foreground text-center leading-relaxed"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{
-              opacity: isHovered ? 1 : 0.7,
-              height: "auto",
-            }}
-            transition={{ duration: 0.2 }}
-          >
-            {integration.description}
-          </m.p>
+          <h3 className="text-lg font-semibold text-foreground">{integration.name}</h3>
+          <p className="mt-2 text-sm leading-6 text-muted-foreground">{integration.description}</p>
         </CardContent>
       </Card>
-    </m.div>
+    </li>
   );
-};
+}
 
-const Integrations: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState<IntegrationCategory | "All">("All");
-
-  // Filter integrations based on selected category
-  const filteredIntegrations = useMemo(() => {
-    if (activeCategory === "All") {
-      return integrations;
-    }
-    return integrations.filter((integration) => integration.category === activeCategory);
-  }, [activeCategory]);
-
+export default function Integrations() {
   return (
-    <section className="w-full py-16 md:py-24 bg-muted/20 overflow-hidden">
-      <div className="container mx-auto px-4 relative">
-        {/* Background decorative elements */}
-        <div className="absolute top-20 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl -z-10" />
-        <div className="absolute bottom-20 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl -z-10" />
+    <section className="w-full overflow-hidden bg-muted/20 py-16 md:py-24">
+      <div className="container relative mx-auto px-4">
+        <div className="absolute left-0 top-20 -z-10 h-72 w-72 rounded-full bg-primary/5 blur-3xl" />
+        <div className="absolute bottom-20 right-0 -z-10 h-96 w-96 rounded-full bg-accent/5 blur-3xl" />
 
-        {/* Header */}
-        <AnimateOnScroll variant="fadeInUp" className="text-center mb-12">
-          <div className="inline-block rounded-full bg-primary/10 dark:bg-primary/20 px-3 py-1 text-sm font-medium text-primary mb-4">
+        <div className="mx-auto mb-14 max-w-3xl text-center">
+          <div className="mb-4 inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
             Technology Stack
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
+          <h2 className="text-3xl font-bold text-foreground md:text-4xl lg:text-5xl">
             Seamless Integrations
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            We connect with your existing technology stack to deliver AI solutions that work
-            seamlessly with your business infrastructure.
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+            We work with the systems your team already relies on, from cloud infrastructure and data
+            platforms to CRM and communication tools.
           </p>
-        </AnimateOnScroll>
+        </div>
 
-        {/* Category Filter Tabs */}
-        <AnimateOnScroll variant="fadeIn" delay={0.2} className="flex justify-center mb-12">
-          <Tabs
-            value={activeCategory}
-            onValueChange={(value) => setActiveCategory(value as IntegrationCategory | "All")}
-            className="w-full max-w-3xl"
-          >
-            <TabsList className="flex flex-wrap justify-center gap-2 p-2 bg-muted/50 dark:bg-muted/30 backdrop-blur-sm rounded-xl h-auto">
-              <TabsTrigger
-                value="All"
-                className={cn(
-                  "px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300",
-                  "data-[state=active]:bg-primary data-[state=active]:text-primary-foreground",
-                  "data-[state=active]:text-primary-foreground data-[state=active]:shadow-md",
-                  "hover:bg-primary/10"
-                )}
-              >
-                All
-              </TabsTrigger>
-              {integrationCategories.map((category) => (
-                <TabsTrigger
-                  key={category}
-                  value={category}
-                  className={cn(
-                    "px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300",
-                    "data-[state=active]:bg-primary data-[state=active]:text-primary-foreground",
-                    "data-[state=active]:text-primary-foreground data-[state=active]:shadow-md",
-                    "hover:bg-primary/10"
-                  )}
+        <div className="space-y-10">
+          {integrationCategories.map((category) => (
+            <section key={category} aria-labelledby={`integration-category-${category}`}>
+              <div className="mb-5 flex items-center gap-3">
+                <h3
+                  id={`integration-category-${category}`}
+                  className="text-xl font-semibold text-foreground"
                 >
                   {category}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-          </Tabs>
-        </AnimateOnScroll>
-
-        {/* Integration Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {filteredIntegrations.map((integration, index) => (
-            <IntegrationCard
-              key={integration.id}
-              integration={integration}
-              index={index}
-            />
+                </h3>
+                <div className="h-px flex-1 bg-border/70" aria-hidden="true" />
+              </div>
+              <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                {getIntegrationsByCategory(category).map((integration) => (
+                  <IntegrationCard key={integration.id} integration={integration} />
+                ))}
+              </ul>
+            </section>
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <AnimateOnScroll variant="fadeInUp" delay={0.4} className="mt-16">
-          <div className="bg-primary/5 dark:bg-primary/10 rounded-2xl p-8 md:p-12 text-center">
-            <h3 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">
-              Don&apos;t See Your Platform?
-            </h3>
-            <p className="text-muted-foreground max-w-2xl mx-auto mb-6">
-              Our team specializes in custom integrations. We can connect your AI solutions
-              with virtually any platform, API, or legacy system.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <StaggerContainer
-                staggerDelay={0.1}
-                className="flex flex-wrap justify-center gap-3"
-                direction="up"
+        <div className="mt-16 rounded-2xl bg-primary px-8 py-10 text-center text-primary-foreground shadow-xl">
+          <h3 className="text-2xl font-bold md:text-3xl">Don&apos;t See Your Platform?</h3>
+          <p className="mx-auto mt-4 max-w-2xl text-primary-foreground">
+            We also build custom integrations for internal APIs, legacy systems, and bespoke data
+            workflows. If it matters to your team, we can design around it.
+          </p>
+          <div className="mt-6 flex flex-wrap justify-center gap-3 text-sm font-medium">
+            {["REST APIs", "GraphQL", "WebSockets", "SOAP", "Custom Protocols"].map((tech) => (
+              <span
+                key={tech}
+                className="rounded-full border border-primary-foreground/30 bg-primary-foreground px-4 py-2 text-primary"
               >
-                {["REST APIs", "GraphQL", "WebSockets", "SOAP", "Custom Protocols"].map(
-                  (tech) => (
-                    <span
-                      key={tech}
-                      className={cn(
-                        "px-4 py-2 rounded-full text-sm font-medium",
-                        "bg-background dark:bg-card border border-border",
-                        "text-foreground/80"
-                      )}
-                    >
-                      {tech}
-                    </span>
-                  )
-                )}
-              </StaggerContainer>
-            </div>
+                {tech}
+              </span>
+            ))}
           </div>
-        </AnimateOnScroll>
+        </div>
       </div>
     </section>
   );
-};
-
-export default Integrations;
+}

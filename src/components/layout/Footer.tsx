@@ -2,10 +2,21 @@ import React from "react";
 import { siteConfig } from "@/config/site";
 import Link from "next/link";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import logo from "@/public/icons/Logo.png";
 import { Facebook, Twitter, Linkedin, Instagram, Github, Mail } from "lucide-react";
 import { footerLinks, socialLinks } from "@/constants/navigation";
-import { Newsletter } from "@/components/layout/Newsletter";
+
+const Newsletter = dynamic(
+  () => import("@/components/layout/Newsletter").then((module) => module.Newsletter),
+  {
+    loading: () => (
+      <div className="mb-8 border-t border-border pt-8" aria-hidden="true">
+        <div className="mx-auto h-32 max-w-md rounded-2xl border border-border/60 bg-card/60" />
+      </div>
+    ),
+  }
+);
 
 export function SiteFooter() {
   const currentYear = new Date().getFullYear();

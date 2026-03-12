@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -71,10 +72,10 @@ const Partners = () => {
                 </div>
               </div>
               <Button className="mt-6 bg-primary hover:bg-primary/90 text-primary-foreground" asChild>
-                <a href="/contact">
+                <Link href="/contact">
                   <span>Get in Touch</span>
                   <ArrowRight className="ml-2 h-4 w-4" />
-                </a>
+                </Link>
               </Button>
             </div>
             <div className="bg-card dark:bg-card/80 rounded-xl p-6 shadow-md dark:shadow-primary/5">
@@ -95,7 +96,7 @@ const Partners = () => {
                 </p>
                 <div className="flex justify-center">
                   <Button variant="outline" className="border-primary text-primary hover:bg-primary/10 dark:hover:bg-primary/20" asChild>
-                    <a href="/contact">Schedule a Call</a>
+                    <Link href="/contact">Schedule a Call</Link>
                   </Button>
                 </div>
               </div>

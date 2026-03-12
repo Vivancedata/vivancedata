@@ -1,78 +1,88 @@
-"use client";
-
-import React from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import Image from "next/image";
 import { Github, Linkedin, Twitter } from "lucide-react";
 import { teamMembers } from "@/constants/team";
 
+const socialIconMap = {
+  linkedin: Linkedin,
+  twitter: Twitter,
+  github: Github,
+} as const;
+
+const teamCardClass =
+  "overflow-hidden rounded-[calc(var(--radius)+0.25rem)] border border-border/70 bg-card shadow-elevation-1 transition-transform transition-shadow duration-300 motion-reduce:transition-none motion-safe:hover:-translate-y-1 hover:shadow-elevation-2";
+
 const Team = () => {
   return (
-    <section className="w-full py-16 md:py-24 bg-muted/50 dark:bg-muted/20">
+    <section
+      className="w-full bg-muted/50 py-16 md:py-24 dark:bg-muted/20"
+      style={{ contentVisibility: "auto", containIntrinsicSize: "840px" }}
+    >
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <div className="inline-block rounded-full bg-primary/10 dark:bg-primary/20 px-3 py-1 text-sm font-medium text-primary mb-4">
+        <div className="mb-12 text-center">
+          <div className="mb-4 inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary dark:bg-primary/20">
             Our Experts
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Meet Our Team</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <h2 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">Meet Our Team</h2>
+          <p className="mx-auto max-w-2xl text-muted-foreground">
             Our team of AI experts brings together decades of experience across research, industry, and academia to deliver cutting-edge solutions.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <ul className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {teamMembers.map((member) => (
-            <Card
+            <li
               key={member.name}
-              className="overflow-hidden border-0 shadow-md hover:shadow-xl transition-all duration-300 hover:translate-y-[-5px] bg-card"
+              className={teamCardClass}
             >
-              <CardContent className="p-0">
-                <div className="bg-primary h-24 flex items-center justify-center">
-                  <Avatar className="h-24 w-24 border-4 border-background translate-y-12">
-                    <AvatarImage src={member.image} alt={member.name} />
-                    <AvatarFallback className="bg-background text-primary text-xl font-semibold">
-                      {member.initials}
-                    </AvatarFallback>
-                  </Avatar>
-                </div>
-                <div className="pt-16 p-6 text-center">
-                  <h3 className="text-xl font-bold mb-1 text-foreground">{member.name}</h3>
-                  <p className="text-primary font-medium mb-4">{member.role}</p>
-                  <p className="text-muted-foreground mb-6 text-sm md:text-base">{member.bio}</p>
-                  <div className="flex justify-center space-x-4">
-                    {member.socialLinks.linkedin && (
-                      <a
-                        href={member.socialLinks.linkedin}
-                        className="text-muted-foreground hover:text-primary transition-colors"
-                        aria-label={`${member.name}'s LinkedIn`}
-                      >
-                        <Linkedin className="h-5 w-5" />
-                      </a>
-                    )}
-                    {member.socialLinks.twitter && (
-                      <a
-                        href={member.socialLinks.twitter}
-                        className="text-muted-foreground hover:text-primary transition-colors"
-                        aria-label={`${member.name}'s Twitter`}
-                      >
-                        <Twitter className="h-5 w-5" />
-                      </a>
-                    )}
-                    {member.socialLinks.github && (
-                      <a
-                        href={member.socialLinks.github}
-                        className="text-muted-foreground hover:text-foreground transition-colors"
-                        aria-label={`${member.name}'s GitHub`}
-                      >
-                        <Github className="h-5 w-5" />
-                      </a>
+              <article>
+                <div className="h-24 bg-primary" aria-hidden="true" />
+                <div className="relative p-6 pt-16 text-center">
+                  <div className="absolute top-0 left-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full border-4 border-background bg-primary shadow-lg">
+                    {member.image ? (
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        sizes="96px"
+                        className="object-cover"
+                      />
+                    ) : (
+                      <div className="flex h-full w-full items-center justify-center bg-primary text-xl font-semibold text-primary-foreground">
+                        {member.initials}
+                      </div>
                     )}
                   </div>
+                  <h3 className="mb-1 text-xl font-bold text-foreground">{member.name}</h3>
+                  <p className="mb-4 font-medium text-primary dark:text-emerald-300">{member.role}</p>
+                  <p className="mb-6 text-sm text-muted-foreground md:text-base">{member.bio}</p>
+                  <div className="flex justify-center space-x-4">
+                    {Object.entries(member.socialLinks).map(([network, href]) => {
+                      if (!href) {
+                        return null;
+                      }
+
+                      const Icon = socialIconMap[network as keyof typeof socialIconMap];
+                      const hoverColor = network === "github" ? "hover:text-foreground" : "hover:text-primary";
+
+                      return (
+                        <a
+                          key={`${member.name}-${network}`}
+                          href={href}
+                          className={`text-muted-foreground transition-colors ${hoverColor}`}
+                          aria-label={`${member.name}'s ${network.charAt(0).toUpperCase()}${network.slice(1)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Icon className="h-5 w-5" aria-hidden="true" />
+                        </a>
+                      );
+                    })}
+                  </div>
                 </div>
-              </CardContent>
-            </Card>
+              </article>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

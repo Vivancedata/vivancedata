@@ -1,82 +1,75 @@
-"use client";
-
-import React from "react";
-import { Card, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Link from "next/link";
+import { ArrowRight, Bot, Code2, Lightbulb } from "lucide-react";
+import { Card, CardContent, CardDescription, CardFooter, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
 import { services } from "@/constants/services";
+
+const serviceIcons = {
+  "generative-ai": Bot,
+  consulting: Lightbulb,
+  solutions: Code2,
+} as const;
+
+const serviceLinks: Record<string, string> = {
+  "generative-ai": "/services/generative-ai",
+  consulting: "/services/consulting",
+  solutions: "/services",
+};
 
 export default function Overview() {
   return (
     <section className="container mx-auto py-16 px-4 md:py-24">
-      <div className="flex flex-col items-center justify-center text-center space-y-4 mb-16">
-        <div className="inline-block rounded-full bg-primary/10 dark:bg-primary/20 px-3 py-1 text-sm font-medium text-primary mb-4">
+      <div className="mx-auto mb-16 max-w-3xl text-center">
+        <div className="mb-4 inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
           Our Services
         </div>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground">
+        <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
           Comprehensive <span className="text-primary">AI Solutions</span> for Modern Businesses
         </h2>
-        <p className="text-lg text-muted-foreground max-w-3xl mx-auto mt-4">
-          From strategy to implementation, we provide end-to-end AI services to help you stay ahead in today&apos;s competitive landscape.
+        <p className="mt-4 text-lg text-muted-foreground">
+          From strategy to implementation, we provide end-to-end AI services that help teams move from
+          exploration to measurable business outcomes.
         </p>
       </div>
 
-      <Tabs defaultValue="generative-ai" className="w-full">
-        <TabsList className="grid w-full grid-cols-3 mb-8">
-          {services.map(service => (
-            <TabsTrigger key={service.id} value={service.id} className="text-sm md:text-base">
-              {service.title}
-            </TabsTrigger>
-          ))}
-        </TabsList>
+      <div className="grid gap-6 lg:grid-cols-3">
+        {services.map((service) => {
+          const Icon = serviceIcons[service.id as keyof typeof serviceIcons] ?? Bot;
 
-        {services.map(service => (
-          <TabsContent key={service.id} value={service.id}>
-            <Card className="border-0 shadow-lg bg-card">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="p-6 md:p-8">
-                  <div className="flex items-center gap-4 mb-6">
-                    <CardTitle className="text-2xl md:text-3xl text-foreground">{service.title}</CardTitle>
-                  </div>
-                  <CardDescription className="text-base md:text-lg mb-6 text-muted-foreground">
-                    {service.description}
-                  </CardDescription>
-                  <div className="space-y-3">
-                    {service.features.map((feature) => (
-                      <div key={feature} className="flex items-start gap-2">
-                        <div className="rounded-full bg-green-100 dark:bg-green-900/30 p-1 mt-0.5">
-                          <svg className="h-3 w-3 text-green-600 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
-                          </svg>
-                        </div>
-                        <span className="text-foreground/80">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <CardFooter className="px-0 pt-6">
-                    <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
-                      {service.cta}
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </CardFooter>
+          return (
+            <Card
+              key={service.id}
+              className="flex h-full flex-col border border-border/70 bg-card/90 shadow-lg transition-transform duration-300 hover:-translate-y-1"
+            >
+              <CardContent className="flex h-full flex-col p-7">
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                  <Icon className="h-6 w-6" aria-hidden="true" />
                 </div>
-                <div className="relative h-64 md:h-auto overflow-hidden rounded-b-lg md:rounded-r-lg md:rounded-bl-none bg-primary">
-                  <div className="absolute inset-0 bg-primary/80 flex items-center justify-center">
-                    <div className="text-primary-foreground p-6 md:p-8 max-w-md">
-                      <h3 className="text-xl md:text-2xl font-bold mb-2">Ready to transform your business?</h3>
-                      <p className="mb-4 text-primary-foreground/85">Our team of experts is ready to help you implement {service.title.toLowerCase()}.</p>
-                      <Button variant="outline" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
-                        Contact Us
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                <CardTitle className="text-2xl text-foreground">{service.title}</CardTitle>
+                <CardDescription className="mt-3 text-base leading-7 text-muted-foreground">
+                  {service.description}
+                </CardDescription>
+                <ul className="mt-6 space-y-3 text-sm text-foreground/85">
+                  {service.features.map((feature) => (
+                    <li key={feature} className="flex items-start gap-3">
+                      <span className="mt-1 h-2 w-2 rounded-full bg-primary" aria-hidden="true" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <CardFooter className="mt-auto px-0 pt-8">
+                  <Button className="bg-primary text-primary-foreground hover:bg-primary/90" asChild>
+                    <Link href={serviceLinks[service.id] ?? "/services"}>
+                      <span>{service.cta}</span>
+                      <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                    </Link>
+                  </Button>
+                </CardFooter>
+              </CardContent>
             </Card>
-          </TabsContent>
-        ))}
-      </Tabs>
+          );
+        })}
+      </div>
     </section>
   );
 }

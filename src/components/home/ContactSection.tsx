@@ -1,6 +1,18 @@
 import React from "react";
+import dynamic from "next/dynamic";
 import { CheckCircle } from "lucide-react";
-import { ProfileForm } from "@/components/contact/Form";
+
+const ProfileForm = dynamic(
+  () => import("@/components/contact/Form").then((module) => module.ProfileForm),
+  {
+    loading: () => (
+      <div
+        className="min-h-[540px] rounded-[calc(var(--radius)+0.25rem)] border border-border/60 bg-card/80 shadow-lg"
+        aria-hidden="true"
+      />
+    ),
+  }
+);
 
 interface Benefit {
   title: string;

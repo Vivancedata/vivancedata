@@ -1,12 +1,10 @@
 import { MainNav } from "@/components/layout/MainNav";
 import { SiteFooter as Footer } from "@/components/layout/Footer";
 import PageWrapper from "@/components/layout/PageWrapper";
-import { ScrollToTop } from "@/components/common/ScrollToTop";
-import { CookieConsent } from "@/components/common/CookieConsent";
-import { MotionProvider } from "@/components/common/MotionProvider";
+import { DeferredChrome } from "@/components/layout/DeferredChrome";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
-import { Toaster } from "sonner";
 import type { Metadata, Viewport } from "next";
+import "@vivancedata/ui/styles";
 import "./globals.css";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 
@@ -102,20 +100,16 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <MotionProvider>
-            <header>
-              <MainNav />
-            </header>
-            <PageWrapper className="flex-grow w-full">
-              <main className="w-full px-4" id="main-content">
-                {children}
-              </main>
-            </PageWrapper>
-            <Footer />
-            <ScrollToTop />
-            <CookieConsent />
-            <Toaster position="top-right" richColors closeButton />
-          </MotionProvider>
+          <header>
+            <MainNav />
+          </header>
+          <PageWrapper className="flex-grow w-full">
+            <main className="w-full px-4" id="main-content">
+              {children}
+            </main>
+          </PageWrapper>
+          <Footer />
+          <DeferredChrome />
         </ThemeProvider>
       </body>
     </html>

@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 interface ServicesStackProps {
@@ -32,12 +33,13 @@ export function ServicesStack({
           {technologies.map((tech) => (
             <div key={tech.id} className="flex flex-col items-center rounded-xl border border-border/60 bg-card/70 p-4">
               {tech.logo ? (
-                <img
+                <Image
                   src={tech.logo}
                   alt={`${tech.name} logo`}
                   width={56}
                   height={56}
                   className="mb-3 h-14 w-14 object-contain"
+                  unoptimized
                 />
               ) : (
                 <div

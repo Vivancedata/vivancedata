@@ -12,12 +12,42 @@ import ResourcesSection from "@/components/home/ResourcesSection";
 import Pricing from "@/components/home/Pricing";
 import { StatsSection } from "@/components/home/StatsSection";
 import { FAQSection } from "@/components/home/FAQSection";
-import { DemoBooking } from "@/components/home/DemoBooking";
 import { ContactSection } from "@/components/home/ContactSection";
 import { CTASection } from "@/components/home/CTASection";
 import { Users, CheckCircle, BarChart3, Clock, Award } from "lucide-react";
 import { Metadata } from "next";
+import dynamic from "next/dynamic";
 import Script from "next/script";
+
+const DemoBooking = dynamic(
+  () => import("@/components/home/DemoBooking").then((module) => module.DemoBooking),
+  {
+    loading: () => (
+      <section
+        className="container mx-auto px-4 py-16 md:py-24"
+        aria-labelledby="demo-booking-heading"
+      >
+        <div className="rounded-3xl border border-border/70 bg-card/80 p-8 shadow-lg md:p-12">
+          <div className="max-w-2xl">
+            <p className="mb-4 inline-flex rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
+              Book a Demo
+            </p>
+            <h2
+              id="demo-booking-heading"
+              className="text-3xl font-bold text-foreground md:text-4xl"
+            >
+              See how a tailored AI workflow could fit your business.
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              Share your use case and we will walk you through the right next step with a live
+              consultation.
+            </p>
+          </div>
+        </div>
+      </section>
+    ),
+  }
+);
 
 export const metadata: Metadata = {
   title: "VivanceData - AI Solutions for Modern Businesses",
