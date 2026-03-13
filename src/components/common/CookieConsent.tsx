@@ -314,7 +314,7 @@ export function CookieConsent() {
   const [isVisible, setIsVisible] = useState(false);
   const [isCustomizing, setIsCustomizing] = useState(false);
   const [preferences, setPreferences] = useState<CookiePreferences>(
-    DEFAULT_COOKIE_PREFERENCES
+    () => readCookiePreferences() ?? DEFAULT_COOKIE_PREFERENCES
   );
   const [reducedMotion] = useState(() => prefersReducedMotion());
 
@@ -322,11 +322,27 @@ export function CookieConsent() {
     const storedConsent = parseCookiePreferences(
       localStorage.getItem(CONSENT_STORAGE_KEY)
     );
+
     if (!storedConsent) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time initialization from persisted storage
-      setIsVisible(true);
-    } else {
-      setPreferences(storedConsent);
+      const revealBanner = () => {
+        setIsVisible(true);
+        window.removeEventListener("pointerdown", revealBanner);
+        window.removeEventListener("keydown", revealBanner);
+        window.removeEventListener("scroll", revealBanner);
+      };
+
+      const fallbackTimer = window.setTimeout(revealBanner, 20_000);
+
+      window.addEventListener("pointerdown", revealBanner, { once: true, passive: true });
+      window.addEventListener("keydown", revealBanner, { once: true });
+      window.addEventListener("scroll", revealBanner, { once: true, passive: true });
+
+      return () => {
+        window.clearTimeout(fallbackTimer);
+        window.removeEventListener("pointerdown", revealBanner);
+        window.removeEventListener("keydown", revealBanner);
+        window.removeEventListener("scroll", revealBanner);
+      };
     }
   }, []);
 
