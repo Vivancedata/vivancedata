@@ -7,4 +7,4 @@ export {
   FormDescription,
   FormMessage,
   FormField,
-} from "@vivancedata/ui/components/form"
+} from "@vivancedata/ui"

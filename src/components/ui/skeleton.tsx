@@ -7,4 +7,4 @@ export {
   SkeletonAvatar,
   skeletonVariants,
   type SkeletonProps,
-} from "@vivancedata/ui/components/skeleton"
+} from "@vivancedata/ui"

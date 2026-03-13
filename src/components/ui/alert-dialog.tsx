@@ -10,4 +10,4 @@ export {
   AlertDialogDescription,
   AlertDialogAction,
   AlertDialogCancel,
-} from "@vivancedata/ui/components/alert-dialog"
+} from "@vivancedata/ui"
