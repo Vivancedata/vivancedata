@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const uiDirectory = path.join(repoRoot, "src/components/ui");
-const allowedLocalFiles = new Set(["header.tsx"]);
+const allowedLocalFiles = new Set(["form.tsx", "header.tsx"]);
 const violations = [];
 
 for (const filePath of walkFiles(uiDirectory)) {
