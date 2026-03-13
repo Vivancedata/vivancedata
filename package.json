@@ -6,7 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "NEXT_TELEMETRY_DISABLED=1 next build --webpack",
     "start": "next start",
-    "lint": "node ../scripts/check-ui-boundary.mjs vivancedata && eslint .",
+    "lint": "node scripts/check-ui-boundary.mjs && eslint .",
     "lint:fix": "eslint . --fix",
     "type-check": "tsc --noEmit",
     "react-doctor:score": "npx -y react-doctor@latest . --score",
