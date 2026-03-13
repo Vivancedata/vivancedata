@@ -16,7 +16,10 @@ export function CTASection({
   buttonLink 
 }: CTASectionProps): React.ReactElement {
   return (
-    <section className="w-full py-16 relative overflow-hidden">
+    <section
+      className="relative w-full overflow-hidden py-16"
+      style={{ contentVisibility: "auto", containIntrinsicSize: "720px" }}
+    >
       <div className="absolute inset-0 bg-primary/5" aria-hidden="true" />
       <div className="absolute -top-20 right-10 h-56 w-56 rounded-full bg-primary/20 blur-[120px]" aria-hidden="true" />
       <div className="absolute -bottom-20 left-10 h-56 w-56 rounded-full bg-accent/20 blur-[120px]" aria-hidden="true" />

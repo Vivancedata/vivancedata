@@ -1,18 +1,14 @@
-"use client"
-
 import Link from "next/link"
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/common/Icons"
 import { Button } from "@/components/ui/button"
 import { ModeToggle } from "@/components/common/ModeToggle"
-import { Search, Menu, X } from "lucide-react"
-import { useState } from "react"
+import { Search } from "lucide-react"
 import { mainNavItems } from "@/constants/navigation"
+import { MainNavMobile } from "@/components/layout/MainNavMobile"
 
 export function MainNav() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-
   return (
     <header className={cn(
       "sticky top-0 z-50 w-full border-b border-border/60 bg-background/95 shadow-sm transition-[background-color,box-shadow] duration-300",
@@ -72,61 +68,8 @@ export function MainNav() {
               </Link>
             </Button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <div className="flex items-center md:hidden">
-            <ModeToggle />
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="ml-2"
-              aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-              aria-expanded={isMobileMenuOpen}
-              aria-controls="mobile-navigation"
-            >
-              {isMobileMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
-            </Button>
-          </div>
         </div>
-
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <nav
-            id="mobile-navigation"
-            className="md:hidden py-4 animate-in fade-in-0 slide-in-from-top-2 duration-200"
-            aria-label="Mobile navigation"
-          >
-            <div className="flex flex-col space-y-3">
-              {mainNavItems.map((item) => (
-                <div key={item.name}>
-                  <Link
-                    href={item.href}
-                    prefetch={false}
-                    className="block py-2 px-4 text-foreground/80 hover:text-primary hover:bg-primary/10 rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                </div>
-              ))}
-              <div className="pt-2">
-                <Button
-                  className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground"
-                  asChild
-                >
-                  <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                    Contact Us
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </nav>
-        )}
+        <MainNavMobile items={mainNavItems} />
       </div>
     </header>
   )

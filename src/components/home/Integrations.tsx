@@ -71,7 +71,10 @@ function IntegrationCard({ integration }: { integration: Integration }) {
 
 export default function Integrations() {
   return (
-    <section className="w-full overflow-hidden bg-muted/20 py-16 md:py-24">
+    <section
+      className="w-full overflow-hidden bg-muted/20 py-16 md:py-24"
+      style={{ contentVisibility: "auto", containIntrinsicSize: "1800px" }}
+    >
       <div className="container relative mx-auto px-4">
         <div className="absolute left-0 top-20 -z-10 h-72 w-72 rounded-full bg-primary/5 blur-3xl" />
         <div className="absolute bottom-20 right-0 -z-10 h-96 w-96 rounded-full bg-accent/5 blur-3xl" />

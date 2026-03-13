@@ -18,7 +18,10 @@ const serviceLinks: Record<string, string> = {
 
 export default function Overview() {
   return (
-    <section className="container mx-auto py-16 px-4 md:py-24">
+    <section
+      className="container mx-auto py-16 px-4 md:py-24"
+      style={{ contentVisibility: "auto", containIntrinsicSize: "1200px" }}
+    >
       <div className="mx-auto mb-16 max-w-3xl text-center">
         <div className="mb-4 inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
           Our Services

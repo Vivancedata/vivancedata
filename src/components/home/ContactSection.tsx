@@ -31,7 +31,10 @@ export function ContactSection({
   benefits 
 }: ContactSectionProps): React.ReactElement {
   return (
-    <section className="container mx-auto py-16 px-4 md:py-24 bg-muted/30">
+    <section
+      className="container mx-auto bg-muted/30 px-4 py-16 md:py-24"
+      style={{ contentVisibility: "auto", containIntrinsicSize: "1400px" }}
+    >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         <div>
           <div className="inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary mb-4">
