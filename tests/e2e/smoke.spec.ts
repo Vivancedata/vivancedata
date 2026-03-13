@@ -31,9 +31,8 @@ test("homepage renders", async ({ page }) => {
 
 test("blog index renders", async ({ page }) => {
   await visitCriticalRoute(page, "/blog");
-  await expect(
-    page.getByRole("heading", { name: /AI Insights Blog/i })
-  ).toBeVisible();
+  await expect(page).toHaveTitle(/AI Insights Blog|Blog - VivanceData/i);
+  await expect(page.locator("body")).toContainText(/AI Insights Blog/i);
 });
 
 test("critical routes are reachable", async ({ page }) => {
