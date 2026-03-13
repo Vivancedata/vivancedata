@@ -58,7 +58,6 @@ export default function Testimonials() {
   return (
     <section
       className="w-full overflow-hidden bg-muted/20 py-20 md:py-32"
-      style={{ contentVisibility: "auto", containIntrinsicSize: "1400px" }}
     >
       <div className="container relative mx-auto px-4">
         <div className="absolute right-0 top-0 -z-10 h-72 w-72 rounded-full bg-primary/5 blur-3xl" />

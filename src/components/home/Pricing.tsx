@@ -16,7 +16,6 @@ export default function Pricing() {
   return (
     <section
       className="relative overflow-hidden py-16 md:py-24"
-      style={{ contentVisibility: "auto", containIntrinsicSize: "1600px" }}
     >
       <div className="absolute inset-x-0 -top-20 h-64 bg-primary/5 blur-3xl" aria-hidden="true" />
       <div className="container relative mx-auto px-4">

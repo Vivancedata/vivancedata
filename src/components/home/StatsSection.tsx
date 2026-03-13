@@ -20,7 +20,6 @@ export function StatsSection({
   return (
     <section
       className="w-full bg-primary text-primary-foreground py-16 md:py-24"
-      style={{ contentVisibility: "auto", containIntrinsicSize: "720px" }}
     >
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">

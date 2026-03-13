@@ -13,7 +13,6 @@ export function FAQSection({
   return (
     <section
       className="container mx-auto py-16 px-4 md:py-24"
-      style={{ contentVisibility: "auto", containIntrinsicSize: "960px" }}
     >
       <div className="text-center mb-12">
         <div className="inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary mb-4">

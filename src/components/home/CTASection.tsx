@@ -18,7 +18,6 @@ export function CTASection({
   return (
     <section
       className="relative w-full overflow-hidden py-16"
-      style={{ contentVisibility: "auto", containIntrinsicSize: "720px" }}
     >
       <div className="absolute inset-0 bg-primary/5" aria-hidden="true" />
       <div className="absolute -top-20 right-10 h-56 w-56 rounded-full bg-primary/20 blur-[120px]" aria-hidden="true" />

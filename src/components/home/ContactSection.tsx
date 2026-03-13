@@ -33,7 +33,6 @@ export function ContactSection({
   return (
     <section
       className="container mx-auto bg-muted/30 px-4 py-16 md:py-24"
-      style={{ contentVisibility: "auto", containIntrinsicSize: "1400px" }}
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         <div>

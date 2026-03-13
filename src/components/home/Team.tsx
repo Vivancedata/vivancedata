@@ -15,7 +15,6 @@ const Team = () => {
   return (
     <section
       className="w-full bg-muted/50 py-16 md:py-24 dark:bg-muted/20"
-      style={{ contentVisibility: "auto", containIntrinsicSize: "840px" }}
     >
       <div className="container mx-auto px-4">
         <div className="mb-12 text-center">

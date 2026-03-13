@@ -6,7 +6,6 @@ export default function ClientLogos() {
     <section
       className="w-full overflow-hidden bg-muted/20 py-16 md:py-24"
       aria-label="Industries we serve"
-      style={{ contentVisibility: "auto", containIntrinsicSize: "720px" }}
     >
       <div className="container mx-auto px-4">
         <div className="mb-12 text-center md:mb-16">

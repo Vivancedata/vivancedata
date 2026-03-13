@@ -40,7 +40,6 @@ export default function ResourcesSection() {
   return (
     <section
       className="w-full overflow-hidden bg-muted/20 py-20 md:py-32"
-      style={{ contentVisibility: "auto", containIntrinsicSize: "1200px" }}
     >
       <div className="container relative mx-auto px-4">
         <div className="absolute right-0 top-40 -z-10 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />

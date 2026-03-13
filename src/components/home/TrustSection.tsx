@@ -34,7 +34,6 @@ export function TrustSection() {
     <section
       className="w-full overflow-hidden bg-muted/20 py-16 md:py-24"
       aria-labelledby="trust-section-title"
-      style={{ contentVisibility: "auto", containIntrinsicSize: "960px" }}
     >
       <div className="container relative mx-auto px-4">
         <div className="absolute top-0 left-1/4 -z-10 h-64 w-64 rounded-full bg-primary/5 blur-3xl" aria-hidden="true" />

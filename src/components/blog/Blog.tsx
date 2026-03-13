@@ -141,7 +141,6 @@ export default function Blog() {
   return (
     <section
       className="w-full overflow-hidden bg-gradient-to-b from-background to-muted/20 py-20 md:py-32"
-      style={{ contentVisibility: "auto", containIntrinsicSize: "1200px" }}
     >
       <div className="container relative mx-auto px-4">
         <div className="absolute right-0 top-40 -z-10 h-96 w-96 rounded-full bg-primary/10 blur-3xl" />
@@ -213,6 +212,7 @@ export default function Blog() {
                   className="group/link flex items-center text-sm font-medium text-primary transition-colors hover:text-primary/80"
                 >
                   <span>Read More</span>
+                  <span className="sr-only"> about {post.title}</span>
                   <ChevronRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover/link:translate-x-1" />
                 </Link>
               </CardFooter>

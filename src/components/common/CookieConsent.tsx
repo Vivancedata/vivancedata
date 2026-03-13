@@ -191,6 +191,7 @@ interface CookieConsentBannerProps {
   isCustomizing: boolean;
   preferences: CookiePreferences;
   reducedMotion: boolean;
+  animateOnMount: boolean;
   onClose: () => void;
   onAcceptAll: () => void;
   onRejectNonEssential: () => void;
@@ -203,6 +204,7 @@ function CookieConsentBanner({
   isCustomizing,
   preferences,
   reducedMotion,
+  animateOnMount,
   onClose,
   onAcceptAll,
   onRejectNonEssential,
@@ -214,10 +216,10 @@ function CookieConsentBanner({
 
   return (
     <m.div
-      variants={bannerVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
+      variants={animateOnMount ? bannerVariants : undefined}
+      initial={animateOnMount ? "hidden" : false}
+      animate={animateOnMount ? "visible" : undefined}
+      exit={animateOnMount ? "exit" : undefined}
       className="fixed inset-x-3 bottom-3 z-50 sm:left-6 sm:right-6 md:left-auto md:right-6 md:w-full md:max-w-xl"
       role="dialog"
       aria-labelledby="cookie-consent-title"
@@ -371,6 +373,7 @@ export function CookieConsent() {
             isCustomizing={isCustomizing}
             preferences={preferences}
             reducedMotion={reducedMotion}
+            animateOnMount={false}
             onClose={() => setIsVisible(false)}
             onAcceptAll={handleAcceptAll}
             onRejectNonEssential={handleRejectNonEssential}

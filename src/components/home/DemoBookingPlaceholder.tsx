@@ -5,7 +5,6 @@ export function DemoBookingPlaceholder() {
     <section
       className="container mx-auto px-4 py-16 md:py-24"
       aria-labelledby="demo-booking-heading"
-      style={{ contentVisibility: "auto", containIntrinsicSize: "720px" }}
     >
       <div className="rounded-3xl border border-border/70 bg-card/80 p-8 shadow-lg md:p-12">
         <div className="max-w-2xl">

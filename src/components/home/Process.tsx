@@ -31,7 +31,6 @@ const Process = () => {
   return (
     <section
       className="w-full bg-muted/20 py-16 md:py-24"
-      style={{ contentVisibility: "auto", containIntrinsicSize: "1200px" }}
     >
       <div className="container mx-auto px-4">
         <div className="mb-16 text-center">
