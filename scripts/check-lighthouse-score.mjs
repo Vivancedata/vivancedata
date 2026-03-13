@@ -32,7 +32,7 @@ try {
       console.log(`[lighthouse] ${route} attempt ${attempt} -> ${JSON.stringify(scores)}`);
 
       if (!bestAttempt || totalScore(scores) > totalScore(bestAttempt.scores)) {
-        bestAttempt = { attempt, scores };
+        bestAttempt = { attempt, scores, reportPath };
       }
 
       if (Object.values(scores).every((score) => score === REQUIRED_SCORE)) {
@@ -47,6 +47,7 @@ try {
           .map(([category, score]) => `${category}=${score}`)
           .join(", ")}`
       );
+      logFailureDiagnostics(bestAttempt.reportPath);
       process.exit(1);
     }
   }
@@ -97,4 +98,26 @@ function warmRoute(url) {
 
 function totalScore(scores) {
   return Object.values(scores).reduce((sum, score) => sum + score, 0);
+}
+
+function logFailureDiagnostics(reportPath) {
+  const report = JSON.parse(readFileSync(reportPath, "utf-8"));
+  const metrics = report.audits.metrics?.details?.items?.[0];
+
+  if (metrics) {
+    const formatMetric = (value) => `${Math.round(value)}ms`;
+    console.error(
+      `[lighthouse] metrics: fcp=${formatMetric(metrics.firstContentfulPaint)} lcp=${formatMetric(metrics.largestContentfulPaint)} tbt=${formatMetric(metrics.totalBlockingTime)} si=${formatMetric(metrics.speedIndex)} cls=${metrics.cumulativeLayoutShift}`
+    );
+  }
+
+  const opportunities = Object.values(report.audits)
+    .filter((audit) => audit.details?.type === "opportunity" && typeof audit.numericValue === "number")
+    .sort((left, right) => right.numericValue - left.numericValue)
+    .slice(0, 5)
+    .map((audit) => `${audit.id}:${Math.round(audit.numericValue)}ms`);
+
+  if (opportunities.length > 0) {
+    console.error(`[lighthouse] top opportunities: ${opportunities.join(", ")}`);
+  }
 }

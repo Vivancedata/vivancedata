@@ -1,8 +1,7 @@
 import { MainNav } from "@/components/layout/MainNav";
 import { SiteFooter as Footer } from "@/components/layout/Footer";
 import PageWrapper from "@/components/layout/PageWrapper";
-import { DeferredChrome } from "@/components/layout/DeferredChrome";
-import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
+import { AppChrome } from "@/components/layout/AppChrome";
 import type { Metadata, Viewport } from "next";
 import "@vivancedata/ui/styles";
 import "./globals.css";
@@ -84,7 +83,6 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
-        <GoogleAnalytics />
       </head>
       <body className="min-h-screen flex flex-col bg-background text-foreground">
         {/* Skip to main content link for accessibility */}
@@ -109,7 +107,7 @@ export default function RootLayout({
             </main>
           </PageWrapper>
           <Footer />
-          <DeferredChrome />
+          <AppChrome />
         </ThemeProvider>
       </body>
     </html>
