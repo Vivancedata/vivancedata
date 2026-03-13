@@ -1,10 +1,11 @@
-import { readFileSync, mkdtempSync, rmSync } from "node:fs";
+import { copyFileSync, mkdirSync, mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { spawnSync } from "node:child_process";
 
 const REQUIRED_SCORE = 100;
 const MAX_ATTEMPTS = 4;
+const artifactDir = join(process.cwd(), "artifacts", "lighthouse");
 const [baseUrl, ...routes] = process.argv.slice(2);
 
 if (!baseUrl || routes.length === 0) {
@@ -15,6 +16,8 @@ if (!baseUrl || routes.length === 0) {
 const outputDir = mkdtempSync(join(tmpdir(), "vivance-lighthouse-"));
 
 try {
+  mkdirSync(artifactDir, { recursive: true });
+
   for (const route of routes) {
     const url = new URL(route, baseUrl).toString();
     warmRoute(url);
@@ -41,6 +44,9 @@ try {
     }
 
     const failures = Object.entries(bestAttempt.scores).filter(([, score]) => score !== REQUIRED_SCORE);
+    const artifactName = `${route === "/" ? "root" : route.replace(/[^a-z0-9]+/gi, "-")}.json`;
+    copyFileSync(bestAttempt.reportPath, join(artifactDir, artifactName));
+
     if (failures.length > 0) {
       console.error(
         `[lighthouse] ${route} failed required ${REQUIRED_SCORE}/100 scores after ${attemptsRun} attempt(s): ${failures
@@ -119,5 +125,17 @@ function logFailureDiagnostics(reportPath) {
 
   if (opportunities.length > 0) {
     console.error(`[lighthouse] top opportunities: ${opportunities.join(", ")}`);
+  }
+
+  const layoutShiftItems = report.audits["layout-shift-elements"]?.details?.items
+    ?.slice(0, 5)
+    .map((item) => {
+      const node = item.node ?? {};
+      const snippet = node.snippet ?? node.nodeLabel ?? node.path ?? "unknown";
+      return `${snippet} (${Math.round((item.score ?? 0) * 1000) / 1000})`;
+    });
+
+  if (layoutShiftItems?.length) {
+    console.error(`[lighthouse] layout-shift-elements: ${layoutShiftItems.join(" | ")}`);
   }
 }

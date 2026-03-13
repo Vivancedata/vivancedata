@@ -158,6 +158,14 @@ jobs:
       - name: Enforce Lighthouse scores
         run: npm run lighthouse:ci
 
+      - name: Upload Lighthouse artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-artifacts
+          path: artifacts/lighthouse
+          retention-days: 7
+
       - name: Stop application
         if: always()
         run: |
