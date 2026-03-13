@@ -5,4 +5,4 @@ export {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
-} from "@vivancedata/ui"
+} from "@ui-source/components/carousel"

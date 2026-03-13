@@ -8,4 +8,4 @@ export {
   CommandItem,
   CommandShortcut,
   CommandSeparator,
-} from "@vivancedata/ui"
+} from "@ui-source/components/command"

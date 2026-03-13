@@ -1,3 +1,3 @@
 "use client"
 
-export { Checkbox } from "@vivancedata/ui"
+export { Checkbox } from "@ui-source/components/checkbox"

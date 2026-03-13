@@ -1,1 +1,1 @@
-export { Input, inputVariants, type InputProps } from "@vivancedata/ui"
+export { Input, inputVariants, type InputProps } from "@ui-source/components/input"

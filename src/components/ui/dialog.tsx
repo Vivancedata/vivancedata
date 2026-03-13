@@ -11,4 +11,4 @@ export {
   DialogFooter,
   DialogTitle,
   DialogDescription,
-} from "@vivancedata/ui"
+} from "@ui-source/components/dialog"

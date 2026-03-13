@@ -1,1 +1,1 @@
-export { Progress, type ProgressProps } from "@vivancedata/ui"
+export { Progress, type ProgressProps } from "@ui-source/components/progress"

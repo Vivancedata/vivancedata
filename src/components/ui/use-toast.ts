@@ -1,1 +1,1 @@
-export { useToast, toast, toastReducer as reducer } from "@vivancedata/ui";
+export { useToast, toast, reducer } from "@ui-source/components/use-toast";

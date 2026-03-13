@@ -5,4 +5,4 @@ export {
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from "@vivancedata/ui"
+} from "@ui-source/components/accordion"
