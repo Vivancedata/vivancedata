@@ -11,6 +11,7 @@
     "type-check": "tsc --noEmit",
     "react-doctor:score": "npx -y react-doctor@latest . --score",
     "react-doctor:ci": "node scripts/check-react-doctor-score.mjs",
+    "lighthouse:ci": "node scripts/check-lighthouse-score.mjs http://127.0.0.1:3000 /",
     "test": "npm run test:unit && npm run test:integration && npm run test:e2e",
     "test:unit": "vitest run --config vitest.unit.config.ts --coverage",
     "test:integration": "vitest run --config vitest.integration.config.ts --coverage",

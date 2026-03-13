@@ -8,6 +8,14 @@ on:
 
 env:
   NODE_VERSION: '20'
+  BASE_BRANCH: ${{ github.base_ref || github.event.repository.default_branch }}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   lint:
@@ -37,7 +45,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.head_ref || github.ref_name }}
           fetch-depth: 0
 
       - name: Setup Node.js
@@ -50,11 +57,11 @@ jobs:
         run: npm ci
 
       - name: Fetch base branch for diff scan
-        run: git fetch origin main --depth=1
+        run: git fetch origin "${BASE_BRANCH}" --depth=1
 
       - name: Enforce React Doctor score
         env:
-          REACT_DOCTOR_DIFF_BASE: origin/main
+          REACT_DOCTOR_DIFF_BASE: origin/${{ env.BASE_BRANCH }}
         run: npm run react-doctor:ci
 
   test:
@@ -114,6 +121,49 @@ jobs:
           name: build-output
           path: .next
           retention-days: 7
+
+  lighthouse:
+    name: Lighthouse (100/100/100/100)
+    runs-on: ubuntu-latest
+    needs: [lint, react_doctor, test, typecheck]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build
+
+      - name: Start application
+        run: |
+          npm run start -- -p 3000 > /tmp/vivancedata.log 2>&1 &
+          echo $! > /tmp/vivancedata.pid
+          for i in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:3000/ > /dev/null; then
+              exit 0
+            fi
+            sleep 2
+          done
+          cat /tmp/vivancedata.log
+          exit 1
+
+      - name: Enforce Lighthouse scores
+        run: npm run lighthouse:ci
+
+      - name: Stop application
+        if: always()
+        run: |
+          if [ -f /tmp/vivancedata.pid ]; then
+            kill "$(cat /tmp/vivancedata.pid)" || true
+          fi
 
   typecheck:
     name: TypeScript Check
