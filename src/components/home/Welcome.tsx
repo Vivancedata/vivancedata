@@ -35,7 +35,10 @@ export default function Welcome() {
           </p>
         </div>
 
-        <div className="mb-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div
+          className="mb-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4"
+          style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "2rem" }}
+        >
           {features.map((feature) => {
             const Icon = featureIcons[feature.icon as keyof typeof featureIcons] ?? Brain;
 
@@ -56,7 +59,10 @@ export default function Welcome() {
           })}
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-center gap-6 sm:flex-row">
+        <div
+          className="mt-12 flex flex-col items-center justify-center gap-6 sm:flex-row"
+          style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "center", gap: "1.5rem" }}
+        >
           <Link href="/services" className={primaryCtaClass}>
             <span>Explore Our Services</span>
             <ChevronRight className="ml-2 h-5 w-5" aria-hidden="true" />

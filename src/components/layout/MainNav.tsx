@@ -15,7 +15,10 @@ export function MainNav() {
       "supports-[backdrop-filter]:bg-background/80"
     )}>
       <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
+        <div
+          className="flex items-center justify-between"
+          style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "1rem" }}
+        >
           <div className="flex items-center">
             <Link href="/" aria-label={siteConfig.name} className="mr-6 flex items-center space-x-2">
               <div className="transition-transform duration-300 hover:rotate-6">
@@ -28,7 +31,11 @@ export function MainNav() {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1" aria-label="Main navigation">
+          <nav
+            className="hidden md:flex items-center gap-1"
+            aria-label="Main navigation"
+            style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}
+          >
             {mainNavItems.map((item) => (
               <div key={item.name}>
                 <Link
@@ -46,7 +53,10 @@ export function MainNav() {
             ))}
           </nav>
 
-          <div className="hidden md:flex items-center gap-4">
+          <div
+            className="hidden md:flex items-center gap-4"
+            style={{ display: "flex", alignItems: "center", gap: "1rem" }}
+          >
             <Button
               variant="ghost"
               size="icon"
