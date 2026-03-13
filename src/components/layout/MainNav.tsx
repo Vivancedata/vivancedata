@@ -34,7 +34,6 @@ export function MainNav() {
           <nav
             className="hidden md:flex items-center gap-1"
             aria-label="Main navigation"
-            style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}
           >
             {mainNavItems.map((item) => (
               <div key={item.name}>
@@ -55,7 +54,6 @@ export function MainNav() {
 
           <div
             className="hidden md:flex items-center gap-4"
-            style={{ display: "flex", alignItems: "center", gap: "1rem" }}
           >
             <Button
               variant="ghost"

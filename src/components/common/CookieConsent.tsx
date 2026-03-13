@@ -328,20 +328,14 @@ export function CookieConsent() {
         setIsVisible(true);
         window.removeEventListener("pointerdown", revealBanner);
         window.removeEventListener("keydown", revealBanner);
-        window.removeEventListener("scroll", revealBanner);
       };
-
-      const fallbackTimer = window.setTimeout(revealBanner, 20_000);
 
       window.addEventListener("pointerdown", revealBanner, { once: true, passive: true });
       window.addEventListener("keydown", revealBanner, { once: true });
-      window.addEventListener("scroll", revealBanner, { once: true, passive: true });
 
       return () => {
-        window.clearTimeout(fallbackTimer);
         window.removeEventListener("pointerdown", revealBanner);
         window.removeEventListener("keydown", revealBanner);
-        window.removeEventListener("scroll", revealBanner);
       };
     }
   }, []);
