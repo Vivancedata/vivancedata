@@ -20,7 +20,7 @@ export function MainNav() {
           style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "1rem" }}
         >
           <div className="flex items-center">
-            <Link href="/" aria-label={siteConfig.name} className="mr-6 flex items-center space-x-2">
+            <Link href="/" prefetch={false} aria-label={siteConfig.name} className="mr-6 flex items-center space-x-2">
               <div className="transition-transform duration-300 hover:rotate-6">
                 <Icons.logo className="h-8 w-8" />
               </div>
@@ -62,7 +62,7 @@ export function MainNav() {
               aria-label="Search blog content"
               asChild
             >
-              <Link href="/blog">
+              <Link href="/blog" prefetch={false}>
                 <Search className="h-5 w-5" />
               </Link>
             </Button>
@@ -71,7 +71,7 @@ export function MainNav() {
               className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground shadow-md hover:shadow-lg transition-[background-color,box-shadow] duration-300"
               asChild
             >
-              <Link href="/contact">
+              <Link href="/contact" prefetch={false}>
                 Contact Us
               </Link>
             </Button>

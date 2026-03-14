@@ -5,7 +5,7 @@ import Image from "next/image";
 import logo from "@/public/icons/Logo.png";
 import { Facebook, Twitter, Linkedin, Instagram, Github, Mail } from "lucide-react";
 import { footerLinks, socialLinks } from "@/constants/navigation";
-import { Newsletter } from "@/components/layout/Newsletter";
+import { DeferredNewsletter } from "@/components/layout/DeferredNewsletter";
 
 export function SiteFooter() {
   const currentYear = new Date().getFullYear();
@@ -34,7 +34,7 @@ export function SiteFooter() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           {/* Company Info */}
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center mb-6">
+            <Link href="/" prefetch={false} className="flex items-center mb-6">
               <Image src={logo} alt="VivanceData Logo" width={40} height={40} className="mr-2" />
               <span className="text-xl font-bold">{siteConfig.name}</span>
             </Link>
@@ -74,6 +74,7 @@ export function SiteFooter() {
                   <li key={`${column.title}-${link.href}`}>
                     <Link
                       href={link.href}
+                      prefetch={false}
                       className="text-muted-foreground hover:text-primary transition-colors"
                     >
                       {link.label}
@@ -86,7 +87,7 @@ export function SiteFooter() {
         </div>
 
         {/* Newsletter */}
-        <Newsletter />
+        <DeferredNewsletter />
 
         {/* Bottom Bar */}
         <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center">
@@ -94,8 +95,8 @@ export function SiteFooter() {
             © {currentYear} {siteConfig.name}. All rights reserved.
           </p>
           <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
-            <Link href="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link>
-            <Link href="/terms-of-service" className="hover:text-primary transition-colors">Terms of Service</Link>
+            <Link href="/privacy-policy" prefetch={false} className="hover:text-primary transition-colors">Privacy Policy</Link>
+            <Link href="/terms-of-service" prefetch={false} className="hover:text-primary transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>

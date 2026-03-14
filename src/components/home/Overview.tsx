@@ -61,7 +61,7 @@ export default function Overview() {
                 </ul>
                 <CardFooter className="mt-auto px-0 pt-8">
                   <Button className="bg-primary text-primary-foreground hover:bg-primary/90" asChild>
-                    <Link href={serviceLinks[service.id] ?? "/services"}>
+                    <Link href={serviceLinks[service.id] ?? "/services"} prefetch={false}>
                       <span>{service.cta}</span>
                       <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
                     </Link>
