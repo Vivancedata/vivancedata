@@ -48,6 +48,7 @@ const nextConfig = {
   experimental: {
     // Enable scroll restoration
     scrollRestoration: true,
+    inlineCss: true,
     // Optimize package imports for smaller bundles
     optimizePackageImports: ['lucide-react', 'framer-motion', '@radix-ui/react-icons'],
   },
