@@ -1,5 +1,3 @@
-import Link from "next/link";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Clock, DollarSign, Quote, StarIcon, TrendingUp, Zap } from "lucide-react";
 import { testimonials, type TestimonialMetrics } from "@/constants/testimonials";
@@ -86,11 +84,9 @@ export default function Testimonials() {
               <CardContent className="relative flex h-full flex-col p-8">
                 <Quote className="absolute right-4 top-4 h-12 w-12 text-primary/10" aria-hidden="true" />
                 <div className="mb-6 flex items-center">
-                  <Avatar className="mr-4 h-14 w-14 border-2 border-primary/20 shadow-md">
-                    <AvatarFallback className="bg-primary text-xl font-semibold text-primary-foreground">
-                      {testimonial.initials}
-                    </AvatarFallback>
-                  </Avatar>
+                  <div className="mr-4 flex h-14 w-14 items-center justify-center rounded-full border-2 border-primary/20 bg-primary text-xl font-semibold text-primary-foreground shadow-md">
+                    <span aria-hidden="true">{testimonial.initials}</span>
+                  </div>
                   <div>
                     <p className="text-lg font-bold text-foreground">{testimonial.name}</p>
                     <p className="text-sm text-muted-foreground">{testimonial.role}</p>
@@ -126,13 +122,13 @@ export default function Testimonials() {
         </div>
 
         <div className="mt-16 text-center">
-          <Link
+          <a
             href="/case-studies"
             className="inline-flex items-center rounded-md font-medium text-primary transition-colors hover:text-primary/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
             <span>View all case studies</span>
             <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
-          </Link>
+          </a>
         </div>
       </div>
     </section>

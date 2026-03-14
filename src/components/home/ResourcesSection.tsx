@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {
   ArrowRight,
   BarChart2,
@@ -61,10 +60,10 @@ export default function ResourcesSection() {
             className="h-auto border-primary px-6 py-6 text-primary transition-all duration-300 hover:bg-primary/10"
             asChild
           >
-            <Link href="/resources">
+            <a href="/resources">
               <span>View All Resources</span>
               <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-            </Link>
+            </a>
           </Button>
         </div>
 
@@ -115,10 +114,10 @@ export default function ResourcesSection() {
 
                 <CardFooter className="mt-auto pt-0">
                   <Button className="w-full" asChild>
-                    <Link href={resource.downloadUrl}>
+                    <a href={resource.downloadUrl}>
                       <Download className="mr-2 h-4 w-4" aria-hidden="true" />
                       <span>Get Free Download</span>
-                    </Link>
+                    </a>
                   </Button>
                 </CardFooter>
               </Card>
@@ -136,10 +135,10 @@ export default function ResourcesSection() {
               </p>
             </div>
             <Button size="lg" className="h-auto rounded-xl px-8 py-6 text-lg" asChild>
-              <Link href="/contact?inquiry=custom-research">
+              <a href="/contact?inquiry=custom-research">
                 <span>Request Custom Report</span>
                 <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
-              </Link>
+              </a>
             </Button>
           </div>
         </div>

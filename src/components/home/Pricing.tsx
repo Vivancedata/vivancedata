@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { ArrowRight, Check, X } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -85,10 +84,10 @@ export default function Pricing() {
                   variant={tier.popular ? "default" : "outline"}
                   asChild
                 >
-                  <Link href="/contact">
+                  <a href="/contact">
                     <span>{tier.cta}</span>
                     <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-                  </Link>
+                  </a>
                 </Button>
               </CardFooter>
             </Card>
@@ -115,10 +114,10 @@ export default function Pricing() {
               ))}
             </ul>
             <Button className="mt-6 bg-primary text-primary-foreground hover:bg-primary/90" asChild>
-              <Link href="/contact">
+              <a href="/contact">
                 <span>Schedule a Consultation</span>
                 <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-              </Link>
+              </a>
             </Button>
           </div>
           <div className="rounded-2xl bg-primary p-8 text-primary-foreground">
@@ -135,7 +134,7 @@ export default function Pricing() {
                 className="mt-4 bg-primary-foreground text-primary hover:bg-primary-foreground/90"
                 asChild
               >
-                <Link href="/contact">Contact Our Team</Link>
+                <a href="/contact">Contact Our Team</a>
               </Button>
             </div>
           </div>

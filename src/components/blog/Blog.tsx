@@ -1,8 +1,9 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
+
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Calendar, Clock, ChevronRight } from "lucide-react";
-import Link from "next/link";
 import { Avatar } from "@/components/common/Avatar";
 
 const IMPLEMENTATION_PHASES = ["Assess", "Design", "Build", "Deploy"] as const;
@@ -161,10 +162,10 @@ export default function Blog() {
             variant="outline"
             className="h-auto border-primary px-6 py-6 text-primary transition-all duration-300 hover:bg-primary/10"
           >
-            <Link href="/blog" className="group">
+            <a href="/blog" className="group">
               <span>View All Articles</span>
               <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
+            </a>
           </Button>
         </div>
 
@@ -182,9 +183,9 @@ export default function Blog() {
                 </div>
               </div>
               <CardHeader className="relative z-10 -mt-10 mx-4 rounded-lg border border-border bg-card/90 shadow-lg backdrop-blur-sm">
-                <Link href={`/blog/${post.slug}`} className="transition-colors hover:text-primary">
+                <a href={`/blog/${post.slug}`} className="transition-colors hover:text-primary">
                   <CardTitle className="text-xl font-bold">{post.title}</CardTitle>
-                </Link>
+                </a>
                 <div className="mt-2 flex items-center space-x-4 text-sm text-muted-foreground">
                   <div className="flex items-center">
                     <Calendar className="mr-1 h-4 w-4 text-primary" />
@@ -207,14 +208,14 @@ export default function Blog() {
                     <p className="text-xs text-muted-foreground">{post.author.role}</p>
                   </div>
                 </div>
-                <Link
+                <a
                   href={`/blog/${post.slug}`}
                   className="group/link flex items-center text-sm font-medium text-primary transition-colors hover:text-primary/80"
                 >
                   <span>Read More</span>
                   <span className="sr-only"> about {post.title}</span>
                   <ChevronRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover/link:translate-x-1" />
-                </Link>
+                </a>
               </CardFooter>
             </Card>
           ))}

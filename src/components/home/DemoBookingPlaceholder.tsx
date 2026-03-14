@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 export function DemoBookingPlaceholder() {
   return (
     <section
@@ -22,12 +20,12 @@ export function DemoBookingPlaceholder() {
             consultation.
           </p>
           <div className="mt-6">
-            <Link
+            <a
               href="/contact"
               className="inline-flex min-h-11 items-center justify-center rounded-xl bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-elevation-1 transition-colors duration-200 hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               Schedule a Consultation
-            </Link>
+            </a>
           </div>
         </div>
       </div>

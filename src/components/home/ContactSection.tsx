@@ -1,6 +1,6 @@
 import React from "react";
 import { CheckCircle } from "lucide-react";
-import { ProfileForm } from "@/components/contact/Form";
+import { DeferredProfileForm } from "@/components/contact/DeferredProfileForm";
 
 interface Benefit {
   title: string;
@@ -46,7 +46,7 @@ export function ContactSection({
           </div>
         </div>
         <div>
-          <ProfileForm />
+          <DeferredProfileForm />
         </div>
       </div>
     </section>

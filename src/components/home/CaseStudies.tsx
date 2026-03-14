@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {
   ArrowRight,
   Brain,
@@ -136,10 +135,10 @@ export default function CaseStudies() {
 
                     <CardFooter className="mt-10 p-0">
                       <Button className="rounded-xl px-8 py-6 text-lg" asChild>
-                        <Link href="/case-studies">
+                        <a href="/case-studies">
                           <span>Read Full Case Study</span>
                           <ChevronRight className="ml-2 h-5 w-5" aria-hidden="true" />
-                        </Link>
+                        </a>
                       </Button>
                     </CardFooter>
                   </div>
@@ -173,10 +172,10 @@ export default function CaseStudies() {
 
         <div className="mt-16 text-center">
           <Button variant="outline" className="h-auto border-primary px-6 py-6 text-primary hover:bg-primary/10" asChild>
-            <Link href="/case-studies">
+            <a href="/case-studies">
               <span>View All Case Studies</span>
               <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
-            </Link>
+            </a>
           </Button>
         </div>
       </div>

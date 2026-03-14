@@ -1,6 +1,5 @@
 "use client"
 
-import Link from "next/link"
 import { useState } from "react"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -48,14 +47,13 @@ export function MainNavMobile({ items }: MainNavMobileProps) {
           <div className="flex flex-col space-y-3">
             {items.map((item) => (
               <div key={item.name}>
-                <Link
+                <a
                   href={item.href}
-                  prefetch={false}
                   className="block rounded-md px-4 py-2 text-foreground/80 transition-colors hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}
-                </Link>
+                </a>
               </div>
             ))}
             <div className="pt-2">
@@ -63,9 +61,9 @@ export function MainNavMobile({ items }: MainNavMobileProps) {
                 className="w-full bg-gradient-to-r from-primary to-accent text-primary-foreground hover:from-primary/90 hover:to-accent/90"
                 asChild
               >
-                <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+                <a href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
                   Contact Us
-                </Link>
+                </a>
               </Button>
             </div>
           </div>

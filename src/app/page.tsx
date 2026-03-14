@@ -17,7 +17,6 @@ import { CTASection } from "@/components/home/CTASection";
 import { DemoBookingPlaceholder } from "@/components/home/DemoBookingPlaceholder";
 import { Users, CheckCircle, BarChart3, Clock, Award } from "lucide-react";
 import { Metadata } from "next";
-import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "VivanceData - AI Solutions for Modern Businesses",
@@ -119,9 +118,11 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-between">
-      <Script id="homepage-jsonld" type="application/ld+json">
-        {JSON.stringify(jsonLd)}
-      </Script>
+      <script
+        id="homepage-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Welcome />
       <ClientLogos />
       <TrustSection />

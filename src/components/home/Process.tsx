@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {
   ArrowRight,
   ClipboardCheck,
@@ -87,10 +86,10 @@ const Process = () => {
           <p className="mx-auto mb-6 max-w-2xl text-lg text-foreground/80">
             Ready to transform your business with our AI solutions? Let&apos;s start the journey together.
           </p>
-          <Link href="/contact" className={ctaClass}>
+          <a href="/contact" className={ctaClass}>
             <span>Schedule a Consultation</span>
             <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-          </Link>
+          </a>
         </div>
       </div>
     </section>

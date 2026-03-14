@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { BarChart3, Brain, CheckCircle2, ChevronRight, Zap } from "lucide-react";
 import { features } from "@/constants/welcome";
 
@@ -63,13 +62,13 @@ export default function Welcome() {
           className="mt-12 flex flex-col items-center justify-center gap-6 sm:flex-row"
           style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "center", gap: "1.5rem" }}
         >
-          <Link href="/services" prefetch={false} className={primaryCtaClass}>
+          <a href="/services" className={primaryCtaClass}>
             <span>Explore Our Services</span>
             <ChevronRight className="ml-2 h-5 w-5" aria-hidden="true" />
-          </Link>
-          <Link href="/contact" prefetch={false} className={secondaryCtaClass}>
+          </a>
+          <a href="/contact" className={secondaryCtaClass}>
             Schedule a Consultation
-          </Link>
+          </a>
         </div>
       </div>
     </section>
