@@ -93,7 +93,7 @@ const getPhaseColor = (number: number): string => {
 
 const getPhaseAccent = (number: number): string => {
   const accents = [
-    'bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary/80',
+    'bg-primary/10 dark:bg-primary/20 text-brand dark:text-brand/80',
     'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300',
     'bg-violet-100 dark:bg-violet-900/30 text-violet-600 dark:text-violet-300',
     'bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-300',
@@ -175,7 +175,7 @@ function RapidAcronymSection() {
         <div className="flex flex-wrap justify-center gap-4 md:gap-8">
           {RAPID_WORDS.map((word, index) => (
             <div key={word} className="flex items-center gap-2">
-              <span className="text-3xl md:text-5xl font-bold text-primary">
+              <span className="text-3xl md:text-5xl font-bold text-brand">
                 {word.charAt(0)}
               </span>
               <span className="text-lg md:text-xl text-gray-600 dark:text-gray-400 font-medium">
@@ -199,7 +199,7 @@ function PhasesTimelineSection() {
     <section className="w-full py-20 md:py-28 bg-gray-50 dark:bg-slate-800">
       <Container className="max-w-7xl">
         <div className="text-center mb-16">
-          <div className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary mb-4">
+          <div className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-brand mb-4">
             The 6-Phase Journey
           </div>
           <Heading as="h2" className="text-3xl md:text-4xl mb-4">
@@ -240,7 +240,7 @@ function PhasesTimelineSection() {
                             Phase {phase.number}
                           </span>
                           <h3 className="text-2xl font-bold">{phase.title}</h3>
-                          <p className="text-primary font-medium">{phase.subtitle}</p>
+                          <p className="text-brand font-medium">{phase.subtitle}</p>
                         </div>
                       </div>
 
@@ -324,7 +324,7 @@ function BenefitsSection() {
                 <div className="flex items-start justify-between mb-4">
                   <h3 className="text-xl font-bold">{benefit.title}</h3>
                   {benefit.metric && (
-                    <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-semibold text-primary">
+                    <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-semibold text-brand">
                       {benefit.metric}
                     </span>
                   )}
@@ -375,9 +375,9 @@ function ComparisonSection() {
             </CardContent>
           </Card>
 
-          <Card className="border-2 border-primary shadow-lg">
+          <Card className="border-2 border-brand shadow-lg">
             <CardContent className="p-8">
-              <h3 className="text-xl font-bold mb-6 text-primary">
+              <h3 className="text-xl font-bold mb-6 text-brand">
                 RAPID Framework
               </h3>
               <ul className="space-y-4">
@@ -445,7 +445,7 @@ function MethodologyCtaSection() {
           <Button
             asChild
             size="lg"
-            className="bg-white text-primary hover:bg-white/90 font-semibold"
+            className="bg-white text-brand hover:bg-white/90 font-semibold"
           >
             <Link href="/contact">
               Schedule a Discovery Call

@@ -75,7 +75,7 @@ const CareerPage = () => {
                 className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 flex gap-4"
               >
                 <div className="bg-primary/10 p-3 rounded-lg h-fit">
-                  <benefit.icon className="h-6 w-6 text-primary" />
+                  <benefit.icon className="h-6 w-6 text-brand" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-lg mb-2">{benefit.title}</h3>
@@ -94,7 +94,7 @@ const CareerPage = () => {
 
           <div className="bg-primary/5 dark:bg-primary/10 rounded-xl p-8 text-center">
             <div className="bg-primary/10 dark:bg-primary/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Briefcase className="h-8 w-8 text-primary" />
+              <Briefcase className="h-8 w-8 text-brand" />
             </div>
             <h3 className="text-xl font-semibold mb-3">No Open Positions Right Now</h3>
             <p className="text-gray-600 dark:text-gray-400 max-w-md mx-auto mb-6">
@@ -104,7 +104,7 @@ const CareerPage = () => {
             </p>
             <a
               href="mailto:careers@vivancedata.com?subject=Career Interest at VivanceData"
-              className="inline-flex items-center gap-2 text-primary hover:underline font-medium"
+              className="inline-flex items-center gap-2 text-brand hover:underline font-medium"
             >
               <Mail className="h-4 w-4" />
               careers@vivancedata.com

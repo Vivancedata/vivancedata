@@ -13,7 +13,7 @@ const Partners = () => {
     <section className="w-full py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <div className="inline-block rounded-full bg-primary/10 dark:bg-primary/20 px-3 py-1 text-sm font-medium text-primary mb-4">
+          <div className="inline-block rounded-full bg-primary/10 dark:bg-primary/20 px-3 py-1 text-sm font-medium text-brand mb-4">
             Industries We Serve
           </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Sectors & Domains</h2>
@@ -24,7 +24,7 @@ const Partners = () => {
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
           {partners.map((partner) => (
-            <Card key={partner.name} className="border border-border hover:border-primary/30 hover:shadow-md dark:hover:shadow-primary/5 transition-all duration-300 bg-card">
+            <Card key={partner.name} className="border border-border hover:border-brand/30 hover:shadow-md dark:hover:shadow-primary/5 transition-all duration-300 bg-card">
               <CardContent className="flex flex-col items-center justify-center p-6 h-32">
                 <div className="bg-primary text-primary-foreground text-2xl font-bold w-12 h-12 rounded-full flex items-center justify-center mb-3">
                   {partner.name.charAt(0)}
@@ -48,7 +48,7 @@ const Partners = () => {
               <div className="space-y-4">
                 <div className="flex items-start">
                   <div className="rounded-full bg-primary/10 dark:bg-primary/20 p-1 mr-3 mt-1">
-                    <svg className="h-3 w-3 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="h-3 w-3 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
@@ -56,7 +56,7 @@ const Partners = () => {
                 </div>
                 <div className="flex items-start">
                   <div className="rounded-full bg-primary/10 dark:bg-primary/20 p-1 mr-3 mt-1">
-                    <svg className="h-3 w-3 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="h-3 w-3 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
@@ -64,7 +64,7 @@ const Partners = () => {
                 </div>
                 <div className="flex items-start">
                   <div className="rounded-full bg-primary/10 dark:bg-primary/20 p-1 mr-3 mt-1">
-                    <svg className="h-3 w-3 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="h-3 w-3 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
@@ -81,7 +81,7 @@ const Partners = () => {
             <div className="bg-card dark:bg-card/80 rounded-xl p-6 shadow-md dark:shadow-primary/5">
               <div className="text-center mb-6">
                 <div className="inline-block bg-primary/10 dark:bg-primary/20 rounded-full p-3 mb-4">
-                  <svg className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="h-8 w-8 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                   </svg>
                 </div>
@@ -95,7 +95,7 @@ const Partners = () => {
                   Initial consultations are free and carry no obligation.
                 </p>
                 <div className="flex justify-center">
-                  <Button variant="outline" className="border-primary text-primary hover:bg-primary/10 dark:hover:bg-primary/20" asChild>
+                  <Button variant="outline" className="border-brand text-brand hover:bg-primary/10 dark:hover:bg-primary/20" asChild>
                     <Link href="/contact">Schedule a Call</Link>
                   </Button>
                 </div>

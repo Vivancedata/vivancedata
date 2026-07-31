@@ -94,11 +94,11 @@ const jsonLd = {
 
 export default function Home() {
   const stats = [
-    { icon: <Users className="h-8 w-8 text-primary" />, value: "Advisory + Build", label: "Engagement Model" },
-    { icon: <CheckCircle className="h-8 w-8 text-primary" />, value: "Roadmap to Rollout", label: "Delivery Scope" },
-    { icon: <BarChart3 className="h-8 w-8 text-primary" />, value: "Outcome-Driven", label: "Measurement Focus" },
-    { icon: <Clock className="h-8 w-8 text-primary" />, value: "Fast Iteration", label: "Execution Style" },
-    { icon: <Award className="h-8 w-8 text-primary" />, value: "Responsible AI", label: "Governance Standard" }
+    { icon: <Users className="h-8 w-8 text-brand" />, value: "Advisory + Build", label: "Engagement Model" },
+    { icon: <CheckCircle className="h-8 w-8 text-brand" />, value: "Roadmap to Rollout", label: "Delivery Scope" },
+    { icon: <BarChart3 className="h-8 w-8 text-brand" />, value: "Outcome-Driven", label: "Measurement Focus" },
+    { icon: <Clock className="h-8 w-8 text-brand" />, value: "Fast Iteration", label: "Execution Style" },
+    { icon: <Award className="h-8 w-8 text-brand" />, value: "Responsible AI", label: "Governance Standard" }
   ];
 
   const contactBenefits = [

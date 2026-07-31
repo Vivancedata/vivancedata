@@ -9,4 +9,4 @@ export {
   SelectSeparator,
   SelectScrollUpButton,
   SelectScrollDownButton,
-} from "@ui-source/components/select"
+} from "@vivancedata/ui"

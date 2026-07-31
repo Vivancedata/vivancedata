@@ -157,13 +157,13 @@ function DemoFeatureColumn() {
   return (
     <AnimateOnScroll variant="fadeInLeft">
       <div>
-        <div className="inline-block rounded-full bg-primary/10 dark:bg-primary/20 px-4 py-1.5 text-sm font-medium text-primary mb-6">
+        <div className="inline-block rounded-full bg-primary/10 dark:bg-primary/20 px-4 py-1.5 text-sm font-medium text-brand mb-6">
           Book a Demo
         </div>
 
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground leading-tight">
           Experience the Future of{" "}
-          <span className="text-primary">AI-Powered Business</span>
+          <span className="text-brand">AI-Powered Business</span>
         </h2>
 
         <p className="text-lg text-muted-foreground mb-8 max-w-lg">
@@ -174,7 +174,7 @@ function DemoFeatureColumn() {
         <StaggerContainer className="space-y-4" staggerDelay={0.1} direction="up">
           {demoFeatures.map((feature) => (
             <div key={feature.title} className="flex items-start gap-4 group">
-              <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
+              <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-brand group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
                 {feature.icon}
               </div>
               <div>
@@ -204,7 +204,7 @@ function DemoFormCard({ state, onChange, onSubmit }: DemoFormProps) {
             <>
               <div className="text-center mb-8">
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 dark:bg-primary/20 mb-4">
-                  <Play className="h-8 w-8 text-primary" />
+                  <Play className="h-8 w-8 text-brand" />
                 </div>
                 <h3 className="text-2xl font-bold text-foreground mb-2">Request Your Demo</h3>
                 <p className="text-muted-foreground">
@@ -358,7 +358,7 @@ function DemoFormCard({ state, onChange, onSubmit }: DemoFormProps) {
                   Prefer to talk directly?{" "}
                   <Link
                     href="/contact"
-                    className="text-primary hover:text-primary/80 font-medium underline-offset-4 hover:underline transition-colors"
+                    className="text-brand hover:text-brand/80 font-medium underline-offset-4 hover:underline transition-colors"
                   >
                     Contact us
                   </Link>
@@ -368,7 +368,7 @@ function DemoFormCard({ state, onChange, onSubmit }: DemoFormProps) {
           ) : (
             <div className="text-center py-8">
               <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 dark:bg-primary/20 mb-6">
-                <CheckCircle className="h-10 w-10 text-primary" />
+                <CheckCircle className="h-10 w-10 text-brand" />
               </div>
               <h3 className="text-2xl font-bold text-foreground mb-3">Demo Request Received</h3>
               <p className="text-muted-foreground mb-6 max-w-sm mx-auto">
@@ -396,15 +396,15 @@ function DemoTrustIndicators() {
       <div className="mt-16 pt-8 border-t border-border/50">
         <div className="flex flex-wrap items-center justify-center gap-8 text-sm text-muted-foreground">
           <div className="flex items-center gap-2">
-            <CheckCircle className="h-4 w-4 text-primary" />
+            <CheckCircle className="h-4 w-4 text-brand" />
             <span>No credit card required</span>
           </div>
           <div className="flex items-center gap-2">
-            <CheckCircle className="h-4 w-4 text-primary" />
+            <CheckCircle className="h-4 w-4 text-brand" />
             <span>30-minute personalized session</span>
           </div>
           <div className="flex items-center gap-2">
-            <CheckCircle className="h-4 w-4 text-primary" />
+            <CheckCircle className="h-4 w-4 text-brand" />
             <span>Free consultation included</span>
           </div>
         </div>

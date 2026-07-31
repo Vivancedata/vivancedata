@@ -73,7 +73,7 @@ const Phase = ({ number, title, description, checks }: PhaseProps) => (
       <ul className="space-y-2">
         {checks.map((check) => (
           <li key={check} className="flex items-start">
-            <Check className="h-5 w-5 text-primary mt-0.5 mr-2 flex-shrink-0" />
+            <Check className="h-5 w-5 text-brand mt-0.5 mr-2 flex-shrink-0" />
             <span className="text-gray-700 dark:text-gray-200">{check}</span>
           </li>
         ))}
@@ -113,32 +113,32 @@ const CaseStudy = ({ title, challenge, approach, outcome }: CaseStudyProps) => (
 export default function ResponsibleAIPage() {
   const principles = [
     {
-      icon: <Users className="h-6 w-6 text-primary" />,
+      icon: <Users className="h-6 w-6 text-brand" />,
       title: "Human-Centered & Inclusive",
       description: "We design AI systems that augment human capabilities, respect human autonomy, and consider the needs of all stakeholders, including underrepresented groups."
     },
     {
-      icon: <Eye className="h-6 w-6 text-primary" />,
+      icon: <Eye className="h-6 w-6 text-brand" />,
       title: "Transparent & Explainable",
       description: "We ensure AI systems are understandable, with clear documentation of how decisions are made and the ability to explain outcomes in human terms."
     },
     {
-      icon: <Shield className="h-6 w-6 text-primary" />,
+      icon: <Shield className="h-6 w-6 text-brand" />,
       title: "Fair & Unbiased",
       description: "We actively identify and mitigate biases in data and algorithms to ensure equitable outcomes across different demographic groups."
     },
     {
-      icon: <BarChart3 className="h-6 w-6 text-primary" />,
+      icon: <BarChart3 className="h-6 w-6 text-brand" />,
       title: "Robust & Reliable",
       description: "We build AI systems that perform consistently, handle edge cases gracefully, and maintain accuracy over time with changing conditions."
     },
     {
-      icon: <Scale className="h-6 w-6 text-primary" />,
+      icon: <Scale className="h-6 w-6 text-brand" />,
       title: "Accountable & Governed",
       description: "We establish clear lines of responsibility for AI systems, with appropriate oversight and governance throughout the lifecycle."
     },
     {
-      icon: <FileText className="h-6 w-6 text-primary" />,
+      icon: <FileText className="h-6 w-6 text-brand" />,
       title: "Privacy & Security",
       description: "We implement strong data protection measures and ensure AI systems respect privacy rights while maintaining security against threats."
     }
@@ -235,10 +235,10 @@ export default function ResponsibleAIPage() {
       <div className="flex flex-col md:flex-row gap-12 mb-20">
         <div className="w-full md:w-1/2">
           <div className="aspect-video rounded-xl shadow-xl overflow-hidden bg-slate-900 p-6 md:p-8 flex flex-col">
-            <div className="text-primary/60 text-xs font-mono mb-4">Responsible AI Principles</div>
+            <div className="text-brand/60 text-xs font-mono mb-4">Responsible AI Principles</div>
             <div className="flex items-center gap-4 mb-5">
-              <div className="w-14 h-14 rounded-full bg-primary/20 border-2 border-primary/40 flex items-center justify-center flex-shrink-0">
-                <Shield className="w-7 h-7 text-primary" />
+              <div className="w-14 h-14 rounded-full bg-primary/20 border-2 border-brand/40 flex items-center justify-center flex-shrink-0">
+                <Shield className="w-7 h-7 text-brand" />
               </div>
               <p className="text-white/60 text-xs leading-relaxed">
                 Ethical guidelines built in at every stage — from data collection to deployment and monitoring.
@@ -378,7 +378,7 @@ export default function ResponsibleAIPage() {
               <ul className="space-y-2">
                 {tool.features.map((feature) => (
                   <li key={feature} className="flex items-start">
-                    <Check className="h-5 w-5 text-primary mt-0.5 mr-2 flex-shrink-0" />
+                    <Check className="h-5 w-5 text-brand mt-0.5 mr-2 flex-shrink-0" />
                     <span className="text-gray-700 dark:text-gray-200">{feature}</span>
                   </li>
                 ))}

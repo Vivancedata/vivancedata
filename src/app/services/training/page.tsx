@@ -108,7 +108,7 @@ export default function TrainingPage() {
       <div className="flex flex-col md:flex-row gap-12 mb-20">
         <div className="w-full md:w-1/2">
           <div className="aspect-video rounded-xl shadow-xl overflow-hidden bg-slate-900 p-6 md:p-8 flex flex-col">
-            <div className="text-primary/60 text-xs font-mono mb-5">AI Capability Progress</div>
+            <div className="text-brand/60 text-xs font-mono mb-5">AI Capability Progress</div>
             <div className="space-y-4 flex-1">
               {[
                 { role: "Executive Team", score: 87, color: "bg-primary" },
@@ -180,7 +180,7 @@ export default function TrainingPage() {
                     <ul className="space-y-1">
                       {course.topics.map((topic) => (
                         <li key={topic} className="flex items-start">
-                          <Check className="h-4 w-4 text-primary mt-1 mr-2 flex-shrink-0" />
+                          <Check className="h-4 w-4 text-brand mt-1 mr-2 flex-shrink-0" />
                           <span className="text-gray-700 dark:text-gray-200 text-sm">{topic}</span>
                         </li>
                       ))}

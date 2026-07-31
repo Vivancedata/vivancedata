@@ -41,8 +41,8 @@ export function AboutTeam({ title, description, members }: AboutTeamProps): Reac
                   />
                 ) : (
                   <div className="h-full w-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-                    <div className="w-24 h-24 rounded-full bg-primary/30 flex items-center justify-center ring-4 ring-primary/20">
-                      <span className="text-3xl font-bold text-primary">
+                    <div className="w-24 h-24 rounded-full bg-primary/30 flex items-center justify-center ring-4 ring-brand/20">
+                      <span className="text-3xl font-bold text-brand">
                         {member.initials ?? member.name.split(" ").map((n) => n[0]).join("")}
                       </span>
                     </div>
@@ -51,7 +51,7 @@ export function AboutTeam({ title, description, members }: AboutTeamProps): Reac
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-2">{member.name}</h3>
-                <p className="text-primary font-medium mb-4">{member.role}</p>
+                <p className="text-brand font-medium mb-4">{member.role}</p>
                 <p className="text-muted-foreground">{member.bio}</p>
               </div>
             </div>

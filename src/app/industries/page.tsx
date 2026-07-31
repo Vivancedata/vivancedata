@@ -156,7 +156,7 @@ export default function IndustriesPage() {
           ].map((step) => (
             <div key={step.number} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 text-center">
               <div className="w-12 h-12 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center mx-auto mb-4">
-                <span className="text-primary font-bold">{step.number}</span>
+                <span className="text-brand font-bold">{step.number}</span>
               </div>
               <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
               <p className="text-gray-600 dark:text-gray-300">{step.description}</p>

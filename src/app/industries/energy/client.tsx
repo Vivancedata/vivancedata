@@ -29,7 +29,7 @@ const SolutionCard = ({ title, description, icon, benefits }: SolutionCardProps)
     <ul className="space-y-2">
       {benefits.map((benefit) => (
         <li key={`${title}-benefit-${benefit}`} className="flex items-start">
-          <Check className="h-5 w-5 text-primary mt-0.5 mr-2 flex-shrink-0" />
+          <Check className="h-5 w-5 text-brand mt-0.5 mr-2 flex-shrink-0" />
           <span className="text-gray-700 dark:text-gray-200">{benefit}</span>
         </li>
       ))}
@@ -48,7 +48,7 @@ interface CaseStudyProps {
 const CaseStudy = ({ title, client, challenge, solution, results }: CaseStudyProps) => (
   <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
     <h3 className="text-xl font-semibold mb-2">{title}</h3>
-    <p className="text-primary text-sm mb-4">{client}</p>
+    <p className="text-brand text-sm mb-4">{client}</p>
 
     <div className="mb-4">
       <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Challenge</h4>
@@ -65,7 +65,7 @@ const CaseStudy = ({ title, client, challenge, solution, results }: CaseStudyPro
       <ul className="space-y-1">
         {results.map((result) => (
           <li key={`${title}-result-${result}`} className="flex items-start">
-            <Check className="h-5 w-5 text-primary mt-0.5 mr-2 flex-shrink-0" />
+            <Check className="h-5 w-5 text-brand mt-0.5 mr-2 flex-shrink-0" />
             <span className="text-gray-700 dark:text-gray-200">{result}</span>
           </li>
         ))}
@@ -106,7 +106,7 @@ export default function EnergyClient({
       <div className="absolute bottom-40 left-0 w-80 h-80 bg-secondary/5 rounded-full blur-3xl -z-10" />
 
       <AnimateOnScroll variant="fadeInUp" className="text-center mb-16">
-        <div className="inline-block rounded-full bg-primary/10 dark:bg-primary/20 px-4 py-1.5 text-sm font-medium text-primary mb-4">
+        <div className="inline-block rounded-full bg-primary/10 dark:bg-primary/20 px-4 py-1.5 text-sm font-medium text-brand mb-4">
           Energy &amp; Utilities
         </div>
         <Heading className="text-4xl md:text-5xl mb-4">AI Solutions for Energy &amp; Utilities</Heading>
@@ -118,11 +118,11 @@ export default function EnergyClient({
       <div className="flex flex-col md:flex-row gap-12 mb-20">
         <AnimateOnScroll variant="fadeInLeft" className="w-full md:w-1/2">
           <div className="aspect-video rounded-xl shadow-xl overflow-hidden bg-slate-900 p-6 md:p-8 flex flex-col">
-            <div className="text-primary/60 text-xs font-mono mb-4">Grid &amp; Asset Intelligence</div>
+            <div className="text-brand/60 text-xs font-mono mb-4">Grid &amp; Asset Intelligence</div>
             <div className="grid grid-cols-2 gap-3 mb-4">
               <div className="bg-white/5 rounded-lg p-3">
                 <div className="text-white/40 text-xs mb-1">Grid Anomalies Detected</div>
-                <div className="text-2xl font-bold text-primary">↑ 3×</div>
+                <div className="text-2xl font-bold text-brand">↑ 3×</div>
                 <div className="text-white/30 text-xs">vs. rule-based system</div>
               </div>
               <div className="bg-white/5 rounded-lg p-3">
@@ -212,7 +212,7 @@ export default function EnergyClient({
           {stats.map((stat, index) => (
             <AnimateOnScroll key={stat.label} variant="scaleIn" delay={index * 0.1} className="text-center">
               <m.div
-                className="text-4xl md:text-5xl font-bold text-primary mb-2"
+                className="text-4xl md:text-5xl font-bold text-brand mb-2"
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -324,7 +324,7 @@ export default function EnergyClient({
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3, delay: index * 0.2 + i * 0.1 }}
                     >
-                      <Check className="h-5 w-5 text-primary mt-0.5 mr-2 flex-shrink-0" />
+                      <Check className="h-5 w-5 text-brand mt-0.5 mr-2 flex-shrink-0" />
                       <span className="text-gray-700 dark:text-gray-200">{check}</span>
                     </m.li>
                   ))}

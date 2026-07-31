@@ -19,31 +19,31 @@ export default function ManufacturingPage() {
     {
       title: "Predictive Maintenance",
       description: "Sensor-driven anomaly detection that identifies equipment failure patterns before they cause unplanned downtime.",
-      icon: <Wrench className="h-6 w-6 text-primary" />,
+      icon: <Wrench className="h-6 w-6 text-brand" />,
       benefits: ["Earlier failure detection from sensor signals", "Optimized maintenance scheduling", "Reduced unplanned downtime", "Improved asset lifecycle planning"],
     },
     {
       title: "Quality Defect Detection",
       description: "Computer vision and statistical process control models that flag quality issues at the line level before they propagate.",
-      icon: <Shield className="h-6 w-6 text-primary" />,
+      icon: <Shield className="h-6 w-6 text-brand" />,
       benefits: ["Faster detection of out-of-spec production", "Reduced rework and scrap rates", "Root cause traceability", "Integration with existing QC workflows"],
     },
     {
       title: "OEE & Production Analytics",
       description: "Real-time dashboards and ML models that identify throughput bottlenecks and optimize overall equipment effectiveness.",
-      icon: <Activity className="h-6 w-6 text-primary" />,
+      icon: <Activity className="h-6 w-6 text-brand" />,
       benefits: ["Real-time OEE visibility by line and shift", "Bottleneck identification and simulation", "Shift-level performance benchmarking", "Improvement opportunity prioritization"],
     },
     {
       title: "Supply Chain & Inventory Optimization",
       description: "Demand-driven inventory models that reduce raw material carrying costs while maintaining production readiness.",
-      icon: <Settings className="h-6 w-6 text-primary" />,
+      icon: <Settings className="h-6 w-6 text-brand" />,
       benefits: ["Better raw material buffer optimization", "Reduced carrying costs", "Improved supplier lead time accuracy", "Disruption early warning signals"],
     },
     {
       title: "Production Planning Intelligence",
       description: "AI-assisted scheduling and capacity planning that accounts for demand variability, machine constraints, and workforce availability.",
-      icon: <BarChart3 className="h-6 w-6 text-primary" />,
+      icon: <BarChart3 className="h-6 w-6 text-brand" />,
       benefits: ["More accurate capacity utilization forecasts", "Faster response to demand changes", "Reduced scheduling conflicts", "Improved on-time delivery performance"],
     },
   ];

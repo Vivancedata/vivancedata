@@ -87,7 +87,7 @@ export function BlogFilters({ allTags, onSearch, onTagsChange }: BlogFiltersProp
           placeholder={"Search by title, description, or tags\u2026"}
           value={searchQuery}
           onChange={handleSearchChange}
-          className="w-full pl-10 pr-10 bg-secondary/50 border-0 focus-visible:ring-2 focus-visible:ring-primary/20"
+          className="w-full pl-10 pr-10 bg-secondary/50 border-0 focus-visible:ring-2 focus-visible:ring-brand/20"
           aria-label="Search blogs by title, description, or tags"
         />
         {searchQuery && (
@@ -136,7 +136,7 @@ export function BlogFilters({ allTags, onSearch, onTagsChange }: BlogFiltersProp
           <button
             type="button"
             onClick={() => setShowAllTags(prev => !prev)}
-            className="inline-flex items-center rounded-full px-3 py-1 text-xs font-medium text-primary hover:text-primary/80 hover:bg-primary/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            className="inline-flex items-center rounded-full px-3 py-1 text-xs font-medium text-brand hover:text-brand/80 hover:bg-primary/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             aria-label={showAllTags ? "Show fewer blog topics" : `Show all ${allTags.length} blog topics`}
           >
             {showAllTags ? "Show fewer topics" : `Show all ${allTags.length} topics`}

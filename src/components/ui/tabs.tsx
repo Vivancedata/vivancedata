@@ -7,4 +7,4 @@ export {
   TabsContent,
   tabsListVariants,
   tabsTriggerVariants,
-} from "@ui-source/components/tabs"
+} from "@vivancedata/ui"

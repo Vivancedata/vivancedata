@@ -16,4 +16,4 @@ export {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuRadioGroup,
-} from "@ui-source/components/dropdown-menu"
+} from "@vivancedata/ui"

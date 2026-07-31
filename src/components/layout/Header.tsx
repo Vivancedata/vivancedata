@@ -55,7 +55,7 @@ export default function Header() {
                   className="transition-transform duration-300 hover:scale-110"
                 />
               </div>
-              <span className="font-bold text-xl hidden sm:inline-block bg-clip-text text-transparent bg-primary">
+              <span className="text-heading-3 hidden sm:inline-block text-foreground">
                 {siteConfig.name}
               </span>
             </Link>
@@ -73,7 +73,7 @@ export default function Header() {
               >
                 {item.hasDropdown ? (
                   <button 
-                    className="flex items-center px-4 py-2 text-foreground hover:text-primary rounded-md transition-colors group"
+                    className="flex items-center px-4 py-2 text-foreground hover:text-brand rounded-md transition-colors group"
                     onClick={() => toggleDropdown(item.name)}
                   >
                     {item.name}
@@ -82,7 +82,7 @@ export default function Header() {
                 ) : (
                   <Link 
                     href={item.href}
-                    className="px-4 py-2 text-foreground hover:text-primary rounded-md transition-colors relative group"
+                    className="px-4 py-2 text-foreground hover:text-brand rounded-md transition-colors relative group"
                   >
                     {item.name}
                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
@@ -101,7 +101,7 @@ export default function Header() {
                         >
                           <Link
                             href={dropdownItem.href}
-                            className="flex items-center px-5 py-2.5 text-sm text-foreground hover:bg-primary/10 hover:text-primary group/item"
+                            className="flex items-center px-5 py-2.5 text-sm text-foreground hover:bg-primary/10 hover:text-brand group/item"
                           >
                             <span>{dropdownItem.name}</span>
                             <ChevronRight className="ml-auto h-4 w-4 opacity-0 transition-all duration-300 group-hover/item:opacity-100 group-hover/item:translate-x-1" />
@@ -121,7 +121,7 @@ export default function Header() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Button variant="ghost" size="icon" className="text-foreground hover:text-primary transition-colors duration-300">
+            <Button variant="ghost" size="icon" className="text-foreground hover:text-brand transition-colors duration-300">
               <Search className="h-5 w-5" />
             </Button>
             <ModeToggle />
@@ -176,7 +176,7 @@ export default function Header() {
                         <span className="text-lg">{item.name}</span>
                         <ChevronDown 
                           className={cn(
-                            "h-5 w-5 text-primary transition-transform duration-300", 
+                            "h-5 w-5 text-brand transition-transform duration-300", 
                             activeDropdown === item.name ? "transform rotate-180" : ""
                           )} 
                         />
@@ -199,10 +199,10 @@ export default function Header() {
                               >
                                 <Link
                                   href={dropdownItem.href}
-                                  className="flex items-center py-2 text-foreground/80 hover:text-primary transition-colors"
+                                  className="flex items-center py-2 text-foreground/80 hover:text-brand transition-colors"
                                   onClick={() => setIsMenuOpen(false)}
                                 >
-                                  <ChevronRight className="mr-2 h-4 w-4 text-primary/60" />
+                                  <ChevronRight className="mr-2 h-4 w-4 text-brand/60" />
                                   <span>{dropdownItem.name}</span>
                                 </Link>
                               </m.div>
@@ -214,7 +214,7 @@ export default function Header() {
                   ) : (
                     <Link 
                       href={item.href}
-                      className="block py-2 text-lg font-medium text-foreground hover:text-primary transition-colors"
+                      className="block py-2 text-lg font-medium text-foreground hover:text-brand transition-colors"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {item.name}

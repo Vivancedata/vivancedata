@@ -65,7 +65,7 @@ export default function Error({
         <div className="mt-12 pt-8 border-t border-gray-200">
           <Paragraph className="text-sm text-gray-500">
             If this problem persists, please{" "}
-            <Link href="/contact" className="text-primary hover:text-primary/90 underline">
+            <Link href="/contact" className="text-brand hover:text-brand/90 underline">
               contact our support team
             </Link>
             .

@@ -9,7 +9,7 @@ export default function ClientLogos() {
     >
       <div className="container mx-auto px-4">
         <div className="mb-12 text-center md:mb-16">
-          <div className="mb-4 inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
+          <div className="mb-4 inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-brand">
             Industries We Serve
           </div>
           <h2 className="mb-4 text-2xl font-bold text-foreground md:text-4xl lg:text-5xl">
@@ -24,8 +24,8 @@ export default function ClientLogos() {
         <ul className="grid grid-cols-2 gap-6 md:grid-cols-4">
           {clients.map((client) => (
             <li key={client.id}>
-              <div className="flex h-full flex-col items-center justify-center rounded-2xl border border-border/60 bg-card/70 px-4 py-6 text-center shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-md">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+              <div className="flex h-full flex-col items-center justify-center rounded-2xl border border-border/60 bg-card/70 px-4 py-6 text-center shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:border-brand/25 hover:shadow-md">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-brand">
                   <Building2 className="h-7 w-7" aria-hidden="true" />
                 </div>
                 <p className="mt-4 text-sm font-semibold text-foreground md:text-base">{client.name}</p>

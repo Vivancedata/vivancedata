@@ -29,7 +29,7 @@ export default function PublicSectorPage() {
       title: "Citizen Services Automation",
       description:
         "Intelligent routing and triage workflows for citizen requests that reduce manual processing burden while maintaining human oversight.",
-      icon: <Users className="h-6 w-6 text-primary" />,
+      icon: <Users className="h-6 w-6 text-brand" />,
       benefits: [
         "Faster first-response on routine service requests",
         "Accurate routing to the right department or agent",
@@ -41,7 +41,7 @@ export default function PublicSectorPage() {
       title: "Policy Analysis & Summarization",
       description:
         "NLP tools that help policy analysts surface relevant precedents, summarize regulatory documents, and track policy changes at scale.",
-      icon: <FileText className="h-6 w-6 text-primary" />,
+      icon: <FileText className="h-6 w-6 text-brand" />,
       benefits: [
         "Faster review of large regulatory document sets",
         "Consistent extraction of key policy provisions",
@@ -53,7 +53,7 @@ export default function PublicSectorPage() {
       title: "Responsible AI Governance",
       description:
         "AI deployment frameworks designed for public accountability — transparent, explainable, and auditable by design.",
-      icon: <Shield className="h-6 w-6 text-primary" />,
+      icon: <Shield className="h-6 w-6 text-brand" />,
       benefits: [
         "Explainable AI decisions with audit trails",
         "Bias monitoring and mitigation protocols",
@@ -65,7 +65,7 @@ export default function PublicSectorPage() {
       title: "Operational Analytics & Reporting",
       description:
         "Data analytics pipelines that improve visibility into service delivery performance, resource allocation, and outcomes.",
-      icon: <BarChart3 className="h-6 w-6 text-primary" />,
+      icon: <BarChart3 className="h-6 w-6 text-brand" />,
       benefits: [
         "Real-time service delivery dashboards",
         "Automated performance reporting",
@@ -77,7 +77,7 @@ export default function PublicSectorPage() {
       title: "Document & Records Intelligence",
       description:
         "AI-assisted document processing, classification, and records management that reduces manual administration burden.",
-      icon: <Search className="h-6 w-6 text-primary" />,
+      icon: <Search className="h-6 w-6 text-brand" />,
       benefits: [
         "Automated document classification and routing",
         "Faster records retrieval and search",

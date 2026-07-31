@@ -46,7 +46,7 @@ export default function ResourcesSection() {
 
         <div className="mb-16 flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
           <div>
-            <div className="mb-4 inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
+            <div className="mb-4 inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-brand">
               Free Resources
             </div>
             <h2 className="mb-4 text-3xl font-bold text-foreground md:text-5xl">Learn From Our Experts</h2>
@@ -57,7 +57,7 @@ export default function ResourcesSection() {
           </div>
           <Button
             variant="outline"
-            className="h-auto border-primary px-6 py-6 text-primary transition-all duration-300 hover:bg-primary/10"
+            className="h-auto border-brand px-6 py-6 text-brand transition-all duration-300 hover:bg-primary/10"
             asChild
           >
             <a href="/resources">
@@ -78,7 +78,7 @@ export default function ResourcesSection() {
               >
                 <div className="relative flex h-32 items-center justify-center overflow-hidden bg-primary/10">
                   <div className="absolute inset-0 bg-background/20" aria-hidden="true" />
-                  <div className="text-primary/85">
+                  <div className="text-brand/85">
                     <Icon className="h-8 w-8" aria-hidden="true" />
                   </div>
 
@@ -101,7 +101,7 @@ export default function ResourcesSection() {
                 </div>
 
                 <CardHeader className="pb-2">
-                  <CardTitle className="line-clamp-2 text-lg font-bold text-foreground transition-colors duration-300 group-hover:text-primary">
+                  <CardTitle className="line-clamp-2 text-lg font-bold text-foreground transition-colors duration-300 group-hover:text-brand">
                     {resource.title}
                   </CardTitle>
                 </CardHeader>

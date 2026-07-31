@@ -3,9 +3,25 @@ import { SiteFooter as Footer } from "@/components/layout/Footer";
 import PageWrapper from "@/components/layout/PageWrapper";
 import { AppChrome } from "@/components/layout/AppChrome";
 import type { Metadata, Viewport } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
 import "@vivancedata/ui/styles";
 import "./globals.css";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
+import { MotionProvider } from "@/components/common/MotionProvider";
+
+// Geist Sans sets all UI and prose; Geist Mono sets code and the uppercase
+// section eyebrows. Exposed as CSS variables that tailwind.preset.ts reads.
+const geistSans = Geist({
+  subsets: ["latin"],
+  variable: "--font-geist-sans",
+  display: "swap",
+});
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -78,7 +94,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className="antialiased">
+    <html
+      lang="en"
+      suppressHydrationWarning
+      // The design system sets scroll-behavior: smooth; this opts out of it for
+      // route transitions, which is what Next.js asks for.
+      data-scroll-behavior="smooth"
+      className={`antialiased ${geistSans.variable} ${geistMono.variable}`}
+    >
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="manifest" href="/manifest.json" />
@@ -98,16 +121,23 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <header>
-            <MainNav />
-          </header>
-          <PageWrapper className="flex-grow w-full">
-            <main className="w-full px-4" id="main-content">
-              {children}
-            </main>
-          </PageWrapper>
-          <Footer />
-          <AppChrome />
+          {/* Pages use framer-motion's tree-shakeable `m.*` components, which
+            * only animate when LazyMotion has supplied the feature bundle.
+            * Without this provider every AnimateOnScroll element stays pinned
+            * at its `hidden` variant -- i.e. opacity 0 -- so the body content
+            * of all six industry pages rendered invisible. */}
+          <MotionProvider>
+            <header>
+              <MainNav />
+            </header>
+            <PageWrapper className="flex-grow w-full">
+              <main className="w-full px-4" id="main-content">
+                {children}
+              </main>
+            </PageWrapper>
+            <Footer />
+            <AppChrome />
+          </MotionProvider>
         </ThemeProvider>
       </body>
     </html>

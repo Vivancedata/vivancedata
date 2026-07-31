@@ -25,7 +25,9 @@ export function MainNav() {
               <div className="transition-transform duration-300 hover:rotate-6">
                 <Icons.logo className="h-8 w-8" />
               </div>
-              <span className="hidden font-bold text-2xl lg:inline-block bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
+              {/* Solid ink wordmark. A gradient-clipped one faded into the
+                * near-white `accent` wash -- the mark is ink, like the headings. */}
+              <span className="hidden text-heading-2 lg:inline-block text-foreground">
                 {siteConfig.name}
               </span>
             </a>
@@ -42,7 +44,7 @@ export function MainNav() {
                   href={item.href}
                   className={cn(
                     "px-3 py-2 text-sm font-medium rounded-md transition-colors relative group",
-                    "hover:text-primary"
+                    "hover:text-brand"
                   )}
                 >
                   {item.name}
@@ -58,7 +60,7 @@ export function MainNav() {
             <Button
               variant="ghost"
               size="icon"
-              className="text-foreground/60 hover:text-primary transition-colors duration-300"
+              className="text-foreground/60 hover:text-brand transition-colors duration-300"
               aria-label="Search blog content"
               asChild
             >
@@ -67,10 +69,8 @@ export function MainNav() {
               </a>
             </Button>
             <ModeToggle />
-            <Button
-              className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground shadow-md hover:shadow-lg transition-[background-color,box-shadow] duration-300"
-              asChild
-            >
+            {/* Nav chrome, so a 6px square rather than a marketing pill. */}
+            <Button asChild>
               <a href="/contact">
                 Contact Us
               </a>

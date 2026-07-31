@@ -42,32 +42,32 @@ const services: Service[] = [
   {
     title: "AI Readiness Assessment",
     description: "Evaluate your organization's current capabilities, data infrastructure, and processes to determine your readiness for AI adoption.",
-    icon: <Check className="h-5 w-5 text-primary" />,
+    icon: <Check className="h-5 w-5 text-brand" />,
   },
   {
     title: "Strategic AI Roadmap",
     description: "Develop a comprehensive plan for AI implementation that aligns with your business objectives and provides a clear path forward.",
-    icon: <Check className="h-5 w-5 text-primary" />,
+    icon: <Check className="h-5 w-5 text-brand" />,
   },
   {
     title: "Use Case Identification",
     description: "Identify high-value AI applications specific to your industry and business that will deliver the greatest ROI.",
-    icon: <Check className="h-5 w-5 text-primary" />,
+    icon: <Check className="h-5 w-5 text-brand" />,
   },
   {
     title: "AI Governance Framework",
     description: "Establish policies, procedures, and oversight mechanisms to ensure responsible and compliant AI implementation.",
-    icon: <Check className="h-5 w-5 text-primary" />,
+    icon: <Check className="h-5 w-5 text-brand" />,
   },
   {
     title: "Vendor Selection & Management",
     description: "Navigate the complex AI vendor landscape and select the right partners for your specific needs and objectives.",
-    icon: <Check className="h-5 w-5 text-primary" />,
+    icon: <Check className="h-5 w-5 text-brand" />,
   },
   {
     title: "Change Management",
     description: "Prepare your organization for AI adoption with strategies to address cultural shifts, skill gaps, and process changes.",
-    icon: <Check className="h-5 w-5 text-primary" />,
+    icon: <Check className="h-5 w-5 text-brand" />,
   },
 ];
 
@@ -108,7 +108,7 @@ export default function ConsultingPage() {
       <div className="flex flex-col md:flex-row gap-12 mb-20">
         <div className="w-full md:w-1/2">
           <div className="aspect-video rounded-xl shadow-xl overflow-hidden bg-slate-900 p-6 md:p-8 flex flex-col">
-            <div className="text-primary/60 text-xs font-mono mb-5 flex items-center gap-2">
+            <div className="text-brand/60 text-xs font-mono mb-5 flex items-center gap-2">
               <Target className="w-3 h-3" /> AI Strategy Framework
             </div>
             <div className="flex justify-between gap-2 mb-6">
@@ -119,7 +119,7 @@ export default function ConsultingPage() {
                 { n: "4", label: "Execute" },
               ].map(({ n, label }) => (
                 <div key={n} className="flex-1 flex flex-col items-center gap-2">
-                  <div className="w-8 h-8 rounded-full bg-primary/20 border border-primary/40 text-primary text-sm font-bold flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-full bg-primary/20 border border-brand/40 text-brand text-sm font-bold flex items-center justify-center">
                     {n}
                   </div>
                   <span className="text-white/60 text-xs">{label}</span>
@@ -197,7 +197,7 @@ export default function ConsultingPage() {
           ].map((phase) => (
             <div key={phase.step} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 text-center">
               <div className="w-12 h-12 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center mx-auto mb-4">
-                <span className="text-primary font-bold">{phase.step}</span>
+                <span className="text-brand font-bold">{phase.step}</span>
               </div>
               <h3 className="text-xl font-semibold mb-3">{phase.title}</h3>
               <p className="text-gray-600 dark:text-gray-300">{phase.description}</p>

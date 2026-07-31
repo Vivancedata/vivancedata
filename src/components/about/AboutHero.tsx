@@ -27,7 +27,7 @@ export function AboutHero({ title, description }: AboutHeroProps): React.ReactEl
   );
 
   return (
-    <section className="relative w-full bg-gradient-to-r from-primary to-primary/70 text-white py-20 md:py-28 overflow-hidden">
+    <section className="relative w-full bg-primary text-white py-20 md:py-28 overflow-hidden">
       {/* Background particles */}
       <div className="absolute inset-0 overflow-hidden">
         {particles.map((particle) => (
@@ -63,7 +63,7 @@ export function AboutHero({ title, description }: AboutHeroProps): React.ReactEl
           </AnimateOnScroll>
           
           <AnimateOnScroll variant="scaleIn" className="mb-6">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-primary-foreground/70">
+            <h1 className="text-display-xl mb-6 text-primary-foreground">
               {title}
             </h1>
           </AnimateOnScroll>

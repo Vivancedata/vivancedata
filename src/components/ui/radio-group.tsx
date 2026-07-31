@@ -1,1 +1,1 @@
-export { RadioGroup, RadioGroupItem } from "@ui-source/components/radio-group"
+export { RadioGroup, RadioGroupItem } from "@vivancedata/ui"

@@ -54,11 +54,11 @@ const ContactPage = () => {
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
                   <div className="bg-primary/10 p-2 rounded-lg">
-                    <Mail className="h-5 w-5 text-primary" />
+                    <Mail className="h-5 w-5 text-brand" />
                   </div>
                   <div>
                     <p className="font-medium">Email</p>
-                    <a href="mailto:info@vivancedata.com" className="text-gray-600 dark:text-gray-400 hover:text-primary">
+                    <a href="mailto:info@vivancedata.com" className="text-gray-600 dark:text-gray-400 hover:text-brand">
                       info@vivancedata.com
                     </a>
                   </div>
@@ -66,7 +66,7 @@ const ContactPage = () => {
 
                 <div className="flex items-start gap-3">
                   <div className="bg-primary/10 p-2 rounded-lg">
-                    <Clock className="h-5 w-5 text-primary" />
+                    <Clock className="h-5 w-5 text-brand" />
                   </div>
                   <div>
                     <p className="font-medium">Business Hours</p>

@@ -19,31 +19,31 @@ export default function RetailPage() {
     {
       title: "Demand Forecasting",
       description: "Forecasting workflows that combine historical sales, seasonality, promotions, and external signals to improve planning confidence.",
-      icon: <BarChart3 className="h-6 w-6 text-primary" />,
+      icon: <BarChart3 className="h-6 w-6 text-brand" />,
       benefits: ["Lower stockout frequency in pilot categories", "Reduced excess inventory carrying pressure", "Improved replenishment confidence", "Clear KPI tracking for ongoing iteration"],
     },
     {
       title: "Inventory Decision Support",
       description: "AI-assisted dashboards that surface inventory risk, replenishment signals, and category-level anomalies for planning teams.",
-      icon: <ShoppingCart className="h-6 w-6 text-primary" />,
+      icon: <ShoppingCart className="h-6 w-6 text-brand" />,
       benefits: ["Unified view of inventory risk by category", "Automated replenishment signals", "Cross-location visibility and alerts", "Planner-friendly explanation of recommendations"],
     },
     {
       title: "Promotion & Pricing Optimization",
       description: "ML-driven promotion and markdown optimization that balances revenue, margin, and inventory clearance goals.",
-      icon: <Tag className="h-6 w-6 text-primary" />,
+      icon: <Tag className="h-6 w-6 text-brand" />,
       benefits: ["Higher promotion ROI through better targeting", "Faster markdown decision cycles", "Margin-aware pricing recommendations", "A/B testing framework for price experiments"],
     },
     {
       title: "Customer Personalization",
       description: "Recommendation and segmentation models that personalize the shopping experience at scale across channels.",
-      icon: <Users className="h-6 w-6 text-primary" />,
+      icon: <Users className="h-6 w-6 text-brand" />,
       benefits: ["Higher conversion from personalized recommendations", "Improved repeat purchase rates", "Cross-channel consistency", "Real-time behavioral signal integration"],
     },
     {
       title: "Supply Chain Visibility",
       description: "AI-powered supply chain analytics that improve lead time accuracy and vendor performance tracking.",
-      icon: <Truck className="h-6 w-6 text-primary" />,
+      icon: <Truck className="h-6 w-6 text-brand" />,
       benefits: ["Better lead time prediction and buffer planning", "Vendor performance scorecards", "Early warning on supply disruptions", "Integrated view across suppliers and DCs"],
     },
   ];

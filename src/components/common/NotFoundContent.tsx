@@ -359,7 +359,7 @@ export function NotFoundContent() {
             className="mb-10"
           >
             <div className="inline-flex items-center gap-2 text-sm text-muted-foreground bg-muted/50 dark:bg-muted/30 px-4 py-2.5 rounded-full border border-border/50">
-              <Search className="h-4 w-4 text-primary/70" />
+              <Search className="h-4 w-4 text-brand/70" />
               <span>Try using the navigation menu to find what you need</span>
             </div>
           </m.div>
@@ -367,7 +367,7 @@ export function NotFoundContent() {
           {/* Popular Pages */}
           <m.div variants={itemVariants}>
             <div className="flex items-center justify-center gap-2 mb-5">
-              <Sparkles className="h-5 w-5 text-primary" aria-hidden="true" />
+              <Sparkles className="h-5 w-5 text-brand" aria-hidden="true" />
               <h2 className="text-lg font-semibold text-foreground">
                 Popular Pages
               </h2>
@@ -382,15 +382,15 @@ export function NotFoundContent() {
                     className={cn(
                       "group flex flex-col items-center p-4 rounded-xl",
                       "bg-card border border-border",
-                      "hover:bg-accent/50 hover:border-primary/30",
+                      "hover:bg-accent/50 hover:border-brand/30",
                       "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
                       "transition-all duration-200"
                     )}
                   >
                     <div className="flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-primary/10 mb-3 group-hover:bg-primary/20 group-hover:scale-105 transition-all duration-200">
-                      <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary" aria-hidden="true" />
+                      <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-brand" aria-hidden="true" />
                     </div>
-                    <span className="font-medium text-foreground group-hover:text-primary transition-colors">
+                    <span className="font-medium text-foreground group-hover:text-brand transition-colors">
                       {page.name}
                     </span>
                     <span className="text-xs text-muted-foreground mt-1 text-center line-clamp-2">

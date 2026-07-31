@@ -33,7 +33,7 @@ const Process = () => {
     >
       <div className="container mx-auto px-4">
         <div className="mb-16 text-center">
-          <div className="mb-4 inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary dark:bg-primary/20">
+          <div className="mb-4 inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-brand dark:bg-primary/20">
             Our Approach
           </div>
           <h2 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">How We Work</h2>
@@ -58,7 +58,7 @@ const Process = () => {
                     <article className={stepCardClass}>
                       <div className={`mb-4 flex items-center ${index % 2 === 0 ? "justify-end" : "justify-start"}`}>
                         <div className="mr-4 rounded-full bg-primary/10 p-3 dark:bg-primary/20">
-                          <Icon className="h-8 w-8 text-primary" aria-hidden="true" />
+                          <Icon className="h-8 w-8 text-brand" aria-hidden="true" />
                         </div>
                         <div>
                           <div className="font-semibold text-foreground">

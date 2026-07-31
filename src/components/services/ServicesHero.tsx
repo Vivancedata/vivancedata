@@ -73,7 +73,7 @@ export function ServicesHero({ title, description }: ServicesHeroProps): React.R
         </AnimateOnScroll>
         
         <AnimateOnScroll variant="flipIn" className="mb-6">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary-foreground to-primary-foreground/70">
+          <h1 className="text-display-xl mb-6 text-primary-foreground">
             {title}
           </h1>
         </AnimateOnScroll>
