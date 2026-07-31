@@ -155,8 +155,8 @@ export default function IndustriesPage() {
             { number: "04", title: "Continuous Improvement", description: "We continuously refine and enhance your solutions based on industry developments." }
           ].map((step) => (
             <div key={step.number} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 text-center">
-              <div className="w-12 h-12 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center mx-auto mb-4">
-                <span className="text-primary font-bold">{step.number}</span>
+              <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center mx-auto mb-4">
+                <span className="text-brand font-bold">{step.number}</span>
               </div>
               <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
               <p className="text-gray-600 dark:text-gray-300">{step.description}</p>
@@ -165,7 +165,7 @@ export default function IndustriesPage() {
         </div>
       </div>
       
-      <div className="bg-primary/5 dark:bg-primary/10 rounded-xl p-8 md:p-12 text-center">
+      <div className="bg-muted rounded-xl p-8 md:p-12 text-center">
         <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Transform Your Industry?</h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
           Let&apos;s discuss how our industry-specific AI solutions can address your unique challenges and opportunities.

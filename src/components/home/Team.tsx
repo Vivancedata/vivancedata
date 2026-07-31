@@ -18,7 +18,7 @@ const Team = () => {
     >
       <div className="container mx-auto px-4">
         <div className="mb-12 text-center">
-          <div className="mb-4 inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary dark:bg-primary/20">
+          <div className="mb-4 inline-block rounded-full bg-muted px-3 py-1 text-sm font-medium text-brand dark:bg-muted">
             Our Experts
           </div>
           <h2 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">Meet Our Team</h2>
@@ -52,7 +52,7 @@ const Team = () => {
                     )}
                   </div>
                   <h3 className="mb-1 text-xl font-bold text-foreground">{member.name}</h3>
-                  <p className="mb-4 font-medium text-primary dark:text-emerald-300">{member.role}</p>
+                  <p className="mb-4 font-medium text-brand dark:text-emerald-300">{member.role}</p>
                   <p className="mb-6 text-sm text-muted-foreground md:text-base">{member.bio}</p>
                   <div className="flex justify-center space-x-4">
                     {Object.entries(member.socialLinks).map(([network, href]) => {
@@ -61,7 +61,7 @@ const Team = () => {
                       }
 
                       const Icon = socialIconMap[network as keyof typeof socialIconMap];
-                      const hoverColor = network === "github" ? "hover:text-foreground" : "hover:text-primary";
+                      const hoverColor = network === "github" ? "hover:text-foreground" : "hover:text-brand";
 
                       return (
                         <a

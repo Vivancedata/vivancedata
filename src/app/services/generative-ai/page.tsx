@@ -42,32 +42,32 @@ const features: Feature[] = [
   {
     title: "Custom LLM Fine-Tuning",
     description: "Tailor large language models to your specific business domain, terminology, and use cases for more accurate and relevant outputs.",
-    icon: <Check className="h-5 w-5 text-primary" />,
+    icon: <Check className="h-5 w-5 text-brand" />,
   },
   {
     title: "Content Generation & Optimization",
     description: "Automate the creation of high-quality, SEO-optimized content at scale while maintaining your brand voice and standards.",
-    icon: <Check className="h-5 w-5 text-primary" />,
+    icon: <Check className="h-5 w-5 text-brand" />,
   },
   {
     title: "Image & Design Generation",
     description: "Create professional visuals, product mockups, and design variations that align with your brand guidelines.",
-    icon: <Check className="h-5 w-5 text-primary" />,
+    icon: <Check className="h-5 w-5 text-brand" />,
   },
   {
     title: "Voice & Audio Synthesis",
     description: "Develop custom voice assistants, audio content, and multilingual voice solutions for your products and services.",
-    icon: <Check className="h-5 w-5 text-primary" />,
+    icon: <Check className="h-5 w-5 text-brand" />,
   },
   {
     title: "Multimodal AI Applications",
     description: "Build applications that seamlessly combine text, image, audio, and video understanding for comprehensive solutions.",
-    icon: <Check className="h-5 w-5 text-primary" />,
+    icon: <Check className="h-5 w-5 text-brand" />,
   },
   {
     title: "Responsible AI Implementation",
     description: "Ensure your generative AI solutions are ethical, unbiased, and aligned with your organization's values and compliance requirements.",
-    icon: <Check className="h-5 w-5 text-primary" />,
+    icon: <Check className="h-5 w-5 text-brand" />,
   },
 ];
 
@@ -128,13 +128,13 @@ export default function GenerativeAIPage() {
               <div>
                 <div className="text-green-400/60 text-xs mb-1">← RESPONSE</div>
                 <div className="text-slate-300 text-xs bg-white/5 rounded-lg p-2.5 space-y-1.5">
-                  <div><span className="text-primary">1.</span> Checkout friction is top complaint (38%)</div>
-                  <div><span className="text-primary">2.</span> Return policy unclear (24%)</div>
-                  <div><span className="text-primary">3.</span> Mobile payment failures (19%)</div>
+                  <div><span className="text-brand">1.</span> Checkout friction is top complaint (38%)</div>
+                  <div><span className="text-brand">2.</span> Return policy unclear (24%)</div>
+                  <div><span className="text-brand">3.</span> Mobile payment failures (19%)</div>
                 </div>
               </div>
               <div className="flex items-center justify-between text-slate-600 text-xs pt-1">
-                <span className="text-primary/50">fine-tuned LLM</span>
+                <span className="text-brand/50">fine-tuned LLM</span>
                 <span>latency: 1.2s</span>
               </div>
             </div>
@@ -178,7 +178,7 @@ export default function GenerativeAIPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {useCases.map((useCase) => (
             <div key={useCase.title} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-              <div className="inline-block px-3 py-1 rounded-full bg-primary/10 dark:bg-primary/20 text-primary text-sm font-medium mb-4">
+              <div className="inline-block px-3 py-1 rounded-full bg-muted text-brand text-sm font-medium mb-4">
                 {useCase.industry}
               </div>
               <h3 className="text-xl font-semibold mb-3">{useCase.title}</h3>
@@ -188,7 +188,7 @@ export default function GenerativeAIPage() {
         </div>
       </div>
       
-      <div className="bg-primary/5 dark:bg-primary/10 rounded-xl p-8 md:p-12 text-center">
+      <div className="bg-muted rounded-xl p-8 md:p-12 text-center">
         <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Harness the Power of Generative AI?</h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
           Let&apos;s discuss how our generative AI solutions can help your business create better content, designs, and experiences.

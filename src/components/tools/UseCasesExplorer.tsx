@@ -141,7 +141,7 @@ function UseCaseCard({ useCase }: { useCase: UseCase }) {
                   key={benefit}
                   className="text-xs text-muted-foreground flex items-start"
                 >
-                  <span className="text-primary mr-2">-</span>
+                  <span className="text-brand mr-2">-</span>
                   {benefit}
                 </li>
               ))}
@@ -309,7 +309,7 @@ export function UseCasesExplorer() {
               {hasActiveFilters && (
                 <button
                   onClick={clearFilters}
-                  className="text-sm text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                  className="text-sm text-brand hover:underline focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 rounded"
                 >
                   Clear all filters
                 </button>
@@ -338,7 +338,7 @@ export function UseCasesExplorer() {
               </p>
               <button
                 onClick={clearFilters}
-                className="text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1"
+                className="text-brand hover:underline focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 rounded px-2 py-1"
               >
                 Clear all filters
               </button>

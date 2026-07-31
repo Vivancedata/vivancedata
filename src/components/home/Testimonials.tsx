@@ -11,7 +11,7 @@ const metricDefinitions = [
   {
     key: "hoursSaved",
     icon: Clock,
-    colorClass: "bg-primary/10 text-primary dark:bg-primary/20",
+    colorClass: "bg-muted text-brand dark:bg-muted",
   },
   {
     key: "costReduction",
@@ -58,11 +58,11 @@ export default function Testimonials() {
       className="w-full overflow-hidden bg-muted/20 py-20 md:py-32"
     >
       <div className="container relative mx-auto px-4">
-        <div className="absolute right-0 top-0 -z-10 h-72 w-72 rounded-full bg-primary/5 blur-3xl" />
+        <div className="absolute right-0 top-0 -z-10 h-72 w-72 rounded-full bg-muted blur-3xl" />
         <div className="absolute bottom-0 left-0 -z-10 h-96 w-96 rounded-full bg-accent/5 blur-3xl" />
 
         <div className="mx-auto mb-16 max-w-3xl text-center">
-          <div className="mb-4 inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
+          <div className="mb-4 inline-block rounded-full bg-muted px-3 py-1 text-sm font-medium text-brand">
             Client Success Stories
           </div>
           <h2 className="text-3xl font-bold text-foreground md:text-5xl">What Our Clients Say</h2>
@@ -82,9 +82,9 @@ export default function Testimonials() {
               className="h-full border-0 bg-card/90 shadow-xl"
             >
               <CardContent className="relative flex h-full flex-col p-8">
-                <Quote className="absolute right-4 top-4 h-12 w-12 text-primary/10" aria-hidden="true" />
+                <Quote className="absolute right-4 top-4 h-12 w-12 text-brand/10" aria-hidden="true" />
                 <div className="mb-6 flex items-center">
-                  <div className="mr-4 flex h-14 w-14 items-center justify-center rounded-full border-2 border-primary/20 bg-primary text-xl font-semibold text-primary-foreground shadow-md">
+                  <div className="mr-4 flex h-14 w-14 items-center justify-center rounded-full border-2 border-brand/20 bg-primary text-xl font-semibold text-primary-foreground shadow-md">
                     <span aria-hidden="true">{testimonial.initials}</span>
                   </div>
                   <div>
@@ -114,7 +114,7 @@ export default function Testimonials() {
                 </blockquote>
 
                 <div className="mt-auto border-t border-border pt-4">
-                  <p className="text-sm font-medium text-primary">{testimonial.company}</p>
+                  <p className="text-sm font-medium text-brand">{testimonial.company}</p>
                 </div>
               </CardContent>
             </Card>
@@ -124,7 +124,7 @@ export default function Testimonials() {
         <div className="mt-16 text-center">
           <a
             href="/case-studies"
-            className="inline-flex items-center rounded-md font-medium text-primary transition-colors hover:text-primary/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            className="inline-flex items-center rounded-md font-medium text-brand transition-colors hover:text-brand/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
             <span>View all case studies</span>
             <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />

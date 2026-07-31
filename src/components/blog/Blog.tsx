@@ -25,10 +25,10 @@ function BlogIllustration({ category }: { category: string }) {
       <div className="relative h-full w-full overflow-hidden bg-slate-900">
         <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/50 to-slate-900" />
         <div className="absolute inset-0 flex flex-col justify-center gap-2.5 p-5">
-          <div className="mb-1 font-mono text-xs text-primary/40">// Implementation Roadmap</div>
+          <div className="mb-1 font-mono text-xs text-brand/40">// Implementation Roadmap</div>
           {IMPLEMENTATION_PHASES.map((phase, index) => (
             <div key={phase} className="flex items-center gap-2">
-              <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/20 font-mono text-xs text-primary">
+              <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-muted font-mono text-xs text-brand">
                 {index + 1}
               </div>
               <div className="h-1 rounded-full bg-primary/30" style={{ width: `${85 - index * 10}%` }} />
@@ -144,15 +144,15 @@ export default function Blog() {
       className="w-full overflow-hidden bg-gradient-to-b from-background to-muted/20 py-20 md:py-32"
     >
       <div className="container relative mx-auto px-4">
-        <div className="absolute right-0 top-40 -z-10 h-96 w-96 rounded-full bg-primary/10 blur-3xl" />
+        <div className="absolute right-0 top-40 -z-10 h-96 w-96 rounded-full bg-muted blur-3xl" />
         <div className="absolute bottom-20 left-0 -z-10 h-80 w-80 rounded-full bg-secondary/5 blur-3xl" />
 
         <div className="mb-16 flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
           <div>
-            <div className="mb-4 inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
+            <div className="mb-4 inline-block rounded-full bg-muted px-3 py-1 text-sm font-medium text-brand">
               Latest Insights
             </div>
-            <h2 className="mb-4 text-3xl font-bold text-primary md:text-5xl">From Our Blog</h2>
+            <h2 className="mb-4 text-3xl font-bold text-brand md:text-5xl">From Our Blog</h2>
             <p className="max-w-2xl text-lg text-muted-foreground">
               Stay updated with the latest trends, insights, and best practices in AI and machine learning.
             </p>
@@ -160,7 +160,7 @@ export default function Blog() {
           <Button
             asChild
             variant="outline"
-            className="h-auto border-primary px-6 py-6 text-primary transition-all duration-300 hover:bg-primary/10"
+            className="h-auto border-brand px-6 py-6 text-brand transition-all duration-300 hover:bg-muted"
           >
             <a href="/blog" className="group">
               <span>View All Articles</span>
@@ -183,16 +183,16 @@ export default function Blog() {
                 </div>
               </div>
               <CardHeader className="relative z-10 -mt-10 mx-4 rounded-lg border border-border bg-card/90 shadow-lg backdrop-blur-sm">
-                <a href={`/blog/${post.slug}`} className="transition-colors hover:text-primary">
+                <a href={`/blog/${post.slug}`} className="transition-colors hover:text-brand">
                   <CardTitle className="text-xl font-bold">{post.title}</CardTitle>
                 </a>
                 <div className="mt-2 flex items-center space-x-4 text-sm text-muted-foreground">
                   <div className="flex items-center">
-                    <Calendar className="mr-1 h-4 w-4 text-primary" />
+                    <Calendar className="mr-1 h-4 w-4 text-brand" />
                     <span>{post.date}</span>
                   </div>
                   <div className="flex items-center">
-                    <Clock className="mr-1 h-4 w-4 text-primary" />
+                    <Clock className="mr-1 h-4 w-4 text-brand" />
                     <span>{post.readTime}</span>
                   </div>
                 </div>
@@ -210,7 +210,7 @@ export default function Blog() {
                 </div>
                 <a
                   href={`/blog/${post.slug}`}
-                  className="group/link flex items-center text-sm font-medium text-primary transition-colors hover:text-primary/80"
+                  className="group/link flex items-center text-sm font-medium text-brand transition-colors hover:text-brand/80"
                 >
                   <span>Read More</span>
                   <span className="sr-only"> about {post.title}</span>
@@ -238,7 +238,7 @@ export default function Blog() {
                     placeholder="Enter your email"
                     className="w-full flex-grow rounded-xl bg-white px-6 py-4 text-lg text-slate-950 placeholder:text-slate-600 shadow-lg focus:outline-none focus:ring-2 focus:ring-white/50 sm:w-auto"
                   />
-                  <Button className="h-auto rounded-xl bg-primary-foreground px-8 py-4 text-lg font-medium text-primary shadow-lg transition-all duration-300 hover:bg-primary-foreground/90 hover:shadow-xl">
+                  <Button className="h-auto rounded-xl bg-primary-foreground px-8 py-4 text-lg font-medium text-brand shadow-lg transition-all duration-300 hover:bg-primary-foreground/90 hover:shadow-xl">
                     Subscribe
                   </Button>
                 </div>

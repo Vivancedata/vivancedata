@@ -11,4 +11,4 @@ export {
   ToastClose,
   ToastAction,
   toastVariants,
-} from "@ui-source/components/toast"
+} from "@vivancedata/ui"

@@ -37,7 +37,7 @@ export function BlogCard({ slug, title, description, date, image, tags }: BlogCa
   return (
     <Link href={`/blog/${slug}`} className="block h-full">
       <HoverCard className="h-full">
-        <Card className="flex flex-col h-full overflow-hidden group cursor-pointer border border-border/40 bg-card/60 backdrop-blur-sm transition-all duration-300 hover:border-primary/20 hover:shadow-lg dark:hover:shadow-primary/5">
+        <Card className="flex flex-col h-full overflow-hidden group cursor-pointer border border-border/40 bg-card/60 backdrop-blur-sm transition-all duration-300 hover:border-brand/20 hover:shadow-lg dark:hover:shadow-primary/5">
           <div className="relative w-full h-52 overflow-hidden">
             <m.div
               whileHover={{ scale: reducedMotion ? 1 : 1.05 }}
@@ -77,7 +77,7 @@ export function BlogCard({ slug, title, description, date, image, tags }: BlogCa
           </div>
           
           <CardHeader className="pb-2">
-            <CardTitle className="line-clamp-2 text-xl group-hover:text-primary transition-colors duration-200">
+            <CardTitle className="line-clamp-2 text-xl group-hover:text-brand transition-colors duration-200">
               {title}
             </CardTitle>
             <CardDescription className="text-sm text-muted-foreground">
@@ -92,7 +92,7 @@ export function BlogCard({ slug, title, description, date, image, tags }: BlogCa
           </CardContent>
           
           <div className="px-6 pb-6">
-            <div className="flex items-center text-sm font-medium text-primary">
+            <div className="flex items-center text-sm font-medium text-brand">
               <span>Read more</span>
               <svg 
                 width="16" 

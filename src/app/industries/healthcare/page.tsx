@@ -19,31 +19,31 @@ export default function HealthcarePage() {
     {
       title: "Clinical Documentation Support",
       description: "NLP-assisted summarization and extraction workflows that surface relevant patient context faster while keeping clinicians in control.",
-      icon: <FileText className="h-6 w-6 text-primary" />,
+      icon: <FileText className="h-6 w-6 text-brand" />,
       benefits: ["Faster retrieval of key chart history", "Reduced repetitive note review effort", "More consistent structured data capture", "Human review always in the loop"]
     },
     {
       title: "Clinical Decision Intelligence",
       description: "Pattern recognition tools that flag relevant alerts and surface evidence-based guidance at the point of care.",
-      icon: <Brain className="h-6 w-6 text-primary" />,
+      icon: <Brain className="h-6 w-6 text-brand" />,
       benefits: ["Relevant alert surfacing for care teams", "Evidence-based guidance integration", "Reduced alert fatigue", "Audit trail for clinical decisions"]
     },
     {
       title: "HIPAA-Compliant AI Infrastructure",
       description: "AI pipelines designed from the ground up for healthcare compliance — encrypted, audited, and governed.",
-      icon: <Shield className="h-6 w-6 text-primary" />,
+      icon: <Shield className="h-6 w-6 text-brand" />,
       benefits: ["End-to-end encryption and access controls", "Audit logging for all AI interactions", "BAA-ready cloud infrastructure", "De-identification and privacy tooling"]
     },
     {
       title: "Patient Engagement Automation",
       description: "Intelligent routing and triage workflows for patient communications, reducing manual queue pressure on support staff.",
-      icon: <Users className="h-6 w-6 text-primary" />,
+      icon: <Users className="h-6 w-6 text-brand" />,
       benefits: ["Faster first-response on routine requests", "Consistent escalation to care teams", "Reduced administrative queue pressure", "Improved patient satisfaction tracking"]
     },
     {
       title: "Operational Analytics",
       description: "Workflow and capacity analytics that surface bottlenecks and improvement opportunities across clinical and administrative operations.",
-      icon: <Activity className="h-6 w-6 text-primary" />,
+      icon: <Activity className="h-6 w-6 text-brand" />,
       benefits: ["Real-time throughput visibility", "Bottleneck identification across departments", "Staffing and capacity optimization signals", "Outcome trend monitoring"]
     }
   ];

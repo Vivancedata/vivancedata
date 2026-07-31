@@ -6,7 +6,7 @@ export function DemoBookingPlaceholder() {
     >
       <div className="rounded-3xl border border-border/70 bg-card/80 p-8 shadow-lg md:p-12">
         <div className="max-w-2xl">
-          <p className="mb-4 inline-flex rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
+          <p className="mb-4 inline-flex rounded-full bg-muted px-3 py-1 text-sm font-medium text-brand">
             Book a Demo
           </p>
           <h2

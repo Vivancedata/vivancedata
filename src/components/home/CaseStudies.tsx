@@ -39,11 +39,11 @@ export default function CaseStudies() {
       className="w-full overflow-hidden bg-muted/20 py-20 md:py-32"
     >
       <div className="container relative mx-auto px-4">
-        <div className="absolute left-0 top-40 -z-10 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
+        <div className="absolute left-0 top-40 -z-10 h-96 w-96 rounded-full bg-muted blur-3xl" />
         <div className="absolute bottom-20 right-0 -z-10 h-80 w-80 rounded-full bg-accent/5 blur-3xl" />
 
         <div className="mx-auto mb-16 max-w-3xl text-center">
-          <div className="mb-4 inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
+          <div className="mb-4 inline-block rounded-full bg-muted px-3 py-1 text-sm font-medium text-brand">
             Success Stories
           </div>
           <h2 className="mb-6 text-3xl font-bold text-foreground md:text-5xl">Case Studies</h2>
@@ -70,7 +70,7 @@ export default function CaseStudies() {
                   <div className="p-8 md:p-10">
                     <CardHeader className="mb-8 p-0">
                       <div className="mb-6">
-                        <Badge className="mb-3 bg-primary/10 px-3 py-1 text-primary hover:bg-primary/10">
+                        <Badge className="mb-3 bg-muted px-3 py-1 text-brand hover:bg-muted">
                           {study.industry}
                         </Badge>
                         <CardTitle className="text-3xl font-bold text-foreground md:text-4xl">
@@ -82,21 +82,21 @@ export default function CaseStudies() {
 
                     <CardContent className="space-y-8 p-0">
                       <div>
-                        <h3 className="mb-3 text-xl font-bold text-primary">Challenge</h3>
+                        <h3 className="mb-3 text-xl font-bold text-brand">Challenge</h3>
                         <CardDescription className="text-base text-muted-foreground">
                           {study.challenge}
                         </CardDescription>
                       </div>
 
                       <div>
-                        <h3 className="mb-3 text-xl font-bold text-primary">Solution</h3>
+                        <h3 className="mb-3 text-xl font-bold text-brand">Solution</h3>
                         <CardDescription className="text-base text-muted-foreground">
                           {study.solution}
                         </CardDescription>
                       </div>
 
                       <div>
-                        <h3 className="mb-3 text-xl font-bold text-primary">Results</h3>
+                        <h3 className="mb-3 text-xl font-bold text-brand">Results</h3>
                         <ul className="space-y-3">
                           {study.results.map((result) => (
                             <li key={`${study.id}-result-${result}`} className="flex items-start">
@@ -118,13 +118,13 @@ export default function CaseStudies() {
                       </div>
 
                       <div>
-                        <h3 className="mb-3 text-xl font-bold text-primary">Technologies Used</h3>
+                        <h3 className="mb-3 text-xl font-bold text-brand">Technologies Used</h3>
                         <div className="flex flex-wrap gap-2">
                           {study.technologies.map((tech) => (
                             <Badge
                               key={`${study.id}-tech-${tech}`}
                               variant="outline"
-                              className="border-primary/20 bg-primary/5 px-3 py-1 text-sm text-primary"
+                              className="border-brand/20 bg-muted px-3 py-1 text-sm text-brand"
                             >
                               {tech}
                             </Badge>
@@ -153,7 +153,7 @@ export default function CaseStudies() {
                     />
                     <div className="relative flex items-center space-x-4">
                       <div className="rounded-full bg-primary-foreground p-3 shadow-lg">
-                        <IndustryIcon className="h-7 w-7 text-primary" aria-hidden="true" />
+                        <IndustryIcon className="h-7 w-7 text-brand" aria-hidden="true" />
                       </div>
                       <div className="text-primary-foreground">
                         <div className="mb-2 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-foreground/15">
@@ -171,7 +171,7 @@ export default function CaseStudies() {
         </div>
 
         <div className="mt-16 text-center">
-          <Button variant="outline" className="h-auto border-primary px-6 py-6 text-primary hover:bg-primary/10" asChild>
+          <Button variant="outline" className="h-auto border-brand px-6 py-6 text-brand hover:bg-muted" asChild>
             <a href="/case-studies">
               <span>View All Case Studies</span>
               <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />

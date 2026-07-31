@@ -12,7 +12,7 @@ export default function Banner() {
       <div className="absolute inset-0 opacity-20" aria-hidden="true" />
 
       {/* Accent overlay */}
-      <div className="absolute inset-0 bg-primary/10" />
+      <div className="absolute inset-0 bg-muted" />
 
       <div className="container relative mx-auto px-6 py-24 md:py-32 lg:py-40">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-8">
@@ -68,7 +68,7 @@ export default function Banner() {
             >
               <Button
                 size="lg"
-                className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 border-0 shadow-lg shadow-primary-foreground/25 group px-6 py-6 h-auto text-lg"
+                className="bg-primary-foreground text-brand hover:bg-primary-foreground/90 border-0 shadow-lg shadow-primary-foreground/25 group px-6 py-6 h-auto text-lg"
               >
                 <span>Get Started</span>
                 <ChevronRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -100,7 +100,7 @@ export default function Banner() {
                 >
                   <h2 className="mb-4 text-2xl font-bold text-primary-foreground">Schedule a Demo</h2>
                   <p className="mb-8 text-primary-foreground/85 text-lg">See how our AI solutions can transform your business operations.</p>
-                  <Button className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-lg group">
+                  <Button className="bg-primary-foreground text-brand hover:bg-primary-foreground/90 shadow-lg group">
                     <span>Book Now</span>
                     <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>

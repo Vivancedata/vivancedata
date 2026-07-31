@@ -68,7 +68,7 @@ export function ServicesCases({
                   <p className="text-sm font-medium text-white/90">{caseItem.impact}</p>
                 </div>
                 <div className="p-6">
-                  <div className="text-sm font-medium text-primary mb-2">{caseItem.category}</div>
+                  <div className="text-sm font-medium text-brand mb-2">{caseItem.category}</div>
                   <h3 className="text-xl font-bold mb-3">{caseItem.title}</h3>
                   <p className="text-muted-foreground mb-4">{caseItem.description}</p>
                   <Button variant="outline" size="sm" asChild>

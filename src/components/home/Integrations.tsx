@@ -26,7 +26,7 @@ function IntegrationCard({ integration }: { integration: Integration }) {
 
   return (
     <li>
-      <Card className="h-full border border-border/70 bg-card/95 shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:border-primary/30">
+      <Card className="h-full border border-border/70 bg-card/95 shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:border-brand/30">
         <CardContent className="flex h-full flex-col items-start p-6">
           <div
             className={cn(
@@ -75,11 +75,11 @@ export default function Integrations() {
       className="w-full overflow-hidden bg-muted/20 py-16 md:py-24"
     >
       <div className="container relative mx-auto px-4">
-        <div className="absolute left-0 top-20 -z-10 h-72 w-72 rounded-full bg-primary/5 blur-3xl" />
+        <div className="absolute left-0 top-20 -z-10 h-72 w-72 rounded-full bg-muted blur-3xl" />
         <div className="absolute bottom-20 right-0 -z-10 h-96 w-96 rounded-full bg-accent/5 blur-3xl" />
 
         <div className="mx-auto mb-14 max-w-3xl text-center">
-          <div className="mb-4 inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
+          <div className="mb-4 inline-block rounded-full bg-muted px-3 py-1 text-sm font-medium text-brand">
             Technology Stack
           </div>
           <h2 className="text-3xl font-bold text-foreground md:text-4xl lg:text-5xl">
@@ -122,7 +122,7 @@ export default function Integrations() {
             {["REST APIs", "GraphQL", "WebSockets", "SOAP", "Custom Protocols"].map((tech) => (
               <span
                 key={tech}
-                className="rounded-full border border-primary-foreground/30 bg-primary-foreground px-4 py-2 text-primary"
+                className="rounded-full border border-primary-foreground/30 bg-primary-foreground px-4 py-2 text-brand"
               >
                 {tech}
               </span>

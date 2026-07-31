@@ -228,7 +228,7 @@ function CookieConsentBanner({
       <div className="mx-auto rounded-xl border border-border bg-background/95 shadow-xl backdrop-blur-sm dark:bg-background/90 max-h-[80vh] overflow-y-auto overscroll-contain">
         <div className="p-3 sm:p-4">
           <div className="flex items-start gap-4">
-            <div className="hidden md:flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary dark:bg-primary/20">
+            <div className="hidden md:flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-muted text-brand dark:bg-muted">
               <Cookie className="h-5 w-5" />
             </div>
 
@@ -258,7 +258,7 @@ function CookieConsentBanner({
                 Read our{" "}
                 <Link
                   href="/privacy-policy"
-                  className="text-primary underline underline-offset-2 hover:text-primary/80 transition-colors"
+                  className="text-brand underline underline-offset-2 hover:text-brand/80 transition-colors"
                 >
                   Privacy Policy
                 </Link>{" "}

@@ -7,4 +7,4 @@ export {
   CardContent,
   cardVariants,
   type CardProps,
-} from "@ui-source/components/card"
+} from "@vivancedata/ui"

@@ -49,7 +49,7 @@ export function SiteFooter() {
                   href={link.href} 
                   target="_blank" 
                   rel="noreferrer" 
-                  className="bg-card p-2 rounded-full border border-border text-muted-foreground hover:text-primary hover:border-primary transition-colors"
+                  className="bg-card p-2 rounded-full border border-border text-muted-foreground hover:text-brand hover:border-brand transition-colors"
                   aria-label={link.label}
                 >
                   {getSocialIcon(link.icon)}
@@ -58,8 +58,8 @@ export function SiteFooter() {
             </div>
             <div className="space-y-3">
               <div className="flex items-center">
-                <Mail className="h-5 w-5 text-primary mr-2" />
-                <a href="mailto:info@vivancedata.com" className="text-muted-foreground hover:text-primary transition-colors">
+                <Mail className="h-5 w-5 text-brand mr-2" />
+                <a href="mailto:info@vivancedata.com" className="text-muted-foreground hover:text-brand transition-colors">
                   info@vivancedata.com
                 </a>
               </div>
@@ -75,7 +75,7 @@ export function SiteFooter() {
                   <li key={`${column.title}-${link.href}`}>
                     <a
                       href={link.href}
-                      className="text-muted-foreground hover:text-primary transition-colors"
+                      className="text-muted-foreground hover:text-brand transition-colors"
                     >
                       {link.label}
                     </a>
@@ -95,8 +95,8 @@ export function SiteFooter() {
             © {currentYear} {siteConfig.name}. All rights reserved.
           </p>
           <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
-            <a href="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</a>
-            <a href="/terms-of-service" className="hover:text-primary transition-colors">Terms of Service</a>
+            <a href="/privacy-policy" className="hover:text-brand transition-colors">Privacy Policy</a>
+            <a href="/terms-of-service" className="hover:text-brand transition-colors">Terms of Service</a>
           </div>
         </div>
       </div>

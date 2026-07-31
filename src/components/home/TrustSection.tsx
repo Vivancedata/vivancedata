@@ -11,7 +11,7 @@ interface CertificationCardProps {
 }
 
 const certificationCardClass =
-  "h-full rounded-[calc(var(--radius)+0.25rem)] border border-border/70 bg-card/80 p-6 text-center shadow-elevation-1 backdrop-blur-sm transition-transform transition-shadow duration-300 motion-reduce:transition-none motion-safe:hover:-translate-y-1 hover:border-primary/30 hover:shadow-elevation-2 dark:bg-card/50 dark:hover:shadow-primary/5";
+  "h-full rounded-[calc(var(--radius)+0.25rem)] border border-border/70 bg-card/80 p-6 text-center shadow-elevation-1 backdrop-blur-sm transition-transform transition-shadow duration-300 motion-reduce:transition-none motion-safe:hover:-translate-y-1 hover:border-brand/30 hover:shadow-elevation-2 dark:bg-card/50 dark:hover:shadow-primary/5";
 
 function CertificationCard({ certification }: CertificationCardProps) {
   const Icon = certification.icon;
@@ -19,8 +19,8 @@ function CertificationCard({ certification }: CertificationCardProps) {
   return (
     <li className={certificationCardClass}>
       <article className="flex h-full flex-col items-center">
-        <div className="mb-4 rounded-full bg-primary/10 p-4 dark:bg-primary/20">
-          <Icon className="h-8 w-8 text-primary" aria-hidden="true" />
+        <div className="mb-4 rounded-full bg-muted p-4 dark:bg-muted">
+          <Icon className="h-8 w-8 text-brand" aria-hidden="true" />
         </div>
         <h3 className="mb-2 text-lg font-semibold text-foreground">{certification.name}</h3>
         <p className="text-sm leading-relaxed text-muted-foreground">{certification.description}</p>
@@ -36,11 +36,11 @@ export function TrustSection() {
       aria-labelledby="trust-section-title"
     >
       <div className="container relative mx-auto px-4">
-        <div className="absolute top-0 left-1/4 -z-10 h-64 w-64 rounded-full bg-primary/5 blur-3xl" aria-hidden="true" />
+        <div className="absolute top-0 left-1/4 -z-10 h-64 w-64 rounded-full bg-muted blur-3xl" aria-hidden="true" />
         <div className="absolute right-1/4 bottom-0 -z-10 h-80 w-80 rounded-full bg-accent/5 blur-3xl" aria-hidden="true" />
 
         <div className="mb-12 text-center md:mb-16">
-          <div className="mb-4 inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary dark:bg-primary/20">
+          <div className="mb-4 inline-block rounded-full bg-muted px-3 py-1 text-sm font-medium text-brand dark:bg-muted">
             {trustSectionContent.badge}
           </div>
           <h2 id="trust-section-title" className="mb-4 text-3xl font-bold text-foreground md:text-4xl lg:text-5xl">
@@ -78,7 +78,7 @@ export function TrustSection() {
                   key={feature.label}
                   className="flex items-center gap-2 text-sm text-muted-foreground"
                 >
-                  <CheckCircle className="h-4 w-4 text-primary" aria-hidden="true" />
+                  <CheckCircle className="h-4 w-4 text-brand" aria-hidden="true" />
                   <span>{feature.label}</span>
                 </li>
               ))}

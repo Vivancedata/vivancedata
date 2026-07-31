@@ -173,7 +173,7 @@ export default function CaseStudiesPage() {
             </div>
             
             <div className="w-full md:w-1/2 flex flex-col justify-center">
-              <div className="inline-block px-3 py-1 rounded-full bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary/80 text-sm font-medium mb-4">
+              <div className="inline-block px-3 py-1 rounded-full bg-muted text-brand dark:text-brand/80 text-sm font-medium mb-4">
                 {study.industry}
               </div>
               <h2 className="text-2xl md:text-3xl font-bold mb-4">{study.title}</h2>
@@ -202,7 +202,7 @@ export default function CaseStudiesPage() {
         ))}
       </div>
       
-      <div className="mt-24 text-center bg-primary/5 dark:bg-primary/10 rounded-xl p-8 md:p-12">
+      <div className="mt-24 text-center bg-muted rounded-xl p-8 md:p-12">
         <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Achieve Similar Results?</h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
           Let&apos;s discuss how our AI solutions can help your business overcome challenges and drive measurable outcomes.

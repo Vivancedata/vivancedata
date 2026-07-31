@@ -29,9 +29,6 @@
       ],
       "@/public/*": [
         "./public/*"
-      ],
-      "@ui-source/*": [
-        "./node_modules/@vivancedata/ui/src/*"
       ]
     },
     "target": "ES2017"

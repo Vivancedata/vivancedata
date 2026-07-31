@@ -102,7 +102,7 @@ export const getResourceTypeLabel = (type: ResourceType): string => {
 // Helper function to get badge color classes for resource types
 export const getResourceTypeBadgeClasses = (type: ResourceType): string => {
   const classes: Record<ResourceType, string> = {
-    whitepaper: "bg-primary/10 dark:bg-primary/20 text-primary",
+    whitepaper: "bg-muted text-brand",
     ebook: "bg-accent/10 dark:bg-accent/20 text-accent",
     report: "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400",
     guide: "bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400",

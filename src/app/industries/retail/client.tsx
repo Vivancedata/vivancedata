@@ -19,7 +19,7 @@ interface SolutionCardProps {
 const SolutionCard = ({ title, description, icon, benefits }: SolutionCardProps) => (
   <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
     <div className="flex items-center mb-4">
-      <div className="mr-4 p-3 bg-primary/10 dark:bg-primary/20 rounded-full">
+      <div className="mr-4 p-3 bg-muted rounded-full">
         {icon}
       </div>
       <h3 className="text-xl font-semibold">{title}</h3>
@@ -29,7 +29,7 @@ const SolutionCard = ({ title, description, icon, benefits }: SolutionCardProps)
     <ul className="space-y-2">
       {benefits.map((benefit) => (
         <li key={`${title}-benefit-${benefit}`} className="flex items-start">
-          <Check className="h-5 w-5 text-primary mt-0.5 mr-2 flex-shrink-0" />
+          <Check className="h-5 w-5 text-brand mt-0.5 mr-2 flex-shrink-0" />
           <span className="text-gray-700 dark:text-gray-200">{benefit}</span>
         </li>
       ))}
@@ -48,7 +48,7 @@ interface CaseStudyProps {
 const CaseStudy = ({ title, client, challenge, solution, results }: CaseStudyProps) => (
   <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
     <h3 className="text-xl font-semibold mb-2">{title}</h3>
-    <p className="text-primary text-sm mb-4">{client}</p>
+    <p className="text-brand text-sm mb-4">{client}</p>
 
     <div className="mb-4">
       <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Challenge</h4>
@@ -65,7 +65,7 @@ const CaseStudy = ({ title, client, challenge, solution, results }: CaseStudyPro
       <ul className="space-y-1">
         {results.map((result) => (
           <li key={`${title}-result-${result}`} className="flex items-start">
-            <Check className="h-5 w-5 text-primary mt-0.5 mr-2 flex-shrink-0" />
+            <Check className="h-5 w-5 text-brand mt-0.5 mr-2 flex-shrink-0" />
             <span className="text-gray-700 dark:text-gray-200">{result}</span>
           </li>
         ))}
@@ -102,11 +102,11 @@ export default function RetailClient({
   return (
     <Container className="py-16 overflow-hidden">
       {/* Background elements */}
-      <div className="absolute top-40 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -z-10" />
+      <div className="absolute top-40 right-0 w-96 h-96 bg-muted rounded-full blur-3xl -z-10" />
       <div className="absolute bottom-40 left-0 w-80 h-80 bg-secondary/5 rounded-full blur-3xl -z-10" />
 
       <AnimateOnScroll variant="fadeInUp" className="text-center mb-16">
-        <div className="inline-block rounded-full bg-primary/10 dark:bg-primary/20 px-4 py-1.5 text-sm font-medium text-primary mb-4">
+        <div className="inline-block rounded-full bg-muted px-4 py-1.5 text-sm font-medium text-brand mb-4">
           Retail &amp; E-commerce
         </div>
         <Heading className="text-4xl md:text-5xl mb-4">AI Solutions for Retail &amp; E-commerce</Heading>
@@ -118,11 +118,11 @@ export default function RetailClient({
       <div className="flex flex-col md:flex-row gap-12 mb-20">
         <AnimateOnScroll variant="fadeInLeft" className="w-full md:w-1/2">
           <div className="aspect-video rounded-xl shadow-xl overflow-hidden bg-slate-900 p-6 md:p-8 flex flex-col">
-            <div className="text-primary/60 text-xs font-mono mb-4">Inventory Intelligence</div>
+            <div className="text-brand/60 text-xs font-mono mb-4">Inventory Intelligence</div>
             <div className="grid grid-cols-2 gap-3 mb-4">
               <div className="bg-white/5 rounded-lg p-3">
                 <div className="text-white/40 text-xs mb-1">Stockout Risk</div>
-                <div className="text-2xl font-bold text-primary">↓ 28%</div>
+                <div className="text-2xl font-bold text-brand">↓ 28%</div>
                 <div className="text-white/30 text-xs">pilot categories</div>
               </div>
               <div className="bg-white/5 rounded-lg p-3">
@@ -206,13 +206,13 @@ export default function RetailClient({
         ))}
       </StaggerContainer>
 
-      <AnimateOnScroll variant="fadeIn" className="mb-20 bg-primary/5 dark:bg-primary/10 rounded-xl p-8 md:p-12 shadow-lg">
+      <AnimateOnScroll variant="fadeIn" className="mb-20 bg-muted rounded-xl p-8 md:p-12 shadow-lg">
         <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Measurable Results for Retail Teams</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {stats.map((stat, index) => (
             <AnimateOnScroll key={stat.label} variant="scaleIn" delay={index * 0.1} className="text-center">
               <m.div
-                className="text-4xl md:text-5xl font-bold text-primary mb-2"
+                className="text-4xl md:text-5xl font-bold text-brand mb-2"
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -253,7 +253,7 @@ export default function RetailClient({
 
       <div className="mb-20 relative">
         {/* Vertical line connecting phases */}
-        <div className="absolute left-6 top-6 bottom-0 w-0.5 bg-primary/20 dark:bg-primary/30 hidden md:block"></div>
+        <div className="absolute left-6 top-6 bottom-0 w-0.5 bg-muted hidden md:block"></div>
 
         <div className="space-y-12">
           {[
@@ -324,7 +324,7 @@ export default function RetailClient({
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3, delay: index * 0.2 + i * 0.1 }}
                     >
-                      <Check className="h-5 w-5 text-primary mt-0.5 mr-2 flex-shrink-0" />
+                      <Check className="h-5 w-5 text-brand mt-0.5 mr-2 flex-shrink-0" />
                       <span className="text-gray-700 dark:text-gray-200">{check}</span>
                     </m.li>
                   ))}
@@ -335,7 +335,7 @@ export default function RetailClient({
         </div>
       </div>
 
-      <AnimateOnScroll variant="scaleIn" className="bg-primary/5 dark:bg-primary/10 rounded-xl p-8 md:p-12 text-center shadow-xl">
+      <AnimateOnScroll variant="scaleIn" className="bg-muted rounded-xl p-8 md:p-12 text-center shadow-xl">
         <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Transform Your Retail Operations?</h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
           Let&apos;s discuss how our AI solutions can help your retail or e-commerce team reduce inventory risk, improve forecast accuracy, and deliver better customer experiences.

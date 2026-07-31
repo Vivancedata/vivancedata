@@ -1,9 +1,20 @@
 import { withSentryConfig } from '@sentry/nextjs';
 import bundleAnalyzer from '@next/bundle-analyzer';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { createRequire } from 'node:module';
 
-const projectRoot = path.dirname(fileURLToPath(import.meta.url));
+/**
+ * Turbopack refuses to compile files outside its root, so the root has to
+ * contain the resolved `next` package. In the npm workspace `next` is hoisted
+ * to the repo root; in a standalone deploy it sits in this project. Deriving
+ * the root from where `next` actually resolves is correct in both cases --
+ * hardcoding either one breaks the other.
+ */
+const turbopackRoot = path.resolve(
+  path.dirname(createRequire(import.meta.url).resolve('next/package.json')),
+  '..',
+  '..'
+);
 
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
@@ -11,6 +22,10 @@ const withBundleAnalyzer = bundleAnalyzer({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  turbopack: {
+    root: turbopackRoot,
+  },
+
   // Enable image optimization with aggressive caching
   images: {
     formats: ['image/avif', 'image/webp'],
@@ -25,10 +40,6 @@ const nextConfig = {
         hostname: 'cdn.jsdelivr.net',
       },
     ],
-  },
-
-  turbopack: {
-    root: projectRoot,
   },
 
   transpilePackages: ["@vivancedata/ui"],

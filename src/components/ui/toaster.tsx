@@ -1,1 +1,1 @@
-export { Toaster } from "@ui-source/components/toaster"
+export { Toaster } from "@vivancedata/ui"

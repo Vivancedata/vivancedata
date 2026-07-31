@@ -53,7 +53,7 @@ const TechnologyCard = ({ title, description, icon, maturity, timeframe }: Techn
   return (
     <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
       <div className="flex items-center mb-4">
-        <div className="mr-4 p-3 bg-primary/10 dark:bg-primary/20 rounded-full">
+        <div className="mr-4 p-3 bg-muted rounded-full">
           {icon}
         </div>
         <h3 className="text-xl font-semibold">{title}</h3>
@@ -107,7 +107,7 @@ const ProjectCard = ({ title, description, technologies, status }: ProjectCardPr
           {technologies.map((tech) => (
             <span
               key={tech}
-              className="inline-flex items-center rounded-full bg-primary/10 dark:bg-primary/20 px-2.5 py-0.5 text-xs font-medium text-primary"
+              className="inline-flex items-center rounded-full bg-muted px-2.5 py-0.5 text-xs font-medium text-brand"
             >
               {tech}
             </span>
@@ -123,42 +123,42 @@ export default function InnovationHubPage() {
     {
       title: "Multimodal Foundation Models",
       description: "AI systems that can process and generate multiple types of data (text, images, audio, video) with a single model architecture.",
-      icon: <Brain className="h-6 w-6 text-primary" />,
+      icon: <Brain className="h-6 w-6 text-brand" />,
       maturity: "Growing" as const,
       timeframe: "1-2 years"
     },
     {
       title: "Neuromorphic Computing",
       description: "Computing architectures inspired by the human brain that enable more efficient AI processing and learning capabilities.",
-      icon: <Atom className="h-6 w-6 text-primary" />,
+      icon: <Atom className="h-6 w-6 text-brand" />,
       maturity: "Emerging" as const,
       timeframe: "3-5 years"
     },
     {
       title: "Federated Learning",
       description: "Machine learning technique that trains algorithms across multiple devices while keeping data localized, enhancing privacy and security.",
-      icon: <Zap className="h-6 w-6 text-primary" />,
+      icon: <Zap className="h-6 w-6 text-brand" />,
       maturity: "Growing" as const,
       timeframe: "Now-1 year"
     },
     {
       title: "Quantum Machine Learning",
       description: "Intersection of quantum computing and machine learning that promises exponential speedups for certain AI algorithms and problems.",
-      icon: <Sparkles className="h-6 w-6 text-primary" />,
+      icon: <Sparkles className="h-6 w-6 text-brand" />,
       maturity: "Emerging" as const,
       timeframe: "5+ years"
     },
     {
       title: "Autonomous AI Agents",
       description: "Self-directed AI systems that can perform complex tasks with minimal human intervention through planning and reasoning capabilities.",
-      icon: <Rocket className="h-6 w-6 text-primary" />,
+      icon: <Rocket className="h-6 w-6 text-brand" />,
       maturity: "Emerging" as const,
       timeframe: "2-3 years"
     },
     {
       title: "Explainable AI (XAI)",
       description: "Techniques and methods that make AI decision-making processes transparent and interpretable to humans.",
-      icon: <Lightbulb className="h-6 w-6 text-primary" />,
+      icon: <Lightbulb className="h-6 w-6 text-brand" />,
       maturity: "Maturing" as const,
       timeframe: "Now"
     }
@@ -215,12 +215,12 @@ export default function InnovationHubPage() {
       <div className="flex flex-col md:flex-row gap-12 mb-20">
         <div className="w-full md:w-1/2">
           <div className="aspect-video rounded-xl shadow-xl overflow-hidden bg-slate-900 p-6 md:p-8 flex flex-col">
-            <div className="text-primary/60 text-xs font-mono mb-4">R&amp;D Pipeline</div>
+            <div className="text-brand/60 text-xs font-mono mb-4">R&amp;D Pipeline</div>
             <div className="space-y-3 flex-1">
               {[
                 { stage: "Research", count: "12 active projects", color: "bg-purple-400/20 text-purple-300 border-purple-500/30" },
                 { stage: "Prototype", count: "7 in testing", color: "bg-blue-400/20 text-blue-300 border-blue-500/30" },
-                { stage: "Pilot", count: "3 client pilots", color: "bg-primary/20 text-primary border-primary/30" },
+                { stage: "Pilot", count: "3 client pilots", color: "bg-muted text-brand border-brand/30" },
                 { stage: "Production", count: "18 shipped solutions", color: "bg-green-400/20 text-green-300 border-green-500/30" },
               ].map((item) => (
                 <div key={item.stage} className={`border rounded-lg px-4 py-2.5 flex items-center justify-between ${item.color}`}>
@@ -316,7 +316,7 @@ export default function InnovationHubPage() {
                 <input
                   type="text"
                   placeholder={demo.placeholder}
-                  className="w-full rounded-lg bg-gray-100 dark:bg-gray-700 py-2 px-4 text-sm placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20"
+                  className="w-full rounded-lg bg-gray-100 dark:bg-gray-700 py-2 px-4 text-sm placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-brand/20"
                 />
                 <Button className="w-full">
                   {demo.buttonText}
@@ -376,7 +376,7 @@ export default function InnovationHubPage() {
         </div>
       </div>
       
-      <div className="bg-primary/5 dark:bg-primary/10 rounded-xl p-8 md:p-12 text-center">
+      <div className="bg-muted rounded-xl p-8 md:p-12 text-center">
         <h2 className="text-2xl md:text-3xl font-bold mb-4">Collaborate with Our Innovation Team</h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
           Interested in partnering with us on cutting-edge AI research and development? Our innovation team works with clients, academic institutions, and technology partners to explore new frontiers in artificial intelligence.

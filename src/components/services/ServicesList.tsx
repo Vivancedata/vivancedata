@@ -18,8 +18,8 @@ export function ServicesList({ services }: ServicesListProps): React.ReactElemen
         {services.map((service) => (
           <div key={service.id} className="bg-card p-8 rounded-lg border border-border shadow-sm">
             <div className="flex items-start gap-4">
-              <div className="rounded-full bg-primary/10 p-2 mt-1">
-                <CheckCircle className="h-5 w-5 text-primary" />
+              <div className="rounded-full bg-muted p-2 mt-1">
+                <CheckCircle className="h-5 w-5 text-brand" />
               </div>
               <div>
                 <h3 className="text-xl font-bold mb-3">{service.title}</h3>

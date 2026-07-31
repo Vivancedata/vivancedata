@@ -92,7 +92,7 @@ export function RelatedPosts({ posts, currentSlug }: RelatedPostsProps) {
                       {post.tags.slice(0, 2).map((tag: string) => (
                         <span
                           key={tag}
-                          className="inline-flex items-center rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary"
+                          className="inline-flex items-center rounded-full bg-muted px-2 py-0.5 text-xs font-medium text-brand"
                         >
                           {tag}
                         </span>
@@ -101,7 +101,7 @@ export function RelatedPosts({ posts, currentSlug }: RelatedPostsProps) {
                   )}
                 </div>
 
-                <div className="mt-4 flex items-center gap-2 text-sm font-medium text-primary">
+                <div className="mt-4 flex items-center gap-2 text-sm font-medium text-brand">
                   Read article
                   <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </div>

@@ -8,4 +8,4 @@ export {
   NavigationMenuLink,
   NavigationMenuIndicator,
   NavigationMenuViewport,
-} from "@ui-source/components/navigation-menu"
+} from "@vivancedata/ui"

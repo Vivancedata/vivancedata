@@ -8,60 +8,57 @@ const featureIcons = {
   checkCircle: CheckCircle2,
 } as const;
 
+// Marketing CTAs are pills; the primary is an ink fill, the secondary a white
+// pill with a hairline. See DESIGN.md for why the shape differs from app chrome.
 const primaryCtaClass =
-  "inline-flex min-h-14 items-center justify-center rounded-xl bg-primary px-8 py-4 text-lg font-medium text-primary-foreground shadow-lg shadow-primary/20 transition-colors duration-200 hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
+  "inline-flex min-h-12 items-center justify-center rounded-pill bg-primary px-6 text-body font-medium text-primary-foreground transition-colors duration-fast hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
 
 const secondaryCtaClass =
-  "inline-flex min-h-14 items-center justify-center rounded-xl border border-primary px-8 py-4 text-lg font-medium text-primary transition-colors duration-200 hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
+  "inline-flex min-h-12 items-center justify-center rounded-pill border border-border bg-card px-6 text-body font-medium text-foreground transition-colors duration-fast hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
 
 export default function Welcome() {
   return (
-    <section className="container mx-auto overflow-hidden px-4 py-16 md:py-28">
-      <div className="relative">
-        <div className="absolute inset-x-0 top-0 -z-10 h-52 bg-gradient-to-b from-primary/10 via-primary/5 to-transparent" aria-hidden="true" />
-        <div className="absolute right-0 top-0 -z-10 hidden h-80 w-80 rounded-full bg-primary/10 blur-3xl md:block" aria-hidden="true" />
-        <div className="absolute bottom-0 left-0 -z-10 hidden h-72 w-72 rounded-full bg-accent/10 blur-3xl md:block" aria-hidden="true" />
-
-        <div className="mb-16 flex flex-col items-center justify-center space-y-6 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-background/95 px-4 py-1.5 text-sm font-medium text-foreground shadow-sm dark:bg-card/90">
-            Why Choose VivanceData
-          </div>
-          <h2 className="text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl md:text-6xl">
-            Transforming Businesses Through <span className="text-primary">Intelligent Automation</span>
+    <section className="hero-mesh w-full">
+      <div className="container mx-auto px-4 py-4xl md:py-section">
+        <div className="mb-3xl flex flex-col items-center justify-center gap-lg text-center">
+          {/* The uppercase Geist Mono eyebrow, labelling the band like a spec sheet. */}
+          <p className="eyebrow">Why Choose VivanceData</p>
+          <h2 className="text-display-xl text-foreground">
+            Transforming Businesses Through{" "}
+            <span className="text-brand">Intelligent Automation</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-3xl text-xl leading-relaxed text-muted-foreground">
-            We combine cutting-edge AI technology with deep industry expertise to deliver solutions that drive real business outcomes.
+          <p className="mx-auto max-w-3xl text-body-lg text-muted-foreground">
+            We combine cutting-edge AI technology with deep industry expertise to
+            deliver solutions that drive real business outcomes.
           </p>
         </div>
 
-        <div
-          className="mb-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4"
-          style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "2rem" }}
-        >
+        <div className="mb-3xl grid grid-cols-1 gap-lg md:grid-cols-2 lg:grid-cols-4">
           {features.map((feature) => {
-            const Icon = featureIcons[feature.icon as keyof typeof featureIcons] ?? Brain;
+            const Icon =
+              featureIcons[feature.icon as keyof typeof featureIcons] ?? Brain;
 
             return (
+              /* Level 0: hairline card, no shadow, no hover lift. */
               <article
                 key={feature.title}
-                className="group flex h-full flex-col rounded-3xl border border-border/70 bg-card/90 p-8 shadow-[0_25px_60px_-45px_rgba(15,118,110,0.24)] transition-transform transition-shadow duration-300 motion-reduce:transition-none motion-safe:hover:-translate-y-1 hover:shadow-[0_35px_80px_-50px_rgba(13,148,136,0.36)]"
+                className="flex h-full flex-col rounded-md border border-border bg-card p-lg transition-colors duration-default hover:border-brand/40"
               >
-                <div className="mb-6 w-fit rounded-2xl border border-border/70 bg-background p-4 transition-colors duration-300 group-hover:border-primary/40">
-                  <Icon className="h-6 w-6 text-primary" aria-hidden="true" />
+                <div className="mb-lg w-fit rounded-sm border border-border bg-muted p-3">
+                  <Icon className="h-5 w-5 text-brand" aria-hidden="true" />
                 </div>
-                <h3 className="mb-3 text-2xl font-bold text-foreground transition-colors duration-300 group-hover:text-primary">
+                <h3 className="mb-sm text-heading-3 text-foreground">
                   {feature.title}
                 </h3>
-                <p className="text-lg text-muted-foreground">{feature.description}</p>
+                <p className="text-body-sm text-muted-foreground">
+                  {feature.description}
+                </p>
               </article>
             );
           })}
         </div>
 
-        <div
-          className="mt-12 flex flex-col items-center justify-center gap-6 sm:flex-row"
-          style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "center", gap: "1.5rem" }}
-        >
+        <div className="mt-xl flex flex-col items-center justify-center gap-md sm:flex-row">
           <a href="/services" className={primaryCtaClass}>
             <span>Explore Our Services</span>
             <ChevronRight className="ml-2 h-5 w-5" aria-hidden="true" />
