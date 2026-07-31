@@ -2,12 +2,16 @@
   "name": "vivancedata",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "NEXT_TELEMETRY_DISABLED=1 next build --webpack",
     "start": "next start",
     "check:ui-boundary": "vivance-ui-boundary --allow header.tsx,form.tsx",
-    "lint": "npm run check:ui-boundary && eslint .",
+    "check:build-parity": "node scripts/check-build-parity.mjs",
+    "lint": "npm run check:ui-boundary && npm run check:build-parity && eslint .",
     "lint:fix": "eslint . --fix",
     "type-check": "tsc --noEmit",
     "react-doctor:score": "npx -y react-doctor@latest . --score",

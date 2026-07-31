@@ -51,8 +51,8 @@ VivanceData is a leading provider of AI solutions that transform businesses thro
 
 ### Prerequisites
 
-- Node.js 18.0 or later
-- npm, yarn, or bun package manager
+- Node.js 22.x — the version CI and Vercel both build with (`engines.node` in `package.json`)
+- npm. The repo is npm-only: `package-lock.json` is the single lockfile, and both CI and Vercel install with `npm ci`.
 
 ### Installation
 
@@ -69,20 +69,12 @@ cp .env.example .env.local
 
 3. Install dependencies
 ```bash
-npm install
-# or
-yarn
-# or
-bun install
+npm ci
 ```
 
 4. Start the development server
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-bun dev
 ```
 
 5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the site
