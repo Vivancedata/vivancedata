@@ -16,7 +16,7 @@ export default function Pricing() {
     <section
       className="relative overflow-hidden py-16 md:py-24"
     >
-      <div className="absolute inset-x-0 -top-20 h-64 bg-primary/5 blur-3xl" aria-hidden="true" />
+      <div className="absolute inset-x-0 -top-20 h-64 bg-muted blur-3xl" aria-hidden="true" />
       <div className="container relative mx-auto px-4">
         <div className="mx-auto mb-12 max-w-3xl text-center">
           <div className="mb-4 inline-flex items-center rounded-full border border-border/70 bg-card/80 px-4 py-1 text-sm font-medium text-foreground shadow-sm">

@@ -53,7 +53,7 @@ const TechnologyCard = ({ title, description, icon, maturity, timeframe }: Techn
   return (
     <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
       <div className="flex items-center mb-4">
-        <div className="mr-4 p-3 bg-primary/10 dark:bg-primary/20 rounded-full">
+        <div className="mr-4 p-3 bg-muted rounded-full">
           {icon}
         </div>
         <h3 className="text-xl font-semibold">{title}</h3>
@@ -107,7 +107,7 @@ const ProjectCard = ({ title, description, technologies, status }: ProjectCardPr
           {technologies.map((tech) => (
             <span
               key={tech}
-              className="inline-flex items-center rounded-full bg-primary/10 dark:bg-primary/20 px-2.5 py-0.5 text-xs font-medium text-brand"
+              className="inline-flex items-center rounded-full bg-muted px-2.5 py-0.5 text-xs font-medium text-brand"
             >
               {tech}
             </span>
@@ -220,7 +220,7 @@ export default function InnovationHubPage() {
               {[
                 { stage: "Research", count: "12 active projects", color: "bg-purple-400/20 text-purple-300 border-purple-500/30" },
                 { stage: "Prototype", count: "7 in testing", color: "bg-blue-400/20 text-blue-300 border-blue-500/30" },
-                { stage: "Pilot", count: "3 client pilots", color: "bg-primary/20 text-brand border-brand/30" },
+                { stage: "Pilot", count: "3 client pilots", color: "bg-muted text-brand border-brand/30" },
                 { stage: "Production", count: "18 shipped solutions", color: "bg-green-400/20 text-green-300 border-green-500/30" },
               ].map((item) => (
                 <div key={item.stage} className={`border rounded-lg px-4 py-2.5 flex items-center justify-between ${item.color}`}>
@@ -376,7 +376,7 @@ export default function InnovationHubPage() {
         </div>
       </div>
       
-      <div className="bg-primary/5 dark:bg-primary/10 rounded-xl p-8 md:p-12 text-center">
+      <div className="bg-muted rounded-xl p-8 md:p-12 text-center">
         <h2 className="text-2xl md:text-3xl font-bold mb-4">Collaborate with Our Innovation Team</h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
           Interested in partnering with us on cutting-edge AI research and development? Our innovation team works with clients, academic institutions, and technology partners to explore new frontiers in artificial intelligence.

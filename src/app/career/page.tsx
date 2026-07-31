@@ -74,7 +74,7 @@ const CareerPage = () => {
                 key={benefit.title}
                 className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 flex gap-4"
               >
-                <div className="bg-primary/10 p-3 rounded-lg h-fit">
+                <div className="bg-muted p-3 rounded-lg h-fit">
                   <benefit.icon className="h-6 w-6 text-brand" />
                 </div>
                 <div>
@@ -92,8 +92,8 @@ const CareerPage = () => {
         <div className="mb-16">
           <h2 className="text-2xl font-bold text-center mb-8">Open Positions</h2>
 
-          <div className="bg-primary/5 dark:bg-primary/10 rounded-xl p-8 text-center">
-            <div className="bg-primary/10 dark:bg-primary/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+          <div className="bg-muted rounded-xl p-8 text-center">
+            <div className="bg-muted w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
               <Briefcase className="h-8 w-8 text-brand" />
             </div>
             <h3 className="text-xl font-semibold mb-3">No Open Positions Right Now</h3>

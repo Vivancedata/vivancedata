@@ -93,7 +93,7 @@ const getPhaseColor = (number: number): string => {
 
 const getPhaseAccent = (number: number): string => {
   const accents = [
-    'bg-primary/10 dark:bg-primary/20 text-brand dark:text-brand/80',
+    'bg-muted text-brand dark:text-brand/80',
     'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300',
     'bg-violet-100 dark:bg-violet-900/30 text-violet-600 dark:text-violet-300',
     'bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-300',
@@ -199,7 +199,7 @@ function PhasesTimelineSection() {
     <section className="w-full py-20 md:py-28 bg-gray-50 dark:bg-slate-800">
       <Container className="max-w-7xl">
         <div className="text-center mb-16">
-          <div className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-brand mb-4">
+          <div className="inline-block rounded-full bg-muted px-4 py-1.5 text-sm font-semibold text-brand mb-4">
             The 6-Phase Journey
           </div>
           <Heading as="h2" className="text-3xl md:text-4xl mb-4">
@@ -324,7 +324,7 @@ function BenefitsSection() {
                 <div className="flex items-start justify-between mb-4">
                   <h3 className="text-xl font-bold">{benefit.title}</h3>
                   {benefit.metric && (
-                    <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-semibold text-brand">
+                    <span className="inline-flex items-center rounded-full bg-muted px-3 py-1 text-sm font-semibold text-brand">
                       {benefit.metric}
                     </span>
                   )}

@@ -35,7 +35,7 @@ export function ServicesHero({ title, description }: ServicesHeroProps): React.R
         
         {/* Floating shapes */}
         <m.div 
-          className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-primary/10 blur-3xl"
+          className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-muted blur-3xl"
           animate={{ 
             x: [0, 30, 0],
             y: [0, -30, 0],
@@ -48,7 +48,7 @@ export function ServicesHero({ title, description }: ServicesHeroProps): React.R
         />
         
         <m.div 
-          className="absolute bottom-1/3 right-1/4 w-96 h-96 rounded-full bg-primary/10 blur-3xl"
+          className="absolute bottom-1/3 right-1/4 w-96 h-96 rounded-full bg-muted blur-3xl"
           animate={{ 
             x: [0, -40, 0],
             y: [0, 40, 0],

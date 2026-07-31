@@ -194,7 +194,7 @@ export const categoryColors: Record<IntegrationCategory, { bg: string; text: str
     border: "border-orange-500/30",
   },
   AI: {
-    bg: "bg-primary/10 dark:bg-primary/20",
+    bg: "bg-muted",
     text: "text-brand",
     border: "border-brand/30",
   },

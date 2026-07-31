@@ -49,7 +49,7 @@ export function MainNavMobile({ items }: MainNavMobileProps) {
               <div key={item.name}>
                 <a
                   href={item.href}
-                  className="block rounded-md px-4 py-2 text-foreground/80 transition-colors hover:bg-primary/10 hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  className="block rounded-md px-4 py-2 text-foreground/80 transition-colors hover:bg-muted hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}

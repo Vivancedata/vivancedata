@@ -136,7 +136,7 @@ export function BlogFilters({ allTags, onSearch, onTagsChange }: BlogFiltersProp
           <button
             type="button"
             onClick={() => setShowAllTags(prev => !prev)}
-            className="inline-flex items-center rounded-full px-3 py-1 text-xs font-medium text-brand hover:text-brand/80 hover:bg-primary/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            className="inline-flex items-center rounded-full px-3 py-1 text-xs font-medium text-brand hover:text-brand/80 hover:bg-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             aria-label={showAllTags ? "Show fewer blog topics" : `Show all ${allTags.length} blog topics`}
           >
             {showAllTags ? "Show fewer topics" : `Show all ${allTags.length} topics`}

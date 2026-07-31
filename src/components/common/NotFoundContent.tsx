@@ -387,7 +387,7 @@ export function NotFoundContent() {
                       "transition-all duration-200"
                     )}
                   >
-                    <div className="flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-primary/10 mb-3 group-hover:bg-primary/20 group-hover:scale-105 transition-all duration-200">
+                    <div className="flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-muted mb-3 group-hover:bg-muted group-hover:scale-105 transition-all duration-200">
                       <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-brand" aria-hidden="true" />
                     </div>
                     <span className="font-medium text-foreground group-hover:text-brand transition-colors">

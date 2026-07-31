@@ -28,7 +28,7 @@ function BlogIllustration({ category }: { category: string }) {
           <div className="mb-1 font-mono text-xs text-brand/40">// Implementation Roadmap</div>
           {IMPLEMENTATION_PHASES.map((phase, index) => (
             <div key={phase} className="flex items-center gap-2">
-              <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/20 font-mono text-xs text-brand">
+              <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-muted font-mono text-xs text-brand">
                 {index + 1}
               </div>
               <div className="h-1 rounded-full bg-primary/30" style={{ width: `${85 - index * 10}%` }} />
@@ -144,12 +144,12 @@ export default function Blog() {
       className="w-full overflow-hidden bg-gradient-to-b from-background to-muted/20 py-20 md:py-32"
     >
       <div className="container relative mx-auto px-4">
-        <div className="absolute right-0 top-40 -z-10 h-96 w-96 rounded-full bg-primary/10 blur-3xl" />
+        <div className="absolute right-0 top-40 -z-10 h-96 w-96 rounded-full bg-muted blur-3xl" />
         <div className="absolute bottom-20 left-0 -z-10 h-80 w-80 rounded-full bg-secondary/5 blur-3xl" />
 
         <div className="mb-16 flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
           <div>
-            <div className="mb-4 inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-brand">
+            <div className="mb-4 inline-block rounded-full bg-muted px-3 py-1 text-sm font-medium text-brand">
               Latest Insights
             </div>
             <h2 className="mb-4 text-3xl font-bold text-brand md:text-5xl">From Our Blog</h2>
@@ -160,7 +160,7 @@ export default function Blog() {
           <Button
             asChild
             variant="outline"
-            className="h-auto border-brand px-6 py-6 text-brand transition-all duration-300 hover:bg-primary/10"
+            className="h-auto border-brand px-6 py-6 text-brand transition-all duration-300 hover:bg-muted"
           >
             <a href="/blog" className="group">
               <span>View All Articles</span>

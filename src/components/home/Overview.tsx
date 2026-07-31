@@ -21,7 +21,7 @@ export default function Overview() {
       className="container mx-auto py-16 px-4 md:py-24"
     >
       <div className="mx-auto mb-16 max-w-3xl text-center">
-        <div className="mb-4 inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-brand">
+        <div className="mb-4 inline-block rounded-full bg-muted px-3 py-1 text-sm font-medium text-brand">
           Our Services
         </div>
         <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
@@ -43,7 +43,7 @@ export default function Overview() {
               className="flex h-full flex-col border border-border/70 bg-card/90 shadow-lg transition-transform duration-300 hover:-translate-y-1"
             >
               <CardContent className="flex h-full flex-col p-7">
-                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-brand">
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-muted text-brand">
                   <Icon className="h-6 w-6" aria-hidden="true" />
                 </div>
                 <CardTitle className="text-2xl text-foreground">{service.title}</CardTitle>

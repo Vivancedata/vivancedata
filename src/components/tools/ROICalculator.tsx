@@ -236,7 +236,7 @@ function ROIMetrics({ results }: ROIMetricsProps) {
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 0.2 }}
       >
-        <Card className="bg-primary/5 dark:bg-primary/10 border-brand/20 dark:border-brand/30">
+        <Card className="bg-muted border-brand/20 dark:border-brand/30">
           <CardHeader>
             <CardTitle as="h3" className="text-lg flex items-center gap-2">
               <Clock className="h-5 w-5 text-brand" aria-hidden="true" />
@@ -335,7 +335,7 @@ function FinancialBreakdown({ results }: FinancialBreakdownProps) {
             </div>
 
             <div className="border-t pt-6">
-              <div className="bg-primary/5 dark:bg-primary/10 rounded-lg p-6 border-2 border-brand/30 dark:border-brand/40">
+              <div className="bg-muted rounded-lg p-6 border-2 border-brand/30 dark:border-brand/40">
                 <div className="flex justify-between items-center">
                   <span className="text-xl font-bold text-gray-800 dark:text-gray-200">Net Return (3 Years)</span>
                   <span className="text-3xl font-bold text-brand">{formatCurrency(results.netROI)}</span>

@@ -157,7 +157,7 @@ function DemoFeatureColumn() {
   return (
     <AnimateOnScroll variant="fadeInLeft">
       <div>
-        <div className="inline-block rounded-full bg-primary/10 dark:bg-primary/20 px-4 py-1.5 text-sm font-medium text-brand mb-6">
+        <div className="inline-block rounded-full bg-muted px-4 py-1.5 text-sm font-medium text-brand mb-6">
           Book a Demo
         </div>
 
@@ -174,7 +174,7 @@ function DemoFeatureColumn() {
         <StaggerContainer className="space-y-4" staggerDelay={0.1} direction="up">
           {demoFeatures.map((feature) => (
             <div key={feature.title} className="flex items-start gap-4 group">
-              <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-brand group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
+              <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-muted flex items-center justify-center text-brand group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
                 {feature.icon}
               </div>
               <div>
@@ -203,7 +203,7 @@ function DemoFormCard({ state, onChange, onSubmit }: DemoFormProps) {
           {!state.isSubmitted ? (
             <>
               <div className="text-center mb-8">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 dark:bg-primary/20 mb-4">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-muted mb-4">
                   <Play className="h-8 w-8 text-brand" />
                 </div>
                 <h3 className="text-2xl font-bold text-foreground mb-2">Request Your Demo</h3>
@@ -367,7 +367,7 @@ function DemoFormCard({ state, onChange, onSubmit }: DemoFormProps) {
             </>
           ) : (
             <div className="text-center py-8">
-              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 dark:bg-primary/20 mb-6">
+              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-muted mb-6">
                 <CheckCircle className="h-10 w-10 text-brand" />
               </div>
               <h3 className="text-2xl font-bold text-foreground mb-3">Demo Request Received</h3>

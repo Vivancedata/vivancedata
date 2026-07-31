@@ -417,7 +417,7 @@ function Recommendations({ recommendations }: RecommendationsProps) {
       <h3 className="text-xl font-bold mb-4">Personalized Recommendations</h3>
       <ul className="space-y-3" role="list" aria-label="Personalized recommendations">
         {recommendations.map((recommendation) => (
-          <li key={recommendation} className="flex gap-3 p-4 bg-primary/5 dark:bg-primary/10 rounded-lg">
+          <li key={recommendation} className="flex gap-3 p-4 bg-muted rounded-lg">
             <CheckCircle2 className="h-5 w-5 text-brand flex-shrink-0 mt-0.5" aria-hidden="true" />
             <p className="text-sm">{recommendation}</p>
           </li>

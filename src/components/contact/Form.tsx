@@ -139,7 +139,7 @@ export function ProfileForm() {
 
   return (
     <Card className="border-0 shadow-lg">
-      <CardHeader className="bg-primary/5 rounded-t-lg">
+      <CardHeader className="bg-muted rounded-t-lg">
         <CardTitle as="h2" className="text-brand">Contact Us</CardTitle>
         <CardDescription>Fill out the form below to get started</CardDescription>
       </CardHeader>

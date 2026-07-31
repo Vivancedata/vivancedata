@@ -41,12 +41,12 @@ export default function ResourcesSection() {
       className="w-full overflow-hidden bg-muted/20 py-20 md:py-32"
     >
       <div className="container relative mx-auto px-4">
-        <div className="absolute right-0 top-40 -z-10 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
+        <div className="absolute right-0 top-40 -z-10 h-96 w-96 rounded-full bg-muted blur-3xl" />
         <div className="absolute bottom-20 left-0 -z-10 h-80 w-80 rounded-full bg-accent/5 blur-3xl" />
 
         <div className="mb-16 flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
           <div>
-            <div className="mb-4 inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-brand">
+            <div className="mb-4 inline-block rounded-full bg-muted px-3 py-1 text-sm font-medium text-brand">
               Free Resources
             </div>
             <h2 className="mb-4 text-3xl font-bold text-foreground md:text-5xl">Learn From Our Experts</h2>
@@ -57,7 +57,7 @@ export default function ResourcesSection() {
           </div>
           <Button
             variant="outline"
-            className="h-auto border-brand px-6 py-6 text-brand transition-all duration-300 hover:bg-primary/10"
+            className="h-auto border-brand px-6 py-6 text-brand transition-all duration-300 hover:bg-muted"
             asChild
           >
             <a href="/resources">
@@ -76,7 +76,7 @@ export default function ResourcesSection() {
                 key={resource.id}
                 className="group flex h-full flex-col overflow-hidden border border-border bg-card/95 shadow-lg transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
-                <div className="relative flex h-32 items-center justify-center overflow-hidden bg-primary/10">
+                <div className="relative flex h-32 items-center justify-center overflow-hidden bg-muted">
                   <div className="absolute inset-0 bg-background/20" aria-hidden="true" />
                   <div className="text-brand/85">
                     <Icon className="h-8 w-8" aria-hidden="true" />
@@ -125,7 +125,7 @@ export default function ResourcesSection() {
           })}
         </div>
 
-        <div className="mt-16 rounded-2xl border border-border/50 bg-primary/10 p-8 md:p-12">
+        <div className="mt-16 rounded-2xl border border-border/50 bg-muted p-8 md:p-12">
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
             <div className="text-center md:text-left">
               <h3 className="mb-2 text-2xl font-bold text-foreground md:text-3xl">Need Custom Research?</h3>

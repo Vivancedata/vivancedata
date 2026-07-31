@@ -101,7 +101,7 @@ export default function Header() {
                         >
                           <Link
                             href={dropdownItem.href}
-                            className="flex items-center px-5 py-2.5 text-sm text-foreground hover:bg-primary/10 hover:text-brand group/item"
+                            className="flex items-center px-5 py-2.5 text-sm text-foreground hover:bg-muted hover:text-brand group/item"
                           >
                             <span>{dropdownItem.name}</span>
                             <ChevronRight className="ml-auto h-4 w-4 opacity-0 transition-all duration-300 group-hover/item:opacity-100 group-hover/item:translate-x-1" />

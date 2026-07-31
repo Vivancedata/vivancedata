@@ -11,7 +11,7 @@ const metricDefinitions = [
   {
     key: "hoursSaved",
     icon: Clock,
-    colorClass: "bg-primary/10 text-brand dark:bg-primary/20",
+    colorClass: "bg-muted text-brand dark:bg-muted",
   },
   {
     key: "costReduction",
@@ -58,11 +58,11 @@ export default function Testimonials() {
       className="w-full overflow-hidden bg-muted/20 py-20 md:py-32"
     >
       <div className="container relative mx-auto px-4">
-        <div className="absolute right-0 top-0 -z-10 h-72 w-72 rounded-full bg-primary/5 blur-3xl" />
+        <div className="absolute right-0 top-0 -z-10 h-72 w-72 rounded-full bg-muted blur-3xl" />
         <div className="absolute bottom-0 left-0 -z-10 h-96 w-96 rounded-full bg-accent/5 blur-3xl" />
 
         <div className="mx-auto mb-16 max-w-3xl text-center">
-          <div className="mb-4 inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-brand">
+          <div className="mb-4 inline-block rounded-full bg-muted px-3 py-1 text-sm font-medium text-brand">
             Client Success Stories
           </div>
           <h2 className="text-3xl font-bold text-foreground md:text-5xl">What Our Clients Say</h2>

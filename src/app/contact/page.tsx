@@ -53,7 +53,7 @@ const ContactPage = () => {
 
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <div className="bg-primary/10 p-2 rounded-lg">
+                  <div className="bg-muted p-2 rounded-lg">
                     <Mail className="h-5 w-5 text-brand" />
                   </div>
                   <div>
@@ -65,7 +65,7 @@ const ContactPage = () => {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <div className="bg-primary/10 p-2 rounded-lg">
+                  <div className="bg-muted p-2 rounded-lg">
                     <Clock className="h-5 w-5 text-brand" />
                   </div>
                   <div>
@@ -78,7 +78,7 @@ const ContactPage = () => {
               </div>
             </div>
 
-            <div className="bg-primary/5 dark:bg-primary/10 rounded-xl p-6">
+            <div className="bg-muted rounded-xl p-6">
               <h3 className="text-lg font-semibold mb-3">What to Expect</h3>
               <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
                 <li className="flex items-center gap-2">

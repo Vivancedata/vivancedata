@@ -39,11 +39,11 @@ export default function CaseStudies() {
       className="w-full overflow-hidden bg-muted/20 py-20 md:py-32"
     >
       <div className="container relative mx-auto px-4">
-        <div className="absolute left-0 top-40 -z-10 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
+        <div className="absolute left-0 top-40 -z-10 h-96 w-96 rounded-full bg-muted blur-3xl" />
         <div className="absolute bottom-20 right-0 -z-10 h-80 w-80 rounded-full bg-accent/5 blur-3xl" />
 
         <div className="mx-auto mb-16 max-w-3xl text-center">
-          <div className="mb-4 inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-brand">
+          <div className="mb-4 inline-block rounded-full bg-muted px-3 py-1 text-sm font-medium text-brand">
             Success Stories
           </div>
           <h2 className="mb-6 text-3xl font-bold text-foreground md:text-5xl">Case Studies</h2>
@@ -70,7 +70,7 @@ export default function CaseStudies() {
                   <div className="p-8 md:p-10">
                     <CardHeader className="mb-8 p-0">
                       <div className="mb-6">
-                        <Badge className="mb-3 bg-primary/10 px-3 py-1 text-brand hover:bg-primary/10">
+                        <Badge className="mb-3 bg-muted px-3 py-1 text-brand hover:bg-muted">
                           {study.industry}
                         </Badge>
                         <CardTitle className="text-3xl font-bold text-foreground md:text-4xl">
@@ -124,7 +124,7 @@ export default function CaseStudies() {
                             <Badge
                               key={`${study.id}-tech-${tech}`}
                               variant="outline"
-                              className="border-brand/20 bg-primary/5 px-3 py-1 text-sm text-brand"
+                              className="border-brand/20 bg-muted px-3 py-1 text-sm text-brand"
                             >
                               {tech}
                             </Badge>
@@ -171,7 +171,7 @@ export default function CaseStudies() {
         </div>
 
         <div className="mt-16 text-center">
-          <Button variant="outline" className="h-auto border-brand px-6 py-6 text-brand hover:bg-primary/10" asChild>
+          <Button variant="outline" className="h-auto border-brand px-6 py-6 text-brand hover:bg-muted" asChild>
             <a href="/case-studies">
               <span>View All Case Studies</span>
               <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />

@@ -44,7 +44,7 @@ interface PrincipleProps {
 const Principle = ({ icon, title, description }: PrincipleProps) => (
   <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
     <div className="flex items-center mb-4">
-      <div className="mr-4 p-3 bg-primary/10 dark:bg-primary/20 rounded-full">
+      <div className="mr-4 p-3 bg-muted rounded-full">
         {icon}
       </div>
       <h3 className="text-xl font-semibold">{title}</h3>
@@ -237,7 +237,7 @@ export default function ResponsibleAIPage() {
           <div className="aspect-video rounded-xl shadow-xl overflow-hidden bg-slate-900 p-6 md:p-8 flex flex-col">
             <div className="text-brand/60 text-xs font-mono mb-4">Responsible AI Principles</div>
             <div className="flex items-center gap-4 mb-5">
-              <div className="w-14 h-14 rounded-full bg-primary/20 border-2 border-brand/40 flex items-center justify-center flex-shrink-0">
+              <div className="w-14 h-14 rounded-full bg-muted border-2 border-brand/40 flex items-center justify-center flex-shrink-0">
                 <Shield className="w-7 h-7 text-brand" />
               </div>
               <p className="text-white/60 text-xs leading-relaxed">
@@ -296,7 +296,7 @@ export default function ResponsibleAIPage() {
         
         <div className="relative">
           {/* Vertical line connecting phases */}
-          <div className="absolute left-6 top-6 bottom-0 w-0.5 bg-primary/20 dark:bg-primary/30 hidden md:block"></div>
+          <div className="absolute left-6 top-6 bottom-0 w-0.5 bg-muted hidden md:block"></div>
           
           <div className="space-y-12">
             {phases.map((phase) => (
@@ -388,7 +388,7 @@ export default function ResponsibleAIPage() {
         </div>
       </div>
       
-      <div className="bg-primary/5 dark:bg-primary/10 rounded-xl p-8 md:p-12 text-center">
+      <div className="bg-muted rounded-xl p-8 md:p-12 text-center">
         <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Implement Responsible AI?</h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
           Let&apos;s discuss how our Responsible AI Framework can help your organization develop and deploy ethical, transparent, and human-centered AI solutions.

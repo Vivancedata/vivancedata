@@ -15,7 +15,7 @@ export function FAQSection({
       className="container mx-auto py-16 px-4 md:py-24"
     >
       <div className="text-center mb-12">
-        <div className="inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-brand mb-4">
+        <div className="inline-block rounded-full bg-muted px-3 py-1 text-sm font-medium text-brand mb-4">
           Frequently Asked Questions
         </div>
         <h2 className="text-3xl md:text-4xl font-bold mb-4">{title}</h2>

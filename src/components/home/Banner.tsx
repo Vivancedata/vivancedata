@@ -12,7 +12,7 @@ export default function Banner() {
       <div className="absolute inset-0 opacity-20" aria-hidden="true" />
 
       {/* Accent overlay */}
-      <div className="absolute inset-0 bg-primary/10" />
+      <div className="absolute inset-0 bg-muted" />
 
       <div className="container relative mx-auto px-6 py-24 md:py-32 lg:py-40">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-8">

@@ -19,7 +19,7 @@ function CertificationCard({ certification }: CertificationCardProps) {
   return (
     <li className={certificationCardClass}>
       <article className="flex h-full flex-col items-center">
-        <div className="mb-4 rounded-full bg-primary/10 p-4 dark:bg-primary/20">
+        <div className="mb-4 rounded-full bg-muted p-4 dark:bg-muted">
           <Icon className="h-8 w-8 text-brand" aria-hidden="true" />
         </div>
         <h3 className="mb-2 text-lg font-semibold text-foreground">{certification.name}</h3>
@@ -36,11 +36,11 @@ export function TrustSection() {
       aria-labelledby="trust-section-title"
     >
       <div className="container relative mx-auto px-4">
-        <div className="absolute top-0 left-1/4 -z-10 h-64 w-64 rounded-full bg-primary/5 blur-3xl" aria-hidden="true" />
+        <div className="absolute top-0 left-1/4 -z-10 h-64 w-64 rounded-full bg-muted blur-3xl" aria-hidden="true" />
         <div className="absolute right-1/4 bottom-0 -z-10 h-80 w-80 rounded-full bg-accent/5 blur-3xl" aria-hidden="true" />
 
         <div className="mb-12 text-center md:mb-16">
-          <div className="mb-4 inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-brand dark:bg-primary/20">
+          <div className="mb-4 inline-block rounded-full bg-muted px-3 py-1 text-sm font-medium text-brand dark:bg-muted">
             {trustSectionContent.badge}
           </div>
           <h2 id="trust-section-title" className="mb-4 text-3xl font-bold text-foreground md:text-4xl lg:text-5xl">

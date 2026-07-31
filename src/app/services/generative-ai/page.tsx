@@ -178,7 +178,7 @@ export default function GenerativeAIPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {useCases.map((useCase) => (
             <div key={useCase.title} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-              <div className="inline-block px-3 py-1 rounded-full bg-primary/10 dark:bg-primary/20 text-brand text-sm font-medium mb-4">
+              <div className="inline-block px-3 py-1 rounded-full bg-muted text-brand text-sm font-medium mb-4">
                 {useCase.industry}
               </div>
               <h3 className="text-xl font-semibold mb-3">{useCase.title}</h3>
@@ -188,7 +188,7 @@ export default function GenerativeAIPage() {
         </div>
       </div>
       
-      <div className="bg-primary/5 dark:bg-primary/10 rounded-xl p-8 md:p-12 text-center">
+      <div className="bg-muted rounded-xl p-8 md:p-12 text-center">
         <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Harness the Power of Generative AI?</h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
           Let&apos;s discuss how our generative AI solutions can help your business create better content, designs, and experiences.
