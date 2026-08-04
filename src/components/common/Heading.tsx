@@ -1,20 +1,6 @@
-import React from "react";
-import { cn } from "@/lib/utils";
-
-interface HeadingProps {
-  children: React.ReactNode;
-  className?: string;
-  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-  id?: string;
-}
-
-export function Heading({ children, className, as: Component = "h1", id }: HeadingProps) {
-  return (
-    <Component
-      id={id}
-      className={cn("text-3xl font-bold tracking-tight", className)}
-    >
-      {children}
-    </Component>
-  );
-}
+// Re-export from the design system. The local implementation this replaces
+// hardcoded `text-3xl font-bold tracking-tight`, bypassing the DESIGN.md type
+// ladder the package's Heading renders. Call sites that pass explicit size
+// classes keep their look (caller classes win in cn()); sites without them
+// move onto the ladder, which is the point.
+export { Heading, headingVariants, type HeadingProps } from "@vivancedata/ui";
