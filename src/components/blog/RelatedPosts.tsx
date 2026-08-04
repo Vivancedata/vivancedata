@@ -38,7 +38,7 @@ export function RelatedPosts({ posts, currentSlug }: RelatedPostsProps) {
   }
 
   return (
-    <section className="mt-16 pt-16 border-t border-gray-200 dark:border-gray-700">
+    <section className="mt-16 pt-16 border-t border-border">
       <h2 className="text-2xl md:text-3xl font-bold mb-8">Related Articles</h2>
 
       <m.div

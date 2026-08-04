@@ -22,8 +22,7 @@ const NEWSLETTER_BENEFITS = [
 function BlogIllustration({ category }: { category: string }) {
   if (category === "AI Implementation") {
     return (
-      <div className="relative h-full w-full overflow-hidden bg-slate-900">
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/50 to-slate-900" />
+      <div className="relative h-full w-full overflow-hidden bg-card border-b border-border">
         <div className="absolute inset-0 flex flex-col justify-center gap-2.5 p-5">
           <div className="mb-1 font-mono text-xs text-brand/40">// Implementation Roadmap</div>
           {IMPLEMENTATION_PHASES.map((phase, index) => (
@@ -32,7 +31,7 @@ function BlogIllustration({ category }: { category: string }) {
                 {index + 1}
               </div>
               <div className="h-1 rounded-full bg-primary/30" style={{ width: `${85 - index * 10}%` }} />
-              <span className="font-mono text-xs text-white/30">{phase}</span>
+              <span className="font-mono text-xs text-mute">{phase}</span>
             </div>
           ))}
         </div>
@@ -42,15 +41,14 @@ function BlogIllustration({ category }: { category: string }) {
 
   if (category === "AI Trends") {
     return (
-      <div className="relative h-full w-full overflow-hidden bg-slate-900">
-        <div className="absolute inset-0 bg-gradient-to-br from-violet-900/50 to-slate-900" />
+      <div className="relative h-full w-full overflow-hidden bg-card border-b border-border">
         <div className="absolute inset-0 flex flex-col justify-center p-5">
-          <div className="mb-3 font-mono text-xs text-violet-400/40">// AI Adoption Metrics 2025</div>
+          <div className="eyebrow mb-3">// AI Adoption Metrics 2025</div>
           <div className="space-y-3">
             {TREND_METRICS.map(([label, value]) => (
               <div key={label} className="flex items-center justify-between">
-                <span className="text-xs text-white/30">{label}</span>
-                <span className="font-mono text-sm font-bold text-violet-300/70">{value}</span>
+                <span className="text-xs text-mute">{label}</span>
+                <span className="font-mono text-sm font-bold text-brand">{value}</span>
               </div>
             ))}
           </div>
@@ -61,10 +59,9 @@ function BlogIllustration({ category }: { category: string }) {
 
   if (category === "AI Ethics") {
     return (
-      <div className="relative h-full w-full overflow-hidden bg-slate-900">
-        <div className="absolute inset-0 bg-gradient-to-br from-teal-900/50 to-slate-900" />
+      <div className="relative h-full w-full overflow-hidden bg-card border-b border-border">
         <div className="absolute inset-0 flex flex-col justify-center p-5">
-          <div className="mb-3 font-mono text-xs text-teal-400/40">// Ethics Framework</div>
+          <div className="eyebrow mb-3">// Ethics Framework</div>
           <div className="space-y-2">
             {ETHICS_ITEMS.map((item, index) => {
               const isComplete = index < 3;
@@ -72,12 +69,12 @@ function BlogIllustration({ category }: { category: string }) {
                 <div key={item} className="flex items-center gap-2">
                   <div
                     className={`flex h-4 w-4 shrink-0 items-center justify-center rounded border text-xs ${
-                      isComplete ? "border-teal-400/50 text-teal-400/70" : "border-white/20 text-white/20"
+                      isComplete ? "border-brand/50 text-brand" : "border-border text-faint"
                     }`}
                   >
                     {isComplete ? "✓" : ""}
                   </div>
-                  <span className={`text-xs ${isComplete ? "text-white/40" : "text-white/20"}`}>{item}</span>
+                  <span className={`text-xs ${isComplete ? "text-muted-foreground" : "text-faint"}`}>{item}</span>
                 </div>
               );
             })}
@@ -87,7 +84,7 @@ function BlogIllustration({ category }: { category: string }) {
     );
   }
 
-  return <div className="h-full w-full bg-slate-900" />;
+  return <div className="h-full w-full bg-muted" />;
 }
 
 const featuredBlogPosts = [
@@ -222,7 +219,7 @@ export default function Blog() {
         </div>
 
         <div className="mt-20">
-          <div className="relative overflow-hidden rounded-2xl bg-emerald-900 p-8 text-primary-foreground shadow-xl md:p-12">
+          <div className="relative overflow-hidden rounded-lg bg-primary p-8 text-primary-foreground md:p-12">
             <div className="absolute -right-20 -top-20 h-80 w-80 rounded-full bg-white/10 blur-xl motion-safe:animate-pulse" />
             <div className="absolute -bottom-20 -left-20 h-80 w-80 rounded-full bg-white/10 blur-xl motion-safe:animate-pulse" />
 
@@ -236,7 +233,7 @@ export default function Blog() {
                   <input
                     type="email"
                     placeholder="Enter your email"
-                    className="w-full flex-grow rounded-xl bg-white px-6 py-4 text-lg text-slate-950 placeholder:text-slate-600 shadow-lg focus:outline-none focus:ring-2 focus:ring-white/50 sm:w-auto"
+                    className="w-full flex-grow rounded-md bg-background px-6 py-4 text-lg text-foreground placeholder:text-mute focus:outline-none focus:ring-2 focus:ring-ring sm:w-auto"
                   />
                   <Button className="h-auto rounded-xl bg-primary-foreground px-8 py-4 text-lg font-medium text-brand shadow-lg transition-all duration-300 hover:bg-primary-foreground/90 hover:shadow-xl">
                     Subscribe
@@ -263,7 +260,7 @@ export default function Blog() {
                         {NEWSLETTER_BENEFITS.map((item) => (
                           <li key={item} className="flex items-center">
                             <div className="mr-3 rounded-full bg-white/20 p-1 shadow-inner">
-                              <svg className="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <svg className="h-4 w-4 text-primary-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
                               </svg>
                             </div>

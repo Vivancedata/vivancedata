@@ -546,7 +546,7 @@ function QuizQuestionStep({
                 <div className={`rounded-full p-2 bg-${categoryInfo[currentQ.category].color}-100 dark:bg-${categoryInfo[currentQ.category].color}-900/20`} aria-hidden="true">
                   <CategoryIcon className={`h-5 w-5 text-${categoryInfo[currentQ.category].color}-600`} />
                 </div>
-                <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                <span className="text-sm font-medium text-muted-foreground">
                   {categoryInfo[currentQ.category].label}
                 </span>
               </div>

@@ -63,7 +63,7 @@ export default function UseCasesPage() {
 
       <div className="mt-16 bg-muted rounded-xl p-8">
         <h2 className="text-2xl font-bold mb-4">Ready to Implement?</h2>
-        <div className="space-y-4 text-gray-700 dark:text-gray-300">
+        <div className="space-y-4 text-foreground">
           <p>
             Each use case in our repository represents proven AI applications
             that have delivered real business value. Our team can help you

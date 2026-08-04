@@ -72,14 +72,14 @@ const CareerPage = () => {
             {benefits.map((benefit) => (
               <div
                 key={benefit.title}
-                className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 flex gap-4"
+                className="bg-muted rounded-xl p-6 flex gap-4"
               >
                 <div className="bg-muted p-3 rounded-lg h-fit">
                   <benefit.icon className="h-6 w-6 text-brand" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-lg mb-2">{benefit.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">
+                  <p className="text-muted-foreground text-sm">
                     {benefit.description}
                   </p>
                 </div>
@@ -97,7 +97,7 @@ const CareerPage = () => {
               <Briefcase className="h-8 w-8 text-brand" />
             </div>
             <h3 className="text-xl font-semibold mb-3">No Open Positions Right Now</h3>
-            <p className="text-gray-600 dark:text-gray-400 max-w-md mx-auto mb-6">
+            <p className="text-muted-foreground max-w-md mx-auto mb-6">
               We don&apos;t have any open positions at the moment, but we&apos;re always interested in
               hearing from talented individuals. Send us your resume and we&apos;ll keep you in mind
               for future opportunities.
@@ -115,7 +115,7 @@ const CareerPage = () => {
         {/* CTA Section */}
         <div className="bg-gradient-to-r from-primary/10 to-primary/5 rounded-xl p-8 text-center">
           <h2 className="text-2xl font-bold mb-3">Have a Project in Mind?</h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-6">
+          <p className="text-muted-foreground mb-6">
             While we may not be hiring right now, we&apos;re always ready to help businesses
             transform with AI. Let&apos;s discuss your project.
           </p>

@@ -42,14 +42,14 @@ interface PrincipleProps {
 }
 
 const Principle = ({ icon, title, description }: PrincipleProps) => (
-  <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+  <div className="bg-card p-6 rounded-xl shadow-sm border border-border">
     <div className="flex items-center mb-4">
       <div className="mr-4 p-3 bg-muted rounded-full">
         {icon}
       </div>
       <h3 className="text-xl font-semibold">{title}</h3>
     </div>
-    <p className="text-gray-600 dark:text-gray-300">{description}</p>
+    <p className="text-muted-foreground">{description}</p>
   </div>
 );
 
@@ -69,12 +69,12 @@ const Phase = ({ number, title, description, checks }: PhaseProps) => (
       <h3 className="text-xl font-semibold">{title}</h3>
     </div>
     <div className="pl-16">
-      <p className="text-gray-600 dark:text-gray-300 mb-4">{description}</p>
+      <p className="text-muted-foreground mb-4">{description}</p>
       <ul className="space-y-2">
         {checks.map((check) => (
           <li key={check} className="flex items-start">
             <Check className="h-5 w-5 text-brand mt-0.5 mr-2 flex-shrink-0" />
-            <span className="text-gray-700 dark:text-gray-200">{check}</span>
+            <span className="text-foreground">{check}</span>
           </li>
         ))}
       </ul>
@@ -90,22 +90,22 @@ interface CaseStudyProps {
 }
 
 const CaseStudy = ({ title, challenge, approach, outcome }: CaseStudyProps) => (
-  <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+  <div className="bg-card p-6 rounded-xl shadow-sm border border-border">
     <h3 className="text-xl font-semibold mb-4">{title}</h3>
     
     <div className="mb-4">
-      <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Challenge</h4>
-      <p className="text-gray-700 dark:text-gray-200">{challenge}</p>
+      <h4 className="text-sm font-medium text-muted-foreground mb-1">Challenge</h4>
+      <p className="text-foreground">{challenge}</p>
     </div>
     
     <div className="mb-4">
-      <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Responsible AI Approach</h4>
-      <p className="text-gray-700 dark:text-gray-200">{approach}</p>
+      <h4 className="text-sm font-medium text-muted-foreground mb-1">Responsible AI Approach</h4>
+      <p className="text-foreground">{approach}</p>
     </div>
     
     <div>
-      <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Outcome</h4>
-      <p className="text-gray-700 dark:text-gray-200">{outcome}</p>
+      <h4 className="text-sm font-medium text-muted-foreground mb-1">Outcome</h4>
+      <p className="text-foreground">{outcome}</p>
     </div>
   </div>
 );
@@ -234,13 +234,13 @@ export default function ResponsibleAIPage() {
 
       <div className="flex flex-col md:flex-row gap-12 mb-20">
         <div className="w-full md:w-1/2">
-          <div className="aspect-video rounded-xl shadow-xl overflow-hidden bg-slate-900 p-6 md:p-8 flex flex-col">
-            <div className="text-brand/60 text-xs font-mono mb-4">Responsible AI Principles</div>
+          <div className="aspect-video rounded-md overflow-hidden border border-border bg-card p-6 md:p-8 flex flex-col">
+            <div className="eyebrow mb-4">Responsible AI Principles</div>
             <div className="flex items-center gap-4 mb-5">
               <div className="w-14 h-14 rounded-full bg-muted border-2 border-brand/40 flex items-center justify-center flex-shrink-0">
                 <Shield className="w-7 h-7 text-brand" />
               </div>
-              <p className="text-white/60 text-xs leading-relaxed">
+              <p className="text-muted-foreground text-xs leading-relaxed">
                 Ethical guidelines built in at every stage — from data collection to deployment and monitoring.
               </p>
             </div>
@@ -251,9 +251,9 @@ export default function ResponsibleAIPage() {
                 "Privacy preservation",
                 "Human oversight preserved",
               ].map((principle) => (
-                <div key={principle} className="flex items-center gap-2 bg-white/5 rounded-lg px-3 py-1.5">
+                <div key={principle} className="flex items-center gap-2 bg-muted rounded-sm px-3 py-1.5">
                   <div className="w-1.5 h-1.5 rounded-full bg-primary/70 flex-shrink-0" />
-                  <span className="text-white/60 text-xs">{principle}</span>
+                  <span className="text-muted-foreground text-xs">{principle}</span>
                 </div>
               ))}
             </div>
@@ -262,10 +262,10 @@ export default function ResponsibleAIPage() {
         
         <div className="w-full md:w-1/2 flex flex-col justify-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">Why Responsible AI Matters</h2>
-          <p className="text-gray-600 dark:text-gray-300 mb-6">
+          <p className="text-muted-foreground mb-6">
             As AI becomes increasingly integrated into critical business processes and decision-making, ensuring these systems are developed and deployed responsibly is essential. Responsible AI isn&apos;t just an ethical imperative—it&apos;s a business necessity that builds trust, reduces risk, and creates sustainable value.
           </p>
-          <p className="text-gray-600 dark:text-gray-300 mb-6">
+          <p className="text-muted-foreground mb-6">
             At VivanceData, we believe that AI should be designed to augment human capabilities, not replace them. Our Responsible AI Framework guides every AI solution we develop, ensuring that technology serves humanity in ways that are fair, transparent, and beneficial to all stakeholders.
           </p>
           <Button asChild className="self-start group" variant="outline">
@@ -372,14 +372,14 @@ export default function ResponsibleAIPage() {
               ]
             }
           ].map((tool) => (
-            <div key={tool.title} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+            <div key={tool.title} className="bg-card p-6 rounded-xl shadow-sm border border-border">
               <h3 className="text-xl font-semibold mb-3">{tool.title}</h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-4">{tool.description}</p>
+              <p className="text-muted-foreground mb-4">{tool.description}</p>
               <ul className="space-y-2">
                 {tool.features.map((feature) => (
                   <li key={feature} className="flex items-start">
                     <Check className="h-5 w-5 text-brand mt-0.5 mr-2 flex-shrink-0" />
-                    <span className="text-gray-700 dark:text-gray-200">{feature}</span>
+                    <span className="text-foreground">{feature}</span>
                   </li>
                 ))}
               </ul>

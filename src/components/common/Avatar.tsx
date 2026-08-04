@@ -27,14 +27,9 @@ const getInitials = (name: string): string => {
 const getColorFromName = (name: string): string => {
   // Generate a consistent color based on the name
   const colors = [
-    "bg-blue-700",
-    "bg-green-700",
-    "bg-violet-700",
-    "bg-pink-700",
-    "bg-indigo-700",
-    "bg-teal-700",
-    "bg-orange-700",
-    "bg-cyan-700",
+    // One ink chip for every set of initials. The per-person hue rotation
+    // predates DESIGN.md, which allows exactly one accent.
+    "bg-primary",
   ];
 
   const hash = name.split("").reduce((acc, char) => {
@@ -71,7 +66,7 @@ export function Avatar({ name, src, size = "md", className }: AvatarProps) {
   return (
     <div
       className={cn(
-        "relative inline-flex items-center justify-center rounded-full font-semibold text-white",
+        "relative inline-flex items-center justify-center rounded-full font-semibold text-primary-foreground",
         bgColor,
         sizeClasses[size],
         className

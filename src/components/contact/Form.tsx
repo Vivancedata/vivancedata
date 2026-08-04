@@ -118,8 +118,8 @@ export function ProfileForm() {
       <Card className="border-0 shadow-lg" role="status" aria-live="polite">
         <CardContent className="pt-6">
           <div className="flex flex-col items-center justify-center text-center py-10">
-            <div className="rounded-full bg-green-100 p-3 mb-4" aria-hidden="true">
-              <CheckCircle className="h-8 w-8 text-green-600" />
+            <div className="rounded-full bg-success/10 p-3 mb-4" aria-hidden="true">
+              <CheckCircle className="h-8 w-8 text-success" />
             </div>
             <h2
               ref={successHeadingRef}
@@ -128,7 +128,7 @@ export function ProfileForm() {
             >
               Thank You!
             </h2>
-            <p className="text-gray-600 dark:text-gray-300 max-w-md">
+            <p className="text-muted-foreground max-w-md">
               Your message has been received. One of our AI consultants will contact you shortly to discuss how we can help your business.
             </p>
           </div>
@@ -267,7 +267,7 @@ export function ProfileForm() {
           </form>
         </Form>
       </CardContent>
-      <CardFooter className="bg-gray-50 dark:bg-gray-800 rounded-b-lg text-sm text-gray-500 dark:text-gray-400 text-center">
+      <CardFooter className="bg-muted rounded-b-lg text-sm text-muted-foreground text-center">
         <p className="w-full">We respect your privacy and will never share your information.</p>
       </CardFooter>
     </Card>

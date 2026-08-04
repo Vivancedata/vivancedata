@@ -48,7 +48,7 @@ const ContactPage = () => {
         <div className="grid md:grid-cols-3 gap-8">
           {/* Contact Information */}
           <div className="md:col-span-1 space-y-6">
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6">
+            <div className="bg-muted rounded-xl p-6">
               <h3 className="text-xl font-semibold mb-6">Contact Information</h3>
 
               <div className="space-y-4">
@@ -58,7 +58,7 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <p className="font-medium">Email</p>
-                    <a href="mailto:info@vivancedata.com" className="text-gray-600 dark:text-gray-400 hover:text-brand">
+                    <a href="mailto:info@vivancedata.com" className="text-muted-foreground hover:text-brand">
                       info@vivancedata.com
                     </a>
                   </div>
@@ -70,7 +70,7 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <p className="font-medium">Business Hours</p>
-                    <p className="text-gray-600 dark:text-gray-400">
+                    <p className="text-muted-foreground">
                       Mon - Fri: 9:00 AM - 6:00 PM PST
                     </p>
                   </div>
@@ -80,7 +80,7 @@ const ContactPage = () => {
 
             <div className="bg-muted rounded-xl p-6">
               <h3 className="text-lg font-semibold mb-3">What to Expect</h3>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 bg-primary rounded-full"></span>
                   Response within 24 hours

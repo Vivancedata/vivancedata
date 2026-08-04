@@ -79,86 +79,41 @@ const getPhaseIcon = (iconType: MethodologyPhase['iconType']) => {
   }
 };
 
-const getPhaseColor = (number: number): string => {
-  const colors = [
-    'from-primary to-primary/80',
-    'from-emerald-600 to-emerald-700',
-    'from-violet-500 to-violet-600',
-    'from-purple-500 to-purple-600',
-    'from-fuchsia-500 to-fuchsia-600',
-    'from-pink-500 to-pink-600',
-  ];
-  return colors[(number - 1) % colors.length];
-};
+// One accent, not six. The per-phase rainbow predates DESIGN.md, which allows
+// exactly one accent colour; phases are differentiated by their number, not by
+// hue.
+const getPhaseColor = (): string => 'bg-primary text-primary-foreground';
 
-const getPhaseAccent = (number: number): string => {
-  const accents = [
-    'bg-muted text-brand dark:text-brand/80',
-    'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300',
-    'bg-violet-100 dark:bg-violet-900/30 text-violet-600 dark:text-violet-300',
-    'bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-300',
-    'bg-fuchsia-100 dark:bg-fuchsia-900/30 text-fuchsia-600 dark:text-fuchsia-300',
-    'bg-pink-100 dark:bg-pink-900/30 text-pink-600 dark:text-pink-300',
-  ];
-  return accents[(number - 1) % accents.length];
-};
+const getPhaseAccent = (): string => 'bg-muted text-brand';
 
 function MethodologyHeroSection() {
+  // Ink on canvas, per DESIGN.md: no dark panel, no blur orbs, no glass badge.
+  // The converted industry pages set the precedent -- eyebrow, display
+  // heading, muted supporting copy, stock button variants.
   return (
-    <section className="relative w-full py-20 md:py-32 overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-      <div className="absolute inset-0 opacity-10">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage:
-              'radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)',
-            backgroundSize: '40px 40px',
-          }}
-        />
-      </div>
-
-      <div className="absolute top-20 left-10 w-72 h-72 bg-primary/30 rounded-full filter blur-[100px]" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/20 rounded-full filter blur-[120px]" />
-
-      <Container className="relative z-10 max-w-6xl">
+    <section className="relative w-full py-20 md:py-32 border-b border-border">
+      <Container className="max-w-6xl">
         <div className="text-center">
-          <div className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-sm px-4 py-2 text-sm font-medium text-white/90 mb-6">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
-            </span>
-            Our Proven Methodology
-          </div>
+          <p className="eyebrow mb-md">Our Proven Methodology</p>
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 tracking-tight">
-            {frameworkName}
-          </h1>
+          <h1 className="text-display-xl mb-4">{frameworkName}</h1>
 
-          <p className="text-xl md:text-2xl text-white/70 font-medium mb-6">
+          <p className="text-body-lg text-foreground font-medium mb-6">
             {frameworkTagline}
           </p>
 
-          <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto mb-10">
+          <p className="text-body-lg text-muted-foreground max-w-3xl mx-auto mb-10">
             {frameworkDescription}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              asChild
-              size="lg"
-              className="bg-white text-slate-900 hover:bg-white/90 font-semibold"
-            >
+            <Button asChild size="lg" shape="pill">
               <Link href="/contact">
                 Start Your Transformation
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="border-white/30 text-white hover:bg-white/10"
-            >
+            <Button asChild size="lg" variant="secondary" shape="pill">
               <Link href="/tools/ai-readiness">Take AI Readiness Assessment</Link>
             </Button>
           </div>
@@ -170,7 +125,7 @@ function MethodologyHeroSection() {
 
 function RapidAcronymSection() {
   return (
-    <section className="w-full py-16 bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-slate-800">
+    <section className="w-full py-16 bg-card border-b border-border">
       <Container className="max-w-6xl">
         <div className="flex flex-wrap justify-center gap-4 md:gap-8">
           {RAPID_WORDS.map((word, index) => (
@@ -178,11 +133,11 @@ function RapidAcronymSection() {
               <span className="text-3xl md:text-5xl font-bold text-brand">
                 {word.charAt(0)}
               </span>
-              <span className="text-lg md:text-xl text-gray-600 dark:text-gray-400 font-medium">
+              <span className="text-lg md:text-xl text-muted-foreground font-medium">
                 {word.slice(1)}
               </span>
               {index < RAPID_WORDS.length - 1 && (
-                <span className="hidden md:inline text-gray-300 dark:text-gray-600 mx-2">
+                <span className="hidden md:inline text-faint mx-2">
                   |
                 </span>
               )}
@@ -196,7 +151,7 @@ function RapidAcronymSection() {
 
 function PhasesTimelineSection() {
   return (
-    <section className="w-full py-20 md:py-28 bg-gray-50 dark:bg-slate-800">
+    <section className="w-full py-20 md:py-28 bg-muted">
       <Container className="max-w-7xl">
         <div className="text-center mb-16">
           <div className="inline-block rounded-full bg-muted px-4 py-1.5 text-sm font-semibold text-brand mb-4">
@@ -213,7 +168,7 @@ function PhasesTimelineSection() {
         </div>
 
         <div className="relative">
-          <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary via-emerald-500 to-primary/60 rounded-full" />
+          <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-border rounded-full" />
 
           <div className="space-y-12 lg:space-y-24">
             {methodologyPhases.map((phase, index) => (
@@ -224,19 +179,19 @@ function PhasesTimelineSection() {
                 }`}
               >
                 <div className="w-full lg:w-5/12">
-                  <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+                  <Card className="overflow-hidden">
                     <div
-                      className={`h-2 bg-gradient-to-r ${getPhaseColor(phase.number)}`}
+                      className={`h-2 ${getPhaseColor()}`}
                     />
                     <CardContent className="p-8">
                       <div className="flex items-start gap-4 mb-4">
                         <div
-                          className={`p-3 rounded-xl ${getPhaseAccent(phase.number)}`}
+                          className={`p-3 rounded-md ${getPhaseAccent()}`}
                         >
                           {getPhaseIcon(phase.iconType)}
                         </div>
                         <div>
-                          <span className="text-sm font-semibold text-gray-500 dark:text-gray-400">
+                          <span className="text-sm font-semibold text-muted-foreground">
                             Phase {phase.number}
                           </span>
                           <h3 className="text-2xl font-bold">{phase.title}</h3>
@@ -244,31 +199,31 @@ function PhasesTimelineSection() {
                         </div>
                       </div>
 
-                      <p className="text-gray-600 dark:text-gray-300 mb-6">
+                      <p className="text-muted-foreground mb-6">
                         {phase.description}
                       </p>
 
                       <div className="space-y-4">
-                        <h4 className="font-semibold text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">
+                        <h4 className="font-semibold text-sm uppercase tracking-wide text-muted-foreground">
                           Key Deliverables
                         </h4>
                         <ul className="space-y-2">
                           {phase.deliverables.map((deliverable) => (
                             <li
                               key={deliverable}
-                              className="flex items-start gap-2 text-gray-700 dark:text-gray-300"
+                              className="flex items-start gap-2 text-foreground"
                             >
-                              <CheckCircle2 className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
+                              <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
                               <span>{deliverable}</span>
                             </li>
                           ))}
                         </ul>
 
-                        <div className="flex items-center gap-2 pt-4 border-t border-gray-100 dark:border-gray-700">
-                          <Clock className="h-4 w-4 text-gray-400" />
-                          <span className="text-sm text-gray-500 dark:text-gray-400">
+                        <div className="flex items-center gap-2 pt-4 border-t border-border">
+                          <Clock className="h-4 w-4 text-mute" />
+                          <span className="text-sm text-muted-foreground">
                             Typical Duration:{' '}
-                            <span className="font-semibold text-gray-700 dark:text-gray-300">
+                            <span className="font-semibold text-foreground">
                               {phase.duration}
                             </span>
                           </span>
@@ -280,7 +235,7 @@ function PhasesTimelineSection() {
 
                 <div className="relative z-10 flex items-center justify-center">
                   <div
-                    className={`w-16 h-16 rounded-full bg-gradient-to-br ${getPhaseColor(phase.number)} text-white font-bold text-xl flex items-center justify-center shadow-lg border-4 border-white dark:border-slate-800`}
+                    className={`w-16 h-16 rounded-full ${getPhaseColor()} font-bold text-xl flex items-center justify-center border border-border`}
                   >
                     {phase.number}
                   </div>
@@ -298,10 +253,10 @@ function PhasesTimelineSection() {
 
 function BenefitsSection() {
   return (
-    <section className="w-full py-20 md:py-28 bg-white dark:bg-slate-900">
+    <section className="w-full py-20 md:py-28 bg-card">
       <Container className="max-w-6xl">
         <div className="text-center mb-16">
-          <div className="inline-block rounded-full bg-green-100 dark:bg-green-900/30 px-4 py-1.5 text-sm font-semibold text-green-700 dark:text-green-300 mb-4">
+          <div className="inline-block rounded-full bg-brand/10 px-4 py-1.5 text-sm font-semibold text-brand mb-4">
             Proven Results
           </div>
           <Heading as="h2" className="text-3xl md:text-4xl mb-4">
@@ -329,7 +284,7 @@ function BenefitsSection() {
                     </span>
                   )}
                 </div>
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className="text-muted-foreground">
                   {benefit.description}
                 </p>
               </CardContent>
@@ -343,7 +298,7 @@ function BenefitsSection() {
 
 function ComparisonSection() {
   return (
-    <section className="w-full py-20 md:py-28 bg-gray-50 dark:bg-slate-800">
+    <section className="w-full py-20 md:py-28 bg-muted">
       <Container className="max-w-5xl">
         <div className="text-center mb-16">
           <Heading as="h2" className="text-3xl md:text-4xl mb-4">
@@ -356,18 +311,18 @@ function ComparisonSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <Card className="border-2 border-gray-200 dark:border-gray-700">
+          <Card className="border-2 border-border">
             <CardContent className="p-8">
-              <h3 className="text-xl font-bold mb-6 text-gray-500 dark:text-gray-400">
+              <h3 className="text-xl font-bold mb-6 text-muted-foreground">
                 Traditional Approach
               </h3>
               <ul className="space-y-4">
                 {TRADITIONAL_APPROACH_ITEMS.map((item) => (
                   <li
                     key={item}
-                    className="flex items-start gap-3 text-gray-600 dark:text-gray-400"
+                    className="flex items-start gap-3 text-muted-foreground"
                   >
-                    <span className="text-red-500 font-bold">x</span>
+                    <span className="text-destructive font-bold">x</span>
                     {item}
                   </li>
                 ))}
@@ -384,9 +339,9 @@ function ComparisonSection() {
                 {RAPID_FRAMEWORK_ITEMS.map((item) => (
                   <li
                     key={item}
-                    className="flex items-start gap-3 text-gray-700 dark:text-gray-300"
+                    className="flex items-start gap-3 text-foreground"
                   >
-                    <CheckCircle2 className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
                     {item}
                   </li>
                 ))}
@@ -401,7 +356,7 @@ function ComparisonSection() {
 
 function MethodologyFaqSection() {
   return (
-    <section className="w-full py-20 md:py-28 bg-white dark:bg-slate-900">
+    <section className="w-full py-20 md:py-28 bg-card">
       <Container className="max-w-3xl">
         <div className="text-center mb-12">
           <Heading as="h2" className="text-3xl md:text-4xl mb-4">
@@ -419,7 +374,7 @@ function MethodologyFaqSection() {
               <AccordionTrigger className="text-left font-semibold">
                 {faq.question}
               </AccordionTrigger>
-              <AccordionContent className="text-gray-600 dark:text-gray-300">
+              <AccordionContent className="text-muted-foreground">
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>
@@ -432,12 +387,12 @@ function MethodologyFaqSection() {
 
 function MethodologyCtaSection() {
   return (
-    <section className="w-full py-20 md:py-28 bg-primary text-white">
+    <section className="w-full py-20 md:py-28 bg-primary text-primary-foreground">
       <Container className="max-w-4xl text-center">
         <h2 className="text-3xl md:text-5xl font-bold mb-6">
           Ready to Accelerate Your AI Journey?
         </h2>
-        <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
+        <p className="text-xl text-primary-foreground/80 mb-10 max-w-2xl mx-auto">
           Let our experts guide you through the RAPID Framework and show you
           how to realize AI potential in days, not months.
         </p>

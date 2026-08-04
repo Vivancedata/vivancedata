@@ -47,31 +47,31 @@ export default function AIReadinessPage() {
 
         <div className="mt-16 bg-muted rounded-xl p-8">
           <h2 className="text-2xl font-bold mb-4">What This Assessment Covers</h2>
-          <div className="grid md:grid-cols-2 gap-6 text-gray-700 dark:text-gray-300">
+          <div className="grid md:grid-cols-2 gap-6 text-foreground">
             <div>
               <h3 className="font-semibold mb-2 flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-blue-600"></div>
+                <div className="w-2 h-2 rounded-full bg-brand"></div>
                 Data Readiness
               </h3>
               <p className="text-sm">Quality, accessibility, and governance of your data assets</p>
             </div>
             <div>
               <h3 className="font-semibold mb-2 flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-green-600"></div>
+                <div className="w-2 h-2 rounded-full bg-brand"></div>
                 Technical Infrastructure
               </h3>
               <p className="text-sm">Computing resources, cloud capabilities, and integration readiness</p>
             </div>
             <div>
               <h3 className="font-semibold mb-2 flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-purple-600"></div>
+                <div className="w-2 h-2 rounded-full bg-brand"></div>
                 Organizational Culture
               </h3>
               <p className="text-sm">Change readiness, innovation mindset, and leadership support</p>
             </div>
             <div>
               <h3 className="font-semibold mb-2 flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-orange-600"></div>
+                <div className="w-2 h-2 rounded-full bg-brand"></div>
                 Strategic Alignment
               </h3>
               <p className="text-sm">Business goals, use case clarity, and success metrics</p>

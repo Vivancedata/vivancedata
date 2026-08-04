@@ -171,31 +171,13 @@ export const getIntegrationsByCategory = (category: IntegrationCategory): Integr
   return integrations.filter((integration) => integration.category === category);
 };
 
-// Category colors for visual distinction (using design tokens)
+// One neutral chip per category, brand for the flagship AI group. The
+// five-hue category rainbow predates DESIGN.md, which allows exactly one
+// accent; the category label carries the information.
 export const categoryColors: Record<IntegrationCategory, { bg: string; text: string; border: string }> = {
-  Cloud: {
-    bg: "bg-blue-500/10 dark:bg-blue-500/20",
-    text: "text-blue-600 dark:text-blue-400",
-    border: "border-blue-500/30",
-  },
-  CRM: {
-    bg: "bg-green-500/10 dark:bg-green-500/20",
-    text: "text-green-600 dark:text-green-400",
-    border: "border-green-500/30",
-  },
-  Data: {
-    bg: "bg-purple-500/10 dark:bg-purple-500/20",
-    text: "text-purple-600 dark:text-purple-400",
-    border: "border-purple-500/30",
-  },
-  Communication: {
-    bg: "bg-orange-500/10 dark:bg-orange-500/20",
-    text: "text-orange-600 dark:text-orange-400",
-    border: "border-orange-500/30",
-  },
-  AI: {
-    bg: "bg-muted",
-    text: "text-brand",
-    border: "border-brand/30",
-  },
-};
+  Cloud: { bg: "bg-muted", text: "text-muted-foreground", border: "border-border" },
+  CRM: { bg: "bg-muted", text: "text-muted-foreground", border: "border-border" },
+  Data: { bg: "bg-muted", text: "text-muted-foreground", border: "border-border" },
+  Communication: { bg: "bg-muted", text: "text-muted-foreground", border: "border-border" },
+  AI: { bg: "bg-muted", text: "text-brand", border: "border-brand/30" },
+}
