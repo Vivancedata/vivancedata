@@ -60,8 +60,8 @@ export function Newsletter() {
       <div className="border-t border-border pt-8 mb-8">
         <div className="max-w-md mx-auto text-center">
           <div className="flex flex-col items-center gap-3">
-            <div className="rounded-full bg-green-100 p-3">
-              <CheckCircle className="h-6 w-6 text-green-600" />
+            <div className="rounded-full bg-success/10 p-3">
+              <CheckCircle className="h-6 w-6 text-success" />
             </div>
             <div>
               <h3 className="font-semibold text-lg mb-1">Thank you for subscribing!</h3>
@@ -100,7 +100,7 @@ export function Newsletter() {
             </Button>
           </div>
           {error && (
-            <p className="text-sm text-red-600">{error}</p>
+            <p className="text-sm text-destructive">{error}</p>
           )}
         </form>
       </div>

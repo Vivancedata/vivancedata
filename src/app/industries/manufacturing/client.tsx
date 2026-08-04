@@ -11,11 +11,11 @@ import { m } from "framer-motion";
 
 /**
  * Conversion recipe for the remaining industry pages:
- *   bg-white dark:bg-gray-800                -> bg-card
- *   border-gray-100 dark:border-gray-700     -> border-border
- *   text-gray-700 dark:text-gray-200         -> text-foreground
- *   text-gray-600 dark:text-gray-300         -> text-muted-foreground
- *   text-gray-500 dark:text-gray-400 (label) -> eyebrow
+ *   bg-card                -> bg-card
+ *   border-border     -> border-border
+ *   text-foreground         -> text-foreground
+ *   text-muted-foreground         -> text-muted-foreground
+ *   text-muted-foreground (label) -> eyebrow
  *   shadow-sm / shadow-lg / shadow-xl        -> removed (flat is the default)
  *   whileHover y-lift + boxShadow            -> removed (no hover lift)
  * Each light/dark pair collapses into one token that handles both modes.

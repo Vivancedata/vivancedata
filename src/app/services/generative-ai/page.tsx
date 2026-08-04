@@ -112,28 +112,28 @@ export default function GenerativeAIPage() {
 
       <div className="flex flex-col md:flex-row gap-12 mb-20">
         <div className="w-full md:w-1/2">
-          <div className="aspect-video rounded-xl shadow-xl overflow-hidden bg-slate-950 p-4 md:p-6 flex flex-col font-mono text-sm">
+          <div className="aspect-video rounded-md overflow-hidden border border-border bg-card p-4 md:p-6 flex flex-col font-mono text-sm">
             <div className="flex gap-1.5 mb-4 flex-shrink-0">
-              <div className="w-3 h-3 rounded-full bg-red-500/60" />
-              <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
-              <div className="w-3 h-3 rounded-full bg-green-500/60" />
+              <div className="w-3 h-3 rounded-full border border-border bg-muted" />
+              <div className="w-3 h-3 rounded-full border border-border bg-muted" />
+              <div className="w-3 h-3 rounded-full border border-border bg-muted" />
             </div>
             <div className="space-y-3 overflow-hidden">
               <div>
-                <div className="text-purple-400/60 text-xs mb-1">› PROMPT</div>
-                <div className="text-slate-300 text-xs bg-white/5 rounded-lg p-2.5 leading-relaxed">
+                <div className="eyebrow mb-1">› PROMPT</div>
+                <div className="text-foreground text-xs bg-muted rounded-sm p-2.5 leading-relaxed">
                   &quot;Summarize customer feedback and extract key product improvement opportunities...&quot;
                 </div>
               </div>
               <div>
-                <div className="text-green-400/60 text-xs mb-1">← RESPONSE</div>
-                <div className="text-slate-300 text-xs bg-white/5 rounded-lg p-2.5 space-y-1.5">
+                <div className="eyebrow mb-1">← RESPONSE</div>
+                <div className="text-foreground text-xs bg-muted rounded-sm p-2.5 space-y-1.5">
                   <div><span className="text-brand">1.</span> Checkout friction is top complaint (38%)</div>
                   <div><span className="text-brand">2.</span> Return policy unclear (24%)</div>
                   <div><span className="text-brand">3.</span> Mobile payment failures (19%)</div>
                 </div>
               </div>
-              <div className="flex items-center justify-between text-slate-600 text-xs pt-1">
+              <div className="flex items-center justify-between text-mute text-xs pt-1">
                 <span className="text-brand/50">fine-tuned LLM</span>
                 <span>latency: 1.2s</span>
               </div>
@@ -143,10 +143,10 @@ export default function GenerativeAIPage() {
         
         <div className="w-full md:w-1/2 flex flex-col justify-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">Transform Your Business with Generative AI</h2>
-          <p className="text-gray-600 dark:text-gray-300 mb-6">
+          <p className="text-muted-foreground mb-6">
             Generative AI is revolutionizing how businesses create content, design products, and engage with customers. Our solutions help you harness this technology to automate creative processes, personalize experiences, and drive innovation across your organization.
           </p>
-          <p className="text-gray-600 dark:text-gray-300 mb-6">
+          <p className="text-muted-foreground mb-6">
             We work with you to identify the right generative AI applications for your specific business challenges, then develop and implement custom solutions that deliver measurable results.
           </p>
           <Button asChild className="self-start group" variant="outline">
@@ -162,12 +162,12 @@ export default function GenerativeAIPage() {
         <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Our Generative AI Services</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature) => (
-            <div key={feature.title} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+            <div key={feature.title} className="bg-card p-6 rounded-xl shadow-sm border border-border">
               <div className="flex items-center mb-4">
                 {feature.icon}
                 <h3 className="text-xl font-semibold ml-2">{feature.title}</h3>
               </div>
-              <p className="text-gray-600 dark:text-gray-300">{feature.description}</p>
+              <p className="text-muted-foreground">{feature.description}</p>
             </div>
           ))}
         </div>
@@ -177,12 +177,12 @@ export default function GenerativeAIPage() {
         <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Popular Use Cases</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {useCases.map((useCase) => (
-            <div key={useCase.title} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+            <div key={useCase.title} className="bg-card p-6 rounded-xl shadow-sm border border-border">
               <div className="inline-block px-3 py-1 rounded-full bg-muted text-brand text-sm font-medium mb-4">
                 {useCase.industry}
               </div>
               <h3 className="text-xl font-semibold mb-3">{useCase.title}</h3>
-              <p className="text-gray-600 dark:text-gray-300">{useCase.description}</p>
+              <p className="text-muted-foreground">{useCase.description}</p>
             </div>
           ))}
         </div>

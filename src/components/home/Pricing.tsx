@@ -62,7 +62,7 @@ export default function Pricing() {
                   {tier.features.map((feature) => (
                     <li key={feature.name} className="flex items-start gap-3">
                       {feature.included ? (
-                        <Check className="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" aria-hidden="true" />
+                        <Check className="mt-0.5 h-5 w-5 shrink-0 text-success" aria-hidden="true" />
                       ) : (
                         <X className="mt-0.5 h-5 w-5 shrink-0 text-muted-foreground/60" aria-hidden="true" />
                       )}

@@ -24,53 +24,39 @@ import {
   businessFunctions,
   complexityLevels,
   type UseCase,
-  type Industry,
   type Complexity,
 } from "@/constants/useCases";
 
 const ALL_FILTER = "all";
 
+// Complexity uses the StatusBadge grammar (token + /10 tint) so the three
+// steps stay legible in both modes without a hardcoded palette.
 function getComplexityColor(complexity: Complexity): string {
   switch (complexity) {
     case "Low":
-      return "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400";
+      return "border-success bg-success/10 text-success";
     case "Medium":
-      return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400";
+      return "border-warning bg-warning/10 text-warning";
     case "High":
-      return "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400";
+      return "border-destructive bg-destructive/10 text-destructive";
     default:
-      return "bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-400";
+      return "border-border bg-muted text-muted-foreground";
   }
 }
 
-function getIndustryColor(industry: Industry): string {
-  const colors: Record<Industry, string> = {
-    "Financial Services":
-      "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400",
-    Healthcare:
-      "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400",
-    Retail:
-      "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400",
-    Manufacturing:
-      "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400",
-    Technology:
-      "bg-cyan-100 text-cyan-800 dark:bg-cyan-900/30 dark:text-cyan-400",
-    Energy:
-      "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400",
-    Logistics:
-      "bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-400",
-    "Professional Services":
-      "bg-pink-100 text-pink-800 dark:bg-pink-900/30 dark:text-pink-400",
-  };
-  return colors[industry] || "bg-gray-100 text-gray-800";
+function getIndustryColor(): string {
+  // One neutral chip for every industry. The eight-hue category rainbow
+  // predates DESIGN.md, which allows exactly one accent; the label text
+  // carries the information.
+  return "border-border bg-muted text-muted-foreground";
 }
 
 function UseCaseCard({ useCase }: { useCase: UseCase }) {
   return (
-    <Card className="h-full flex flex-col transition-shadow hover:shadow-lg">
+    <Card className="h-full flex flex-col transition-colors hover:border-brand/40">
       <CardHeader className="pb-3">
         <div className="flex flex-wrap gap-2 mb-3">
-          <Badge className={getIndustryColor(useCase.industry)}>
+          <Badge className={getIndustryColor()}>
             {useCase.industry}
           </Badge>
           <Badge variant="outline">{useCase.function}</Badge>
@@ -102,16 +88,16 @@ function UseCaseCard({ useCase }: { useCase: UseCase }) {
           <div className="grid grid-cols-3 gap-2 pt-3 border-t">
             <div className="text-center">
               <div className="flex items-center justify-center mb-1">
-                <TrendingUp className="h-4 w-4 text-green-600 dark:text-green-400" />
+                <TrendingUp className="h-4 w-4 text-brand" />
               </div>
               <p className="text-xs text-muted-foreground">Est. ROI</p>
-              <p className="text-sm font-semibold text-green-600 dark:text-green-400">
+              <p className="text-sm font-semibold text-brand">
                 {useCase.estimatedROI}
               </p>
             </div>
             <div className="text-center">
               <div className="flex items-center justify-center mb-1">
-                <Clock className="h-4 w-4 text-blue-600 dark:text-blue-400" />
+                <Clock className="h-4 w-4 text-muted-foreground" />
               </div>
               <p className="text-xs text-muted-foreground">Timeline</p>
               <p className="text-sm font-semibold">
@@ -120,7 +106,7 @@ function UseCaseCard({ useCase }: { useCase: UseCase }) {
             </div>
             <div className="text-center">
               <div className="flex items-center justify-center mb-1">
-                <Layers className="h-4 w-4 text-gray-600 dark:text-gray-400" />
+                <Layers className="h-4 w-4 text-muted-foreground" />
               </div>
               <p className="text-xs text-muted-foreground">Complexity</p>
               <Badge

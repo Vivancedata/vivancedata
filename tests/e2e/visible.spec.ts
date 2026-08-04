@@ -24,6 +24,14 @@ const ROUTES = [
   "/industries/public-sector",
   "/services",
   "/about",
+  // Routes converted in the token migration -- the surfaces most at risk of
+  // an invisible-text regression (light text left on a now-light panel).
+  "/methodology",
+  "/innovation-hub",
+  "/case-studies",
+  "/resources",
+  "/tools/use-cases",
+  "/responsible-ai",
 ];
 
 test.describe("pages render visible content", () => {

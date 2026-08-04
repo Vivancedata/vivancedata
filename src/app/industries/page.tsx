@@ -40,13 +40,13 @@ interface IndustryCardProps {
 }
 
 const IndustryCard = ({ title, description, theme, href }: IndustryCardProps) => (
-  <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden group">
-    <div className={`relative aspect-video bg-slate-900 bg-gradient-to-br ${theme}`}>
+  <div className="bg-card rounded-xl shadow-sm border border-border overflow-hidden group">
+    <div className={`relative aspect-video bg-gradient-to-br ${theme}`}>
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-      <h3 className="absolute bottom-4 left-4 text-2xl font-bold text-white">{title}</h3>
+      <h3 className="absolute bottom-4 left-4 text-2xl font-bold text-primary-foreground">{title}</h3>
     </div>
     <div className="p-6">
-      <p className="text-gray-600 dark:text-gray-300 mb-4">{description}</p>
+      <p className="text-muted-foreground mb-4">{description}</p>
       <Button asChild variant="outline" className="group">
         <Link href={href}>
           <span>Explore Solutions</span>
@@ -62,37 +62,37 @@ export default function IndustriesPage() {
     {
       title: "Financial Services",
       description: "AI solutions for risk management, fraud detection, customer experience, and regulatory compliance in banking, insurance, and investment.",
-      theme: "from-amber-900/40 to-slate-900",
+      theme: "from-primary to-primary/85",
       href: "/industries/financial-services"
     },
     {
       title: "Healthcare",
       description: "Transformative AI applications for patient care, clinical decision support, operational efficiency, and medical research.",
-      theme: "from-blue-900/40 to-slate-900",
+      theme: "from-primary to-primary/85",
       href: "/industries/healthcare"
     },
     {
       title: "Retail & E-commerce",
       description: "Intelligent solutions for personalization, inventory management, demand forecasting, and enhanced customer experiences.",
-      theme: "from-orange-900/40 to-slate-900",
+      theme: "from-primary to-primary/85",
       href: "/industries/retail"
     },
     {
       title: "Manufacturing",
       description: "AI-powered systems for predictive maintenance, quality control, supply chain optimization, and smart factory operations.",
-      theme: "from-slate-700 to-slate-900",
+      theme: "from-primary to-primary/85",
       href: "/industries/manufacturing"
     },
     {
       title: "Energy & Utilities",
       description: "Advanced AI for grid management, energy optimization, predictive maintenance, and sustainable resource planning.",
-      theme: "from-yellow-900/40 to-slate-900",
+      theme: "from-primary to-primary/85",
       href: "/industries/energy"
     },
     {
       title: "Public Sector",
       description: "AI solutions for citizen services, public safety, infrastructure management, and policy analysis.",
-      theme: "from-teal-900/40 to-slate-900",
+      theme: "from-primary to-primary/85",
       href: "/industries/public-sector"
     }
   ];
@@ -137,9 +137,9 @@ export default function IndustriesPage() {
               description: "Solutions designed to address the specific KPIs and metrics that matter most in your industry."
             }
           ].map((benefit) => (
-            <div key={benefit.title} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+            <div key={benefit.title} className="bg-card p-6 rounded-xl shadow-sm border border-border">
               <h3 className="text-xl font-semibold mb-3">{benefit.title}</h3>
-              <p className="text-gray-600 dark:text-gray-300">{benefit.description}</p>
+              <p className="text-muted-foreground">{benefit.description}</p>
             </div>
           ))}
         </div>
@@ -154,12 +154,12 @@ export default function IndustriesPage() {
             { number: "03", title: "Implementation", description: "We deploy industry-optimized AI systems with minimal disruption to your operations." },
             { number: "04", title: "Continuous Improvement", description: "We continuously refine and enhance your solutions based on industry developments." }
           ].map((step) => (
-            <div key={step.number} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 text-center">
+            <div key={step.number} className="bg-card p-6 rounded-xl shadow-sm border border-border text-center">
               <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center mx-auto mb-4">
                 <span className="text-brand font-bold">{step.number}</span>
               </div>
               <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
-              <p className="text-gray-600 dark:text-gray-300">{step.description}</p>
+              <p className="text-muted-foreground">{step.description}</p>
             </div>
           ))}
         </div>

@@ -24,8 +24,8 @@ export default function Error({
     <Container className="py-24 md:py-32">
       <div className="max-w-2xl mx-auto text-center">
         <div className="mb-8 flex justify-center">
-          <div className="rounded-full bg-red-100 p-6">
-            <AlertTriangle className="h-16 w-16 text-red-600" />
+          <div className="rounded-full bg-destructive/10 p-6">
+            <AlertTriangle className="h-16 w-16 text-destructive" />
           </div>
         </div>
 
@@ -33,13 +33,13 @@ export default function Error({
           Something Went Wrong
         </Heading>
 
-        <Paragraph className="text-lg mb-8 text-gray-600">
+        <Paragraph className="text-lg mb-8 text-muted-foreground">
           We encountered an unexpected error. This has been logged and we&apos;ll look into it.
         </Paragraph>
 
         {process.env.NODE_ENV === "development" && (
-          <div className="mb-8 p-4 bg-red-50 border border-red-200 rounded-lg text-left">
-            <p className="text-sm text-red-800 font-mono break-all">
+          <div className="mb-8 p-4 bg-destructive/10 border border-destructive/30 rounded-md text-left">
+            <p className="text-sm text-destructive font-mono break-all">
               {error.message}
             </p>
           </div>
@@ -62,8 +62,8 @@ export default function Error({
           </Link>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-gray-200">
-          <Paragraph className="text-sm text-gray-500">
+        <div className="mt-12 pt-8 border-t border-border">
+          <Paragraph className="text-sm text-muted-foreground">
             If this problem persists, please{" "}
             <Link href="/contact" className="text-brand hover:text-brand/90 underline">
               contact our support team

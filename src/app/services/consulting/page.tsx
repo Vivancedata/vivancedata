@@ -107,8 +107,8 @@ export default function ConsultingPage() {
 
       <div className="flex flex-col md:flex-row gap-12 mb-20">
         <div className="w-full md:w-1/2">
-          <div className="aspect-video rounded-xl shadow-xl overflow-hidden bg-slate-900 p-6 md:p-8 flex flex-col">
-            <div className="text-brand/60 text-xs font-mono mb-5 flex items-center gap-2">
+          <div className="aspect-video rounded-md overflow-hidden border border-border bg-card p-6 md:p-8 flex flex-col">
+            <div className="eyebrow mb-5 flex items-center gap-2">
               <Target className="w-3 h-3" /> AI Strategy Framework
             </div>
             <div className="flex justify-between gap-2 mb-6">
@@ -122,7 +122,7 @@ export default function ConsultingPage() {
                   <div className="w-8 h-8 rounded-full bg-muted border border-brand/40 text-brand text-sm font-bold flex items-center justify-center">
                     {n}
                   </div>
-                  <span className="text-white/60 text-xs">{label}</span>
+                  <span className="text-muted-foreground text-xs">{label}</span>
                 </div>
               ))}
             </div>
@@ -133,9 +133,9 @@ export default function ConsultingPage() {
                 "Use Case Prioritization",
                 "ROI Measurement Framework",
               ].map((item) => (
-                <div key={item} className="flex items-center gap-2 bg-white/5 rounded-lg px-3 py-1.5">
+                <div key={item} className="flex items-center gap-2 bg-muted rounded-sm px-3 py-1.5">
                   <div className="w-1.5 h-1.5 rounded-full bg-primary/70 flex-shrink-0" />
-                  <span className="text-white/60 text-xs">{item}</span>
+                  <span className="text-muted-foreground text-xs">{item}</span>
                 </div>
               ))}
             </div>
@@ -144,10 +144,10 @@ export default function ConsultingPage() {
         
         <div className="w-full md:w-1/2 flex flex-col justify-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">Strategic AI Guidance for Business Leaders</h2>
-          <p className="text-gray-600 dark:text-gray-300 mb-6">
+          <p className="text-muted-foreground mb-6">
             Navigating the complex landscape of artificial intelligence can be challenging. Our consulting services provide the strategic guidance you need to make informed decisions about AI adoption and implementation.
           </p>
-          <p className="text-gray-600 dark:text-gray-300 mb-6">
+          <p className="text-muted-foreground mb-6">
             We work closely with your leadership team to understand your business objectives, assess your current capabilities, and develop a tailored AI strategy that delivers tangible results and competitive advantages.
           </p>
           <Button asChild className="self-start group" variant="outline">
@@ -163,12 +163,12 @@ export default function ConsultingPage() {
         <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Our Consulting Services</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service) => (
-            <div key={service.title} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+            <div key={service.title} className="bg-card p-6 rounded-xl shadow-sm border border-border">
               <div className="flex items-center mb-4">
                 {service.icon}
                 <h3 className="text-xl font-semibold ml-2">{service.title}</h3>
               </div>
-              <p className="text-gray-600 dark:text-gray-300">{service.description}</p>
+              <p className="text-muted-foreground">{service.description}</p>
             </div>
           ))}
         </div>
@@ -178,9 +178,9 @@ export default function ConsultingPage() {
         <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Why Choose Our Consulting Services</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {benefits.map((benefit) => (
-            <div key={benefit.title} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+            <div key={benefit.title} className="bg-card p-6 rounded-xl shadow-sm border border-border">
               <h3 className="text-xl font-semibold mb-3">{benefit.title}</h3>
-              <p className="text-gray-600 dark:text-gray-300">{benefit.description}</p>
+              <p className="text-muted-foreground">{benefit.description}</p>
             </div>
           ))}
         </div>
@@ -195,12 +195,12 @@ export default function ConsultingPage() {
             { step: "3", title: "Strategy", description: "We develop a comprehensive AI roadmap tailored to your specific business needs." },
             { step: "4", title: "Implementation", description: "We provide ongoing guidance and support as you execute your AI strategy." }
           ].map((phase) => (
-            <div key={phase.step} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 text-center">
+            <div key={phase.step} className="bg-card p-6 rounded-xl shadow-sm border border-border text-center">
               <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center mx-auto mb-4">
                 <span className="text-brand font-bold">{phase.step}</span>
               </div>
               <h3 className="text-xl font-semibold mb-3">{phase.title}</h3>
-              <p className="text-gray-600 dark:text-gray-300">{phase.description}</p>
+              <p className="text-muted-foreground">{phase.description}</p>
             </div>
           ))}
         </div>

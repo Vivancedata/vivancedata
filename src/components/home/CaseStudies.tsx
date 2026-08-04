@@ -100,9 +100,9 @@ export default function CaseStudies() {
                         <ul className="space-y-3">
                           {study.results.map((result) => (
                             <li key={`${study.id}-result-${result}`} className="flex items-start">
-                              <div className="mr-3 mt-1 rounded-full bg-green-100 p-1 shadow-sm dark:bg-green-900/30">
+                              <div className="mr-3 mt-1 rounded-full bg-success/10 p-1">
                                 <svg
-                                  className="h-4 w-4 text-green-600 dark:text-green-400"
+                                  className="h-4 w-4 text-brand"
                                   fill="none"
                                   viewBox="0 0 24 24"
                                   stroke="currentColor"

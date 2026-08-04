@@ -46,7 +46,7 @@ export default function ROICalculatorPage() {
 
         <div className="mt-16 bg-muted rounded-xl p-8">
           <h2 className="text-2xl font-bold mb-4">How This Calculator Works</h2>
-          <div className="space-y-4 text-gray-700 dark:text-gray-300">
+          <div className="space-y-4 text-foreground">
             <p>
               Our ROI calculator uses industry benchmarks and real-world implementation data
               to provide realistic estimates of AI investment returns.
@@ -71,7 +71,7 @@ export default function ROICalculatorPage() {
                 </ul>
               </div>
             </div>
-            <p className="text-sm mt-6 text-gray-600 dark:text-gray-400">
+            <p className="text-sm mt-6 text-muted-foreground">
               <strong>Note:</strong> These estimates are indicative and based on typical implementations.
               Actual results vary based on your specific use case, data quality, and implementation approach.
               Schedule a consultation for a detailed assessment tailored to your business.

@@ -101,13 +101,16 @@ export const getResourceTypeLabel = (type: ResourceType): string => {
 
 // Helper function to get badge color classes for resource types
 export const getResourceTypeBadgeClasses = (type: ResourceType): string => {
+  // One neutral chip for every type -- the label carries the information.
+  // (The old map also hit the DESIGN.md --accent trap: text-accent is the
+  // near-invisible hover wash, not a colour.)
   const classes: Record<ResourceType, string> = {
     whitepaper: "bg-muted text-brand",
-    ebook: "bg-accent/10 dark:bg-accent/20 text-accent",
-    report: "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400",
-    guide: "bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400",
-    spreadsheet: "bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400",
-    checklist: "bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-400",
+    ebook: "bg-muted text-muted-foreground",
+    report: "bg-muted text-brand",
+    guide: "bg-muted text-muted-foreground",
+    spreadsheet: "bg-muted text-muted-foreground",
+    checklist: "bg-muted text-muted-foreground",
   };
   return classes[type];
 };
@@ -115,10 +118,10 @@ export const getResourceTypeBadgeClasses = (type: ResourceType): string => {
 // Helper function to get format badge classes
 export const getFormatBadgeClasses = (format: ResourceFormat): string => {
   const classes: Record<ResourceFormat, string> = {
-    PDF: "bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400",
-    XLSX: "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400",
-    DOCX: "bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400",
-    ZIP: "bg-gray-100 dark:bg-gray-800/50 text-gray-700 dark:text-gray-400",
+    PDF: "bg-muted text-muted-foreground",
+    XLSX: "bg-muted text-muted-foreground",
+    DOCX: "bg-muted text-muted-foreground",
+    ZIP: "bg-muted text-muted-foreground",
   };
   return classes[format];
 };

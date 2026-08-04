@@ -8,18 +8,17 @@ import { Button } from "@/components/ui/button";
 const CaseStudyIllustration = ({ industry }: { industry: string }) => {
   if (industry === "Financial Services") {
     return (
-      <div className="bg-slate-900 h-full w-full relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-900/30 to-slate-900" />
+      <div className="bg-card h-full w-full relative overflow-hidden border-b border-border">
         <div className="absolute inset-0 p-8 flex flex-col justify-center">
-          <div className="text-amber-400/40 font-mono text-xs mb-4">// Risk Triage Dashboard</div>
+          <div className="eyebrow mb-4">// Risk Triage Dashboard</div>
           <div className="grid grid-cols-2 gap-3">
-            <div className="bg-white/5 rounded-lg p-3">
-              <div className="text-amber-400 text-2xl font-bold font-mono">↑ 68%</div>
-              <div className="text-white/30 text-xs mt-1">Alert Precision</div>
+            <div className="bg-muted border border-border rounded-sm p-3">
+              <div className="text-brand text-2xl font-bold font-mono">↑ 68%</div>
+              <div className="text-mute text-xs mt-1">Alert Precision</div>
             </div>
-            <div className="bg-white/5 rounded-lg p-3">
-              <div className="text-amber-400 text-2xl font-bold font-mono">↓ 41%</div>
-              <div className="text-white/30 text-xs mt-1">False Positives</div>
+            <div className="bg-muted border border-border rounded-sm p-3">
+              <div className="text-brand text-2xl font-bold font-mono">↓ 41%</div>
+              <div className="text-mute text-xs mt-1">False Positives</div>
             </div>
           </div>
         </div>
@@ -28,16 +27,15 @@ const CaseStudyIllustration = ({ industry }: { industry: string }) => {
   }
   if (industry === "Healthcare") {
     return (
-      <div className="bg-slate-900 h-full w-full relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 to-slate-900" />
+      <div className="bg-card h-full w-full relative overflow-hidden border-b border-border">
         <div className="absolute inset-0 p-8 flex flex-col justify-center">
-          <div className="text-blue-400/40 font-mono text-xs mb-4">// Clinical NLP Pipeline</div>
+          <div className="eyebrow mb-4">// Clinical NLP Pipeline</div>
           <div className="space-y-3">
             {["Chart History", "NLP Extraction", "Summarization", "Review"].map((step, i) => (
               <div key={step} className="flex items-center gap-3">
-                <div className={`w-2 h-2 rounded-full shrink-0 ${i < 3 ? "bg-blue-400/60" : "bg-blue-400/20"}`} />
-                <div className={`h-0.5 flex-1 rounded ${i < 3 ? "bg-blue-400/30" : "bg-white/10"}`} />
-                <span className="text-white/30 text-xs w-24 text-right">{step}</span>
+                <div className={`w-2 h-2 rounded-full shrink-0 ${i < 3 ? "bg-brand" : "bg-border"}`} />
+                <div className={`h-0.5 flex-1 rounded ${i < 3 ? "bg-brand/30" : "bg-border"}`} />
+                <span className="text-mute text-xs w-24 text-right">{step}</span>
               </div>
             ))}
           </div>
@@ -47,25 +45,24 @@ const CaseStudyIllustration = ({ industry }: { industry: string }) => {
   }
   if (industry === "Retail") {
     return (
-      <div className="bg-slate-900 h-full w-full relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-900/30 to-slate-900" />
+      <div className="bg-card h-full w-full relative overflow-hidden border-b border-border">
         <div className="absolute inset-0 p-8 flex flex-col justify-center">
-          <div className="text-orange-400/40 font-mono text-xs mb-4">// Inventory Intelligence</div>
+          <div className="eyebrow mb-4">// Inventory Intelligence</div>
           <div className="grid grid-cols-2 gap-3">
-            <div className="bg-white/5 rounded-lg p-3">
-              <div className="text-orange-400 text-2xl font-bold font-mono">↓ 23%</div>
-              <div className="text-white/30 text-xs mt-1">Overstock Risk</div>
+            <div className="bg-muted border border-border rounded-sm p-3">
+              <div className="text-brand text-2xl font-bold font-mono">↓ 23%</div>
+              <div className="text-mute text-xs mt-1">Overstock Risk</div>
             </div>
-            <div className="bg-white/5 rounded-lg p-3">
-              <div className="text-orange-400 text-2xl font-bold font-mono">↑ 31%</div>
-              <div className="text-white/30 text-xs mt-1">Planning Speed</div>
+            <div className="bg-muted border border-border rounded-sm p-3">
+              <div className="text-brand text-2xl font-bold font-mono">↑ 31%</div>
+              <div className="text-mute text-xs mt-1">Planning Speed</div>
             </div>
           </div>
         </div>
       </div>
     );
   }
-  return <div className="bg-slate-900 h-full w-full" />;
+  return <div className="bg-muted h-full w-full" />;
 };
 
 export const metadata: Metadata = {
@@ -154,7 +151,7 @@ export default function CaseStudiesPage() {
           Explore representative examples of how AI solutions can transform businesses across various industries and deliver measurable results.
         </Paragraph>
         <div className="mt-6 max-w-3xl mx-auto">
-          <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg p-4 text-sm text-amber-800 dark:text-amber-200">
+          <div className="bg-warning/10 border border-warning rounded-md p-4 text-sm text-foreground">
             <p className="font-medium">Note: These are composite examples based on typical AI implementations across multiple organizations. Metrics shown represent realistic outcomes from similar projects in each industry.</p>
           </div>
         </div>
@@ -180,17 +177,17 @@ export default function CaseStudiesPage() {
               
               <div className="mb-4">
                 <h3 className="text-lg font-semibold mb-2">Challenge</h3>
-                <p className="text-gray-600 dark:text-gray-300">{study.challenge}</p>
+                <p className="text-muted-foreground">{study.challenge}</p>
               </div>
               
               <div className="mb-4">
                 <h3 className="text-lg font-semibold mb-2">Solution</h3>
-                <p className="text-gray-600 dark:text-gray-300">{study.solution}</p>
+                <p className="text-muted-foreground">{study.solution}</p>
               </div>
               
               <div className="mb-6">
                 <h3 className="text-lg font-semibold mb-2">Results</h3>
-                <ul className="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-1">
+                <ul className="list-disc list-inside text-muted-foreground space-y-1">
                   {study.results.map((result) => (
                     <li key={`${study.id}-${result}`}>{result}</li>
                   ))}

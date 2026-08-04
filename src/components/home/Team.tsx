@@ -52,7 +52,7 @@ const Team = () => {
                     )}
                   </div>
                   <h3 className="mb-1 text-xl font-bold text-foreground">{member.name}</h3>
-                  <p className="mb-4 font-medium text-brand dark:text-emerald-300">{member.role}</p>
+                  <p className="mb-4 font-medium text-brand">{member.role}</p>
                   <p className="mb-6 text-sm text-muted-foreground md:text-base">{member.bio}</p>
                   <div className="flex justify-center space-x-4">
                     {Object.entries(member.socialLinks).map(([network, href]) => {

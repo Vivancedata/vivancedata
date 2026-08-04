@@ -6,22 +6,22 @@ const metricDefinitions = [
   {
     key: "percentImprovement",
     icon: TrendingUp,
-    colorClass: "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300",
+    colorClass: "bg-brand/10 text-brand",
   },
   {
     key: "hoursSaved",
     icon: Clock,
-    colorClass: "bg-muted text-brand dark:bg-muted",
+    colorClass: "bg-muted text-brand",
   },
   {
     key: "costReduction",
     icon: DollarSign,
-    colorClass: "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300",
+    colorClass: "bg-muted text-foreground",
   },
   {
     key: "speedIncrease",
     icon: Zap,
-    colorClass: "bg-violet-100 text-violet-800 dark:bg-violet-900/30 dark:text-violet-300",
+    colorClass: "bg-muted text-foreground",
   },
 ] as const;
 
@@ -101,7 +101,7 @@ export default function Testimonials() {
                   {Array.from({ length: testimonial.rating }, (_, starIndex) => (
                     <StarIcon
                       key={`${testimonial.name}-star-${starIndex + 1}`}
-                      className="h-5 w-5 fill-yellow-400 text-yellow-400"
+                      className="h-5 w-5 fill-warning text-warning"
                       aria-hidden="true"
                     />
                   ))}

@@ -27,23 +27,23 @@ export function ServicesCases({
     switch (category) {
       case "Software Development":
         return {
-          icon: <Building2 className="h-7 w-7 text-white/90" aria-hidden="true" />,
-          gradient: "from-sky-700 to-blue-600",
+          icon: <Building2 className="h-7 w-7 text-primary-foreground/90" aria-hidden="true" />,
+          gradient: "from-primary to-primary/85",
         };
       case "AI Engineering":
         return {
-          icon: <HeartPulse className="h-7 w-7 text-white/90" aria-hidden="true" />,
-          gradient: "from-emerald-700 to-teal-600",
+          icon: <HeartPulse className="h-7 w-7 text-primary-foreground/90" aria-hidden="true" />,
+          gradient: "from-primary to-primary/85",
         };
       case "Machine Learning":
         return {
-          icon: <ShoppingCart className="h-7 w-7 text-white/90" aria-hidden="true" />,
-          gradient: "from-violet-700 to-indigo-600",
+          icon: <ShoppingCart className="h-7 w-7 text-primary-foreground/90" aria-hidden="true" />,
+          gradient: "from-primary to-primary/85",
         };
       default:
         return {
-          icon: <Building2 className="h-7 w-7 text-white/90" aria-hidden="true" />,
-          gradient: "from-slate-700 to-slate-600",
+          icon: <Building2 className="h-7 w-7 text-primary-foreground/90" aria-hidden="true" />,
+          gradient: "from-primary to-primary/85",
         };
     }
   };
@@ -65,7 +65,7 @@ export function ServicesCases({
               <div key={caseItem.id} className="bg-card rounded-lg shadow-md overflow-hidden border border-border/60">
                 <div className={`h-44 w-full bg-gradient-to-br ${visual.gradient} p-6 flex flex-col justify-between`}>
                   {visual.icon}
-                  <p className="text-sm font-medium text-white/90">{caseItem.impact}</p>
+                  <p className="text-sm font-medium text-primary-foreground/90">{caseItem.impact}</p>
                 </div>
                 <div className="p-6">
                   <div className="text-sm font-medium text-brand mb-2">{caseItem.category}</div>

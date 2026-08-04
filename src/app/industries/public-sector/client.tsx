@@ -17,20 +17,20 @@ interface SolutionCardProps {
 }
 
 const SolutionCard = ({ title, description, icon, benefits }: SolutionCardProps) => (
-  <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+  <div className="bg-card p-6 rounded-xl shadow-sm border border-border">
     <div className="flex items-center mb-4">
       <div className="mr-4 p-3 bg-muted rounded-full">
         {icon}
       </div>
       <h3 className="text-xl font-semibold">{title}</h3>
     </div>
-    <p className="text-gray-600 dark:text-gray-300 mb-4">{description}</p>
-    <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">Key Benefits</h4>
+    <p className="text-muted-foreground mb-4">{description}</p>
+    <h4 className="text-sm font-medium text-muted-foreground mb-2">Key Benefits</h4>
     <ul className="space-y-2">
       {benefits.map((benefit) => (
         <li key={`${title}-benefit-${benefit}`} className="flex items-start">
           <Check className="h-5 w-5 text-brand mt-0.5 mr-2 flex-shrink-0" />
-          <span className="text-gray-700 dark:text-gray-200">{benefit}</span>
+          <span className="text-foreground">{benefit}</span>
         </li>
       ))}
     </ul>
@@ -46,27 +46,27 @@ interface CaseStudyProps {
 }
 
 const CaseStudy = ({ title, client, challenge, solution, results }: CaseStudyProps) => (
-  <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+  <div className="bg-card p-6 rounded-xl shadow-sm border border-border">
     <h3 className="text-xl font-semibold mb-2">{title}</h3>
     <p className="text-brand text-sm mb-4">{client}</p>
 
     <div className="mb-4">
-      <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Challenge</h4>
-      <p className="text-gray-700 dark:text-gray-200">{challenge}</p>
+      <h4 className="text-sm font-medium text-muted-foreground mb-1">Challenge</h4>
+      <p className="text-foreground">{challenge}</p>
     </div>
 
     <div className="mb-4">
-      <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Solution</h4>
-      <p className="text-gray-700 dark:text-gray-200">{solution}</p>
+      <h4 className="text-sm font-medium text-muted-foreground mb-1">Solution</h4>
+      <p className="text-foreground">{solution}</p>
     </div>
 
     <div>
-      <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Results</h4>
+      <h4 className="text-sm font-medium text-muted-foreground mb-1">Results</h4>
       <ul className="space-y-1">
         {results.map((result) => (
           <li key={`${title}-result-${result}`} className="flex items-start">
             <Check className="h-5 w-5 text-brand mt-0.5 mr-2 flex-shrink-0" />
-            <span className="text-gray-700 dark:text-gray-200">{result}</span>
+            <span className="text-foreground">{result}</span>
           </li>
         ))}
       </ul>
@@ -118,29 +118,29 @@ export default function PublicSectorClient({
 
       <div className="flex flex-col md:flex-row gap-12 mb-20">
         <AnimateOnScroll variant="fadeInLeft" className="w-full md:w-1/2">
-          <div className="aspect-video rounded-xl shadow-xl overflow-hidden bg-slate-900 p-6 md:p-8 flex flex-col">
-            <div className="text-brand/60 text-xs font-mono mb-4">Citizen Services Intelligence</div>
+          <div className="aspect-video rounded-md overflow-hidden border border-border bg-card p-6 md:p-8 flex flex-col">
+            <div className="eyebrow mb-4">Citizen Services Intelligence</div>
             <div className="grid grid-cols-2 gap-3 mb-4">
-              <div className="bg-white/5 rounded-lg p-3">
-                <div className="text-white/40 text-xs mb-1">Request Routing Accuracy</div>
+              <div className="bg-muted border border-border rounded-sm p-3">
+                <div className="text-mute text-xs mb-1">Request Routing Accuracy</div>
                 <div className="text-2xl font-bold text-brand">94%</div>
-                <div className="text-white/30 text-xs">automated triage</div>
+                <div className="text-mute text-xs">automated triage</div>
               </div>
-              <div className="bg-white/5 rounded-lg p-3">
-                <div className="text-white/40 text-xs mb-1">Processing Time</div>
-                <div className="text-2xl font-bold text-blue-400">&#8595; 45%</div>
-                <div className="text-white/30 text-xs">per service request</div>
+              <div className="bg-muted border border-border rounded-sm p-3">
+                <div className="text-mute text-xs mb-1">Processing Time</div>
+                <div className="text-2xl font-bold text-brand">&#8595; 45%</div>
+                <div className="text-mute text-xs">per service request</div>
               </div>
             </div>
             <div className="space-y-2">
               {[
                 { label: "Transparent, auditable AI decisions", color: "bg-primary" },
-                { label: "Citizen request intelligent routing", color: "bg-teal-400" },
-                { label: "Policy analysis and summarization", color: "bg-blue-400" },
+                { label: "Citizen request intelligent routing", color: "bg-brand" },
+                { label: "Policy analysis and summarization", color: "bg-brand" },
               ].map((item) => (
                 <div key={item.label} className="flex items-center gap-2">
                   <div className={`w-2 h-2 rounded-full ${item.color} flex-shrink-0`} />
-                  <span className="text-white/60 text-xs">{item.label}</span>
+                  <span className="text-muted-foreground text-xs">{item.label}</span>
                 </div>
               ))}
             </div>
@@ -151,12 +151,12 @@ export default function PublicSectorClient({
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
             Transforming Public Sector with Responsible AI
           </h2>
-          <p className="text-gray-600 dark:text-gray-300 mb-6">
+          <p className="text-muted-foreground mb-6">
             Government and public sector organizations are under pressure to modernize service
             delivery, improve efficiency, and maintain public accountability. AI can help — but only
             when deployed transparently, with human oversight built in.
           </p>
-          <p className="text-gray-600 dark:text-gray-300 mb-6">
+          <p className="text-muted-foreground mb-6">
             At VivanceData, we design AI workflows for the public sector with accountability at the
             center — explainable decisions, human review checkpoints, and documentation that stands
             up to public scrutiny.
@@ -230,7 +230,7 @@ export default function PublicSectorClient({
               >
                 {stat.value}
               </m.div>
-              <p className="text-gray-700 dark:text-gray-200">{stat.label}</p>
+              <p className="text-foreground">{stat.label}</p>
             </AnimateOnScroll>
           ))}
         </div>
@@ -331,7 +331,7 @@ export default function PublicSectorClient({
                 <h3 className="text-xl font-semibold">{phase.title}</h3>
               </div>
               <div className="pl-16">
-                <p className="text-gray-600 dark:text-gray-300 mb-4">{phase.description}</p>
+                <p className="text-muted-foreground mb-4">{phase.description}</p>
                 <ul className="space-y-2">
                   {phase.checks.map((check, i) => (
                     <m.li
@@ -342,7 +342,7 @@ export default function PublicSectorClient({
                       transition={{ duration: 0.3, delay: index * 0.2 + i * 0.1 }}
                     >
                       <Check className="h-5 w-5 text-brand mt-0.5 mr-2 flex-shrink-0" />
-                      <span className="text-gray-700 dark:text-gray-200">{check}</span>
+                      <span className="text-foreground">{check}</span>
                     </m.li>
                   ))}
                 </ul>

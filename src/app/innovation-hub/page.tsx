@@ -45,25 +45,25 @@ interface TechnologyCardProps {
 
 const TechnologyCard = ({ title, description, icon, maturity, timeframe }: TechnologyCardProps) => {
   const maturityColors = {
-    Emerging: "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300",
-    Growing: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300",
-    Maturing: "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300"
+    Emerging: "bg-muted text-muted-foreground",
+    Growing: "bg-muted text-foreground",
+    Maturing: "bg-brand/10 text-brand"
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+    <div className="bg-card p-6 rounded-xl shadow-sm border border-border">
       <div className="flex items-center mb-4">
         <div className="mr-4 p-3 bg-muted rounded-full">
           {icon}
         </div>
         <h3 className="text-xl font-semibold">{title}</h3>
       </div>
-      <p className="text-gray-600 dark:text-gray-300 mb-4">{description}</p>
+      <p className="text-muted-foreground mb-4">{description}</p>
       <div className="flex items-center justify-between">
         <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${maturityColors[maturity]}`}>
           {maturity}
         </span>
-        <span className="text-sm text-gray-500 dark:text-gray-400">{timeframe}</span>
+        <span className="text-sm text-muted-foreground">{timeframe}</span>
       </div>
     </div>
   );
@@ -78,22 +78,16 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ title, description, technologies, status }: ProjectCardProps) => {
   const statusColors = {
-    Concept: "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300",
-    Research: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300",
-    Prototype: "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300",
-    Pilot: "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300"
+    Concept: "bg-muted text-muted-foreground",
+    Research: "bg-muted text-muted-foreground",
+    Prototype: "bg-muted text-foreground",
+    Pilot: "bg-brand/10 text-brand"
   };
 
-  const statusGradients = {
-    Concept: "from-gray-800 to-slate-900",
-    Research: "from-blue-900/60 to-slate-900",
-    Prototype: "from-purple-900/60 to-slate-900",
-    Pilot: "from-primary/20 to-slate-900",
-  };
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
-      <div className={`relative aspect-video bg-gradient-to-br ${statusGradients[status]} bg-slate-900`}>
+    <div className="bg-card rounded-xl shadow-sm border border-border overflow-hidden">
+      <div className="relative aspect-video border-b border-border bg-muted">
         <div className="absolute top-3 right-3">
           <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${statusColors[status]}`}>
             {status}
@@ -102,7 +96,7 @@ const ProjectCard = ({ title, description, technologies, status }: ProjectCardPr
       </div>
       <div className="p-6">
         <h3 className="text-xl font-semibold mb-2">{title}</h3>
-        <p className="text-gray-600 dark:text-gray-300 mb-4">{description}</p>
+        <p className="text-muted-foreground mb-4">{description}</p>
         <div className="flex flex-wrap gap-1.5">
           {technologies.map((tech) => (
             <span
@@ -214,14 +208,14 @@ export default function InnovationHubPage() {
 
       <div className="flex flex-col md:flex-row gap-12 mb-20">
         <div className="w-full md:w-1/2">
-          <div className="aspect-video rounded-xl shadow-xl overflow-hidden bg-slate-900 p-6 md:p-8 flex flex-col">
-            <div className="text-brand/60 text-xs font-mono mb-4">R&amp;D Pipeline</div>
+          <div className="aspect-video rounded-md overflow-hidden border border-border bg-card p-6 md:p-8 flex flex-col">
+            <div className="eyebrow mb-4">R&amp;D Pipeline</div>
             <div className="space-y-3 flex-1">
               {[
-                { stage: "Research", count: "12 active projects", color: "bg-purple-400/20 text-purple-300 border-purple-500/30" },
-                { stage: "Prototype", count: "7 in testing", color: "bg-blue-400/20 text-blue-300 border-blue-500/30" },
+                { stage: "Research", count: "12 active projects", color: "bg-muted text-muted-foreground border-border" },
+                { stage: "Prototype", count: "7 in testing", color: "bg-muted text-foreground border-border" },
                 { stage: "Pilot", count: "3 client pilots", color: "bg-muted text-brand border-brand/30" },
-                { stage: "Production", count: "18 shipped solutions", color: "bg-green-400/20 text-green-300 border-green-500/30" },
+                { stage: "Production", count: "18 shipped solutions", color: "bg-brand/10 text-brand border-brand/30" },
               ].map((item) => (
                 <div key={item.stage} className={`border rounded-lg px-4 py-2.5 flex items-center justify-between ${item.color}`}>
                   <span className="text-xs font-medium">{item.stage}</span>
@@ -229,16 +223,16 @@ export default function InnovationHubPage() {
                 </div>
               ))}
             </div>
-            <div className="mt-4 text-white/30 text-xs">Emerging: multimodal agents · autonomous workflows · edge AI</div>
+            <div className="mt-4 text-caption text-mute">Emerging: multimodal agents · autonomous workflows · edge AI</div>
           </div>
         </div>
         
         <div className="w-full md:w-1/2 flex flex-col justify-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">Pioneering the Future of AI</h2>
-          <p className="text-gray-600 dark:text-gray-300 mb-6">
+          <p className="text-muted-foreground mb-6">
             At VivanceData, innovation is at the core of everything we do. Our Innovation Hub is where we explore emerging technologies, experiment with new approaches, and develop the next generation of AI solutions that will transform businesses and industries.
           </p>
-          <p className="text-gray-600 dark:text-gray-300 mb-6">
+          <p className="text-muted-foreground mb-6">
             Through a combination of in-house research, academic partnerships, and client collaborations, we&apos;re pushing the boundaries of what&apos;s possible with artificial intelligence while maintaining our commitment to responsible and ethical innovation.
           </p>
           <Button asChild className="self-start group" variant="outline">
@@ -252,7 +246,7 @@ export default function InnovationHubPage() {
 
       <div className="mb-20">
         <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Technology Radar</h2>
-        <p className="text-center text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-10">
+        <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-10">
           Our technology radar tracks emerging AI technologies and their potential impact on business and society. We continuously evaluate these technologies for their maturity, applicability, and strategic value.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -271,7 +265,7 @@ export default function InnovationHubPage() {
 
       <div className="mb-20">
         <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Innovation Projects</h2>
-        <p className="text-center text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-10">
+        <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-10">
           Explore our current innovation projects where we&apos;re applying emerging technologies to solve complex business challenges and create new opportunities.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -289,7 +283,7 @@ export default function InnovationHubPage() {
 
       <div className="mb-20">
         <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Interactive AI Demos</h2>
-        <p className="text-center text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-10">
+        <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-10">
           Experience the power of AI firsthand with our interactive demos. These simplified versions of our technologies showcase the capabilities and potential applications of our innovations.
         </p>
         
@@ -308,21 +302,21 @@ export default function InnovationHubPage() {
               buttonText: "Identify Objects"
             }
           ].map((demo) => (
-            <div key={demo.title} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+            <div key={demo.title} className="bg-card p-6 rounded-xl shadow-sm border border-border">
               <h3 className="text-xl font-semibold mb-3">{demo.title}</h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-6">{demo.description}</p>
+              <p className="text-muted-foreground mb-6">{demo.description}</p>
               
               <div className="space-y-4">
                 <input
                   type="text"
                   placeholder={demo.placeholder}
-                  className="w-full rounded-lg bg-gray-100 dark:bg-gray-700 py-2 px-4 text-sm placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-brand/20"
+                  className="w-full rounded-lg bg-muted py-2 px-4 text-sm placeholder:text-mute focus:outline-none focus:ring-2 focus:ring-brand/20"
                 />
                 <Button className="w-full">
                   {demo.buttonText}
                 </Button>
-                <div className="h-32 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center">
-                  <p className="text-gray-500 dark:text-gray-400 text-sm">Results will appear here</p>
+                <div className="h-32 bg-muted rounded-lg flex items-center justify-center">
+                  <p className="text-muted-foreground text-sm">Results will appear here</p>
                 </div>
               </div>
             </div>
@@ -359,14 +353,14 @@ export default function InnovationHubPage() {
               abstract: "A survey examining the current state of quantum machine learning, identifying promising applications and addressing key challenges for practical implementation."
             }
           ].map((paper) => (
-            <div key={paper.title} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+            <div key={paper.title} className="bg-card p-6 rounded-xl shadow-sm border border-border">
               <h3 className="text-xl font-semibold mb-2">{paper.title}</h3>
               <div className="flex flex-wrap gap-x-4 gap-y-2 mb-4 text-sm">
-                <span className="text-gray-600 dark:text-gray-300">{paper.authors}</span>
-                <span className="text-gray-600 dark:text-gray-300">{paper.publication}</span>
-                <span className="text-gray-600 dark:text-gray-300">{paper.date}</span>
+                <span className="text-muted-foreground">{paper.authors}</span>
+                <span className="text-muted-foreground">{paper.publication}</span>
+                <span className="text-muted-foreground">{paper.date}</span>
               </div>
-              <p className="text-gray-700 dark:text-gray-200 mb-4">{paper.abstract}</p>
+              <p className="text-foreground mb-4">{paper.abstract}</p>
               <Button variant="outline" size="sm" className="group">
                 <span>Read Full Paper</span>
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />

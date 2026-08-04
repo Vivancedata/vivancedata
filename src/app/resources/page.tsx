@@ -33,35 +33,35 @@ const resources = [
     description: "Stay updated with the latest insights on AI trends, implementation strategies, and industry best practices from our team of experts.",
     href: "/blog",
     icon: BookOpen,
-    color: "bg-blue-500",
+    color: "bg-brand",
   },
   {
     title: "ROI Calculator",
     description: "Calculate the potential return on investment for your AI initiatives. Get data-driven insights to build your business case.",
     href: "/tools/roi-calculator",
     icon: Calculator,
-    color: "bg-green-500",
+    color: "bg-brand",
   },
   {
     title: "AI Readiness Assessment",
     description: "Evaluate your organization's readiness for AI adoption. Identify gaps and get recommendations for your AI journey.",
     href: "/tools/ai-readiness",
     icon: ClipboardCheck,
-    color: "bg-purple-500",
+    color: "bg-brand",
   },
   {
     title: "Innovation Hub",
     description: "Discover cutting-edge AI innovations and explore how emerging technologies can transform your business operations.",
     href: "/innovation-hub",
     icon: Lightbulb,
-    color: "bg-orange-500",
+    color: "bg-brand",
   },
   {
     title: "Responsible AI",
     description: "Learn about our commitment to ethical AI practices, including fairness, transparency, and accountability in AI systems.",
     href: "/responsible-ai",
     icon: Shield,
-    color: "bg-teal-500",
+    color: "bg-brand",
   },
 ];
 
@@ -70,10 +70,10 @@ export default function ResourcesPage() {
     <main className="py-16 sm:py-24">
       <Container>
         <div className="mx-auto max-w-2xl text-center mb-16">
-          <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
+          <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
             Resources
           </h1>
-          <p className="mt-6 text-lg leading-8 text-zinc-600 dark:text-zinc-400">
+          <p className="mt-6 text-lg leading-8 text-muted-foreground">
             Explore our collection of tools, guides, and insights to help you navigate your AI journey.
           </p>
         </div>
@@ -85,15 +85,15 @@ export default function ResourcesPage() {
               <Link
                 key={resource.href}
                 href={resource.href}
-                className="group relative flex flex-col rounded-2xl border border-zinc-200 bg-white p-8 shadow-sm transition-all hover:shadow-lg hover:border-zinc-300 dark:border-zinc-700 dark:bg-zinc-800 dark:hover:border-zinc-600"
+                className="group relative flex flex-col rounded-md border border-border bg-card p-8 transition-colors hover:border-brand/40"
               >
-                <div className={`inline-flex h-12 w-12 items-center justify-center rounded-xl ${resource.color} text-white mb-4`}>
+                <div className={`inline-flex h-12 w-12 items-center justify-center rounded-xl ${resource.color} text-brand-foreground mb-4`}>
                   <Icon className="h-6 w-6" />
                 </div>
-                <h2 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100 mb-2">
+                <h2 className="text-xl font-semibold text-foreground mb-2">
                   {resource.title}
                 </h2>
-                <p className="text-zinc-600 dark:text-zinc-400 flex-grow">
+                <p className="text-muted-foreground flex-grow">
                   {resource.description}
                 </p>
                 <div className="mt-4 flex items-center text-sm font-medium text-brand dark:text-brand group-hover:text-brand/80">

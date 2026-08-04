@@ -60,8 +60,8 @@ export function TrustSection() {
         <div className="mt-12 rounded-xl border border-border bg-card/80 p-6 backdrop-blur-sm dark:bg-card/50 md:mt-16 md:p-8">
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
             <div className="flex items-center gap-4">
-              <div className="rounded-full bg-green-100 p-3 dark:bg-green-900/30">
-                <Shield className="h-6 w-6 text-green-700 dark:text-green-400" aria-hidden="true" />
+              <div className="rounded-full bg-success/10 p-3">
+                <Shield className="h-6 w-6 text-brand" aria-hidden="true" />
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-foreground">

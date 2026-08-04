@@ -107,21 +107,21 @@ export default function TrainingPage() {
 
       <div className="flex flex-col md:flex-row gap-12 mb-20">
         <div className="w-full md:w-1/2">
-          <div className="aspect-video rounded-xl shadow-xl overflow-hidden bg-slate-900 p-6 md:p-8 flex flex-col">
-            <div className="text-brand/60 text-xs font-mono mb-5">AI Capability Progress</div>
+          <div className="aspect-video rounded-md overflow-hidden border border-border bg-card p-6 md:p-8 flex flex-col">
+            <div className="eyebrow mb-5">AI Capability Progress</div>
             <div className="space-y-4 flex-1">
               {[
                 { role: "Executive Team", score: 87, color: "bg-primary" },
-                { role: "Data Scientists", score: 94, color: "bg-blue-400" },
-                { role: "Software Engineers", score: 91, color: "bg-purple-400" },
-                { role: "Operations", score: 78, color: "bg-amber-400" },
+                { role: "Data Scientists", score: 94, color: "bg-primary" },
+                { role: "Software Engineers", score: 91, color: "bg-primary" },
+                { role: "Operations", score: 78, color: "bg-primary" },
               ].map((item) => (
                 <div key={item.role}>
                   <div className="flex justify-between mb-1.5">
-                    <span className="text-white/70 text-xs">{item.role}</span>
-                    <span className="text-white/40 text-xs font-mono">{item.score}%</span>
+                    <span className="text-muted-foreground text-xs">{item.role}</span>
+                    <span className="text-mute text-xs font-mono">{item.score}%</span>
                   </div>
-                  <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
+                  <div className="h-1.5 bg-muted rounded-full overflow-hidden">
                     <div
                       className={`h-full ${item.color} rounded-full`}
                       style={{ width: `${item.score}%` }}
@@ -130,16 +130,16 @@ export default function TrainingPage() {
                 </div>
               ))}
             </div>
-            <div className="mt-4 text-white/30 text-xs">Avg. capability gain: +64% post-training</div>
+            <div className="mt-4 text-caption text-mute">Avg. capability gain: +64% post-training</div>
           </div>
         </div>
         
         <div className="w-full md:w-1/2 flex flex-col justify-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">Build AI Capabilities Across Your Organization</h2>
-          <p className="text-gray-600 dark:text-gray-300 mb-6">
+          <p className="text-muted-foreground mb-6">
             Successful AI adoption requires more than just technology—it requires people with the right skills and knowledge. Our training programs are designed to build AI literacy and capabilities at all levels of your organization.
           </p>
-          <p className="text-gray-600 dark:text-gray-300 mb-6">
+          <p className="text-muted-foreground mb-6">
             From executive workshops to hands-on technical training, we offer customized learning experiences that address your specific needs and objectives.
           </p>
           <Button asChild className="self-start group" variant="outline">
@@ -156,32 +156,32 @@ export default function TrainingPage() {
         
         <div className="space-y-8">
           {courses.map((course) => (
-            <div key={course.title} className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
+            <div key={course.title} className="bg-card rounded-xl shadow-sm border border-border overflow-hidden">
               <div className="p-6 md:p-8">
                 <div className="flex flex-col md:flex-row gap-6">
                   <div className="w-full md:w-2/3">
                     <h3 className="text-xl font-semibold mb-3">{course.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-300 mb-4">{course.description}</p>
+                    <p className="text-muted-foreground mb-4">{course.description}</p>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                       <div>
-                        <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Target Audience</h4>
-                        <p className="text-gray-700 dark:text-gray-200">{course.audience}</p>
+                        <h4 className="text-sm font-medium text-muted-foreground mb-1">Target Audience</h4>
+                        <p className="text-foreground">{course.audience}</p>
                       </div>
                       <div>
-                        <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Duration</h4>
-                        <p className="text-gray-700 dark:text-gray-200">{course.duration}</p>
+                        <h4 className="text-sm font-medium text-muted-foreground mb-1">Duration</h4>
+                        <p className="text-foreground">{course.duration}</p>
                       </div>
                     </div>
                   </div>
                   
                   <div className="w-full md:w-1/3">
-                    <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">Key Topics</h4>
+                    <h4 className="text-sm font-medium text-muted-foreground mb-2">Key Topics</h4>
                     <ul className="space-y-1">
                       {course.topics.map((topic) => (
                         <li key={topic} className="flex items-start">
                           <Check className="h-4 w-4 text-brand mt-1 mr-2 flex-shrink-0" />
-                          <span className="text-gray-700 dark:text-gray-200 text-sm">{topic}</span>
+                          <span className="text-foreground text-sm">{topic}</span>
                         </li>
                       ))}
                     </ul>
@@ -189,8 +189,8 @@ export default function TrainingPage() {
                 </div>
               </div>
               
-              <div className="bg-gray-50 dark:bg-gray-800/50 px-6 py-4 flex justify-between items-center">
-                <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
+              <div className="bg-muted/50 px-6 py-4 flex justify-between items-center">
+                <span className="text-sm font-medium text-muted-foreground">
                   Available for on-site or virtual delivery
                 </span>
                 <Button asChild variant="outline" size="sm">
@@ -221,9 +221,9 @@ export default function TrainingPage() {
               description: "Post-training resources and follow-up sessions ensure your team can apply what they've learned."
             }
           ].map((item) => (
-            <div key={item.title} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+            <div key={item.title} className="bg-card p-6 rounded-xl shadow-sm border border-border">
               <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
-              <p className="text-gray-600 dark:text-gray-300">{item.description}</p>
+              <p className="text-muted-foreground">{item.description}</p>
             </div>
           ))}
         </div>

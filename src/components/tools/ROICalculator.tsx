@@ -106,7 +106,7 @@ function ROIInputForm({ inputs, onInputChange, onCalculate }: ROIInputFormProps)
           <div className="space-y-2">
             <Label htmlFor="revenue">Annual Revenue</Label>
             <div className="relative">
-              <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" aria-hidden="true" />
+              <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-mute" aria-hidden="true" />
               <Input
                 id="revenue"
                 type="number"
@@ -123,7 +123,7 @@ function ROIInputForm({ inputs, onInputChange, onCalculate }: ROIInputFormProps)
           <div className="space-y-2">
             <Label htmlFor="employees">Number of Employees</Label>
             <div className="relative">
-              <Users className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" aria-hidden="true" />
+              <Users className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-mute" aria-hidden="true" />
               <Input
                 id="employees"
                 type="number"
@@ -140,7 +140,7 @@ function ROIInputForm({ inputs, onInputChange, onCalculate }: ROIInputFormProps)
           <div className="space-y-2">
             <Label htmlFor="hourlyRate">Average Hourly Rate ($)</Label>
             <div className="relative">
-              <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" aria-hidden="true" />
+              <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-mute" aria-hidden="true" />
               <Input
                 id="hourlyRate"
                 type="number"
@@ -157,7 +157,7 @@ function ROIInputForm({ inputs, onInputChange, onCalculate }: ROIInputFormProps)
           <div className="space-y-2">
             <Label htmlFor="inefficiencyHours">Inefficiency Hours/Week per Employee</Label>
             <div className="relative">
-              <Clock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500" aria-hidden="true" />
+              <Clock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-mute" aria-hidden="true" />
               <Input
                 id="inefficiencyHours"
                 type="number"
@@ -215,16 +215,16 @@ function ROIMetrics({ results }: ROIMetricsProps) {
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 0.1 }}
       >
-        <Card className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border-green-200 dark:border-green-800">
+        <Card className="bg-muted border-brand/20 dark:border-brand/30">
           <CardHeader>
             <CardTitle as="h3" className="text-lg flex items-center gap-2">
-              <TrendingUp className="h-5 w-5 text-green-600" aria-hidden="true" />
+              <TrendingUp className="h-5 w-5 text-brand" aria-hidden="true" />
               3-Year ROI
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-green-600" aria-label={`3-Year ROI: ${results.roiPercentage} percent`}>{results.roiPercentage}%</div>
-            <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
+            <div className="text-3xl font-bold text-brand" aria-label={`3-Year ROI: ${results.roiPercentage} percent`}>{results.roiPercentage}%</div>
+            <p className="text-sm text-muted-foreground mt-1">
               {formatCurrency(results.netROI)} net return
             </p>
           </CardContent>
@@ -245,7 +245,7 @@ function ROIMetrics({ results }: ROIMetricsProps) {
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold text-brand" aria-label={`Payback period: ${results.paybackMonths} months`}>{results.paybackMonths} mo</div>
-            <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
+            <p className="text-sm text-muted-foreground mt-1">
               Break-even timeline
             </p>
           </CardContent>
@@ -257,16 +257,16 @@ function ROIMetrics({ results }: ROIMetricsProps) {
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 0.3 }}
       >
-        <Card className="bg-gradient-to-br from-purple-50 to-violet-50 dark:from-purple-900/20 dark:to-violet-900/20 border-purple-200 dark:border-purple-800">
+        <Card className="bg-muted border-brand/20 dark:border-brand/30">
           <CardHeader>
             <CardTitle as="h3" className="text-lg flex items-center gap-2">
-              <Zap className="h-5 w-5 text-purple-600" aria-hidden="true" />
+              <Zap className="h-5 w-5 text-brand" aria-hidden="true" />
               Efficiency Gain
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-purple-600" aria-label={`Efficiency gain: ${results.efficiencyGainPercent} percent`}>{results.efficiencyGainPercent}%</div>
-            <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
+            <div className="text-3xl font-bold text-brand" aria-label={`Efficiency gain: ${results.efficiencyGainPercent} percent`}>{results.efficiencyGainPercent}%</div>
+            <p className="text-sm text-muted-foreground mt-1">
               {formatNumber(results.hoursSaved)} hours/year saved
             </p>
           </CardContent>
@@ -295,40 +295,40 @@ function FinancialBreakdown({ results }: FinancialBreakdownProps) {
         <CardContent>
           <div className="space-y-6">
             <div>
-              <h4 className="font-semibold mb-3 text-red-600 dark:text-red-400">Total Investment</h4>
-              <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-4">
+              <h4 className="font-semibold mb-3 text-destructive">Total Investment</h4>
+              <div className="bg-destructive/10 rounded-md p-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-700 dark:text-gray-300">Implementation Cost</span>
+                  <span className="text-foreground">Implementation Cost</span>
                   <span className="font-bold text-lg">{formatCurrency(results.totalCost)}</span>
                 </div>
               </div>
             </div>
 
             <div>
-              <h4 className="font-semibold mb-3 text-green-600 dark:text-green-400">Projected Savings</h4>
+              <h4 className="font-semibold mb-3 text-brand">Projected Savings</h4>
               <div className="space-y-3">
-                <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-4">
+                <div className="bg-success/10 rounded-md p-4">
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-700 dark:text-gray-300">Year 1 Savings</span>
+                    <span className="text-foreground">Year 1 Savings</span>
                     <span className="font-bold text-lg">{formatCurrency(results.yearOneSavings)}</span>
                   </div>
                 </div>
-                <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-4">
+                <div className="bg-success/10 rounded-md p-4">
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-700 dark:text-gray-300">Year 2 Savings</span>
+                    <span className="text-foreground">Year 2 Savings</span>
                     <span className="font-bold text-lg">{formatCurrency(results.yearTwoSavings)}</span>
                   </div>
                 </div>
-                <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-4">
+                <div className="bg-success/10 rounded-md p-4">
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-700 dark:text-gray-300">Year 3 Savings</span>
+                    <span className="text-foreground">Year 3 Savings</span>
                     <span className="font-bold text-lg">{formatCurrency(results.yearThreeSavings)}</span>
                   </div>
                 </div>
-                <div className="bg-green-100 dark:bg-green-900/30 rounded-lg p-4 border-2 border-green-300 dark:border-green-700">
+                <div className="bg-success/10 rounded-md p-4 border border-success">
                   <div className="flex justify-between items-center">
-                    <span className="font-semibold text-gray-800 dark:text-gray-200">Total 3-Year Savings</span>
-                    <span className="font-bold text-xl text-green-600">{formatCurrency(results.totalThreeYearSavings)}</span>
+                    <span className="font-semibold text-foreground">Total 3-Year Savings</span>
+                    <span className="font-bold text-xl text-success">{formatCurrency(results.totalThreeYearSavings)}</span>
                   </div>
                 </div>
               </div>
@@ -337,7 +337,7 @@ function FinancialBreakdown({ results }: FinancialBreakdownProps) {
             <div className="border-t pt-6">
               <div className="bg-muted rounded-lg p-6 border-2 border-brand/30 dark:border-brand/40">
                 <div className="flex justify-between items-center">
-                  <span className="text-xl font-bold text-gray-800 dark:text-gray-200">Net Return (3 Years)</span>
+                  <span className="text-xl font-bold text-foreground">Net Return (3 Years)</span>
                   <span className="text-3xl font-bold text-brand">{formatCurrency(results.netROI)}</span>
                 </div>
               </div>
