@@ -14,8 +14,12 @@ export default defineConfig({
   webServer: process.env.PLAYWRIGHT_BASE_URL
     ? undefined
     : {
+        // `npx next` resolves through node_modules/.bin, which works both
+        // standalone (next in this project) and inside the npm workspace
+        // (next hoisted to the root). The previous hardcoded
+        // ./node_modules/next/... path broke under hoisting.
         command:
-          "npm run build && node ./node_modules/next/dist/bin/next start --hostname 127.0.0.1 --port 4317",
+          "npm run build && npx next start --hostname 127.0.0.1 --port 4317",
         url: baseURL,
         reuseExistingServer: false,
         timeout: 240000,

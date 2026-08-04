@@ -49,7 +49,7 @@
     "@tailwindcss/typography": "^0.5.20",
     "@upstash/ratelimit": "^2.0.8",
     "@upstash/redis": "^1.38.0",
-    "@vivancedata/ui": "https://github.com/Vivancedata/ui/archive/refs/tags/v0.2.0.tar.gz",
+    "@vivancedata/ui": "https://github.com/Vivancedata/ui/archive/refs/tags/v0.3.0.tar.gz",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
@@ -66,7 +66,6 @@
     "resend": "^6.18.0",
     "sharp": "^0.35.3",
     "sonner": "^2.0.7",
-    "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.23.8"
   },
