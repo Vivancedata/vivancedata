@@ -8,6 +8,7 @@ import { Container } from "@/components/common/Container";
 import { Heading } from "@/components/common/Heading";
 import { Paragraph } from "@/components/common/Paragraph";
 import { Prose } from "@/components/blog/Prose";
+import { BlogCover, isDefaultBlogImage } from "@/components/blog/BlogCover";
 import { RelatedPosts } from "@/components/blog/RelatedPosts";
 import { ReadingProgress } from "@/components/blog/ReadingProgress";
 import { ArrowLeft, Share2, Calendar, Tag, Play, Pause } from "lucide-react";
@@ -120,13 +121,16 @@ export function BlogLayout({
                   {meta.description}
                 </Paragraph>
               </m.div>
-              {meta.image && (
-                <m.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  className="mt-8 aspect-video relative overflow-hidden rounded-2xl bg-muted/30"
-                >
+              <m.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="mt-8 aspect-video relative overflow-hidden rounded-2xl bg-muted/30"
+              >
+                {isDefaultBlogImage(meta.image) ? (
+                  // meta has no slug; the title seeds the same deterministic cover.
+                  <BlogCover slug={meta.title} />
+                ) : (
                   <Image
                     src={meta.image}
                     alt={`Featured image for ${meta.title}`}
@@ -135,8 +139,8 @@ export function BlogLayout({
                     className="object-cover"
                     priority
                   />
-                </m.div>
-              )}
+                )}
+              </m.div>
             </header>
             <m.div
               initial={{ opacity: 0, y: 20 }}

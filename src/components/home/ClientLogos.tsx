@@ -1,5 +1,26 @@
-import { Building2 } from "lucide-react";
-import { clients } from "@/constants/clients";
+import {
+  AppWindow,
+  Briefcase,
+  Clapperboard,
+  Factory,
+  HeartPulse,
+  Landmark,
+  ShoppingBag,
+  Truck,
+} from "lucide-react";
+import { clients, type ClientIcon } from "@/constants/clients";
+
+// Same string-keyed icon map pattern as Welcome.tsx — constants stay serializable.
+const sectorIcons: Record<ClientIcon, typeof Landmark> = {
+  landmark: Landmark,
+  "heart-pulse": HeartPulse,
+  "shopping-bag": ShoppingBag,
+  "app-window": AppWindow,
+  factory: Factory,
+  truck: Truck,
+  briefcase: Briefcase,
+  clapperboard: Clapperboard,
+};
 
 export default function ClientLogos() {
   return (
@@ -22,17 +43,20 @@ export default function ClientLogos() {
         </div>
 
         <ul className="grid grid-cols-2 gap-6 md:grid-cols-4">
-          {clients.map((client) => (
-            <li key={client.id}>
-              <div className="flex h-full flex-col items-center justify-center rounded-2xl border border-border/60 bg-card/70 px-4 py-6 text-center shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:border-brand/25 hover:shadow-md">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-muted text-brand">
-                  <Building2 className="h-7 w-7" aria-hidden="true" />
+          {clients.map((client) => {
+            const Icon = sectorIcons[client.icon];
+            return (
+              <li key={client.id}>
+                <div className="flex h-full flex-col items-center justify-start rounded-2xl border border-border/60 bg-card/70 px-4 py-6 text-center shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:border-brand/25 hover:shadow-md">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-muted text-brand">
+                    <Icon className="h-7 w-7" aria-hidden="true" />
+                  </div>
+                  <p className="mt-4 text-sm font-semibold text-foreground md:text-base">{client.name}</p>
+                  <p className="mt-1 text-xs text-muted-foreground md:text-sm">{client.blurb}</p>
                 </div>
-                <p className="mt-4 text-sm font-semibold text-foreground md:text-base">{client.name}</p>
-                <p className="mt-1 text-xs text-muted-foreground md:text-sm">{client.industry}</p>
-              </div>
-            </li>
-          ))}
+              </li>
+            );
+          })}
         </ul>
 
         <div className="mt-12 border-t border-border pt-8 md:mt-16">

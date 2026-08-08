@@ -5,6 +5,7 @@ import { m } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
+import { BlogCover, isDefaultBlogImage } from "@/components/blog/BlogCover";
 import { HoverCard } from "@/components/common/Animations";
 import { prefersReducedMotion } from "@/lib/performance";
 import { useMemo, useState } from "react";
@@ -44,15 +45,21 @@ export function BlogCard({ slug, title, description, date, image, tags }: BlogCa
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               className="h-full w-full"
             >
-              <Image
-                src={image}
-                alt={`Featured image for blog post: ${title}`}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              {isDefaultBlogImage(image) ? (
+                <BlogCover slug={slug} />
+              ) : (
+                <>
+                  <Image
+                    src={image}
+                    alt={`Featured image for blog post: ${title}`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                </>
+              )}
             </m.div>
             
             <div className="absolute top-4 left-4 z-10 flex gap-2 flex-wrap">

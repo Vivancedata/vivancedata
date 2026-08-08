@@ -1,6 +1,6 @@
 import { Blogs } from '@/components/blog/Blogs';
 import { Container } from '@/components/common/Container';
-import { ServicesHero } from '@/components/services/ServicesHero';
+import { PageHero } from '@/components/common/PageHero';
 import { Metadata } from 'next';
 import { getAllBlogPosts } from '@/lib/blogPosts';
 
@@ -35,8 +35,13 @@ export default async function Blog() {
 
   return (
     <>
-      <ServicesHero
-        title="AI Insights Blog"
+      <PageHero
+        eyebrow="From Our Experts"
+        title={
+          <>
+            AI <span className="text-brand">Insights</span> Blog
+          </>
+        }
         description="Practical perspectives on AI implementation, strategy, and the decisions that matter most when building production systems."
       />
       <Container className="py-16">

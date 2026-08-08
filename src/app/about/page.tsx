@@ -1,6 +1,6 @@
 import React from "react";
 import Testimonials from "@/components/home/Testimonials";
-import { AboutHero } from "@/components/about/AboutHero";
+import { PageHero } from "@/components/common/PageHero";
 import { AboutDescription } from "@/components/about/AboutDescription";
 import { AboutValue } from "@/components/about/AboutValue";
 import { AboutTeam } from "@/components/about/AboutTeam";
@@ -45,8 +45,13 @@ const AboutPage = () => {
 
   return (
     <div>
-      <AboutHero
-        title="About VivanceData"
+      <PageHero
+        eyebrow="About Us"
+        title={
+          <>
+            About <span className="text-brand">VivanceData</span>
+          </>
+        }
         description="AI and data reshape our world at a relentless speed, but most companies find themselves caught between possibility and complexity. VivanceData exists to close that gap."
       />
 
