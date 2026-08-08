@@ -14,7 +14,7 @@ export const questions: FAQ[] = [
   },
   {
     question: "What industries do you specialize in?",
-    answer: "We specialize in various industries including healthcare, finance, retail, and manufacturing."
+    answer: "We work with blue-collar and local service businesses: construction, HVAC and the trades, logistics and fleet operations, and manufacturing."
   },
   {
     question: "How do I get started with your services?",

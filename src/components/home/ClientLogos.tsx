@@ -1,25 +1,12 @@
-import {
-  AppWindow,
-  Briefcase,
-  Clapperboard,
-  Factory,
-  HeartPulse,
-  Landmark,
-  ShoppingBag,
-  Truck,
-} from "lucide-react";
+import { Factory, HardHat, Truck, Wrench } from "lucide-react";
 import { clients, type ClientIcon } from "@/constants/clients";
 
 // Same string-keyed icon map pattern as Welcome.tsx — constants stay serializable.
-const sectorIcons: Record<ClientIcon, typeof Landmark> = {
-  landmark: Landmark,
-  "heart-pulse": HeartPulse,
-  "shopping-bag": ShoppingBag,
-  "app-window": AppWindow,
-  factory: Factory,
+const sectorIcons: Record<ClientIcon, typeof Factory> = {
+  "hard-hat": HardHat,
+  wrench: Wrench,
   truck: Truck,
-  briefcase: Briefcase,
-  clapperboard: Clapperboard,
+  factory: Factory,
 };
 
 export default function ClientLogos() {
@@ -37,8 +24,8 @@ export default function ClientLogos() {
             Sectors We Work In
           </h2>
           <p className="mx-auto max-w-2xl text-base text-muted-foreground md:text-lg">
-            We partner with teams across regulated, operationally complex, and customer-facing
-            environments to ship practical AI systems.
+            We work with blue-collar and local service businesses — the ones where the paperwork,
+            the phone and the schedule are what actually hold the day up.
           </p>
         </div>
 

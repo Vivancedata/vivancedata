@@ -17,7 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Search, TrendingUp, Clock, Layers } from "lucide-react";
+import { Search, Clock, Layers } from "lucide-react";
 import {
   useCases,
   industries,
@@ -85,16 +85,10 @@ function UseCaseCard({ useCase }: { useCase: UseCase }) {
             )}
           </div>
 
-          <div className="grid grid-cols-3 gap-2 pt-3 border-t">
-            <div className="text-center">
-              <div className="flex items-center justify-center mb-1">
-                <TrendingUp className="h-4 w-4 text-brand" />
-              </div>
-              <p className="text-xs text-muted-foreground">Est. ROI</p>
-              <p className="text-sm font-semibold text-brand">
-                {useCase.estimatedROI}
-              </p>
-            </div>
+          {/* No ROI tile. It used to render an invented multiple ("250-400%")
+              for engagements that never happened; a duration estimate and a
+              complexity band are the only honest numbers here. */}
+          <div className="grid grid-cols-2 gap-2 pt-3 border-t">
             <div className="text-center">
               <div className="flex items-center justify-center mb-1">
                 <Clock className="h-4 w-4 text-muted-foreground" />

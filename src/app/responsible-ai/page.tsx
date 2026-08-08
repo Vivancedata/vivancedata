@@ -207,22 +207,22 @@ export default function ResponsibleAIPage() {
   // No number goes in here without a named client who has agreed to publish it.
   const caseStudies = [
     {
-      title: "Financial Services: Fair Loan Decisioning",
-      challenge: "A lender wants to automate parts of loan assessment without creating disparate impact across demographic groups, and has to show a regulator how each decision was reached.",
-      approach: "Keep the model explainable rather than maximally accurate, test outcomes across protected attributes before launch, log every decision with its inputs, and route edge cases to a human reviewer.",
-      outcome: "The design goal is a decision trail an auditor can follow end to end, with fairness testing repeated on a schedule rather than only at launch."
+      title: "Construction: Document Extraction You Can Audit",
+      challenge: "A contractor wants submittals and invoices read automatically, but a wrong figure filed into the project record is worse than a slow one, and an auditor later has to see where each value came from.",
+      approach: "Extract with a confidence threshold rather than a best guess, keep every value linked to the page and region it was read from, hold anything below the threshold for a person, and log who approved each record.",
+      outcome: "The design goal is a project record where every extracted field can be traced back to the document it came from, and nothing enters it without a named approval."
     },
     {
-      title: "Healthcare: Privacy-Preserving Analytics",
-      challenge: "A provider wants to identify at-risk patients without moving sensitive records into new systems or widening the set of people who can read them.",
-      approach: "Keep data inside the systems that already hold it, minimise what is extracted, apply tiered access with audit trails, and build inside the provider's existing HIPAA controls rather than alongside them.",
-      outcome: "The design goal is analytics that add no new copies of patient data and no new access paths to it."
+      title: "HVAC & Trades: Call Triage That Escalates Honestly",
+      challenge: "A service business wants after-hours calls answered, but a system that misreads an emergency as routine leaves someone without heat overnight, and one that escalates everything is just a pager.",
+      approach: "Bias the urgency rules toward escalation, state plainly to the caller that they are speaking to an automated intake, keep a human escalation path open at every point, and review the misclassified calls weekly.",
+      outcome: "The design goal is triage whose failure mode is waking an on-call technician unnecessarily, never leaving a genuine emergency in a queue."
     },
     {
-      title: "Retail: Recommendations Without Filter Bubbles",
-      challenge: "A retailer wants personalised recommendations that do not narrow over time or lean on demographic proxies for taste.",
-      approach: "Set explicit diversity constraints in the ranking, expose why an item was recommended, and monitor for drift toward a narrowing set of products.",
-      outcome: "The design goal is a recommender whose behaviour can be inspected and corrected, rather than one that is only measured on click-through."
+      title: "Logistics: Monitoring Loads Without Monitoring Drivers",
+      challenge: "A carrier wants late and off-plan loads surfaced early, and the same telematics data would also support scoring individual drivers on behaviour they were never told was being measured.",
+      approach: "Scope the data to the load rather than the person, agree in advance what the signals may and may not be used for, tell drivers what is collected, and keep an access trail on the underlying records.",
+      outcome: "The design goal is exception visibility for dispatch that does not quietly become a performance surveillance system."
     }
   ];
 

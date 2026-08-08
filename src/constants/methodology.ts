@@ -150,7 +150,7 @@ export const methodologyFAQs: MethodologyFAQ[] = [
   },
   {
     question: 'What industries is the RAPID framework best suited for?',
-    answer: 'The framework is industry-agnostic and has been successfully applied across financial services, healthcare, retail, manufacturing, and technology sectors. We customize the approach based on your specific regulatory and operational requirements.',
+    answer: 'We apply it in construction, HVAC and the trades, logistics and fleet operations, and manufacturing. The phases themselves are industry-agnostic; what changes is the operational reality we design around — the site, the van, the dispatch board, the line.',
   },
   {
     question: 'How do you ensure AI solutions are ethical and compliant?',

@@ -1,22 +1,15 @@
 export type Industry =
-  | "Financial Services"
-  | "Healthcare"
-  | "Retail"
-  | "Manufacturing"
-  | "Technology"
-  | "Energy"
-  | "Logistics"
-  | "Professional Services";
+  | "Construction"
+  | "HVAC & Trades"
+  | "Logistics & Fleet"
+  | "Manufacturing";
 
 export type BusinessFunction =
   | "Customer Service"
   | "Operations"
-  | "Marketing"
+  | "Dispatch"
   | "Finance"
-  | "HR"
-  | "Sales"
-  | "IT"
-  | "Research & Development";
+  | "Safety & Compliance";
 
 export type Complexity = "Low" | "Medium" | "High";
 
@@ -28,374 +21,270 @@ export interface UseCase {
   function: BusinessFunction;
   technologies: string[];
   complexity: Complexity;
-  estimatedROI: string;
+  /** A duration estimate. The only kind of number that belongs in this file. */
   implementationTime: string;
   keyBenefits: string[];
 }
 
 export const industries: Industry[] = [
-  "Financial Services",
-  "Healthcare",
-  "Retail",
+  "Construction",
+  "HVAC & Trades",
+  "Logistics & Fleet",
   "Manufacturing",
-  "Technology",
-  "Energy",
-  "Logistics",
-  "Professional Services",
 ];
 
 export const businessFunctions: BusinessFunction[] = [
   "Customer Service",
   "Operations",
-  "Marketing",
+  "Dispatch",
   "Finance",
-  "HR",
-  "Sales",
-  "IT",
-  "Research & Development",
+  "Safety & Compliance",
 ];
 
 export const complexityLevels: Complexity[] = ["Low", "Medium", "High"];
 
+// Use cases describe what a workflow does, never what it returned. There are no
+// outcome percentages or ROI multiples in here, and `implementationTime` is the
+// only number allowed — it is an estimate of effort, not a claim about results.
 export const useCases: UseCase[] = [
   {
-    id: "chatbot-customer-support",
-    title: "AI-Powered Customer Support Chatbot",
+    id: "submittal-intake",
+    title: "Submittal and RFI Intake",
     description:
-      "Deploy intelligent chatbots that handle customer inquiries 24/7, reducing wait times and freeing human agents for complex issues. Uses natural language processing to understand intent and provide accurate responses.",
-    industry: "Retail",
-    function: "Customer Service",
-    technologies: ["Natural Language Processing", "Large Language Models", "Sentiment Analysis"],
+      "Read the submittals, RFIs and permits that arrive as emailed PDFs, extract the fields that matter, check them against the project's own requirements, and stage the record for a human to approve.",
+    industry: "Construction",
+    function: "Operations",
+    technologies: ["Document Intelligence", "Optical Character Recognition", "Workflow Automation"],
     complexity: "Medium",
-    estimatedROI: "150-300%",
-    implementationTime: "2-4 months",
+    implementationTime: "6-10 weeks",
     keyBenefits: [
-      "24/7 customer support availability",
-      "60-80% reduction in response time",
-      "40% decrease in support costs",
+      "Re-keying replaced by review",
+      "Consistent capture across subcontractors",
+      "Exceptions surfaced instead of buried",
     ],
   },
   {
-    id: "fraud-detection",
-    title: "Real-Time Fraud Detection System",
+    id: "daily-report-drafting",
+    title: "Daily Report Drafting",
     description:
-      "Machine learning models that analyze transaction patterns in real-time to identify and prevent fraudulent activities before they impact your business. Continuously learns from new fraud patterns.",
-    industry: "Financial Services",
-    function: "Finance",
-    technologies: ["Anomaly Detection", "Machine Learning", "Real-time Analytics"],
-    complexity: "High",
-    estimatedROI: "400-800%",
-    implementationTime: "4-8 months",
+      "Assemble the field notes, photos and timesheets a crew already captures into the daily report format the client and insurer expect, held for a superintendent to correct and submit.",
+    industry: "Construction",
+    function: "Operations",
+    technologies: ["Large Language Models", "Image Understanding", "Template Generation"],
+    complexity: "Medium",
+    implementationTime: "4-8 weeks",
     keyBenefits: [
-      "99.5% fraud detection accuracy",
-      "80% reduction in false positives",
-      "Real-time transaction monitoring",
+      "Reports drafted rather than written from scratch",
+      "One format across every crew",
+      "Superintendent reviews instead of authors",
+    ],
+  },
+  {
+    id: "bid-history-search",
+    title: "Bid and Cost History Search",
+    description:
+      "Search prior bids, supplier quotes and cost history so an estimator starts from what the business actually paid last time, with the source of each figure attached.",
+    industry: "Construction",
+    function: "Finance",
+    technologies: ["Semantic Search", "Document Intelligence", "Retrieval Augmented Generation"],
+    complexity: "Medium",
+    implementationTime: "6-10 weeks",
+    keyBenefits: [
+      "Faster turnaround on invitations to bid",
+      "Historical pricing surfaced with its source",
+      "Estimator judgement stays in the loop",
+    ],
+  },
+  {
+    id: "certification-tracking",
+    title: "Certification and Safety Record Tracking",
+    description:
+      "Keep certifications, toolbox talks and incident reports searchable and current, reading the expiry date off each uploaded document and raising renewals before they lapse.",
+    industry: "Construction",
+    function: "Safety & Compliance",
+    technologies: ["Optical Character Recognition", "Document Classification", "Scheduled Alerting"],
+    complexity: "Low",
+    implementationTime: "3-6 weeks",
+    keyBenefits: [
+      "Expiring certifications flagged early",
+      "Records retrievable during an audit",
+      "No single point of failure in the filing",
+    ],
+  },
+  {
+    id: "after-hours-call-capture",
+    title: "After-Hours Call Capture",
+    description:
+      "Answer the calls that currently reach voicemail, take down the fault, address and access details in a fixed format, judge urgency, and either book the slot or page the on-call technician.",
+    industry: "HVAC & Trades",
+    function: "Customer Service",
+    technologies: ["Speech Recognition", "Natural Language Understanding", "Telephony APIs"],
+    complexity: "Medium",
+    implementationTime: "6-10 weeks",
+    keyBenefits: [
+      "Calls answered outside office hours",
+      "Emergencies escalated, routine work booked",
+      "Every call logged whether or not it converts",
+    ],
+  },
+  {
+    id: "dispatch-scheduling",
+    title: "Dispatch and Scheduling Support",
+    description:
+      "Propose a day's schedule from technician skills, parts on the van and travel time, and re-propose it when a job overruns, leaving the dispatcher to accept, edit or ignore each suggestion.",
+    industry: "HVAC & Trades",
+    function: "Dispatch",
+    technologies: ["Constraint Optimization", "Geospatial Analytics", "Scheduling Integration"],
+    complexity: "High",
+    implementationTime: "8-14 weeks",
+    keyBenefits: [
+      "Fewer wasted trips across town",
+      "Skill and parts matched to the job",
+      "Dispatcher keeps final say",
+    ],
+  },
+  {
+    id: "quote-drafting",
+    title: "Quoting From Service History",
+    description:
+      "Draft a quote from the technician's job notes, prior work at that address and current supplier pricing, ready for the technician to adjust before it is sent.",
+    industry: "HVAC & Trades",
+    function: "Finance",
+    technologies: ["Large Language Models", "Pricing Data Integration", "Service History Search"],
+    complexity: "Medium",
+    implementationTime: "6-10 weeks",
+    keyBenefits: [
+      "Quotes drafted the same day as the visit",
+      "Prior work at the address surfaced",
+      "Technician adjusts before it goes out",
+    ],
+  },
+  {
+    id: "service-follow-up",
+    title: "Follow-Up and Review Requests",
+    description:
+      "Chase the maintenance intervals, unapproved quotes and review requests that get dropped when the office is busy, on a schedule rather than when someone finds a spare afternoon.",
+    industry: "HVAC & Trades",
+    function: "Customer Service",
+    technologies: ["Workflow Automation", "CRM Integration", "Messaging APIs"],
+    complexity: "Low",
+    implementationTime: "3-6 weeks",
+    keyBenefits: [
+      "Service intervals followed up automatically",
+      "Unapproved quotes chased",
+      "Review requests sent while the job is fresh",
+    ],
+  },
+  {
+    id: "pod-processing",
+    title: "Proof of Delivery and BOL Processing",
+    description:
+      "Read the photographed paperwork drivers already submit, extract the fields, match the document to its load, and push it into billing — holding back anything too illegible to read.",
+    industry: "Logistics & Fleet",
+    function: "Operations",
+    technologies: ["Optical Character Recognition", "Document Intelligence", "Billing Integration"],
+    complexity: "Medium",
+    implementationTime: "6-10 weeks",
+    keyBenefits: [
+      "Documents processed as they arrive",
+      "Matched to the correct load automatically",
+      "Illegible scans flagged rather than guessed",
+    ],
+  },
+  {
+    id: "load-exception-triage",
+    title: "Load Exception Triage",
+    description:
+      "Watch for the loads that are late, mis-scanned or short-delivered, rank them by customer impact, and write them to the dispatch board the team already watches.",
+    industry: "Logistics & Fleet",
+    function: "Dispatch",
+    technologies: ["Anomaly Detection", "Event Stream Processing", "TMS Integration"],
+    complexity: "High",
+    implementationTime: "8-14 weeks",
+    keyBenefits: [
+      "Problem loads surfaced early",
+      "Ranked by customer impact",
+      "Fewer surprises on the customer call",
+    ],
+  },
+  {
+    id: "driver-check-calls",
+    title: "Routine Driver Communication",
+    description:
+      "Handle the routine check-calls, ETA updates and document reminders so dispatch spends its time on the loads that are actually going wrong.",
+    industry: "Logistics & Fleet",
+    function: "Dispatch",
+    technologies: ["Natural Language Understanding", "Messaging APIs", "Telematics Integration"],
+    complexity: "Medium",
+    implementationTime: "6-10 weeks",
+    keyBenefits: [
+      "Routine check-calls handled",
+      "ETA updates without a phone call",
+      "Dispatch focuses on exceptions",
+    ],
+  },
+  {
+    id: "damage-claim-assembly",
+    title: "Claims and Damage Documentation",
+    description:
+      "Assemble the photographs, delivery records and correspondence a damage claim needs into one package as soon as damage is reported, while the details are still recoverable.",
+    industry: "Logistics & Fleet",
+    function: "Safety & Compliance",
+    technologies: ["Document Assembly", "Image Understanding", "Records Integration"],
+    complexity: "Medium",
+    implementationTime: "4-8 weeks",
+    keyBenefits: [
+      "Evidence gathered while it exists",
+      "Consistent claim packages",
+      "Records tied to the original load",
     ],
   },
   {
     id: "predictive-maintenance",
     title: "Predictive Equipment Maintenance",
     description:
-      "IoT sensors combined with machine learning predict equipment failures before they occur, enabling proactive maintenance scheduling and minimizing costly downtime.",
+      "Score sensor telemetry for the degradation patterns that precede a failure, so maintenance is scheduled against a signal rather than a breakdown.",
     industry: "Manufacturing",
     function: "Operations",
-    technologies: ["IoT", "Machine Learning", "Time Series Analysis", "Edge Computing"],
+    technologies: ["Time Series Analysis", "Anomaly Detection", "Edge Computing"],
     complexity: "High",
-    estimatedROI: "200-400%",
-    implementationTime: "6-12 months",
+    implementationTime: "12-20 weeks",
     keyBenefits: [
-      "45% reduction in downtime",
-      "25% decrease in maintenance costs",
-      "Extend equipment lifespan by 20%",
-    ],
-  },
-  {
-    id: "personalized-marketing",
-    title: "AI-Driven Personalization Engine",
-    description:
-      "Leverage customer data and behavior patterns to deliver highly personalized marketing messages, product recommendations, and content that drive engagement and conversions.",
-    industry: "Retail",
-    function: "Marketing",
-    technologies: ["Recommendation Systems", "Customer Segmentation", "Predictive Analytics"],
-    complexity: "Medium",
-    estimatedROI: "200-350%",
-    implementationTime: "3-6 months",
-    keyBenefits: [
-      "35% increase in conversion rates",
-      "25% higher customer lifetime value",
-      "Reduced customer acquisition costs",
-    ],
-  },
-  {
-    id: "medical-image-analysis",
-    title: "Medical Image Analysis & Diagnostics",
-    description:
-      "Computer vision systems that assist radiologists in analyzing medical images, identifying anomalies, and supporting faster, more accurate diagnoses across X-rays, MRIs, and CT scans.",
-    industry: "Healthcare",
-    function: "Operations",
-    technologies: ["Computer Vision", "Deep Learning", "Medical Imaging AI"],
-    complexity: "High",
-    estimatedROI: "150-250%",
-    implementationTime: "8-14 months",
-    keyBenefits: [
-      "40% faster diagnosis times",
-      "Improved detection accuracy",
-      "Reduced radiologist workload",
-    ],
-  },
-  {
-    id: "intelligent-document-processing",
-    title: "Intelligent Document Processing",
-    description:
-      "Automatically extract, classify, and process information from documents including invoices, contracts, and forms. Eliminates manual data entry and reduces processing errors.",
-    industry: "Financial Services",
-    function: "Operations",
-    technologies: ["OCR", "Natural Language Processing", "Document AI"],
-    complexity: "Medium",
-    estimatedROI: "250-400%",
-    implementationTime: "2-5 months",
-    keyBenefits: [
-      "90% reduction in manual data entry",
-      "85% faster document processing",
-      "99% data accuracy",
-    ],
-  },
-  {
-    id: "demand-forecasting",
-    title: "AI-Powered Demand Forecasting",
-    description:
-      "Machine learning models that analyze historical sales, market trends, and external factors to predict future demand with high accuracy, optimizing inventory and supply chain decisions.",
-    industry: "Retail",
-    function: "Operations",
-    technologies: ["Machine Learning", "Time Series Analysis", "Predictive Analytics"],
-    complexity: "Medium",
-    estimatedROI: "150-300%",
-    implementationTime: "3-6 months",
-    keyBenefits: [
-      "30% reduction in inventory costs",
-      "25% fewer stockouts",
-      "Improved supplier planning",
-    ],
-  },
-  {
-    id: "candidate-screening",
-    title: "AI Resume Screening & Candidate Matching",
-    description:
-      "Natural language processing analyzes resumes and job descriptions to identify the best-fit candidates, reducing time-to-hire while maintaining fairness and reducing bias.",
-    industry: "Professional Services",
-    function: "HR",
-    technologies: ["Natural Language Processing", "Machine Learning", "Matching Algorithms"],
-    complexity: "Low",
-    estimatedROI: "100-200%",
-    implementationTime: "1-3 months",
-    keyBenefits: [
-      "75% reduction in screening time",
-      "Improved candidate quality",
-      "Reduced hiring bias",
-    ],
-  },
-  {
-    id: "energy-optimization",
-    title: "Smart Energy Management System",
-    description:
-      "AI algorithms optimize energy consumption in buildings and industrial facilities by learning usage patterns and automatically adjusting systems for efficiency without compromising comfort.",
-    industry: "Energy",
-    function: "Operations",
-    technologies: ["Machine Learning", "IoT", "Reinforcement Learning"],
-    complexity: "Medium",
-    estimatedROI: "100-200%",
-    implementationTime: "4-8 months",
-    keyBenefits: [
-      "20-30% energy cost reduction",
-      "Reduced carbon footprint",
-      "Automated building management",
-    ],
-  },
-  {
-    id: "sales-forecasting",
-    title: "Intelligent Sales Pipeline Prediction",
-    description:
-      "Machine learning analyzes deal characteristics, sales rep activities, and market signals to predict which opportunities will close, enabling better resource allocation and accurate revenue forecasting.",
-    industry: "Technology",
-    function: "Sales",
-    technologies: ["Predictive Analytics", "Machine Learning", "CRM Integration"],
-    complexity: "Medium",
-    estimatedROI: "150-250%",
-    implementationTime: "2-4 months",
-    keyBenefits: [
-      "30% improvement in forecast accuracy",
-      "20% increase in win rates",
-      "Better pipeline visibility",
-    ],
-  },
-  {
-    id: "route-optimization",
-    title: "Dynamic Route Optimization",
-    description:
-      "AI-powered logistics solution that optimizes delivery routes in real-time based on traffic, weather, delivery windows, and vehicle capacity, reducing fuel costs and improving on-time delivery.",
-    industry: "Logistics",
-    function: "Operations",
-    technologies: ["Optimization Algorithms", "Machine Learning", "Geospatial Analytics"],
-    complexity: "High",
-    estimatedROI: "200-350%",
-    implementationTime: "4-7 months",
-    keyBenefits: [
-      "25% reduction in fuel costs",
-      "15% more deliveries per day",
-      "98% on-time delivery rate",
-    ],
-  },
-  {
-    id: "sentiment-analysis",
-    title: "Social Media Sentiment Intelligence",
-    description:
-      "Monitor and analyze customer sentiment across social media, reviews, and support channels in real-time. Identify emerging issues, track brand perception, and measure campaign effectiveness.",
-    industry: "Retail",
-    function: "Marketing",
-    technologies: ["Natural Language Processing", "Sentiment Analysis", "Social Listening"],
-    complexity: "Low",
-    estimatedROI: "100-200%",
-    implementationTime: "1-3 months",
-    keyBenefits: [
-      "Real-time brand monitoring",
-      "Early issue detection",
-      "Competitive intelligence",
-    ],
-  },
-  {
-    id: "credit-scoring",
-    title: "AI-Enhanced Credit Risk Assessment",
-    description:
-      "Machine learning models that incorporate alternative data sources and advanced patterns to provide more accurate credit risk assessments, expanding access to credit while maintaining portfolio quality.",
-    industry: "Financial Services",
-    function: "Finance",
-    technologies: ["Machine Learning", "Alternative Data Analysis", "Risk Modeling"],
-    complexity: "High",
-    estimatedROI: "200-400%",
-    implementationTime: "6-10 months",
-    keyBenefits: [
-      "20% improvement in default prediction",
-      "Expanded credit access",
-      "Faster approval decisions",
+      "Earlier failure detection from sensor signals",
+      "Maintenance scheduled rather than reactive",
+      "Better cost predictability for maintenance budgets",
     ],
   },
   {
     id: "quality-inspection",
-    title: "Visual Quality Inspection Automation",
+    title: "Visual Quality Inspection",
     description:
-      "Computer vision systems inspect products on production lines, identifying defects with superhuman accuracy and speed, ensuring consistent quality and reducing waste.",
+      "Inspect products on the line with computer vision and statistical process control, flagging out-of-spec output at the point it is produced rather than at final QC.",
     industry: "Manufacturing",
     function: "Operations",
-    technologies: ["Computer Vision", "Deep Learning", "Edge Computing"],
+    technologies: ["Computer Vision", "Statistical Process Control", "Edge Computing"],
     complexity: "Medium",
-    estimatedROI: "200-350%",
-    implementationTime: "3-6 months",
+    implementationTime: "8-14 weeks",
     keyBenefits: [
-      "99.9% defect detection rate",
-      "50% reduction in quality costs",
-      "Real-time quality monitoring",
+      "Defects caught earlier in the cycle",
+      "Reduced rework and scrap volumes",
+      "Root cause traceable to the batch",
     ],
   },
   {
-    id: "patient-flow-optimization",
-    title: "Hospital Patient Flow Optimization",
+    id: "shift-log-search",
+    title: "Shift, Defect and Batch Log Search",
     description:
-      "AI predicts patient volumes, optimizes bed allocation, and manages staff scheduling to reduce wait times and improve resource utilization in healthcare facilities.",
-    industry: "Healthcare",
-    function: "Operations",
-    technologies: ["Predictive Analytics", "Optimization Algorithms", "Healthcare AI"],
-    complexity: "High",
-    estimatedROI: "150-250%",
-    implementationTime: "6-10 months",
-    keyBenefits: [
-      "30% reduction in wait times",
-      "20% improvement in bed utilization",
-      "Better staff scheduling",
-    ],
-  },
-  {
-    id: "contract-analysis",
-    title: "AI Contract Review & Analysis",
-    description:
-      "Natural language processing automatically reviews contracts, identifies key terms, flags risks, and extracts obligations, dramatically reducing legal review time while improving accuracy.",
-    industry: "Professional Services",
-    function: "Operations",
-    technologies: ["Natural Language Processing", "Legal AI", "Document Intelligence"],
+      "Search across shift notes, defect records and batch logs in one place, so a root cause investigation starts from what was actually written down at the time.",
+    industry: "Manufacturing",
+    function: "Safety & Compliance",
+    technologies: ["Semantic Search", "Retrieval Augmented Generation", "MES Integration"],
     complexity: "Medium",
-    estimatedROI: "200-300%",
-    implementationTime: "3-5 months",
+    implementationTime: "6-10 weeks",
     keyBenefits: [
-      "80% faster contract review",
-      "Consistent risk identification",
-      "Reduced legal costs",
-    ],
-  },
-  {
-    id: "knowledge-assistant",
-    title: "Enterprise Knowledge Assistant",
-    description:
-      "AI-powered assistant that helps employees find information across enterprise systems, answer questions using company knowledge, and automate routine IT support tasks.",
-    industry: "Technology",
-    function: "IT",
-    technologies: ["Large Language Models", "Knowledge Graphs", "Enterprise Search"],
-    complexity: "Medium",
-    estimatedROI: "150-250%",
-    implementationTime: "3-6 months",
-    keyBenefits: [
-      "50% reduction in IT tickets",
-      "Faster employee onboarding",
-      "Improved knowledge sharing",
-    ],
-  },
-  {
-    id: "drug-discovery",
-    title: "AI-Accelerated Drug Discovery",
-    description:
-      "Machine learning models analyze molecular structures and biological data to identify promising drug candidates, significantly reducing the time and cost of early-stage drug discovery.",
-    industry: "Healthcare",
-    function: "Research & Development",
-    technologies: ["Deep Learning", "Molecular Modeling", "Bioinformatics"],
-    complexity: "High",
-    estimatedROI: "500-1000%",
-    implementationTime: "12-24 months",
-    keyBenefits: [
-      "60% faster candidate identification",
-      "Reduced clinical trial failures",
-      "Novel compound discovery",
-    ],
-  },
-  {
-    id: "dynamic-pricing",
-    title: "AI Dynamic Pricing Engine",
-    description:
-      "Machine learning algorithms optimize pricing in real-time based on demand, competition, inventory levels, and customer segments to maximize revenue and margins.",
-    industry: "Retail",
-    function: "Sales",
-    technologies: ["Machine Learning", "Price Optimization", "Real-time Analytics"],
-    complexity: "High",
-    estimatedROI: "150-300%",
-    implementationTime: "4-8 months",
-    keyBenefits: [
-      "5-15% revenue increase",
-      "Improved margin management",
-      "Competitive pricing intelligence",
-    ],
-  },
-  {
-    id: "employee-engagement",
-    title: "AI Employee Engagement Analytics",
-    description:
-      "Analyze employee surveys, communication patterns, and feedback to predict engagement levels, identify at-risk employees, and recommend interventions to improve retention.",
-    industry: "Professional Services",
-    function: "HR",
-    technologies: ["Natural Language Processing", "Predictive Analytics", "People Analytics"],
-    complexity: "Low",
-    estimatedROI: "100-200%",
-    implementationTime: "2-4 months",
-    keyBenefits: [
-      "25% reduction in turnover",
-      "Early attrition warning",
-      "Data-driven HR decisions",
+      "Faster root cause identification",
+      "Shift handover context preserved",
+      "Answers traceable to the source record",
     ],
   },
 ];

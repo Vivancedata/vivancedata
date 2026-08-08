@@ -12,69 +12,72 @@ export interface CaseStudy {
   iconType: IconType;
 }
 
+// Illustrative engagements, not delivered ones. The `client` field never names a
+// company and `results` stay qualitative — no number goes in here without a named
+// client who has agreed to publish it.
 export const caseStudies: CaseStudy[] = [
   {
-    id: "retail-analytics",
-    title: "Inventory Planning Optimization",
-    client: "Illustrative Retail Operator",
-    industry: "Retail",
-    challenge: "Teams were balancing frequent stockouts with excess inventory and lacked confidence in planning decisions across locations.",
-    solution: "Implemented demand forecasting workflows that combine historical transactions, seasonality, and external signals to improve planning accuracy.",
+    id: "construction-documents",
+    title: "Submittal and RFI Intake",
+    client: "Illustrative General Contractor",
+    industry: "Construction",
+    challenge: "Submittals and RFIs arrived as emailed PDFs in no consistent format, and a project engineer was re-keying them into the project system by hand.",
+    solution: "Built an intake workflow that extracts the fields from each document, checks them against the project's own requirements, and stages the record for a human to approve.",
     results: [
-      "Lower stockout frequency in pilot categories",
-      "Reduced excess inventory carrying pressure",
-      "Improved replenishment confidence for planners",
-      "Clear KPI tracking for ongoing iteration"
+      "Re-keying replaced by review",
+      "Consistent capture regardless of subcontractor format",
+      "Mismatches against the spec surfaced at intake",
+      "Records land in the existing project system"
     ],
-    technologies: ["Predictive Analytics", "Machine Learning", "Computer Vision", "Cloud Computing"],
+    technologies: ["Document Intelligence", "Optical Character Recognition", "Workflow Automation", "Cloud Computing"],
     iconType: "database",
   },
   {
-    id: "healthcare-nlp",
-    title: "Clinical Notes Summarization Support",
-    client: "Illustrative Healthcare Network",
-    industry: "Healthcare",
-    challenge: "Clinical teams were spending significant time navigating fragmented records and repetitive note review.",
-    solution: "Built NLP-assisted summarization and extraction workflows to surface relevant context faster while keeping human review in the loop.",
+    id: "trades-call-capture",
+    title: "After-Hours Call Capture",
+    client: "Illustrative Residential HVAC Contractor",
+    industry: "HVAC & Trades",
+    challenge: "Calls placed after the office closed went to voicemail, and by morning the customer had usually booked whoever answered first.",
+    solution: "Answered the out-of-hours calls, recorded the fault and access details in a fixed format, booked routine work, and paged the on-call technician for genuine emergencies.",
     results: [
-      "Faster retrieval of relevant patient context",
-      "Reduced repetitive documentation effort",
-      "Higher consistency in structured data capture",
-      "Improved clinician workflow satisfaction"
+      "Overnight calls answered rather than queued",
+      "Job details captured in one consistent format",
+      "Emergencies escalated, routine work booked",
+      "Every call logged whether or not it converted"
     ],
-    technologies: ["Natural Language Processing", "Machine Learning", "Healthcare AI", "HIPAA-Compliant Cloud"],
-    iconType: "brain",
+    technologies: ["Speech Recognition", "Natural Language Understanding", "Scheduling Integration", "Telephony APIs"],
+    iconType: "message-square",
   },
   {
-    id: "finance-fraud",
-    title: "Transaction Risk Prioritization",
-    client: "Illustrative Financial Institution",
-    industry: "Finance",
-    challenge: "Existing rule sets generated large alert volumes, making it difficult for risk teams to prioritize true positives quickly.",
-    solution: "Introduced anomaly scoring and behavioral signals to rank transaction risk and improve investigator triage workflows.",
+    id: "logistics-exceptions",
+    title: "Exception Surfacing for Dispatch",
+    client: "Illustrative Regional Carrier",
+    industry: "Logistics & Fleet",
+    challenge: "Late, short-delivered and mis-scanned loads were found when the customer phoned, because nobody was watching the board for the ones drifting off plan.",
+    solution: "Monitored load status against plan, raised the loads that had gone off track, ranked them by customer impact, and wrote them to the dispatch board the team already watched.",
     results: [
-      "Higher precision in alert triage",
-      "Faster investigator response time",
-      "Reduced noise from low-confidence alerts",
-      "Improved explainability for analyst review"
+      "Problem loads raised before the customer call",
+      "Ranked so dispatch works the worst ones first",
+      "Visible in the system dispatch already uses",
+      "Fewer exceptions discovered after the fact"
     ],
-    technologies: ["Anomaly Detection", "Behavioral Analytics", "Real-time Processing", "Secure API Integration"],
+    technologies: ["Anomaly Detection", "Event Stream Processing", "TMS Integration", "Real-time Alerting"],
     iconType: "shield-check",
   },
   {
-    id: "customer-service",
-    title: "Customer Support Workflow Automation",
-    client: "Illustrative Commerce Platform",
-    industry: "E-commerce",
-    challenge: "Support teams were overloaded by repetitive requests, causing long queue times and inconsistent handoffs.",
-    solution: "Implemented intent routing and guided response automation for routine requests with explicit escalation paths to human agents.",
+    id: "manufacturing-maintenance",
+    title: "Predictive Maintenance Deployment",
+    client: "Illustrative Industrial Manufacturer",
+    industry: "Manufacturing",
+    challenge: "Maintenance teams were reactive, responding to failures rather than preventing them, causing costly production interruptions.",
+    solution: "Deployed sensor telemetry ingestion and anomaly scoring models to flag equipment degradation before failure thresholds were reached.",
     results: [
-      "Faster first-response handling for common requests",
-      "More consistent escalation to specialist teams",
-      "Reduced manual queue pressure",
-      "Improved support quality visibility"
+      "Earlier maintenance interventions on priority assets",
+      "Fewer unplanned downtime events",
+      "Improved maintenance team scheduling efficiency",
+      "Better cost predictability for maintenance budgets"
     ],
-    technologies: ["Natural Language Understanding", "Conversational AI", "Sentiment Analysis", "Integration APIs"],
-    iconType: "message-square",
+    technologies: ["Time Series Analysis", "Anomaly Detection", "Sensor Telemetry", "MES Integration"],
+    iconType: "brain",
   }
 ];

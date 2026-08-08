@@ -1,12 +1,4 @@
-export type ClientIcon =
-  | "landmark"
-  | "heart-pulse"
-  | "shopping-bag"
-  | "app-window"
-  | "factory"
-  | "truck"
-  | "briefcase"
-  | "clapperboard";
+export type ClientIcon = "hard-hat" | "wrench" | "truck" | "factory";
 
 export interface Client {
   id: string;
@@ -20,51 +12,27 @@ export interface Client {
 // actually build there, so the grid reads as substance rather than a logo wall.
 export const clients: Client[] = [
   {
-    id: "financial-services",
-    name: "Financial Services",
-    icon: "landmark",
-    blurb: "Risk triage, fraud signals, and compliant automation.",
+    id: "construction",
+    name: "Construction",
+    icon: "hard-hat",
+    blurb: "Submittals, RFIs and daily reports drafted instead of typed.",
   },
   {
-    id: "healthcare",
-    name: "Healthcare",
-    icon: "heart-pulse",
-    blurb: "Clinical documentation support with human review in the loop.",
+    id: "hvac-trades",
+    name: "HVAC & Trades",
+    icon: "wrench",
+    blurb: "After-hours calls answered, triaged and booked.",
   },
   {
-    id: "retail",
-    name: "Retail & Commerce",
-    icon: "shopping-bag",
-    blurb: "Demand forecasting and personalization that move margins.",
-  },
-  {
-    id: "enterprise-software",
-    name: "Enterprise Software",
-    icon: "app-window",
-    blurb: "AI features shipped inside existing product surfaces.",
+    id: "logistics",
+    name: "Logistics & Fleet",
+    icon: "truck",
+    blurb: "Delivery paperwork read, and problem loads surfaced early.",
   },
   {
     id: "manufacturing",
     name: "Manufacturing",
     icon: "factory",
     blurb: "Predictive maintenance and quality inspection on the line.",
-  },
-  {
-    id: "logistics",
-    name: "Logistics & Supply Chain",
-    icon: "truck",
-    blurb: "Routing, ETAs, and inventory intelligence end to end.",
-  },
-  {
-    id: "professional-services",
-    name: "Professional Services",
-    icon: "briefcase",
-    blurb: "Document intelligence that compounds billable expertise.",
-  },
-  {
-    id: "media-content",
-    name: "Media & Content",
-    icon: "clapperboard",
-    blurb: "Generation and moderation pipelines with editorial control.",
   },
 ];
