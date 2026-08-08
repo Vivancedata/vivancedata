@@ -8,18 +8,40 @@ image: "/images/ai-solutions.png"
 
 # Measuring AI ROI: Building a Compelling Business Case
 
-Artificial intelligence investments can be transformative, but securing budget approval requires more than enthusiasm. Executive teams demand clear, quantifiable returns and realistic timelines. This guide helps you build compelling business cases that get funded and deliver measurable value.
+Securing budget for an AI project requires more than enthusiasm. Executive teams want quantified returns and realistic timelines — and this is exactly where AI business cases tend to go wrong, because the numbers are easy to produce and hard to justify.
+
+This guide is not a set of returns you can expect. Nobody can give you that honestly: the return depends on your cost base, your volumes, your data, and how much of your process the tool actually displaces. What this guide covers is how to build a business case from your own numbers, which costs get left out of nearly every one, and how to pressure-test the result before someone else does.
 
 ## The AI ROI Challenge
 
-Many AI initiatives fail to secure funding or, worse, get cancelled mid-implementation because stakeholders don't see expected returns. Common problems include:
+Many AI initiatives fail to secure funding or, worse, get cancelled mid-implementation because stakeholders don't see the returns they were promised. Common problems include:
 
-- **Vague Value Propositions:** "AI will make us more efficient" doesn't justify a $500K investment
+- **Vague Value Propositions:** "AI will make us more efficient" does not justify a capital request of any size
 - **Overlooked Costs:** Focusing only on software licenses while ignoring integration, training, and ongoing maintenance
 - **Unrealistic Timelines:** Promising results in weeks when reality requires months
 - **Missing Metrics:** Inability to measure whether the AI is actually delivering value
 
 ## Framework for AI ROI Analysis
+
+### Step 0: Baseline Before You Start
+
+This step comes first and is the one most often skipped. Whatever you intend to
+improve, measure it now, before anything is deployed — and measure it for long
+enough to see its normal variation.
+
+Record, for the specific process in scope:
+- Volume, broken down by type, not as a single total
+- Time per unit, measured rather than estimated by the people who do the work
+- Fully loaded cost per unit, including the supervision and rework the process needs
+- Error and rework rate, and what an error currently costs to fix
+- The seasonal or cyclical pattern across at least a full cycle
+
+Without this, you cannot distinguish improvement from normal fluctuation, and
+neither can anyone reviewing your results. A project that deploys in a quiet
+quarter and reports the drop in volume as a benefit is not lying deliberately —
+it simply has no way of knowing better. The baseline is the only thing that makes
+the post-implementation number mean anything, and it is unrecoverable once the
+system is live.
 
 ### Step 1: Identify Tangible Benefits
 
@@ -60,10 +82,33 @@ Don't just count software licenses. Include all costs over a 3-year period:
 - Ongoing maintenance and support
 
 **Hidden Costs**
-- Data preparation and cleaning (often 50-70% of effort)
+- Data preparation and cleaning, which routinely takes more effort than building the model
 - Integration development and testing
 - Process redesign
 - Opportunity cost (what else could the team be doing?)
+
+**The costs that get forgotten**
+
+Three categories are missing from most AI business cases, and together they are
+usually larger than the software line item:
+
+*Integration.* The model is a component; the work is connecting it to the systems
+that hold your data and the systems that consume its output. This is normal
+software engineering, it is estimated like normal software engineering, and it is
+the line most often filled in with a guess because it does not appear on the
+vendor's quote.
+
+*Change management.* People have to alter how they work, which means training,
+a period of reduced throughput while they adjust, and the effort of handling
+resistance. If your case assumes day-one productivity at the new steady state,
+it is wrong by however long the adjustment takes.
+
+*Ongoing upkeep.* AI systems are not build-once assets. Models drift as the world
+they were trained on changes, prompts and rules need revision, upstream data
+sources change format, and someone must monitor quality continuously. Budget for
+this as a standing operational cost, not a warranty period. A business case that
+shows maintenance falling to near zero after year one is describing a system
+nobody is watching.
 
 ### Step 3: Build Your Financial Model
 
@@ -76,7 +121,7 @@ Create a simple spreadsheet that shows:
 
 **Year 1 (Stabilization):**
 - Ongoing subscription costs
-- Partial benefits (50-70% of full potential)
+- Partial benefits — assume a ramp rather than a step change, and state the ramp you assumed
 - Net: Breakeven or small positive
 
 **Year 2-3 (Optimization):**
@@ -90,93 +135,99 @@ Create a simple spreadsheet that shows:
 - **Internal Rate of Return (IRR):** What's the effective annual return?
 - **ROI Percentage:** (Total Benefits - Total Costs) / Total Costs × 100
 
-## Real-World ROI Examples
+## Pressure-Testing Your Own Model
 
-### Example 1: Customer Service Automation
+You will find no worked examples with figures in this post, deliberately. Published
+ROI examples are almost always reverse-engineered from a conclusion someone already
+wanted, and borrowing their assumptions imports their errors into your case. What
+follows is how to attack your own model before a finance director does.
 
-**Company:** Mid-size e-commerce retailer
-**Project:** AI chatbot for customer inquiries
+### Attack the benefit side first
 
-**Costs (3 years):**
-- Chatbot platform: $60,000 ($20K/year)
-- Integration development: $40,000
-- Training and rollout: $15,000
-- Ongoing maintenance: $30,000 ($10K/year)
-- **Total: $145,000**
+Take the largest benefit line in your model and ask four questions of it.
 
-**Benefits (3 years):**
-- Reduced support tickets: 40% × 50,000 tickets × $8 per ticket = $1,200,000
-- 24/7 availability impact: 15% faster resolution × customer satisfaction value = $180,000
-- **Total: $1,380,000**
+**Is the saved unit real, and does it convert to money?** A saving of some minutes
+per transaction, multiplied by transaction volume, produces an impressive annual
+hours figure. Those hours only become money if you actually reduce headcount, avoid
+a hire you would otherwise have made, or redeploy the time onto work that generates
+revenue. If none of those happen, the hours are absorbed and the saving is real for
+the individual and invisible in the accounts. Say which of the three you are
+claiming, in the case document.
 
-**Results:**
-- ROI: 851%
-- Payback period: 5 months
-- NPV: $1,235,000
+**Would this have happened anyway?** Some of the improvement you will measure comes
+from work that had nothing to do with the AI — a process someone tidied up, a
+seasonal upswing, a policy change, staff who got better at the job. The tool tends
+to be credited with all of it, because it is the visible intervention.
 
-### Example 2: Predictive Maintenance
+**Are you counting the same benefit twice?** Faster handling and reduced headcount
+are frequently added together when one causes the other. So are error reduction and
+rework cost avoidance.
 
-**Company:** Manufacturing plant
-**Project:** AI-powered equipment failure prediction
+**What is the residual?** Automation rarely removes a task; it removes the easy
+instances and leaves the hard ones. If the routine cases go and the difficult cases
+remain, average handling time on what is left goes *up*, and the cost per remaining
+case may rise enough to eat much of the saving. Model the work you are left with,
+not just the work you removed.
 
-**Costs (3 years):**
-- IoT sensors and installation: $120,000
-- Predictive analytics platform: $90,000 ($30K/year)
-- Data infrastructure: $50,000
-- Training and process changes: $40,000
-- **Total: $300,000**
+### Metrics that move too easily
 
-**Benefits (3 years):**
-- Unplanned downtime reduction: 60% × 100 hours × $15,000/hour = $900,000
-- Maintenance cost optimization: 25% reduction × $200,000 = $150,000
-- Extended equipment life: $100,000
-- **Total: $1,150,000**
+Some numbers can be improved without anything improving. Be suspicious of these,
+particularly when they are the ones being reported:
 
-**Results:**
-- ROI: 283%
-- Payback period: 11 months
-- NPV: $850,000
+- **Deflection or containment rate.** An interaction that was abandoned in
+  frustration and one that was genuinely resolved look identical here. Always pair
+  it with a satisfaction or repeat-contact measure on the deflected traffic
+  specifically.
+- **Average handling time.** Falls when the tool works, and also falls when staff
+  are rushing or when the hard cases were routed elsewhere.
+- **Ticket or case volume.** Falls when problems are solved, and also falls when
+  reporting a problem becomes harder.
+- **Accuracy on an aggregate test set.** Rises when the model improves, and also
+  rises when the test set is easier than production.
+- **Adoption and usage counts.** Measure that people opened the tool, not that it
+  helped them. Mandated usage produces excellent adoption numbers.
 
-### Example 3: Sales Forecasting
+The general rule: a metric that a system's owner can move by changing their own
+behaviour will eventually be moved that way, without anyone intending to cheat.
+For each headline metric in your case, name the second metric that would catch it
+being gamed, and commit to reporting both.
 
-**Company:** B2B software company
-**Project:** AI-driven sales pipeline prediction
+### Sensitivity analysis is the actual deliverable
 
-**Costs (3 years):**
-- Analytics platform: $75,000 ($25K/year)
-- CRM integration: $30,000
-- Training and adoption: $20,000
-- Data cleanup: $25,000
-- **Total: $150,000**
+Single-point estimates invite an argument about whether your number is right.
+Ranges move the conversation to the assumptions, which is where it belongs.
 
-**Benefits (3 years):**
-- Inventory optimization: $200,000 saved
-- Resource allocation improvement: $150,000
-- Increased win rate: 8% improvement × $5M pipeline = $400,000
-- **Total: $750,000**
-
-**Results:**
-- ROI: 400%
-- Payback period: 7 months
-- NPV: $600,000
+For each major assumption — adoption rate, automation rate, time saved per unit,
+ramp duration — model a pessimistic, expected, and optimistic case. Then find the
+break-even: how far can each assumption fall before the project stops paying for
+itself? That single figure is more persuasive than any ROI percentage, because it
+tells a decision-maker exactly what they are betting on. If the case only works at
+the optimistic end of every assumption simultaneously, you have learned something
+important before spending anything.
 
 ## Building Your Business Case Document
 
 ### Executive Summary (1 page)
 
-Present the essence in a format executives can digest in 2 minutes:
+Present the essence in a format executives can digest in two minutes. Four blocks,
+each filled from your own baseline rather than from anyone's benchmark:
 
-**The Problem:**
-"Our customer service team handles 50,000 tickets annually at an average cost of $8 per ticket. 40% are routine inquiries that don't require human expertise. This ties up resources that could focus on complex customer issues."
+**The Problem:** State the current volume, the measured cost per unit, and the
+share that is routine — each traceable to the baseline you took in Step 0. Name
+what that resource is being kept from doing.
 
-**The Solution:**
-"Implement an AI chatbot to handle routine inquiries automatically, reducing ticket volume and improving response times."
+**The Solution:** What the system will handle, and explicitly what it will not.
+The scope boundary is the most useful sentence in this section, because it is what
+you will be held to.
 
-**The Investment:**
-"$145,000 over three years ($85K upfront, $20K/year ongoing)"
+**The Investment:** Total cost over the horizon, split into upfront and ongoing,
+with integration, change management and upkeep as visible line items rather than
+folded into a single implementation figure.
 
-**The Return:**
-"$1,380,000 in cost savings and efficiency gains over three years. 851% ROI with 5-month payback period."
+**The Return:** The expected benefit as a range, the assumption it is most
+sensitive to, and the break-even point on that assumption. A single confident
+number reads as precision and invites the reader to test it; a range with a stated
+break-even reads as competence and invites them to discuss the assumption.
 
 ### Problem Statement (1-2 pages)
 
@@ -219,46 +270,78 @@ Present the essence in a format executives can digest in 2 minutes:
 
 ### 1. Overpromising Results
 
-**Wrong:** "AI will reduce customer service costs by 80%"
-**Right:** "AI is expected to reduce routine ticket volume by 40%, based on pilot results and industry benchmarks"
+**Wrong:** A confident reduction figure with no stated origin.
+**Right:** A projected reduction on a named subset of the work, with the source of
+the projection stated — your own pilot, ideally — and the conditions under which it
+would not hold.
 
 ### 2. Ignoring Change Management Costs
 
-**Mistake:** Budgeting for software and implementation only
-**Reality:** User adoption, training, and process changes often equal technical costs
+**Mistake:** Budgeting for software and implementation only.
+**Reality:** Adoption, training and process change are a substantial cost in their
+own right, and unlike licence fees they land on people who have other jobs to do.
 
 ### 3. Underestimating Timeline
 
-**Mistake:** Promising 3-month implementation
-**Reality:** 6-9 months is typical for most meaningful AI projects
+**Mistake:** Promising delivery on the vendor's implementation timeline.
+**Reality:** That timeline covers configuring the product. It does not cover getting
+your data into usable shape, integrating with your systems, security and procurement
+review, or the period after go-live when people are still learning. Estimate those
+from your own experience of comparable projects, because your organization's
+procurement and integration speed is the binding constraint, not the technology.
 
 ### 4. Focusing Only on Hard Costs
 
-**Incomplete:** "We'll save $200K in labor costs"
-**Complete:** "We'll save $200K in labor costs AND improve customer satisfaction scores by 15 points AND reduce response time by 60%"
+**Incomplete:** A labour saving quoted on its own.
+**Complete:** The labour saving, plus the service-quality and speed effects stated
+as separately measured outcomes — clearly marked as secondary, and not silently
+converted into dollars to inflate the headline.
 
 ### 5. Single-Point Estimates
 
-**Risky:** "This will save exactly $500,000"
-**Better:** "Expected savings: $500K (range: $350K - $650K based on adoption rates)"
+**Risky:** A single exact savings figure. Precision that the underlying assumptions
+cannot support reads as false confidence to anyone who has seen a project before.
+**Better:** A range, with the driver of the range named — usually adoption rate or
+automation rate — so the reviewer can argue with the assumption rather than the
+arithmetic.
 
 ## Making Your Case Compelling
 
-### Use Comparisons
+### Compare Against Your Own Track Record
 
-"This AI investment has an ROI of 400%, compared to our typical IT project ROI of 150-200%"
+The most credible comparison is internal: how this project's projected return and
+payback sit against the IT and process projects your organization has actually
+funded, and how those turned out against their own business cases. Your finance
+team has that history. Using it puts the AI project on the same footing as
+everything else competing for the money, which is where a sound case wants to be.
 
-### Reference Industry Data
+### Handle Industry Benchmarks Carefully
 
-"Gartner reports that companies implementing customer service AI see average cost reductions of 30-40%. Our projection of 35% is conservative and aligned with industry norms."
+Analyst and vendor figures are the weakest evidence in any AI business case, and
+reviewers know it. They are typically averaged across organizations unlike yours,
+frequently sourced from the vendors selling the tools, and rarely accompanied by
+the failures. If you cite one, cite it as context rather than as the basis of your
+projection, name the source precisely, and never present a benchmark as
+"conservative" — you have no way to know that.
+
+A pilot on your own data is worth more than every published benchmark combined,
+and is usually cheaper than the argument you will otherwise have.
 
 ### Show Quick Wins
 
-"While full benefits materialize over 18 months, we'll see measurable improvements in month 3 when the pilot completes."
+Identify what will be measurable early and say what it will and will not prove.
+Early indicators tend to be leading rather than financial — the system is in use,
+its outputs are accurate on your real inputs — and presenting those honestly as
+evidence that the project is on track beats claiming savings that could not yet
+have accumulated.
 
 ### Address Skepticism Directly
 
-"We know AI projects can fail. That's why we're starting with a limited pilot, have budgeted for extensive training, and are working with a proven vendor who's implemented this solution at 200+ companies."
+Acknowledge that AI projects fail, and say what specifically reduces that risk
+here: a scoped pilot with a defined kill criterion, budgeted training, a reference
+you have actually spoken to. State the kill criterion in the case document. A
+project with a pre-agreed condition for stopping is far easier to approve than one
+that can only ever be declared a success.
 
 ### Link to Strategic Priorities
 
@@ -284,24 +367,43 @@ Once approved and implemented, track the metrics you promised:
 - Lessons learned and optimization opportunities
 
 **Create a ROI Dashboard** that stakeholders can review regularly, showing:
-- Predicted vs. actual benefits
-- Cost tracking
-- Key performance indicators
+- Predicted vs. actual benefits, with the original prediction left visible and unedited
+- Cost tracking, including the internal time nobody invoiced for
+- The headline metrics, each next to the counter-metric that would catch it being gamed
 - User adoption metrics
+
+### Report against the original case, not a revised one
+
+The single most useful discipline here is refusing to update the projection. Once
+a business case is approved, the numbers in it become the standard you are measured
+against; quietly restating them as reality arrives converts the exercise into
+narration. Keep the approved version, report actuals beside it, and explain the
+variance in both directions.
+
+Variance in your favour is as informative as variance against you. A benefit that
+substantially exceeds the projection usually means an assumption was wrong rather
+than that the project overachieved, and finding out which is what makes your next
+business case more accurate. Organizations that get good at this are not the ones
+whose projects always hit their numbers — they are the ones that know why their
+projects miss.
 
 ## Conclusion
 
-A strong business case transforms AI from an interesting idea into a funded initiative. By quantifying benefits, accurately estimating costs, and presenting realistic timelines, you give decision-makers the confidence to invest.
+A strong business case turns an interesting idea into a funded initiative. But the
+purpose of building one properly is not only to get the money — it is to find out,
+before you spend it, whether the project is worth doing.
 
 Remember:
-- **Be Conservative:** Better to under-promise and over-deliver
-- **Show Your Work:** Document all assumptions and calculations
-- **Address Risks:** Acknowledge challenges and explain mitigation
-- **Measure Everything:** You can't prove ROI without data
-- **Communicate Regularly:** Keep stakeholders informed of progress
+- **Baseline first:** The measurement you skip before deployment cannot be recovered afterwards
+- **Cost the invisible parts:** Integration, change management and ongoing upkeep, as line items
+- **Show your work:** Document every assumption, so reviewers argue with assumptions rather than totals
+- **Give ranges, not points:** And name the break-even on the assumption that matters most
+- **Pick metrics that resist gaming:** Or pair each one with the counter-metric that catches it
+- **Report against the original case:** Including when the variance is in your favour
 
-The most successful AI projects start with compelling business cases grounded in realistic financial analysis. Invest time in building your case properly, and you'll dramatically increase your odds of both getting funded and achieving the results you promise.
-
----
+A case built this way is harder to write and considerably harder to argue with.
+It also has a property the confident version does not: if the project is not
+actually worth doing, this process will tell you so while it is still cheap to
+find out.
 
 **Need Help Building Your AI Business Case?** VivanceData helps organizations develop data-driven AI strategies and ROI models. [Contact us](/contact) to discuss your specific situation.

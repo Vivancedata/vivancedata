@@ -9,11 +9,11 @@ import { Briefcase, Users, Rocket, Heart, Mail, ArrowRight } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: "Careers at VivanceData | Join Our AI Team",
-  description: "Explore career opportunities at VivanceData. Join our team of AI consultants, data scientists, and engineers shaping the future of enterprise AI.",
+  description: "How VivanceData works with specialists. A founder-led practice that brings in senior people per project rather than hiring a bench.",
   keywords: ["AI careers", "AI consultant jobs", "data science careers", "machine learning jobs", "AI engineering"],
   openGraph: {
     title: "Careers at VivanceData | AI Consulting Team",
-    description: "Join our team of AI experts. Explore opportunities in AI consulting, implementation, and innovation.",
+    description: "A founder-led practice that works with senior specialists on a per-project basis.",
     type: "website",
     url: "https://vivancedata.com/career",
     siteName: "VivanceData",

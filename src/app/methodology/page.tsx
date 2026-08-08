@@ -393,7 +393,7 @@ function MethodologyCtaSection() {
           Ready to Accelerate Your AI Journey?
         </h2>
         <p className="text-xl text-primary-foreground/80 mb-10 max-w-2xl mx-auto">
-          Let our experts guide you through the RAPID Framework and show you
+          Let us walk you through the RAPID Framework and show you
           how to realize AI potential in days, not months.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

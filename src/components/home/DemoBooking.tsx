@@ -26,27 +26,27 @@ interface DemoFeature {
 const demoFeatures: DemoFeature[] = [
   {
     icon: <Play className="h-5 w-5" />,
-    title: "See AI in Action",
+    title: "We build something first",
     description:
-      "Watch our AI solutions solve real business challenges in real-time demonstrations.",
+      "Before the call we run one of your own documents or a sample of your own call log through the workflow, so you are looking at your business rather than a slide.",
   },
   {
     icon: <Sparkles className="h-5 w-5" />,
-    title: "Get Custom Recommendations",
+    title: "An honest read on fit",
     description:
-      "Receive personalized insights tailored to your industry and specific use cases.",
+      "Including when the answer is that the workflow is not worth automating yet. That is a cheaper thing to hear now than after a build.",
   },
   {
     icon: <MessageCircle className="h-5 w-5" />,
-    title: "Q&A with Our Experts",
+    title: "Straight to the builder",
     description:
-      "Ask questions and get answers from our experienced AI consultants.",
+      "No account manager in between. You are talking to the person who would do the work.",
   },
   {
     icon: <Users className="h-5 w-5" />,
-    title: "Meet Your Team",
+    title: "A scope and a number",
     description:
-      "Connect with the specialists who will guide your AI transformation journey.",
+      "If it is a fit you get a fixed price and a defined deliverable in writing before anything starts.",
   },
 ];
 
@@ -162,13 +162,13 @@ function DemoFeatureColumn() {
         </div>
 
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground leading-tight">
-          Experience the Future of{" "}
-          <span className="text-brand">AI-Powered Business</span>
+          See it run on{" "}
+          <span className="text-brand">your own paperwork</span>
         </h2>
 
         <p className="text-lg text-muted-foreground mb-8 max-w-lg">
-          Schedule a personalized demo with our AI experts and discover how our solutions
-          can transform your operations, increase efficiency, and drive measurable results.
+          Book a call with the person who would build it and find out how this
+          would handle the job intake, documents or after-hours calls your operation runs on today.
         </p>
 
         <StaggerContainer className="space-y-4" staggerDelay={0.1} direction="up">
@@ -206,9 +206,9 @@ function DemoFormCard({ state, onChange, onSubmit }: DemoFormProps) {
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-muted mb-4">
                   <Play className="h-8 w-8 text-brand" />
                 </div>
-                <h3 className="text-2xl font-bold text-foreground mb-2">Request Your Demo</h3>
+                <h3 className="text-2xl font-bold text-foreground mb-2">Book a call</h3>
                 <p className="text-muted-foreground">
-                  Fill out the form below and we will contact you within 24 hours.
+                  Tell us where to reach you and we will get back within one working day.
                 </p>
               </div>
 
@@ -336,7 +336,7 @@ function DemoFormCard({ state, onChange, onSubmit }: DemoFormProps) {
                     </span>
                   ) : (
                     <span className="flex items-center justify-center">
-                      Book My Demo
+                      Book the call
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </span>
                   )}
@@ -372,9 +372,9 @@ function DemoFormCard({ state, onChange, onSubmit }: DemoFormProps) {
               </div>
               <h3 className="text-2xl font-bold text-foreground mb-3">Demo Request Received</h3>
               <p className="text-muted-foreground mb-6 max-w-sm mx-auto">
-                Thank you, {state.formData.name}! Our team will reach out to you at{" "}
+                Thanks, {state.formData.name}. We will get back to you at{" "}
                 <span className="font-medium text-foreground">{state.formData.email}</span>{" "}
-                within 24 hours to schedule your personalized demo.
+                within one working day to arrange a time.
               </p>
               <Button variant="outline" asChild>
                 <Link href="/contact">
@@ -397,7 +397,7 @@ function DemoTrustIndicators() {
         <div className="flex flex-wrap items-center justify-center gap-8 text-sm text-muted-foreground">
           <div className="flex items-center gap-2">
             <CheckCircle className="h-4 w-4 text-brand" />
-            <span>No credit card required</span>
+            <span>No cost, no obligation</span>
           </div>
           <div className="flex items-center gap-2">
             <CheckCircle className="h-4 w-4 text-brand" />
@@ -465,7 +465,7 @@ export function DemoBooking(): React.ReactElement {
 
       dispatch({ type: "submit_success" });
       toast.success("Demo request received", {
-        description: "Our team will reach out within 24 hours.",
+        description: "We will get back to you within one working day.",
       });
     } catch (error) {
       console.error("Demo booking submission error:", error);

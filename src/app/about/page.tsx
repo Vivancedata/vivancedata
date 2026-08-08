@@ -8,7 +8,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "About Us - VivanceData",
-  description: "Learn about VivanceData's mission to empower businesses with practical AI value. Meet our team of systematic innovators, developers, and strategic guides.",
+  description: "A founder-led AI practice working with construction, HVAC, logistics and manufacturing operations. Senior delivery, no hand-off to a junior team.",
   keywords: ["about VivanceData", "AI company", "AI team", "AI consultants", "machine learning experts", "data science team"],
   openGraph: {
     title: "About Us - VivanceData",

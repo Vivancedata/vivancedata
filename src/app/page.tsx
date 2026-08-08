@@ -13,7 +13,7 @@ import { StatsSection } from "@/components/home/StatsSection";
 import { FAQSection } from "@/components/home/FAQSection";
 import { ContactSection } from "@/components/home/ContactSection";
 import { CTASection } from "@/components/home/CTASection";
-import { DemoBookingPlaceholder } from "@/components/home/DemoBookingPlaceholder";
+import { DemoBooking } from "@/components/home/DemoBooking";
 import { Users, CheckCircle, BarChart3, Clock, Award } from "lucide-react";
 import { Metadata } from "next";
 
@@ -145,11 +145,11 @@ export default function Home() {
         description="Find answers to the most common questions about our services and how we can help your business."
       />
 
-      <DemoBookingPlaceholder />
+      <DemoBooking />
 
       <ContactSection
         title="Ready to Transform Your Business with AI?"
-        description="Fill out the form to schedule a free consultation with our AI experts. We'll analyze your business needs and recommend the best solutions for your specific challenges."
+        description="Tell us what is slowing your operation down and we will come back with an honest read on whether it is worth automating, and what it would take."
         benefits={contactBenefits}
       />
 

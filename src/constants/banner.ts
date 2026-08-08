@@ -48,7 +48,7 @@ export const bannerContent: BannerContent = {
   },
   card: {
     title: "Ready to Transform?",
-    description: "Schedule a free consultation with our AI experts",
+    description: "Book a consultation with the person who would build it",
     buttonText: "Book Now",
     buttonIcon: "arrowRight"
   }

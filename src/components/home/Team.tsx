@@ -19,11 +19,11 @@ const Team = () => {
       <div className="container mx-auto px-4">
         <div className="mb-12 text-center">
           <div className="mb-4 inline-block rounded-full bg-muted px-3 py-1 text-sm font-medium text-brand dark:bg-muted">
-            Our Experts
+            Who You Work With
           </div>
-          <h2 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">Meet Our Team</h2>
+          <h2 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">Who does the work</h2>
           <p className="mx-auto max-w-2xl text-muted-foreground">
-            Our team of AI experts brings together decades of experience across research, industry, and academia to deliver cutting-edge solutions.
+            A founder-led practice, with specialists brought in per project when a build needs depth we do not already have in house. You work with the person doing the work.
           </p>
         </div>
 
