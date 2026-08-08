@@ -50,7 +50,7 @@ export default function PrivacyPolicyPage() {
         </p>
         <ul>
           <li>Contact form submissions (name, email, message)</li>
-          <li>Consultation bookings through Calendly</li>
+          <li>Newsletter subscriptions (email address), if you choose to subscribe</li>
           <li>Project-related communications</li>
         </ul>
 
@@ -70,7 +70,9 @@ export default function PrivacyPolicyPage() {
         </p>
         <ul>
           <li>Vercel - Website hosting and analytics</li>
-          <li>Calendly - Consultation scheduling</li>
+          <li>Resend - Delivery of contact form and confirmation emails</li>
+          <li>Upstash - Rate limiting to protect the contact and newsletter forms from abuse</li>
+          <li>Sentry - Error tracking and diagnostics</li>
           <li>GitHub - Code repository and version control</li>
         </ul>
         <p>

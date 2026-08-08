@@ -282,43 +282,35 @@ export default function InnovationHubPage() {
       </div>
 
       <div className="mb-20">
-        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Interactive AI Demos</h2>
+        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Tools you can use right now</h2>
         <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-10">
-          Experience the power of AI firsthand with our interactive demos. These simplified versions of our technologies showcase the capabilities and potential applications of our innovations.
+          Two working tools, free and unguarded. Both run entirely in your browser and give you a usable answer without talking to anyone.
         </p>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {[
             {
-              title: "Sentiment Analysis",
-              description: "Try our real-time sentiment analysis model that can detect emotions and attitudes in text.",
-              placeholder: "Enter a sentence to analyze its sentiment...",
-              buttonText: "Analyze Sentiment"
+              title: "AI Readiness Assessment",
+              description: "Twenty questions across data, infrastructure, culture and strategy. Scores each dimension and tells you which one is actually holding you back.",
+              href: "/tools/ai-readiness",
+              buttonText: "Start the assessment"
             },
             {
-              title: "Image Recognition",
-              description: "Upload an image to see our computer vision model identify objects and scenes.",
-              placeholder: "Upload an image",
-              buttonText: "Identify Objects"
+              title: "ROI Calculator",
+              description: "Model the cost, payback period and three-year return of an AI project against your own headcount and use case before committing budget to it.",
+              href: "/tools/roi-calculator",
+              buttonText: "Open the calculator"
             }
-          ].map((demo) => (
-            <div key={demo.title} className="bg-card p-6 rounded-xl shadow-sm border border-border">
-              <h3 className="text-xl font-semibold mb-3">{demo.title}</h3>
-              <p className="text-muted-foreground mb-6">{demo.description}</p>
-              
-              <div className="space-y-4">
-                <input
-                  type="text"
-                  placeholder={demo.placeholder}
-                  className="w-full rounded-lg bg-muted py-2 px-4 text-sm placeholder:text-mute focus:outline-none focus:ring-2 focus:ring-brand/20"
-                />
-                <Button className="w-full">
-                  {demo.buttonText}
-                </Button>
-                <div className="h-32 bg-muted rounded-lg flex items-center justify-center">
-                  <p className="text-muted-foreground text-sm">Results will appear here</p>
-                </div>
-              </div>
+          ].map((tool) => (
+            <div key={tool.title} className="bg-card p-6 rounded-xl shadow-sm border border-border flex flex-col">
+              <h3 className="text-xl font-semibold mb-3">{tool.title}</h3>
+              <p className="text-muted-foreground mb-6 flex-1">{tool.description}</p>
+              <Button asChild className="w-full">
+                <Link href={tool.href}>
+                  {tool.buttonText}
+                  <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                </Link>
+              </Button>
             </div>
           ))}
         </div>

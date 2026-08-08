@@ -132,11 +132,15 @@ export default function PublicSectorPage() {
     },
   ];
 
+  // Focus areas, not outcome claims. These tiles previously carried invented
+  // metrics (e.g. "99.7% regulatory compliance accuracy") for engagements that
+  // never happened. Do not put a number here until a named client has agreed to
+  // it being published.
   const stats = [
-    { value: "94%", label: "Automated request routing accuracy" },
-    { value: "45%", label: "Reduction in processing time" },
-    { value: "100%", label: "Auditable AI decisions" },
-    { value: "3x", label: "Faster policy document review" },
+    { value: "Request Routing", label: "Classifying and directing citizen cases" },
+    { value: "Policy Search", label: "Retrieval across regulation and precedent" },
+    { value: "Audit Trail", label: "Every automated decision reviewable" },
+    { value: "Procurement Fit", label: "Documentation built for public review" },
   ];
 
   return <PublicSectorClient solutions={solutions} caseStudies={caseStudies} stats={stats} />;

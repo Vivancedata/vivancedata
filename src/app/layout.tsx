@@ -63,7 +63,6 @@ export const metadata: Metadata = {
     title: "VivanceData - AI Solutions for Modern Businesses",
     description: "Transforming Businesses Through Intelligent Automation",
     images: ["https://vivancedata.com/images/banner.png"],
-    creator: "@vivancedata",
   },
   robots: {
     index: true,

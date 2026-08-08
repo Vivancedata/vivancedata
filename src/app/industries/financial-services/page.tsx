@@ -126,11 +126,15 @@ export default function FinancialServicesPage() {
     }
   ];
 
+  // Focus areas, not outcome claims. These tiles previously carried invented
+  // metrics (e.g. "99.7% regulatory compliance accuracy") for engagements that
+  // never happened. Do not put a number here until a named client has agreed to
+  // it being published.
   const stats = [
-    { value: "35%", label: "Average reduction in operational costs" },
-    { value: "60%", label: "Improvement in processing speed" },
-    { value: "99.7%", label: "Regulatory compliance accuracy" },
-    { value: "40%", label: "Reduction in fraud losses" }
+    { value: "Fraud & AML", label: "Alert triage and false-positive reduction" },
+    { value: "Document Review", label: "KYC files, contracts and disclosures" },
+    { value: "Audit Trail", label: "Every automated decision logged and explainable" },
+    { value: "Human Sign-off", label: "Models advise, your staff decide" },
   ];
 
   return (

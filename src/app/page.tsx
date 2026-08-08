@@ -8,7 +8,6 @@ import CaseStudies from "@/components/home/CaseStudies";
 import Process from "@/components/home/Process";
 import Integrations from "@/components/home/Integrations";
 import Blog from "@/components/blog/Blog";
-import ResourcesSection from "@/components/home/ResourcesSection";
 import Pricing from "@/components/home/Pricing";
 import { StatsSection } from "@/components/home/StatsSection";
 import { FAQSection } from "@/components/home/FAQSection";
@@ -61,9 +60,8 @@ const jsonLd = {
       },
       "description": "VivanceData provides cutting-edge AI solutions to help businesses transform through intelligent automation.",
       "sameAs": [
-        "https://twitter.com/vivancedata",
-        "https://linkedin.com/company/vivancedata",
-        "https://github.com/vivancedata"
+        "https://github.com/Vivancedata",
+        "https://www.linkedin.com/in/lorenzo-scaturchio"
       ]
     },
     {
@@ -141,7 +139,6 @@ export default function Home() {
       <Team />
       <Pricing />
       <Blog />
-      <ResourcesSection />
 
       <FAQSection
         title="Common Questions About Our AI Services"

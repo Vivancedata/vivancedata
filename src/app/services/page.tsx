@@ -77,30 +77,34 @@ const ServicesPage = () => {
     { id: "7", name: "Kubernetes", shortLabel: "K8s", tone: "bg-muted text-muted-foreground", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg" },
   ];
 
-  const caseStudies = [
+  // Scoped offers, not client history. These describe what a build covers and
+  // roughly how long it takes -- they deliberately claim no past engagements and
+  // no outcome metrics. Real numbers belong here only once a named client has
+  // agreed to them being published.
+  const engagements = [
     {
       id: "1",
-      title: "Financial Services AI Transformation",
-      category: "Software Development",
-      description: "Helped a major bank implement AI-driven fraud detection, reducing false positives by 35%.",
-      impact: "Fraud false positives reduced by 35% in 90 days.",
-      link: "/industries/financial-services"
+      title: "Document Intake",
+      category: "Document Processing",
+      description: "Pull structured fields out of invoices, forms, permits and reports, validate them against your rules, and write them into the system you already use.",
+      impact: "Typical build: 3-6 weeks",
+      link: "/contact"
     },
     {
       id: "2",
-      title: "Healthcare Data Platform",
-      category: "AI Engineering",
-      description: "Built a HIPAA-compliant data platform for a healthcare provider, enabling ML-driven patient insights.",
-      impact: "HIPAA-ready analytics foundation delivered in one quarter.",
-      link: "/case-studies"
+      title: "Answers From Your Own Files",
+      category: "Knowledge & Retrieval",
+      description: "A private question-answering system grounded in your internal documents, answering with citations back to the source file so replies can be checked.",
+      impact: "Typical build: 4-8 weeks",
+      link: "/services/generative-ai"
     },
     {
       id: "3",
-      title: "Retail Recommendation Engine",
-      category: "Machine Learning",
-      description: "Developed a personalized recommendation system that increased conversion rates by 28%.",
-      impact: "Conversion rate lifted by 28% through recommendation modeling.",
-      link: "/case-studies"
+      title: "Workflow Automation",
+      category: "Workflow Automation",
+      description: "Connect the handoffs that currently run on email and copy-paste -- intake, routing, follow-up, scheduling -- and keep them running as the tools underneath change.",
+      impact: "Typical build: 2-6 weeks",
+      link: "/contact"
     }
   ];
 
@@ -123,10 +127,11 @@ const ServicesPage = () => {
       
       <ServicesList services={services} />
       
-      <ServicesCases 
-        title="Cases"
-        description="Our track record spans from initial strategy development to full implementation, always focusing on practical outcomes that drive solid business value."
-        cases={caseStudies}
+      <ServicesCases
+        title="What a build looks like"
+        description="Three shapes of work that come up most often. Each is a fixed scope with a defined deliverable, so you know what you are getting before it starts."
+        cases={engagements}
+        ctaLabel="Discuss scope"
       />
       
       <FAQSection 

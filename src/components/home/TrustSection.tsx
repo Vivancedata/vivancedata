@@ -1,29 +1,29 @@
 import { CheckCircle, Shield } from "lucide-react";
 import {
-  certifications,
-  securityFeatures,
+  commitments,
+  securityPractices,
   trustSectionContent,
-  type TrustCertification,
+  type TrustCommitment,
 } from "@/constants/trust";
 
-interface CertificationCardProps {
-  certification: TrustCertification;
+interface CommitmentCardProps {
+  commitment: TrustCommitment;
 }
 
-const certificationCardClass =
+const commitmentCardClass =
   "h-full rounded-[calc(var(--radius)+0.25rem)] border border-border/70 bg-card/80 p-6 text-center shadow-elevation-1 backdrop-blur-sm transition-transform transition-shadow duration-300 motion-reduce:transition-none motion-safe:hover:-translate-y-1 hover:border-brand/30 hover:shadow-elevation-2 dark:bg-card/50 dark:hover:shadow-primary/5";
 
-function CertificationCard({ certification }: CertificationCardProps) {
-  const Icon = certification.icon;
+function CommitmentCard({ commitment }: CommitmentCardProps) {
+  const Icon = commitment.icon;
 
   return (
-    <li className={certificationCardClass}>
+    <li className={commitmentCardClass}>
       <article className="flex h-full flex-col items-center">
         <div className="mb-4 rounded-full bg-muted p-4 dark:bg-muted">
           <Icon className="h-8 w-8 text-brand" aria-hidden="true" />
         </div>
-        <h3 className="mb-2 text-lg font-semibold text-foreground">{certification.name}</h3>
-        <p className="text-sm leading-relaxed text-muted-foreground">{certification.description}</p>
+        <h3 className="mb-2 text-lg font-semibold text-foreground">{commitment.name}</h3>
+        <p className="text-sm leading-relaxed text-muted-foreground">{commitment.description}</p>
       </article>
     </li>
   );
@@ -52,8 +52,8 @@ export function TrustSection() {
         </div>
 
         <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
-          {certifications.map((certification) => (
-            <CertificationCard key={certification.id} certification={certification} />
+          {commitments.map((commitment) => (
+            <CommitmentCard key={commitment.id} commitment={commitment} />
           ))}
         </ul>
 
@@ -73,13 +73,13 @@ export function TrustSection() {
               </div>
             </div>
             <ul className="flex flex-wrap justify-center gap-4" aria-label="Security practices">
-              {securityFeatures.map((feature) => (
+              {securityPractices.map((practice) => (
                 <li
-                  key={feature.label}
+                  key={practice.label}
                   className="flex items-center gap-2 text-sm text-muted-foreground"
                 >
                   <CheckCircle className="h-4 w-4 text-brand" aria-hidden="true" />
-                  <span>{feature.label}</span>
+                  <span>{practice.label}</span>
                 </li>
               ))}
             </ul>

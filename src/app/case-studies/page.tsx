@@ -5,24 +5,33 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
+// These illustrations depict the SHAPE of each system, never its results.
+// They previously rendered invented metrics ("↑ 68% Alert Precision") that
+// contradicted the composite-example disclaimer further down this page.
+const PipelineIllustration = ({ label, steps }: { label: string; steps: string[] }) => (
+  <div className="bg-card h-full w-full relative overflow-hidden border-b border-border">
+    <div className="absolute inset-0 p-8 flex flex-col justify-center">
+      <div className="eyebrow mb-4">{label}</div>
+      <div className="space-y-3">
+        {steps.map((step, i) => (
+          <div key={step} className="flex items-center gap-3">
+            <div className={`w-2 h-2 rounded-full shrink-0 ${i < steps.length - 1 ? "bg-brand" : "bg-border"}`} />
+            <div className={`h-0.5 flex-1 rounded ${i < steps.length - 1 ? "bg-brand/30" : "bg-border"}`} />
+            <span className="text-mute text-xs w-24 text-right">{step}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+);
+
 const CaseStudyIllustration = ({ industry }: { industry: string }) => {
   if (industry === "Financial Services") {
     return (
-      <div className="bg-card h-full w-full relative overflow-hidden border-b border-border">
-        <div className="absolute inset-0 p-8 flex flex-col justify-center">
-          <div className="eyebrow mb-4">// Risk Triage Dashboard</div>
-          <div className="grid grid-cols-2 gap-3">
-            <div className="bg-muted border border-border rounded-sm p-3">
-              <div className="text-brand text-2xl font-bold font-mono">↑ 68%</div>
-              <div className="text-mute text-xs mt-1">Alert Precision</div>
-            </div>
-            <div className="bg-muted border border-border rounded-sm p-3">
-              <div className="text-brand text-2xl font-bold font-mono">↓ 41%</div>
-              <div className="text-mute text-xs mt-1">False Positives</div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <PipelineIllustration
+        label="// Risk Triage Flow"
+        steps={["Transaction Feed", "Risk Scoring", "Case Triage", "Analyst Review"]}
+      />
     );
   }
   if (industry === "Healthcare") {
@@ -45,33 +54,22 @@ const CaseStudyIllustration = ({ industry }: { industry: string }) => {
   }
   if (industry === "Retail") {
     return (
-      <div className="bg-card h-full w-full relative overflow-hidden border-b border-border">
-        <div className="absolute inset-0 p-8 flex flex-col justify-center">
-          <div className="eyebrow mb-4">// Inventory Intelligence</div>
-          <div className="grid grid-cols-2 gap-3">
-            <div className="bg-muted border border-border rounded-sm p-3">
-              <div className="text-brand text-2xl font-bold font-mono">↓ 23%</div>
-              <div className="text-mute text-xs mt-1">Overstock Risk</div>
-            </div>
-            <div className="bg-muted border border-border rounded-sm p-3">
-              <div className="text-brand text-2xl font-bold font-mono">↑ 31%</div>
-              <div className="text-mute text-xs mt-1">Planning Speed</div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <PipelineIllustration
+        label="// Inventory Intelligence"
+        steps={["Sales History", "Demand Forecast", "Stock Signals", "Planner Review"]}
+      />
     );
   }
   return <div className="bg-muted h-full w-full" />;
 };
 
 export const metadata: Metadata = {
-  title: "Case Studies - VivanceData AI Solutions",
-  description: "Explore real-world examples of how our AI solutions have transformed businesses across various industries. See measurable results in financial services, healthcare, and retail.",
-  keywords: ["AI case studies", "business transformation", "AI implementation", "success stories", "ROI", "AI solutions", "machine learning results"],
+  title: "Example Engagements - VivanceData AI Solutions",
+  description: "Composite examples showing how AI engagements are scoped and delivered in financial services, healthcare and retail -- the problem, the approach, and what gets handed over.",
+  keywords: ["AI engagements", "AI implementation", "AI scoping", "AI delivery", "AI solutions", "machine learning projects"],
   openGraph: {
-    title: "AI Case Studies - VivanceData",
-    description: "See how AI solutions transform businesses across industries. Real results in fraud detection, healthcare analytics, and personalized recommendations.",
+    title: "Example Engagements - VivanceData",
+    description: "Composite examples of how AI work is scoped and delivered across fraud triage, clinical documentation and inventory planning.",
     type: "website",
     url: "https://vivancedata.com/case-studies",
     images: [
@@ -85,8 +83,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Case Studies - VivanceData",
-    description: "See how AI solutions transform businesses across industries.",
+    title: "Example Engagements - VivanceData",
+    description: "Composite examples of how AI work is scoped and delivered.",
     images: ["https://vivancedata.com/images/ai-solutions.png"],
   },
 };

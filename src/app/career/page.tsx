@@ -29,26 +29,30 @@ export const metadata: Metadata = {
   },
 };
 
-const benefits = [
+// VivanceData is a founder-led practice with a network of project-based
+// specialists -- not an employer with a benefits package. These describe how
+// collaboration actually works here. Do not add employment perks (PTO, training
+// budgets, team culture) until there is an actual payroll behind them.
+const collaborationTerms = [
   {
     icon: Briefcase,
-    title: "Challenging Projects",
-    description: "Work on cutting-edge AI implementations for Fortune 500 companies and innovative startups.",
+    title: "Scoped project work",
+    description: "Engagements are fixed scopes with defined deliverables and end dates, contracted per project rather than as employment.",
   },
   {
     icon: Users,
-    title: "Collaborative Team",
-    description: "Join a diverse team of AI experts, data scientists, and engineers who love to share knowledge.",
+    title: "Direct client contact",
+    description: "You work with the people whose problem you are solving. No account-management layer in between and no hand-off to a junior team.",
   },
   {
     icon: Rocket,
-    title: "Growth Opportunities",
-    description: "Continuous learning with conference attendance, certifications, and training budgets.",
+    title: "Senior-only delivery",
+    description: "Specialists are brought in for depth we do not already have in house, which means you own your part of the build outright.",
   },
   {
     icon: Heart,
-    title: "Work-Life Balance",
-    description: "Flexible remote work options, unlimited PTO, and a culture that respects your time.",
+    title: "Remote and asynchronous",
+    description: "Work is coordinated around delivery dates rather than hours logged or timezone overlap.",
   },
 ];
 
@@ -58,18 +62,19 @@ const CareerPage = () => {
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <Heading className="text-4xl md:text-5xl mb-4">Join Our Team</Heading>
+          <Heading className="text-4xl md:text-5xl mb-4">Work With Us</Heading>
           <Paragraph className="max-w-2xl mx-auto text-lg">
-            At VivanceData, we&apos;re building the future of AI-powered business solutions.
-            We&apos;re always looking for talented individuals who share our passion for innovation.
+            VivanceData is a founder-led practice backed by a small network of specialists we bring
+            in per project. We are not hiring employees, but we do add people to that network when
+            the work calls for depth we do not already have.
           </Paragraph>
         </div>
 
         {/* Benefits Section */}
         <div className="mb-16">
-          <h2 className="text-2xl font-bold text-center mb-8">Why Work With Us</h2>
+          <h2 className="text-2xl font-bold text-center mb-8">How collaboration works</h2>
           <div className="grid md:grid-cols-2 gap-6">
-            {benefits.map((benefit) => (
+            {collaborationTerms.map((benefit) => (
               <div
                 key={benefit.title}
                 className="bg-muted rounded-xl p-6 flex gap-4"
@@ -90,17 +95,17 @@ const CareerPage = () => {
 
         {/* Open Positions */}
         <div className="mb-16">
-          <h2 className="text-2xl font-bold text-center mb-8">Open Positions</h2>
+          <h2 className="text-2xl font-bold text-center mb-8">Open Roles</h2>
 
           <div className="bg-muted rounded-xl p-8 text-center">
             <div className="bg-muted w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
               <Briefcase className="h-8 w-8 text-brand" />
             </div>
-            <h3 className="text-xl font-semibold mb-3">No Open Positions Right Now</h3>
+            <h3 className="text-xl font-semibold mb-3">No open roles right now</h3>
             <p className="text-muted-foreground max-w-md mx-auto mb-6">
-              We don&apos;t have any open positions at the moment, but we&apos;re always interested in
-              hearing from talented individuals. Send us your resume and we&apos;ll keep you in mind
-              for future opportunities.
+              There are no positions open at the moment. If you are a senior engineer, ML
+              practitioner or domain specialist open to project work, send a note and something you
+              have built -- that is more useful to us than a resume.
             </p>
             <a
               href="mailto:careers@vivancedata.com?subject=Career Interest at VivanceData"

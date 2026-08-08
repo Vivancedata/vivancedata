@@ -72,11 +72,15 @@ export default function RetailPage() {
     },
   ];
 
+  // Focus areas, not outcome claims. These tiles previously carried invented
+  // metrics (e.g. "99.7% regulatory compliance accuracy") for engagements that
+  // never happened. Do not put a number here until a named client has agreed to
+  // it being published.
   const stats = [
-    { value: "28%", label: "Average reduction in stockout risk" },
-    { value: "35%", label: "Improvement in planning speed" },
-    { value: "2×", label: "Faster promotion feedback loops" },
-    { value: "15%", label: "Lift in recommendation conversion" },
+    { value: "Forecasting", label: "Demand planning and inventory positioning" },
+    { value: "Personalization", label: "Recommendations and merchandising" },
+    { value: "Content", label: "Product copy at catalogue scale" },
+    { value: "Stack Fit", label: "Built onto your existing commerce platform" },
   ];
 
   return <RetailClient solutions={solutions} caseStudies={caseStudies} stats={stats} />;

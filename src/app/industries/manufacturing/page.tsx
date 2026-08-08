@@ -72,11 +72,15 @@ export default function ManufacturingPage() {
     },
   ];
 
+  // Focus areas, not outcome claims. These tiles previously carried invented
+  // metrics (e.g. "99.7% regulatory compliance accuracy") for engagements that
+  // never happened. Do not put a number here until a named client has agreed to
+  // it being published.
   const stats = [
-    { value: "32%", label: "Reduction in unplanned downtime" },
-    { value: "18%", label: "OEE improvement on pilot lines" },
-    { value: "25%", label: "Decrease in quality defect rate" },
-    { value: "40%", label: "Faster root cause identification" },
+    { value: "Maintenance", label: "Anomaly detection across sensor history" },
+    { value: "Quality", label: "Vision inspection on the line" },
+    { value: "Root Cause", label: "Search across shift, defect and batch logs" },
+    { value: "Shop-floor Fit", label: "Works with the MES you already run" },
   ];
 
   return <ManufacturingClient solutions={solutions} caseStudies={caseStudies} stats={stats} />;

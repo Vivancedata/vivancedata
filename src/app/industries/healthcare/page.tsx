@@ -72,11 +72,15 @@ export default function HealthcarePage() {
     }
   ];
 
+  // Focus areas, not outcome claims. These tiles previously carried invented
+  // metrics (e.g. "99.7% regulatory compliance accuracy") for engagements that
+  // never happened. Do not put a number here until a named client has agreed to
+  // it being published.
   const stats = [
-    { value: "40%", label: "Reduction in chart review time" },
-    { value: "97%", label: "Documentation accuracy rate" },
-    { value: "100%", label: "HIPAA-compliant by design" },
-    { value: "3x", label: "Faster patient context retrieval" }
+    { value: "Documentation", label: "Drafting notes clinicians review and edit" },
+    { value: "Chart Retrieval", label: "Finding prior context across patient records" },
+    { value: "Your BAA", label: "Built inside your existing HIPAA controls" },
+    { value: "Human Sign-off", label: "No autonomous clinical decisions" },
   ];
 
   return <HealthcareClient solutions={solutions} caseStudies={caseStudies} stats={stats} />;
