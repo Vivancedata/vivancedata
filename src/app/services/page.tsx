@@ -102,7 +102,7 @@ const ServicesPage = () => {
       id: "3",
       title: "Workflow Automation",
       category: "Workflow Automation",
-      description: "Connect the handoffs that currently run on email and copy-paste -- intake, routing, follow-up, scheduling -- and keep them running as the tools underneath change.",
+      description: "Connect the handoffs that currently run on email and copy-paste: intake, routing, follow-up and scheduling. Then keep them running as the tools underneath change.",
       impact: "Typical build: 2-6 weeks",
       link: "/contact"
     }

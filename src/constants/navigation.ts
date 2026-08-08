@@ -41,6 +41,11 @@ export const navItems: NavItem[] = [
     hasDropdown: false,
   },
   {
+    name: "Pricing",
+    href: "/pricing",
+    hasDropdown: false,
+  },
+  {
     name: "Resources",
     href: "/resources",
     hasDropdown: true,
@@ -85,6 +90,12 @@ export const mainNavItems: NavItem[] = [
     section: "case-studies"
   },
   {
+    name: "Pricing",
+    href: "/pricing",
+    hasDropdown: false,
+    section: "pricing"
+  },
+  {
     name: "About",
     href: "/about",
     hasDropdown: false,
@@ -124,6 +135,7 @@ export const footerLinks: FooterSection[] = [
     title: "Company",
     links: [
       { label: "About Us", href: "/about" },
+      { label: "Pricing", href: "/pricing" },
       { label: "Careers", href: "/career" },
       { label: "Contact", href: "/contact" },
     ],
