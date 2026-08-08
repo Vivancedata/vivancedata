@@ -1,5 +1,5 @@
 import React from "react";
-import { ServicesHero } from "@/components/services/ServicesHero";
+import { PageHero } from "@/components/common/PageHero";
 import { ServicesStack } from "@/components/services/ServicesStack";
 import { ServicesList } from "@/components/services/ServicesList";
 import { ServicesCases } from "@/components/services/ServicesCases";
@@ -106,8 +106,13 @@ const ServicesPage = () => {
 
   return (
     <main className="flex min-h-screen flex-col">
-      <ServicesHero 
-        title="VivanceData Solutions"
+      <PageHero
+        eyebrow="Our Services"
+        title={
+          <>
+            VivanceData <span className="text-brand">Solutions</span>
+          </>
+        }
         description="These days, staying ahead often means turning data and AI into business value. But with countless solutions and approaches available, how do you identify and implement what truly matters for your organization?"
       />
       

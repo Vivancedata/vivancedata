@@ -7,6 +7,7 @@ import { formatDate } from "@/lib/formatDate";
 import { Clock, Calendar, ArrowUpRight } from "lucide-react";
 import { useMemo, useState } from "react";
 import { BlogFilters } from "./BlogFilters";
+import { BlogCover, isDefaultBlogImage } from "./BlogCover";
 import { BlogPost } from "@/types/blog";
 
 const container = {
@@ -82,18 +83,20 @@ export function Blogs({ blogs }: BlogsProps) {
               variants={item}
               className="group relative flex h-full flex-col overflow-hidden rounded-xl bg-secondary/50 transition-all hover:bg-secondary/70"
             >
-              {blog.image && (
-              <div className="relative aspect-square w-full overflow-hidden">
-                <Image
-                  src={blog.image}
-                  alt={`Featured image for ${blog.title}`}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover p-2 transform group-hover:scale-105 transition-transform duration-300"
-                  priority={index < 3} // Prioritize loading for the first 3 images
-                />
+              <div className="relative aspect-video w-full overflow-hidden">
+                {isDefaultBlogImage(blog.image) ? (
+                  <BlogCover slug={blog.slug} />
+                ) : (
+                  <Image
+                    src={blog.image}
+                    alt={`Featured image for ${blog.title}`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover p-2 transform group-hover:scale-105 transition-transform duration-300"
+                    priority={index < 3} // Prioritize loading for the first 3 images
+                  />
+                )}
               </div>
-              )}
 
               <div className="flex flex-1 flex-col justify-between p-4">
                 <div className="flex-1 space-y-3">

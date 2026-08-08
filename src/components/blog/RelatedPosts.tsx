@@ -6,6 +6,7 @@ import Image from "next/image";
 import { formatDate } from "@/lib/formatDate";
 import { Clock, Calendar, ArrowRight } from "lucide-react";
 import { BlogPost } from "@/types/blog";
+import { BlogCover, isDefaultBlogImage } from "@/components/blog/BlogCover";
 
 interface RelatedPostsProps {
   posts: BlogPost[];
@@ -53,8 +54,10 @@ export function RelatedPosts({ posts, currentSlug }: RelatedPostsProps) {
               variants={item}
               className="group relative flex h-full flex-col overflow-hidden rounded-xl bg-secondary/50 transition-all hover:bg-secondary/70"
             >
-              {post.image && (
-                <div className="relative aspect-video w-full overflow-hidden">
+              <div className="relative aspect-video w-full overflow-hidden">
+                {isDefaultBlogImage(post.image) ? (
+                  <BlogCover slug={post.slug} />
+                ) : (
                   <Image
                     src={post.image}
                     alt={`Featured image for ${post.title}`}
@@ -62,8 +65,8 @@ export function RelatedPosts({ posts, currentSlug }: RelatedPostsProps) {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover p-2 transform group-hover:scale-105 transition-transform duration-300"
                   />
-                </div>
-              )}
+                )}
+              </div>
 
               <div className="flex flex-1 flex-col justify-between p-4">
                 <div className="flex-1 space-y-3">

@@ -3,7 +3,6 @@ import {
   Brain,
   ChevronRight,
   Database,
-  LineChart,
   MessageSquare,
   ShieldCheck,
 } from "lucide-react";
@@ -24,13 +23,6 @@ const iconMap: Record<IconType, typeof Database> = {
   brain: Brain,
   "shield-check": ShieldCheck,
   "message-square": MessageSquare,
-};
-
-const industryVisuals: Record<string, typeof Database> = {
-  Retail: Database,
-  Healthcare: Brain,
-  Finance: LineChart,
-  "E-commerce": MessageSquare,
 };
 
 export default function CaseStudies() {
@@ -59,7 +51,6 @@ export default function CaseStudies() {
         <div className="grid gap-8 xl:grid-cols-2">
           {caseStudies.map((study) => {
             const StudyIcon = iconMap[study.iconType];
-            const IndustryIcon = industryVisuals[study.industry] ?? Database;
 
             return (
               <Card
@@ -143,22 +134,23 @@ export default function CaseStudies() {
                     </CardFooter>
                   </div>
 
-                  <div className="relative flex min-h-80 items-end overflow-hidden bg-primary p-8 text-primary-foreground">
-                    <div
-                      className="absolute inset-0 opacity-30"
-                      style={{
-                        backgroundImage:
-                          'url("data:image/svg+xml,%3Csvg width=\\"100\\" height=\\"100\\" viewBox=\\"0 0 100 100\\" xmlns=\\"http://www.w3.org/2000/svg\\"%3E%3Cpath d=\\"M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z\\" fill=\\"%23000000\\" fill-opacity=\\"0.18\\" fill-rule=\\"evenodd\\"/%3E%3C/svg%3E")',
-                      }}
+                  {/* Ink band: spec-sheet mono label up top, watermark icon, and
+                      the engagement identity at the base. The old dot texture was
+                      black-on-black (fill #000 over bg-primary) — an invisible
+                      pattern that left the panel reading as an empty void. */}
+                  <div className="relative flex min-h-80 flex-col justify-between overflow-hidden bg-primary p-8 text-primary-foreground">
+                    <StudyIcon
+                      className="absolute -bottom-12 -right-12 h-64 w-64 text-primary-foreground/[0.07]"
+                      aria-hidden="true"
                     />
-                    <div className="relative flex items-center space-x-4">
-                      <div className="rounded-full bg-primary-foreground p-3 shadow-lg">
-                        <IndustryIcon className="h-7 w-7 text-brand" aria-hidden="true" />
+                    <p className="relative font-mono text-xs uppercase tracking-[0.2em] text-primary-foreground/60">
+                      {`// ${study.industry} engagement`}
+                    </p>
+                    <div className="relative flex items-center gap-4">
+                      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-primary-foreground/15">
+                        <StudyIcon className="h-8 w-8" aria-hidden="true" />
                       </div>
-                      <div className="text-primary-foreground">
-                        <div className="mb-2 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-foreground/15">
-                          <StudyIcon className="h-8 w-8" aria-hidden="true" />
-                        </div>
+                      <div>
                         <p className="text-xl font-bold">{study.industry} Solution</p>
                         <p className="text-sm text-primary-foreground/85">Powered by VivanceData AI</p>
                       </div>
