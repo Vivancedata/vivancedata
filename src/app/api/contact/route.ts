@@ -87,7 +87,7 @@ export async function POST(request: NextRequest) {
       const fromEmail = process.env.CONTACT_FORM_FROM_EMAIL || 'noreply@vivancedata.com';
 
       // Send notification to admin
-      await resend.emails.send({
+      const adminNotification = await resend.emails.send({
         from: `VivanceData Contact Form <${fromEmail}>`,
         to: toEmail,
         replyTo: body.email,
@@ -143,8 +143,23 @@ export async function POST(request: NextRequest) {
         `,
       });
 
+      // Resend resolves with { data, error } rather than rejecting on API-level
+      // failures, so an unchecked send reports success while nothing arrives.
+      // This is the notification carrying the enquiry: if it fails the message
+      // is lost while the sender believes it was received, so it must surface.
+      if (adminNotification.error) {
+        console.error('Contact form: ADMIN NOTIFICATION FAILED', adminNotification.error);
+        return NextResponse.json(
+          {
+            error:
+              'We could not deliver your message. Please email info@vivancedata.com directly so it is not lost.',
+          },
+          { status: 502, headers: rateLimitHeaders }
+        );
+      }
+
       // Send confirmation to user
-      await resend.emails.send({
+      const userConfirmation = await resend.emails.send({
         from: `VivanceData <${fromEmail}>`,
         to: body.email,
         subject: 'Thank you for contacting VivanceData',
@@ -188,6 +203,12 @@ export async function POST(request: NextRequest) {
           </html>
         `,
       });
+
+      // The enquiry is already delivered, so a failed courtesy confirmation is
+      // not worth failing the request over -- but it should not be silent.
+      if (userConfirmation.error) {
+        console.error('Contact form: confirmation email failed', userConfirmation.error);
+      }
     } else {
       if (process.env.NODE_ENV === 'production') {
         return NextResponse.json(
