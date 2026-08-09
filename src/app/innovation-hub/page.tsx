@@ -179,7 +179,7 @@ export default function InnovationHubPage() {
     },
     {
       title: "Quantum-Enhanced Optimization Engine",
-      description: "A hybrid classical-quantum system for solving complex optimization problems in logistics, finance, and resource allocation.",
+      description: "A hybrid classical-quantum system for solving complex optimization problems in routing, scheduling, and resource allocation.",
       technologies: ["Quantum Computing", "Optimization Algorithms", "Hybrid Computing", "Operations Research"],
       status: "Concept" as const
     },
@@ -190,9 +190,9 @@ export default function InnovationHubPage() {
       status: "Prototype" as const
     },
     {
-      title: "Explainable Financial Risk Assessment",
-      description: "A transparent AI system for evaluating financial risks with clear explanations of its reasoning process and confidence levels.",
-      technologies: ["Explainable AI", "Financial Modeling", "Risk Analysis", "Natural Language Generation"],
+      title: "Field Document Understanding",
+      description: "An extraction system for the photographed and scanned paperwork that field work produces, which reports what it could not read instead of guessing at it.",
+      technologies: ["Document Intelligence", "Optical Character Recognition", "Uncertainty Estimation", "Natural Language Generation"],
       status: "Pilot" as const
     }
   ];

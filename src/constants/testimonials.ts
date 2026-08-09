@@ -20,7 +20,7 @@ export interface Testimonial {
 export const testimonials: Testimonial[] = [
   {
     name: "Operations Leader",
-    role: "Mid-Market SaaS Company",
+    role: "Commercial General Contractor",
     text: "The engagement moved us from disconnected pilots to a production rollout plan we could actually execute. The team was practical, fast, and easy to work with.",
     rating: 5,
     image: "",
@@ -34,7 +34,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     name: "Product Executive",
-    role: "Regional Commerce Platform",
+    role: "Precision Manufacturing Firm",
     text: "They helped us prioritize the highest-impact use cases first and set up the right measurement framework. That changed how we make AI investment decisions.",
     rating: 5,
     image: "",
@@ -48,7 +48,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     name: "Customer Experience Lead",
-    role: "Healthcare Services Organization",
+    role: "Regional Mechanical Contractor",
     text: "What stood out was their focus on governance and adoption, not just model demos. We now have clearer controls and better cross-team alignment.",
     rating: 5,
     image: "",
@@ -62,7 +62,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     name: "Technology Director",
-    role: "Financial Services Firm",
+    role: "Freight and Fleet Operator",
     text: "The architecture work was solid and realistic for our constraints. We left with an implementation roadmap our engineering and compliance teams both signed off on.",
     rating: 5,
     image: "",

@@ -52,8 +52,8 @@ src/app/
 ├── about/, blog/, career/, case-studies/, contact/
 ├── industries/
 │   ├── page.tsx
-│   ├── financial-services/, healthcare/, retail/
-│   ├── manufacturing/, energy/, public-sector/
+│   ├── construction/, hvac-trades/
+│   ├── logistics/, manufacturing/
 ├── innovation-hub/, methodology/, resources/, responsible-ai/
 ├── services/
 │   ├── page.tsx
@@ -68,9 +68,23 @@ src/app/
 
 ### Industry Page Pattern
 
-Each industry page follows a two-file pattern — a server component (`page.tsx`) that defines metadata and data, and a client component (`client.tsx`) that handles animations. When adding a new industry:
-1. Create `src/app/industries/[name]/page.tsx` + `client.tsx` mirroring an existing industry (e.g. `healthcare/`)
+**One shared client component, not one per industry.** `src/components/industries/IndustryPage.tsx`
+renders every industry page from an `IndustryPageConfig` object. Each industry is a
+single server component (`page.tsx`) holding metadata plus that config — there is
+no per-industry `client.tsx`, and adding one re-introduces the ~355-line
+duplication this replaced.
+
+To add an industry:
+1. Create `src/app/industries/[slug]/page.tsx` mirroring an existing one (e.g. `construction/`)
 2. Add entries to `navItems` dropdowns and `footerLinks` in `src/constants/navigation.ts`
+
+Populate `process[].checks` — the phase descriptions are slogans without them.
+
+**Scope:** the site targets blue-collar and local services only — construction,
+HVAC/trades, logistics, manufacturing. Financial services, healthcare, retail,
+energy and public sector were removed deliberately; their paths 308 to
+`/industries` via `redirects()` in `next.config.mjs`. Do not re-add an
+enterprise vertical without revisiting that positioning decision.
 
 ### Component Organization
 

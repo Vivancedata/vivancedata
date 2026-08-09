@@ -8,18 +8,18 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "AI Use Cases Repository - VivanceData",
   description:
-    "Explore our comprehensive database of AI use cases across industries. Find practical AI applications for Financial Services, Healthcare, Retail, Manufacturing, and more.",
+    "Browse practical AI use cases for construction, HVAC and the trades, logistics and fleet operations, and manufacturing.",
   keywords: [
     "AI use cases",
     "artificial intelligence applications",
     "AI business cases",
     "machine learning use cases",
-    "AI in healthcare",
-    "AI in finance",
-    "AI in retail",
+    "AI in construction",
+    "AI in HVAC",
+    "AI for the trades",
+    "AI in logistics",
     "AI in manufacturing",
-    "enterprise AI",
-    "AI ROI",
+    "field service AI",
   ],
   openGraph: {
     title: "AI Use Cases Repository - VivanceData",
@@ -53,9 +53,9 @@ export default function UseCasesPage() {
           AI Use Cases Repository
         </Heading>
         <Paragraph className="max-w-3xl mx-auto text-lg">
-          Discover practical AI applications across industries and business
-          functions. Use our searchable database to find the right AI solution
-          for your organization.
+          Practical AI applications for construction, HVAC and the trades,
+          logistics and fleet operations, and manufacturing. Search by industry,
+          function or the work you are trying to get off someone&apos;s desk.
         </Paragraph>
       </div>
 

@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 /**
- * Guards the failure mode that shipped six industry pages with invisible body
+ * Guards the failure mode that shipped every industry page with invisible body
  * content for months.
  *
  * framer-motion's `m.*` components only animate once LazyMotion has supplied
@@ -17,11 +17,9 @@ import { expect, test } from "@playwright/test";
 const ROUTES = [
   "/",
   "/industries/manufacturing",
-  "/industries/healthcare",
-  "/industries/energy",
-  "/industries/retail",
-  "/industries/financial-services",
-  "/industries/public-sector",
+  "/industries/construction",
+  "/industries/hvac-trades",
+  "/industries/logistics",
   "/services",
   "/about",
   // Routes converted in the token migration -- the surfaces most at risk of

@@ -24,7 +24,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     // Industries
     { route: '/industries', priority: 0.8, changeFreq: 'monthly' },
-    { route: '/industries/financial-services', priority: 0.7, changeFreq: 'monthly' },
+    { route: '/industries/construction', priority: 0.7, changeFreq: 'monthly' },
+    { route: '/industries/hvac-trades', priority: 0.7, changeFreq: 'monthly' },
+    { route: '/industries/logistics', priority: 0.7, changeFreq: 'monthly' },
+    { route: '/industries/manufacturing', priority: 0.7, changeFreq: 'monthly' },
 
     // Case Studies
     { route: '/case-studies', priority: 0.8, changeFreq: 'weekly' },

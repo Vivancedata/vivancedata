@@ -85,6 +85,25 @@ const nextConfig = {
   // Power optimizations
   poweredByHeader: false,
 
+  /**
+   * The five enterprise verticals the site used to carry. Their pages are gone,
+   * but the URLs are indexed, so they redirect to the industries hub rather than
+   * 404. Permanent (308) because the pages are not coming back.
+   */
+  async redirects() {
+    return [
+      'financial-services',
+      'healthcare',
+      'retail',
+      'energy',
+      'public-sector',
+    ].map((slug) => ({
+      source: `/industries/${slug}`,
+      destination: '/industries',
+      permanent: true,
+    }));
+  },
+
   // Configure headers for better security and performance
   async headers() {
     return [

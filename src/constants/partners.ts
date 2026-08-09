@@ -3,14 +3,11 @@ export interface Partner {
   industry: string;
 }
 
-// Technology ecosystem partners and tooling we regularly work with
+// The sectors we work in. Not named companies — see clients.ts for the same
+// rule: nothing here implies an engagement that did not happen.
 export const partners: Partner[] = [
-  { name: "Financial Services", industry: "Finance" },
-  { name: "Healthcare", industry: "Healthcare" },
-  { name: "Retail & Commerce", industry: "Retail" },
-  { name: "Enterprise Software", industry: "Software" },
-  { name: "Media & Content", industry: "Media" },
-  { name: "Education Technology", industry: "EdTech" },
-  { name: "Manufacturing", industry: "Manufacturing" },
-  { name: "Logistics & Supply Chain", industry: "Logistics" },
+  { name: "Construction", industry: "General & Trade Contractors" },
+  { name: "HVAC & Trades", industry: "Field Service" },
+  { name: "Logistics & Fleet", industry: "Carriers & Dispatch" },
+  { name: "Manufacturing", industry: "Production & Maintenance" },
 ];

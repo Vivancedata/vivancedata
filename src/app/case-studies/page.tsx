@@ -25,51 +25,36 @@ const PipelineIllustration = ({ label, steps }: { label: string; steps: string[]
   </div>
 );
 
+const ILLUSTRATIONS: Record<string, { label: string; steps: string[] }> = {
+  Construction: {
+    label: "// Submittal Intake",
+    steps: ["Emailed PDF", "Field Extraction", "Validation", "Project System"],
+  },
+  "HVAC & Trades": {
+    label: "// After-Hours Call Capture",
+    steps: ["Missed Call", "Transcribed Intake", "Triaged Urgency", "Booked or Escalated"],
+  },
+  "Logistics & Fleet": {
+    label: "// Proof of Delivery",
+    steps: ["Driver Photo", "Field Extraction", "Match to Load", "Billing"],
+  },
+};
+
 const CaseStudyIllustration = ({ industry }: { industry: string }) => {
-  if (industry === "Financial Services") {
-    return (
-      <PipelineIllustration
-        label="// Risk Triage Flow"
-        steps={["Transaction Feed", "Risk Scoring", "Case Triage", "Analyst Review"]}
-      />
-    );
+  const illustration = ILLUSTRATIONS[industry];
+  if (!illustration) {
+    return <div className="bg-muted h-full w-full" />;
   }
-  if (industry === "Healthcare") {
-    return (
-      <div className="bg-card h-full w-full relative overflow-hidden border-b border-border">
-        <div className="absolute inset-0 p-8 flex flex-col justify-center">
-          <div className="eyebrow mb-4">// Clinical NLP Pipeline</div>
-          <div className="space-y-3">
-            {["Chart History", "NLP Extraction", "Summarization", "Review"].map((step, i) => (
-              <div key={step} className="flex items-center gap-3">
-                <div className={`w-2 h-2 rounded-full shrink-0 ${i < 3 ? "bg-brand" : "bg-border"}`} />
-                <div className={`h-0.5 flex-1 rounded ${i < 3 ? "bg-brand/30" : "bg-border"}`} />
-                <span className="text-mute text-xs w-24 text-right">{step}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    );
-  }
-  if (industry === "Retail") {
-    return (
-      <PipelineIllustration
-        label="// Inventory Intelligence"
-        steps={["Sales History", "Demand Forecast", "Stock Signals", "Planner Review"]}
-      />
-    );
-  }
-  return <div className="bg-muted h-full w-full" />;
+  return <PipelineIllustration label={illustration.label} steps={illustration.steps} />;
 };
 
 export const metadata: Metadata = {
   title: "Example Engagements - VivanceData AI Solutions",
-  description: "Composite examples showing how AI engagements are scoped and delivered in financial services, healthcare and retail -- the problem, the approach, and what gets handed over.",
+  description: "Composite examples showing how AI engagements are scoped and delivered in construction, the trades and logistics -- the problem, the approach, and what gets handed over.",
   keywords: ["AI engagements", "AI implementation", "AI scoping", "AI delivery", "AI solutions", "machine learning projects"],
   openGraph: {
     title: "Example Engagements - VivanceData",
-    description: "Composite examples of how AI work is scoped and delivered across fraud triage, clinical documentation and inventory planning.",
+    description: "Composite examples of how AI work is scoped and delivered across document intake, call capture and dispatch exceptions.",
     type: "website",
     url: "https://vivancedata.com/case-studies",
     images: [
@@ -100,42 +85,42 @@ interface CaseStudy {
 
 const caseStudies: CaseStudy[] = [
   {
-    id: "financial-services",
-    title: "Transaction Risk Prioritization Workflow",
-    industry: "Financial Services",
-    challenge: "Risk teams were spending too much effort reviewing low-confidence alerts and missing opportunities to prioritize high-risk cases faster.",
-    solution: "We designed a scored triage workflow using anomaly signals and behavior patterns to improve review prioritization and explainability.",
+    id: "construction",
+    title: "Submittal and RFI Intake Workflow",
+    industry: "Construction",
+    challenge: "Submittals and RFIs arrived as emailed PDFs in no consistent format, and a project engineer was re-keying them into the project system by hand.",
+    solution: "We built an intake workflow that extracts the fields from each document, checks them against the project's own requirements, and stages the record for a human to approve.",
     results: [
-      "Higher precision in alert triage",
-      "Faster analyst response on high-risk events",
-      "Reduced low-value manual investigations",
-      "Improved auditability of risk decisions"
+      "Re-keying replaced by review",
+      "Consistent capture regardless of subcontractor format",
+      "Mismatches against the spec surfaced at intake",
+      "Records land in the existing project system"
     ],
   },
   {
-    id: "healthcare",
-    title: "Clinical Notes Summarization Support",
-    industry: "Healthcare",
-    challenge: "Clinical staff needed quicker access to relevant chart history without increasing documentation burden.",
-    solution: "We implemented NLP-assisted extraction and summarization patterns integrated into existing review workflows.",
+    id: "hvac-trades",
+    title: "After-Hours Call Capture",
+    industry: "HVAC & Trades",
+    challenge: "Calls placed after the office closed went to voicemail, and by morning the customer had usually booked whoever answered first.",
+    solution: "We answered the out-of-hours calls, recorded the fault and access details in a fixed format, booked routine work, and paged the on-call technician for genuine emergencies.",
     results: [
-      "Faster retrieval of key patient context",
-      "Reduced repetitive note review effort",
-      "More consistent documentation structure",
-      "Improved clinician workflow satisfaction"
+      "Overnight calls answered rather than queued",
+      "Job details captured in one consistent format",
+      "Emergencies escalated, routine work booked",
+      "Every call logged whether or not it converted"
     ],
   },
   {
-    id: "retail",
-    title: "Merchandising & Inventory Decision Support",
-    industry: "Retail",
-    challenge: "Merchandising and planning teams lacked a unified view for demand shifts and category-level risk.",
-    solution: "We built decision support dashboards and forecast signals to improve replenishment and promotion planning.",
+    id: "logistics",
+    title: "Load Exception Triage for Dispatch",
+    industry: "Logistics & Fleet",
+    challenge: "Late, short-delivered and mis-scanned loads were found when the customer phoned, because nobody was watching the board for the ones drifting off plan.",
+    solution: "We monitored load status against plan, raised the loads that had gone off track, ranked them by customer impact, and wrote them to the dispatch board the team already watched.",
     results: [
-      "Reduced category-level stock pressure",
-      "Improved forecast-driven planning confidence",
-      "Better cross-team visibility on inventory risk",
-      "Faster promotion planning cycles"
+      "Problem loads raised before the customer call",
+      "Ranked so dispatch works the worst ones first",
+      "Visible in the system dispatch already uses",
+      "Fewer exceptions discovered after the fact"
     ],
   }
 ];

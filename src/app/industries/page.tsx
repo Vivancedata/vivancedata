@@ -8,11 +8,11 @@ import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Industry Solutions - VivanceData",
-  description: "Discover our specialized AI solutions tailored to the unique challenges and opportunities in your industry. Solutions for finance, healthcare, retail, and more.",
-  keywords: ["industry solutions", "vertical AI", "industry-specific AI", "AI for finance", "AI for healthcare", "AI for retail", "AI for manufacturing"],
+  description: "AI solutions built for the trades and the field: construction, HVAC and the service trades, logistics and fleet operations, and manufacturing.",
+  keywords: ["industry solutions", "AI for construction", "AI for HVAC", "AI for the trades", "AI for logistics", "AI for fleet operations", "AI for manufacturing"],
   openGraph: {
     title: "Industry-Specific AI Solutions - VivanceData",
-    description: "Specialized AI solutions tailored to your industry. Financial services, healthcare, retail, manufacturing, energy, and public sector.",
+    description: "AI solutions for construction, HVAC and the trades, logistics and fleet operations, and manufacturing.",
     type: "website",
     url: "https://vivancedata.com/industries",
     images: [
@@ -60,40 +60,28 @@ const IndustryCard = ({ title, description, theme, href }: IndustryCardProps) =>
 export default function IndustriesPage() {
   const industries = [
     {
-      title: "Financial Services",
-      description: "AI solutions for risk management, fraud detection, customer experience, and regulatory compliance in banking, insurance, and investment.",
+      title: "Construction",
+      description: "Document intake for submittals, permits and RFIs, daily reports drafted from field notes, bid support, and compliance records that stay current.",
       theme: "from-primary to-primary/85",
-      href: "/industries/financial-services"
+      href: "/industries/construction"
     },
     {
-      title: "Healthcare",
-      description: "Transformative AI applications for patient care, clinical decision support, operational efficiency, and medical research.",
+      title: "HVAC & Trades",
+      description: "After-hours call capture, dispatch and scheduling support, quoting from service history, and the follow-ups the office never gets to.",
       theme: "from-primary to-primary/85",
-      href: "/industries/healthcare"
+      href: "/industries/hvac-trades"
     },
     {
-      title: "Retail & E-commerce",
-      description: "Intelligent solutions for personalization, inventory management, demand forecasting, and enhanced customer experiences.",
+      title: "Logistics & Fleet",
+      description: "Proof of delivery and BOL processing, exception triage before the customer calls, routine driver communication, and claims documentation.",
       theme: "from-primary to-primary/85",
-      href: "/industries/retail"
+      href: "/industries/logistics"
     },
     {
       title: "Manufacturing",
       description: "AI-powered systems for predictive maintenance, quality control, supply chain optimization, and smart factory operations.",
       theme: "from-primary to-primary/85",
       href: "/industries/manufacturing"
-    },
-    {
-      title: "Energy & Utilities",
-      description: "Advanced AI for grid management, energy optimization, predictive maintenance, and sustainable resource planning.",
-      theme: "from-primary to-primary/85",
-      href: "/industries/energy"
-    },
-    {
-      title: "Public Sector",
-      description: "AI solutions for citizen services, public safety, infrastructure management, and policy analysis.",
-      theme: "from-primary to-primary/85",
-      href: "/industries/public-sector"
     }
   ];
 
@@ -102,12 +90,15 @@ export default function IndustriesPage() {
       <div className="text-center mb-16">
         <Heading className="text-4xl md:text-5xl mb-4">Industry-Specific AI Solutions</Heading>
         <Paragraph className="max-w-3xl mx-auto text-lg">
-          Discover our specialized AI solutions tailored to the unique challenges and opportunities in your industry.
+          We work with blue-collar and local service businesses — construction, HVAC and the trades,
+          logistics and fleet operations, and manufacturing.
         </Paragraph>
       </div>
 
       <div className="mb-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Four industries, so a 2x2 grid -- a three-column row would leave the
+            last card stranded on its own line. */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {industries.map((industry) => (
             <IndustryCard
               key={industry.title}
