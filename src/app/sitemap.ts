@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { route: '/career', priority: 0.6, changeFreq: 'weekly' },
 
     // Services
+    { route: '/pricing', priority: 0.9, changeFreq: 'monthly' },
     { route: '/services', priority: 0.9, changeFreq: 'monthly' },
     { route: '/services/generative-ai', priority: 0.8, changeFreq: 'monthly' },
     { route: '/services/consulting', priority: 0.8, changeFreq: 'monthly' },

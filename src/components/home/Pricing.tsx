@@ -11,25 +11,35 @@ import {
 } from "@/components/ui/card";
 import { pricingTiers } from "@/constants/pricing";
 
-export default function Pricing() {
+interface PricingProps {
+  /**
+   * The /pricing page supplies its own page-level heading, so the section
+   * header is suppressed there to avoid stacking two titles on one screen.
+   */
+  showHeader?: boolean;
+}
+
+export default function Pricing({ showHeader = true }: PricingProps) {
   return (
     <section
       className="relative overflow-hidden py-16 md:py-24"
     >
       <div className="absolute inset-x-0 -top-20 h-64 bg-muted blur-3xl" aria-hidden="true" />
       <div className="container relative mx-auto px-4">
-        <div className="mx-auto mb-12 max-w-3xl text-center">
-          <div className="mb-4 inline-flex items-center rounded-full border border-border/70 bg-card/80 px-4 py-1 text-sm font-medium text-foreground shadow-sm">
-            Pricing Plans
+        {showHeader && (
+          <div className="mx-auto mb-12 max-w-3xl text-center">
+            <div className="mb-4 inline-flex items-center rounded-full border border-border/70 bg-card/80 px-4 py-1 text-sm font-medium text-foreground shadow-sm">
+              Pricing Plans
+            </div>
+            <h2 className="text-3xl font-bold text-foreground md:text-4xl">
+              What an engagement costs
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              A build has two costs: getting it working, and keeping it working. Both are listed
+              below, and every figure is a starting point rather than a quote.
+            </p>
           </div>
-          <h2 className="text-3xl font-bold text-foreground md:text-4xl">
-            Transparent Pricing for Your AI Journey
-          </h2>
-          <p className="mt-4 text-muted-foreground">
-            Engagements are structured around how much support your team needs, from strategic
-            advisory through embedded delivery partnership.
-          </p>
-        </div>
+        )}
 
         <div className="grid gap-8 md:grid-cols-3">
           {pricingTiers.map((tier) => (
@@ -52,10 +62,8 @@ export default function Pricing() {
               </CardHeader>
               <CardContent className="flex flex-1 flex-col">
                 <div className="rounded-2xl bg-muted/40 p-5">
-                  <p className="text-3xl font-bold text-foreground">{tier.price.monthly}</p>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    Project cadence: {tier.price.annually}
-                  </p>
+                  <p className="text-2xl font-bold text-foreground">{tier.price.setup}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">{tier.price.ongoing}</p>
                 </div>
 
                 <ul className="mt-6 space-y-4">

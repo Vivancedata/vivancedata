@@ -1,4 +1,4 @@
-import { ArrowRight, Bot, Code2, Lightbulb } from "lucide-react";
+import { ArrowRight, Bot, GraduationCap, Lightbulb } from "lucide-react";
 import { Card, CardContent, CardDescription, CardFooter, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { services } from "@/constants/services";
@@ -6,13 +6,13 @@ import { services } from "@/constants/services";
 const serviceIcons = {
   "generative-ai": Bot,
   consulting: Lightbulb,
-  solutions: Code2,
+  training: GraduationCap,
 } as const;
 
 const serviceLinks: Record<string, string> = {
   "generative-ai": "/services/generative-ai",
   consulting: "/services/consulting",
-  solutions: "/services",
+  training: "/services/training",
 };
 
 export default function Overview() {
