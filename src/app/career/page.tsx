@@ -72,7 +72,7 @@ const CareerPage = () => {
 
         {/* Benefits Section */}
         <div className="mb-16">
-          <h2 className="text-2xl font-bold text-center mb-8">How collaboration works</h2>
+          <h2 className="text-heading-2 text-center mb-8">How collaboration works</h2>
           <div className="grid md:grid-cols-2 gap-6">
             {collaborationTerms.map((benefit) => (
               <div
@@ -83,7 +83,7 @@ const CareerPage = () => {
                   <benefit.icon className="h-6 w-6 text-brand" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg mb-2">{benefit.title}</h3>
+                  <h3 className="text-heading-4 mb-2">{benefit.title}</h3>
                   <p className="text-muted-foreground text-sm">
                     {benefit.description}
                   </p>
@@ -95,13 +95,13 @@ const CareerPage = () => {
 
         {/* Open Positions */}
         <div className="mb-16">
-          <h2 className="text-2xl font-bold text-center mb-8">Open Roles</h2>
+          <h2 className="text-heading-2 text-center mb-8">Open Roles</h2>
 
           <div className="bg-muted rounded-xl p-8 text-center">
             <div className="bg-muted w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
               <Briefcase className="h-8 w-8 text-brand" />
             </div>
-            <h3 className="text-xl font-semibold mb-3">No open roles right now</h3>
+            <h3 className="text-heading-3 mb-3">No open roles right now</h3>
             <p className="text-muted-foreground max-w-md mx-auto mb-6">
               There are no positions open at the moment. If you are a senior engineer, ML
               practitioner or domain specialist open to project work, send a note and something you
@@ -119,7 +119,7 @@ const CareerPage = () => {
 
         {/* CTA Section */}
         <div className="bg-gradient-to-r from-primary/10 to-primary/5 rounded-xl p-8 text-center">
-          <h2 className="text-2xl font-bold mb-3">Have a Project in Mind?</h2>
+          <h2 className="text-heading-2 mb-3">Have a Project in Mind?</h2>
           <p className="text-muted-foreground mb-6">
             While we may not be hiring right now, we&apos;re always ready to help businesses
             transform with AI. Let&apos;s discuss your project.

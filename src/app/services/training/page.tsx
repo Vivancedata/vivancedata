@@ -135,7 +135,7 @@ export default function TrainingPage() {
         </div>
         
         <div className="w-full md:w-1/2 flex flex-col justify-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">Build AI Capabilities Across Your Organization</h2>
+          <h2 className="text-heading-1 mb-4">Build AI Capabilities Across Your Organization</h2>
           <p className="text-muted-foreground mb-6">
             Successful AI adoption requires more than just technology—it requires people with the right skills and knowledge. Our training programs are designed to build AI literacy and capabilities at all levels of your organization.
           </p>
@@ -152,7 +152,7 @@ export default function TrainingPage() {
       </div>
 
       <div className="mb-20">
-        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Our Training Programs</h2>
+        <h2 className="text-heading-1 mb-8 text-center">Our Training Programs</h2>
         
         <div className="space-y-8">
           {courses.map((course) => (
@@ -160,7 +160,7 @@ export default function TrainingPage() {
               <div className="p-6 md:p-8">
                 <div className="flex flex-col md:flex-row gap-6">
                   <div className="w-full md:w-2/3">
-                    <h3 className="text-xl font-semibold mb-3">{course.title}</h3>
+                    <h3 className="text-heading-3 mb-3">{course.title}</h3>
                     <p className="text-muted-foreground mb-4">{course.description}</p>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -205,7 +205,7 @@ export default function TrainingPage() {
       </div>
 
       <div className="mb-20">
-        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Training Approach</h2>
+        <h2 className="text-heading-1 mb-8 text-center">Training Approach</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             {
@@ -222,7 +222,7 @@ export default function TrainingPage() {
             }
           ].map((item) => (
             <div key={item.title} className="bg-card p-6 rounded-xl shadow-sm border border-border">
-              <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
+              <h3 className="text-heading-3 mb-3">{item.title}</h3>
               <p className="text-muted-foreground">{item.description}</p>
             </div>
           ))}
@@ -230,7 +230,7 @@ export default function TrainingPage() {
       </div>
       
       <div className="bg-muted rounded-xl p-8 md:p-12 text-center">
-        <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Upskill Your Team?</h2>
+        <h2 className="text-heading-1 mb-4">Ready to Upskill Your Team?</h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
           Contact us to discuss your training needs and how we can help build AI capabilities across your organization.
         </p>

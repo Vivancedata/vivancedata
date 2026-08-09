@@ -46,31 +46,31 @@ export default function AIReadinessPage() {
         <AIReadinessQuiz />
 
         <div className="mt-16 bg-muted rounded-xl p-8">
-          <h2 className="text-2xl font-bold mb-4">What This Assessment Covers</h2>
+          <h2 className="text-heading-2 mb-4">What This Assessment Covers</h2>
           <div className="grid md:grid-cols-2 gap-6 text-foreground">
             <div>
-              <h3 className="font-semibold mb-2 flex items-center gap-2">
+              <h3 className="text-heading-4 mb-2 flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-brand"></div>
                 Data Readiness
               </h3>
               <p className="text-sm">Quality, accessibility, and governance of your data assets</p>
             </div>
             <div>
-              <h3 className="font-semibold mb-2 flex items-center gap-2">
+              <h3 className="text-heading-4 mb-2 flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-brand"></div>
                 Technical Infrastructure
               </h3>
               <p className="text-sm">Computing resources, cloud capabilities, and integration readiness</p>
             </div>
             <div>
-              <h3 className="font-semibold mb-2 flex items-center gap-2">
+              <h3 className="text-heading-4 mb-2 flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-brand"></div>
                 Organizational Culture
               </h3>
               <p className="text-sm">Change readiness, innovation mindset, and leadership support</p>
             </div>
             <div>
-              <h3 className="font-semibold mb-2 flex items-center gap-2">
+              <h3 className="text-heading-4 mb-2 flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-brand"></div>
                 Strategic Alignment
               </h3>

@@ -22,7 +22,7 @@ export function ServicesList({ services }: ServicesListProps): React.ReactElemen
                 <CheckCircle className="h-5 w-5 text-brand" />
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-3">{service.title}</h3>
+                <h3 className="text-heading-3 mb-3">{service.title}</h3>
                 <p className="text-muted-foreground">{service.description}</p>
               </div>
             </div>

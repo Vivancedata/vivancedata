@@ -426,7 +426,7 @@ interface RecommendationsProps {
 function Recommendations({ recommendations }: RecommendationsProps) {
   return (
     <div className="mt-8">
-      <h3 className="text-xl font-bold mb-4">Personalized Recommendations</h3>
+      <h3 className="text-heading-3 mb-4">Personalized Recommendations</h3>
       <ul className="space-y-3" role="list" aria-label="Personalized recommendations">
         {recommendations.map((recommendation) => (
           <li key={recommendation} className="flex gap-3 p-4 bg-muted rounded-lg">
@@ -481,7 +481,7 @@ function QuizResultsPanel({
             </ReportGate>
 
             <div className="mt-8 p-6 bg-primary text-primary-foreground rounded-xl">
-              <h3 className="text-xl font-bold mb-3">Ready to Take the Next Step?</h3>
+              <h3 className="text-heading-3 mb-3">Ready to Take the Next Step?</h3>
               <p className="mb-4">
                 Our AI consultants can help you create a customized roadmap based on your assessment results.
               </p>

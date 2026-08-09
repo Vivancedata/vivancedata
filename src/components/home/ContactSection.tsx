@@ -27,7 +27,7 @@ export function ContactSection({
           <div className="inline-block rounded-full bg-muted px-3 py-1 text-sm font-medium text-brand mb-4">
             Get In Touch
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">{title}</h2>
+          <h2 className="text-display mb-4">{title}</h2>
           <p className="text-muted-foreground mb-6">
             {description}
           </p>
@@ -38,7 +38,7 @@ export function ContactSection({
                   <CheckCircle className="h-4 w-4 text-brand" />
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-1">{benefit.title}</h3>
+                  <h3 className="text-heading-4 mb-1">{benefit.title}</h3>
                   <p className="text-muted-foreground">{benefit.description}</p>
                 </div>
               </div>

@@ -98,7 +98,7 @@ export default function Banner() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.6 }}
                 >
-                  <h2 className="mb-4 text-2xl font-bold text-primary-foreground">Schedule a Demo</h2>
+                  <h2 className="text-heading-2 mb-4 text-primary-foreground">Schedule a Demo</h2>
                   <p className="mb-8 text-primary-foreground/85 text-lg">See how our AI solutions can transform your business operations.</p>
                   <Button className="bg-primary-foreground text-brand hover:bg-primary-foreground/90 shadow-lg group">
                     <span>Book Now</span>

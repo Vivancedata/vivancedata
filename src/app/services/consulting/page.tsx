@@ -143,7 +143,7 @@ export default function ConsultingPage() {
         </div>
         
         <div className="w-full md:w-1/2 flex flex-col justify-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">Strategic AI Guidance for Business Leaders</h2>
+          <h2 className="text-heading-1 mb-4">Strategic AI Guidance for Business Leaders</h2>
           <p className="text-muted-foreground mb-6">
             Navigating the complex landscape of artificial intelligence can be challenging. Our consulting services provide the strategic guidance you need to make informed decisions about AI adoption and implementation.
           </p>
@@ -160,13 +160,13 @@ export default function ConsultingPage() {
       </div>
 
       <div className="mb-20">
-        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Our Consulting Services</h2>
+        <h2 className="text-heading-1 mb-8 text-center">Our Consulting Services</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service) => (
             <div key={service.title} className="bg-card p-6 rounded-xl shadow-sm border border-border">
               <div className="flex items-center mb-4">
                 {service.icon}
-                <h3 className="text-xl font-semibold ml-2">{service.title}</h3>
+                <h3 className="text-heading-3 ml-2">{service.title}</h3>
               </div>
               <p className="text-muted-foreground">{service.description}</p>
             </div>
@@ -175,11 +175,11 @@ export default function ConsultingPage() {
       </div>
 
       <div className="mb-20">
-        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Why Choose Our Consulting Services</h2>
+        <h2 className="text-heading-1 mb-8 text-center">Why Choose Our Consulting Services</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {benefits.map((benefit) => (
             <div key={benefit.title} className="bg-card p-6 rounded-xl shadow-sm border border-border">
-              <h3 className="text-xl font-semibold mb-3">{benefit.title}</h3>
+              <h3 className="text-heading-3 mb-3">{benefit.title}</h3>
               <p className="text-muted-foreground">{benefit.description}</p>
             </div>
           ))}
@@ -187,7 +187,7 @@ export default function ConsultingPage() {
       </div>
 
       <div className="mb-20">
-        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Our Consulting Process</h2>
+        <h2 className="text-heading-1 mb-8 text-center">Our Consulting Process</h2>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {[
             { step: "1", title: "Discovery", description: "We begin by understanding your business objectives, challenges, and current capabilities." },
@@ -199,7 +199,7 @@ export default function ConsultingPage() {
               <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center mx-auto mb-4">
                 <span className="text-brand font-bold">{phase.step}</span>
               </div>
-              <h3 className="text-xl font-semibold mb-3">{phase.title}</h3>
+              <h3 className="text-heading-3 mb-3">{phase.title}</h3>
               <p className="text-muted-foreground">{phase.description}</p>
             </div>
           ))}
@@ -207,7 +207,7 @@ export default function ConsultingPage() {
       </div>
       
       <div className="bg-muted rounded-xl p-8 md:p-12 text-center">
-        <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Develop Your AI Strategy?</h2>
+        <h2 className="text-heading-1 mb-4">Ready to Develop Your AI Strategy?</h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
           Let&apos;s discuss how our consulting services can help you navigate the AI landscape and develop a strategy that drives business value.
         </p>

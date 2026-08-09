@@ -112,7 +112,7 @@ export function Blogs({ blogs }: BlogsProps) {
                   </div>
 
                   <div>
-                    <h3 className="text-lg font-semibold tracking-tight">
+                    <h3 className="text-heading-4">
                       {blog.title}
                     </h3>
                     <p className="mt-2 text-sm text-muted-foreground line-clamp-2">

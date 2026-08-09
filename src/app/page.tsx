@@ -43,7 +43,14 @@ export const metadata: Metadata = {
   },
 };
 
-// JSON-LD schema for the homepage
+// JSON-LD schema for the homepage.
+//
+// Keep the name and description here in step with `metadata` above. They drifted
+// once already: the visible copy was rewritten for the blue-collar niche while
+// this object kept "AI Solutions for Modern Businesses" and "Transforming
+// Businesses Through Intelligent Automation", so search engines carried on
+// reading the old positioning out of the structured data after it had gone from
+// the page. Structured data is not decoration -- it is the version Google quotes.
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
@@ -58,7 +65,7 @@ const jsonLd = {
         "width": 180,
         "height": 60
       },
-      "description": "VivanceData provides cutting-edge AI solutions to help businesses transform through intelligent automation.",
+      "description": "VivanceData builds small, specific AI systems for construction, HVAC, logistics and manufacturing businesses \u2014 after-hours call handling and document intake, built on the client's own paperwork.",
       "sameAs": [
         "https://github.com/Vivancedata",
         "https://www.linkedin.com/in/lorenzo-scaturchio"
@@ -68,8 +75,8 @@ const jsonLd = {
       "@type": "WebSite",
       "@id": "https://vivancedata.com/#website",
       "url": "https://vivancedata.com",
-      "name": "VivanceData - AI Solutions for Modern Businesses",
-      "description": "Transforming Businesses Through Intelligent Automation",
+      "name": "VivanceData - AI for construction, HVAC, logistics and manufacturing",
+      "description": "After-hours calls answered and booked. Permits and delivery paperwork read instead of re-keyed.",
       "publisher": {
         "@id": "https://vivancedata.com/#organization"
       }
@@ -78,8 +85,8 @@ const jsonLd = {
       "@type": "WebPage",
       "@id": "https://vivancedata.com/#webpage",
       "url": "https://vivancedata.com",
-      "name": "VivanceData - AI Solutions for Modern Businesses",
-      "description": "We combine cutting-edge AI technology with deep industry expertise to deliver solutions that drive real business outcomes.",
+      "name": "VivanceData - AI for construction, HVAC, logistics and manufacturing",
+      "description": "Small, specific AI systems for trades and field operations, proved on your own documents before you pay for a build.",
       "isPartOf": {
         "@id": "https://vivancedata.com/#website"
       },

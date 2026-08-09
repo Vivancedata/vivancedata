@@ -142,7 +142,7 @@ export default function GenerativeAIPage() {
         </div>
         
         <div className="w-full md:w-1/2 flex flex-col justify-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">Transform Your Business with Generative AI</h2>
+          <h2 className="text-heading-1 mb-4">Transform Your Business with Generative AI</h2>
           <p className="text-muted-foreground mb-6">
             Generative AI is revolutionizing how businesses create content, design products, and engage with customers. Our solutions help you harness this technology to automate creative processes, personalize experiences, and drive innovation across your organization.
           </p>
@@ -159,13 +159,13 @@ export default function GenerativeAIPage() {
       </div>
 
       <div className="mb-20">
-        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Our Generative AI Services</h2>
+        <h2 className="text-heading-1 mb-8 text-center">Our Generative AI Services</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature) => (
             <div key={feature.title} className="bg-card p-6 rounded-xl shadow-sm border border-border">
               <div className="flex items-center mb-4">
                 {feature.icon}
-                <h3 className="text-xl font-semibold ml-2">{feature.title}</h3>
+                <h3 className="text-heading-3 ml-2">{feature.title}</h3>
               </div>
               <p className="text-muted-foreground">{feature.description}</p>
             </div>
@@ -174,14 +174,14 @@ export default function GenerativeAIPage() {
       </div>
 
       <div className="mb-20">
-        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Popular Use Cases</h2>
+        <h2 className="text-heading-1 mb-8 text-center">Popular Use Cases</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {useCases.map((useCase) => (
             <div key={useCase.title} className="bg-card p-6 rounded-xl shadow-sm border border-border">
               <div className="inline-block px-3 py-1 rounded-full bg-muted text-brand text-sm font-medium mb-4">
                 {useCase.industry}
               </div>
-              <h3 className="text-xl font-semibold mb-3">{useCase.title}</h3>
+              <h3 className="text-heading-3 mb-3">{useCase.title}</h3>
               <p className="text-muted-foreground">{useCase.description}</p>
             </div>
           ))}
@@ -189,7 +189,7 @@ export default function GenerativeAIPage() {
       </div>
       
       <div className="bg-muted rounded-xl p-8 md:p-12 text-center">
-        <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Harness the Power of Generative AI?</h2>
+        <h2 className="text-heading-1 mb-4">Ready to Harness the Power of Generative AI?</h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
           Let&apos;s discuss how our generative AI solutions can help your business create better content, designs, and experiences.
         </p>

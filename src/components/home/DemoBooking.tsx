@@ -161,7 +161,7 @@ function DemoFeatureColumn() {
           Book a Demo
         </div>
 
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground leading-tight">
+        <h2 className="text-display mb-6 text-foreground leading-tight">
           See it run on{" "}
           <span className="text-brand">your own paperwork</span>
         </h2>
@@ -178,7 +178,7 @@ function DemoFeatureColumn() {
                 {feature.icon}
               </div>
               <div>
-                <h3 className="font-semibold text-foreground mb-1">{feature.title}</h3>
+                <h3 className="text-heading-4 text-foreground mb-1">{feature.title}</h3>
                 <p className="text-sm text-muted-foreground">{feature.description}</p>
               </div>
             </div>
@@ -206,7 +206,7 @@ function DemoFormCard({ state, onChange, onSubmit }: DemoFormProps) {
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-muted mb-4">
                   <Play className="h-8 w-8 text-brand" />
                 </div>
-                <h3 className="text-2xl font-bold text-foreground mb-2">Book a call</h3>
+                <h3 className="text-heading-2 text-foreground mb-2">Book a call</h3>
                 <p className="text-muted-foreground">
                   Tell us where to reach you and we will get back within one working day.
                 </p>
@@ -370,7 +370,7 @@ function DemoFormCard({ state, onChange, onSubmit }: DemoFormProps) {
               <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-muted mb-6">
                 <CheckCircle className="h-10 w-10 text-brand" />
               </div>
-              <h3 className="text-2xl font-bold text-foreground mb-3">Demo Request Received</h3>
+              <h3 className="text-heading-2 text-foreground mb-3">Demo Request Received</h3>
               <p className="text-muted-foreground mb-6 max-w-sm mx-auto">
                 Thanks, {state.formData.name}. We will get back to you at{" "}
                 <span className="font-medium text-foreground">{state.formData.email}</span>{" "}

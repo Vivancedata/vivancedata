@@ -62,7 +62,7 @@ export default function UseCasesPage() {
       <UseCasesExplorer />
 
       <div className="mt-16 bg-muted rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-4">Ready to Implement?</h2>
+        <h2 className="text-heading-2 mb-4">Ready to Implement?</h2>
         <div className="space-y-4 text-foreground">
           <p>
             Each use case in our repository represents proven AI applications
@@ -72,21 +72,21 @@ export default function UseCasesPage() {
           </p>
           <div className="grid md:grid-cols-3 gap-6 mt-6">
             <div>
-              <h3 className="font-semibold mb-2">Assessment</h3>
+              <h3 className="text-heading-4 mb-2">Assessment</h3>
               <p className="text-sm">
                 We evaluate your readiness and identify the highest-impact
                 opportunities for AI implementation.
               </p>
             </div>
             <div>
-              <h3 className="font-semibold mb-2">Implementation</h3>
+              <h3 className="text-heading-4 mb-2">Implementation</h3>
               <p className="text-sm">
                 We guide you through the entire process, from data
                 preparation to production deployment.
               </p>
             </div>
             <div>
-              <h3 className="font-semibold mb-2">Optimization</h3>
+              <h3 className="text-heading-4 mb-2">Optimization</h3>
               <p className="text-sm">
                 We continuously monitor and improve your AI solutions to
                 maximize ROI over time.

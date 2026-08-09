@@ -20,7 +20,7 @@ export default function ClientLogos() {
           <div className="mb-4 inline-block rounded-full bg-muted px-3 py-1 text-sm font-medium text-brand">
             Industries We Serve
           </div>
-          <h2 className="mb-4 text-2xl font-bold text-foreground md:text-4xl lg:text-5xl">
+          <h2 className="text-display mb-4 text-foreground">
             Sectors We Work In
           </h2>
           <p className="mx-auto max-w-2xl text-base text-muted-foreground md:text-lg">

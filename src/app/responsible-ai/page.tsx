@@ -47,7 +47,7 @@ const Principle = ({ icon, title, description }: PrincipleProps) => (
       <div className="mr-4 p-3 bg-muted rounded-full">
         {icon}
       </div>
-      <h3 className="text-xl font-semibold">{title}</h3>
+      <h3 className="text-heading-3">{title}</h3>
     </div>
     <p className="text-muted-foreground">{description}</p>
   </div>
@@ -66,7 +66,7 @@ const Phase = ({ number, title, description, checks }: PhaseProps) => (
       <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg mr-4 flex-shrink-0">
         {number}
       </div>
-      <h3 className="text-xl font-semibold">{title}</h3>
+      <h3 className="text-heading-3">{title}</h3>
     </div>
     <div className="pl-16">
       <p className="text-muted-foreground mb-4">{description}</p>
@@ -91,7 +91,7 @@ interface CaseStudyProps {
 
 const CaseStudy = ({ title, challenge, approach, outcome }: CaseStudyProps) => (
   <div className="bg-card p-6 rounded-xl shadow-sm border border-border">
-    <h3 className="text-xl font-semibold mb-4">{title}</h3>
+    <h3 className="text-heading-3 mb-4">{title}</h3>
     
     <div className="mb-4">
       <h4 className="text-sm font-medium text-muted-foreground mb-1">Challenge</h4>
@@ -264,7 +264,7 @@ export default function ResponsibleAIPage() {
         </div>
         
         <div className="w-full md:w-1/2 flex flex-col justify-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">Why Responsible AI Matters</h2>
+          <h2 className="text-heading-1 mb-4">Why Responsible AI Matters</h2>
           <p className="text-muted-foreground mb-6">
             As AI becomes increasingly integrated into critical business processes and decision-making, ensuring these systems are developed and deployed responsibly is essential. Responsible AI isn&apos;t just an ethical imperative—it&apos;s a business necessity that builds trust, reduces risk, and creates sustainable value.
           </p>
@@ -281,7 +281,7 @@ export default function ResponsibleAIPage() {
       </div>
 
       <div className="mb-20">
-        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Our Responsible AI Principles</h2>
+        <h2 className="text-heading-1 mb-8 text-center">Our Responsible AI Principles</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {principles.map((principle) => (
             <Principle
@@ -295,7 +295,7 @@ export default function ResponsibleAIPage() {
       </div>
 
       <div className="mb-20">
-        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Our Responsible AI Implementation Process</h2>
+        <h2 className="text-heading-1 mb-8 text-center">Our Responsible AI Implementation Process</h2>
         
         <div className="relative">
           {/* Vertical line connecting phases */}
@@ -316,7 +316,7 @@ export default function ResponsibleAIPage() {
       </div>
 
       <div className="mb-20">
-        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Responsible AI in Action</h2>
+        <h2 className="text-heading-1 mb-8 text-center">Responsible AI in Action</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {caseStudies.map((study) => (
             <CaseStudy
@@ -331,7 +331,7 @@ export default function ResponsibleAIPage() {
       </div>
 
       <div className="mb-20">
-        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">How this shows up in a build</h2>
+        <h2 className="text-heading-1 mb-8 text-center">How this shows up in a build</h2>
         <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-10">
           These are practices applied during delivery using established, mostly open-source tooling.
           They are not products we sell, and nothing here is a platform you would license from us.
@@ -380,7 +380,7 @@ export default function ResponsibleAIPage() {
             }
           ].map((tool) => (
             <div key={tool.title} className="bg-card p-6 rounded-xl shadow-sm border border-border">
-              <h3 className="text-xl font-semibold mb-3">{tool.title}</h3>
+              <h3 className="text-heading-3 mb-3">{tool.title}</h3>
               <p className="text-muted-foreground mb-4">{tool.description}</p>
               <ul className="space-y-2">
                 {tool.features.map((feature) => (
@@ -396,7 +396,7 @@ export default function ResponsibleAIPage() {
       </div>
       
       <div className="bg-muted rounded-xl p-8 md:p-12 text-center">
-        <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Implement Responsible AI?</h2>
+        <h2 className="text-heading-1 mb-4">Ready to Implement Responsible AI?</h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
           Let&apos;s discuss how our Responsible AI Framework can help your organization develop and deploy ethical, transparent, and human-centered AI solutions.
         </p>

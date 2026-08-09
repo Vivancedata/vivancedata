@@ -43,7 +43,7 @@ const IndustryCard = ({ title, description, theme, href }: IndustryCardProps) =>
   <div className="bg-card rounded-xl shadow-sm border border-border overflow-hidden group">
     <div className={`relative aspect-video bg-gradient-to-br ${theme}`}>
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-      <h3 className="absolute bottom-4 left-4 text-2xl font-bold text-primary-foreground">{title}</h3>
+      <h3 className="text-heading-2 absolute bottom-4 left-4 text-primary-foreground">{title}</h3>
     </div>
     <div className="p-6">
       <p className="text-muted-foreground mb-4">{description}</p>
@@ -112,7 +112,7 @@ export default function IndustriesPage() {
       </div>
 
       <div className="mb-20">
-        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Why Choose Industry-Specific AI Solutions</h2>
+        <h2 className="text-heading-1 mb-8 text-center">Why Choose Industry-Specific AI Solutions</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             {
@@ -129,7 +129,7 @@ export default function IndustriesPage() {
             }
           ].map((benefit) => (
             <div key={benefit.title} className="bg-card p-6 rounded-xl shadow-sm border border-border">
-              <h3 className="text-xl font-semibold mb-3">{benefit.title}</h3>
+              <h3 className="text-heading-3 mb-3">{benefit.title}</h3>
               <p className="text-muted-foreground">{benefit.description}</p>
             </div>
           ))}
@@ -137,7 +137,7 @@ export default function IndustriesPage() {
       </div>
 
       <div className="mb-20">
-        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Our Industry Approach</h2>
+        <h2 className="text-heading-1 mb-8 text-center">Our Industry Approach</h2>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {[
             { number: "01", title: "Industry Assessment", description: "We analyze your specific industry context, challenges, and opportunities." },
@@ -149,7 +149,7 @@ export default function IndustriesPage() {
               <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center mx-auto mb-4">
                 <span className="text-brand font-bold">{step.number}</span>
               </div>
-              <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
+              <h3 className="text-heading-3 mb-3">{step.title}</h3>
               <p className="text-muted-foreground">{step.description}</p>
             </div>
           ))}
@@ -157,7 +157,7 @@ export default function IndustriesPage() {
       </div>
       
       <div className="bg-muted rounded-xl p-8 md:p-12 text-center">
-        <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Transform Your Industry?</h2>
+        <h2 className="text-heading-1 mb-4">Ready to Transform Your Industry?</h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
           Let&apos;s discuss how our industry-specific AI solutions can address your unique challenges and opportunities.
         </p>

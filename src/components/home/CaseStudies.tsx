@@ -38,7 +38,7 @@ export default function CaseStudies() {
           <div className="mb-4 inline-block rounded-full bg-muted px-3 py-1 text-sm font-medium text-brand">
             Success Stories
           </div>
-          <h2 className="mb-6 text-3xl font-bold text-foreground md:text-5xl">Case Studies</h2>
+          <h2 className="text-display mb-6 text-foreground">Case Studies</h2>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
             Representative engagement patterns across industries, showing common challenges,
             solution approaches, and delivery outcomes.
@@ -64,7 +64,7 @@ export default function CaseStudies() {
                         <Badge className="mb-3 bg-muted px-3 py-1 text-brand hover:bg-muted">
                           {study.industry}
                         </Badge>
-                        <CardTitle className="text-3xl font-bold text-foreground md:text-4xl">
+                        <CardTitle className="text-display text-foreground">
                           {study.title}
                         </CardTitle>
                         <p className="mt-2 text-lg text-muted-foreground">Client: {study.client}</p>
@@ -73,21 +73,21 @@ export default function CaseStudies() {
 
                     <CardContent className="space-y-8 p-0">
                       <div>
-                        <h3 className="mb-3 text-xl font-bold text-brand">Challenge</h3>
+                        <h3 className="text-heading-3 mb-3 text-brand">Challenge</h3>
                         <CardDescription className="text-base text-muted-foreground">
                           {study.challenge}
                         </CardDescription>
                       </div>
 
                       <div>
-                        <h3 className="mb-3 text-xl font-bold text-brand">Solution</h3>
+                        <h3 className="text-heading-3 mb-3 text-brand">Solution</h3>
                         <CardDescription className="text-base text-muted-foreground">
                           {study.solution}
                         </CardDescription>
                       </div>
 
                       <div>
-                        <h3 className="mb-3 text-xl font-bold text-brand">Results</h3>
+                        <h3 className="text-heading-3 mb-3 text-brand">Results</h3>
                         <ul className="space-y-3">
                           {study.results.map((result) => (
                             <li key={`${study.id}-result-${result}`} className="flex items-start">
@@ -109,7 +109,7 @@ export default function CaseStudies() {
                       </div>
 
                       <div>
-                        <h3 className="mb-3 text-xl font-bold text-brand">Technologies Used</h3>
+                        <h3 className="text-heading-3 mb-3 text-brand">Technologies Used</h3>
                         <div className="flex flex-wrap gap-2">
                           {study.technologies.map((tech) => (
                             <Badge

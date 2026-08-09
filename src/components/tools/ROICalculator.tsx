@@ -330,7 +330,7 @@ function FinancialBreakdown({ results }: FinancialBreakdownProps) {
         <CardContent>
           <div className="space-y-6">
             <div>
-              <h4 className="font-semibold mb-3 text-destructive">Total Investment</h4>
+              <h4 className="text-heading-4 mb-3 text-destructive">Total Investment</h4>
               <div className="bg-destructive/10 rounded-md p-4">
                 <div className="flex justify-between items-center">
                   <span className="text-foreground">Implementation Cost</span>
@@ -340,7 +340,7 @@ function FinancialBreakdown({ results }: FinancialBreakdownProps) {
             </div>
 
             <div>
-              <h4 className="font-semibold mb-3 text-brand">Projected Savings</h4>
+              <h4 className="text-heading-4 mb-3 text-brand">Projected Savings</h4>
               <div className="space-y-3">
                 <div className="bg-success/10 rounded-md p-4">
                   <div className="flex justify-between items-center">
@@ -393,7 +393,7 @@ function ROICallToAction() {
     >
       <Card className="bg-primary text-primary-foreground border-0">
         <CardContent className="p-8 text-center">
-          <h3 className="text-2xl font-bold mb-3">Ready to Realize These Returns?</h3>
+          <h3 className="text-heading-2 mb-3">Ready to Realize These Returns?</h3>
           <p className="mb-6 text-primary-foreground/80">
             Schedule a consultation to discuss how we can help you achieve these results with a customized AI solution.
           </p>
