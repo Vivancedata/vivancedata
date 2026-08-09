@@ -207,7 +207,7 @@ export default function HealthcareClient({
       </StaggerContainer>
 
       <AnimateOnScroll variant="fadeIn" className="mb-20 bg-muted rounded-xl p-8 md:p-12 shadow-lg">
-        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Measurable Results for Healthcare Organizations</h2>
+        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Where AI Earns Its Keep in Healthcare</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {stats.map((stat, index) => (
             <AnimateOnScroll key={stat.label} variant="scaleIn" delay={index * 0.1} className="text-center">

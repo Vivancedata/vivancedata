@@ -217,7 +217,7 @@ export default function PublicSectorClient({
 
       <AnimateOnScroll variant="fadeIn" className="mb-20 bg-muted rounded-xl p-8 md:p-12 shadow-lg">
         <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">
-          Measurable Results for Public Sector Organizations
+          Where AI Earns Its Keep in the Public Sector
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {stats.map((stat, index) => (

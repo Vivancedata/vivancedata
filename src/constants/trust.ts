@@ -1,69 +1,81 @@
-import { Shield, Lock, CheckCircle, FileCheck, Scale, Cloud } from "lucide-react"
+import { Shield, Lock, KeyRound, FileCheck, Trash2, Scale } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
 
-export interface TrustCertification {
+/**
+ * Commitments, not certifications.
+ *
+ * This section previously asserted SOC 2 Type II ("independently audited"),
+ * ISO 27001, HIPAA and AWS Partner status. None of those are held, and an
+ * unearned attestation is the kind of claim that fails a buyer's diligence and
+ * creates real liability. Everything below is a practice under our own control,
+ * so it is verifiable rather than attested.
+ *
+ * Do not add an entry here that a third party would have to certify.
+ */
+
+export interface TrustCommitment {
   id: string
   name: string
   description: string
   icon: LucideIcon
 }
 
-export interface SecurityFeature {
+export interface SecurityPractice {
   label: string
 }
 
-export const certifications: TrustCertification[] = [
+export const commitments: TrustCommitment[] = [
   {
-    id: "soc2",
-    name: "SOC 2 Type II",
-    description: "Independently audited security controls for data protection and privacy",
-    icon: Shield,
-  },
-  {
-    id: "gdpr",
-    name: "GDPR Compliant",
-    description: "Full compliance with European data protection regulations",
+    id: "data-ownership",
+    name: "Your Data Stays Yours",
+    description: "Client data is never used to train models, never resold, and never shared with third parties",
     icon: Lock,
   },
   {
-    id: "iso27001",
-    name: "ISO 27001",
-    description: "International standard for information security management",
-    icon: CheckCircle,
-  },
-  {
-    id: "hipaa",
-    name: "HIPAA Compliant",
-    description: "Healthcare data protection and privacy standards",
+    id: "ip-ownership",
+    name: "You Own the Output",
+    description: "Code, prompts, pipelines and documentation transfer to you on delivery. No platform lock-in",
     icon: FileCheck,
   },
   {
-    id: "ccpa",
-    name: "CCPA Compliant",
-    description: "California Consumer Privacy Act compliance for data rights",
-    icon: Scale,
+    id: "least-access",
+    name: "Least-Privilege Access",
+    description: "Access is scoped to the systems an engagement actually needs, and revoked when it ends",
+    icon: KeyRound,
   },
   {
-    id: "aws-partner",
-    name: "AWS Partner",
-    description: "Certified AWS partner with expertise in cloud-native AI solutions",
-    icon: Cloud,
+    id: "secrets",
+    name: "Credentials Handled Properly",
+    description: "Data in transit is TLS-encrypted and secrets live in managed vaults, never in code or config",
+    icon: Shield,
+  },
+  {
+    id: "deletion",
+    name: "Deletion on Request",
+    description: "Your data and our access are removed at the end of an engagement, or sooner if you ask",
+    icon: Trash2,
+  },
+  {
+    id: "your-framework",
+    name: "Built to Your Framework",
+    description: "For regulated work we build inside your existing controls and audit requirements rather than claiming our own certifications",
+    icon: Scale,
   },
 ]
 
-export const securityFeatures: SecurityFeature[] = [
-  { label: "256-bit Encryption" },
-  { label: "Regular Audits" },
-  { label: "24/7 Monitoring" },
+export const securityPractices: SecurityPractice[] = [
+  { label: "Least-privilege access" },
+  { label: "Secrets never in code" },
+  { label: "Documented handover" },
 ]
 
 export const trustSectionContent = {
-  badge: "Security & Compliance",
-  title: "Enterprise-Grade Security & Compliance",
+  badge: "Data & Security",
+  title: "How your data is handled",
   description:
-    "Your data security is our top priority. We maintain the highest industry standards to ensure your information is protected at every level.",
+    "No inherited certifications and no borrowed badges. These are the commitments that govern every engagement.",
   secureByDesign: {
-    title: "Secure by Design",
-    description: "All our solutions are built with security-first architecture",
+    title: "Secure by default",
+    description: "Every build starts from least privilege and explicit data boundaries",
   },
 }

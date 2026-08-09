@@ -202,24 +202,27 @@ export default function ResponsibleAIPage() {
     }
   ];
 
+  // Illustrative scenarios, not delivered engagements. The `outcome` field
+  // describes what the approach is designed to produce, never a measured result.
+  // No number goes in here without a named client who has agreed to publish it.
   const caseStudies = [
     {
-      title: "Financial Services: Ethical Loan Approval System",
-      challenge: "A financial institution needed an AI system to automate loan approvals while ensuring fairness across demographic groups and regulatory compliance.",
-      approach: "We implemented a transparent model with explainable decisions, conducted extensive fairness testing across protected attributes, and established a human review process for edge cases.",
-      outcome: "The system achieved 99.7% regulatory compliance while reducing approval time by 60% and maintaining equal approval rates across demographic groups when controlling for relevant factors."
+      title: "Financial Services: Fair Loan Decisioning",
+      challenge: "A lender wants to automate parts of loan assessment without creating disparate impact across demographic groups, and has to show a regulator how each decision was reached.",
+      approach: "Keep the model explainable rather than maximally accurate, test outcomes across protected attributes before launch, log every decision with its inputs, and route edge cases to a human reviewer.",
+      outcome: "The design goal is a decision trail an auditor can follow end to end, with fairness testing repeated on a schedule rather than only at launch."
     },
     {
-      title: "Healthcare: Privacy-Preserving Patient Analytics",
-      challenge: "A healthcare provider wanted to use AI to identify at-risk patients while strictly protecting sensitive patient data and maintaining trust.",
-      approach: "We developed a federated learning approach that kept data on local systems, implemented differential privacy techniques, and created tiered access controls with audit trails.",
-      outcome: "The solution successfully identified 28% more at-risk patients while maintaining HIPAA compliance and zero data breaches, earning patient trust through transparent communication."
+      title: "Healthcare: Privacy-Preserving Analytics",
+      challenge: "A provider wants to identify at-risk patients without moving sensitive records into new systems or widening the set of people who can read them.",
+      approach: "Keep data inside the systems that already hold it, minimise what is extracted, apply tiered access with audit trails, and build inside the provider's existing HIPAA controls rather than alongside them.",
+      outcome: "The design goal is analytics that add no new copies of patient data and no new access paths to it."
     },
     {
-      title: "Retail: Unbiased Customer Recommendation Engine",
-      challenge: "A retailer needed a recommendation system that would provide personalized suggestions without reinforcing stereotypes or creating filter bubbles.",
-      approach: "We designed a diverse-by-default algorithm with explicit fairness constraints, implemented explanation features for recommendations, and created a feedback loop for continuous improvement.",
-      outcome: "The system increased conversion rates by 23% while receiving positive user feedback for discovery of new products and avoiding problematic stereotyping in recommendations."
+      title: "Retail: Recommendations Without Filter Bubbles",
+      challenge: "A retailer wants personalised recommendations that do not narrow over time or lean on demographic proxies for taste.",
+      approach: "Set explicit diversity constraints in the ranking, expose why an item was recommended, and monitor for drift toward a narrowing set of products.",
+      outcome: "The design goal is a recommender whose behaviour can be inspected and corrected, rather than one that is only measured on click-through."
     }
   ];
 
@@ -328,47 +331,51 @@ export default function ResponsibleAIPage() {
       </div>
 
       <div className="mb-20">
-        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Our Responsible AI Tools</h2>
+        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">How this shows up in a build</h2>
+        <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-10">
+          These are practices applied during delivery using established, mostly open-source tooling.
+          They are not products we sell, and nothing here is a platform you would license from us.
+        </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {[
             {
-              title: "Bias Detection & Mitigation",
-              description: "Our proprietary tools identify and address biases in data and algorithms, ensuring fair outcomes across different demographic groups.",
+              title: "Bias Testing",
+              description: "Model outputs are tested across the attributes that carry risk in your domain before anything reaches production, and again on a schedule afterwards.",
               features: [
-                "Automated bias detection across protected attributes",
-                "Counterfactual testing for fairness evaluation",
-                "Mitigation techniques that preserve model performance",
-                "Comprehensive reporting and documentation"
+                "Outcome comparison across protected attributes",
+                "Counterfactual tests for individual fairness",
+                "Mitigation weighed against measured performance cost",
+                "Findings written up rather than left in a notebook"
               ]
             },
             {
-              title: "Explainability Dashboard",
-              description: "Interactive visualizations that make AI decision-making transparent and understandable to both technical and non-technical stakeholders.",
+              title: "Explainability",
+              description: "Every decision a system makes can be traced back to the inputs that drove it, in terms a non-technical reviewer can follow.",
               features: [
-                "Feature importance analysis",
-                "Natural language explanations of model decisions",
-                "What-if scenario testing",
-                "User-friendly interface for business users"
+                "Feature attribution on individual predictions",
+                "Plain-language rationale alongside each output",
+                "What-if inspection for borderline cases",
+                "Citations back to source documents in retrieval systems"
               ]
             },
             {
-              title: "Privacy-Preserving AI",
-              description: "Techniques and tools that enable powerful AI capabilities while protecting sensitive data and maintaining privacy.",
+              title: "Privacy-Preserving Techniques",
+              description: "Where data cannot or should not move, the architecture works around that constraint rather than asking you to relax it.",
               features: [
-                "Federated learning implementation",
-                "Differential privacy techniques",
-                "Secure multi-party computation",
-                "Privacy impact assessment framework"
+                "Keeping data inside systems that already hold it",
+                "Minimising what is extracted and retained",
+                "Differential privacy where aggregate release is needed",
+                "Tiered access with audit trails"
               ]
             },
             {
-              title: "AI Governance Platform",
-              description: "A comprehensive system for managing the entire lifecycle of AI models with appropriate oversight and documentation.",
+              title: "Governance and Documentation",
+              description: "The paperwork a model needs to survive review: what it is, what it was trained on, who approved it, and what changed since.",
               features: [
-                "Model inventory and lineage tracking",
-                "Automated compliance checking",
-                "Risk assessment and mitigation",
-                "Audit trails and version control"
+                "Model inventory and data lineage",
+                "Versioning of prompts, models and evaluation sets",
+                "Risk assessment recorded before deployment",
+                "Audit trail of changes and approvals"
               ]
             }
           ].map((tool) => (

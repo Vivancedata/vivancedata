@@ -72,11 +72,15 @@ export default function EnergyPage() {
     }
   ];
 
+  // Focus areas, not outcome claims. These tiles previously carried invented
+  // metrics (e.g. "99.7% regulatory compliance accuracy") for engagements that
+  // never happened. Do not put a number here until a named client has agreed to
+  // it being published.
   const stats = [
-    { value: "3×", label: "More anomalies detected vs. rule-based" },
-    { value: "22%", label: "Reduction in maintenance costs" },
-    { value: "40%", label: "Fewer false positive alerts" },
-    { value: "15%", label: "Improvement in load forecast accuracy" }
+    { value: "Anomaly Detection", label: "Grid and asset telemetry" },
+    { value: "Load Forecasting", label: "Demand prediction from historical data" },
+    { value: "Field Reports", label: "Structuring inspection and outage notes" },
+    { value: "Auditability", label: "Traceable inputs behind every output" },
   ];
 
   return <EnergyClient solutions={solutions} caseStudies={caseStudies} stats={stats} />;

@@ -48,8 +48,11 @@ export default function ROICalculatorPage() {
           <h2 className="text-2xl font-bold mb-4">How This Calculator Works</h2>
           <div className="space-y-4 text-foreground">
             <p>
-              Our ROI calculator uses industry benchmarks and real-world implementation data
-              to provide realistic estimates of AI investment returns.
+              This calculator applies a transparent cost model to the numbers you enter: a base
+              implementation cost that scales with headcount, a multiplier per use case, and a
+              three-year savings ramp that assumes a partial first year. It is a planning estimate
+              to pressure-test a business case, not a forecast, and it is only as good as the
+              inputs you give it.
             </p>
             <div className="grid md:grid-cols-2 gap-6 mt-6">
               <div>

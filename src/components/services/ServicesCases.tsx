@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, Building2, HeartPulse, ShoppingCart } from "lucide-react";
+import { ArrowRight, FileText, Search, Workflow } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface Case {
@@ -16,35 +16,28 @@ interface ServicesCasesProps {
   title: string;
   description: string;
   cases: Case[];
+  ctaLabel?: string;
 }
 
-export function ServicesCases({ 
-  title, 
-  description, 
-  cases 
+export function ServicesCases({
+  title,
+  description,
+  cases,
+  ctaLabel = "Learn more"
 }: ServicesCasesProps): React.ReactElement {
   const getCaseVisual = (category: string) => {
+    const gradient = "from-primary to-primary/85";
+    const iconClass = "h-7 w-7 text-primary-foreground/90";
+
     switch (category) {
-      case "Software Development":
-        return {
-          icon: <Building2 className="h-7 w-7 text-primary-foreground/90" aria-hidden="true" />,
-          gradient: "from-primary to-primary/85",
-        };
-      case "AI Engineering":
-        return {
-          icon: <HeartPulse className="h-7 w-7 text-primary-foreground/90" aria-hidden="true" />,
-          gradient: "from-primary to-primary/85",
-        };
-      case "Machine Learning":
-        return {
-          icon: <ShoppingCart className="h-7 w-7 text-primary-foreground/90" aria-hidden="true" />,
-          gradient: "from-primary to-primary/85",
-        };
+      case "Document Processing":
+        return { icon: <FileText className={iconClass} aria-hidden="true" />, gradient };
+      case "Knowledge & Retrieval":
+        return { icon: <Search className={iconClass} aria-hidden="true" />, gradient };
+      case "Workflow Automation":
+        return { icon: <Workflow className={iconClass} aria-hidden="true" />, gradient };
       default:
-        return {
-          icon: <Building2 className="h-7 w-7 text-primary-foreground/90" aria-hidden="true" />,
-          gradient: "from-primary to-primary/85",
-        };
+        return { icon: <Workflow className={iconClass} aria-hidden="true" />, gradient };
     }
   };
 
@@ -73,7 +66,7 @@ export function ServicesCases({
                   <p className="text-muted-foreground mb-4">{caseItem.description}</p>
                   <Button variant="outline" size="sm" asChild>
                     <Link href={caseItem.link} className="inline-flex items-center">
-                      Read Case Study <ArrowRight className="ml-2 h-4 w-4" />
+                      {ctaLabel} <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
                 </div>

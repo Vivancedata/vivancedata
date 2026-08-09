@@ -214,7 +214,7 @@ export default function ManufacturingClient({
         className="mb-3xl rounded-lg border border-border bg-muted p-xl md:p-2xl"
       >
         <h2 className="mb-xl text-center text-heading-1">
-          Measurable Results for Manufacturing Teams
+          Where AI Earns Its Keep in Manufacturing
         </h2>
         <div className="grid grid-cols-2 gap-lg md:grid-cols-4">
           {stats.map((stat, index) => (
