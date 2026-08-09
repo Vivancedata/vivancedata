@@ -81,7 +81,7 @@ export default function UseCasesPage() {
             <div>
               <h3 className="font-semibold mb-2">Implementation</h3>
               <p className="text-sm">
-                Our experts guide you through the entire process, from data
+                We guide you through the entire process, from data
                 preparation to production deployment.
               </p>
             </div>

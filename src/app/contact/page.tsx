@@ -8,11 +8,11 @@ import { Mail, Clock } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: "Contact Us - VivanceData",
-  description: "Get in touch with VivanceData to discuss your AI and data needs. Schedule a free consultation with our experts to transform your business with intelligent automation.",
+  description: "Get in touch to discuss what you are trying to automate. You will talk to the person who would do the work, not an account manager.",
   keywords: ["contact VivanceData", "AI consultation", "get in touch", "AI services inquiry", "business consultation"],
   openGraph: {
     title: "Contact Us - VivanceData",
-    description: "Schedule a free consultation with our AI experts. Transform your business with intelligent automation.",
+    description: "Book a consultation and talk directly to the person who would build it.",
     type: "website",
     url: "https://vivancedata.com/contact",
     images: [
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Contact Us - VivanceData",
-    description: "Schedule a free consultation with our AI experts.",
+    description: "Book a consultation and talk directly to the person who would build it.",
     images: ["https://vivancedata.com/images/banner.png"],
   },
 };

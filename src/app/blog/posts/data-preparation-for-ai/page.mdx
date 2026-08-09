@@ -8,7 +8,7 @@ image: "/images/ai-solutions.png"
 
 # Data Preparation for AI: The Foundation of Success
 
-There's a saying in AI circles: "Garbage in, garbage out." No matter how sophisticated your AI model, it will only be as good as the data you feed it. Data preparation typically consumes 50-70% of any AI project timeline, yet it's often underestimated during planning.
+There's a saying in AI circles: "Garbage in, garbage out." No matter how sophisticated your AI model, it will only be as good as the data you feed it. Data preparation routinely consumes more of the schedule than the modelling does, and it is almost always the phase that was underestimated when the plan was written.
 
 This guide provides a practical roadmap for preparing your data for AI success.
 
@@ -26,13 +26,25 @@ Most AI projects don't fail because of algorithm selection or computational powe
 
 ### The Cost of Poor Data
 
-Consider these real-world scenarios:
+Three failure patterns worth recognising, because each one produces a model that
+trains cleanly and fails quietly:
 
-**Healthcare AI:** A hospital's patient readmission prediction model performed poorly because 30% of discharge records had missing or incorrect data about post-discharge care plans.
+**Missing context in the source records.** Consider a readmission prediction model
+built on discharge records where the post-discharge care plan is frequently absent.
+The model does not know the field is missing for a reason; it learns from the
+records that happen to be complete, which are not a random sample of patients.
 
-**Retail AI:** A demand forecasting system failed because historical sales data didn't account for out-of-stock situations—the AI learned to predict low demand for items that were simply unavailable.
+**Data that records the outcome of a constraint rather than the demand.** Consider
+a demand forecast trained on historical sales that does not distinguish "nobody
+wanted it" from "it was out of stock". The model learns to predict low demand for
+exactly the items you kept failing to stock, and the forecast then justifies not
+stocking them.
 
-**Financial AI:** A fraud detection system flagged legitimate transactions at high rates because training data from a specific region was contaminated with duplicate entries.
+**Duplicate records that concentrate in one segment.** Consider a fraud model whose
+training data contains duplicated entries from a single region. The duplicates
+inflate the apparent frequency of whatever those records contain, and the model
+becomes miscalibrated for that population specifically — which is hard to see in
+an aggregate accuracy score.
 
 ## The Five Stages of Data Preparation
 
@@ -58,17 +70,22 @@ For each source, evaluate:
 - **Timeliness:** Is data current or outdated?
 - **Validity:** Do values conform to expected formats and ranges?
 
-**Example Assessment:**
+**What to record for each source:**
 
 ```
 Customer Database Audit:
-- Total records: 125,000
-- Email completeness: 87%
-- Email validity: 72% (invalid formats, typos)
-- Phone completeness: 45%
-- Duplicate records: 3,200 (2.6%)
-- Last updated: 40% within 6 months, 60% older
+- Total records:            <count>
+- Email completeness:       <populated / total>
+- Email validity:           <passing format check / populated>
+- Phone completeness:       <populated / total>
+- Duplicate records:        <count, and the rule used to detect them>
+- Recency distribution:     <share updated within N months>
 ```
+
+Write the detection rule down next to each figure. "Duplicates: 3,200" means
+nothing on its own — the number is entirely a function of whether you matched on
+exact email, fuzzy name, or address proximity, and the next person to run the audit
+will get a different answer unless the rule travels with it.
 
 ### Stage 2: Data Collection and Integration
 
@@ -77,10 +94,14 @@ Once you know what you need, gather and consolidate it.
 **Define Collection Requirements**
 
 Be specific about what you need:
-- **Volume:** How many examples do you need?
-  - Simple classification: 1,000-10,000 examples
-  - Complex prediction: 100,000+ examples
-  - Deep learning: 1,000,000+ examples
+- **Volume:** How many examples do you need? There is no universal answer, but the
+  ordering is reliable: a simple classifier over a handful of well-separated classes
+  needs far less than a model predicting a rare outcome from many weak signals, and
+  training a deep model from scratch needs more again by a wide margin. What
+  actually governs it is how many examples you have of the *rarest class you care
+  about* — the total row count is the number people quote and the least informative
+  one. Establish the requirement empirically: train on a fraction of what you have,
+  then on more, and see whether performance is still climbing.
 - **Timeframe:** How much historical data?
 - **Features:** What specific attributes matter?
 
@@ -114,7 +135,7 @@ This is often the most time-intensive phase.
 
 **Strategy 1: Deletion**
 - Remove records with missing critical values
-- Use when: Missing data is minimal (&lt;5%) and random
+- Use when: the affected records are a small share of the total *and* the missingness is random. The second condition is the one that matters and the one nobody checks — if a field is missing because of something systematic, deleting those rows deletes a population.
 
 **Strategy 2: Imputation**
 - Fill missing values with estimates
@@ -268,27 +289,32 @@ Regular reporting helps maintain standards:
 ```
 Weekly Data Quality Report:
 
-Sources Processed: 5
-Total Records: 1,234,567
-New Records: 45,678
+Sources Processed:  <count>
+Total Records:      <count>
+New Records:        <count since last report>
 
-Quality Metrics:
-- Completeness: 94% (↑ 2% from last week)
-- Accuracy: 97% (→ no change)
-- Duplicates Found: 234 (↓ 45%)
-- Errors Corrected: 1,456
+Quality Metrics (each with its change since last report):
+- Completeness:     <populated fields / expected fields>
+- Accuracy:         <records passing validation / records checked>
+- Duplicates found: <count, by detection rule>
+- Errors corrected: <count, by category>
 
 Top Issues:
-1. Missing email addresses (3,456 records)
-2. Invalid phone formats (2,890 records)
-3. Future-dated transactions (234 records)
+1. <issue>  <affected record count>
+2. <issue>  <affected record count>
+3. <issue>  <affected record count>
 ```
+
+The change-since-last-week column is the part that earns its keep. An absolute
+completeness figure tells you little; a completeness figure that dropped sharply
+overnight tells you an upstream system changed, and that is the alert you actually
+want.
 
 ## Common Data Preparation Challenges
 
 ### Challenge 1: Insufficient Historical Data
 
-**Problem:** Need 100,000 examples but only have 5,000
+**Problem:** The learning curve is still climbing when you run out of data — more examples would clearly help, and you do not have them
 
 **Solutions:**
 - Start with simpler AI approaches that need less data
@@ -299,7 +325,7 @@ Top Issues:
 
 ### Challenge 2: Imbalanced Data
 
-**Problem:** Fraud detection with 99.9% legitimate transactions, 0.1% fraud
+**Problem:** Fraud detection, where legitimate transactions outnumber fraudulent ones by orders of magnitude. A model that labels everything legitimate will score extremely well on accuracy and be worthless.
 
 **Solutions:**
 - **Oversampling:** Duplicate minority class examples
@@ -388,23 +414,20 @@ Track these metrics:
 - Reduction in model training time
 - Decrease in production errors
 
-**Example Success Story:**
+The comparison only means something if you actually keep the raw-data baseline.
+Train once on the unprepared data first, however badly it performs, and preserve
+that result. Teams routinely skip this because the raw run seems like wasted
+effort, and then have no way to show what the preparation work bought — or to
+notice when a cleaning rule made things worse.
 
-```
-Before Data Preparation:
-- Model accuracy: 67%
-- Training time: 8 hours
-- Production errors: 15% of predictions flagged for review
-
-After Data Preparation:
-- Model accuracy: 89%
-- Training time: 2 hours
-- Production errors: 3% of predictions flagged for review
-```
+Be specific about which metric you claim. Faster training and higher accuracy are
+different results with different causes: deduplication shrinks the dataset and
+speeds up training without necessarily improving anything, and a rise in accuracy
+after you dropped incomplete records may just mean you removed the hard cases.
 
 ## Conclusion
 
-Data preparation is unglamorous but essential work. Organizations that invest properly in data quality, cleaning, and transformation see dramatically better AI outcomes.
+Data preparation is unglamorous but essential work, and it is where most of the difference between a model that works in production and one that only worked in the notebook gets decided.
 
 Remember:
 - **Assess before you collect:** Understand your current data state

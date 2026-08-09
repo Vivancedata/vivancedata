@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 const resources = [
   {
     title: "Blog",
-    description: "Stay updated with the latest insights on AI trends, implementation strategies, and industry best practices from our team of experts.",
+    description: "Practical writing on AI implementation, plus free tools for sizing a project before you commit budget to it.",
     href: "/blog",
     icon: BookOpen,
     color: "bg-brand",
