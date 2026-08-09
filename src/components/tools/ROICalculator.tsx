@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { ReportGate } from "@/components/tools/ReportGate";
 import { Calculator, TrendingUp, DollarSign, Clock, Users, Zap } from "lucide-react";
 import { m, AnimatePresence } from "framer-motion";
 import Link from "next/link";
@@ -82,6 +83,19 @@ const calculateROI = (inputs: ROIInputs): ROIResults => {
     hoursSaved: Math.round(hoursSaved),
   };
 };
+
+const buildROISummary = (results: ROIResults): Record<string, string | number> => ({
+  "3-year ROI": `${results.roiPercentage}%`,
+  "Payback period": `${results.paybackMonths} months`,
+  "Implementation cost": formatCurrency(results.totalCost),
+  "Year 1 savings": formatCurrency(results.yearOneSavings),
+  "Year 2 savings": formatCurrency(results.yearTwoSavings),
+  "Year 3 savings": formatCurrency(results.yearThreeSavings),
+  "Total 3-year savings": formatCurrency(results.totalThreeYearSavings),
+  "Net return (3 years)": formatCurrency(results.netROI),
+  "Efficiency gain": `${results.efficiencyGainPercent}%`,
+  "Hours saved per year": formatNumber(results.hoursSaved),
+});
 
 interface ROIInputFormProps {
   inputs: ROIInputs;
@@ -209,13 +223,13 @@ interface ROIMetricsProps {
 
 function ROIMetrics({ results }: ROIMetricsProps) {
   return (
-    <div className="grid md:grid-cols-3 gap-6">
+    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
       <m.div
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 0.1 }}
       >
-        <Card className="bg-muted border-brand/20 dark:border-brand/30">
+        <Card className="h-full bg-muted border-brand/20 dark:border-brand/30">
           <CardHeader>
             <CardTitle as="h3" className="text-lg flex items-center gap-2">
               <TrendingUp className="h-5 w-5 text-brand" aria-hidden="true" />
@@ -223,7 +237,7 @@ function ROIMetrics({ results }: ROIMetricsProps) {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-brand" aria-label={`3-Year ROI: ${results.roiPercentage} percent`}>{results.roiPercentage}%</div>
+            <div className="text-2xl font-bold text-brand tabular-nums whitespace-nowrap" aria-label={`3-Year ROI: ${results.roiPercentage} percent`}>{results.roiPercentage}%</div>
             <p className="text-sm text-muted-foreground mt-1">
               {formatCurrency(results.netROI)} net return
             </p>
@@ -236,7 +250,7 @@ function ROIMetrics({ results }: ROIMetricsProps) {
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 0.2 }}
       >
-        <Card className="bg-muted border-brand/20 dark:border-brand/30">
+        <Card className="h-full bg-muted border-brand/20 dark:border-brand/30">
           <CardHeader>
             <CardTitle as="h3" className="text-lg flex items-center gap-2">
               <Clock className="h-5 w-5 text-brand" aria-hidden="true" />
@@ -244,7 +258,7 @@ function ROIMetrics({ results }: ROIMetricsProps) {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-brand" aria-label={`Payback period: ${results.paybackMonths} months`}>{results.paybackMonths} mo</div>
+            <div className="text-2xl font-bold text-brand tabular-nums whitespace-nowrap" aria-label={`Payback period: ${results.paybackMonths} months`}>{results.paybackMonths} mo</div>
             <p className="text-sm text-muted-foreground mt-1">
               Break-even timeline
             </p>
@@ -257,7 +271,28 @@ function ROIMetrics({ results }: ROIMetricsProps) {
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 0.3 }}
       >
-        <Card className="bg-muted border-brand/20 dark:border-brand/30">
+        <Card className="h-full bg-muted border-brand/20 dark:border-brand/30">
+          <CardHeader>
+            <CardTitle as="h3" className="text-lg flex items-center gap-2">
+              <DollarSign className="h-5 w-5 text-brand" aria-hidden="true" />
+              Total 3-Year Savings
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold text-brand tabular-nums whitespace-nowrap" aria-label={`Total three year savings: ${formatCurrency(results.totalThreeYearSavings)}`}>{formatCurrency(results.totalThreeYearSavings)}</div>
+            <p className="text-sm text-muted-foreground mt-1">
+              Before implementation cost
+            </p>
+          </CardContent>
+        </Card>
+      </m.div>
+
+      <m.div
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ delay: 0.4 }}
+      >
+        <Card className="h-full bg-muted border-brand/20 dark:border-brand/30">
           <CardHeader>
             <CardTitle as="h3" className="text-lg flex items-center gap-2">
               <Zap className="h-5 w-5 text-brand" aria-hidden="true" />
@@ -265,7 +300,7 @@ function ROIMetrics({ results }: ROIMetricsProps) {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-brand" aria-label={`Efficiency gain: ${results.efficiencyGainPercent} percent`}>{results.efficiencyGainPercent}%</div>
+            <div className="text-2xl font-bold text-brand tabular-nums whitespace-nowrap" aria-label={`Efficiency gain: ${results.efficiencyGainPercent} percent`}>{results.efficiencyGainPercent}%</div>
             <p className="text-sm text-muted-foreground mt-1">
               {formatNumber(results.hoursSaved)} hours/year saved
             </p>
@@ -394,7 +429,14 @@ function ROIResultsPanel({ results, resultsRef }: ROIResultsPanelProps) {
     >
       <h2 className="sr-only">ROI Calculation Results</h2>
       <ROIMetrics results={results} />
-      <FinancialBreakdown results={results} />
+      <ReportGate
+        tool="roi-calculator"
+        title="See the full financial breakdown"
+        description="Your headline numbers are above. Enter your email to reveal the year-by-year savings and cost assumptions behind them, and get the same breakdown sent to you."
+        summary={buildROISummary(results)}
+      >
+        <FinancialBreakdown results={results} />
+      </ReportGate>
       <ROICallToAction />
     </m.div>
   );

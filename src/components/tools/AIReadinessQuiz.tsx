@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
+import { ReportGate } from "@/components/tools/ReportGate";
 import { m, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import {
@@ -323,6 +324,17 @@ const getRecommendations = (categoryAverages: CategoryAverages): string[] => {
   return recommendations;
 };
 
+const buildQuizSummary = (
+  results: QuizAssessmentResults,
+  readinessLevel: ReadinessLevel
+): Record<string, string | number> => ({
+  "Overall readiness": `${Math.round(results.percentageScore)}% - ${readinessLevel.level}`,
+  [categoryInfo.data.label]: `${results.categoryAverages.data.toFixed(1)} / 5.0`,
+  [categoryInfo.infrastructure.label]: `${results.categoryAverages.infrastructure.toFixed(1)} / 5.0`,
+  [categoryInfo.culture.label]: `${results.categoryAverages.culture.toFixed(1)} / 5.0`,
+  [categoryInfo.strategy.label]: `${results.categoryAverages.strategy.toFixed(1)} / 5.0`,
+});
+
 interface ReadinessSummaryProps {
   results: QuizAssessmentResults;
   readinessLevel: ReadinessLevel;
@@ -458,7 +470,15 @@ function QuizResultsPanel({
         <CardContent>
           <div className="space-y-6">
             <CategoryBreakdown categoryAverages={results.categoryAverages} />
-            <Recommendations recommendations={recommendations} />
+            <ReportGate
+              tool="ai-readiness"
+              title="See what to fix first"
+              description="Your score is above. Enter your email to reveal the recommendations for your weakest areas and get the full assessment sent to you."
+              summary={buildQuizSummary(results, readinessLevel)}
+              recommendations={recommendations}
+            >
+              <Recommendations recommendations={recommendations} />
+            </ReportGate>
 
             <div className="mt-8 p-6 bg-primary text-primary-foreground rounded-xl">
               <h3 className="text-xl font-bold mb-3">Ready to Take the Next Step?</h3>
