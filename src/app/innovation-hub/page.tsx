@@ -56,7 +56,7 @@ const TechnologyCard = ({ title, description, icon, maturity, timeframe }: Techn
         <div className="mr-4 p-3 bg-muted rounded-full">
           {icon}
         </div>
-        <h3 className="text-xl font-semibold">{title}</h3>
+        <h3 className="text-heading-3">{title}</h3>
       </div>
       <p className="text-muted-foreground mb-4">{description}</p>
       <div className="flex items-center justify-between">
@@ -95,7 +95,7 @@ const ProjectCard = ({ title, description, technologies, status }: ProjectCardPr
         </div>
       </div>
       <div className="p-6">
-        <h3 className="text-xl font-semibold mb-2">{title}</h3>
+        <h3 className="text-heading-3 mb-2">{title}</h3>
         <p className="text-muted-foreground mb-4">{description}</p>
         <div className="flex flex-wrap gap-1.5">
           {technologies.map((tech) => (
@@ -228,7 +228,7 @@ export default function InnovationHubPage() {
         </div>
         
         <div className="w-full md:w-1/2 flex flex-col justify-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">Pioneering the Future of AI</h2>
+          <h2 className="text-heading-1 mb-4">Pioneering the Future of AI</h2>
           <p className="text-muted-foreground mb-6">
             At VivanceData, innovation is at the core of everything we do. Our Innovation Hub is where we explore emerging technologies, experiment with new approaches, and develop the next generation of AI solutions that will transform businesses and industries.
           </p>
@@ -245,7 +245,7 @@ export default function InnovationHubPage() {
       </div>
 
       <div className="mb-20">
-        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Technology Radar</h2>
+        <h2 className="text-heading-1 mb-8 text-center">Technology Radar</h2>
         <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-10">
           Our technology radar tracks emerging AI technologies and their potential impact on business and society. We continuously evaluate these technologies for their maturity, applicability, and strategic value.
         </p>
@@ -264,7 +264,7 @@ export default function InnovationHubPage() {
       </div>
 
       <div className="mb-20">
-        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Innovation Projects</h2>
+        <h2 className="text-heading-1 mb-8 text-center">Innovation Projects</h2>
         <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-10">
           Explore our current innovation projects where we&apos;re applying emerging technologies to solve complex business challenges and create new opportunities.
         </p>
@@ -282,7 +282,7 @@ export default function InnovationHubPage() {
       </div>
 
       <div className="mb-20">
-        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">Tools you can use right now</h2>
+        <h2 className="text-heading-1 mb-8 text-center">Tools you can use right now</h2>
         <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-10">
           Two working tools, free and unguarded. Both run entirely in your browser and give you a usable answer without talking to anyone.
         </p>
@@ -303,7 +303,7 @@ export default function InnovationHubPage() {
             }
           ].map((tool) => (
             <div key={tool.title} className="bg-card p-6 rounded-xl shadow-sm border border-border flex flex-col">
-              <h3 className="text-xl font-semibold mb-3">{tool.title}</h3>
+              <h3 className="text-heading-3 mb-3">{tool.title}</h3>
               <p className="text-muted-foreground mb-6 flex-1">{tool.description}</p>
               <Button asChild className="w-full">
                 <Link href={tool.href}>
@@ -317,7 +317,7 @@ export default function InnovationHubPage() {
       </div>
 
       <div className="mb-20">
-        <h2 className="text-2xl md:text-3xl font-bold mb-2 text-center">Curated Research Reading</h2>
+        <h2 className="text-heading-1 mb-2 text-center">Curated Research Reading</h2>
         <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
           Papers and publications from the broader AI research community that we track and reference in our work.
         </p>
@@ -346,7 +346,7 @@ export default function InnovationHubPage() {
             }
           ].map((paper) => (
             <div key={paper.title} className="bg-card p-6 rounded-xl shadow-sm border border-border">
-              <h3 className="text-xl font-semibold mb-2">{paper.title}</h3>
+              <h3 className="text-heading-3 mb-2">{paper.title}</h3>
               <div className="flex flex-wrap gap-x-4 gap-y-2 mb-4 text-sm">
                 <span className="text-muted-foreground">{paper.authors}</span>
                 <span className="text-muted-foreground">{paper.publication}</span>
@@ -363,7 +363,7 @@ export default function InnovationHubPage() {
       </div>
       
       <div className="bg-muted rounded-xl p-8 md:p-12 text-center">
-        <h2 className="text-2xl md:text-3xl font-bold mb-4">Collaborate with Our Innovation Team</h2>
+        <h2 className="text-heading-1 mb-4">Collaborate with Our Innovation Team</h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
           Interested in partnering with us on cutting-edge AI research and development? Our innovation team works with clients, academic institutions, and technology partners to explore new frontiers in artificial intelligence.
         </p>

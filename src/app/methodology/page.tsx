@@ -194,7 +194,7 @@ function PhasesTimelineSection() {
                           <span className="text-sm font-semibold text-muted-foreground">
                             Phase {phase.number}
                           </span>
-                          <h3 className="text-2xl font-bold">{phase.title}</h3>
+                          <h3 className="text-heading-2">{phase.title}</h3>
                           <p className="text-brand font-medium">{phase.subtitle}</p>
                         </div>
                       </div>
@@ -204,7 +204,7 @@ function PhasesTimelineSection() {
                       </p>
 
                       <div className="space-y-4">
-                        <h4 className="font-semibold text-sm uppercase tracking-wide text-muted-foreground">
+                        <h4 className="text-heading-4 text-sm uppercase tracking-wide text-muted-foreground">
                           Key Deliverables
                         </h4>
                         <ul className="space-y-2">
@@ -277,7 +277,7 @@ function BenefitsSection() {
             >
               <CardContent className="p-8">
                 <div className="flex items-start justify-between mb-4">
-                  <h3 className="text-xl font-bold">{benefit.title}</h3>
+                  <h3 className="text-heading-3">{benefit.title}</h3>
                   {benefit.metric && (
                     <span className="inline-flex items-center rounded-full bg-muted px-3 py-1 text-sm font-semibold text-brand">
                       {benefit.metric}
@@ -313,7 +313,7 @@ function ComparisonSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <Card className="border-2 border-border">
             <CardContent className="p-8">
-              <h3 className="text-xl font-bold mb-6 text-muted-foreground">
+              <h3 className="text-heading-3 mb-6 text-muted-foreground">
                 Traditional Approach
               </h3>
               <ul className="space-y-4">
@@ -332,7 +332,7 @@ function ComparisonSection() {
 
           <Card className="border-2 border-brand shadow-lg">
             <CardContent className="p-8">
-              <h3 className="text-xl font-bold mb-6 text-brand">
+              <h3 className="text-heading-3 mb-6 text-brand">
                 RAPID Framework
               </h3>
               <ul className="space-y-4">
@@ -389,7 +389,7 @@ function MethodologyCtaSection() {
   return (
     <section className="w-full py-20 md:py-28 bg-primary text-primary-foreground">
       <Container className="max-w-4xl text-center">
-        <h2 className="text-3xl md:text-5xl font-bold mb-6">
+        <h2 className="text-display mb-6">
           Ready to Accelerate Your AI Journey?
         </h2>
         <p className="text-xl text-primary-foreground/80 mb-10 max-w-2xl mx-auto">

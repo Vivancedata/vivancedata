@@ -159,7 +159,7 @@ export default function Blog() {
             <div className="mb-4 inline-block rounded-full bg-muted px-3 py-1 text-sm font-medium text-brand">
               Latest Insights
             </div>
-            <h2 className="mb-4 text-3xl font-bold text-brand md:text-5xl">From Our Blog</h2>
+            <h2 className="text-display mb-4 text-brand">From Our Blog</h2>
             <p className="max-w-2xl text-lg text-muted-foreground">
               Stay updated with the latest trends, insights, and best practices in AI and machine learning.
             </p>
@@ -235,7 +235,7 @@ export default function Blog() {
 
             <div className="relative z-10 grid grid-cols-1 items-center gap-8 md:grid-cols-2">
               <div>
-                <h3 className="mb-4 text-3xl font-bold md:text-4xl">Subscribe to Our Newsletter</h3>
+                <h3 className="text-display mb-4">Subscribe to Our Newsletter</h3>
                 <p className="mb-8 text-lg text-primary-foreground/90">
                   Get the latest insights, articles, and updates on AI trends delivered straight to your inbox.
                 </p>
@@ -265,7 +265,7 @@ export default function Blog() {
                       </svg>
                     </div>
                     <div>
-                      <h4 className="mb-4 text-xl font-bold">What You&apos;ll Get:</h4>
+                      <h4 className="text-heading-3 mb-4">What You&apos;ll Get:</h4>
                       <ul className="space-y-4">
                         {NEWSLETTER_BENEFITS.map((item) => (
                           <li key={item} className="flex items-center">

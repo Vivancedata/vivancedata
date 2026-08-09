@@ -45,7 +45,7 @@ export default function ROICalculatorPage() {
         <ROICalculator />
 
         <div className="mt-16 bg-muted rounded-xl p-8">
-          <h2 className="text-2xl font-bold mb-4">How This Calculator Works</h2>
+          <h2 className="text-heading-2 mb-4">How This Calculator Works</h2>
           <div className="space-y-4 text-foreground">
             <p>
               This calculator applies a transparent cost model to the numbers you enter: a base
@@ -56,7 +56,7 @@ export default function ROICalculatorPage() {
             </p>
             <div className="grid md:grid-cols-2 gap-6 mt-6">
               <div>
-                <h3 className="font-semibold mb-2">Cost Factors Considered:</h3>
+                <h3 className="text-heading-4 mb-2">Cost Factors Considered:</h3>
                 <ul className="list-disc list-inside space-y-1 text-sm">
                   <li>Initial development and implementation</li>
                   <li>Infrastructure and cloud computing</li>
@@ -65,7 +65,7 @@ export default function ROICalculatorPage() {
                 </ul>
               </div>
               <div>
-                <h3 className="font-semibold mb-2">Benefit Categories:</h3>
+                <h3 className="text-heading-4 mb-2">Benefit Categories:</h3>
                 <ul className="list-disc list-inside space-y-1 text-sm">
                   <li>Operational efficiency gains</li>
                   <li>Labor cost reduction</li>

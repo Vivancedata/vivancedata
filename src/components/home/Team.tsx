@@ -21,7 +21,7 @@ const Team = () => {
           <div className="mb-4 inline-block rounded-full bg-muted px-3 py-1 text-sm font-medium text-brand dark:bg-muted">
             Who You Work With
           </div>
-          <h2 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">Who does the work</h2>
+          <h2 className="text-display mb-4 text-foreground">Who does the work</h2>
           <p className="mx-auto max-w-2xl text-muted-foreground">
             A founder-led practice, with specialists brought in per project when a build needs depth we do not already have in house. You work with the person doing the work.
           </p>
@@ -51,7 +51,7 @@ const Team = () => {
                       </div>
                     )}
                   </div>
-                  <h3 className="mb-1 text-xl font-bold text-foreground">{member.name}</h3>
+                  <h3 className="text-heading-3 mb-1 text-foreground">{member.name}</h3>
                   <p className="mb-4 font-medium text-brand">{member.role}</p>
                   <p className="mb-6 text-sm text-muted-foreground md:text-base">{member.bio}</p>
                   <div className="flex justify-center space-x-4">

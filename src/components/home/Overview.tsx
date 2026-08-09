@@ -24,7 +24,7 @@ export default function Overview() {
         <div className="mb-4 inline-block rounded-full bg-muted px-3 py-1 text-sm font-medium text-brand">
           Our Services
         </div>
-        <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
+        <h2 className="text-display text-foreground">
           Comprehensive <span className="text-brand">AI Solutions</span> for Modern Businesses
         </h2>
         <p className="mt-4 text-lg text-muted-foreground">

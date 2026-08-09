@@ -31,7 +31,7 @@ export default function Pricing({ showHeader = true }: PricingProps) {
             <div className="mb-4 inline-flex items-center rounded-full border border-border/70 bg-card/80 px-4 py-1 text-sm font-medium text-foreground shadow-sm">
               Pricing Plans
             </div>
-            <h2 className="text-3xl font-bold text-foreground md:text-4xl">
+            <h2 className="text-display text-foreground">
               What an engagement costs
             </h2>
             <p className="mt-4 text-muted-foreground">
@@ -104,7 +104,7 @@ export default function Pricing({ showHeader = true }: PricingProps) {
 
         <div className="mt-16 grid gap-8 rounded-3xl border border-border/70 bg-card/90 p-8 shadow-lg md:grid-cols-2 md:p-12">
           <div>
-            <h3 className="text-2xl font-bold text-foreground md:text-3xl">Need a Custom Solution?</h3>
+            <h3 className="text-heading-1 text-foreground">Need a Custom Solution?</h3>
             <p className="mt-4 text-muted-foreground">
               Every engagement is tailored around your data, workflows, and internal capacity. We
               can scope advisory, delivery, governance, or capability-building support to fit.
@@ -129,7 +129,7 @@ export default function Pricing({ showHeader = true }: PricingProps) {
             </Button>
           </div>
           <div className="rounded-2xl bg-primary p-8 text-primary-foreground">
-            <h4 className="text-xl font-bold">Delivery Confidence Guarantee</h4>
+            <h4 className="text-heading-3">Delivery Confidence Guarantee</h4>
             <p className="mt-3 text-primary-foreground">
               We scope projects around measurable outcomes and explicit checkpoints, so your team
               always knows what success looks like before implementation begins.

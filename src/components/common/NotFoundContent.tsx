@@ -368,7 +368,7 @@ export function NotFoundContent() {
           <m.div variants={itemVariants}>
             <div className="flex items-center justify-center gap-2 mb-5">
               <Sparkles className="h-5 w-5 text-brand" aria-hidden="true" />
-              <h2 className="text-lg font-semibold text-foreground">
+              <h2 className="text-heading-4 text-foreground">
                 Popular Pages
               </h2>
             </div>

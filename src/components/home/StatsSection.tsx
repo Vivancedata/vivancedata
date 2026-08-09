@@ -23,7 +23,7 @@ export function StatsSection({
     >
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">{title}</h2>
+          <h2 className="text-display mb-4">{title}</h2>
           <p className="text-primary-foreground max-w-2xl mx-auto">{description}</p>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8">

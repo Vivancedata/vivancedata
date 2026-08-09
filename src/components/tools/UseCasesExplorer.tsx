@@ -311,7 +311,7 @@ export function UseCasesExplorer() {
           <CardContent className="py-12">
             <div className="text-center">
               <Search className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-              <h3 className="text-lg font-semibold mb-2">No use cases found</h3>
+              <h3 className="text-heading-4 mb-2">No use cases found</h3>
               <p className="text-muted-foreground mb-4">
                 Try adjusting your search or filters to find what you are
                 looking for.

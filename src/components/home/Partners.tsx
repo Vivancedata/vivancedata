@@ -16,7 +16,7 @@ const Partners = () => {
           <div className="inline-block rounded-full bg-muted px-3 py-1 text-sm font-medium text-brand mb-4">
             Industries We Serve
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Sectors & Domains</h2>
+          <h2 className="text-display mb-4 text-foreground">Sectors & Domains</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             I work with teams across these sectors to design and implement practical AI solutions tailored to domain-specific constraints.
           </p>
@@ -41,7 +41,7 @@ const Partners = () => {
         <div className="bg-muted rounded-xl p-8 md:p-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div>
-              <h3 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">Interested in Working Together?</h3>
+              <h3 className="text-heading-1 mb-4 text-foreground">Interested in Working Together?</h3>
               <p className="text-muted-foreground mb-6">
                 Whether you need advisory support, a full implementation, or an ongoing AI capability partner — let&apos;s start with a conversation about what you&apos;re trying to achieve.
               </p>
@@ -85,7 +85,7 @@ const Partners = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                   </svg>
                 </div>
-                <h4 className="text-xl font-bold mb-2 text-foreground">How Engagements Start</h4>
+                <h4 className="text-heading-3 mb-2 text-foreground">How Engagements Start</h4>
                 <p className="text-muted-foreground text-sm">
                   Every project begins with a scoping call — no sales funnel, no pitch deck. Just a direct conversation about your goals, constraints, and what success looks like.
                 </p>

@@ -82,7 +82,7 @@ export default function Integrations() {
           <div className="mb-4 inline-block rounded-full bg-muted px-3 py-1 text-sm font-medium text-brand">
             Technology Stack
           </div>
-          <h2 className="text-3xl font-bold text-foreground md:text-4xl lg:text-5xl">
+          <h2 className="text-display text-foreground">
             Seamless Integrations
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
@@ -113,7 +113,7 @@ export default function Integrations() {
         </div>
 
         <div className="mt-16 rounded-2xl bg-primary px-8 py-10 text-center text-primary-foreground shadow-xl">
-          <h3 className="text-2xl font-bold md:text-3xl">Don&apos;t See Your Platform?</h3>
+          <h3 className="text-heading-1">Don&apos;t See Your Platform?</h3>
           <p className="mx-auto mt-4 max-w-2xl text-primary-foreground">
             We also build custom integrations for internal APIs, legacy systems, and bespoke data
             workflows. If it matters to your team, we can design around it.

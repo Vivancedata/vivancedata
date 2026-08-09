@@ -70,7 +70,7 @@ export default function ResourcesPage() {
     <main className="py-16 sm:py-24">
       <Container>
         <div className="mx-auto max-w-2xl text-center mb-16">
-          <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+          <h1 className="text-display text-foreground">
             Resources
           </h1>
           <p className="mt-6 text-lg leading-8 text-muted-foreground">
@@ -90,7 +90,7 @@ export default function ResourcesPage() {
                 <div className={`inline-flex h-12 w-12 items-center justify-center rounded-xl ${resource.color} text-brand-foreground mb-4`}>
                   <Icon className="h-6 w-6" />
                 </div>
-                <h2 className="text-xl font-semibold text-foreground mb-2">
+                <h2 className="text-heading-3 text-foreground mb-2">
                   {resource.title}
                 </h2>
                 <p className="text-muted-foreground flex-grow">

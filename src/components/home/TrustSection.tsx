@@ -22,7 +22,7 @@ function CommitmentCard({ commitment }: CommitmentCardProps) {
         <div className="mb-4 rounded-full bg-muted p-4 dark:bg-muted">
           <Icon className="h-8 w-8 text-brand" aria-hidden="true" />
         </div>
-        <h3 className="mb-2 text-lg font-semibold text-foreground">{commitment.name}</h3>
+        <h3 className="text-heading-4 mb-2 text-foreground">{commitment.name}</h3>
         <p className="text-sm leading-relaxed text-muted-foreground">{commitment.description}</p>
       </article>
     </li>
@@ -43,7 +43,7 @@ export function TrustSection() {
           <div className="mb-4 inline-block rounded-full bg-muted px-3 py-1 text-sm font-medium text-brand dark:bg-muted">
             {trustSectionContent.badge}
           </div>
-          <h2 id="trust-section-title" className="mb-4 text-3xl font-bold text-foreground md:text-4xl lg:text-5xl">
+          <h2 id="trust-section-title" className="text-display mb-4 text-foreground">
             {trustSectionContent.title}
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
@@ -64,7 +64,7 @@ export function TrustSection() {
                 <Shield className="h-6 w-6 text-brand" aria-hidden="true" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-foreground">
+                <h3 className="text-heading-4 text-foreground">
                   {trustSectionContent.secureByDesign.title}
                 </h3>
                 <p className="text-muted-foreground">

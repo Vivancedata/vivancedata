@@ -64,7 +64,7 @@ export function Newsletter() {
               <CheckCircle className="h-6 w-6 text-success" />
             </div>
             <div>
-              <h3 className="font-semibold text-lg mb-1">Thank you for subscribing!</h3>
+              <h3 className="text-heading-4 mb-1">Thank you for subscribing!</h3>
               <p className="text-muted-foreground text-sm">
                 You&apos;ll receive our latest AI insights and updates.
               </p>
@@ -78,7 +78,7 @@ export function Newsletter() {
   return (
     <div className="border-t border-border pt-8 mb-8">
       <div className="max-w-md mx-auto text-center">
-        <h3 className="font-semibold text-lg mb-2">Subscribe to our newsletter</h3>
+        <h3 className="text-heading-4 mb-2">Subscribe to our newsletter</h3>
         <p className="text-muted-foreground mb-4">
           Stay updated with the latest in AI and receive our insights directly to your inbox.
         </p>

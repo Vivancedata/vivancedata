@@ -33,7 +33,7 @@ export default function PricingPage() {
       <Pricing showHeader={false} />
 
       <div className="mx-auto max-w-3xl rounded-xl border border-border bg-card p-8">
-        <h2 className="mb-3 text-2xl font-bold">{pricingPageContent.whyRetainer.title}</h2>
+        <h2 className="text-heading-2 mb-3">{pricingPageContent.whyRetainer.title}</h2>
         <p className="text-muted-foreground">{pricingPageContent.whyRetainer.body}</p>
       </div>
 

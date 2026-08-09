@@ -69,7 +69,7 @@ export function SiteFooter() {
           {/* Links */}
           {footerLinks.map((column) => (
             <div key={column.title}>
-              <h3 className="font-semibold text-lg mb-4">{column.title}</h3>
+              <h3 className="text-heading-4 mb-4">{column.title}</h3>
               <ul className="space-y-3">
                 {column.links.map((link) => (
                   <li key={`${column.title}-${link.href}`}>

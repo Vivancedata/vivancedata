@@ -156,20 +156,20 @@ export default function CaseStudiesPage() {
               <div className="inline-block px-3 py-1 rounded-full bg-muted text-brand dark:text-brand/80 text-sm font-medium mb-4">
                 {study.industry}
               </div>
-              <h2 className="text-2xl md:text-3xl font-bold mb-4">{study.title}</h2>
+              <h2 className="text-heading-1 mb-4">{study.title}</h2>
               
               <div className="mb-4">
-                <h3 className="text-lg font-semibold mb-2">Challenge</h3>
+                <h3 className="text-heading-4 mb-2">Challenge</h3>
                 <p className="text-muted-foreground">{study.challenge}</p>
               </div>
               
               <div className="mb-4">
-                <h3 className="text-lg font-semibold mb-2">Solution</h3>
+                <h3 className="text-heading-4 mb-2">Solution</h3>
                 <p className="text-muted-foreground">{study.solution}</p>
               </div>
               
               <div className="mb-6">
-                <h3 className="text-lg font-semibold mb-2">Results</h3>
+                <h3 className="text-heading-4 mb-2">Results</h3>
                 <ul className="list-disc list-inside text-muted-foreground space-y-1">
                   {study.results.map((result) => (
                     <li key={`${study.id}-${result}`}>{result}</li>
@@ -183,7 +183,7 @@ export default function CaseStudiesPage() {
       </div>
       
       <div className="mt-24 text-center bg-muted rounded-xl p-8 md:p-12">
-        <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to Achieve Similar Results?</h2>
+        <h2 className="text-heading-1 mb-4">Ready to Achieve Similar Results?</h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
           Let&apos;s discuss how our AI solutions can help your business overcome challenges and drive measurable outcomes.
         </p>
