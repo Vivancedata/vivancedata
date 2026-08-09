@@ -2,50 +2,49 @@ export interface ProcessStep {
   number: number;
   title: string;
   description: string;
-  iconType: "fileSearch" | "lightbulb" | "settings" | "code" | "clipboardCheck" | "users" | "lineChart";
 }
 
+/**
+ * The engagement sequence, in the first person singular.
+ *
+ * The previous version ran to seven steps written as "our team creates", "our
+ * engineers develop" -- a staffed consultancy this practice is not, describing a
+ * methodology in language that could belong to any firm on earth. It also
+ * contradicted /about, which says every engagement is led directly by Lorenzo.
+ *
+ * Five steps, because that is how many there actually are, and each one names a
+ * thing that physically happens rather than a phase of a lifecycle. `iconType`
+ * is gone with the card layout it fed -- see Process.tsx.
+ */
 export const processSteps: ProcessStep[] = [
   {
     number: 1,
-    title: "Discovery & Assessment",
-    description: "We begin by understanding your business challenges, goals, and current systems through in-depth consultations and technical assessments.",
-    iconType: "fileSearch",
+    title: "I watch the work happen",
+    description:
+      "A morning with whoever answers the phone and whoever keys in the paperwork. Not a workshop and not a questionnaire — the point is to see where the day actually snags, which is rarely where the org chart says it does.",
   },
   {
     number: 2,
-    title: "Strategy Development",
-    description: "Our team creates a tailored AI strategy that aligns with your business objectives, including technology selection, implementation roadmap, and ROI projections.",
-    iconType: "lightbulb",
+    title: "We pick one workflow",
+    description:
+      "The one with the most repetition and the clearest failure, not the most impressive one. If nothing clears that bar I will tell you so, and the assessment ends there rather than turning into a build.",
   },
   {
     number: 3,
-    title: "Solution Design",
-    description: "We design a comprehensive solution architecture that integrates with your existing systems and addresses your specific requirements.",
-    iconType: "settings",
+    title: "I build it on your own documents",
+    description:
+      "Your permits, your call recordings, your delivery photos. You see the output on material you already know the right answer for, which is the only way to judge whether it works.",
   },
   {
     number: 4,
-    title: "Development & Integration",
-    description: "Our engineers develop and integrate the AI solution, ensuring seamless functionality with your existing infrastructure and workflows.",
-    iconType: "code",
+    title: "It runs beside the old way first",
+    description:
+      "For a few weeks the existing process keeps running underneath. A wrong answer costs nothing during that window, and the disagreements between the two are where the remaining accuracy work comes from.",
   },
   {
     number: 5,
-    title: "Testing & Optimization",
-    description: "We rigorously test the solution and optimize its performance based on real-world data and feedback to ensure it meets all requirements.",
-    iconType: "clipboardCheck",
-  },
-  {
-    number: 6,
-    title: "Deployment & Training",
-    description: "The solution is deployed to your environment, and we provide comprehensive training to ensure your team can effectively utilize the new capabilities.",
-    iconType: "users",
-  },
-  {
-    number: 7,
-    title: "Monitoring & Continuous Improvement",
-    description: "We provide ongoing support, monitoring, and continuous improvement to ensure your AI solution evolves with your business needs and technological advancements.",
-    iconType: "lineChart",
+    title: "You get the keys",
+    description:
+      "Code, prompts, credentials and written documentation transfer to you. Keep me on to run it, or run it yourself — the handover is the same either way, because a build you cannot leave is a build you do not own.",
   },
 ];

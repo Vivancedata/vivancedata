@@ -39,7 +39,11 @@ All page content lives in `src/constants/` as typed TypeScript objects. **When a
 Key constants files:
 - `navigation.ts` — header dropdowns, footer links, social links (update this when adding pages)
 - `blog.ts` — blog post metadata list (must stay in sync with MDX files in `src/app/blog/posts/`)
-- `clients.ts`, `partners.ts`, `testimonials.ts`, `team.ts` — logo/people data
+- `clients.ts`, `partners.ts`, `team.ts` — logo/people data. There is deliberately
+  no `testimonials.ts`: the practice has no clients who have agreed to be quoted,
+  and the file that used to exist held four invented quotes. Do not re-add a
+  testimonial, a client logo, or a named case study until a real client has
+  agreed in writing to that specific wording.
 - `integrations.ts` — integration logos (uses jsDelivr CDN for Simple Icons; not all brands exist in the package)
 - `caseStudies.ts`, `services.ts`, `pricing.ts`, `faq.ts`, `welcome.ts`, `banner.ts`, `process.ts`, `methodology.ts`, `resources.ts`, `trust.ts`, `useCases.ts`
 

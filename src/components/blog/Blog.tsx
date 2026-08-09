@@ -7,16 +7,26 @@ import { ArrowRight, Calendar, Clock, ChevronRight } from "lucide-react";
 import { Avatar } from "@/components/common/Avatar";
 
 const IMPLEMENTATION_PHASES = ["Assess", "Design", "Build", "Deploy"] as const;
-const TREND_METRICS = [
-  ["GPT API Calls", "↑ 340%"],
-  ["Enterprise Adoption", "78%"],
-  ["New Models", "12,000+"],
-] as const;
+/**
+ * Card artwork for the AI Trends category. These are the topics the post covers,
+ * deliberately with no figures attached: the previous version rendered invented
+ * adoption statistics ("GPT API Calls ↑ 340%") in brand-coloured bold mono, which
+ * reads as a sourced data readout and was not one. Decoration must not make a
+ * claim -- if a number ever belongs here it needs a citation in the post itself.
+ */
+const TREND_TOPICS = ["Document understanding", "Speech and call handling", "Vision on site photos"] as const;
 const ETHICS_ITEMS = ["Fairness & Bias", "Transparency", "Privacy & Security", "Accountability"] as const;
+/**
+ * Only promise what the list actually delivers. This previously offered
+ * "exclusive research", "case studies and success stories" and "early access to
+ * webinars and events" -- a research programme, a client roster and an events
+ * calendar, none of which exist. A subscriber who signs up for those and gets a
+ * post notification has been misled on the very first touch.
+ */
 const NEWSLETTER_BENEFITS = [
-  "Exclusive AI insights and research",
-  "Industry case studies and success stories",
-  "Early access to webinars and events",
+  "An email when a new post goes up, and nothing else",
+  "Write-ups of what actually worked on real jobs",
+  "Unsubscribe in one click, no re-permission emails",
 ] as const;
 
 function BlogIllustration({ category }: { category: string }) {
@@ -43,12 +53,12 @@ function BlogIllustration({ category }: { category: string }) {
     return (
       <div className="relative h-full w-full overflow-hidden bg-card border-b border-border">
         <div className="absolute inset-0 flex flex-col justify-center p-5">
-          <div className="eyebrow mb-3">// AI Adoption Metrics 2025</div>
+          <div className="eyebrow mb-3">// Where the models landed</div>
           <div className="space-y-3">
-            {TREND_METRICS.map(([label, value]) => (
-              <div key={label} className="flex items-center justify-between">
-                <span className="text-xs text-mute">{label}</span>
-                <span className="font-mono text-sm font-bold text-brand">{value}</span>
+            {TREND_TOPICS.map((topic) => (
+              <div key={topic} className="flex items-center gap-2">
+                <div className="h-1 w-1 shrink-0 rounded-full bg-brand" />
+                <span className="text-xs text-muted-foreground">{topic}</span>
               </div>
             ))}
           </div>

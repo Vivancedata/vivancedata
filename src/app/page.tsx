@@ -1,7 +1,6 @@
 import Welcome from "@/components/home/Welcome";
 import ClientLogos from "@/components/home/ClientLogos";
 import Overview from "@/components/home/Overview";
-import Testimonials from "@/components/home/Testimonials";
 import { TrustSection } from "@/components/home/TrustSection";
 import Team from "@/components/home/Team";
 import CaseStudies from "@/components/home/CaseStudies";
@@ -9,21 +8,22 @@ import Process from "@/components/home/Process";
 import Integrations from "@/components/home/Integrations";
 import Blog from "@/components/blog/Blog";
 import Pricing from "@/components/home/Pricing";
-import { StatsSection } from "@/components/home/StatsSection";
 import { FAQSection } from "@/components/home/FAQSection";
 import { ContactSection } from "@/components/home/ContactSection";
 import { CTASection } from "@/components/home/CTASection";
 import { DemoBooking } from "@/components/home/DemoBooking";
-import { Users, CheckCircle, BarChart3, Clock, Award } from "lucide-react";
 import { Metadata } from "next";
 
+// Search and social copy tracks the hero. A contractor searching for this does
+// not type "intelligent automation" -- they type the trade and the problem, so
+// the title and keywords name both rather than the category.
 export const metadata: Metadata = {
-  title: "VivanceData - AI Solutions for Modern Businesses",
-  description: "We combine cutting-edge AI technology with deep industry expertise to deliver solutions that drive real business outcomes. Transform your business with intelligent automation.",
-  keywords: ["AI solutions", "artificial intelligence", "business automation", "machine learning", "generative AI", "AI consulting", "data analytics"],
+  title: "VivanceData - AI for construction, HVAC, logistics and manufacturing",
+  description: "Small, specific AI systems for trades and field operations: after-hours calls answered and booked, permits and delivery paperwork read instead of re-keyed. Built on your own documents, and yours to keep.",
+  keywords: ["AI for contractors", "HVAC after-hours call answering", "construction document automation", "permit data extraction", "proof of delivery automation", "AI consulting for trades", "field operations automation"],
   openGraph: {
-    title: "VivanceData - AI Solutions for Modern Businesses",
-    description: "Transform your business with intelligent automation. We deliver AI solutions that drive real outcomes.",
+    title: "VivanceData - AI for construction, HVAC, logistics and manufacturing",
+    description: "After-hours calls answered and booked. Permits and delivery paperwork read instead of re-keyed. Built on your own documents.",
     type: "website",
     url: "https://vivancedata.com",
     images: [
@@ -37,8 +37,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "VivanceData - AI Solutions for Modern Businesses",
-    description: "Transform your business with intelligent automation.",
+    title: "VivanceData - AI for construction, HVAC, logistics and manufacturing",
+    description: "After-hours calls answered and booked. Paperwork read instead of re-keyed.",
     images: ["https://vivancedata.com/images/banner.png"],
   },
 };
@@ -91,14 +91,6 @@ const jsonLd = {
 };
 
 export default function Home() {
-  const stats = [
-    { icon: <Users className="h-8 w-8 text-brand" />, value: "Advisory + Build", label: "Engagement Model" },
-    { icon: <CheckCircle className="h-8 w-8 text-brand" />, value: "Roadmap to Rollout", label: "Delivery Scope" },
-    { icon: <BarChart3 className="h-8 w-8 text-brand" />, value: "Outcome-Driven", label: "Measurement Focus" },
-    { icon: <Clock className="h-8 w-8 text-brand" />, value: "Fast Iteration", label: "Execution Style" },
-    { icon: <Award className="h-8 w-8 text-brand" />, value: "Responsible AI", label: "Governance Standard" }
-  ];
-
   const contactBenefits = [
     {
       title: "Free Initial Consultation",
@@ -129,13 +121,6 @@ export default function Home() {
       <Integrations />
       <CaseStudies />
 
-      <StatsSection
-        title="How We Work"
-        description="Every engagement is scoped around measurable outcomes, responsible delivery, and clear operational handoff."
-        stats={stats}
-      />
-
-      <Testimonials />
       <Team />
       <Pricing />
       <Blog />
