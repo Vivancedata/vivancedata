@@ -51,16 +51,22 @@ function getRelatedPosts(currentSlug: string, currentTags: string[], allPosts: B
 // Generate metadata for the blog post
 export async function generateMetadata({ params }: BlogPostParams): Promise<Metadata> {
   const { slug } = await params;
-  
+
+  // `dynamicParams = false` below is what actually makes an unknown slug a 404,
+  // so in practice this branch is unreachable. It stays as a guard in case that
+  // export is ever removed, and because returning a "Blog Post Not Found" title
+  // here -- which is what this did before -- is the wrong shape of answer.
+  //
+  // Deliberately outside the try: notFound() works by throwing, so the catch
+  // would swallow it and return ordinary metadata. getBlogPostFrontmatter
+  // handles its own read errors and returns null, so it needs no try.
+  const frontmatter = getBlogPostFrontmatter(slug);
+
+  if (!frontmatter) {
+    notFound();
+  }
+
   try {
-    const frontmatter = getBlogPostFrontmatter(slug);
-
-    if (!frontmatter) {
-      return {
-        title: 'Blog Post Not Found',
-      };
-    }
-
     const keywords =
       frontmatter.tags.length > 0
         ? frontmatter.tags
@@ -91,6 +97,18 @@ export async function generateMetadata({ params }: BlogPostParams): Promise<Meta
     };
   }
 }
+
+/**
+ * Every blog slug is discovered from the filesystem at build time, so there is
+ * no such thing as a valid slug that generateStaticParams did not return.
+ *
+ * This is what makes an unknown slug a real HTTP 404. Left as the default
+ * (true), Next renders unknown params on demand, and by the time the page
+ * component calls notFound() the response has already been committed with a
+ * 200 -- the correct 404 page was served under a 200 status, which search
+ * engines treat as a soft 404 and will index.
+ */
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   return getBlogSlugs().map((slug) => ({ slug }));
