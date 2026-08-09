@@ -1,10 +1,12 @@
-import { BarChart3, Brain, CheckCircle2, ChevronRight, Zap } from "lucide-react";
-import { features } from "@/constants/welcome";
+import { Camera, CheckCircle2, ChevronRight, FileText, PhoneCall } from "lucide-react";
+import { features, type FeatureIcon } from "@/constants/welcome";
 
-const featureIcons = {
-  brain: Brain,
-  barChart: BarChart3,
-  zap: Zap,
+// Keys are exhaustive over FeatureIcon: adding a variant there without adding it
+// here fails the build, which is what replaced the old `?? Brain` fallback.
+const featureIcons: Record<FeatureIcon, typeof PhoneCall> = {
+  phone: PhoneCall,
+  fileText: FileText,
+  camera: Camera,
   checkCircle: CheckCircle2,
 } as const;
 
@@ -22,21 +24,29 @@ export default function Welcome() {
       <div className="container mx-auto px-4 py-4xl md:py-section">
         <div className="mb-3xl flex flex-col items-center justify-center gap-lg text-center">
           {/* The uppercase Geist Mono eyebrow, labelling the band like a spec sheet. */}
-          <p className="eyebrow">Why Choose VivanceData</p>
+          <p className="eyebrow">AI for trades and field operations</p>
+          {/*
+            The headline names the two jobs this practice actually does. It read
+            "Transforming Businesses Through Intelligent Automation" -- a sentence
+            with no subject, no industry and no claim, interchangeable with every
+            competitor's. A contractor has about four seconds here; spend them on
+            something they recognise rather than on the category name.
+          */}
           <h2 className="text-display-xl text-foreground">
-            Transforming Businesses Through{" "}
-            <span className="text-brand">Intelligent Automation</span>
+            Someone has to answer the phone and{" "}
+            <span className="text-brand">key in the paperwork</span>
           </h2>
           <p className="mx-auto max-w-3xl text-body-lg text-muted-foreground">
-            We combine cutting-edge AI technology with deep industry expertise to
-            deliver solutions that drive real business outcomes.
+            It does not have to be a person on your payroll. I build small,
+            specific systems for construction, HVAC, logistics and manufacturing
+            businesses — one workflow at a time, proved on your own documents
+            before you pay for a build.
           </p>
         </div>
 
         <div className="mb-3xl grid grid-cols-1 gap-lg md:grid-cols-2 lg:grid-cols-4">
           {features.map((feature) => {
-            const Icon =
-              featureIcons[feature.icon as keyof typeof featureIcons] ?? Brain;
+            const Icon = featureIcons[feature.icon];
 
             return (
               /* Level 0: hairline card, no shadow, no hover lift. */

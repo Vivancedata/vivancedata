@@ -1,5 +1,4 @@
 import React from "react";
-import Testimonials from "@/components/home/Testimonials";
 import { PageHero } from "@/components/common/PageHero";
 import { AboutDescription } from "@/components/about/AboutDescription";
 import { AboutValue } from "@/components/about/AboutValue";
@@ -70,8 +69,6 @@ const AboutPage = () => {
         description="Every engagement is led directly by Lorenzo. Specialist collaborators are brought in project-by-project based on the technical domain."
         members={teamMembers}
       />
-
-      <Testimonials />
     </div>
   );
 };
