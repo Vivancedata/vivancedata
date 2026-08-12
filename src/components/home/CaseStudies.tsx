@@ -35,9 +35,7 @@ export default function CaseStudies() {
         <div className="absolute bottom-20 right-0 -z-10 h-80 w-80 rounded-full bg-accent/5 blur-3xl" />
 
         <div className="mx-auto mb-16 max-w-3xl text-center">
-          <div className="mb-4 inline-block rounded-full bg-muted px-3 py-1 text-sm font-medium text-brand">
-            Success Stories
-          </div>
+          <p className="eyebrow mb-4">Success Stories</p>
           <h2 className="text-display mb-6 text-foreground">Case Studies</h2>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
             Representative engagement patterns across industries, showing common challenges,

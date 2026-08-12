@@ -11,7 +11,7 @@ interface CommitmentCardProps {
 }
 
 const commitmentCardClass =
-  "h-full rounded-[calc(var(--radius)+0.25rem)] border border-border/70 bg-card/80 p-6 text-center shadow-elevation-1 backdrop-blur-sm transition-transform transition-shadow duration-300 motion-reduce:transition-none motion-safe:hover:-translate-y-1 hover:border-brand/30 hover:shadow-elevation-2 dark:bg-card/50 dark:hover:shadow-primary/5";
+  "h-full rounded-[calc(var(--radius)+0.25rem)] border border-border/70 bg-card p-6 text-center shadow-elevation-1 transition-transform transition-shadow duration-300 motion-reduce:transition-none motion-safe:hover:-translate-y-1 hover:border-brand/30 hover:shadow-elevation-2 dark:hover:shadow-primary/5";
 
 function CommitmentCard({ commitment }: CommitmentCardProps) {
   const Icon = commitment.icon;
@@ -40,9 +40,7 @@ export function TrustSection() {
         <div className="absolute right-1/4 bottom-0 -z-10 h-80 w-80 rounded-full bg-accent/5 blur-3xl" aria-hidden="true" />
 
         <div className="mb-12 text-center md:mb-16">
-          <div className="mb-4 inline-block rounded-full bg-muted px-3 py-1 text-sm font-medium text-brand dark:bg-muted">
-            {trustSectionContent.badge}
-          </div>
+          <p className="eyebrow mb-4">{trustSectionContent.badge}</p>
           <h2 id="trust-section-title" className="text-display mb-4 text-foreground">
             {trustSectionContent.title}
           </h2>
@@ -51,13 +49,15 @@ export function TrustSection() {
           </p>
         </div>
 
-        <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+        {/* 3x2, not 6-across: six columns at desktop squeezed each card to
+            three words a line with ragged heights. */}
+        <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {commitments.map((commitment) => (
             <CommitmentCard key={commitment.id} commitment={commitment} />
           ))}
         </ul>
 
-        <div className="mt-12 rounded-xl border border-border bg-card/80 p-6 backdrop-blur-sm dark:bg-card/50 md:mt-16 md:p-8">
+        <div className="mt-12 rounded-xl border border-border bg-card p-6 md:mt-16 md:p-8">
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
             <div className="flex items-center gap-4">
               <div className="rounded-full bg-success/10 p-3">

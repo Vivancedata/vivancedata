@@ -15,9 +15,7 @@ export function FAQSection({
       className="container mx-auto py-16 px-4 md:py-24"
     >
       <div className="text-center mb-12">
-        <div className="inline-block rounded-full bg-muted px-3 py-1 text-sm font-medium text-brand mb-4">
-          Frequently Asked Questions
-        </div>
+        <p className="eyebrow mb-4">Frequently Asked Questions</p>
         <h2 className="text-display mb-4">{title}</h2>
         <p className="text-muted-foreground max-w-2xl mx-auto">{description}</p>
       </div>

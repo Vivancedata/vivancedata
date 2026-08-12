@@ -13,9 +13,7 @@ const Partners = () => {
     <section className="w-full py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <div className="inline-block rounded-full bg-muted px-3 py-1 text-sm font-medium text-brand mb-4">
-            Industries We Serve
-          </div>
+          <p className="eyebrow mb-4">Industries We Serve</p>
           <h2 className="text-display mb-4 text-foreground">Sectors & Domains</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             I work with teams across these sectors to design and implement practical AI solutions tailored to domain-specific constraints.
@@ -78,7 +76,7 @@ const Partners = () => {
                 </Link>
               </Button>
             </div>
-            <div className="bg-card dark:bg-card/80 rounded-xl p-6 shadow-md dark:shadow-primary/5">
+            <div className="bg-card dark:bg-card rounded-xl p-6 shadow-md dark:shadow-primary/5">
               <div className="text-center mb-6">
                 <div className="inline-block bg-muted rounded-full p-3 mb-4">
                   <svg className="h-8 w-8 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -18,9 +18,7 @@ const Team = () => {
     >
       <div className="container mx-auto px-4">
         <div className="mb-12 text-center">
-          <div className="mb-4 inline-block rounded-full bg-muted px-3 py-1 text-sm font-medium text-brand dark:bg-muted">
-            Who You Work With
-          </div>
+          <p className="eyebrow mb-4">Who You Work With</p>
           <h2 className="text-display mb-4 text-foreground">Who does the work</h2>
           <p className="mx-auto max-w-2xl text-muted-foreground">
             A founder-led practice, with specialists brought in per project when a build needs depth we do not already have in house. You work with the person doing the work.

@@ -156,9 +156,7 @@ export default function Blog() {
 
         <div className="mb-16 flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
           <div>
-            <div className="mb-4 inline-block rounded-full bg-muted px-3 py-1 text-sm font-medium text-brand">
-              Latest Insights
-            </div>
+            <p className="eyebrow mb-4">Latest Insights</p>
             <h2 className="text-display mb-4 text-brand">From Our Blog</h2>
             <p className="max-w-2xl text-lg text-muted-foreground">
               Stay updated with the latest trends, insights, and best practices in AI and machine learning.
@@ -180,7 +178,7 @@ export default function Blog() {
           {featuredBlogPosts.map((post) => (
             <Card
               key={post.id}
-              className="group overflow-hidden rounded-xl border-0 bg-card/80 shadow-xl backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl"
+              className="group overflow-hidden rounded-xl border-0 bg-card shadow-xl transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl"
             >
               <div className="relative h-56 w-full overflow-hidden">
                 <BlogIllustration category={post.category} />
@@ -189,7 +187,7 @@ export default function Blog() {
                   <Badge className="bg-primary px-3 py-1 text-sm hover:bg-primary/90">{post.category}</Badge>
                 </div>
               </div>
-              <CardHeader className="relative z-10 -mt-10 mx-4 rounded-lg border border-border bg-card/90 shadow-lg backdrop-blur-sm">
+              <CardHeader className="relative z-10 -mt-10 mx-4 rounded-lg border border-border bg-card/90 shadow-lg">
                 <a href={`/blog/${post.slug}`} className="transition-colors hover:text-brand">
                   <CardTitle className="text-xl font-bold">{post.title}</CardTitle>
                 </a>
@@ -252,7 +250,7 @@ export default function Blog() {
                 <p className="mt-4 text-sm text-primary-foreground/80">We respect your privacy. Unsubscribe at any time.</p>
               </div>
               <div className="hidden md:block">
-                <div className="rounded-xl border border-white/20 bg-white/10 p-8 shadow-lg backdrop-blur-sm">
+                <div className="rounded-xl border border-white/20 bg-white/10 p-8 shadow-lg">
                   <div className="flex items-start space-x-4">
                     <div className="rounded-full bg-white/10 p-3 shadow-lg">
                       <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
