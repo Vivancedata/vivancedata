@@ -21,9 +21,7 @@ export default function Overview() {
       className="container mx-auto py-16 px-4 md:py-24"
     >
       <div className="mx-auto mb-16 max-w-3xl text-center">
-        <div className="mb-4 inline-block rounded-full bg-muted px-3 py-1 text-sm font-medium text-brand">
-          Our Services
-        </div>
+        <p className="eyebrow mb-4">Our Services</p>
         <h2 className="text-display text-foreground">
           Comprehensive <span className="text-brand">AI Solutions</span> for Modern Businesses
         </h2>

@@ -79,9 +79,7 @@ export default function Integrations() {
         <div className="absolute bottom-20 right-0 -z-10 h-96 w-96 rounded-full bg-accent/5 blur-3xl" />
 
         <div className="mx-auto mb-14 max-w-3xl text-center">
-          <div className="mb-4 inline-block rounded-full bg-muted px-3 py-1 text-sm font-medium text-brand">
-            Technology Stack
-          </div>
+          <p className="eyebrow mb-4">Technology Stack</p>
           <h2 className="text-display text-foreground">
             Seamless Integrations
           </h2>

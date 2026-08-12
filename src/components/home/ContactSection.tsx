@@ -24,9 +24,7 @@ export function ContactSection({
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         <div>
-          <div className="inline-block rounded-full bg-muted px-3 py-1 text-sm font-medium text-brand mb-4">
-            Get In Touch
-          </div>
+          <p className="eyebrow mb-4">Get In Touch</p>
           <h2 className="text-display mb-4">{title}</h2>
           <p className="text-muted-foreground mb-6">
             {description}
