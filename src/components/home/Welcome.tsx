@@ -63,6 +63,17 @@ export default function Welcome() {
                 <p className="text-body-sm text-muted-foreground">
                   {feature.description}
                 </p>
+                {feature.demoHref ? (
+                  /* The site's core claim is "proved on your own documents
+                     before you pay" -- these links are that claim made
+                     clickable, so they sit on the promise they prove. */
+                  <a
+                    href={feature.demoHref}
+                    className="mt-auto pt-md font-mono text-xs uppercase tracking-wider text-brand underline-offset-4 hover:underline"
+                  >
+                    {feature.demoLabel} →
+                  </a>
+                ) : null}
               </article>
             );
           })}
