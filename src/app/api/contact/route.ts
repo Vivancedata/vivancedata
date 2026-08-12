@@ -217,15 +217,21 @@ export async function POST(request: NextRequest) {
         );
       }
 
-      // Log submission if Resend is not configured (development mode)
-      console.log('Contact form submission (Resend not configured):', {
-        name: `${body.firstName} ${body.lastName}`,
-        email: body.email,
-        company: body.company,
-        serviceInterest: body.serviceInterest,
-        message: body.message,
-        timestamp: new Date().toISOString(),
-      });
+      // No Resend key: fail HONESTLY. This branch used to log the
+      // submission and fall through to the success response -- and
+      // next.config strips console.log in production, so a prospect saw
+      // "we will get back to you soon" while their message was destroyed:
+      // not emailed, not stored, not even logged. A visible failure that
+      // hands over a direct address loses fewer leads than a quiet lie.
+      console.error('Contact form: RESEND_API_KEY not configured; submission rejected');
+      return NextResponse.json(
+        {
+          success: false,
+          error:
+            'The contact form is not able to send right now. Please email info@vivancedata.com directly.',
+        },
+        { status: 503, headers: rateLimitHeaders }
+      );
     }
 
     return NextResponse.json(
