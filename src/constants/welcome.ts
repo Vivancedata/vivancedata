@@ -1,3 +1,5 @@
+import { demos, type Demo } from "./demos";
+
 /**
  * `icon` is a union rather than `string` on purpose. It was `string`, and
  * Welcome.tsx resolved it through a lookup with a `?? Brain` fallback -- so a
@@ -10,11 +12,8 @@ export interface Feature {
   icon: FeatureIcon;
   title: string;
   description: string;
-  /** Live demo on a vivancedata subdomain. Only promises with a working,
-   * rate-limited demo get one -- a dead or fake link here is worse than
-   * none. */
-  demoHref?: string;
-  demoLabel?: string;
+  /** Only promises with a live demo get one -- see `constants/demos.ts`. */
+  demo?: Demo;
 }
 
 /**
@@ -34,22 +33,19 @@ export const features: Feature[] = [
   {
     icon: "phone",
     title: "Calls after you close",
-    demoHref: "https://calls.vivancedata.com",
-    demoLabel: "Triage a sample voicemail",
+    demo: demos.calls,
     description: "The 9pm no-heat call gets picked up, written down and booked, instead of going to voicemail and then to a competitor."
   },
   {
     icon: "fileText",
     title: "Paperwork typed twice",
-    demoHref: "https://paperwork.vivancedata.com",
-    demoLabel: "Extract a sample delivery slip",
+    demo: demos.paperwork,
     description: "Permits, submittals, invoices and delivery slips read once and turned into records, rather than re-keyed by someone who should be on site."
   },
   {
     icon: "camera",
     title: "What comes back from the field",
-    demoHref: "https://field.vivancedata.com",
-    demoLabel: "Match a sample field note",
+    demo: demos.field,
     description: "Photos, signed slips and scrawled field notes matched to the right job, with the illegible ones flagged rather than guessed at."
   },
   {

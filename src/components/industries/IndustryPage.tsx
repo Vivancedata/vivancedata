@@ -2,6 +2,8 @@
 
 import type { ReactNode } from "react";
 import { Container } from "@/components/common/Container";
+import { DemoLink } from "@/components/common/DemoLink";
+import type { Demo } from "@/constants/demos";
 import { Heading } from "@/components/common/Heading";
 import { Paragraph } from "@/components/common/Paragraph";
 import Link from "next/link";
@@ -129,6 +131,11 @@ export interface IndustryPageConfig {
    */
   introBody: string;
   introCtaLabel: string;
+  /**
+   * Rendered beside the intro CTA. Only industries whose workflow has a
+   * live demo get one -- see `constants/demos.ts`.
+   */
+  demo?: Demo;
   solutionsHeading: string;
   solutions: Array<{
     title: string;
@@ -195,12 +202,17 @@ export function IndustryPage({ config }: { config: IndustryPageConfig }) {
               {paragraph}
             </p>
           ))}
-          <Button asChild variant="secondary" shape="pill" className="group self-start">
-            <Link href="/contact">
-              <span>{config.introCtaLabel}</span>
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </Button>
+          <div className="flex flex-col gap-md self-start sm:flex-row sm:flex-wrap sm:items-center">
+            <Button asChild variant="secondary" shape="pill" className="group">
+              <Link href="/contact">
+                <span>{config.introCtaLabel}</span>
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </Button>
+            {config.demo ? (
+              <DemoLink demo={config.demo} className="whitespace-nowrap" />
+            ) : null}
+          </div>
         </AnimateOnScroll>
       </div>
 

@@ -1,4 +1,5 @@
 import { Camera, CheckCircle2, ChevronRight, FileText, PhoneCall } from "lucide-react";
+import { DemoLink } from "@/components/common/DemoLink";
 import { features, type FeatureIcon } from "@/constants/welcome";
 
 // Keys are exhaustive over FeatureIcon: adding a variant there without adding it
@@ -63,16 +64,11 @@ export default function Welcome() {
                 <p className="text-body-sm text-muted-foreground">
                   {feature.description}
                 </p>
-                {feature.demoHref ? (
+                {feature.demo ? (
                   /* The site's core claim is "proved on your own documents
                      before you pay" -- these links are that claim made
                      clickable, so they sit on the promise they prove. */
-                  <a
-                    href={feature.demoHref}
-                    className="mt-auto pt-md font-mono text-xs uppercase tracking-wider text-brand underline-offset-4 hover:underline"
-                  >
-                    {feature.demoLabel} →
-                  </a>
+                  <DemoLink demo={feature.demo} className="mt-auto pt-md" />
                 ) : null}
               </article>
             );
