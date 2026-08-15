@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { PhoneCall, CalendarClock, Receipt, MessageSquare } from "lucide-react";
 import { IndustryPage, type IndustryPageConfig } from "@/components/industries/IndustryPage";
+import { demos } from "@/constants/demos";
 
 export const metadata: Metadata = {
   title: "AI Solutions for HVAC and the Trades - VivanceData",
@@ -28,6 +29,7 @@ At VivanceData, we build call handling, dispatch and follow-up workflows around 
 
 A real emergency still reaches a person. What changes is that routine work gets booked instead of sitting in a voicemail box until morning.`,
   introCtaLabel: "Discuss Your Service Business AI Needs",
+  demo: demos.calls,
   solutionsHeading: "Our Trades AI Solutions",
   solutions: [
     {

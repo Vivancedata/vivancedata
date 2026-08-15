@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { ClipboardList, FileText, HardHat, Calculator } from "lucide-react";
 import { IndustryPage, type IndustryPageConfig } from "@/components/industries/IndustryPage";
+import { demos } from "@/constants/demos";
 
 export const metadata: Metadata = {
   title: "AI Solutions for Construction - VivanceData",
@@ -28,6 +29,7 @@ At VivanceData, we build workflows that read the documents your projects already
 
 Nothing here replaces the judgement of the person signing off. The work is drafted, the exceptions are surfaced, and a human decides what goes into the record.`,
   introCtaLabel: "Discuss Your Construction AI Needs",
+  demo: demos.paperwork,
   solutionsHeading: "Our Construction AI Solutions",
   solutions: [
     {

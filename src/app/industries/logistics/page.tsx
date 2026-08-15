@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { ScanLine, AlertTriangle, Radio, FileWarning } from "lucide-react";
 import { IndustryPage, type IndustryPageConfig } from "@/components/industries/IndustryPage";
+import { demos } from "@/constants/demos";
 
 export const metadata: Metadata = {
   title: "AI Solutions for Logistics and Fleet Operations - VivanceData",
@@ -28,6 +29,7 @@ At VivanceData, we build workflows that read those photographs, tie each documen
 
 Everything writes into the TMS or dispatch board your team already watches. An illegible scan is flagged for a person, never guessed at.`,
   introCtaLabel: "Discuss Your Fleet AI Needs",
+  demo: demos.paperwork,
   solutionsHeading: "Our Logistics AI Solutions",
   solutions: [
     {
