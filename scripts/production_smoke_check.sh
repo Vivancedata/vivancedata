@@ -87,7 +87,11 @@ echo "Running production smoke checks against $BASE_URL"
 run_redirect_check
 
 run_status_check "Homepage responds" "GET" "$BASE_URL/" "200" "$TMP_DIR/home.html"
-run_content_check "Homepage contains expected title" "$TMP_DIR/home.html" "VivanceData - AI Solutions for Modern Businesses"
+# Assert the brand, not the tagline: the tagline is copy that changes with
+# repositioning (Aug 9 it became "AI for construction, HVAC, logistics and
+# manufacturing" and this check cried wolf hourly for 10 days). The check
+# exists to catch a wrong/empty deploy, and the brand in the <title> does that.
+run_content_check "Homepage title carries the brand" "$TMP_DIR/home.html" "<title>VivanceData"
 
 run_status_check "Blog index responds" "GET" "$BASE_URL/blog" "200" "$TMP_DIR/blog.html"
 run_content_check "Blog index contains heading text" "$TMP_DIR/blog.html" "AI Insights Blog"
