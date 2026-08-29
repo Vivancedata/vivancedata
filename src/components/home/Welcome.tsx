@@ -22,7 +22,19 @@ const secondaryCtaClass =
 export default function Welcome() {
   return (
     <section className="hero-mesh w-full">
-      <div className="container mx-auto px-4 py-4xl md:py-section">
+      {/*
+        Asymmetric vertical padding, deliberately.
+
+        The mesh's three radial stops are centred at -10%, -5% and 0% of this
+        band's height, so the wash is at its strongest along the top edge. With
+        128px of symmetric padding the brightest part of the only decoration
+        this design system permits itself landed in dead space above the
+        eyebrow -- a soft coloured stripe between the header and the first
+        word, doing no work. Pulling the top padding in puts the eyebrow and
+        headline inside the wash, which is what a hero mesh is for. The bottom
+        padding is unchanged: it is what separates the hero from ClientLogos.
+      */}
+      <div className="container mx-auto px-4 pb-4xl pt-2xl md:pb-section md:pt-3xl">
         <div className="mb-3xl flex flex-col items-center justify-center gap-lg text-center">
           {/* The uppercase Geist Mono eyebrow, labelling the band like a spec sheet. */}
           <p className="eyebrow">AI for trades and field operations</p>

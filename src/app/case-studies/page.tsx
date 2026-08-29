@@ -4,48 +4,131 @@ import { Paragraph } from "@/components/common/Paragraph";
 import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { PipelineDiagram, type Pipeline } from "@/components/case-studies/PipelineDiagram";
 
 // These illustrations depict the SHAPE of each system, never its results.
 // They previously rendered invented metrics ("↑ 68% Alert Precision") that
 // contradicted the composite-example disclaimer further down this page.
-const PipelineIllustration = ({ label, steps }: { label: string; steps: string[] }) => (
-  <div className="bg-card h-full w-full relative overflow-hidden border-b border-border">
-    <div className="absolute inset-0 p-8 flex flex-col justify-center">
-      <div className="eyebrow mb-4">{label}</div>
-      <div className="space-y-3">
-        {steps.map((step, i) => (
-          <div key={step} className="flex items-center gap-3">
-            <div className={`w-2 h-2 rounded-full shrink-0 ${i < steps.length - 1 ? "bg-brand" : "bg-border"}`} />
-            <div className={`h-0.5 flex-1 rounded ${i < steps.length - 1 ? "bg-brand/30" : "bg-border"}`} />
-            <span className="text-mute text-xs w-24 text-right">{step}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  </div>
-);
-
-const ILLUSTRATIONS: Record<string, { label: string; steps: string[] }> = {
+//
+// The stage names here are load-bearing: they must be the same words the case
+// study beside them uses. The logistics entry used to describe a proof-of-
+// delivery pipeline ("Driver Photo → Match to Load → Billing") next to a case
+// study about load exception triage -- the picture and the prose were about two
+// different systems.
+const PIPELINES: Record<string, Pipeline> = {
   Construction: {
     label: "// Submittal Intake",
-    steps: ["Emailed PDF", "Field Extraction", "Validation", "Project System"],
+    stages: [
+      {
+        name: "Emailed PDF",
+        note: "Arrives in whatever format the sub sends it",
+        actor: "Subcontractor",
+        handoff: "the document",
+      },
+      {
+        name: "Field Extraction",
+        note: "Fields read off the document, not re-keyed",
+        actor: "System",
+        handoff: "a draft record",
+      },
+      {
+        name: "Validation",
+        note: "Checked against the project's own requirements",
+        actor: "System",
+        handoff: "record + mismatches",
+      },
+      {
+        name: "Approval",
+        note: "Reviews the staged record and what was flagged",
+        actor: "Project engineer",
+        handoff: "an approved record",
+        human: true,
+      },
+      {
+        name: "Project System",
+        note: "Filed where the team already looks for it",
+        actor: "System",
+      },
+    ],
   },
   "HVAC & Trades": {
     label: "// After-Hours Call Capture",
-    steps: ["Missed Call", "Transcribed Intake", "Triaged Urgency", "Booked or Escalated"],
+    stages: [
+      {
+        name: "Missed Call",
+        note: "The 9pm call that used to reach voicemail",
+        actor: "Caller",
+        handoff: "the call, answered",
+      },
+      {
+        name: "Transcribed Intake",
+        note: "Fault, address and access in one fixed format",
+        actor: "System",
+        handoff: "a structured job",
+      },
+      {
+        name: "Triaged Urgency",
+        note: "Emergency tonight, or routine work that can wait",
+        actor: "System",
+        handoff: "a routing decision",
+      },
+      {
+        name: "Escalation",
+        note: "Paged only for the calls that cannot wait",
+        actor: "On-call tech",
+        handoff: "a decision either way",
+        human: true,
+      },
+      {
+        name: "Booked or Escalated",
+        note: "Every call logged, converted or not",
+        actor: "System",
+      },
+    ],
   },
   "Logistics & Fleet": {
-    label: "// Proof of Delivery",
-    steps: ["Driver Photo", "Field Extraction", "Match to Load", "Billing"],
+    label: "// Load Exception Triage",
+    stages: [
+      {
+        name: "Load Status",
+        note: "Every live load, measured against its plan",
+        actor: "Telematics",
+        handoff: "status vs plan",
+      },
+      {
+        name: "Off-Plan Detection",
+        note: "Late, short and mis-scanned loads raised early",
+        actor: "System",
+        handoff: "the exceptions",
+      },
+      {
+        name: "Ranked by Impact",
+        note: "Worst customer impact first, not newest first",
+        actor: "System",
+        handoff: "an ordered list",
+      },
+      {
+        name: "Dispatch Works It",
+        note: "Top of the board cleared before the phone rings",
+        actor: "Dispatcher",
+        handoff: "the calls made",
+        human: true,
+      },
+      {
+        name: "Dispatch Board",
+        note: "Written back to the system dispatch already watches",
+        actor: "System",
+      },
+    ],
   },
 };
 
 const CaseStudyIllustration = ({ industry }: { industry: string }) => {
-  const illustration = ILLUSTRATIONS[industry];
-  if (!illustration) {
+  const pipeline = PIPELINES[industry];
+  if (!pipeline) {
     return <div className="bg-muted h-full w-full" />;
   }
-  return <PipelineIllustration label={illustration.label} steps={illustration.steps} />;
+  return <PipelineDiagram pipeline={pipeline} />;
 };
 
 export const metadata: Metadata = {
@@ -146,8 +229,10 @@ export default function CaseStudiesPage() {
             key={study.id}
             className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 md:gap-12`}
           >
-            <div className="w-full md:w-1/2">
-              <div className="relative aspect-video overflow-hidden rounded-xl">
+            {/* self-center: the diagram is a fixed-height card, so stretching
+                it to the prose column's height just padded it with white. */}
+            <div className="w-full md:w-1/2 md:self-center">
+              <div className="relative overflow-hidden rounded-xl">
                 <CaseStudyIllustration industry={study.industry} />
               </div>
             </div>
