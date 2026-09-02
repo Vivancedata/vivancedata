@@ -4,11 +4,11 @@ import { IndustryPage, type IndustryPageConfig } from "@/components/industries/I
 import { demos } from "@/constants/demos";
 
 export const metadata: Metadata = {
-  title: "AI Solutions for HVAC and the Trades - VivanceData",
+  title: "Answer the calls you are missing after hours - Vivancedata",
   description: "Answer the after-hours calls that go to voicemail, triage the emergencies, and get quotes and follow-ups out while the job is still fresh.",
   keywords: ["HVAC AI", "trades AI", "after-hours call answering", "dispatch software", "service scheduling", "field service automation"],
   openGraph: {
-    title: "AI Solutions for HVAC and the Trades - VivanceData",
+    title: "Answer the calls you are missing after hours - Vivancedata",
     description: "Call capture, dispatch support, quoting and follow-up for HVAC, plumbing, electrical and other service trades.",
     type: "website",
     url: "https://vivancedata.com/industries/hvac-trades",
@@ -17,20 +17,20 @@ export const metadata: Metadata = {
 
 const config: IndustryPageConfig = {
   eyebrow: "HVAC & Trades",
-  title: "AI Solutions for HVAC and the Trades",
+  title: "Answer the calls you're missing after hours",
   heroVisual: {
     label: "// After-Hours Call Capture",
     steps: ["Missed Call", "Transcribed Intake", "Triaged Urgency", "Booked or Escalated"],
   },
-  introHeading: "Answering the Calls You Are Currently Missing",
-  introBody: `The job is won or lost on the phone. An after-hours call that goes to voicemail is a booked job lost to whoever answers next, and the office cannot staff every hour a boiler fails.
+  introHeading: "The job is won or lost on the phone",
+  introBody: `An after-hours call that goes to voicemail is a booked job lost to whoever answers next, and the office cannot staff every hour a boiler fails.
 
-At VivanceData, we build call handling, dispatch and follow-up workflows around the way a service business actually runs — the phone first, the schedule second, and the paperwork last.
+I build call handling, dispatch and follow-up around the way a service business actually runs — the phone first, the schedule second, and the paperwork last.
 
 A real emergency still reaches a person. What changes is that routine work gets booked instead of sitting in a voicemail box until morning.`,
-  introCtaLabel: "Discuss Your Service Business AI Needs",
+  introCtaLabel: "Book a call",
   demo: demos.calls,
-  solutionsHeading: "Our Trades AI Solutions",
+  solutionsHeading: "What I build for service businesses",
   solutions: [
     {
       title: "After-Hours Call Capture",
@@ -165,8 +165,8 @@ A real emergency still reaches a person. What changes is that routine work gets 
     },
   ],
   finalCtaHeading: "Ready to Stop Losing Jobs to Voicemail?",
-  finalCtaBody: "Let's discuss what happens to your calls after hours today, and what it would take to have them answered, triaged and booked.",
-  finalCtaLabel: "Schedule a Consultation",
+  finalCtaBody: "Tell me what happens to your calls after hours today, and I will tell you what it would take to have them answered, triaged and booked.",
+  finalCtaLabel: "Book a call",
 };
 
 export default function HvacTradesPage() {

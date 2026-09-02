@@ -171,11 +171,11 @@ const CaseStudyIllustration = ({ industry }: { industry: string }) => {
 };
 
 export const metadata: Metadata = {
-  title: "Example Engagements - VivanceData AI Solutions",
+  title: "Example Engagements - Vivancedata AI Solutions",
   description: "Composite examples showing how AI engagements are scoped and delivered in construction, the trades and logistics -- the problem, the approach, and what gets handed over.",
   keywords: ["AI engagements", "AI implementation", "AI scoping", "AI delivery", "AI solutions", "machine learning projects"],
   openGraph: {
-    title: "Example Engagements - VivanceData",
+    title: "Example Engagements - Vivancedata",
     description: "Composite examples of how AI work is scoped and delivered across document intake, call capture and dispatch exceptions.",
     type: "website",
     url: "https://vivancedata.com/case-studies",
@@ -184,13 +184,13 @@ export const metadata: Metadata = {
         url: "https://vivancedata.com/images/ai-solutions.png",
         width: 1200,
         height: 630,
-        alt: "VivanceData Case Studies",
+        alt: "Vivancedata Case Studies",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Example Engagements - VivanceData",
+    title: "Example Engagements - Vivancedata",
     description: "Composite examples of how AI work is scoped and delivered.",
     images: ["https://vivancedata.com/images/ai-solutions.png"],
   },
@@ -262,7 +262,7 @@ export default function CaseStudiesPage() {
           Let&apos;s discuss how our AI solutions can help your business overcome challenges and drive measurable outcomes.
         </p>
         <Button asChild size="lg" >
-          <Link href="/contact">Schedule a Consultation</Link>
+          <Link href="/contact">Book a call</Link>
         </Button>
       </div>
     </Container>

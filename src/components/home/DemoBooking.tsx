@@ -157,9 +157,7 @@ function DemoFeatureColumn() {
   return (
     <AnimateOnScroll variant="fadeInLeft">
       <div>
-        <div className="inline-block rounded-full bg-muted px-4 py-1.5 text-sm font-medium text-brand mb-6">
-          Book a Demo
-        </div>
+        <p className="eyebrow mb-6">What happens next</p>
 
         <h2 className="text-display mb-6 text-foreground leading-tight">
           See it run on{" "}
@@ -208,7 +206,7 @@ function DemoFormCard({ state, onChange, onSubmit }: DemoFormProps) {
                 </div>
                 <h3 className="text-heading-2 text-foreground mb-2">Book a call</h3>
                 <p className="text-muted-foreground">
-                  Tell us where to reach you and we will get back within one working day.
+                  Tell me where to reach you and you will hear back within one working day.
                 </p>
               </div>
 
@@ -336,7 +334,7 @@ function DemoFormCard({ state, onChange, onSubmit }: DemoFormProps) {
                     </span>
                   ) : (
                     <span className="flex items-center justify-center">
-                      Book the call
+                      Book a call
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </span>
                   )}
@@ -355,12 +353,12 @@ function DemoFormCard({ state, onChange, onSubmit }: DemoFormProps) {
 
               <div className="mt-6 pt-6 border-t border-border">
                 <p className="text-sm text-muted-foreground text-center">
-                  Prefer to talk directly?{" "}
+                  Prefer to write it out? {" "}
                   <Link
                     href="/contact"
                     className="text-brand hover:text-brand/80 font-medium underline-offset-4 hover:underline transition-colors"
                   >
-                    Contact us
+                    use the contact form
                   </Link>
                 </p>
               </div>
@@ -370,15 +368,15 @@ function DemoFormCard({ state, onChange, onSubmit }: DemoFormProps) {
               <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-muted mb-6">
                 <CheckCircle className="h-10 w-10 text-brand" />
               </div>
-              <h3 className="text-heading-2 text-foreground mb-3">Demo Request Received</h3>
+              <h3 className="text-heading-2 text-foreground mb-3">Call request received</h3>
               <p className="text-muted-foreground mb-6 max-w-sm mx-auto">
-                Thanks, {state.formData.name}. We will get back to you at{" "}
+                Thanks, {state.formData.name}. I will get back to you at{" "}
                 <span className="font-medium text-foreground">{state.formData.email}</span>{" "}
                 within one working day to arrange a time.
               </p>
               <Button variant="outline" asChild>
-                <Link href="/contact">
-                  Learn More About Our Services
+                <Link href="/services">
+                  See what I build
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
@@ -454,7 +452,7 @@ export function DemoBooking(): React.ReactElement {
           company: state.formData.company.trim(),
           serviceInterest: "consulting",
           message:
-            "Demo request submitted from homepage. Please follow up to schedule a 30-minute demo.",
+            "Call request submitted from the homepage booking form. Please follow up to arrange a time.",
         }),
       });
 
@@ -464,8 +462,8 @@ export function DemoBooking(): React.ReactElement {
       }
 
       dispatch({ type: "submit_success" });
-      toast.success("Demo request received", {
-        description: "We will get back to you within one working day.",
+      toast.success("Call request received", {
+        description: "You will hear back within one working day.",
       });
     } catch (error) {
       console.error("Demo booking submission error:", error);
@@ -474,7 +472,7 @@ export function DemoBooking(): React.ReactElement {
         message:
           "We could not submit your request right now. Please try again or use the contact page.",
       });
-      toast.error("Could not submit demo request", {
+      toast.error("Could not submit your request", {
         description: "Please try again in a moment.",
       });
     }

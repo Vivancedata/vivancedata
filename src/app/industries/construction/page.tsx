@@ -4,11 +4,11 @@ import { IndustryPage, type IndustryPageConfig } from "@/components/industries/I
 import { demos } from "@/constants/demos";
 
 export const metadata: Metadata = {
-  title: "AI Solutions for Construction - VivanceData",
+  title: "AI Solutions for Construction - Vivancedata",
   description: "Cut the paperwork load on submittals, RFIs, daily reports and permits with AI that writes into the project software your team already runs.",
   keywords: ["construction AI", "submittal processing", "RFI automation", "daily reports", "construction document management", "preconstruction estimating"],
   openGraph: {
-    title: "AI Solutions for Construction - VivanceData",
+    title: "AI Solutions for Construction - Vivancedata",
     description: "Document intake, daily report assembly, bid support and compliance records for construction teams.",
     type: "website",
     url: "https://vivancedata.com/industries/construction",
@@ -25,10 +25,10 @@ const config: IndustryPageConfig = {
   introHeading: "Taking the Paperwork Off the Critical Path",
   introBody: `Paperwork volume is the constraint. RFIs, submittals, daily reports, permits and invoices move through email and PDFs, and the people who understand them are needed on site.
 
-At VivanceData, we build workflows that read the documents your projects already generate, check them against your own rules, and hand a superintendent or estimator something to review rather than something to type.
+At Vivancedata, we build workflows that read the documents your projects already generate, check them against your own rules, and hand a superintendent or estimator something to review rather than something to type.
 
 Nothing here replaces the judgement of the person signing off. The work is drafted, the exceptions are surfaced, and a human decides what goes into the record.`,
-  introCtaLabel: "Discuss Your Construction AI Needs",
+  introCtaLabel: "Book a call",
   demo: demos.paperwork,
   solutionsHeading: "Our Construction AI Solutions",
   solutions: [
@@ -167,7 +167,7 @@ Nothing here replaces the judgement of the person signing off. The work is draft
   ],
   finalCtaHeading: "Ready to Get the Paperwork Off Your Team?",
   finalCtaBody: "Let's discuss which documents are costing your project team the most time, and what it would take to draft them instead of typing them.",
-  finalCtaLabel: "Schedule a Consultation",
+  finalCtaLabel: "Book a call",
 };
 
 export default function ConstructionPage() {

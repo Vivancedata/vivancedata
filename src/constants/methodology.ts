@@ -23,7 +23,7 @@ export interface MethodologyFAQ {
 export const frameworkName = 'RAPID AI Framework';
 export const frameworkTagline = 'Realize AI Potential In Days';
 
-export const frameworkDescription = `The RAPID AI Framework is VivanceData's proven methodology for transforming businesses through artificial intelligence. Designed to minimize risk and maximize value, our structured approach ensures successful AI adoption from initial discovery to enterprise-scale deployment.`;
+export const frameworkDescription = `The RAPID AI Framework is Vivancedata's proven methodology for transforming businesses through artificial intelligence. Designed to minimize risk and maximize value, our structured approach ensures successful AI adoption from initial discovery to enterprise-scale deployment.`;
 
 export const methodologyPhases: MethodologyPhase[] = [
   {
@@ -145,7 +145,7 @@ export const methodologyFAQs: MethodologyFAQ[] = [
     answer: 'The RAPID framework is designed to integrate with existing initiatives. We can assess your current state, identify gaps, and accelerate ongoing projects while ensuring alignment with broader strategic objectives.',
   },
   {
-    question: 'Do we need a data science team to work with VivanceData?',
+    question: 'Do we need a data science team to work with Vivancedata?',
     answer: 'No. Our team provides full-service AI implementation. However, if you have internal data science resources, we collaborate closely and focus on knowledge transfer to build your long-term capabilities.',
   },
   {

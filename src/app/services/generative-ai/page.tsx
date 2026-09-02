@@ -11,11 +11,11 @@ import {
 } from "@/components/services/ServicePageLayout";
 
 export const metadata: Metadata = {
-  title: "Generative AI Solutions - VivanceData",
+  title: "Generative AI Solutions - Vivancedata",
   description: "Leverage the power of generative AI to create content, designs, and solutions that drive innovation for your business. Custom LLM fine-tuning, image generation, and multimodal AI.",
   keywords: ["generative AI", "AI content creation", "LLM fine-tuning", "image generation", "voice synthesis", "multimodal AI"],
   openGraph: {
-    title: "Generative AI Solutions - VivanceData",
+    title: "Generative AI Solutions - Vivancedata",
     description: "Harness the power of generative AI for content creation, design, and innovation. Custom LLM fine-tuning and multimodal AI applications.",
     type: "website",
     url: "https://vivancedata.com/services/generative-ai",
@@ -24,13 +24,13 @@ export const metadata: Metadata = {
         url: "https://vivancedata.com/images/ai-solutions.png",
         width: 1200,
         height: 630,
-        alt: "VivanceData Generative AI Solutions",
+        alt: "Vivancedata Generative AI Solutions",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Generative AI Solutions - VivanceData",
+    title: "Generative AI Solutions - Vivancedata",
     description: "Harness the power of generative AI for content creation, design, and innovation.",
     images: ["https://vivancedata.com/images/ai-solutions.png"],
   },
@@ -154,7 +154,7 @@ export default function GenerativeAIPage() {
         </p>
         <Button asChild className="self-start group" variant="outline">
           <Link href="/contact">
-            <span>Schedule a Consultation</span>
+            <span>Book a call</span>
             <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </Button>
@@ -191,7 +191,7 @@ export default function GenerativeAIPage() {
       <ServiceCTA
         heading="Ready to Harness the Power of Generative AI?"
         body="Let&apos;s discuss how our generative AI solutions can help your business create better content, designs, and experiences."
-        actionLabel="Get Started"
+        actionLabel="Book a call"
       />
     </Container>
   );

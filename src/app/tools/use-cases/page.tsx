@@ -6,7 +6,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "AI Use Cases Repository - VivanceData",
+  title: "AI Use Cases Repository - Vivancedata",
   description:
     "Browse practical AI use cases for construction, HVAC and the trades, logistics and fleet operations, and manufacturing.",
   keywords: [
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     "field service AI",
   ],
   openGraph: {
-    title: "AI Use Cases Repository - VivanceData",
+    title: "AI Use Cases Repository - Vivancedata",
     description:
       "Explore practical AI applications across industries. Find the right use case for your business with our searchable database.",
     type: "website",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Use Cases Repository - VivanceData",
+    title: "AI Use Cases Repository - Vivancedata",
     description:
       "Explore practical AI applications across industries. Find the right use case for your business.",
     images: ["https://vivancedata.com/images/ai-solutions.png"],
@@ -98,7 +98,7 @@ export default function UseCasesPage() {
               href="/contact"
               className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
             >
-              Schedule a Consultation
+              Book a call
             </Link>
           </div>
         </div>

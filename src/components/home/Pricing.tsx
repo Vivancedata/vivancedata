@@ -105,18 +105,22 @@ export default function Pricing({ showHeader = true }: PricingProps) {
           ))}
         </div>
 
-        <div className="mt-16 grid gap-8 rounded-3xl border border-border/70 bg-card/90 p-8 md:grid-cols-2 md:p-12">
+        {/* The "Delivery Confidence Guarantee" panel that sat beside this was a
+            promise with nothing behind it (no SLA, no refund terms); the fixed
+            price in writing is the real commitment, so that is what is said. */}
+        <div className="mx-auto mt-16 max-w-3xl rounded-3xl border border-border/70 bg-card/90 p-8 shadow-lg md:p-12">
           <div>
-            <h3 className="text-heading-1 text-foreground">Need a Custom Solution?</h3>
+            <h3 className="text-heading-1 text-foreground">Does not fit one of these?</h3>
             <p className="mt-4 text-muted-foreground">
-              Every engagement is tailored around your data, workflows, and internal capacity. We
-              can scope advisory, delivery, governance, or capability-building support to fit.
+              Every build is scoped around the systems you already run and how much of it you
+              want to run yourself. Tell me what is going wrong and I will come back with a scope
+              and a fixed price in writing.
             </p>
             <ul className="mt-6 space-y-4">
               {[
-                "Custom AI model development and evaluation",
-                "Integration with existing software and data systems",
-                "Flexible pricing aligned to scope and timeline",
+                "Works with the dispatch, accounting and phone systems you already have",
+                "Handover-only if you would rather run it without me",
+                "A fixed price in writing before anything starts",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3">
                   <span className="mt-1 h-2.5 w-2.5 rounded-full bg-primary" aria-hidden="true" />
@@ -126,28 +130,10 @@ export default function Pricing({ showHeader = true }: PricingProps) {
             </ul>
             <Button className="mt-6 bg-primary text-primary-foreground hover:bg-primary/90" asChild>
               <a href="/contact">
-                <span>Schedule a Consultation</span>
+                <span>Book a call</span>
                 <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
               </a>
             </Button>
-          </div>
-          <div className="rounded-2xl bg-primary p-8 text-primary-foreground">
-            <h4 className="text-heading-3">Delivery Confidence Guarantee</h4>
-            <p className="mt-3 text-primary-foreground">
-              We scope projects around measurable outcomes and explicit checkpoints, so your team
-              always knows what success looks like before implementation begins.
-            </p>
-            <div className="mt-8 border-t border-primary-foreground/20 pt-6">
-              <p className="text-primary-foreground">
-                Have questions about pricing or want help choosing the right engagement model?
-              </p>
-              <Button
-                className="mt-4 bg-primary-foreground text-brand hover:bg-primary-foreground/90"
-                asChild
-              >
-                <a href="/contact">Contact Our Team</a>
-              </Button>
-            </div>
           </div>
         </div>
       </div>

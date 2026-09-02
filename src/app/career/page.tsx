@@ -8,19 +8,19 @@ import Link from 'next/link';
 import { Briefcase, Users, Rocket, Heart, Mail, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: "Careers at VivanceData | Join Our AI Team",
-  description: "How VivanceData works with specialists. A founder-led practice that brings in senior people per project rather than hiring a bench.",
+  title: "Careers at Vivancedata | Join Our AI Team",
+  description: "How Vivancedata works with specialists. A founder-led practice that brings in senior people per project rather than hiring a bench.",
   keywords: ["AI careers", "AI consultant jobs", "data science careers", "machine learning jobs", "AI engineering"],
   openGraph: {
-    title: "Careers at VivanceData | AI Consulting Team",
+    title: "Careers at Vivancedata | AI Consulting Team",
     description: "A founder-led practice that works with senior specialists on a per-project basis.",
     type: "website",
     url: "https://vivancedata.com/career",
-    siteName: "VivanceData",
+    siteName: "Vivancedata",
   },
   twitter: {
     card: "summary",
-    title: "Careers at VivanceData",
+    title: "Careers at Vivancedata",
     description: "Join our AI consulting team. Explore open positions.",
   },
   robots: {
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
 };
 
-// VivanceData is a founder-led practice with a network of project-based
+// Vivancedata is a founder-led practice with a network of project-based
 // specialists -- not an employer with a benefits package. These describe how
 // collaboration actually works here. Do not add employment perks (PTO, training
 // budgets, team culture) until there is an actual payroll behind them.
@@ -64,7 +64,7 @@ const CareerPage = () => {
         <div className="text-center mb-16">
           <Heading className="text-4xl md:text-5xl mb-4">Work With Us</Heading>
           <Paragraph className="max-w-2xl mx-auto text-lg">
-            VivanceData is a founder-led practice backed by a small network of specialists we bring
+            Vivancedata is a founder-led practice backed by a small network of specialists we bring
             in per project. We are not hiring employees, but we do add people to that network when
             the work calls for depth we do not already have.
           </Paragraph>
@@ -108,7 +108,7 @@ const CareerPage = () => {
               have built -- that is more useful to us than a resume.
             </p>
             <a
-              href="mailto:careers@vivancedata.com?subject=Career Interest at VivanceData"
+              href="mailto:careers@vivancedata.com?subject=Career Interest at Vivancedata"
               className="inline-flex items-center gap-2 text-brand hover:underline font-medium"
             >
               <Mail className="h-4 w-4" />

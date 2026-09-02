@@ -11,11 +11,11 @@ import {
 } from "@/components/services/ServicePageLayout";
 
 export const metadata: Metadata = {
-  title: "AI Strategy Consulting - VivanceData",
+  title: "AI Strategy Consulting - Vivancedata",
   description: "Expert guidance to help you develop and implement an effective AI strategy that aligns with your business goals and delivers measurable results.",
   keywords: ["AI strategy", "AI consulting", "digital transformation", "AI roadmap", "AI implementation", "AI governance"],
   openGraph: {
-    title: "AI Strategy Consulting - VivanceData",
+    title: "AI Strategy Consulting - Vivancedata",
     description: "Expert guidance for developing and implementing effective AI strategies. From readiness assessment to implementation.",
     type: "website",
     url: "https://vivancedata.com/services/consulting",
@@ -24,13 +24,13 @@ export const metadata: Metadata = {
         url: "https://vivancedata.com/images/ai-solutions.png",
         width: 1200,
         height: 630,
-        alt: "VivanceData AI Strategy Consulting",
+        alt: "Vivancedata AI Strategy Consulting",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Strategy Consulting - VivanceData",
+    title: "AI Strategy Consulting - Vivancedata",
     description: "Expert guidance for developing and implementing effective AI strategies.",
     images: ["https://vivancedata.com/images/ai-solutions.png"],
   },

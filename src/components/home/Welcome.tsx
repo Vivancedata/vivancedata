@@ -117,7 +117,7 @@ export default function Welcome() {
             <ChevronRight className="ml-2 h-5 w-5" aria-hidden="true" />
           </a>
           <a href="/contact" className={secondaryCtaClass}>
-            Schedule a Consultation
+            Book a call
           </a>
         </div>
       </div>

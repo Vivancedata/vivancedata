@@ -7,11 +7,11 @@ import { Metadata } from 'next';
 import { Mail, Clock } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: "Contact Us - VivanceData",
-  description: "Get in touch to discuss what you are trying to automate. You will talk to the person who would do the work, not an account manager.",
-  keywords: ["contact VivanceData", "AI consultation", "get in touch", "AI services inquiry", "business consultation"],
+  title: "Book a call - Vivancedata",
+  description: "Tell me what is slowing your operation down. You will hear back from me, not an account manager, within one working day.",
+  keywords: ["contact Vivancedata", "book a call", "AI for contractors", "after-hours call answering", "paperwork automation"],
   openGraph: {
-    title: "Contact Us - VivanceData",
+    title: "Book a call - Vivancedata",
     description: "Book a consultation and talk directly to the person who would build it.",
     type: "website",
     url: "https://vivancedata.com/contact",
@@ -20,13 +20,13 @@ export const metadata: Metadata = {
         url: "https://vivancedata.com/images/banner.png",
         width: 1200,
         height: 630,
-        alt: "Contact VivanceData",
+        alt: "Contact Vivancedata",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Contact Us - VivanceData",
+    title: "Book a call - Vivancedata",
     description: "Book a consultation and talk directly to the person who would build it.",
     images: ["https://vivancedata.com/images/banner.png"],
   },
@@ -37,11 +37,11 @@ const ContactPage = () => {
     <Container className="py-16">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <Heading className="text-4xl md:text-5xl mb-4">Get in Touch</Heading>
+          <Heading className="text-4xl md:text-5xl mb-4">Book a call</Heading>
           <Paragraph className="max-w-2xl mx-auto text-lg">
-            Ready to transform your business with AI? Let&apos;s discuss how we can help you
-            achieve your goals. Fill out the form below and one of our AI consultants will
-            get back to you within 24 hours.
+            Tell me which job keeps going wrong: the after-hours calls, the paperwork typed twice,
+            the photos that never get matched. You&apos;ll hear back from me, not an account manager,
+            within one working day.
           </Paragraph>
         </div>
 
@@ -69,7 +69,7 @@ const ContactPage = () => {
                     <Clock className="h-5 w-5 text-brand" />
                   </div>
                   <div>
-                    <p className="font-medium">Business Hours</p>
+                    <p className="font-medium">Hours</p>
                     <p className="text-muted-foreground">
                       Mon - Fri: 9:00 AM - 6:00 PM PST
                     </p>
@@ -79,23 +79,23 @@ const ContactPage = () => {
             </div>
 
             <div className="bg-muted rounded-xl p-6">
-              <h2 className="text-heading-4 mb-3">What to Expect</h2>
+              <h2 className="text-heading-4 mb-3">What happens next</h2>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 bg-primary rounded-full"></span>
-                  Response within 24 hours
+                  A reply from me within one working day
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 bg-primary rounded-full"></span>
-                  Free initial consultation
+                  A first call that costs nothing
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 bg-primary rounded-full"></span>
-                  Custom AI solution assessment
+                  An honest read on whether the job is worth automating
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 bg-primary rounded-full"></span>
-                  No commitment required
+                  A fixed price in writing before anything starts
                 </li>
               </ul>
             </div>

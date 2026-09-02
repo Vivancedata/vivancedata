@@ -75,7 +75,7 @@ export function MainNav() {
             {/* Nav chrome, so a 6px square rather than a marketing pill. */}
             <Button asChild>
               <a href="/contact">
-                Contact Us
+                Book a call
               </a>
             </Button>
           </div>

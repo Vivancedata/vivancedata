@@ -1,10 +1,10 @@
-# VivanceData - AI Solutions for Modern Businesses
+# Vivancedata - AI Solutions for Modern Businesses
 
-![VivanceData](public/images/banner.png)
+![Vivancedata](public/images/banner.png)
 
 ## Overview
 
-VivanceData is a leading provider of AI solutions that transform businesses through intelligent automation. We combine cutting-edge AI technology with deep industry expertise to deliver solutions that drive real business outcomes. Our website showcases our services, case studies, and expertise in the AI space.
+Vivancedata is a leading provider of AI solutions that transform businesses through intelligent automation. We combine cutting-edge AI technology with deep industry expertise to deliver solutions that drive real business outcomes. Our website showcases our services, case studies, and expertise in the AI space.
 
 ## Key Features
 

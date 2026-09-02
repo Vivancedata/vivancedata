@@ -1,9 +1,9 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'RAPID AI Framework - Our Methodology | VivanceData',
+  title: 'RAPID AI Framework - Our Methodology | Vivancedata',
   description:
-    'The RAPID AI Framework is VivanceData\'s proven 6-phase methodology for AI transformation. Realize AI Potential In Days with our structured approach from discovery to scale.',
+    'The RAPID AI Framework is Vivancedata\'s proven 6-phase methodology for AI transformation. Realize AI Potential In Days with our structured approach from discovery to scale.',
   keywords: [
     'AI methodology',
     'AI transformation framework',
@@ -15,9 +15,9 @@ export const metadata: Metadata = {
     'AI consulting methodology',
   ],
   openGraph: {
-    title: 'RAPID AI Framework - Realize AI Potential In Days | VivanceData',
+    title: 'RAPID AI Framework - Realize AI Potential In Days | Vivancedata',
     description:
-      'Transform your business with VivanceData\'s proven 6-phase RAPID AI Framework. From discovery to enterprise-scale deployment in days, not months.',
+      'Transform your business with Vivancedata\'s proven 6-phase RAPID AI Framework. From discovery to enterprise-scale deployment in days, not months.',
     type: 'website',
     url: 'https://vivancedata.com/methodology',
     images: [
@@ -25,13 +25,13 @@ export const metadata: Metadata = {
         url: 'https://vivancedata.com/images/ai-solutions.png',
         width: 1200,
         height: 630,
-        alt: 'VivanceData RAPID AI Framework',
+        alt: 'Vivancedata RAPID AI Framework',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'RAPID AI Framework - VivanceData',
+    title: 'RAPID AI Framework - Vivancedata',
     description:
       'Transform your business with our proven 6-phase AI methodology. Realize AI Potential In Days.',
     images: ['https://vivancedata.com/images/ai-solutions.png'],

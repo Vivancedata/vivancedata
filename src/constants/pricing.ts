@@ -47,7 +47,7 @@ export const pricingTiers: PricingTier[] = [
       { name: "Direct support channel", included: false },
       { name: "Ongoing improvement cycles", included: false },
     ],
-    cta: "Book an Assessment",
+    cta: "Get a fixed price",
   },
   {
     name: "Build & Run",
@@ -67,7 +67,7 @@ export const pricingTiers: PricingTier[] = [
       { name: "Direct support channel", included: true },
       { name: "Ongoing improvement cycles", included: false },
     ],
-    cta: "Scope a Build",
+    cta: "Get a fixed price",
     popular: true,
   },
   {
@@ -88,7 +88,7 @@ export const pricingTiers: PricingTier[] = [
       { name: "Direct support channel", included: true },
       { name: "Ongoing improvement cycles", included: true, tooltip: "Regular reviews, new workflows scoped as they surface" },
     ],
-    cta: "Talk It Through",
+    cta: "Get a fixed price",
   },
 ];
 
@@ -99,7 +99,7 @@ export const pricingPageContent = {
     "A build has two costs: getting it working, and keeping it working. Both are listed, because only quoting the first one sets a false expectation.",
   whyRetainer: {
     title: "Why there is a monthly cost at all",
-    body: "An automation is not finished when it ships. The APIs it talks to change, the documents it reads drift in format, and accuracy quietly degrades if nobody is watching. The monthly fee covers monitoring, fixing those breakages, and the small adjustments that keep a workflow trustworthy. If you would rather run it yourself, the build tier can be taken as handover-only. Say so during scoping and we will price it that way.",
+    body: "An automation is not finished when it ships. The APIs it talks to change, the documents it reads drift in format, and accuracy quietly degrades if nobody is watching. The monthly fee covers monitoring, fixing those breakages, and the small adjustments that keep a workflow trustworthy. If you would rather run it yourself, the build tier can be taken as handover-only. Say so during scoping and I will price it that way.",
   },
   note:
     "Every figure here is a starting point, not a quote. Scope drives the number, and you get a fixed price in writing before anything begins.",

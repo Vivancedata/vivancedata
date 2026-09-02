@@ -7,7 +7,7 @@ export interface Client {
   blurb: string;
 }
 
-// These represent the industries and sectors where VivanceData delivers AI strategy
+// These represent the industries and sectors where Vivancedata delivers AI strategy
 // and implementation work — not named client companies. Each blurb states what we
 // actually build there, so the grid reads as substance rather than a logo wall.
 export const clients: Client[] = [

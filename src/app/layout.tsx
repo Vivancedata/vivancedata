@@ -25,14 +25,14 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "VivanceData - AI Solutions for Modern Businesses",
-    template: "%s | VivanceData"
+    default: "Vivancedata - AI for construction, HVAC, logistics and manufacturing",
+    template: "%s | Vivancedata"
   },
-  description: "Boutique AI consulting practice helping businesses move from strategy to production. Founded by Lorenzo Scaturchio.",
-  keywords: ["AI solutions", "artificial intelligence", "business automation", "machine learning", "data analytics", "generative AI", "AI consulting"],
+  description: "After-hours calls answered and booked. Permits and delivery paperwork read instead of re-keyed. Built by Lorenzo Scaturchio on your own documents, and yours to keep.",
+  keywords: ["AI for contractors", "HVAC after-hours call answering", "construction document automation", "proof of delivery automation", "AI consulting for trades"],
   authors: [{ name: "Lorenzo Scaturchio" }],
   creator: "Lorenzo Scaturchio",
-  publisher: "VivanceData",
+  publisher: "Vivancedata",
   formatDetection: {
     email: false,
     address: false,
@@ -46,22 +46,22 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://vivancedata.com",
-    title: "VivanceData - AI Solutions for Modern Businesses",
-    description: "Transforming Businesses Through Intelligent Automation",
-    siteName: "VivanceData",
+    title: "Vivancedata - AI for construction, HVAC, logistics and manufacturing",
+    description: "After-hours calls answered and booked. Paperwork read instead of re-keyed.",
+    siteName: "Vivancedata",
     images: [
       {
         url: "https://vivancedata.com/images/banner.png",
         width: 1200,
         height: 630,
-        alt: "VivanceData - AI Solutions for Modern Businesses",
+        alt: "Vivancedata - AI for construction, HVAC, logistics and manufacturing",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "VivanceData - AI Solutions for Modern Businesses",
-    description: "Transforming Businesses Through Intelligent Automation",
+    title: "Vivancedata - AI for construction, HVAC, logistics and manufacturing",
+    description: "After-hours calls answered and booked. Paperwork read instead of re-keyed.",
     images: ["https://vivancedata.com/images/banner.png"],
   },
   robots: {

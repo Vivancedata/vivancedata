@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
     const enquiry = parsed.data;
 
     const notification = await sendCritical({
-      fromName: 'VivanceData Contact Form',
+      fromName: 'Vivancedata Contact Form',
       to: teamInbox(),
       replyTo: enquiry.email,
       subject: `New Contact Form Submission from ${enquiry.firstName} ${enquiry.lastName}`,
@@ -86,9 +86,9 @@ export async function POST(request: NextRequest) {
 
     await sendCourtesy(
       {
-        fromName: 'VivanceData',
+        fromName: 'Vivancedata',
         to: enquiry.email,
-        subject: 'Thank you for contacting VivanceData',
+        subject: 'Thank you for contacting Vivancedata',
         html: buildEnquiryConfirmation(enquiry),
       },
       'contact form confirmation'

@@ -7,11 +7,11 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Industry Solutions - VivanceData",
+  title: "Industry Solutions - Vivancedata",
   description: "AI solutions built for the trades and the field: construction, HVAC and the service trades, logistics and fleet operations, and manufacturing.",
   keywords: ["industry solutions", "AI for construction", "AI for HVAC", "AI for the trades", "AI for logistics", "AI for fleet operations", "AI for manufacturing"],
   openGraph: {
-    title: "Industry-Specific AI Solutions - VivanceData",
+    title: "Industry-Specific AI Solutions - Vivancedata",
     description: "AI solutions for construction, HVAC and the trades, logistics and fleet operations, and manufacturing.",
     type: "website",
     url: "https://vivancedata.com/industries",
@@ -20,13 +20,13 @@ export const metadata: Metadata = {
         url: "https://vivancedata.com/images/ai-solutions.png",
         width: 1200,
         height: 630,
-        alt: "VivanceData Industry Solutions",
+        alt: "Vivancedata Industry Solutions",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Industry-Specific AI Solutions - VivanceData",
+    title: "Industry-Specific AI Solutions - Vivancedata",
     description: "Specialized AI solutions tailored to your industry.",
     images: ["https://vivancedata.com/images/ai-solutions.png"],
   },
@@ -162,7 +162,7 @@ export default function IndustriesPage() {
           Let&apos;s discuss how our industry-specific AI solutions can address your unique challenges and opportunities.
         </p>
         <Button asChild size="lg" >
-          <Link href="/contact">Schedule a Consultation</Link>
+          <Link href="/contact">Book a call</Link>
         </Button>
       </div>
     </Container>

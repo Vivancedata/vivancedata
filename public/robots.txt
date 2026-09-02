@@ -1,4 +1,4 @@
-# VivanceData Robots.txt
+# Vivancedata Robots.txt
 # https://vivancedata.com
 
 # Allow all crawlers
