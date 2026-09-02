@@ -41,7 +41,7 @@ export function MainNavMobile({ items }: MainNavMobileProps) {
       {isMobileMenuOpen && (
         <nav
           id="mobile-navigation"
-          className="animate-in fade-in-0 slide-in-from-top-2 py-4 duration-200 md:hidden"
+          className="animate-in fade-in-0 slide-in-from-top-2 absolute inset-x-0 top-full border-b border-border/60 bg-background px-4 py-4 shadow-elevation-2 duration-200 md:hidden"
           aria-label="Mobile navigation"
         >
           <div className="flex flex-col space-y-3">
@@ -56,11 +56,10 @@ export function MainNavMobile({ items }: MainNavMobileProps) {
                 </a>
               </div>
             ))}
+            {/* The ink pill every other CTA uses. This was the only
+              * solid-green 6px-radius button in the system. */}
             <div className="pt-2">
-              <Button
-                className="w-full bg-brand text-primary-foreground "
-                asChild
-              >
+              <Button className="min-h-11 w-full" shape="pill" asChild>
                 <a href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
                   Contact Us
                 </a>

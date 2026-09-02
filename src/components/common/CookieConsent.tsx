@@ -225,7 +225,7 @@ function CookieConsentBanner({
       aria-labelledby="cookie-consent-title"
       aria-describedby="cookie-consent-description"
     >
-      <div className="mx-auto rounded-xl border border-border bg-background/95 shadow-xl backdrop-blur-sm dark:bg-background/90 max-h-[80vh] overflow-y-auto overscroll-contain">
+      <div className="mx-auto rounded-xl border border-border bg-background/95 backdrop-blur-sm dark:bg-background/90 max-h-[80vh] overflow-y-auto overscroll-contain">
         <div className="p-3 sm:p-4">
           <div className="flex items-start gap-4">
             <div className="hidden md:flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-muted text-brand dark:bg-muted">

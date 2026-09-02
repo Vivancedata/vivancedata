@@ -48,7 +48,7 @@ interface PrincipleProps {
 }
 
 const Principle = ({ icon, title, description }: PrincipleProps) => (
-  <div className="bg-card p-6 rounded-xl shadow-sm border border-border">
+  <div className="bg-card p-6 rounded-xl border border-border">
     <div className="flex items-center mb-4">
       <div className="mr-4 p-3 bg-muted rounded-full">
         {icon}
@@ -96,7 +96,7 @@ interface CaseStudyProps {
 }
 
 const CaseStudy = ({ title, challenge, approach, outcome }: CaseStudyProps) => (
-  <div className="bg-card p-6 rounded-xl shadow-sm border border-border">
+  <div className="bg-card p-6 rounded-xl border border-border">
     <h3 className="text-heading-3 mb-4">{title}</h3>
     
     <div className="mb-4">
@@ -286,7 +286,7 @@ export default function ResponsibleAIPage() {
               ]
             }
           ].map((tool) => (
-            <div key={tool.title} className="bg-card p-6 rounded-xl shadow-sm border border-border">
+            <div key={tool.title} className="bg-card p-6 rounded-xl border border-border">
               <h3 className="text-heading-3 mb-3">{tool.title}</h3>
               <p className="text-muted-foreground mb-4">{tool.description}</p>
               <ul className="space-y-2">

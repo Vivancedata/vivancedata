@@ -163,7 +163,7 @@ export default function GenerativeAIPage() {
       <ServiceSection heading="Our Generative AI Services">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature) => (
-            <div key={feature.title} className="bg-card p-6 rounded-xl shadow-sm border border-border">
+            <div key={feature.title} className="bg-card p-6 rounded-xl border border-border">
               <div className="flex items-center mb-4">
                 {feature.icon}
                 <h3 className="text-heading-3 ml-2">{feature.title}</h3>
@@ -177,7 +177,7 @@ export default function GenerativeAIPage() {
       <ServiceSection heading="Popular Use Cases">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {useCases.map((useCase) => (
-            <div key={useCase.title} className="bg-card p-6 rounded-xl shadow-sm border border-border">
+            <div key={useCase.title} className="bg-card p-6 rounded-xl border border-border">
               <div className="inline-block px-3 py-1 rounded-full bg-muted text-brand text-sm font-medium mb-4">
                 {useCase.industry}
               </div>

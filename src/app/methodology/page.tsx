@@ -273,7 +273,7 @@ function BenefitsSection() {
           {frameworkBenefits.map((benefit) => (
             <Card
               key={benefit.title}
-              className="border-0 shadow-md hover:shadow-lg transition-shadow duration-300"
+              className="border border-border duration-300"
             >
               <CardContent className="p-8">
                 <div className="flex items-start justify-between mb-4">
@@ -330,7 +330,7 @@ function ComparisonSection() {
             </CardContent>
           </Card>
 
-          <Card className="border-2 border-brand shadow-lg">
+          <Card className="border-2 border-brand">
             <CardContent className="p-8">
               <h3 className="text-heading-3 mb-6 text-brand">
                 RAPID Framework

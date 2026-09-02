@@ -8,6 +8,9 @@ const contactSchema = z.object({
   firstName: z.string().trim().min(1),
   lastName: z.string().trim().min(1),
   email: emailAddress,
+  // The buyer here is phone-first and reads this between jobs, so the form
+  // offers a number and the enquiry carries it. Optional: not everyone will.
+  phone: z.string().trim().optional(),
   company: z.string().trim().optional(),
   serviceInterest: z.string().trim().optional(),
   message: z.string().trim().min(1),

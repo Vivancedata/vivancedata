@@ -6,7 +6,7 @@ export default function FAQ() {
       {questions.map((item) => (
         <details
           key={item.question}
-          className="group rounded-2xl border border-border/70 bg-card/80 p-5 shadow-sm"
+          className="group rounded-2xl border border-border/70 bg-card/80 p-5"
         >
           <summary className="cursor-pointer list-none pr-8 text-left font-semibold text-foreground marker:hidden">
             <span className="inline-flex items-start gap-3">

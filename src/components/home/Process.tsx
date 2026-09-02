@@ -42,7 +42,10 @@ const Process = () => {
                 </span>
               </div>
               <h3 className="text-heading-3 text-foreground md:col-span-4">{step.title}</h3>
-              <p className="text-body text-muted-foreground md:col-span-6">{step.description}</p>
+              {/* 56ch, not the 60ch used elsewhere: this band sets `text-body`
+                  larger than the surrounding copy, and 60ch still measured 88
+                  characters a line here. The cap is on the measured result. */}
+              <p className="max-w-[56ch] text-body text-muted-foreground md:col-span-6">{step.description}</p>
             </li>
           ))}
         </ol>

@@ -4,6 +4,7 @@ export interface ContactEnquiry {
   firstName: string;
   lastName: string;
   email: string;
+  phone?: string;
   company?: string;
   serviceInterest?: string;
   message: string;
@@ -38,6 +39,10 @@ export function buildEnquiryNotification(enquiry: ContactEnquiry): string {
           <div class="field">
             <div class="label">Email</div>
             <div class="value"><a href="mailto:${safeEmail}">${safeEmail}</a></div>
+          </div>
+          <div class="field">
+            <div class="label">Phone</div>
+            <div class="value">${escapeHtml(enquiry.phone || 'Not provided')}</div>
           </div>
           <div class="field">
             <div class="label">Company</div>

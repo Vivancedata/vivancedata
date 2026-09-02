@@ -40,7 +40,7 @@ interface IndustryCardProps {
 }
 
 const IndustryCard = ({ title, description, theme, href }: IndustryCardProps) => (
-  <div className="bg-card rounded-xl shadow-sm border border-border overflow-hidden group">
+  <div className="bg-card rounded-xl border border-border overflow-hidden group">
     <div className={`relative aspect-video bg-gradient-to-br ${theme}`}>
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
       <h3 className="text-heading-2 absolute bottom-4 left-4 text-primary-foreground">{title}</h3>
@@ -128,7 +128,7 @@ export default function IndustriesPage() {
               description: "Solutions designed to address the specific KPIs and metrics that matter most in your industry."
             }
           ].map((benefit) => (
-            <div key={benefit.title} className="bg-card p-6 rounded-xl shadow-sm border border-border">
+            <div key={benefit.title} className="bg-card p-6 rounded-xl border border-border">
               <h3 className="text-heading-3 mb-3">{benefit.title}</h3>
               <p className="text-muted-foreground">{benefit.description}</p>
             </div>
@@ -145,7 +145,7 @@ export default function IndustriesPage() {
             { number: "03", title: "Implementation", description: "We deploy industry-optimized AI systems with minimal disruption to your operations." },
             { number: "04", title: "Continuous Improvement", description: "We continuously refine and enhance your solutions based on industry developments." }
           ].map((step) => (
-            <div key={step.number} className="bg-card p-6 rounded-xl shadow-sm border border-border text-center">
+            <div key={step.number} className="bg-card p-6 rounded-xl border border-border text-center">
               <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center mx-auto mb-4">
                 <span className="text-brand font-bold">{step.number}</span>
               </div>

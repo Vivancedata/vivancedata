@@ -3,7 +3,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 function SkeletonCard() {
   return (
-    <div className="rounded-xl border bg-card p-6 shadow-sm h-full">
+    <div className="rounded-xl border bg-card p-6 h-full">
       {/* Badges */}
       <div className="flex gap-2 mb-3">
         <Skeleton className="h-5 w-24 rounded-full" />
@@ -53,7 +53,7 @@ export default function UseCasesLoading() {
       </div>
 
       {/* Filters Card Skeleton */}
-      <div className="rounded-xl border bg-card p-6 shadow-sm mb-8">
+      <div className="rounded-xl border bg-card p-6 mb-8">
         {/* Search Input */}
         <Skeleton className="h-10 w-full mb-4" />
 

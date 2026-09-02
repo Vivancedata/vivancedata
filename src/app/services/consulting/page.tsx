@@ -162,7 +162,7 @@ export default function ConsultingPage() {
       <ServiceSection heading="Our Consulting Services">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service) => (
-            <div key={service.title} className="bg-card p-6 rounded-xl shadow-sm border border-border">
+            <div key={service.title} className="bg-card p-6 rounded-xl border border-border">
               <div className="flex items-center mb-4">
                 {service.icon}
                 <h3 className="text-heading-3 ml-2">{service.title}</h3>
@@ -176,7 +176,7 @@ export default function ConsultingPage() {
       <ServiceSection heading="Why Choose Our Consulting Services">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {benefits.map((benefit) => (
-            <div key={benefit.title} className="bg-card p-6 rounded-xl shadow-sm border border-border">
+            <div key={benefit.title} className="bg-card p-6 rounded-xl border border-border">
               <h3 className="text-heading-3 mb-3">{benefit.title}</h3>
               <p className="text-muted-foreground">{benefit.description}</p>
             </div>
@@ -192,7 +192,7 @@ export default function ConsultingPage() {
             { step: "3", title: "Strategy", description: "We develop a comprehensive AI roadmap tailored to your specific business needs." },
             { step: "4", title: "Implementation", description: "We provide ongoing guidance and support as you execute your AI strategy." }
           ].map((phase) => (
-            <div key={phase.step} className="bg-card p-6 rounded-xl shadow-sm border border-border text-center">
+            <div key={phase.step} className="bg-card p-6 rounded-xl border border-border text-center">
               <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center mx-auto mb-4">
                 <span className="text-brand font-bold">{phase.step}</span>
               </div>

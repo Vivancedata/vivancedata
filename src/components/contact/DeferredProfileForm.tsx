@@ -11,7 +11,7 @@ const ProfileForm = dynamic(
 function ProfileFormPlaceholder() {
   return (
     <div
-      className="min-h-[720px] rounded-3xl border border-border/60 bg-card/70 shadow-lg"
+      className="min-h-[720px] rounded-3xl border border-border/60 bg-card/70"
       aria-hidden="true"
     />
   );

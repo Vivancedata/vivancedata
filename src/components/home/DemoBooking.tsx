@@ -179,7 +179,7 @@ function DemoFeatureColumn() {
               </div>
               <div>
                 <h3 className="text-heading-4 text-foreground mb-1">{feature.title}</h3>
-                <p className="text-sm text-muted-foreground">{feature.description}</p>
+                <p className="max-w-[60ch] text-sm text-muted-foreground">{feature.description}</p>
               </div>
             </div>
           ))}
@@ -198,7 +198,7 @@ interface DemoFormProps {
 function DemoFormCard({ state, onChange, onSubmit }: DemoFormProps) {
   return (
     <AnimateOnScroll variant="fadeInRight" delay={0.2}>
-      <Card className="border-0 shadow-xl bg-card dark:bg-card/95 backdrop-blur-sm">
+      <Card className="border border-border bg-card dark:bg-card/95">
         <CardContent className="p-8">
           {!state.isSubmitted ? (
             <>

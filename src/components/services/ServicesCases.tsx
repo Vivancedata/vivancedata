@@ -55,7 +55,7 @@ export function ServicesCases({
           {cases.map((caseItem) => {
             const visual = getCaseVisual(caseItem.category);
             return (
-              <div key={caseItem.id} className="bg-card rounded-lg shadow-md overflow-hidden border border-border/60">
+              <div key={caseItem.id} className="bg-card rounded-lg overflow-hidden border border-border/60">
                 <div className={`h-44 w-full bg-gradient-to-br ${visual.gradient} p-6 flex flex-col justify-between`}>
                   {visual.icon}
                   <p className="text-sm font-medium text-primary-foreground/90">{caseItem.impact}</p>
