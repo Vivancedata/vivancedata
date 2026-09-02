@@ -33,10 +33,15 @@ export default function Welcome() {
             competitor's. A contractor has about four seconds here; spend them on
             something they recognise rather than on the category name.
           */}
-          <h2 className="text-display-xl text-foreground">
+          {/*
+            An h1, not an h2. The page shipped with no h1 at all -- the hero
+            headline was an h2 and nothing above it -- so screen readers and
+            search engines were handed a document whose top level was missing.
+          */}
+          <h1 className="text-display-xl text-foreground">
             Someone has to answer the phone and{" "}
             <span className="text-brand">key in the paperwork</span>
-          </h2>
+          </h1>
           <p className="mx-auto max-w-3xl text-body-lg text-muted-foreground">
             It does not have to be a person on your payroll. I build small,
             specific systems for construction, HVAC, logistics and manufacturing
