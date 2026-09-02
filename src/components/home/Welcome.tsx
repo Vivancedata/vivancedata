@@ -63,9 +63,13 @@ export default function Welcome() {
                 <div className="mb-lg w-fit rounded-sm border border-border bg-muted p-3">
                   <Icon className="h-5 w-5 text-brand" aria-hidden="true" />
                 </div>
-                <h3 className="mb-sm text-heading-3 text-foreground">
+                {/* h2, not h3. Promoting the hero headline to h1 left these
+                    tiles skipping a level straight from h1, which is a
+                    heading-order violation and cost the homepage its
+                    Lighthouse accessibility floor (95 against a floor of 96). */}
+                <h2 className="mb-sm text-heading-3 text-foreground">
                   {feature.title}
-                </h3>
+                </h2>
                 <p className="text-body-sm text-muted-foreground">
                   {feature.description}
                 </p>
