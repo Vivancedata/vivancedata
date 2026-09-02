@@ -67,7 +67,7 @@
     "sharp": "^0.35.3",
     "sonner": "^2.0.8",
     "tailwindcss-animate": "^1.0.7",
-    "zod": "^3.23.8"
+    "zod": "^4.5.4"
   },
   "overrides": {
     "@eslint/config-array": {
