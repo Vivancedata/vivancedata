@@ -12,10 +12,10 @@ export default defineConfig({
       reportsDirectory: "coverage/unit",
       include: [
         "src/lib/cookieConsent.ts",
+        "src/lib/email.ts",
         "src/lib/formatDate.ts",
         "src/lib/performance.ts",
         "src/lib/utils.ts",
-        "src/lib/validation.ts",
       ],
       exclude: ["**/*.d.ts"],
       thresholds: {

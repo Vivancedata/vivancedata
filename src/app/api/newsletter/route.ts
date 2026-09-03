@@ -1,10 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
 import { buildRateLimitHeaders, enforceRateLimit } from '@/lib/rateLimit';
+import { emailAddress, isDryRun } from '@/lib/email';
 
-interface NewsletterData {
-  email: string;
-  firstName?: string;
-}
+// This route delivers through ConvertKit or Mailchimp rather than Resend, so
+// it shares only the two decisions that are not provider-specific: what a
+// valid address is, and whether reporting success without delivering is
+// permitted right now.
+const newsletterSchema = z.object({
+  email: emailAddress,
+  firstName: z.string().trim().optional(),
+});
 
 const NEWSLETTER_RATE_LIMIT_OPTIONS = {
   keyPrefix: 'api:newsletter',
@@ -131,19 +137,16 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const body: NewsletterData = await request.json();
+    const parsed = newsletterSchema.safeParse(await request.json());
 
-    // Validate email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!body.email || !emailRegex.test(body.email)) {
+    if (!parsed.success) {
       return NextResponse.json(
         { error: 'Invalid email address' },
         { status: 400, headers: rateLimitHeaders }
       );
     }
 
-    const email = body.email.toLowerCase().trim();
-    const firstName = body.firstName?.trim();
+    const { email, firstName } = parsed.data;
 
     // Try ConvertKit first, then Mailchimp
     const hasConvertKit = process.env.CONVERTKIT_API_KEY && process.env.CONVERTKIT_FORM_ID;
@@ -184,25 +187,22 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (process.env.NODE_ENV === 'production') {
-      return NextResponse.json(
-        { error: 'Newsletter service not configured. Please try again later.' },
-        { status: 503, headers: rateLimitHeaders }
-      );
+    if (isDryRun()) {
+      console.warn(`Newsletter dry run: not subscribing ${email}`);
+      return NextResponse.json({
+        success: true,
+        message: 'Successfully subscribed to newsletter!',
+        provider: 'dry-run',
+      }, { headers: rateLimitHeaders });
     }
 
-    // No provider configured - log for development
-    console.log('Newsletter subscription (no provider configured):', {
-      email,
-      firstName,
-      timestamp: new Date().toISOString(),
-    });
-
-    return NextResponse.json({
-      success: true,
-      message: 'Successfully subscribed to newsletter!',
-      provider: 'none',
-    }, { headers: rateLimitHeaders });
+    // No provider, and no explicit permission to pretend: say so. Reporting a
+    // subscription that did not happen is the same lie the contact form used
+    // to tell, and NODE_ENV is not consent.
+    return NextResponse.json(
+      { error: 'Newsletter service not configured. Please try again later.' },
+      { status: 503, headers: rateLimitHeaders }
+    );
   } catch (error) {
     console.error('Newsletter subscription error:', error);
     return NextResponse.json(

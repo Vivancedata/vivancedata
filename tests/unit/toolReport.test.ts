@@ -2,6 +2,17 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { NextRequest } from "next/server";
 import { POST } from "../../src/app/api/tool-report/route";
 
+const sendMock = vi.fn();
+
+// The seam is the resend package itself. The route builds its client per send,
+// so stubbing the module here reaches the real delivery path -- which no test
+// exercised while the client was constructed at module scope.
+vi.mock("resend", () => ({
+  Resend: class {
+    emails = { send: sendMock };
+  },
+}));
+
 interface ToolReportBody {
   email?: unknown;
   tool?: unknown;
@@ -35,29 +46,82 @@ const validBody = {
 
 describe("POST /api/tool-report", () => {
   beforeEach(() => {
-    vi.spyOn(console, "log").mockImplementation(() => {});
+    sendMock.mockReset();
+    sendMock.mockResolvedValue({ data: { id: "sent" }, error: null });
+    vi.stubEnv("RESEND_API_KEY", "test-key");
+    vi.stubEnv("EMAIL_DRY_RUN", "");
+    vi.spyOn(console, "warn").mockImplementation(() => {});
+    vi.spyOn(console, "error").mockImplementation(() => {});
   });
 
   afterEach(() => {
+    vi.unstubAllEnvs();
     vi.restoreAllMocks();
   });
 
-  it("accepts a valid submission and reports success without Resend configured", async () => {
+  it("sends the visitor report and the lead notification", async () => {
     const response = await postToolReport(validBody, "203.0.113.10");
 
     expect(response.status).toBe(200);
     await expect(response.json()).resolves.toMatchObject({ success: true });
     expect(response.headers.get("X-RateLimit-Limit")).toBe("5");
+    expect(sendMock).toHaveBeenCalledTimes(2);
   });
 
-  it("normalizes the email before logging the submission", async () => {
-    const logSpy = vi.spyOn(console, "log").mockImplementation(() => {});
-
+  it("normalizes the email before sending", async () => {
     await postToolReport(validBody, "203.0.113.11");
 
-    expect(logSpy).toHaveBeenCalledWith(
-      expect.stringContaining("Tool report request"),
-      expect.objectContaining({ email: "visitor@example.com" })
+    expect(sendMock).toHaveBeenCalledWith(
+      expect.objectContaining({ to: "visitor@example.com" })
+    );
+  });
+
+  it("fails the request when the visitor's own report cannot be sent", async () => {
+    sendMock.mockResolvedValueOnce({ data: null, error: { message: "rejected" } });
+
+    const response = await postToolReport(validBody, "203.0.113.20");
+
+    expect(response.status).toBe(502);
+    // The visitor's copy is critical: nothing else is attempted.
+    expect(sendMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("still succeeds when the lead notification fails, but logs it recoverably", async () => {
+    sendMock
+      .mockResolvedValueOnce({ data: { id: "sent" }, error: null })
+      .mockResolvedValueOnce({ data: null, error: { message: "rejected" } });
+    const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
+
+    const response = await postToolReport(validBody, "203.0.113.21");
+
+    expect(response.status).toBe(200);
+    expect(errorSpy).toHaveBeenCalledWith(
+      expect.stringContaining("COURTESY SEND FAILED"),
+      expect.objectContaining({ to: expect.any(String), subject: expect.any(String) })
+    );
+  });
+
+  it("refuses to report success when email is unconfigured", async () => {
+    vi.stubEnv("RESEND_API_KEY", "");
+
+    const response = await postToolReport(validBody, "203.0.113.22");
+
+    expect(response.status).toBe(503);
+    expect(sendMock).not.toHaveBeenCalled();
+  });
+
+  it("reports success without sending under EMAIL_DRY_RUN", async () => {
+    vi.stubEnv("RESEND_API_KEY", "");
+    vi.stubEnv("EMAIL_DRY_RUN", "1");
+    const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
+
+    const response = await postToolReport(validBody, "203.0.113.23");
+
+    expect(response.status).toBe(200);
+    await expect(response.json()).resolves.toMatchObject({ success: true });
+    expect(sendMock).not.toHaveBeenCalled();
+    expect(warnSpy).toHaveBeenCalledWith(
+      expect.stringContaining("visitor@example.com")
     );
   });
 
