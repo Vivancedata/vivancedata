@@ -49,38 +49,7 @@ export function GoogleAnalytics({ measurementId }: GoogleAnalyticsProps) {
   );
 }
 
-// Helper function for tracking events
-export function trackEvent(
-  action: string,
-  category: string,
-  label?: string,
-  value?: number
-) {
-  if (
-    typeof window !== 'undefined' &&
-    hasAnalyticsConsent() &&
-    'gtag' in window
-  ) {
-    (window as typeof window & { gtag: (...args: unknown[]) => void }).gtag('event', action, {
-      event_category: category,
-      event_label: label,
-      value: value,
-    });
-  }
-}
-
-// Helper function for tracking page views
-export function trackPageView(url: string) {
-  if (
-    typeof window !== 'undefined' &&
-    hasAnalyticsConsent() &&
-    'gtag' in window
-  ) {
-    const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
-    if (gaId) {
-      (window as typeof window & { gtag: (...args: unknown[]) => void }).gtag('config', gaId, {
-        page_path: url,
-      });
-    }
-  }
-}
+// trackEvent and trackPageView moved to @/lib/analytics so call sites can
+// measure without pulling next/script and the gtag loader into their bundle.
+// Re-exported here for anything still importing from this path.
+export { trackEvent, trackPageView } from '@/lib/analytics';

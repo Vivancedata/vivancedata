@@ -1,4 +1,7 @@
+"use client";
+
 import type { Demo } from "@/constants/demos";
+import { ANALYTICS } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 
 /**
@@ -13,6 +16,7 @@ export function DemoLink({ demo, className }: { demo: Demo; className?: string }
   return (
     <a
       href={demo.href}
+      onClick={() => ANALYTICS.demoOpened(demo.label)}
       className={cn(
         "inline-flex min-h-11 items-center justify-center gap-2 rounded-pill border border-border bg-card px-4",
         "font-mono text-xs uppercase tracking-wider text-brand transition-colors duration-fast",
