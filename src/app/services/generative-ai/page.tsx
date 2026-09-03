@@ -133,9 +133,11 @@ export default function GenerativeAIPage() {
                   <div><span className="text-brand">3.</span> Mobile payment failures (19%)</div>
                 </div>
               </div>
+              {/* "latency: 1.2s" sat here: a performance figure for a system
+                  that has not been benchmarked. */}
               <div className="flex items-center justify-between text-mute text-xs pt-1">
                 <span className="text-brand/50">fine-tuned LLM</span>
-                <span>latency: 1.2s</span>
+                <span>illustrative output</span>
               </div>
             </div>
           </div>
