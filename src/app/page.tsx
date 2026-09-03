@@ -1,16 +1,7 @@
 import Welcome from "@/components/home/Welcome";
 import ClientLogos from "@/components/home/ClientLogos";
-import Overview from "@/components/home/Overview";
-import { TrustSection } from "@/components/home/TrustSection";
-import Team from "@/components/home/Team";
-import CaseStudies from "@/components/home/CaseStudies";
 import Process from "@/components/home/Process";
-import Integrations from "@/components/home/Integrations";
-import Blog from "@/components/blog/Blog";
 import Pricing from "@/components/home/Pricing";
-import { FAQSection } from "@/components/home/FAQSection";
-import { ContactSection } from "@/components/home/ContactSection";
-import { CTASection } from "@/components/home/CTASection";
 import { DemoBooking } from "@/components/home/DemoBooking";
 import { Metadata } from "next";
 
@@ -97,22 +88,19 @@ const jsonLd = {
   ]
 };
 
+/*
+ * Five bands and a footer, in the order a buyer needs them: what the problem
+ * is, whether it is their trade, how the work runs, what it costs, and how to
+ * start. The page used to run fourteen -- 18,915px at 1440 and 38,697px at 390,
+ * with fourteen CTAs and three consecutive closing asks, which put the booking
+ * form at roughly the thirty-seventh screen on a phone. What went made the
+ * generic AI-agency case the hero above it contradicts: Overview, TrustSection,
+ * Integrations' twenty vendor logos, the "Success Stories" band, Team, Blog, an
+ * FAQ, a second contact form and a third closing CTA.
+ *
+ * There is exactly one ask on this page now, and it is DemoBooking.
+ */
 export default function Home() {
-  const contactBenefits = [
-    {
-      title: "Free Initial Consultation",
-      description: "No obligation, just valuable insights for your business."
-    },
-    {
-      title: "Customized Solutions",
-      description: "Tailored recommendations based on your specific needs."
-    },
-    {
-      title: "Ongoing Support",
-      description: "We're with you every step of the way, from strategy to implementation."
-    }
-  ];
-
   return (
     <div className="flex min-h-screen flex-col items-center justify-between">
       <script
@@ -122,35 +110,9 @@ export default function Home() {
       />
       <Welcome />
       <ClientLogos />
-      <TrustSection />
-      <Overview />
       <Process />
-      <Integrations />
-      <CaseStudies />
-
-      <Team />
       <Pricing />
-      <Blog />
-
-      <FAQSection
-        title="Common Questions About Our AI Services"
-        description="Find answers to the most common questions about our services and how we can help your business."
-      />
-
       <DemoBooking />
-
-      <ContactSection
-        title="Ready to Transform Your Business with AI?"
-        description="Tell us what is slowing your operation down and we will come back with an honest read on whether it is worth automating, and what it would take."
-        benefits={contactBenefits}
-      />
-
-      <CTASection
-        title="Ready to Get Started?"
-        description="Let's talk about where AI can move the needle for your business — no sales pitch, just a real conversation."
-        buttonText="Schedule a Consultation"
-        buttonLink="/contact"
-      />
     </div>
   );
 }

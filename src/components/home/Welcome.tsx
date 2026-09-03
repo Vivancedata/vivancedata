@@ -45,10 +45,15 @@ export default function Welcome() {
             competitor's. A contractor has about four seconds here; spend them on
             something they recognise rather than on the category name.
           */}
-          <h2 className="text-display-xl text-foreground">
+          {/*
+            An h1, not an h2. The page shipped with no h1 at all -- the hero
+            headline was an h2 and nothing above it -- so screen readers and
+            search engines were handed a document whose top level was missing.
+          */}
+          <h1 className="text-display-xl text-foreground">
             Someone has to answer the phone and{" "}
             <span className="text-brand">key in the paperwork</span>
-          </h2>
+          </h1>
           <p className="mx-auto max-w-3xl text-body-lg text-muted-foreground">
             It does not have to be a person on your payroll. I build small,
             specific systems for construction, HVAC, logistics and manufacturing
@@ -70,9 +75,13 @@ export default function Welcome() {
                 <div className="mb-lg w-fit rounded-sm border border-border bg-muted p-3">
                   <Icon className="h-5 w-5 text-brand" aria-hidden="true" />
                 </div>
-                <h3 className="mb-sm text-heading-3 text-foreground">
+                {/* h2, not h3. Promoting the hero headline to h1 left these
+                    tiles skipping a level straight from h1, which is a
+                    heading-order violation and cost the homepage its
+                    Lighthouse accessibility floor (95 against a floor of 96). */}
+                <h2 className="mb-sm text-heading-3 text-foreground">
                   {feature.title}
-                </h3>
+                </h2>
                 <p className="text-body-sm text-muted-foreground">
                   {feature.description}
                 </p>

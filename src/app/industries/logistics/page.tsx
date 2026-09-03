@@ -84,11 +84,11 @@ Everything writes into the TMS or dispatch board your team already watches. An i
     { value: "TMS Fit", label: "Writes into the system dispatch runs" },
     { value: "Audit Trail", label: "Every document tied to its load" },
   ],
-  caseStudiesHeading: "Case Studies",
-  caseStudies: [
+  scenariosHeading: "What a build looks like",
+  scenarios: [
     {
       title: "Proof of Delivery Intake",
-      client: "Illustrative Regional Carrier",
+      demo: demos.paperwork,
       challenge: "Drivers submitted delivery paperwork as phone photographs, and billing staff re-typed the fields off the image before an invoice could go out.",
       solution: "Read each submitted image, extracted the delivery fields, matched the document to its load, and pushed the result into billing — holding back anything too illegible to read for a person to handle.",
       results: [
@@ -100,7 +100,6 @@ Everything writes into the TMS or dispatch board your team already watches. An i
     },
     {
       title: "Exception Surfacing for Dispatch",
-      client: "Illustrative Regional Freight Operator",
       challenge: "Late, short-delivered and mis-scanned loads were found when the customer phoned, because nobody was watching the board for the ones drifting off plan.",
       solution: "Monitored load status against plan, raised the loads that had gone off track, ranked them by customer impact, and wrote them to the dispatch board the team already watched.",
       results: [
@@ -112,7 +111,6 @@ Everything writes into the TMS or dispatch board your team already watches. An i
     },
     {
       title: "Damage Claim Assembly",
-      client: "Illustrative Fleet Operator",
       challenge: "Assembling a damage claim meant chasing photographs, delivery records and email threads weeks after the fact, by which point some of it was gone.",
       solution: "Pulled the photographs, delivery records and correspondence attached to a load into a single claim package as soon as damage was reported, in a consistent structure.",
       results: [

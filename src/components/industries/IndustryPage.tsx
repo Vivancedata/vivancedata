@@ -56,18 +56,25 @@ const SolutionCard = ({ title, description, icon, benefits }: SolutionCardProps)
   </div>
 );
 
-interface CaseStudyProps {
+/**
+ * A scenario, not a case study. These describe the shape of a build this
+ * practice does, and every card used to carry a `client` line reading
+ * "Illustrative Residential HVAC Contractor" -- a coy reference to a customer
+ * that does not exist, which reads to a buyer as a redacted real one. The line
+ * is gone. Where the workflow has a live demo, the card links it instead: the
+ * only proof on this page that a visitor can check for themselves.
+ */
+interface ScenarioProps {
   title: string;
-  client: string;
   challenge: string;
   solution: string;
   results: string[];
+  demo?: Demo;
 }
 
-const CaseStudy = ({ title, client, challenge, solution, results }: CaseStudyProps) => (
-  <div className="h-full rounded-md border border-border bg-card p-lg transition-colors duration-default hover:border-brand/40">
-    <h3 className="mb-1 text-heading-3">{title}</h3>
-    <p className="mb-md text-body-sm text-brand">{client}</p>
+const Scenario = ({ title, challenge, solution, results, demo }: ScenarioProps) => (
+  <div className="flex h-full flex-col rounded-md border border-border bg-card p-lg transition-colors duration-default hover:border-brand/40">
+    <h3 className="mb-md text-heading-3">{title}</h3>
 
     <div className="mb-md">
       <h4 className="eyebrow mb-1">Challenge</h4>
@@ -80,7 +87,7 @@ const CaseStudy = ({ title, client, challenge, solution, results }: CaseStudyPro
     </div>
 
     <div>
-      <h4 className="eyebrow mb-1">Results</h4>
+      <h4 className="eyebrow mb-1">What changes</h4>
       <ul className="space-y-1">
         {results.map((result) => (
           <li key={`${title}-result-${result}`} className="flex items-start">
@@ -90,6 +97,8 @@ const CaseStudy = ({ title, client, challenge, solution, results }: CaseStudyPro
         ))}
       </ul>
     </div>
+
+    {demo ? <DemoLink demo={demo} className="mt-auto pt-md" /> : null}
   </div>
 );
 
@@ -151,13 +160,13 @@ export interface IndustryPageConfig {
    * list of things actually done in that phase. Keep it populated.
    */
   process: Array<{ title: string; description: string; checks: string[] }>;
-  caseStudiesHeading: string;
-  caseStudies: Array<{
+  scenariosHeading: string;
+  scenarios: Array<{
     title: string;
-    client: string;
     challenge: string;
     solution: string;
     results: string[];
+    demo?: Demo;
   }>;
   finalCtaHeading: string;
   finalCtaBody: string;
@@ -271,18 +280,18 @@ export function IndustryPage({ config }: { config: IndustryPageConfig }) {
       </AnimateOnScroll>
 
       <AnimateOnScroll variant="fadeInUp" className="mb-lg">
-        <h2 className="mb-xl text-center text-heading-1">{config.caseStudiesHeading}</h2>
+        <h2 className="mb-xl text-center text-heading-1">{config.scenariosHeading}</h2>
       </AnimateOnScroll>
 
       <StaggerContainer className="mb-3xl grid grid-cols-1 gap-lg md:grid-cols-3">
-        {config.caseStudies.map((study) => (
-          <CaseStudy
-            key={`${study.client}-${study.title}`}
-            title={study.title}
-            client={study.client}
-            challenge={study.challenge}
-            solution={study.solution}
-            results={study.results}
+        {config.scenarios.map((scenario) => (
+          <Scenario
+            key={scenario.title}
+            title={scenario.title}
+            challenge={scenario.challenge}
+            solution={scenario.solution}
+            results={scenario.results}
+            demo={scenario.demo}
           />
         ))}
       </StaggerContainer>

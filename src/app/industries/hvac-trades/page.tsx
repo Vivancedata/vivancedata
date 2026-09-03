@@ -84,11 +84,11 @@ A real emergency still reaches a person. What changes is that routine work gets 
     { value: "Van and Skill Aware", label: "Dispatch that knows who carries what" },
     { value: "Escalation", label: "Real emergencies reach a human fast" },
   ],
-  caseStudiesHeading: "Case Studies",
-  caseStudies: [
+  scenariosHeading: "What a build looks like",
+  scenarios: [
     {
       title: "Overnight Call Handling",
-      client: "Illustrative Residential HVAC Contractor",
+      demo: demos.calls,
       challenge: "Calls placed after the office closed went to voicemail, and by the time anyone listened the next morning the customer had already booked someone else.",
       solution: "Set up an after-hours intake that answers the call, records the fault, address and access details in a fixed format, books routine work into open slots, and pages the on-call technician when the description reads as an emergency.",
       results: [
@@ -100,7 +100,6 @@ A real emergency still reaches a person. What changes is that routine work gets 
     },
     {
       title: "Dispatch Board Support",
-      client: "Illustrative Plumbing and Heating Company",
       challenge: "The dispatcher rebuilt the day's board by hand every time a job overran, and technicians were sent to work they did not carry the parts for.",
       solution: "Proposed a schedule from technician skills, van stock and travel time, and re-proposed it when a job overran, leaving the dispatcher to accept, edit or ignore each suggestion.",
       results: [
@@ -112,7 +111,6 @@ A real emergency still reaches a person. What changes is that routine work gets 
     },
     {
       title: "Quote and Follow-Up Chasing",
-      client: "Illustrative Electrical Services Firm",
       challenge: "Quotes went out late and unapproved ones were never chased, because the only person who could do it was also running the office.",
       solution: "Drafted quotes from the technician's job notes, prior work at the address and current supplier pricing for the technician to adjust, then followed up on the ones left unapproved and on lapsed maintenance intervals.",
       results: [

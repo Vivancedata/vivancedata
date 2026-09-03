@@ -84,11 +84,11 @@ Nothing here replaces the judgement of the person signing off. The work is draft
     { value: "Your Software", label: "Writes into the project system you run" },
     { value: "Human Sign-off", label: "Drafts for review, never filed automatically" },
   ],
-  caseStudiesHeading: "Case Studies",
-  caseStudies: [
+  scenariosHeading: "What a build looks like",
+  scenarios: [
     {
       title: "Submittal Processing Workflow",
-      client: "Illustrative General Contractor",
+      demo: demos.paperwork,
       challenge: "Submittals arrived as emailed PDFs from dozens of subcontractors in no consistent format, and a project engineer was re-keying them into the project system by hand.",
       solution: "Built an intake workflow that reads each submittal, extracts the spec section, product data and dates, checks them against the project's own requirements, and stages the record for the engineer to approve.",
       results: [
@@ -100,7 +100,7 @@ Nothing here replaces the judgement of the person signing off. The work is draft
     },
     {
       title: "Daily Report Drafting",
-      client: "Illustrative Civil Contractor",
+      demo: demos.field,
       challenge: "Superintendents were writing daily reports in the evening from memory, photos and scattered notes, and the format varied by crew.",
       solution: "Assembled the field photos, timesheets and voice notes already captured during the day into a draft report in the client's required format, held for the superintendent to correct and submit.",
       results: [
@@ -112,7 +112,6 @@ Nothing here replaces the judgement of the person signing off. The work is draft
     },
     {
       title: "Certification Expiry Tracking",
-      client: "Illustrative Specialty Trade Contractor",
       challenge: "Certifications and training records lived in one administrator's spreadsheet, and lapses were usually discovered when a crew arrived at a site that would not let them work.",
       solution: "Consolidated certification records into a searchable set, extracted the expiry date from each uploaded document, and flagged renewals ahead of the date on a defined schedule.",
       results: [

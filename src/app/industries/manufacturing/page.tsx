@@ -72,25 +72,22 @@ At VivanceData, we design AI workflows for manufacturing that integrate with exi
     { value: "Root Cause", label: "Search across shift, defect and batch logs" },
     { value: "Shop-floor Fit", label: "Works with the MES you already run" },
   ],
-  caseStudiesHeading: "Case Studies",
-  caseStudies: [
+  scenariosHeading: "What a build looks like",
+  scenarios: [
     {
       title: "Predictive Maintenance Deployment",
-      client: "Illustrative Industrial Manufacturer",
       challenge: "Maintenance teams were reactive, responding to failures rather than preventing them, causing costly production interruptions.",
       solution: "Deployed sensor telemetry ingestion and anomaly scoring models to flag equipment degradation before failure thresholds were reached.",
       results: ["Significant reduction in unplanned downtime events", "Earlier maintenance interventions on priority assets", "Improved maintenance team scheduling efficiency", "Better cost predictability for maintenance budgets"],
     },
     {
       title: "Quality Defect Reduction Program",
-      client: "Illustrative Precision Manufacturer",
       challenge: "Quality defects were being caught late in the production process, increasing rework costs and customer return rates.",
       solution: "Implemented in-line defect detection models using process sensor data and statistical control charts.",
       results: ["Earlier defect detection in the production cycle", "Reduced rework and scrap volumes", "Faster root cause identification", "Improved first-pass yield rates"],
     },
     {
       title: "OEE Analytics Dashboard",
-      client: "Illustrative Assembly Operations",
       challenge: "Plant leadership lacked real-time visibility into line performance and could only analyze production gaps after the fact.",
       solution: "Built real-time OEE dashboards with shift-level benchmarking and automated bottleneck alerting.",
       results: ["Improved real-time production visibility", "Faster identification of throughput constraints", "Data-driven shift-level performance conversations", "Prioritized improvement investments by line"],
