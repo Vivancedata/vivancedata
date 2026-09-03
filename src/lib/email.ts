@@ -27,7 +27,8 @@ const HTML_ESCAPES: Record<string, string> = {
 
 /** Escape user input before interpolating it into an email template. */
 export function escapeHtml(str: string): string {
-  return str.replace(/[&<>"']/g, (char) => HTML_ESCAPES[char] || char);
+  // The pattern only matches keys of HTML_ESCAPES, so the lookup is total.
+  return str.replace(/[&<>"']/g, (char) => HTML_ESCAPES[char]);
 }
 
 /** The inbox enquiries and leads are delivered to. */
@@ -63,12 +64,11 @@ export interface OutboundEmail {
   replyTo?: string;
 }
 
-export type SendResult = { ok: true } | { ok: false; reason: 'send-failed' | 'unconfigured' };
+export type SendFailure = 'send-failed' | 'unconfigured';
 
-type Delivery =
-  | { ok: true }
-  | { ok: false; reason: 'send-failed'; error: unknown }
-  | { ok: false; reason: 'unconfigured' };
+export type SendResult = { ok: true } | { ok: false; reason: SendFailure };
+
+type Delivery = { ok: true } | { ok: false; reason: SendFailure; error?: unknown };
 
 async function deliver(email: OutboundEmail): Promise<Delivery> {
   if (isDryRun()) {
@@ -146,6 +146,6 @@ export async function sendCourtesy(email: OutboundEmail, context: string): Promi
     to: email.to,
     subject: email.subject,
     reason: delivery.reason,
-    error: delivery.reason === 'send-failed' ? delivery.error : undefined,
+    error: delivery.error,
   });
 }
