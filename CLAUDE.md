@@ -111,11 +111,33 @@ Two parallel blog systems coexist:
 
 ### API Routes
 
-Both API routes use `src/lib/rateLimit.ts` (Upstash Redis) for IP-based rate limiting. The contact route also XSS-escapes all user input before embedding it in the email template.
+All three routes use `src/lib/rateLimit.ts` (Upstash Redis) for IP-based rate limiting.
+
+`src/lib/email.ts` is the one module that knows how this site sends email: the
+`emailAddress` field (trim, lowercase, 254 cap), `escapeHtml`, the team inbox,
+and `sendCritical`/`sendCourtesy`. Templates live in `src/emails/`; routes
+parse, build, send and respond, and no HTTP type crosses into `src/lib`.
+`newsletter` delivers through ConvertKit or Mailchimp rather than Resend, so it
+shares only the address field and the dry-run decision.
+
+**A send whose failure the caller must not swallow is `sendCritical`; one it
+must not fail the request over is `sendCourtesy`.** Resend resolves with
+`{ data, error }` instead of rejecting, so an unchecked send reports success
+while nothing arrives. Do not call `resend.emails.send` from a route.
+
+**Never report success for an email that was not sent.** Reporting success
+without sending requires `EMAIL_DRY_RUN=1` and nothing else — in particular
+not `NODE_ENV`. That inference is how the original bug happened: the
+non-production path logged the submission and returned success, `next.config`
+strips `console.log` from production builds, and a prospect saw "we will get
+back to you soon" while their message was destroyed. Unconfigured without the
+flag is a 503, in every environment.
 
 Required env vars:
-- `RESEND_API_KEY` — contact form email delivery
+- `RESEND_API_KEY` — contact form and tool-report email delivery
 - `UPSTASH_REDIS_REST_URL` + `UPSTASH_REDIS_REST_TOKEN` — rate limiting (if absent, rate limiting is skipped)
+- `CONTACT_FORM_TO_EMAIL` / `CONTACT_FORM_FROM_EMAIL` — optional; default to `info@` and `noreply@vivancedata.com`
+- `EMAIL_DRY_RUN=1` — local only; report success without sending
 
 ### Styling & Theming
 
