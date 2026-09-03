@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useMemo, useEffect } from "react";
+import React, { useRef, useMemo } from "react";
 import { m, useInView, Variants } from "framer-motion";
 
 // Animation variants for different entrance effects
@@ -336,58 +336,3 @@ export const StaggerContainer: React.FC<StaggerContainerProps> = ({
   );
 };
 
-// Parallax effect component
-interface ParallaxProps {
-  children: React.ReactNode;
-  speed?: number;
-  className?: string;
-  direction?: "up" | "down" | "left" | "right";
-}
-
-export const Parallax: React.FC<ParallaxProps> = ({
-  children,
-  speed = 0.5,
-  className = "",
-  direction = "up"
-}) => {
-  const ref = useRef<HTMLDivElement>(null);
-  
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!ref.current) return;
-      
-      const scrollY = window.scrollY;
-      const element = ref.current;
-      const elementTop = element.getBoundingClientRect().top + scrollY;
-      const offset = (scrollY - elementTop) * speed;
-      
-      let transform = "";
-      switch (direction) {
-        case "down":
-          transform = `translateY(${-offset}px)`;
-          break;
-        case "left":
-          transform = `translateX(${offset}px)`;
-          break;
-        case "right":
-          transform = `translateX(${-offset}px)`;
-          break;
-        case "up":
-        default:
-          transform = `translateY(${offset}px)`;
-          break;
-      }
-      
-      element.style.transform = transform;
-    };
-    
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [speed, direction]);
-  
-  return (
-    <div ref={ref} className={className}>
-      {children}
-    </div>
-  );
-};

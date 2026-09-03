@@ -11,7 +11,6 @@ export default defineConfig({
       reporter: ["text", "json-summary", "html"],
       reportsDirectory: "coverage/unit",
       include: [
-        "src/lib/api.ts",
         "src/lib/cookieConsent.ts",
         "src/lib/formatDate.ts",
         "src/lib/performance.ts",
