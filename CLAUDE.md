@@ -147,6 +147,26 @@ Required env vars:
 
 ### Styling & Theming
 
+**This repo does not own its design system and must not document one.** The
+token contract is `DESIGN.md` in the `@vivancedata/ui` package — read
+`node_modules/@vivancedata/ui/DESIGN.md`, whose source is the sibling `ui`
+repo. Six apps consume it (`vivancedata`, `crm`, `learn` and the three demo
+sites), all pinned to the same tag, so a second DESIGN.md here would fork a
+system that is deliberately central. Visual changes belong in `ui`, released,
+then pinned; that file states the rule itself: when it and the code disagree,
+fix one, not neither.
+
+Two token traps it records, both worth knowing before editing:
+
+- **`--accent` is a pale hover wash, not a brand color.** In shadcn semantics
+  `bg-accent` is a hover state. Putting the green there turns every hover on
+  every route green. The green is `--brand`.
+- **`--secondary` is a white pill with a hairline, not the old green.** Every
+  `bg-secondary` call site needs an audit rather than a blind swap.
+
+Greys below `muted-foreground` do not clear 4.5:1 and are for decorative
+metadata only — never for copy a user must read.
+
 - Tailwind with HSL CSS variables for all colors — use `bg-background`, `text-foreground`, `border-border`, etc., never hardcoded hex values
 - Light/dark mode via `next-themes`
 - `cn()` from `@/lib/utils` for conditional class merging (clsx + tailwind-merge)
