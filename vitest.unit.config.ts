@@ -13,10 +13,10 @@ export default defineConfig({
       include: [
         "src/lib/api.ts",
         "src/lib/cookieConsent.ts",
+        "src/lib/email.ts",
         "src/lib/formatDate.ts",
         "src/lib/performance.ts",
         "src/lib/utils.ts",
-        "src/lib/validation.ts",
       ],
       exclude: ["**/*.d.ts"],
       thresholds: {
