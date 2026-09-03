@@ -5,6 +5,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { PipelineDiagram, type Pipeline } from "@/components/case-studies/PipelineDiagram";
+import { caseStudies } from "@/constants/caseStudies";
 
 // These illustrations depict the SHAPE of each system, never its results.
 // They previously rendered invented metrics ("↑ 68% Alert Precision") that
@@ -47,6 +48,41 @@ const PIPELINES: Record<string, Pipeline> = {
       {
         name: "Project System",
         note: "Filed where the team already looks for it",
+        actor: "System",
+      },
+    ],
+  },
+  Manufacturing: {
+    label: "// Degradation Watch",
+    stages: [
+      {
+        name: "Sensor Telemetry",
+        note: "Vibration, temperature and load, already being recorded",
+        actor: "Equipment",
+        handoff: "a reading stream",
+      },
+      {
+        name: "Anomaly Scoring",
+        note: "Compared against the asset's own normal, not a global rule",
+        actor: "System",
+        handoff: "a drift score",
+      },
+      {
+        name: "Threshold Check",
+        note: "Scored against how far the asset is from a failure limit",
+        actor: "System",
+        handoff: "score + margin",
+      },
+      {
+        name: "Triage",
+        note: "Decides whether this warrants pulling the asset now",
+        actor: "Maintenance planner",
+        handoff: "a scheduled intervention",
+        human: true,
+      },
+      {
+        name: "Work Order",
+        note: "Raised in the MES the team already plans from",
         actor: "System",
       },
     ],
@@ -126,6 +162,9 @@ const PIPELINES: Record<string, Pipeline> = {
 const CaseStudyIllustration = ({ industry }: { industry: string }) => {
   const pipeline = PIPELINES[industry];
   if (!pipeline) {
+    // An engagement without a diagram used to render as an empty grey panel.
+    // Say so rather than shipping a blank band next to the prose.
+    console.error(`Case studies: no pipeline defined for industry "${industry}"`);
     return <div className="bg-muted h-full w-full" />;
   }
   return <PipelineDiagram pipeline={pipeline} />;
@@ -157,56 +196,6 @@ export const metadata: Metadata = {
   },
 };
 
-interface CaseStudy {
-  id: string;
-  title: string;
-  industry: string;
-  challenge: string;
-  solution: string;
-  results: string[];
-}
-
-const caseStudies: CaseStudy[] = [
-  {
-    id: "construction",
-    title: "Submittal and RFI Intake Workflow",
-    industry: "Construction",
-    challenge: "Submittals and RFIs arrived as emailed PDFs in no consistent format, and a project engineer was re-keying them into the project system by hand.",
-    solution: "We built an intake workflow that extracts the fields from each document, checks them against the project's own requirements, and stages the record for a human to approve.",
-    results: [
-      "Re-keying replaced by review",
-      "Consistent capture regardless of subcontractor format",
-      "Mismatches against the spec surfaced at intake",
-      "Records land in the existing project system"
-    ],
-  },
-  {
-    id: "hvac-trades",
-    title: "After-Hours Call Capture",
-    industry: "HVAC & Trades",
-    challenge: "Calls placed after the office closed went to voicemail, and by morning the customer had usually booked whoever answered first.",
-    solution: "We answered the out-of-hours calls, recorded the fault and access details in a fixed format, booked routine work, and paged the on-call technician for genuine emergencies.",
-    results: [
-      "Overnight calls answered rather than queued",
-      "Job details captured in one consistent format",
-      "Emergencies escalated, routine work booked",
-      "Every call logged whether or not it converted"
-    ],
-  },
-  {
-    id: "logistics",
-    title: "Load Exception Triage for Dispatch",
-    industry: "Logistics & Fleet",
-    challenge: "Late, short-delivered and mis-scanned loads were found when the customer phoned, because nobody was watching the board for the ones drifting off plan.",
-    solution: "We monitored load status against plan, raised the loads that had gone off track, ranked them by customer impact, and wrote them to the dispatch board the team already watched.",
-    results: [
-      "Problem loads raised before the customer call",
-      "Ranked so dispatch works the worst ones first",
-      "Visible in the system dispatch already uses",
-      "Fewer exceptions discovered after the fact"
-    ],
-  }
-];
 
 export default function CaseStudiesPage() {
   return (
@@ -218,7 +207,7 @@ export default function CaseStudiesPage() {
         </Paragraph>
         <div className="mt-6 max-w-3xl mx-auto">
           <div className="bg-warning/10 border border-warning rounded-md p-4 text-sm text-foreground">
-            <p className="font-medium">Note: These are composite examples based on typical AI implementations across multiple organizations. Metrics shown represent realistic outcomes from similar projects in each industry.</p>
+            <p className="font-medium">Note: these are composite examples, not delivered engagements. No client is named and no outcome is quantified, because none of this has been measured with a client who agreed to publish it.</p>
           </div>
         </div>
       </div>
