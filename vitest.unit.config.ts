@@ -11,11 +11,13 @@ export default defineConfig({
       reporter: ["text", "json-summary", "html"],
       reportsDirectory: "coverage/unit",
       include: [
+        "src/lib/aiReadinessScoring.ts",
         "src/lib/cookieConsent.ts",
         "src/lib/email.ts",
         "src/lib/formatDate.ts",
         "src/lib/performance.ts",
         "src/lib/rateLimit.ts",
+        "src/lib/roiModel.ts",
         "src/lib/utils.ts",
       ],
       exclude: ["**/*.d.ts"],
