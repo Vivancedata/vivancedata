@@ -36,7 +36,7 @@ export default async function Blog() {
   return (
     <>
       <PageHero
-        eyebrow="From Our Experts"
+        eyebrow="Notes from the work"
         title={
           <>
             AI <span className="text-brand">Insights</span> Blog

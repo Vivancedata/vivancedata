@@ -65,10 +65,11 @@ export default function UseCasesPage() {
         <h2 className="text-heading-2 mb-4">Ready to Implement?</h2>
         <div className="space-y-4 text-foreground">
           <p>
-            Each use case in our repository represents proven AI applications
-            that have delivered real business value. Our team can help you
-            assess which solutions are right for your organization and guide you
-            through implementation.
+            These are the workflows I build most often in construction, the
+            trades, logistics and manufacturing. They are patterns to think
+            with, not delivered case studies. Tell me which one matches the job
+            that goes wrong in your operation and I will tell you honestly
+            whether it is worth automating yet.
           </p>
           <div className="grid md:grid-cols-3 gap-6 mt-6">
             <div>

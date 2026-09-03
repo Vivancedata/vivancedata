@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'RAPID AI Framework - Our Methodology | Vivancedata',
   description:
-    'The RAPID AI Framework is Vivancedata\'s proven 6-phase methodology for AI transformation. Realize AI Potential In Days with our structured approach from discovery to scale.',
+    'RAPID is the six-phase way a Vivancedata engagement runs, from working out whether a workflow is worth automating to running it beside your existing process and keeping it working.',
   keywords: [
     'AI methodology',
     'AI transformation framework',
@@ -15,9 +15,9 @@ export const metadata: Metadata = {
     'AI consulting methodology',
   ],
   openGraph: {
-    title: 'RAPID AI Framework - Realize AI Potential In Days | Vivancedata',
+    title: 'RAPID AI Framework - How an Engagement Runs | Vivancedata',
     description:
-      'Transform your business with Vivancedata\'s proven 6-phase RAPID AI Framework. From discovery to enterprise-scale deployment in days, not months.',
+      'The six-phase way a Vivancedata engagement runs: discover, architect, prototype on your own documents, implement, deploy beside the existing process, and keep it working.',
     type: 'website',
     url: 'https://vivancedata.com/methodology',
     images: [
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'RAPID AI Framework - Vivancedata',
     description:
-      'Transform your business with our proven 6-phase AI methodology. Realize AI Potential In Days.',
+      'The six-phase way an engagement runs, one workflow at a time, proved on your own documents.',
     images: ['https://vivancedata.com/images/ai-solutions.png'],
   },
 };
