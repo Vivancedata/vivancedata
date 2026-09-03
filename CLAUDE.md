@@ -38,14 +38,13 @@ All page content lives in `src/constants/` as typed TypeScript objects. **When a
 
 Key constants files:
 - `navigation.ts` — header dropdowns, footer links, social links (update this when adding pages)
-- `blog.ts` — blog post metadata list (must stay in sync with MDX files in `src/app/blog/posts/`)
-- `clients.ts`, `partners.ts`, `team.ts` — logo/people data. There is deliberately
+- `clients.ts`, `team.ts` — logo/people data. There is deliberately
   no `testimonials.ts`: the practice has no clients who have agreed to be quoted,
   and the file that used to exist held four invented quotes. Do not re-add a
   testimonial, a client logo, or a named case study until a real client has
   agreed in writing to that specific wording.
 - `integrations.ts` — integration logos (uses jsDelivr CDN for Simple Icons; not all brands exist in the package)
-- `caseStudies.ts`, `services.ts`, `pricing.ts`, `faq.ts`, `welcome.ts`, `banner.ts`, `process.ts`, `methodology.ts`, `resources.ts`, `trust.ts`, `useCases.ts`
+- `caseStudies.ts`, `services.ts`, `pricing.ts`, `faq.ts`, `welcome.ts`, `process.ts`, `methodology.ts`, `resources.ts`, `trust.ts`, `useCases.ts`
 
 ### Route Structure
 
@@ -103,11 +102,18 @@ src/components/
 
 ### Blog System
 
-Two parallel blog systems coexist:
-1. **MDX files** — `src/app/blog/posts/[slug]/page.mdx` or `page.tsx`. `src/lib/blogPosts.ts` reads these from the filesystem at build time to generate the blog listing.
-2. **Dynamic route** — `src/app/blog/[slug]/page.tsx` renders posts whose metadata is in `src/constants/blog.ts` but have no MDX file (currently none active).
+**There is one blog system, and the filesystem is its source of truth.** Posts
+live at `src/app/blog/posts/[slug]/page.mdx` (or `page.tsx`), and
+`src/lib/blogPosts.ts` reads their frontmatter at build time —
+`getBlogSlugs`, `findBlogPostPath`, `getAllBlogPosts`. Both the listing
+(`src/app/blog/page.tsx`) and the dynamic route (`src/app/blog/[slug]/page.tsx`,
+whose `generateStaticParams` enumerates the same slugs) go through it. Adding
+a post means adding the file; nothing else needs updating.
 
-**Pitfall:** Adding a slug to `src/constants/blog.ts` without a corresponding MDX file will create a 404. Always create the file first.
+This used to be described as two parallel systems kept in sync by hand, with
+`src/constants/blog.ts` as a second metadata list and a documented 404 pitfall
+if the two drifted. That file had no importers and the pitfall could not
+happen; it was deleted rather than kept as a trap for the next reader.
 
 ### API Routes
 
