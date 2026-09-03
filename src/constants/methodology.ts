@@ -20,10 +20,10 @@ export interface MethodologyFAQ {
   answer: string;
 }
 
-export const frameworkName = 'RAPID AI Framework';
+export const frameworkName = 'How an engagement runs';
 export const frameworkTagline = 'One workflow at a time, proved on your own documents';
 
-export const frameworkDescription = `RAPID is how an engagement runs: six phases from working out whether a workflow is worth automating at all, through building it on your own documents, to running it beside the existing process before anything depends on it. It is written down so you can see what happens next, and where you can stop.`;
+export const frameworkDescription = `Six phases from working out whether a workflow is worth automating at all, through building it on your own documents, to running it beside the existing process before anything depends on it. It is written down so you can see what happens next, and where you can stop.`;
 
 export const methodologyPhases: MethodologyPhase[] = [
   {
@@ -137,7 +137,7 @@ export const frameworkBenefits: FrameworkBenefit[] = [
 
 export const methodologyFAQs: MethodologyFAQ[] = [
   {
-    question: 'How long does a typical RAPID AI engagement take?',
+    question: 'How long does a typical engagement take?',
     answer: 'It depends on the workflow, and I would rather quote a fixed price on a defined first build than a range for something unscoped. The pilot scope quoted on the industry pages is 3-6 weeks of running beside your existing process.',
   },
   {
@@ -149,7 +149,7 @@ export const methodologyFAQs: MethodologyFAQ[] = [
     answer: 'No. I do the work myself. If you have your own data or engineering people, I work alongside them and hand over documentation as we go.',
   },
   {
-    question: 'What industries is the RAPID framework best suited for?',
+    question: 'What industries do you work in?',
     answer: 'We apply it in construction, HVAC and the trades, logistics and fleet operations, and manufacturing. The phases themselves are industry-agnostic; what changes is the operational reality we design around — the site, the van, the dispatch board, the line.',
   },
   {

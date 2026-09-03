@@ -34,30 +34,11 @@ import {
 } from '@/constants/methodology';
 
 export const metadata: Metadata = {
-  title: 'RAPID AI Framework Methodology | Vivancedata',
+  title: 'How an Engagement Runs | Vivancedata',
   description:
-    'Explore Vivancedata’s RAPID AI Framework: a six-phase approach from discovery to scale for reliable, measurable AI implementation.',
+    'The six phases a Vivancedata engagement runs through, from deciding whether a workflow is worth automating to keeping it working afterwards.',
 };
 
-const RAPID_WORDS = ['Realize', 'AI', 'Potential', 'In', 'Days'];
-
-const TRADITIONAL_APPROACH_ITEMS = [
-  'Unclear objectives and scope creep',
-  'Long timelines before seeing results',
-  'High risk of project failure',
-  'Siloed implementation teams',
-  'Knowledge trapped with vendors',
-  'Unpredictable costs and timelines',
-];
-
-const RAPID_FRAMEWORK_ITEMS = [
-  'Clear deliverables at every phase',
-  'Working prototypes in weeks',
-  'Validated approach reduces risk',
-  'Cross-functional collaboration',
-  'Knowledge transfer to your team',
-  'Predictable milestones and budget',
-];
 
 const getPhaseIcon = (iconType: MethodologyPhase['iconType']) => {
   const iconClass = 'h-8 w-8';
@@ -117,32 +98,6 @@ function MethodologyHeroSection() {
               <Link href="/tools/ai-readiness">Take AI Readiness Assessment</Link>
             </Button>
           </div>
-        </div>
-      </Container>
-    </section>
-  );
-}
-
-function RapidAcronymSection() {
-  return (
-    <section className="w-full py-16 bg-card border-b border-border">
-      <Container className="max-w-6xl">
-        <div className="flex flex-wrap justify-center gap-4 md:gap-8">
-          {RAPID_WORDS.map((word, index) => (
-            <div key={word} className="flex items-center gap-2">
-              <span className="text-3xl md:text-5xl font-bold text-brand">
-                {word.charAt(0)}
-              </span>
-              <span className="text-lg md:text-xl text-muted-foreground font-medium">
-                {word.slice(1)}
-              </span>
-              {index < RAPID_WORDS.length - 1 && (
-                <span className="hidden md:inline text-faint mx-2">
-                  |
-                </span>
-              )}
-            </div>
-          ))}
         </div>
       </Container>
     </section>
@@ -260,7 +215,7 @@ function BenefitsSection() {
             Why it is shaped this way
           </div>
           <Heading as="h2" className="text-3xl md:text-4xl mb-4">
-            Why the RAPID Framework Is Shaped This Way
+            Why It Is Shaped This Way
           </Heading>
           <Paragraph className="max-w-2xl mx-auto text-lg">
             Each phase exists to make the next decision cheaper to reverse. The
@@ -297,64 +252,6 @@ function BenefitsSection() {
   );
 }
 
-function ComparisonSection() {
-  return (
-    <section className="w-full py-20 md:py-28 bg-muted">
-      <Container className="max-w-5xl">
-        <div className="text-center mb-16">
-          <Heading as="h2" className="text-3xl md:text-4xl mb-4">
-            Traditional AI vs RAPID Framework
-          </Heading>
-          <Paragraph className="max-w-2xl mx-auto text-lg">
-            See how our structured methodology compares to traditional AI
-            implementation approaches.
-          </Paragraph>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <Card className="border-2 border-border">
-            <CardContent className="p-8">
-              <h3 className="text-heading-3 mb-6 text-muted-foreground">
-                Traditional Approach
-              </h3>
-              <ul className="space-y-4">
-                {TRADITIONAL_APPROACH_ITEMS.map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-start gap-3 text-muted-foreground"
-                  >
-                    <span className="text-destructive font-bold">x</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-
-          <Card className="border-2 border-brand">
-            <CardContent className="p-8">
-              <h3 className="text-heading-3 mb-6 text-brand">
-                RAPID Framework
-              </h3>
-              <ul className="space-y-4">
-                {RAPID_FRAMEWORK_ITEMS.map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-start gap-3 text-foreground"
-                  >
-                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-        </div>
-      </Container>
-    </section>
-  );
-}
-
 function MethodologyFaqSection() {
   return (
     <section className="w-full py-20 md:py-28 bg-card">
@@ -364,7 +261,7 @@ function MethodologyFaqSection() {
             Frequently Asked Questions
           </Heading>
           <Paragraph className="text-lg">
-            Common questions about the RAPID AI Framework and our engagement
+            Common questions about how an engagement runs and what it
             process.
           </Paragraph>
         </div>
@@ -427,10 +324,8 @@ export default function MethodologyPage() {
   return (
     <main className="flex min-h-screen flex-col">
       <MethodologyHeroSection />
-      <RapidAcronymSection />
       <PhasesTimelineSection />
       <BenefitsSection />
-      <ComparisonSection />
       <MethodologyFaqSection />
       <MethodologyCtaSection />
     </main>

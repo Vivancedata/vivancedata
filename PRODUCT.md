@@ -84,9 +84,8 @@ The recurring material of their day, and of any engagement:
   otherwise a 503 in every environment.
 - The blog's source of truth is the filesystem: MDX under
   `src/app/blog/posts/`, read at build time.
-- **Open decision:** whether the RAPID acronym and its six-phase page are the
-  right shape for this audience. Its unearned claims were removed 2026-09-03;
-  the naming and structure remain unresolved. See Brand Commitments.
+- The `/methodology` surface documents the six phases an engagement runs
+  through. The RAPID acronym was retired 2026-09-03; see Brand Commitments.
 
 ## Brand Commitments
 
@@ -101,13 +100,16 @@ The recurring material of their day, and of any engagement:
   consulting page's "Schedule a Strategy Session" and "Book a Consultation"
   remain deliberate exceptions not yet reconciled.
 - Links: LinkedIn (`lorenzo-scaturchio`), GitHub (`gr8monk3ys`).
-- **RAPID AI Framework — claim retired, substance kept.** Decided 2026-09-03 on
-  delegated judgement and applied the same day. The six phases describe how
-  engagements are intended to run and stay. "Proven" was false for a practice
-  with no delivered clients and is gone; the tagline is now "One workflow at a
-  time, proved on your own documents" — a description rather than a promise.
-  Still open: whether the RAPID acronym and the page's six-phase structure are
-  the right shape for this audience at all.
+- **No named proprietary framework.** The "RAPID AI Framework" was retired
+  2026-09-03 on delegated judgement. It was a backronym for "Realize AI
+  Potential In Days" — a speed promise nothing supported — and it never even
+  spelled its own phases, which are Discover, Architect, Prototype, Implement,
+  Deploy, Scale: *DAPIDS*. A named framework is enterprise-consultancy
+  furniture and contradicts the plain-spoken, founder-led voice.
+  **The six phases are kept and are the substance**; the surface is now called
+  "How an engagement runs". The tagline is "One workflow at a time, proved on
+  your own documents" — a description rather than a promise. Do not reintroduce
+  a branded methodology name.
 
 ## Evidence on Hand
 
