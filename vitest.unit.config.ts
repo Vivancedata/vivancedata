@@ -15,6 +15,7 @@ export default defineConfig({
         "src/lib/cookieConsent.ts",
         "src/lib/formatDate.ts",
         "src/lib/performance.ts",
+        "src/lib/rateLimit.ts",
         "src/lib/utils.ts",
         "src/lib/validation.ts",
       ],
