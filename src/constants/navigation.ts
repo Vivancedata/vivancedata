@@ -20,7 +20,7 @@ export const navItems: NavItem[] = [
       { name: "Generative AI Solutions", href: "/services/generative-ai" },
       { name: "AI Strategy Consulting", href: "/services/consulting" },
       { name: "AI Training & Workshops", href: "/services/training" },
-      { name: "RAPID AI Framework", href: "/methodology" },
+      { name: "How an engagement runs", href: "/methodology" },
     ],
   },
   {
@@ -146,7 +146,7 @@ export const footerLinks: FooterSection[] = [
       { label: "Generative AI", href: "/services/generative-ai" },
       { label: "AI Consulting", href: "/services/consulting" },
       { label: "Training", href: "/services/training" },
-      { label: "RAPID Framework", href: "/methodology" },
+      { label: "How an engagement runs", href: "/methodology" },
     ],
   },
   {
