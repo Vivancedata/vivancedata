@@ -31,6 +31,46 @@ export function escapeHtml(str: string): string {
   return str.replace(/[&<>"']/g, (char) => HTML_ESCAPES[char]);
 }
 
+const STYLES = `
+  body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+  .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+  .header { background: #2563eb; color: white; padding: 20px; border-radius: 8px 8px 0 0; }
+  .content { background: #f9fafb; padding: 20px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px; }
+  .field { margin-bottom: 15px; }
+  .label { font-weight: bold; color: #374151; }
+  .value { margin-top: 5px; padding: 10px; background: white; border-radius: 4px; }
+  .message { white-space: pre-wrap; }
+  .button { display: inline-block; background: #2563eb; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; margin-top: 20px; }
+  .footer { text-align: center; color: #6b7280; font-size: 12px; margin-top: 20px; }
+`;
+
+/**
+ * The frame every email from this site shares. `title` is plain text and is
+ * escaped here; `body` is already-rendered HTML, so templates escape their own
+ * interpolations. Keeping the two asymmetric is deliberate -- a template that
+ * forgot to escape its title would otherwise be silently exploitable.
+ */
+export function layout({ title, body }: { title: string; body: string }): string {
+  return `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <style>${STYLES}</style>
+    </head>
+    <body>
+      <div class="container">
+        <div class="header">
+          <h2 style="margin: 0;">${escapeHtml(title)}</h2>
+        </div>
+        <div class="content">
+          ${body}
+        </div>
+      </div>
+    </body>
+    </html>
+  `;
+}
+
 /** The inbox enquiries and leads are delivered to. */
 export function teamInbox(): string {
   return process.env.CONTACT_FORM_TO_EMAIL || 'info@vivancedata.com';
