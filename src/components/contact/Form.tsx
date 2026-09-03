@@ -33,6 +33,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { CheckCircle, Loader2 } from "lucide-react"
+import { ANALYTICS } from "@/lib/analytics";
 
 const formSchema = z.object({
   firstName: z.string().min(2, {
@@ -108,6 +109,7 @@ export function ProfileForm() {
         throw new Error(data.error || 'Failed to submit form');
       }
 
+      ANALYTICS.contactSubmitted(values.serviceInterest);
       setIsSubmitted(true);
       toast.success('Message sent successfully!', {
         description: 'You\'ll hear back from me within one working day.'

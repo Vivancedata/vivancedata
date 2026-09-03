@@ -12,6 +12,7 @@ export default defineConfig({
       reportsDirectory: "coverage/unit",
       include: [
         "src/lib/aiReadinessScoring.ts",
+        "src/lib/analytics.ts",
         "src/lib/cookieConsent.ts",
         "src/lib/email.ts",
         "src/lib/formatDate.ts",

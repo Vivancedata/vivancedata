@@ -125,6 +125,13 @@ Real and usable:
   `src/constants/demos.ts`, which requires a demo be actually deployed before it
   earns an entry. **These are the only real proof the site has.**
 - **Published pricing** with concrete figures, in `src/constants/pricing.ts`.
+- **Three measured actions**, added 2026-09-03: a demo opened, a contact form
+  submitted, and a tool report requested (`src/lib/analytics.ts`). Before this
+  the site measured page views and nothing else, so the demos — the only real
+  proof it has — produced no signal at all. All three are gated on analytics
+  consent. This is the cheapest instrument available for the open audience
+  question above; it does not answer it, but nothing could while no action was
+  recorded.
 
 Absences future work must not fabricate:
 

@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, Loader2, Lock } from "lucide-react";
+import { ANALYTICS } from "@/lib/analytics";
 
 export type ReportGateTool = "roi-calculator" | "ai-readiness";
 
@@ -53,6 +54,7 @@ export function ReportGate({
         throw new Error(data.error || GENERIC_ERROR);
       }
 
+      ANALYTICS.toolReportRequested(tool);
       setStatus("unlocked");
     } catch (error) {
       console.error("Tool report request failed:", error);
