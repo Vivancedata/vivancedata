@@ -9,6 +9,16 @@ import { Progress } from "@/components/ui/progress";
 import { ReportGate } from "@/components/tools/ReportGate";
 import { m, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { CATEGORY_LABELS, questions, type ReadinessCategory } from "@/constants/aiReadiness";
+import {
+  buildAssessmentSummary,
+  classifyReadiness,
+  recommendationsFor,
+  scoreAssessment,
+  type AssessmentResults,
+  type CategoryAverages,
+  type ReadinessLevelName,
+} from "@/lib/aiReadinessScoring";
 import {
   CheckCircle2,
   ChevronRight,
@@ -22,339 +32,45 @@ import {
   Award
 } from "lucide-react";
 
-interface Question {
-  id: string;
-  category: "data" | "infrastructure" | "culture" | "strategy";
-  question: string;
-  options: {
-    value: number;
-    label: string;
-  }[];
-}
-
-const questions: Question[] = [
-  // Data Readiness (4 questions)
-  {
-    id: "data-1",
-    category: "data",
-    question: "How would you describe the quality and accessibility of your organization's data?",
-    options: [
-      { value: 1, label: "Data is siloed, inconsistent, or largely inaccessible" },
-      { value: 2, label: "Some data available but requires significant cleanup" },
-      { value: 3, label: "Most data is accessible with moderate quality" },
-      { value: 4, label: "High-quality data, well-organized and easily accessible" },
-      { value: 5, label: "Enterprise-grade data infrastructure with excellent governance" },
-    ],
-  },
-  {
-    id: "data-2",
-    category: "data",
-    question: "Does your organization have a data governance framework in place?",
-    options: [
-      { value: 1, label: "No formal data governance" },
-      { value: 2, label: "Limited governance, mostly ad-hoc" },
-      { value: 3, label: "Basic governance policies exist" },
-      { value: 4, label: "Well-defined governance with clear ownership" },
-      { value: 5, label: "Mature governance with automated compliance" },
-    ],
-  },
-  {
-    id: "data-3",
-    category: "data",
-    question: "How much historical data does your organization have available for analysis?",
-    options: [
-      { value: 1, label: "Less than 6 months" },
-      { value: 2, label: "6 months to 1 year" },
-      { value: 3, label: "1-2 years" },
-      { value: 4, label: "2-5 years" },
-      { value: 5, label: "5+ years of comprehensive data" },
-    ],
-  },
-  {
-    id: "data-4",
-    category: "data",
-    question: "Is your data properly labeled and annotated for machine learning purposes?",
-    options: [
-      { value: 1, label: "No labeling or annotation" },
-      { value: 2, label: "Minimal labeling on small datasets" },
-      { value: 3, label: "Partial labeling on key datasets" },
-      { value: 4, label: "Most critical data is labeled" },
-      { value: 5, label: "Comprehensive labeling with quality assurance" },
-    ],
-  },
-  // Technical Infrastructure (4 questions)
-  {
-    id: "infra-1",
-    category: "infrastructure",
-    question: "What is your organization's cloud adoption level?",
-    options: [
-      { value: 1, label: "On-premises only, no cloud infrastructure" },
-      { value: 2, label: "Limited cloud usage for basic services" },
-      { value: 3, label: "Hybrid cloud with some workloads migrated" },
-      { value: 4, label: "Cloud-first strategy with modern infrastructure" },
-      { value: 5, label: "Cloud-native with advanced capabilities (containers, serverless)" },
-    ],
-  },
-  {
-    id: "infra-2",
-    category: "infrastructure",
-    question: "Does your organization have experience with machine learning or AI tools?",
-    options: [
-      { value: 1, label: "No experience with ML/AI tools" },
-      { value: 2, label: "Limited experimentation with basic tools" },
-      { value: 3, label: "Some ML projects completed or in progress" },
-      { value: 4, label: "Regular use of ML platforms and frameworks" },
-      { value: 5, label: "Advanced ML operations (MLOps) infrastructure in place" },
-    ],
-  },
-  {
-    id: "infra-3",
-    category: "infrastructure",
-    question: "How integrated are your current systems and data sources?",
-    options: [
-      { value: 1, label: "Highly siloed systems with minimal integration" },
-      { value: 2, label: "Some integration via manual processes" },
-      { value: 3, label: "Moderate integration with basic APIs" },
-      { value: 4, label: "Well-integrated with modern APIs and data pipelines" },
-      { value: 5, label: "Fully integrated enterprise architecture with real-time data flow" },
-    ],
-  },
-  {
-    id: "infra-4",
-    category: "infrastructure",
-    question: "What level of computing resources can your organization allocate for AI projects?",
-    options: [
-      { value: 1, label: "Limited resources, budget constraints" },
-      { value: 2, label: "Small budget for proof-of-concept projects" },
-      { value: 3, label: "Moderate resources for pilot projects" },
-      { value: 4, label: "Dedicated budget for AI initiatives" },
-      { value: 5, label: "Significant investment capacity for enterprise AI" },
-    ],
-  },
-  // Organizational Culture (4 questions)
-  {
-    id: "culture-1",
-    category: "culture",
-    question: "How supportive is your leadership team of AI and digital transformation initiatives?",
-    options: [
-      { value: 1, label: "Skeptical or resistant to AI adoption" },
-      { value: 2, label: "Aware but not actively supportive" },
-      { value: 3, label: "Moderately supportive with some advocacy" },
-      { value: 4, label: "Actively championing AI initiatives" },
-      { value: 5, label: "AI is a core strategic priority with executive sponsorship" },
-    ],
-  },
-  {
-    id: "culture-2",
-    category: "culture",
-    question: "How comfortable are employees with data-driven decision making?",
-    options: [
-      { value: 1, label: "Primarily intuition-based decision making" },
-      { value: 2, label: "Some data used but not consistently" },
-      { value: 3, label: "Data-informed decisions in key areas" },
-      { value: 4, label: "Strong data-driven culture in most departments" },
-      { value: 5, label: "Pervasive data-driven culture with advanced analytics" },
-    ],
-  },
-  {
-    id: "culture-3",
-    category: "culture",
-    question: "Does your organization have in-house data science or AI expertise?",
-    options: [
-      { value: 1, label: "No data science capabilities" },
-      { value: 2, label: "1-2 individuals with basic data skills" },
-      { value: 3, label: "Small team with ML experience" },
-      { value: 4, label: "Dedicated data science team" },
-      { value: 5, label: "Large, mature AI/ML center of excellence" },
-    ],
-  },
-  {
-    id: "culture-4",
-    category: "culture",
-    question: "How open is your organization to change and innovation?",
-    options: [
-      { value: 1, label: "Highly resistant to change" },
-      { value: 2, label: "Cautious with incremental improvements" },
-      { value: 3, label: "Moderately innovative in some areas" },
-      { value: 4, label: "Innovation-friendly culture with experimentation" },
-      { value: 5, label: "Highly innovative with fail-fast mentality" },
-    ],
-  },
-  // Strategic Alignment (4 questions)
-  {
-    id: "strategy-1",
-    category: "strategy",
-    question: "Has your organization identified specific AI use cases aligned with business goals?",
-    options: [
-      { value: 1, label: "No clear use cases identified" },
-      { value: 2, label: "Vague ideas without business alignment" },
-      { value: 3, label: "A few use cases identified" },
-      { value: 4, label: "Multiple prioritized use cases with ROI estimates" },
-      { value: 5, label: "Comprehensive AI roadmap with clear business value" },
-    ],
-  },
-  {
-    id: "strategy-2",
-    category: "strategy",
-    question: "Do you have defined metrics to measure AI project success?",
-    options: [
-      { value: 1, label: "No success metrics defined" },
-      { value: 2, label: "Vague success criteria" },
-      { value: 3, label: "Basic KPIs identified" },
-      { value: 4, label: "Clear, measurable success metrics" },
-      { value: 5, label: "Comprehensive measurement framework with continuous monitoring" },
-    ],
-  },
-  {
-    id: "strategy-3",
-    category: "strategy",
-    question: "What is your organization's AI maturity level?",
-    options: [
-      { value: 1, label: "Awareness - just learning about AI" },
-      { value: 2, label: "Exploration - investigating possibilities" },
-      { value: 3, label: "Experimentation - running pilot projects" },
-      { value: 4, label: "Implementation - deploying AI solutions" },
-      { value: 5, label: "Optimization - scaling AI across the enterprise" },
-    ],
-  },
-  {
-    id: "strategy-4",
-    category: "strategy",
-    question: "How well does your organization understand AI ethics and responsible AI practices?",
-    options: [
-      { value: 1, label: "Not considered" },
-      { value: 2, label: "Aware but no formal approach" },
-      { value: 3, label: "Basic guidelines in place" },
-      { value: 4, label: "Formal ethics framework" },
-      { value: 5, label: "Comprehensive responsible AI program with governance" },
-    ],
-  },
-];
-
-const categoryInfo = {
-  data: { icon: Database, color: "blue", label: "Data Readiness" },
-  infrastructure: { icon: Server, color: "green", label: "Technical Infrastructure" },
-  culture: { icon: Users, color: "purple", label: "Organizational Culture" },
-  strategy: { icon: Target, color: "orange", label: "Strategic Alignment" },
+// Presentation for what the model returns. The scoring module deals in level
+// names and category keys; the icons and Tailwind colours live here so that
+// src/lib stays free of React and the thresholds stay testable without one.
+const LEVEL_PRESENTATION: Record<ReadinessLevelName, { color: string; icon: typeof Award }> = {
+  Excellent: { color: "green", icon: Award },
+  Good: { color: "blue", icon: TrendingUp },
+  Moderate: { color: "yellow", icon: CheckCircle2 },
+  Beginning: { color: "orange", icon: AlertCircle },
 };
 
-type Category = Question["category"];
-type CategoryAverages = Record<Category, number>;
-
-interface QuizAssessmentResults {
-  categoryAverages: CategoryAverages;
-  totalScore: number;
-  percentageScore: number;
-}
-
-interface ReadinessLevel {
-  level: string;
-  color: "green" | "blue" | "yellow" | "orange";
-  icon: typeof Award;
-}
-
-const EMPTY_CATEGORY_SCORES: CategoryAverages = {
-  data: 0,
-  infrastructure: 0,
-  culture: 0,
-  strategy: 0,
+const categoryInfo: Record<ReadinessCategory, { icon: typeof Database; color: string; label: string }> = {
+  data: { icon: Database, color: "blue", label: CATEGORY_LABELS.data },
+  infrastructure: { icon: Server, color: "green", label: CATEGORY_LABELS.infrastructure },
+  culture: { icon: Users, color: "purple", label: CATEGORY_LABELS.culture },
+  strategy: { icon: Target, color: "orange", label: CATEGORY_LABELS.strategy },
 };
 
-const questionCategories = new Map(questions.map((question) => [question.id, question.category]));
 
-const calculateResults = (answers: Record<string, number>): QuizAssessmentResults => {
-  const categoryScores: CategoryAverages = { ...EMPTY_CATEGORY_SCORES };
-  const categoryCounts: CategoryAverages = { ...EMPTY_CATEGORY_SCORES };
-
-  Object.entries(answers).forEach(([questionId, score]) => {
-    const category = questionCategories.get(questionId);
-    if (!category) {
-      return;
-    }
-    categoryScores[category] += score;
-    categoryCounts[category] += 1;
-  });
-
-  const categoryAverages: CategoryAverages = {
-    data: categoryCounts.data > 0 ? categoryScores.data / categoryCounts.data : 0,
-    infrastructure: categoryCounts.infrastructure > 0 ? categoryScores.infrastructure / categoryCounts.infrastructure : 0,
-    culture: categoryCounts.culture > 0 ? categoryScores.culture / categoryCounts.culture : 0,
-    strategy: categoryCounts.strategy > 0 ? categoryScores.strategy / categoryCounts.strategy : 0,
-  };
-  const totalScore = Object.values(categoryAverages).reduce((sum, score) => sum + score, 0) / 4;
-  const percentageScore = (totalScore / 5) * 100;
-
-  return { categoryAverages, totalScore, percentageScore };
-};
-
-const getReadinessLevel = (percentage: number): ReadinessLevel => {
-  if (percentage >= 80) {
-    return { level: "Excellent", color: "green", icon: Award };
-  }
-  if (percentage >= 60) {
-    return { level: "Good", color: "blue", icon: TrendingUp };
-  }
-  if (percentage >= 40) {
-    return { level: "Moderate", color: "yellow", icon: CheckCircle2 };
-  }
-  return { level: "Beginning", color: "orange", icon: AlertCircle };
-};
-
-const getRecommendations = (categoryAverages: CategoryAverages): string[] => {
-  const recommendations: string[] = [];
-
-  if (categoryAverages.data < 3) {
-    recommendations.push("Focus on establishing a data governance framework and improving data quality before major AI initiatives.");
-  }
-  if (categoryAverages.infrastructure < 3) {
-    recommendations.push("Invest in cloud infrastructure and modern data platforms to support AI workloads.");
-  }
-  if (categoryAverages.culture < 3) {
-    recommendations.push("Build internal AI capabilities through training and hire data science talent.");
-  }
-  if (categoryAverages.strategy < 3) {
-    recommendations.push("Define clear AI use cases aligned with business objectives and establish success metrics.");
-  }
-
-  if (recommendations.length === 0) {
-    recommendations.push("Your organization is well-positioned for AI adoption. Consider starting with a pilot project in your strongest area.");
-    recommendations.push("Focus on scaling existing capabilities and building an AI center of excellence.");
-  }
-
-  return recommendations;
-};
-
-const buildQuizSummary = (
-  results: QuizAssessmentResults,
-  readinessLevel: ReadinessLevel
-): Record<string, string | number> => ({
-  "Overall readiness": `${Math.round(results.percentageScore)}% - ${readinessLevel.level}`,
-  [categoryInfo.data.label]: `${results.categoryAverages.data.toFixed(1)} / 5.0`,
-  [categoryInfo.infrastructure.label]: `${results.categoryAverages.infrastructure.toFixed(1)} / 5.0`,
-  [categoryInfo.culture.label]: `${results.categoryAverages.culture.toFixed(1)} / 5.0`,
-  [categoryInfo.strategy.label]: `${results.categoryAverages.strategy.toFixed(1)} / 5.0`,
-});
 
 interface ReadinessSummaryProps {
-  results: QuizAssessmentResults;
-  readinessLevel: ReadinessLevel;
+  results: AssessmentResults;
+  readinessLevel: ReadinessLevelName;
 }
 
 function ReadinessSummary({ results, readinessLevel }: ReadinessSummaryProps) {
-  const ReadinessIcon = readinessLevel.icon;
+  const { color, icon: ReadinessIcon } = LEVEL_PRESENTATION[readinessLevel];
 
   return (
     <>
       <CardHeader className="text-center">
         <div className="flex justify-center mb-4" aria-hidden="true">
-          <div className={`rounded-full p-4 bg-${readinessLevel.color}-100 dark:bg-${readinessLevel.color}-900/20`}>
-            <ReadinessIcon className={`h-12 w-12 text-${readinessLevel.color}-600`} />
+          <div className={`rounded-full p-4 bg-${color}-100 dark:bg-${color}-900/20`}>
+            <ReadinessIcon className={`h-12 w-12 text-${color}-600`} />
           </div>
         </div>
         <CardTitle as="h2" className="text-3xl">Your AI Readiness Score</CardTitle>
         <CardDescription className="text-xl mt-2">
-          <span aria-label={`Score: ${Math.round(results.percentageScore)} percent, Level: ${readinessLevel.level}`}>
-            {Math.round(results.percentageScore)}% - {readinessLevel.level}
+          <span aria-label={`Score: ${Math.round(results.percentageScore)} percent, Level: ${readinessLevel}`}>
+            {Math.round(results.percentageScore)}% - {readinessLevel}
           </span>
         </CardDescription>
       </CardHeader>
@@ -384,7 +100,7 @@ interface CategoryBreakdownProps {
 function CategoryBreakdown({ categoryAverages }: CategoryBreakdownProps) {
   return (
     <div className="grid md:grid-cols-2 gap-4 mt-8" role="list" aria-label="Category breakdown">
-      {(Object.entries(categoryAverages) as [Category, number][]).map(([category, score]) => {
+      {(Object.entries(categoryAverages) as [ReadinessCategory, number][]).map(([category, score]) => {
         const info = categoryInfo[category];
         const CategoryIcon = info.icon;
         const percentage = (score / 5) * 100;
@@ -440,8 +156,8 @@ function Recommendations({ recommendations }: RecommendationsProps) {
 }
 
 interface QuizResultsPanelProps {
-  results: QuizAssessmentResults;
-  readinessLevel: ReadinessLevel;
+  results: AssessmentResults;
+  readinessLevel: ReadinessLevelName;
   recommendations: string[];
   resultsRef: RefObject<HTMLDivElement | null>;
   onRetake: () => void;
@@ -474,7 +190,7 @@ function QuizResultsPanel({
               tool="ai-readiness"
               title="See what to fix first"
               description="Your score is above. Enter your email to reveal the recommendations for your weakest areas and get the full assessment sent to you."
-              summary={buildQuizSummary(results, readinessLevel)}
+              summary={buildAssessmentSummary(results, readinessLevel)}
               recommendations={recommendations}
             >
               <Recommendations recommendations={recommendations} />
@@ -666,12 +382,12 @@ export function AIReadinessQuiz() {
   };
 
   if (showResults) {
-    const results = calculateResults(answers);
+    const results = scoreAssessment(answers);
     return (
       <QuizResultsPanel
         results={results}
-        readinessLevel={getReadinessLevel(results.percentageScore)}
-        recommendations={getRecommendations(results.categoryAverages)}
+        readinessLevel={classifyReadiness(results.percentageScore)}
+        recommendations={recommendationsFor(results.categoryAverages)}
         resultsRef={resultsRef}
         onRetake={handleRetake}
       />
