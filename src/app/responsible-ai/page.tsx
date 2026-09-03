@@ -5,6 +5,12 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Check, Shield, Users, Eye, BarChart3, Scale, FileText } from "lucide-react";
+import {
+  designExamples,
+  phases,
+  principles,
+  type PrincipleIcon,
+} from "@/constants/responsibleAI";
 
 export const metadata: Metadata = {
   title: "Responsible AI Framework - VivanceData",
@@ -110,121 +116,22 @@ const CaseStudy = ({ title, challenge, approach, outcome }: CaseStudyProps) => (
   </div>
 );
 
-export default function ResponsibleAIPage() {
-  const principles = [
-    {
-      icon: <Users className="h-6 w-6 text-brand" />,
-      title: "Human-Centered & Inclusive",
-      description: "We design AI systems that augment human capabilities, respect human autonomy, and consider the needs of all stakeholders, including underrepresented groups."
-    },
-    {
-      icon: <Eye className="h-6 w-6 text-brand" />,
-      title: "Transparent & Explainable",
-      description: "We ensure AI systems are understandable, with clear documentation of how decisions are made and the ability to explain outcomes in human terms."
-    },
-    {
-      icon: <Shield className="h-6 w-6 text-brand" />,
-      title: "Fair & Unbiased",
-      description: "We actively identify and mitigate biases in data and algorithms to ensure equitable outcomes across different demographic groups."
-    },
-    {
-      icon: <BarChart3 className="h-6 w-6 text-brand" />,
-      title: "Robust & Reliable",
-      description: "We build AI systems that perform consistently, handle edge cases gracefully, and maintain accuracy over time with changing conditions."
-    },
-    {
-      icon: <Scale className="h-6 w-6 text-brand" />,
-      title: "Accountable & Governed",
-      description: "We establish clear lines of responsibility for AI systems, with appropriate oversight and governance throughout the lifecycle."
-    },
-    {
-      icon: <FileText className="h-6 w-6 text-brand" />,
-      title: "Privacy & Security",
-      description: "We implement strong data protection measures and ensure AI systems respect privacy rights while maintaining security against threats."
-    }
-  ];
+// Icon keys from the constants file resolved to elements here, so the copy
+// stays free of JSX.
+const PRINCIPLE_ICONS: Record<PrincipleIcon, React.ReactNode> = {
+  users: <Users className="h-6 w-6 text-brand" />,
+  eye: <Eye className="h-6 w-6 text-brand" />,
+  shield: <Shield className="h-6 w-6 text-brand" />,
+  "bar-chart-3": <BarChart3 className="h-6 w-6 text-brand" />,
+  scale: <Scale className="h-6 w-6 text-brand" />,
+  "file-text": <FileText className="h-6 w-6 text-brand" />,
+};
 
-  const phases = [
-    {
-      number: "1",
-      title: "Assessment & Planning",
-      description: "Before any AI development begins, we conduct a thorough assessment of potential ethical implications and establish clear guidelines.",
-      checks: [
-        "Stakeholder impact analysis to identify affected groups",
-        "Risk assessment for potential harms or unintended consequences",
-        "Data privacy and security evaluation",
-        "Establishment of ethical boundaries and success metrics"
-      ]
-    },
-    {
-      number: "2",
-      title: "Design & Development",
-      description: "During the design and development phase, we incorporate ethical considerations into the technical implementation.",
-      checks: [
-        "Diverse and representative data collection and curation",
-        "Bias detection and mitigation in training data",
-        "Explainability mechanisms built into model architecture",
-        "Regular ethical reviews throughout development"
-      ]
-    },
-    {
-      number: "3",
-      title: "Testing & Validation",
-      description: "We rigorously test AI systems to ensure they meet our ethical standards before deployment.",
-      checks: [
-        "Fairness testing across different demographic groups",
-        "Adversarial testing to identify potential vulnerabilities",
-        "User testing with diverse participants",
-        "Documentation of model limitations and edge cases"
-      ]
-    },
-    {
-      number: "4",
-      title: "Deployment & Monitoring",
-      description: "After deployment, we continuously monitor AI systems to ensure they maintain ethical performance.",
-      checks: [
-        "Ongoing performance monitoring for drift or degradation",
-        "Regular audits for fairness and bias",
-        "Feedback mechanisms for users to report concerns",
-        "Incident response plan for addressing ethical issues"
-      ]
-    },
-    {
-      number: "5",
-      title: "Governance & Improvement",
-      description: "We maintain oversight and continuously improve our AI systems based on real-world performance.",
-      checks: [
-        "Regular review by ethics committee or board",
-        "Continuous learning and improvement based on feedback",
-        "Transparency reporting on system performance",
-        "Version control and responsible updates"
-      ]
-    }
-  ];
+export default function ResponsibleAIPage() {
 
   // Illustrative scenarios, not delivered engagements. The `outcome` field
   // describes what the approach is designed to produce, never a measured result.
   // No number goes in here without a named client who has agreed to publish it.
-  const caseStudies = [
-    {
-      title: "Construction: Document Extraction You Can Audit",
-      challenge: "A contractor wants submittals and invoices read automatically, but a wrong figure filed into the project record is worse than a slow one, and an auditor later has to see where each value came from.",
-      approach: "Extract with a confidence threshold rather than a best guess, keep every value linked to the page and region it was read from, hold anything below the threshold for a person, and log who approved each record.",
-      outcome: "The design goal is a project record where every extracted field can be traced back to the document it came from, and nothing enters it without a named approval."
-    },
-    {
-      title: "HVAC & Trades: Call Triage That Escalates Honestly",
-      challenge: "A service business wants after-hours calls answered, but a system that misreads an emergency as routine leaves someone without heat overnight, and one that escalates everything is just a pager.",
-      approach: "Bias the urgency rules toward escalation, state plainly to the caller that they are speaking to an automated intake, keep a human escalation path open at every point, and review the misclassified calls weekly.",
-      outcome: "The design goal is triage whose failure mode is waking an on-call technician unnecessarily, never leaving a genuine emergency in a queue."
-    },
-    {
-      title: "Logistics: Monitoring Loads Without Monitoring Drivers",
-      challenge: "A carrier wants late and off-plan loads surfaced early, and the same telematics data would also support scoring individual drivers on behaviour they were never told was being measured.",
-      approach: "Scope the data to the load rather than the person, agree in advance what the signals may and may not be used for, tell drivers what is collected, and keep an access trail on the underlying records.",
-      outcome: "The design goal is exception visibility for dispatch that does not quietly become a performance surveillance system."
-    }
-  ];
 
   return (
     <Container className="py-16">
@@ -286,7 +193,7 @@ export default function ResponsibleAIPage() {
           {principles.map((principle) => (
             <Principle
               key={principle.title}
-              icon={principle.icon}
+              icon={PRINCIPLE_ICONS[principle.iconType]}
               title={principle.title}
               description={principle.description}
             />
@@ -318,7 +225,7 @@ export default function ResponsibleAIPage() {
       <div className="mb-20">
         <h2 className="text-heading-1 mb-8 text-center">Responsible AI in Action</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {caseStudies.map((study) => (
+          {designExamples.map((study) => (
             <CaseStudy
               key={study.title}
               title={study.title}

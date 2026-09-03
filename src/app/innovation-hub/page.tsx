@@ -5,6 +5,11 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Lightbulb, Zap, Brain, Sparkles, Atom, Rocket } from "lucide-react";
+import {
+  emergingTechnologies,
+  innovationProjects,
+  type TechnologyIcon,
+} from "@/constants/innovationHub";
 
 export const metadata: Metadata = {
   title: "Innovation Hub - VivanceData",
@@ -112,90 +117,18 @@ const ProjectCard = ({ title, description, technologies, status }: ProjectCardPr
   );
 };
 
-export default function InnovationHubPage() {
-  const emergingTechnologies = [
-    {
-      title: "Multimodal Foundation Models",
-      description: "AI systems that can process and generate multiple types of data (text, images, audio, video) with a single model architecture.",
-      icon: <Brain className="h-6 w-6 text-brand" />,
-      maturity: "Growing" as const,
-      timeframe: "1-2 years"
-    },
-    {
-      title: "Neuromorphic Computing",
-      description: "Computing architectures inspired by the human brain that enable more efficient AI processing and learning capabilities.",
-      icon: <Atom className="h-6 w-6 text-brand" />,
-      maturity: "Emerging" as const,
-      timeframe: "3-5 years"
-    },
-    {
-      title: "Federated Learning",
-      description: "Machine learning technique that trains algorithms across multiple devices while keeping data localized, enhancing privacy and security.",
-      icon: <Zap className="h-6 w-6 text-brand" />,
-      maturity: "Growing" as const,
-      timeframe: "Now-1 year"
-    },
-    {
-      title: "Quantum Machine Learning",
-      description: "Intersection of quantum computing and machine learning that promises exponential speedups for certain AI algorithms and problems.",
-      icon: <Sparkles className="h-6 w-6 text-brand" />,
-      maturity: "Emerging" as const,
-      timeframe: "5+ years"
-    },
-    {
-      title: "Autonomous AI Agents",
-      description: "Self-directed AI systems that can perform complex tasks with minimal human intervention through planning and reasoning capabilities.",
-      icon: <Rocket className="h-6 w-6 text-brand" />,
-      maturity: "Emerging" as const,
-      timeframe: "2-3 years"
-    },
-    {
-      title: "Explainable AI (XAI)",
-      description: "Techniques and methods that make AI decision-making processes transparent and interpretable to humans.",
-      icon: <Lightbulb className="h-6 w-6 text-brand" />,
-      maturity: "Maturing" as const,
-      timeframe: "Now"
-    }
-  ];
+// Icon keys from the constants file resolved to elements here, so the copy
+// stays free of JSX.
+const TECHNOLOGY_ICONS: Record<TechnologyIcon, React.ReactNode> = {
+  brain: <Brain className="h-6 w-6 text-brand" />,
+  atom: <Atom className="h-6 w-6 text-brand" />,
+  zap: <Zap className="h-6 w-6 text-brand" />,
+  sparkles: <Sparkles className="h-6 w-6 text-brand" />,
+  rocket: <Rocket className="h-6 w-6 text-brand" />,
+  lightbulb: <Lightbulb className="h-6 w-6 text-brand" />,
+};
 
-  const innovationProjects = [
-    {
-      title: "Adaptive Multimodal Assistant",
-      description: "An AI assistant that seamlessly combines text, voice, and visual understanding to provide context-aware support across multiple domains.",
-      technologies: ["Multimodal AI", "NLP", "Computer Vision", "Reinforcement Learning"],
-      status: "Prototype" as const
-    },
-    {
-      title: "Privacy-Preserving Analytics Platform",
-      description: "A data analytics system that enables powerful insights while maintaining strict privacy guarantees through federated learning and differential privacy.",
-      technologies: ["Federated Learning", "Differential Privacy", "Secure Computing", "Analytics"],
-      status: "Pilot" as const
-    },
-    {
-      title: "Autonomous Decision Support System",
-      description: "An AI system that provides real-time decision recommendations by continuously monitoring data streams and adapting to changing conditions.",
-      technologies: ["Reinforcement Learning", "Time Series Analysis", "Causal Inference", "Decision Theory"],
-      status: "Research" as const
-    },
-    {
-      title: "Quantum-Enhanced Optimization Engine",
-      description: "A hybrid classical-quantum system for solving complex optimization problems in routing, scheduling, and resource allocation.",
-      technologies: ["Quantum Computing", "Optimization Algorithms", "Hybrid Computing", "Operations Research"],
-      status: "Concept" as const
-    },
-    {
-      title: "Generative Design Collaborator",
-      description: "An AI system that works alongside human designers to generate and refine creative solutions for product design, architecture, and visual arts.",
-      technologies: ["Generative AI", "3D Modeling", "Human-AI Collaboration", "Design Theory"],
-      status: "Prototype" as const
-    },
-    {
-      title: "Field Document Understanding",
-      description: "An extraction system for the photographed and scanned paperwork that field work produces, which reports what it could not read instead of guessing at it.",
-      technologies: ["Document Intelligence", "Optical Character Recognition", "Uncertainty Estimation", "Natural Language Generation"],
-      status: "Pilot" as const
-    }
-  ];
+export default function InnovationHubPage() {
 
   return (
     <Container className="py-16">
@@ -255,7 +188,7 @@ export default function InnovationHubPage() {
               key={tech.title}
               title={tech.title}
               description={tech.description}
-              icon={tech.icon}
+              icon={TECHNOLOGY_ICONS[tech.iconType]}
               maturity={tech.maturity}
               timeframe={tech.timeframe}
             />
