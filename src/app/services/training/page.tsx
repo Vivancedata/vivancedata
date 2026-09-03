@@ -1,10 +1,14 @@
 import { Container } from "@/components/common/Container";
-import { Heading } from "@/components/common/Heading";
-import { Paragraph } from "@/components/common/Paragraph";
 import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Check, ArrowRight } from "lucide-react";
+import {
+  ServiceCTA,
+  ServiceHeroSplit,
+  ServicePageHeader,
+  ServiceSection,
+} from "@/components/services/ServicePageLayout";
 
 export const metadata: Metadata = {
   title: "AI Training & Workshops - VivanceData",
@@ -98,23 +102,21 @@ const courses: Course[] = [
 export default function TrainingPage() {
   return (
     <Container className="py-16">
-      <div className="text-center mb-16">
-        <Heading className="text-4xl md:text-5xl mb-4">AI Training & Workshops</Heading>
-        <Paragraph className="max-w-2xl mx-auto text-lg">
-          Empower your team with the knowledge and skills they need to effectively leverage AI technologies in your organization.
-        </Paragraph>
-      </div>
+      <ServicePageHeader
+        title="AI Training & Workshops"
+        intro="Empower your team with the knowledge and skills they need to effectively leverage AI technologies in your organization."
+      />
 
-      <div className="flex flex-col md:flex-row gap-12 mb-20">
-        <div className="w-full md:w-1/2">
-          {/*
-            This panel used to chart "AI Capability Progress" -- per-role scores
-            of 87/94/91/78 under the caption "Avg. capability gain: +64%
-            post-training". No such measurement exists. It now shows the
-            catalogue, read off the same `courses` array the page renders
-            below, so it cannot drift from what is actually offered.
-          */}
-          <div className="aspect-video rounded-md overflow-hidden border border-border bg-card p-6 md:p-8 flex flex-col">
+      <ServiceHeroSplit
+        visual={
+      /*
+        This panel used to chart "AI Capability Progress" -- per-role scores
+        of 87/94/91/78 under the caption "Avg. capability gain: +64%
+        post-training". No such measurement exists. It now shows the
+        catalogue, read off the same `courses` array the page renders
+        below, so it cannot drift from what is actually offered.
+      */
+      <div className="aspect-video rounded-md overflow-hidden border border-border bg-card p-6 md:p-8 flex flex-col">
             <div className="eyebrow mb-5">Course Catalogue</div>
             <div className="space-y-4 flex-1">
               {courses.map((course) => (
@@ -131,27 +133,24 @@ export default function TrainingPage() {
               Delivered on-site or virtually, tailored to your own systems and data.
             </div>
           </div>
-        </div>
-        
-        <div className="w-full md:w-1/2 flex flex-col justify-center">
-          <h2 className="text-heading-1 mb-4">Build AI Capabilities Across Your Organization</h2>
-          <p className="text-muted-foreground mb-6">
-            Successful AI adoption requires more than just technology—it requires people with the right skills and knowledge. Our training programs are designed to build AI literacy and capabilities at all levels of your organization.
-          </p>
-          <p className="text-muted-foreground mb-6">
-            From executive workshops to hands-on technical training, we offer customized learning experiences that address your specific needs and objectives.
-          </p>
-          <Button asChild className="self-start group" variant="outline">
-            <Link href="/contact">
-              <span>Inquire About Training</span>
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </Button>
-        </div>
-      </div>
+        }
+      >
+        <h2 className="text-heading-1 mb-4">Build AI Capabilities Across Your Organization</h2>
+        <p className="text-muted-foreground mb-6">
+          Successful AI adoption requires more than just technology—it requires people with the right skills and knowledge. Our training programs are designed to build AI literacy and capabilities at all levels of your organization.
+        </p>
+        <p className="text-muted-foreground mb-6">
+          From executive workshops to hands-on technical training, we offer customized learning experiences that address your specific needs and objectives.
+        </p>
+        <Button asChild className="self-start group" variant="outline">
+          <Link href="/contact">
+            <span>Inquire About Training</span>
+            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Link>
+        </Button>
+      </ServiceHeroSplit>
 
-      <div className="mb-20">
-        <h2 className="text-heading-1 mb-8 text-center">Our Training Programs</h2>
+      <ServiceSection heading="Our Training Programs">
         
         <div className="space-y-8">
           {courses.map((course) => (
@@ -201,10 +200,9 @@ export default function TrainingPage() {
             </div>
           ))}
         </div>
-      </div>
+      </ServiceSection>
 
-      <div className="mb-20">
-        <h2 className="text-heading-1 mb-8 text-center">Training Approach</h2>
+      <ServiceSection heading="Training Approach">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             {
@@ -226,17 +224,13 @@ export default function TrainingPage() {
             </div>
           ))}
         </div>
-      </div>
+      </ServiceSection>
       
-      <div className="bg-muted rounded-xl p-8 md:p-12 text-center">
-        <h2 className="text-heading-1 mb-4">Ready to Upskill Your Team?</h2>
-        <p className="text-lg mb-8 max-w-2xl mx-auto">
-          Contact us to discuss your training needs and how we can help build AI capabilities across your organization.
-        </p>
-        <Button asChild size="lg">
-          <Link href="/contact">Schedule a Consultation</Link>
-        </Button>
-      </div>
+      <ServiceCTA
+        heading="Ready to Upskill Your Team?"
+        body="Contact us to discuss your training needs and how we can help build AI capabilities across your organization."
+        actionLabel="Schedule a Consultation"
+      />
     </Container>
   );
 }
