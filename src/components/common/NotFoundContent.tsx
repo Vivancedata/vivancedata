@@ -20,7 +20,7 @@ import {
 // Popular page links for navigation
 const popularPages = [
   { name: "Services", href: "/services", icon: Briefcase, description: "AI solutions for your business" },
-  { name: "About", href: "/about", icon: Users, description: "Learn about our team" },
+  { name: "About", href: "/about", icon: Users, description: "Who you would be working with" },
   { name: "Contact", href: "/contact", icon: Mail, description: "Get in touch with us" },
   { name: "Blog", href: "/blog", icon: BookOpen, description: "Latest insights and articles" },
 ]

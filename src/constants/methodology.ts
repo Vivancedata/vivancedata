@@ -21,9 +21,9 @@ export interface MethodologyFAQ {
 }
 
 export const frameworkName = 'RAPID AI Framework';
-export const frameworkTagline = 'Realize AI Potential In Days';
+export const frameworkTagline = 'One workflow at a time, proved on your own documents';
 
-export const frameworkDescription = `The RAPID AI Framework is Vivancedata's proven methodology for transforming businesses through artificial intelligence. Designed to minimize risk and maximize value, our structured approach ensures successful AI adoption from initial discovery to enterprise-scale deployment.`;
+export const frameworkDescription = `RAPID is how an engagement runs: six phases from working out whether a workflow is worth automating at all, through building it on your own documents, to running it beside the existing process before anything depends on it. It is written down so you can see what happens next, and where you can stop.`;
 
 export const methodologyPhases: MethodologyPhase[] = [
   {
@@ -31,7 +31,7 @@ export const methodologyPhases: MethodologyPhase[] = [
     number: 1,
     title: 'Discover',
     subtitle: 'Understand Your AI Opportunity',
-    description: 'We immerse ourselves in your business to identify high-impact AI opportunities. Through stakeholder interviews, data audits, and process analysis, we build a complete picture of your current state and AI readiness.',
+    description: 'I sit with the work as it is actually done: which jobs go wrong, how often, and what it costs when they do. That means your documents, your systems and the people using them, not a questionnaire.',
     deliverables: [
       'AI Readiness Assessment Report',
       'Opportunity Prioritization Matrix',
@@ -45,7 +45,7 @@ export const methodologyPhases: MethodologyPhase[] = [
     number: 2,
     title: 'Architect',
     subtitle: 'Design Your AI Strategy',
-    description: 'Our team designs a comprehensive AI strategy aligned with your business objectives. We create detailed technical architectures, define success metrics, and develop a phased implementation roadmap.',
+    description: 'I design the smallest system that addresses the workflow we picked, against your real formats and the software you already run. You get the design, the measure of success, and an honest read on what it will not do.',
     deliverables: [
       'Strategic AI Roadmap',
       'Technical Architecture Blueprint',
@@ -59,7 +59,7 @@ export const methodologyPhases: MethodologyPhase[] = [
     number: 3,
     title: 'Prototype',
     subtitle: 'Validate With Working Solutions',
-    description: 'We build functional prototypes to validate AI concepts and demonstrate value quickly. This phase de-risks your investment by proving feasibility before full-scale development.',
+    description: 'I build it on your own documents before you commission a build, so feasibility is demonstrated rather than asserted. If it does not hold up on your material, this is the cheap place to find out.',
     deliverables: [
       'Functional AI Prototype',
       'Performance Benchmark Report',
@@ -73,7 +73,7 @@ export const methodologyPhases: MethodologyPhase[] = [
     number: 4,
     title: 'Implement',
     subtitle: 'Build Production-Ready Solutions',
-    description: 'Our engineers develop robust, scalable AI solutions integrated with your existing systems. We follow MLOps best practices to ensure reliability, security, and maintainability.',
+    description: 'I build the production version and integrate it with the systems you already run. Anything the system is unsure of surfaces to a person rather than being guessed at, and every automated decision leaves a record.',
     deliverables: [
       'Production AI System',
       'Integration Documentation',
@@ -87,7 +87,7 @@ export const methodologyPhases: MethodologyPhase[] = [
     number: 5,
     title: 'Deploy',
     subtitle: 'Launch With Confidence',
-    description: 'We orchestrate a smooth deployment with comprehensive testing, monitoring, and rollback capabilities. Your team receives hands-on training to ensure successful adoption.',
+    description: 'It runs beside the existing process first, and its output is compared against what your people produce. Nothing depends on it until that comparison holds. Your team is trained on it and the handover is written down.',
     deliverables: [
       'Deployed AI Solution',
       'Monitoring & Alerting Dashboard',
@@ -101,7 +101,7 @@ export const methodologyPhases: MethodologyPhase[] = [
     number: 6,
     title: 'Scale',
     subtitle: 'Optimize & Expand Impact',
-    description: 'Post-launch, we continuously monitor performance, optimize models, and identify opportunities to expand AI capabilities across your organization.',
+    description: 'I stay on to keep it working. Upstream formats drift and APIs change, and an unattended workflow degrades within months -- that is what the monthly retainer is for, not for keeping you dependent.',
     deliverables: [
       'Performance Optimization Report',
       'Expansion Opportunity Assessment',
@@ -114,23 +114,23 @@ export const methodologyPhases: MethodologyPhase[] = [
 
 export const frameworkBenefits: FrameworkBenefit[] = [
   {
-    title: 'Accelerated Time-to-Value',
-    description: 'Our structured approach delivers working AI solutions faster than traditional methods, with typical prototypes ready in weeks, not months.',
+    title: 'You see it on your own material early',
+    description: 'The prototype runs on your documents before the build is commissioned, so the decision to carry on is made on evidence rather than on a proposal.',
     metric: '60% faster deployment',
   },
   {
-    title: 'Reduced Implementation Risk',
-    description: 'Phased validation and prototyping ensures technical feasibility and business value before significant investment.',
+    title: 'Every phase can be the last',
+    description: 'If the prototype does not hold up on your material, you stop there having paid for an assessment rather than a build.',
     metric: '90% project success rate',
   },
   {
-    title: 'Maximized ROI',
-    description: 'Data-driven prioritization focuses resources on the highest-impact opportunities with clear, measurable returns.',
+    title: 'Scoped by payback, not by ambition',
+    description: 'Workflows are ranked by the effort to build against what they actually save, and the ones not worth touching yet are named as such.',
     metric: '3-5x average ROI',
   },
   {
-    title: 'Sustainable AI Capability',
-    description: 'Knowledge transfer and training builds internal AI expertise, reducing long-term dependency on external consultants.',
+    title: 'Handover is written down',
+    description: 'Your people are trained on what was built and the handover is documented. You should be able to run it without me.',
     metric: 'Self-sufficient in 6 months',
   },
 ];
@@ -138,15 +138,15 @@ export const frameworkBenefits: FrameworkBenefit[] = [
 export const methodologyFAQs: MethodologyFAQ[] = [
   {
     question: 'How long does a typical RAPID AI engagement take?',
-    answer: 'Timeline varies based on scope and complexity. A focused proof-of-concept can be completed in 8-12 weeks, while enterprise-wide transformations typically span 6-12 months with phased deliverables.',
+    answer: 'It depends on the workflow, and I would rather quote a fixed price on a defined first build than a range for something unscoped. The pilot scope quoted on the industry pages is 3-6 weeks of running beside your existing process.',
   },
   {
     question: 'What if we already have some AI initiatives in progress?',
-    answer: 'The RAPID framework is designed to integrate with existing initiatives. We can assess your current state, identify gaps, and accelerate ongoing projects while ensuring alignment with broader strategic objectives.',
+    answer: 'Yes. I can assess what you already have, say where the gaps are, and work alongside an initiative that is already running rather than restarting it.',
   },
   {
     question: 'Do we need a data science team to work with Vivancedata?',
-    answer: 'No. Our team provides full-service AI implementation. However, if you have internal data science resources, we collaborate closely and focus on knowledge transfer to build your long-term capabilities.',
+    answer: 'No. I do the work myself. If you have your own data or engineering people, I work alongside them and hand over documentation as we go.',
   },
   {
     question: 'What industries is the RAPID framework best suited for?',
@@ -154,6 +154,6 @@ export const methodologyFAQs: MethodologyFAQ[] = [
   },
   {
     question: 'How do you ensure AI solutions are ethical and compliant?',
-    answer: 'Responsible AI practices are embedded throughout the RAPID framework. We conduct bias assessments, implement explainability features, and ensure compliance with relevant regulations (GDPR, CCPA, industry-specific requirements).',
+    answer: 'Every automated decision leaves a record of what it read and why, anything below the confidence threshold goes to a person, and the scope of what the system may use the data for is agreed in writing before it is built. I am not a compliance service: where a regulation applies to your industry, I will build to what you and your advisers specify.',
   },
 ];

@@ -94,7 +94,7 @@ function MethodologyHeroSection() {
     <section className="relative w-full py-20 md:py-32 border-b border-border">
       <Container className="max-w-6xl">
         <div className="text-center">
-          <p className="eyebrow mb-md">Our Proven Methodology</p>
+          <p className="eyebrow mb-md">How an engagement runs</p>
 
           <h1 className="text-display-xl mb-4">{frameworkName}</h1>
 
@@ -257,15 +257,16 @@ function BenefitsSection() {
       <Container className="max-w-6xl">
         <div className="text-center mb-16">
           <div className="inline-block rounded-full bg-brand/10 px-4 py-1.5 text-sm font-semibold text-brand mb-4">
-            Proven Results
+            Why it is shaped this way
           </div>
           <Heading as="h2" className="text-3xl md:text-4xl mb-4">
-            Why the RAPID Framework Works
+            Why the RAPID Framework Is Shaped This Way
           </Heading>
           <Paragraph className="max-w-2xl mx-auto text-lg">
-            Our methodology has been refined through dozens of successful
-            implementations across industries, delivering consistent,
-            measurable results.
+            Each phase exists to make the next decision cheaper to reverse. The
+            order is the argument: nothing is built before it has been tried on
+            your own documents, and nothing carries weight before it has run
+            beside the process it replaces.
           </Paragraph>
         </div>
 
@@ -390,11 +391,12 @@ function MethodologyCtaSection() {
     <section className="w-full py-20 md:py-28 bg-primary text-primary-foreground">
       <Container className="max-w-4xl text-center">
         <h2 className="text-display mb-6">
-          Ready to Accelerate Your AI Journey?
+          Ready to Find Out If It Is Worth Automating?
         </h2>
         <p className="text-xl text-primary-foreground/80 mb-10 max-w-2xl mx-auto">
-          Let us walk you through the RAPID Framework and show you
-          how to realize AI potential in days, not months.
+          Tell me which job goes wrong and how often. I will walk you through
+          what the first phase would look like on your own documents, and say
+          plainly if it is not worth doing yet.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button
