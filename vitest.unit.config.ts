@@ -15,6 +15,7 @@ export default defineConfig({
         "src/lib/email.ts",
         "src/lib/formatDate.ts",
         "src/lib/performance.ts",
+        "src/lib/rateLimit.ts",
         "src/lib/utils.ts",
       ],
       exclude: ["**/*.d.ts"],
