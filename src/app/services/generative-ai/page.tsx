@@ -1,10 +1,14 @@
 import { Container } from "@/components/common/Container";
-import { Heading } from "@/components/common/Heading";
-import { Paragraph } from "@/components/common/Paragraph";
 import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Check, ArrowRight } from "lucide-react";
+import {
+  ServiceCTA,
+  ServiceHeroSplit,
+  ServicePageHeader,
+  ServiceSection,
+} from "@/components/services/ServicePageLayout";
 
 export const metadata: Metadata = {
   title: "Generative AI Solutions - VivanceData",
@@ -103,15 +107,13 @@ const useCases: UseCase[] = [
 export default function GenerativeAIPage() {
   return (
     <Container className="py-16">
-      <div className="text-center mb-16">
-        <Heading className="text-4xl md:text-5xl mb-4">Generative AI Solutions</Heading>
-        <Paragraph className="max-w-2xl mx-auto text-lg">
-          Leverage the power of generative AI to create content, designs, and solutions that drive innovation for your business.
-        </Paragraph>
-      </div>
+      <ServicePageHeader
+        title="Generative AI Solutions"
+        intro="Leverage the power of generative AI to create content, designs, and solutions that drive innovation for your business."
+      />
 
-      <div className="flex flex-col md:flex-row gap-12 mb-20">
-        <div className="w-full md:w-1/2">
+      <ServiceHeroSplit
+        visual={
           <div className="aspect-video rounded-md overflow-hidden border border-border bg-card p-4 md:p-6 flex flex-col font-mono text-sm">
             <div className="flex gap-1.5 mb-4 flex-shrink-0">
               <div className="w-3 h-3 rounded-full border border-border bg-muted" />
@@ -141,27 +143,24 @@ export default function GenerativeAIPage() {
               </div>
             </div>
           </div>
-        </div>
-        
-        <div className="w-full md:w-1/2 flex flex-col justify-center">
-          <h2 className="text-heading-1 mb-4">Transform Your Business with Generative AI</h2>
-          <p className="text-muted-foreground mb-6">
-            Generative AI is revolutionizing how businesses create content, design products, and engage with customers. Our solutions help you harness this technology to automate creative processes, personalize experiences, and drive innovation across your organization.
-          </p>
-          <p className="text-muted-foreground mb-6">
-            We work with you to identify the right generative AI applications for your specific business challenges, then develop and implement custom solutions that deliver measurable results.
-          </p>
-          <Button asChild className="self-start group" variant="outline">
-            <Link href="/contact">
-              <span>Schedule a Consultation</span>
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </Button>
-        </div>
-      </div>
+        }
+      >
+        <h2 className="text-heading-1 mb-4">Transform Your Business with Generative AI</h2>
+        <p className="text-muted-foreground mb-6">
+          Generative AI is revolutionizing how businesses create content, design products, and engage with customers. Our solutions help you harness this technology to automate creative processes, personalize experiences, and drive innovation across your organization.
+        </p>
+        <p className="text-muted-foreground mb-6">
+          We work with you to identify the right generative AI applications for your specific business challenges, then develop and implement custom solutions that deliver measurable results.
+        </p>
+        <Button asChild className="self-start group" variant="outline">
+          <Link href="/contact">
+            <span>Schedule a Consultation</span>
+            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Link>
+        </Button>
+      </ServiceHeroSplit>
 
-      <div className="mb-20">
-        <h2 className="text-heading-1 mb-8 text-center">Our Generative AI Services</h2>
+      <ServiceSection heading="Our Generative AI Services">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature) => (
             <div key={feature.title} className="bg-card p-6 rounded-xl shadow-sm border border-border">
@@ -173,10 +172,9 @@ export default function GenerativeAIPage() {
             </div>
           ))}
         </div>
-      </div>
+      </ServiceSection>
 
-      <div className="mb-20">
-        <h2 className="text-heading-1 mb-8 text-center">Popular Use Cases</h2>
+      <ServiceSection heading="Popular Use Cases">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {useCases.map((useCase) => (
             <div key={useCase.title} className="bg-card p-6 rounded-xl shadow-sm border border-border">
@@ -188,17 +186,13 @@ export default function GenerativeAIPage() {
             </div>
           ))}
         </div>
-      </div>
+      </ServiceSection>
       
-      <div className="bg-muted rounded-xl p-8 md:p-12 text-center">
-        <h2 className="text-heading-1 mb-4">Ready to Harness the Power of Generative AI?</h2>
-        <p className="text-lg mb-8 max-w-2xl mx-auto">
-          Let&apos;s discuss how our generative AI solutions can help your business create better content, designs, and experiences.
-        </p>
-        <Button asChild size="lg">
-          <Link href="/contact">Get Started</Link>
-        </Button>
-      </div>
+      <ServiceCTA
+        heading="Ready to Harness the Power of Generative AI?"
+        body="Let&apos;s discuss how our generative AI solutions can help your business create better content, designs, and experiences."
+        actionLabel="Get Started"
+      />
     </Container>
   );
 }

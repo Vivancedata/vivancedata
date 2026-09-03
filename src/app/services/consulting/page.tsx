@@ -1,10 +1,14 @@
 import { Container } from "@/components/common/Container";
-import { Heading } from "@/components/common/Heading";
-import { Paragraph } from "@/components/common/Paragraph";
 import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Check, ArrowRight, Target } from "lucide-react";
+import {
+  ServiceCTA,
+  ServiceHeroSplit,
+  ServicePageHeader,
+  ServiceSection,
+} from "@/components/services/ServicePageLayout";
 
 export const metadata: Metadata = {
   title: "AI Strategy Consulting - VivanceData",
@@ -98,15 +102,13 @@ const benefits: Benefit[] = [
 export default function ConsultingPage() {
   return (
     <Container className="py-16">
-      <div className="text-center mb-16">
-        <Heading className="text-4xl md:text-5xl mb-4">AI Strategy Consulting</Heading>
-        <Paragraph className="max-w-2xl mx-auto text-lg">
-          Expert guidance to help you develop and implement an effective AI strategy that aligns with your business goals and delivers measurable results.
-        </Paragraph>
-      </div>
+      <ServicePageHeader
+        title="AI Strategy Consulting"
+        intro="Expert guidance to help you develop and implement an effective AI strategy that aligns with your business goals and delivers measurable results."
+      />
 
-      <div className="flex flex-col md:flex-row gap-12 mb-20">
-        <div className="w-full md:w-1/2">
+      <ServiceHeroSplit
+        visual={
           <div className="aspect-video rounded-md overflow-hidden border border-border bg-card p-6 md:p-8 flex flex-col">
             <div className="eyebrow mb-5 flex items-center gap-2">
               <Target className="w-3 h-3" /> AI Strategy Framework
@@ -140,27 +142,24 @@ export default function ConsultingPage() {
               ))}
             </div>
           </div>
-        </div>
-        
-        <div className="w-full md:w-1/2 flex flex-col justify-center">
-          <h2 className="text-heading-1 mb-4">Strategic AI Guidance for Business Leaders</h2>
-          <p className="text-muted-foreground mb-6">
-            Navigating the complex landscape of artificial intelligence can be challenging. Our consulting services provide the strategic guidance you need to make informed decisions about AI adoption and implementation.
-          </p>
-          <p className="text-muted-foreground mb-6">
-            We work closely with your leadership team to understand your business objectives, assess your current capabilities, and develop a tailored AI strategy that delivers tangible results and competitive advantages.
-          </p>
-          <Button asChild className="self-start group" variant="outline">
-            <Link href="/contact">
-              <span>Schedule a Strategy Session</span>
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </Button>
-        </div>
-      </div>
+        }
+      >
+        <h2 className="text-heading-1 mb-4">Strategic AI Guidance for Business Leaders</h2>
+        <p className="text-muted-foreground mb-6">
+          Navigating the complex landscape of artificial intelligence can be challenging. Our consulting services provide the strategic guidance you need to make informed decisions about AI adoption and implementation.
+        </p>
+        <p className="text-muted-foreground mb-6">
+          We work closely with your leadership team to understand your business objectives, assess your current capabilities, and develop a tailored AI strategy that delivers tangible results and competitive advantages.
+        </p>
+        <Button asChild className="self-start group" variant="outline">
+          <Link href="/contact">
+            <span>Schedule a Strategy Session</span>
+            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Link>
+        </Button>
+      </ServiceHeroSplit>
 
-      <div className="mb-20">
-        <h2 className="text-heading-1 mb-8 text-center">Our Consulting Services</h2>
+      <ServiceSection heading="Our Consulting Services">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service) => (
             <div key={service.title} className="bg-card p-6 rounded-xl shadow-sm border border-border">
@@ -172,10 +171,9 @@ export default function ConsultingPage() {
             </div>
           ))}
         </div>
-      </div>
+      </ServiceSection>
 
-      <div className="mb-20">
-        <h2 className="text-heading-1 mb-8 text-center">Why Choose Our Consulting Services</h2>
+      <ServiceSection heading="Why Choose Our Consulting Services">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {benefits.map((benefit) => (
             <div key={benefit.title} className="bg-card p-6 rounded-xl shadow-sm border border-border">
@@ -184,10 +182,9 @@ export default function ConsultingPage() {
             </div>
           ))}
         </div>
-      </div>
+      </ServiceSection>
 
-      <div className="mb-20">
-        <h2 className="text-heading-1 mb-8 text-center">Our Consulting Process</h2>
+      <ServiceSection heading="Our Consulting Process">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {[
             { step: "1", title: "Discovery", description: "We begin by understanding your business objectives, challenges, and current capabilities." },
@@ -204,17 +201,13 @@ export default function ConsultingPage() {
             </div>
           ))}
         </div>
-      </div>
+      </ServiceSection>
       
-      <div className="bg-muted rounded-xl p-8 md:p-12 text-center">
-        <h2 className="text-heading-1 mb-4">Ready to Develop Your AI Strategy?</h2>
-        <p className="text-lg mb-8 max-w-2xl mx-auto">
-          Let&apos;s discuss how our consulting services can help you navigate the AI landscape and develop a strategy that drives business value.
-        </p>
-        <Button asChild size="lg">
-          <Link href="/contact">Book a Consultation</Link>
-        </Button>
-      </div>
+      <ServiceCTA
+        heading="Ready to Develop Your AI Strategy?"
+        body="Let&apos;s discuss how our consulting services can help you navigate the AI landscape and develop a strategy that drives business value."
+        actionLabel="Book a Consultation"
+      />
     </Container>
   );
 }
