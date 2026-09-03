@@ -107,30 +107,29 @@ export default function TrainingPage() {
 
       <div className="flex flex-col md:flex-row gap-12 mb-20">
         <div className="w-full md:w-1/2">
+          {/*
+            This panel used to chart "AI Capability Progress" -- per-role scores
+            of 87/94/91/78 under the caption "Avg. capability gain: +64%
+            post-training". No such measurement exists. It now shows the
+            catalogue, read off the same `courses` array the page renders
+            below, so it cannot drift from what is actually offered.
+          */}
           <div className="aspect-video rounded-md overflow-hidden border border-border bg-card p-6 md:p-8 flex flex-col">
-            <div className="eyebrow mb-5">AI Capability Progress</div>
+            <div className="eyebrow mb-5">Course Catalogue</div>
             <div className="space-y-4 flex-1">
-              {[
-                { role: "Executive Team", score: 87, color: "bg-primary" },
-                { role: "Data Scientists", score: 94, color: "bg-primary" },
-                { role: "Software Engineers", score: 91, color: "bg-primary" },
-                { role: "Operations", score: 78, color: "bg-primary" },
-              ].map((item) => (
-                <div key={item.role}>
-                  <div className="flex justify-between mb-1.5">
-                    <span className="text-muted-foreground text-xs">{item.role}</span>
-                    <span className="text-mute text-xs font-mono">{item.score}%</span>
+              {courses.map((course) => (
+                <div key={course.title}>
+                  <div className="flex justify-between gap-4 mb-1">
+                    <span className="text-foreground text-xs">{course.title}</span>
+                    <span className="text-mute text-xs font-mono flex-shrink-0">{course.duration}</span>
                   </div>
-                  <div className="h-1.5 bg-muted rounded-full overflow-hidden">
-                    <div
-                      className={`h-full ${item.color} rounded-full`}
-                      style={{ width: `${item.score}%` }}
-                    />
-                  </div>
+                  <div className="text-muted-foreground text-xs">{course.audience}</div>
                 </div>
               ))}
             </div>
-            <div className="mt-4 text-caption text-mute">Avg. capability gain: +64% post-training</div>
+            <div className="mt-4 text-caption text-mute">
+              Delivered on-site or virtually, tailored to your own systems and data.
+            </div>
           </div>
         </div>
         
