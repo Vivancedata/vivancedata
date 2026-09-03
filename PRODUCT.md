@@ -84,8 +84,9 @@ The recurring material of their day, and of any engagement:
   otherwise a 503 in every environment.
 - The blog's source of truth is the filesystem: MDX under
   `src/app/blog/posts/`, read at build time.
-- **Open decision:** whether the RAPID AI Framework survives. Delegated to
-  judgement during this interview; recorded under Brand Commitments.
+- **Open decision:** whether the RAPID acronym and its six-phase page are the
+  right shape for this audience. Its unearned claims were removed 2026-09-03;
+  the naming and structure remain unresolved. See Brand Commitments.
 
 ## Brand Commitments
 
@@ -100,12 +101,13 @@ The recurring material of their day, and of any engagement:
   consulting page's "Schedule a Strategy Session" and "Book a Consultation"
   remain deliberate exceptions not yet reconciled.
 - Links: LinkedIn (`lorenzo-scaturchio`), GitHub (`gr8monk3ys`).
-- **RAPID AI Framework — retire the claim, keep the substance.** Decided
-  2026-09-03 on delegated judgement. The six phases describe how engagements are
-  intended to run and stay. The name's tagline ("Realize AI Potential In Days")
-  is an unearned speed claim and the word "proven" is false for a practice with
-  no delivered clients. Both go. This is a pending copy change, not a completed
-  one — see Evidence.
+- **RAPID AI Framework — claim retired, substance kept.** Decided 2026-09-03 on
+  delegated judgement and applied the same day. The six phases describe how
+  engagements are intended to run and stay. "Proven" was false for a practice
+  with no delivered clients and is gone; the tagline is now "One workflow at a
+  time, proved on your own documents" — a description rather than a promise.
+  Still open: whether the RAPID acronym and the page's six-phase structure are
+  the right shape for this audience at all.
 
 ## Evidence on Hand
 
