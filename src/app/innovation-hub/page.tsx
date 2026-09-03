@@ -12,25 +12,25 @@ import {
 } from "@/constants/innovationHub";
 
 export const metadata: Metadata = {
-  title: "Innovation Hub - VivanceData",
+  title: "Innovation Hub - Vivancedata",
   description: "Explore our cutting-edge research and experimentation with emerging AI technologies that are shaping the future of business and society.",
   keywords: ["AI innovation", "emerging technology", "R&D", "AI research", "technology trends", "future of AI", "AI experimentation"],
   openGraph: {
-    title: "Innovation Hub | VivanceData - Emerging AI Technologies",
+    title: "Innovation Hub | Vivancedata - Emerging AI Technologies",
     description: "Discover cutting-edge AI research and emerging technologies. Explore multimodal AI, quantum ML, edge computing, and AI ethics.",
     type: "website",
     url: "https://vivancedata.com/innovation-hub",
-    siteName: "VivanceData",
+    siteName: "Vivancedata",
     images: [{
       url: "https://vivancedata.com/images/ai-solutions.png",
       width: 1200,
       height: 630,
-      alt: "VivanceData Innovation Hub - Emerging AI Technologies",
+      alt: "Vivancedata Innovation Hub - Emerging AI Technologies",
     }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Innovation Hub | VivanceData",
+    title: "Innovation Hub | Vivancedata",
     description: "Cutting-edge AI research and emerging technologies shaping the future.",
     images: ["https://vivancedata.com/images/ai-solutions.png"],
   },
@@ -163,7 +163,7 @@ export default function InnovationHubPage() {
         <div className="w-full md:w-1/2 flex flex-col justify-center">
           <h2 className="text-heading-1 mb-4">Pioneering the Future of AI</h2>
           <p className="text-muted-foreground mb-6">
-            At VivanceData, innovation is at the core of everything we do. Our Innovation Hub is where we explore emerging technologies, experiment with new approaches, and develop the next generation of AI solutions that will transform businesses and industries.
+            At Vivancedata, innovation is at the core of everything we do. Our Innovation Hub is where we explore emerging technologies, experiment with new approaches, and develop the next generation of AI solutions that will transform businesses and industries.
           </p>
           <p className="text-muted-foreground mb-6">
             Through a combination of in-house research, academic partnerships, and client collaborations, we&apos;re pushing the boundaries of what&apos;s possible with artificial intelligence while maintaining our commitment to responsible and ethical innovation.

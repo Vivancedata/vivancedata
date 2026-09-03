@@ -22,7 +22,7 @@ export default function ClientLogos() {
             Sectors We Work In
           </h2>
           <p className="mx-auto max-w-2xl text-base text-muted-foreground md:text-lg">
-            We work with blue-collar and local service businesses — the ones where the paperwork,
+            I work with blue-collar and local service businesses — the ones where the paperwork,
             the phone and the schedule are what actually hold the day up.
           </p>
         </div>
@@ -47,21 +47,21 @@ export default function ClientLogos() {
         <div className="mt-12 border-t border-border pt-8 md:mt-16">
           <div className="grid grid-cols-1 gap-6 text-center md:grid-cols-3 md:gap-8">
             <div className="space-y-1">
-              <p className="text-sm font-semibold text-foreground md:text-base">Advisory + Delivery</p>
+              <p className="text-sm font-semibold text-foreground md:text-base">One person, start to finish</p>
               <p className="text-sm text-muted-foreground">
-                From strategy through implementation support.
+                The person who scopes the job builds it and answers the phone afterwards.
               </p>
             </div>
             <div className="space-y-1">
-              <p className="text-sm font-semibold text-foreground md:text-base">Cross-Functional Enablement</p>
+              <p className="text-sm font-semibold text-foreground md:text-base">Proved on your own paperwork</p>
               <p className="text-sm text-muted-foreground">
-                Product, engineering, operations, and governance stakeholders.
+                Run on your own documents and call log before you pay for a build.
               </p>
             </div>
             <div className="space-y-1">
-              <p className="text-sm font-semibold text-foreground md:text-base">Industry-Aware Workflows</p>
+              <p className="text-sm font-semibold text-foreground md:text-base">Yours when it is done</p>
               <p className="text-sm text-muted-foreground">
-                Use-case design tailored to domain and compliance constraints.
+                Code, prompts and credentials transfer to you on delivery.
               </p>
             </div>
           </div>

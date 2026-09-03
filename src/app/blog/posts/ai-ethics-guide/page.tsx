@@ -2,11 +2,11 @@ import { BlogLayout } from "@/components/blog/BlogLayout";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "The Ethics of Artificial Intelligence - VivanceData",
+  title: "The Ethics of Artificial Intelligence - Vivancedata",
   description: "Discussing the ethical considerations surrounding the development and deployment of artificial intelligence.",
   keywords: ["AI ethics", "artificial intelligence ethics", "responsible AI", "AI governance", "AI fairness", "AI transparency"],
   openGraph: {
-    title: "The Ethics of Artificial Intelligence - VivanceData",
+    title: "The Ethics of Artificial Intelligence - Vivancedata",
     description: "A comprehensive guide to ethical considerations in AI development and deployment, covering transparency, fairness, privacy, and accountability.",
     type: "article",
     url: "https://vivancedata.com/blog/posts/ai-ethics-guide",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
       },
     ],
     publishedTime: "2025-02-23",
-    authors: ["VivanceData Team"],
+    authors: ["Vivancedata Team"],
   },
   twitter: {
     card: "summary_large_image",

@@ -333,11 +333,11 @@ function ROICallToAction() {
         <CardContent className="p-8 text-center">
           <h3 className="text-heading-2 mb-3">Ready to Realize These Returns?</h3>
           <p className="mb-6 text-primary-foreground/80">
-            Schedule a consultation to discuss how we can help you achieve these results with a customized AI solution.
+            Tell me which job you would automate first and I will come back with a scope and a fixed price.
           </p>
           <Button asChild size="lg" variant="secondary">
-            <Link href="/contact" aria-label="Schedule a free consultation to discuss your AI ROI potential">
-              Schedule Free Consultation
+            <Link href="/contact" aria-label="Book a call to discuss your AI ROI potential">
+              Book a call
             </Link>
           </Button>
         </CardContent>

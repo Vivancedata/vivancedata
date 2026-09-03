@@ -110,7 +110,7 @@ export function ProfileForm() {
 
       setIsSubmitted(true);
       toast.success('Message sent successfully!', {
-        description: 'We\'ll get back to you within 24 hours.'
+        description: 'You\'ll hear back from me within one working day.'
       });
     } catch (error) {
       console.error('Form submission error:', error);
@@ -138,7 +138,7 @@ export function ProfileForm() {
               Thank You!
             </h2>
             <p className="text-muted-foreground max-w-md">
-              Your message has been received. One of our AI consultants will contact you shortly to discuss how we can help your business.
+              Your message has been received. You&apos;ll hear back from me, not an account manager, within one working day.
             </p>
           </div>
         </CardContent>
@@ -149,8 +149,8 @@ export function ProfileForm() {
   return (
     <Card className="border border-border">
       <CardHeader className="bg-muted rounded-t-lg">
-        <CardTitle as="h2" className="text-brand">Contact Us</CardTitle>
-        <CardDescription>Fill out the form below to get started</CardDescription>
+        <CardTitle as="h2" className="text-brand">Book a call</CardTitle>
+        <CardDescription>Tell me what is going wrong and where to reach you.</CardDescription>
       </CardHeader>
       <CardContent className="pt-6">
         <Form {...form}>
@@ -274,7 +274,6 @@ export function ProfileForm() {
                     <SelectContent>
                       <SelectItem value="generative-ai">Generative AI Solutions</SelectItem>
                       <SelectItem value="consulting">AI Strategy Consulting</SelectItem>
-                      <SelectItem value="solutions">Pre-built AI Solutions</SelectItem>
                       <SelectItem value="training">AI Training & Workshops</SelectItem>
                       <SelectItem value="other">Other</SelectItem>
                     </SelectContent>
@@ -291,7 +290,7 @@ export function ProfileForm() {
                   <FormLabel>Message</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder="Tell us about your project or questions you have..."
+                      placeholder="Which job goes wrong, and how often?"
                       className="min-h-[120px]"
                       required
                       {...field}
@@ -314,14 +313,14 @@ export function ProfileForm() {
                   <span className="sr-only">Please wait while your form is being submitted</span>
                 </>
               ) : (
-                "Submit Request"
+                "Book a call"
               )}
             </Button>
           </form>
         </Form>
       </CardContent>
       <CardFooter className="bg-muted rounded-b-lg text-sm text-muted-foreground text-center">
-        <p className="w-full">We respect your privacy and will never share your information.</p>
+        <p className="w-full">Your details stay with me and are never shared.</p>
       </CardFooter>
     </Card>
   )

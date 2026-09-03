@@ -6,12 +6,12 @@ import { AboutTeam } from "@/components/about/AboutTeam";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us - VivanceData",
+  title: "About - Vivancedata",
   description: "A founder-led AI practice working with construction, HVAC, logistics and manufacturing operations. Senior delivery, no hand-off to a junior team.",
-  keywords: ["about VivanceData", "AI company", "AI team", "AI consultants", "machine learning experts", "data science team"],
+  keywords: ["about Vivancedata", "Lorenzo Scaturchio", "founder-led AI practice", "AI for contractors", "AI for trades"],
   openGraph: {
-    title: "About Us - VivanceData",
-    description: "Systematic innovators and strategic guides transforming how businesses harness the forces of data and AI.",
+    title: "About - Vivancedata",
+    description: "A founder-led AI practice for construction, HVAC, logistics and manufacturing. The person who scopes the work builds it and answers the phone afterwards.",
     type: "website",
     url: "https://vivancedata.com/about",
     images: [
@@ -19,14 +19,14 @@ export const metadata: Metadata = {
         url: "https://vivancedata.com/images/ai-solutions.png",
         width: 1200,
         height: 630,
-        alt: "VivanceData Team",
+        alt: "Lorenzo Scaturchio, founder of Vivancedata",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "About Us - VivanceData",
-    description: "Systematic innovators transforming how businesses harness AI and data.",
+    title: "About - Vivancedata",
+    description: "A founder-led AI practice for the trades. One person, senior on every engagement, no hand-off.",
     images: ["https://vivancedata.com/images/ai-solutions.png"],
   },
 };
@@ -45,28 +45,28 @@ const AboutPage = () => {
   return (
     <div>
       <PageHero
-        eyebrow="About Us"
+        eyebrow="About"
         title={
           <>
-            About <span className="text-brand">VivanceData</span>
+            About <span className="text-brand">Vivancedata</span>
           </>
         }
-        description="AI and data reshape our world at a relentless speed, but most companies find themselves caught between possibility and complexity. VivanceData exists to close that gap."
+        description="I'm Lorenzo. I build the small, specific systems that take the after-hours call and the twice-typed paperwork off a trade business, and I stay on to keep them running."
       />
 
       <AboutDescription
         title="A focused practice, not a large agency"
-        description="VivanceData is a boutique AI consulting practice founded by Lorenzo Scaturchio. Rather than scaling headcount for its own sake, the model is simple: senior-level work on every engagement, with a trusted network of specialists brought in when a project demands it. That means you work directly with the person who designed your solution — not an account manager."
+        description="Vivancedata is my practice, and it has no staff on purpose. I do the work on every engagement myself and bring in vetted specialists, project by project, when a job needs one. You deal with the person who scoped your build, wrote it and will pick up the phone when something changes — not an account manager."
       />
 
       <AboutValue
         title="Practical AI, not just demos"
-        description="The focus is on what ships and what sticks. I identify the highest-value opportunities first, build for production rather than presentations, and leave you with systems and knowledge your team can maintain. Whether you need strategy clarity, a working prototype, or a full implementation roadmap, the deliverable is always something you can act on."
+        description="What I care about is what ships and what sticks. I find the one workflow that is costing you the most first, build it to run in production rather than in a slide deck, and hand it over with the code, prompts and notes your own people can maintain. If the honest answer is that a job is not worth automating yet, you hear that before you have paid for a build."
       />
 
       <AboutTeam
-        title="Who You Work With"
-        description="Every engagement is led directly by Lorenzo. Specialist collaborators are brought in project-by-project based on the technical domain."
+        title="Who you work with"
+        description="Every engagement is led by me. Specialist collaborators come in project by project when the technical domain calls for one."
         members={teamMembers}
       />
     </div>

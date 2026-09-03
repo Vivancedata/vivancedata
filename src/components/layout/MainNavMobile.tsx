@@ -61,7 +61,7 @@ export function MainNavMobile({ items }: MainNavMobileProps) {
             <div className="pt-2">
               <Button className="min-h-11 w-full" shape="pill" asChild>
                 <a href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                  Contact Us
+                  Book a call
                 </a>
               </Button>
             </div>

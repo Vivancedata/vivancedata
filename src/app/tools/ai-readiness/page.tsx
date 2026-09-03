@@ -5,11 +5,11 @@ import { AIReadinessQuiz } from "@/components/tools/AIReadinessQuiz";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AI Readiness Assessment - VivanceData",
+  title: "AI Readiness Assessment - Vivancedata",
   description: "Evaluate your organization's readiness for AI adoption. Get personalized recommendations and insights into your data, infrastructure, and organizational capabilities.",
   keywords: ["AI readiness assessment", "AI adoption", "AI maturity", "AI strategy", "digital transformation", "AI capabilities"],
   openGraph: {
-    title: "AI Readiness Assessment - VivanceData",
+    title: "AI Readiness Assessment - Vivancedata",
     description: "Evaluate your organization's readiness for AI adoption. Get personalized recommendations and actionable insights.",
     type: "website",
     url: "https://vivancedata.com/tools/ai-readiness",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Readiness Assessment - VivanceData",
+    title: "AI Readiness Assessment - Vivancedata",
     description: "Evaluate your organization's readiness for AI adoption.",
     images: ["https://vivancedata.com/images/ai-solutions.png"],
   },

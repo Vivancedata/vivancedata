@@ -34,9 +34,9 @@ import {
 } from '@/constants/methodology';
 
 export const metadata: Metadata = {
-  title: 'RAPID AI Framework Methodology | VivanceData',
+  title: 'RAPID AI Framework Methodology | Vivancedata',
   description:
-    'Explore VivanceData’s RAPID AI Framework: a six-phase approach from discovery to scale for reliable, measurable AI implementation.',
+    'Explore Vivancedata’s RAPID AI Framework: a six-phase approach from discovery to scale for reliable, measurable AI implementation.',
 };
 
 const RAPID_WORDS = ['Realize', 'AI', 'Potential', 'In', 'Days'];

@@ -4,11 +4,11 @@ import { IndustryPage, type IndustryPageConfig } from "@/components/industries/I
 import { demos } from "@/constants/demos";
 
 export const metadata: Metadata = {
-  title: "AI Solutions for Logistics and Fleet Operations - VivanceData",
+  title: "AI Solutions for Logistics and Fleet Operations - Vivancedata",
   description: "Read the photographed paperwork drivers already submit, surface the loads going wrong before the customer calls, and keep claims evidence together.",
   keywords: ["logistics AI", "fleet operations", "proof of delivery", "bill of lading processing", "dispatch exception management", "freight claims"],
   openGraph: {
-    title: "AI Solutions for Logistics and Fleet Operations - VivanceData",
+    title: "AI Solutions for Logistics and Fleet Operations - Vivancedata",
     description: "Proof of delivery processing, exception triage, driver communication and claims documentation for carriers and fleets.",
     type: "website",
     url: "https://vivancedata.com/industries/logistics",
@@ -25,10 +25,10 @@ const config: IndustryPageConfig = {
   introHeading: "Working From the Paper Your Drivers Already Photograph",
   introBody: `Paperwork and exceptions set the pace. Proof of delivery, bills of lading and damage claims arrive as photographs of paper, and a delayed load is found by someone noticing rather than being told.
 
-At VivanceData, we build workflows that read those photographs, tie each document back to its load, and put the problem loads in front of a dispatcher while there is still time to do something about them.
+At Vivancedata, we build workflows that read those photographs, tie each document back to its load, and put the problem loads in front of a dispatcher while there is still time to do something about them.
 
 Everything writes into the TMS or dispatch board your team already watches. An illegible scan is flagged for a person, never guessed at.`,
-  introCtaLabel: "Discuss Your Fleet AI Needs",
+  introCtaLabel: "Book a call",
   demo: demos.paperwork,
   solutionsHeading: "Our Logistics AI Solutions",
   solutions: [
@@ -166,7 +166,7 @@ Everything writes into the TMS or dispatch board your team already watches. An i
   ],
   finalCtaHeading: "Ready to Get Ahead of the Exceptions?",
   finalCtaBody: "Let's discuss where your paperwork and your problem loads are currently found by hand, and what it would take to surface them instead.",
-  finalCtaLabel: "Schedule a Consultation",
+  finalCtaLabel: "Book a call",
 };
 
 export default function LogisticsPage() {

@@ -11,11 +11,11 @@ import {
 } from "@/components/services/ServicePageLayout";
 
 export const metadata: Metadata = {
-  title: "AI Training & Workshops - VivanceData",
+  title: "AI Training & Workshops - Vivancedata",
   description: "Empower your team with the knowledge and skills they need to effectively leverage AI technologies in your organization. Custom training programs for all levels.",
   keywords: ["AI training", "AI workshops", "AI education", "AI skills", "AI literacy", "AI upskilling"],
   openGraph: {
-    title: "AI Training & Workshops - VivanceData",
+    title: "AI Training & Workshops - Vivancedata",
     description: "Build AI capabilities across your organization. Custom training programs for executives, data teams, developers, and more.",
     type: "website",
     url: "https://vivancedata.com/services/training",
@@ -24,13 +24,13 @@ export const metadata: Metadata = {
         url: "https://vivancedata.com/images/ai-solutions.png",
         width: 1200,
         height: 630,
-        alt: "VivanceData AI Training & Workshops",
+        alt: "Vivancedata AI Training & Workshops",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Training & Workshops - VivanceData",
+    title: "AI Training & Workshops - Vivancedata",
     description: "Build AI capabilities across your organization with custom training programs.",
     images: ["https://vivancedata.com/images/ai-solutions.png"],
   },
@@ -229,7 +229,7 @@ export default function TrainingPage() {
       <ServiceCTA
         heading="Ready to Upskill Your Team?"
         body="Contact us to discuss your training needs and how we can help build AI capabilities across your organization."
-        actionLabel="Schedule a Consultation"
+        actionLabel="Book a call"
       />
     </Container>
   );

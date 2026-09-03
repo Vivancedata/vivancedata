@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "VivanceData",
+  name: "Vivancedata",
   url: "https://vivancedata.com",
   ogImage: "https://vivancedata.com/images/banner.png",
   description:

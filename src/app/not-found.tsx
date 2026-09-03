@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   openGraph: {
-    title: "404 - Page Not Found | VivanceData",
+    title: "404 - Page Not Found | Vivancedata",
     description: "The page you are looking for could not be found. Explore our AI solutions and services.",
     type: "website",
     url: "https://vivancedata.com/404",
@@ -18,13 +18,13 @@ export const metadata: Metadata = {
         url: "https://vivancedata.com/images/banner.png",
         width: 1200,
         height: 630,
-        alt: "VivanceData - AI Solutions",
+        alt: "Vivancedata - AI Solutions",
       },
     ],
   },
   twitter: {
     card: "summary",
-    title: "404 - Page Not Found | VivanceData",
+    title: "404 - Page Not Found | Vivancedata",
     description: "The page you are looking for could not be found. Explore our AI solutions and services.",
   },
 }

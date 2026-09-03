@@ -36,7 +36,7 @@ export function SiteFooter() {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <a href="/" className="flex items-center mb-6">
-              <Image src={logo} alt="VivanceData Logo" width={40} height={40} className="mr-2" />
+              <Image src={logo} alt="Vivancedata Logo" width={40} height={40} className="mr-2" />
               <span className="text-xl font-bold">{siteConfig.name}</span>
             </a>
             <p className="text-muted-foreground mb-6 max-w-md">

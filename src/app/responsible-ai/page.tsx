@@ -13,25 +13,25 @@ import {
 } from "@/constants/responsibleAI";
 
 export const metadata: Metadata = {
-  title: "Responsible AI Framework - VivanceData",
+  title: "Responsible AI Framework - Vivancedata",
   description: "Our comprehensive approach to ethical, transparent, and human-centered AI implementation that ensures responsible innovation and sustainable outcomes.",
   keywords: ["responsible AI", "ethical AI", "AI governance", "AI ethics", "transparent AI", "AI bias", "AI accountability"],
   openGraph: {
-    title: "Responsible AI Framework | VivanceData",
+    title: "Responsible AI Framework | Vivancedata",
     description: "Ethical, transparent, and human-centered AI implementation. Learn about our approach to responsible AI innovation.",
     type: "website",
     url: "https://vivancedata.com/responsible-ai",
-    siteName: "VivanceData",
+    siteName: "Vivancedata",
     images: [{
       url: "https://vivancedata.com/images/ai-solutions.png",
       width: 1200,
       height: 630,
-      alt: "VivanceData Responsible AI Framework",
+      alt: "Vivancedata Responsible AI Framework",
     }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Responsible AI Framework | VivanceData",
+    title: "Responsible AI Framework | Vivancedata",
     description: "Ethical and transparent AI implementation with comprehensive governance.",
     images: ["https://vivancedata.com/images/ai-solutions.png"],
   },
@@ -176,7 +176,7 @@ export default function ResponsibleAIPage() {
             As AI becomes increasingly integrated into critical business processes and decision-making, ensuring these systems are developed and deployed responsibly is essential. Responsible AI isn&apos;t just an ethical imperative—it&apos;s a business necessity that builds trust, reduces risk, and creates sustainable value.
           </p>
           <p className="text-muted-foreground mb-6">
-            At VivanceData, we believe that AI should be designed to augment human capabilities, not replace them. Our Responsible AI Framework guides every AI solution we develop, ensuring that technology serves humanity in ways that are fair, transparent, and beneficial to all stakeholders.
+            At Vivancedata, we believe that AI should be designed to augment human capabilities, not replace them. Our Responsible AI Framework guides every AI solution we develop, ensuring that technology serves humanity in ways that are fair, transparent, and beneficial to all stakeholders.
           </p>
           <Button asChild className="self-start group" variant="outline">
             <Link href="/contact">
@@ -308,7 +308,7 @@ export default function ResponsibleAIPage() {
           Let&apos;s discuss how our Responsible AI Framework can help your organization develop and deploy ethical, transparent, and human-centered AI solutions.
         </p>
         <Button asChild size="lg">
-          <Link href="/contact">Schedule a Consultation</Link>
+          <Link href="/contact">Book a call</Link>
         </Button>
       </div>
     </Container>

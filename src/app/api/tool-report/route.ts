@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
     const toolLabel = TOOL_LABELS[report.tool];
 
     const visitorCopy = await sendCritical({
-      fromName: 'VivanceData',
+      fromName: 'Vivancedata',
       to: report.email,
       subject: `Your ${toolLabel} results`,
       html: buildVisitorReport(report),
@@ -71,7 +71,7 @@ export async function POST(request: NextRequest) {
 
     await sendCourtesy(
       {
-        fromName: 'VivanceData Tools',
+        fromName: 'Vivancedata Tools',
         to: teamInbox(),
         replyTo: report.email,
         subject: `New ${toolLabel} lead: ${report.email}`,

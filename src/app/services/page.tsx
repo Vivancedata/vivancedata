@@ -8,11 +8,11 @@ import { CTASection } from "@/components/home/CTASection";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AI Services - VivanceData",
+  title: "AI Services - Vivancedata",
   description: "Comprehensive AI solutions including LLM engineering, AI implementation, data platform engineering, and team upskilling. Transform your business with our expert services.",
   keywords: ["AI services", "LLM engineering", "AI implementation", "data platform", "machine learning services", "AI consulting", "team upskilling"],
   openGraph: {
-    title: "AI Services - VivanceData",
+    title: "AI Services - Vivancedata",
     description: "Comprehensive AI solutions from strategy to implementation. Expert services in LLM engineering, data platforms, and team upskilling.",
     type: "website",
     url: "https://vivancedata.com/services",
@@ -21,13 +21,13 @@ export const metadata: Metadata = {
         url: "https://vivancedata.com/images/ai-solutions.png",
         width: 1200,
         height: 630,
-        alt: "VivanceData AI Services",
+        alt: "Vivancedata AI Services",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Services - VivanceData",
+    title: "AI Services - Vivancedata",
     description: "Comprehensive AI solutions from strategy to implementation.",
     images: ["https://vivancedata.com/images/ai-solutions.png"],
   },
@@ -114,7 +114,7 @@ const ServicesPage = () => {
         eyebrow="Our Services"
         title={
           <>
-            VivanceData <span className="text-brand">Solutions</span>
+            Vivancedata <span className="text-brand">Solutions</span>
           </>
         }
         description="These days, staying ahead often means turning data and AI into business value. But with countless solutions and approaches available, how do you identify and implement what truly matters for your organization?"
@@ -142,7 +142,7 @@ const ServicesPage = () => {
       <CTASection 
         title="Ready to Transform Your Business?"
         description="Let's discuss how our AI solutions can address your specific challenges."
-        buttonText="Contact Us"
+        buttonText="Book a call"
         buttonLink="/contact"
       />
     </main>

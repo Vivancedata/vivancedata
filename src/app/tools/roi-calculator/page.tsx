@@ -5,11 +5,11 @@ import { ROICalculator } from "@/components/tools/ROICalculator";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AI ROI Calculator - VivanceData",
+  title: "AI ROI Calculator - Vivancedata",
   description: "Calculate the potential return on investment for your AI initiatives. Get instant insights into costs, savings, and payback periods with our comprehensive AI ROI calculator.",
   keywords: ["AI ROI calculator", "AI return on investment", "AI cost calculator", "AI savings calculator", "AI business case", "AI investment"],
   openGraph: {
-    title: "AI ROI Calculator - VivanceData",
+    title: "AI ROI Calculator - Vivancedata",
     description: "Calculate the potential return on investment for your AI initiatives. Get instant insights into costs, savings, and payback periods.",
     type: "website",
     url: "https://vivancedata.com/tools/roi-calculator",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI ROI Calculator - VivanceData",
+    title: "AI ROI Calculator - Vivancedata",
     description: "Calculate the potential return on investment for your AI initiatives.",
     images: ["https://vivancedata.com/images/ai-solutions.png"],
   },

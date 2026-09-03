@@ -59,7 +59,7 @@ export function buildVisitorReport(report: ToolReport): string {
             <a href="https://vivancedata.com/contact" class="button">Talk to a consultant</a>
           </p>
           <div class="footer">
-            <p>VivanceData</p>
+            <p>Vivancedata</p>
             <p>https://vivancedata.com</p>
           </div>`,
   });

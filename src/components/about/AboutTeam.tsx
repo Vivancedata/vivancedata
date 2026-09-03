@@ -34,7 +34,7 @@ export function AboutTeam({ title, description, members }: AboutTeamProps): Reac
                 {member.imageSrc ? (
                   <Image
                     src={member.imageSrc}
-                    alt={`${member.name}, ${member.role} at VivanceData`}
+                    alt={`${member.name}, ${member.role} at Vivancedata`}
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"

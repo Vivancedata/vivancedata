@@ -11,18 +11,18 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Resources - VivanceData",
+  title: "Resources - Vivancedata",
   description: "Explore our AI resources including blog articles, ROI calculator, AI readiness assessment, innovation hub, and responsible AI guidelines.",
   keywords: ["AI resources", "AI tools", "ROI calculator", "AI readiness", "AI blog", "responsible AI"],
   openGraph: {
-    title: "Resources - VivanceData",
+    title: "Resources - Vivancedata",
     description: "Explore our AI resources including tools, calculators, and educational content.",
     type: "website",
     url: "https://vivancedata.com/resources",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Resources - VivanceData",
+    title: "Resources - Vivancedata",
     description: "Explore our AI resources including tools, calculators, and educational content.",
   },
 };

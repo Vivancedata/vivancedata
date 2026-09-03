@@ -3,11 +3,11 @@ import { Activity, Settings, Shield, BarChart3, Wrench } from "lucide-react";
 import { IndustryPage, type IndustryPageConfig } from "@/components/industries/IndustryPage";
 
 export const metadata: Metadata = {
-  title: "AI Solutions for Manufacturing - VivanceData",
+  title: "AI Solutions for Manufacturing - Vivancedata",
   description: "Reduce unplanned downtime, improve quality control, and optimize production with AI solutions built for manufacturing operations.",
   keywords: ["manufacturing AI", "predictive maintenance", "quality control AI", "OEE optimization", "industrial AI", "IIoT analytics"],
   openGraph: {
-    title: "AI Solutions for Manufacturing - VivanceData",
+    title: "AI Solutions for Manufacturing - Vivancedata",
     description: "AI-powered predictive maintenance, quality inspection, and production optimization for manufacturing teams.",
     type: "website",
     url: "https://vivancedata.com/industries/manufacturing",
@@ -26,8 +26,8 @@ const config: IndustryPageConfig = {
 
 Manufacturing teams face relentless pressure to reduce downtime, improve quality, and optimize throughput. AI is changing how maintenance, quality, and operations teams detect problems, plan interventions, and measure performance.
 
-At VivanceData, we design AI workflows for manufacturing that integrate with existing systems — from sensor data pipelines to quality dashboards — with a focus on reducing unplanned downtime and improving operational efficiency.`,
-  introCtaLabel: "Discuss Your Manufacturing AI Needs",
+At Vivancedata, we design AI workflows for manufacturing that integrate with existing systems — from sensor data pipelines to quality dashboards — with a focus on reducing unplanned downtime and improving operational efficiency.`,
+  introCtaLabel: "Book a call",
   solutionsHeading: "Our Manufacturing AI Solutions",
   solutions: [
     {
@@ -138,7 +138,7 @@ At VivanceData, we design AI workflows for manufacturing that integrate with exi
   ],
   finalCtaHeading: "Ready to Transform Your Manufacturing Operations?",
   finalCtaBody: "Let's discuss how our AI solutions can help your manufacturing team reduce downtime, improve quality, and optimize production throughput.",
-  finalCtaLabel: "Schedule a Consultation",
+  finalCtaLabel: "Book a call",
 };
 
 export default function ManufacturingPage() {

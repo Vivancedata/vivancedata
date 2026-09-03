@@ -13,7 +13,6 @@ export interface ContactEnquiry {
 const SERVICE_NAMES: Record<string, string> = {
   'generative-ai': 'Generative AI Solutions',
   consulting: 'AI Strategy Consulting',
-  solutions: 'Pre-built AI Solutions',
   training: 'AI Training & Workshops',
   other: 'Other',
 };
@@ -67,8 +66,8 @@ export function buildEnquiryConfirmation(enquiry: ContactEnquiry): string {
   return layout({
     title: `Thank You, ${enquiry.firstName}!`,
     body: `
-          <p>We've received your message and appreciate you reaching out to VivanceData.</p>
-          <p>One of our AI consultants will review your inquiry and get back to you within <strong>24 hours</strong>.</p>
+          <p>Your message has reached me.</p>
+          <p>You'll hear back from me, not an account manager, within <strong>one working day</strong>.</p>
           <p><strong>Here's what you submitted:</strong></p>
           <ul>
             <li><strong>Service Interest:</strong> ${escapeHtml(serviceName(enquiry.serviceInterest))}</li>
@@ -79,7 +78,7 @@ export function buildEnquiryConfirmation(enquiry: ContactEnquiry): string {
             <a href="https://vivancedata.com/tools/roi-calculator" class="button">Try Our AI ROI Calculator</a>
           </p>
           <div class="footer">
-            <p>VivanceData - Transforming Businesses with AI</p>
+            <p>Vivancedata &mdash; Lorenzo Scaturchio</p>
             <p>https://vivancedata.com</p>
           </div>`,
   });
