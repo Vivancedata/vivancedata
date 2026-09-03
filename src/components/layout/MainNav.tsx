@@ -12,7 +12,7 @@ import { MainNavMobile } from "@/components/layout/MainNavMobile"
 export function MainNav() {
   return (
     <header className={cn(
-      "sticky top-0 z-50 w-full border-b border-border/60 bg-background/95 shadow-sm transition-[background-color,box-shadow] duration-300",
+      "sticky top-0 z-50 w-full border-b border-border/60 bg-background/95 transition-colors duration-300",
       "supports-[backdrop-filter]:bg-background/80"
     )}>
       <div className="container mx-auto px-4 py-4">
@@ -21,13 +21,16 @@ export function MainNav() {
           style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "1rem" }}
         >
           <div className="flex items-center">
-            <a href="/" aria-label={siteConfig.name} className="mr-6 flex items-center space-x-2">
+            <a href="/" aria-label={siteConfig.name} className="flex items-center space-x-2 md:mr-6">
               <div className="transition-transform duration-300 hover:rotate-6">
                 <Icons.logo className="h-8 w-8" />
               </div>
               {/* Solid ink wordmark. A gradient-clipped one faded into the
                 * near-white `accent` wash -- the mark is ink, like the headings. */}
-              <span className="hidden text-heading-2 lg:inline-block text-foreground">
+              {/* Visible at every width. Hidden below `lg`, a phone header
+                * carried a bare glyph -- and the menu button sat on a second
+                * row beneath it, 105px of chrome before any content. */}
+              <span className="text-heading-2 text-foreground">
                 {siteConfig.name}
               </span>
             </a>
@@ -76,8 +79,9 @@ export function MainNav() {
               </a>
             </Button>
           </div>
+
+          <MainNavMobile items={mainNavItems} />
         </div>
-        <MainNavMobile items={mainNavItems} />
       </div>
     </header>
   )

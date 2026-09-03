@@ -49,7 +49,7 @@ const ContactPage = () => {
           {/* Contact Information */}
           <div className="md:col-span-1 space-y-6">
             <div className="bg-muted rounded-xl p-6">
-              <h3 className="text-heading-3 mb-6">Contact Information</h3>
+              <h2 className="text-heading-3 mb-6">Contact Information</h2>
 
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
@@ -79,7 +79,7 @@ const ContactPage = () => {
             </div>
 
             <div className="bg-muted rounded-xl p-6">
-              <h3 className="text-heading-4 mb-3">What to Expect</h3>
+              <h2 className="text-heading-4 mb-3">What to Expect</h2>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 bg-primary rounded-full"></span>

@@ -16,7 +16,7 @@ export default function Loading() {
           {Array.from({ length: 4 }, (_, index) => (
             <div
               key={`hero-card-${index + 1}`}
-              className="rounded-3xl border border-border/60 bg-card/70 p-6 shadow-sm"
+              className="rounded-3xl border border-border/60 bg-card/70 p-6"
             >
               <Skeleton className="h-10 w-10 rounded-full" />
               <Skeleton className="mt-6 h-7 w-3/4" />
@@ -31,7 +31,7 @@ export default function Loading() {
           {Array.from({ length: 3 }, (_, index) => (
             <div
               key={`support-block-${index + 1}`}
-              className="rounded-3xl border border-border/60 bg-card/60 p-6 shadow-sm"
+              className="rounded-3xl border border-border/60 bg-card/60 p-6"
             >
               <Skeleton className="h-5 w-1/3" />
               <Skeleton className="mt-5 h-4 w-full" />

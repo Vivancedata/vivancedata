@@ -29,7 +29,7 @@ export function AboutTeam({ title, description, members }: AboutTeamProps): Reac
         
         <div className={`grid gap-8 ${members.length === 1 ? "grid-cols-1 max-w-lg mx-auto" : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"}`}>
           {members.map((member) => (
-            <div key={member.id} className="bg-card rounded-lg shadow-md overflow-hidden">
+            <div key={member.id} className="bg-card rounded-lg overflow-hidden">
               <div className="relative h-48 w-full">
                 {member.imageSrc ? (
                   <Image

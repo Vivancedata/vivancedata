@@ -44,6 +44,14 @@ const formSchema = z.object({
   email: z.string().email({
     message: "Invalid email address.",
   }),
+  // The buyer here is phone-first and reads this between jobs. Optional,
+  // because insisting on a number costs more submissions than it wins.
+  phone: z
+    .string()
+    .trim()
+    .max(32, { message: "Phone number is too long." })
+    .optional()
+    .or(z.literal("")),
   company: z.string().min(2, {
     message: "Company name must be at least 2 characters.",
   }),
@@ -74,6 +82,7 @@ export function ProfileForm() {
       firstName: "",
       lastName: "",
       email: "",
+      phone: "",
       company: "",
       serviceInterest: "",
       message: "",
@@ -115,7 +124,7 @@ export function ProfileForm() {
 
   if (isSubmitted) {
     return (
-      <Card className="border-0 shadow-lg" role="status" aria-live="polite">
+      <Card className="border border-border" role="status" aria-live="polite">
         <CardContent className="pt-6">
           <div className="flex flex-col items-center justify-center text-center py-10">
             <div className="rounded-full bg-success/10 p-3 mb-4" aria-hidden="true">
@@ -138,7 +147,7 @@ export function ProfileForm() {
   }
 
   return (
-    <Card className="border-0 shadow-lg">
+    <Card className="border border-border">
       <CardHeader className="bg-muted rounded-t-lg">
         <CardTitle as="h2" className="text-brand">Contact Us</CardTitle>
         <CardDescription>Fill out the form below to get started</CardDescription>
@@ -159,7 +168,12 @@ export function ProfileForm() {
                   <FormItem>
                     <FormLabel>First Name</FormLabel>
                     <FormControl>
-                      <Input placeholder="John" {...field} />
+                      <Input
+                        placeholder="John"
+                        required
+                        autoComplete="given-name"
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -172,7 +186,12 @@ export function ProfileForm() {
                   <FormItem>
                     <FormLabel>Last Name</FormLabel>
                     <FormControl>
-                      <Input placeholder="Doe" {...field} />
+                      <Input
+                        placeholder="Doe"
+                        required
+                        autoComplete="family-name"
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -187,7 +206,14 @@ export function ProfileForm() {
                   <FormItem>
                     <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input placeholder="john.doe@example.com" {...field} />
+                      <Input
+                        type="email"
+                        inputMode="email"
+                        placeholder="john.doe@example.com"
+                        required
+                        autoComplete="email"
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -195,12 +221,38 @@ export function ProfileForm() {
               />
               <FormField
                 control={form.control}
+                name="phone"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Phone (optional)</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="tel"
+                        inputMode="tel"
+                        placeholder="(555) 010-1234"
+                        autoComplete="tel"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <FormField
+                control={form.control}
                 name="company"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Company</FormLabel>
                     <FormControl>
-                      <Input placeholder="Acme Inc." {...field} />
+                      <Input
+                        placeholder="Acme Inc."
+                        required
+                        autoComplete="organization"
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -238,10 +290,11 @@ export function ProfileForm() {
                 <FormItem>
                   <FormLabel>Message</FormLabel>
                   <FormControl>
-                    <Textarea 
-                      placeholder="Tell us about your project or questions you have..." 
-                      className="min-h-[120px]" 
-                      {...field} 
+                    <Textarea
+                      placeholder="Tell us about your project or questions you have..."
+                      className="min-h-[120px]"
+                      required
+                      {...field}
                     />
                   </FormControl>
                   <FormMessage />

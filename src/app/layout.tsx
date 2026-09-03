@@ -130,7 +130,7 @@ export default function RootLayout({
               <MainNav />
             </header>
             <PageWrapper className="flex-grow w-full">
-              <main className="w-full px-4" id="main-content">
+              <main className="w-full overflow-x-clip px-4" id="main-content">
                 {children}
               </main>
             </PageWrapper>

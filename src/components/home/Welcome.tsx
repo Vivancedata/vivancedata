@@ -54,7 +54,7 @@ export default function Welcome() {
             Someone has to answer the phone and{" "}
             <span className="text-brand">key in the paperwork</span>
           </h1>
-          <p className="mx-auto max-w-3xl text-body-lg text-muted-foreground">
+          <p className="mx-auto max-w-[60ch] text-body-lg text-muted-foreground">
             It does not have to be a person on your payroll. I build small,
             specific systems for construction, HVAC, logistics and manufacturing
             businesses — one workflow at a time, proved on your own documents
@@ -85,15 +85,30 @@ export default function Welcome() {
                 <p className="text-body-sm text-muted-foreground">
                   {feature.description}
                 </p>
-                {feature.demo ? (
-                  /* The site's core claim is "proved on your own documents
-                     before you pay" -- these links are that claim made
-                     clickable, so they sit on the promise they prove. */
-                  <DemoLink demo={feature.demo} className="mt-auto pt-md" />
-                ) : null}
               </article>
             );
           })}
+        </div>
+
+        {/*
+          The demos used to be 12px mono links buried at the bottom of the four
+          tiles. They are the site's core claim -- "proved on your own documents
+          before you pay" -- made clickable, and the only thing here a visitor
+          can check without talking to anyone, so they get their own band and
+          the secondary pill rather than the smallest text on the page.
+        */}
+        <div className="mb-3xl rounded-md border border-border bg-card p-lg">
+          <p className="mb-md max-w-[60ch] text-body-sm text-muted-foreground">
+            Each of these runs on sample data, right now, with nothing to install
+            and no one to talk to.
+          </p>
+          <div className="flex flex-col gap-md sm:flex-row sm:flex-wrap">
+            {features
+              .filter((feature) => feature.demo)
+              .map((feature) => (
+                <DemoLink key={feature.title} demo={feature.demo!} />
+              ))}
+          </div>
         </div>
 
         <div className="mt-xl flex flex-col items-center justify-center gap-md sm:flex-row">

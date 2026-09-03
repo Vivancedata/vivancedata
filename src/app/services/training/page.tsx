@@ -154,7 +154,7 @@ export default function TrainingPage() {
         
         <div className="space-y-8">
           {courses.map((course) => (
-            <div key={course.title} className="bg-card rounded-xl shadow-sm border border-border overflow-hidden">
+            <div key={course.title} className="bg-card rounded-xl border border-border overflow-hidden">
               <div className="p-6 md:p-8">
                 <div className="flex flex-col md:flex-row gap-6">
                   <div className="w-full md:w-2/3">
@@ -218,7 +218,7 @@ export default function TrainingPage() {
               description: "Post-training resources and follow-up sessions ensure your team can apply what they've learned."
             }
           ].map((item) => (
-            <div key={item.title} className="bg-card p-6 rounded-xl shadow-sm border border-border">
+            <div key={item.title} className="bg-card p-6 rounded-xl border border-border">
               <h3 className="text-heading-3 mb-3">{item.title}</h3>
               <p className="text-muted-foreground">{item.description}</p>
             </div>

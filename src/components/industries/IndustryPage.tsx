@@ -21,7 +21,7 @@ import { m } from "framer-motion";
  *   text-foreground         -> text-foreground
  *   text-muted-foreground         -> text-muted-foreground
  *   text-muted-foreground (label) -> eyebrow
- *   shadow-sm / shadow-lg / shadow-xl        -> removed (flat is the default)
+ *   / /        -> removed (flat is the default)
  *   whileHover y-lift + boxShadow            -> removed (no hover lift)
  * Each light/dark pair collapses into one token that handles both modes.
  *
@@ -191,7 +191,7 @@ export function IndustryPage({ config }: { config: IndustryPageConfig }) {
       <AnimateOnScroll variant="fadeInUp" className="mb-3xl text-center">
         <p className="eyebrow mb-md">{config.eyebrow}</p>
         <Heading className="mb-md text-display">{config.title}</Heading>
-        <Paragraph className="mx-auto max-w-3xl text-body-lg text-muted-foreground">
+        <Paragraph className="mx-auto max-w-[60ch] text-body-lg text-muted-foreground">
           {leadParagraph}
         </Paragraph>
       </AnimateOnScroll>
@@ -207,7 +207,7 @@ export function IndustryPage({ config }: { config: IndustryPageConfig }) {
         >
           <h2 className="mb-md text-heading-1">{config.introHeading}</h2>
           {bodyParagraphs.map((paragraph) => (
-            <p key={paragraph} className="mb-lg text-body text-muted-foreground">
+            <p key={paragraph} className="mb-lg max-w-[60ch] text-body text-muted-foreground">
               {paragraph}
             </p>
           ))}
@@ -319,7 +319,7 @@ export function IndustryPage({ config }: { config: IndustryPageConfig }) {
                 <h3 className="text-heading-3">{phase.title}</h3>
               </div>
               <div className="pl-16">
-                <p className="mb-md text-body-sm text-muted-foreground">{phase.description}</p>
+                <p className="mb-md max-w-[60ch] text-body-sm text-muted-foreground">{phase.description}</p>
                 <ul className="grid gap-sm sm:grid-cols-2">
                   {phase.checks.map((check) => (
                     <li key={check} className="flex items-start">

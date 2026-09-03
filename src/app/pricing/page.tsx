@@ -27,18 +27,18 @@ export default function PricingPage() {
       <div className="mx-auto max-w-3xl text-center">
         <p className="eyebrow mb-4">{pricingPageContent.eyebrow}</p>
         <Heading className="mb-4 text-4xl md:text-5xl">{pricingPageContent.title}</Heading>
-        <Paragraph className="text-lg">{pricingPageContent.description}</Paragraph>
+        <Paragraph className="mx-auto max-w-[60ch] text-lg">{pricingPageContent.description}</Paragraph>
       </div>
 
       <Pricing showHeader={false} />
 
       <div className="mx-auto max-w-3xl rounded-xl border border-border bg-card p-8">
         <h2 className="text-heading-2 mb-3">{pricingPageContent.whyRetainer.title}</h2>
-        <p className="text-muted-foreground">{pricingPageContent.whyRetainer.body}</p>
+        <p className="max-w-[60ch] text-muted-foreground">{pricingPageContent.whyRetainer.body}</p>
       </div>
 
       <div className="mx-auto mt-8 max-w-3xl text-center">
-        <p className="text-sm text-muted-foreground">{pricingPageContent.note}</p>
+        <p className="mx-auto max-w-[60ch] text-sm text-muted-foreground">{pricingPageContent.note}</p>
         <Button asChild size="lg" shape="pill" className="mt-6">
           <Link href="/contact">Get a fixed price</Link>
         </Button>

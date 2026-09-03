@@ -32,7 +32,7 @@ export default function ClientLogos() {
             const Icon = sectorIcons[client.icon];
             return (
               <li key={client.id}>
-                <div className="flex h-full flex-col items-center justify-start rounded-2xl border border-border/60 bg-card/70 px-4 py-6 text-center shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:border-brand/25 hover:shadow-md">
+                <div className="flex h-full flex-col items-center justify-start rounded-2xl border border-border/60 bg-card/70 px-4 py-6 text-center transition-transform duration-300 hover:-translate-y-1 hover:border-brand/25">
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-muted text-brand">
                     <Icon className="h-7 w-7" aria-hidden="true" />
                   </div>

@@ -24,11 +24,10 @@ export default function Pricing({ showHeader = true }: PricingProps) {
     <section
       className="relative overflow-hidden py-16 md:py-24"
     >
-      <div className="absolute inset-x-0 -top-20 h-64 bg-muted blur-3xl" aria-hidden="true" />
       <div className="container relative mx-auto px-4">
         {showHeader && (
           <div className="mx-auto mb-12 max-w-3xl text-center">
-            <div className="mb-4 inline-flex items-center rounded-full border border-border/70 bg-card/80 px-4 py-1 text-sm font-medium text-foreground shadow-sm">
+            <div className="mb-4 inline-flex items-center rounded-full border border-border/70 bg-card/80 px-4 py-1 text-sm font-medium text-foreground">
               Pricing Plans
             </div>
             <h2 className="text-display text-foreground">
@@ -57,7 +56,11 @@ export default function Pricing({ showHeader = true }: PricingProps) {
                 </div>
               )}
               <CardHeader>
-                <CardTitle className="text-2xl text-foreground">{tier.name}</CardTitle>
+                {/* h3 under the section's own h2 on the homepage; h2 on /pricing,
+                    which renders this band headerless under the page h1. */}
+                <CardTitle as={showHeader ? "h3" : "h2"} className="text-2xl text-foreground">
+                  {tier.name}
+                </CardTitle>
                 <CardDescription className="mt-2 text-base">{tier.description}</CardDescription>
               </CardHeader>
               <CardContent className="flex flex-1 flex-col">
@@ -102,7 +105,7 @@ export default function Pricing({ showHeader = true }: PricingProps) {
           ))}
         </div>
 
-        <div className="mt-16 grid gap-8 rounded-3xl border border-border/70 bg-card/90 p-8 shadow-lg md:grid-cols-2 md:p-12">
+        <div className="mt-16 grid gap-8 rounded-3xl border border-border/70 bg-card/90 p-8 md:grid-cols-2 md:p-12">
           <div>
             <h3 className="text-heading-1 text-foreground">Need a Custom Solution?</h3>
             <p className="mt-4 text-muted-foreground">
