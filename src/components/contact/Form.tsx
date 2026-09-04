@@ -56,8 +56,15 @@ const formSchema = z.object({
   company: z.string().min(2, {
     message: "Company name must be at least 2 characters.",
   }),
+  // zod 4 replaced required_error/invalid_type_error with one `error`.
+  //
+  // The message is currently unreachable either way: the field defaults to ""
+  // and z.string() accepts "", so no issue is ever raised -- and the contact
+  // route agrees, treating serviceInterest as optional. The rename keeps the
+  // bump behaviour-neutral; making the field genuinely required would be a
+  // product change, not a dependency one.
   serviceInterest: z.string({
-    required_error: "Please select a service you're interested in.",
+    error: "Please select a service you're interested in.",
   }),
   message: z.string().min(10, {
     message: "Message must be at least 10 characters.",
