@@ -14,6 +14,13 @@ import { z } from 'zod';
  * regex twice and a zod field once, with lowercasing done afterwards in two
  * routes and not at all in the third. This field is the single answer.
  * 254 is the RFC 5321 path limit.
+ *
+ * `.email()` on a string is deprecated in zod 4 in favour of top-level
+ * `z.email()`, and swapping it is a trap: `z.email()` validates the format
+ * FIRST, so " Foo@Example.COM " is rejected outright instead of being trimmed
+ * and lowercased into a valid address, and the 254 cap is lost with it. The
+ * order of the chain is the behaviour. Whoever migrates to zod 5 has to
+ * preserve trim -> lowercase -> length -> format, not just rename the call.
  */
 export const emailAddress = z.string().trim().toLowerCase().min(1).max(254).email();
 
