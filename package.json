@@ -125,7 +125,7 @@
     "jsdom": "^30.0.1",
     "postcss": "^8.5.23",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5",
+    "typescript": "^7",
     "typescript-eslint": "^8.68.0",
     "vite-tsconfig-paths": "^6.1.1",
     "vitest": "^4.0.18"
