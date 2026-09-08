@@ -125,7 +125,7 @@ export function Blogs({ blogs }: BlogsProps) {
                       {blog.tags.map((tag: string) => (
                         <span
                           key={tag}
-                          className="inline-flex items-center rounded-full bg-muted px-2 py-0.5 text-xs font-medium text-brand"
+                          className="inline-flex items-center rounded-pill border border-rule px-2 py-0.5 text-label uppercase text-mute"
                         >
                           {tag}
                         </span>

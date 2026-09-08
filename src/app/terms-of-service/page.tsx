@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: "Terms and conditions for using Vivancedata's AI consulting, generative AI, and training services.",
   openGraph: {
     title: "Terms of Service | Vivancedata",
-    description: "Review our terms and conditions for AI consulting and implementation services.",
+    description: "Terms and conditions for AI consulting, build and training work.",
     type: "website",
     url: "https://vivancedata.com/terms-of-service",
     siteName: "Vivancedata",
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary",
     title: "Terms of Service | Vivancedata",
-    description: "Terms and conditions for our AI consulting services.",
+    description: "Terms and conditions for AI consulting, build and training work.",
   },
   robots: {
     index: true,
@@ -86,7 +86,7 @@ export default function TermsOfServicePage() {
 
         <h2>6. Limitation of Liability</h2>
         <p>
-          While I strive for excellence in all projects, I cannot guarantee specific business outcomes. My liability is limited to the amount paid for services.
+          I cannot guarantee specific business outcomes. My liability is limited to the amount paid for services.
         </p>
 
         <h2>7. Termination</h2>

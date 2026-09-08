@@ -9,11 +9,11 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "AI Services - Vivancedata",
-  description: "Comprehensive AI solutions including LLM engineering, AI implementation, data platform engineering, and team upskilling. Transform your business with our expert services.",
+  description: "What I build for trade and industrial businesses: document intake, private question-answering over your own files, and workflow automation. Scoped, built on your documents, and run afterwards.",
   keywords: ["AI services", "LLM engineering", "AI implementation", "data platform", "machine learning services", "AI consulting", "team upskilling"],
   openGraph: {
     title: "AI Services - Vivancedata",
-    description: "Comprehensive AI solutions from strategy to implementation. Expert services in LLM engineering, data platforms, and team upskilling.",
+    description: "Document intake, answers from your own files, and workflow automation. Scoped, built on your documents, and run afterwards.",
     type: "website",
     url: "https://vivancedata.com/services",
     images: [
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "AI Services - Vivancedata",
-    description: "Comprehensive AI solutions from strategy to implementation.",
+    description: "Document intake, answers from your own files, and workflow automation.",
     images: ["https://vivancedata.com/images/ai-solutions.png"],
   },
 };
@@ -37,33 +37,33 @@ const ServicesPage = () => {
   const services = [
     {
       id: "1",
-      title: "LLM Engineering",
-      description: "Our expertise in LLMs allows us to create and optimize powerful AI-driven systems tailored to your needs."
+      title: "LLM engineering",
+      description: "The language-model part: what the model gets asked, what it is allowed to read, and how its answer is checked before anything acts on it."
     },
     {
       id: "2",
-      title: "AI Implementation",
-      description: "We guide you through the entire process, from prototyping to full-scale production, ensuring your AI initiatives are successful and sustainable."
+      title: "From prototype to something that runs",
+      description: "A first version on your own documents, then the unglamorous work that makes it survive a Monday: retries, error handling, an alert when a source file changes shape."
     },
     {
       id: "3",
-      title: "Data Platform Engineering",
-      description: "We design and build scalable, robust data platforms on Azure to support your AI initiatives."
+      title: "Data plumbing",
+      description: "Where documents land, how they are stored, and what feeds the model. Built on Azure, and boring on purpose."
     },
     {
       id: "4",
-      title: "Deploying AI Applications",
-      description: "We ensure your data-centric and AI applications are deployed seamlessly, with reliability and scalability in mind."
+      title: "Getting it live, keeping it live",
+      description: "Deployment, monitoring, and someone to call. An automation nobody is watching quietly stops matching reality within months."
     },
     {
       id: "5",
-      title: "Upskilling Your Engineering Team",
-      description: "We provide hands-on training to elevate your team's AI skills, ensuring they're equipped to handle the latest technologies and best practices."
+      title: "Training whoever runs it next",
+      description: "Hands-on sessions with the people who will own this after handover, using your workflows rather than a slide deck."
     },
     {
       id: "6",
-      title: "Integrating AI into Your Stack",
-      description: "We help you incorporate AI into your current systems to enhance their capabilities without disrupting your operations."
+      title: "Fitting it to what you already run",
+      description: "Your project system, dispatch board or MES stays where it is. The new piece reads from it and writes back to it instead of replacing it."
     }
   ];
 
@@ -92,7 +92,7 @@ const ServicesPage = () => {
     },
     {
       id: "2",
-      title: "Answers From Your Own Files",
+      title: "Answers from your own files",
       category: "Knowledge & Retrieval",
       description: "A private question-answering system grounded in your internal documents, answering with citations back to the source file so replies can be checked.",
       impact: "Typical build: 4-8 weeks",
@@ -111,17 +111,12 @@ const ServicesPage = () => {
   return (
     <main className="flex min-h-screen flex-col">
       <PageHero
-        eyebrow="Our Services"
-        title={
-          <>
-            Vivancedata <span className="text-brand">Solutions</span>
-          </>
-        }
-        description="These days, staying ahead often means turning data and AI into business value. But with countless solutions and approaches available, how do you identify and implement what truly matters for your organization?"
+        title="Services"
+        description="Most of this comes down to one question: which job in your week repeats often enough, and goes wrong clearly enough, to be worth automating first? That is where I start, and sometimes the honest answer is that nothing does yet."
       />
       
       <ServicesStack 
-        title="We tackle data challenges across the full stack"
+        title="What I build with"
         technologies={technologies}
       />
       
@@ -129,19 +124,19 @@ const ServicesPage = () => {
       
       <ServicesCases
         title="What a build looks like"
-        description="Three shapes of work that come up most often. Each is a fixed scope with a defined deliverable, so you know what you are getting before it starts."
+        description="Three shapes of work I take on. Each has a fixed scope and a named deliverable, so you know what you are getting before it starts."
         cases={engagements}
         ctaLabel="Discuss scope"
       />
       
       <FAQSection 
-        title="Common Questions About Our Services"
-        description="Find answers to the most common questions about our services and how we can help your business."
+        title="Common questions"
+        description="Worth asking before you hire anyone for this, me included."
       />
       
       <CTASection 
-        title="Ready to Transform Your Business?"
-        description="Let's discuss how our AI solutions can address your specific challenges."
+        title="Not sure which job to start with?"
+        description="Tell me which part of the week goes wrong most, and I will tell you whether it is worth building for."
         buttonText="Book a call"
         buttonLink="/contact"
       />

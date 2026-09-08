@@ -29,7 +29,7 @@ export default function Error({
           </div>
         </div>
 
-        <Heading className="text-3xl md:text-4xl mb-4">
+        <Heading className="mb-4 font-display text-serif-lg">
           Something Went Wrong
         </Heading>
 

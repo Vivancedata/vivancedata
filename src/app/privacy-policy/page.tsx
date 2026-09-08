@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: "Transparency about data handling, analytics, and business practices for Vivancedata's AI consulting services.",
   openGraph: {
     title: "Privacy Policy & Transparency | Vivancedata",
-    description: "Learn about our commitment to data privacy, security, and transparent business practices in AI consulting.",
+    description: "How I handle data, what the analytics do and do not collect, and which third-party services this site uses.",
     type: "website",
     url: "https://vivancedata.com/privacy-policy",
     siteName: "Vivancedata",
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary",
     title: "Privacy Policy | Vivancedata",
-    description: "Our commitment to data privacy and transparent business practices.",
+    description: "How I handle data and what this site collects.",
   },
   robots: {
     index: true,
@@ -33,8 +33,8 @@ export default function PrivacyPolicyPage() {
         
         <h2>Transparency Statement</h2>
         <p>
-          I believe in being transparent about how I operate and handle data. This page outlines my practices
-          and gives you insight into how I maintain sustainability while providing value to the community.
+          This page sets out what the site collects, where it goes, and who else touches it along the way.
+          If something here is unclear, ask me and I will answer it plainly.
         </p>
 
         <h2>Analytics & Tracking</h2>
@@ -66,7 +66,7 @@ export default function PrivacyPolicyPage() {
 
         <h2>Third-Party Services</h2>
         <p>
-          I use several third-party services to enhance functionality:
+          This site relies on a few third-party services:
         </p>
         <ul>
           <li>Vercel - Website hosting and analytics</li>
@@ -87,7 +87,7 @@ export default function PrivacyPolicyPage() {
 
         <h2>Sustainability Practices</h2>
         <p>
-          I strive to make my digital services environmentally conscious by:
+          I try to keep the site light:
         </p>
         <ul>
           <li>Optimizing website performance to reduce server load</li>
@@ -106,7 +106,7 @@ export default function PrivacyPolicyPage() {
           <li>Know how your data is being used</li>
         </ul>
 
-        <h2>Contact Information</h2>
+        <h2>Contact</h2>
         <p>
           For any questions about this privacy policy or data handling practices, please contact me at{" "}
           <a href="mailto:lorenzosca7@gmail.com">lorenzosca7@gmail.com</a>.

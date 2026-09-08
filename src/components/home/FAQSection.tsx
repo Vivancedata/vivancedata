@@ -15,11 +15,10 @@ export function FAQSection({
       className="container mx-auto py-16 px-4 md:py-24"
     >
       <div className="text-center mb-12">
-        <p className="eyebrow mb-4">Frequently Asked Questions</p>
-        <h2 className="text-display mb-4">{title}</h2>
-        <p className="text-muted-foreground max-w-2xl mx-auto">{description}</p>
+        <h2 className="mb-4 font-display text-serif-lg">{title}</h2>
+        <p className="max-w-[58ch] text-muted-foreground">{description}</p>
       </div>
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-[72ch]">
         <FAQ />
       </div>
     </section>

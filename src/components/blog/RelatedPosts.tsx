@@ -40,7 +40,7 @@ export function RelatedPosts({ posts, currentSlug }: RelatedPostsProps) {
 
   return (
     <section className="mt-16 pt-16 border-t border-border">
-      <h2 className="text-heading-1 mb-8">Related Articles</h2>
+      <h2 className="mb-8 font-display text-serif-lg">Related Articles</h2>
 
       <m.div
         variants={container}
@@ -95,7 +95,7 @@ export function RelatedPosts({ posts, currentSlug }: RelatedPostsProps) {
                       {post.tags.slice(0, 2).map((tag: string) => (
                         <span
                           key={tag}
-                          className="inline-flex items-center rounded-full bg-muted px-2 py-0.5 text-xs font-medium text-brand"
+                          className="inline-flex items-center rounded-pill border border-rule px-2 py-0.5 text-label uppercase text-mute"
                         >
                           {tag}
                         </span>

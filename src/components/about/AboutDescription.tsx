@@ -8,9 +8,9 @@ interface AboutDescriptionProps {
 export function AboutDescription({ title, description }: AboutDescriptionProps): React.ReactElement {
   return (
     <section className="container mx-auto py-16 md:py-24 px-4">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-display mb-6">{title}</h2>
-        <p className="text-lg text-muted-foreground leading-relaxed">
+      <div>
+        <h2 className="mb-6 font-display text-serif-lg">{title}</h2>
+        <p className="max-w-[62ch] text-body-lg leading-relaxed text-muted-foreground">
           {description}
         </p>
       </div>

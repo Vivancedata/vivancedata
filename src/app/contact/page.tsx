@@ -37,7 +37,7 @@ const ContactPage = () => {
     <Container className="py-16">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <Heading className="text-4xl md:text-5xl mb-4">Book a call</Heading>
+          <Heading className="mb-4 font-display text-serif-xl">Book a call</Heading>
           <Paragraph className="max-w-2xl mx-auto text-lg">
             Tell me which job keeps going wrong: the after-hours calls, the paperwork typed twice,
             the photos that never get matched. You&apos;ll hear back from me, not an account manager,
@@ -49,7 +49,7 @@ const ContactPage = () => {
           {/* Contact Information */}
           <div className="md:col-span-1 space-y-6">
             <div className="bg-muted rounded-xl p-6">
-              <h2 className="text-heading-3 mb-6">Contact Information</h2>
+              <h2 className="text-heading-3 mb-6">Contact details</h2>
 
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
