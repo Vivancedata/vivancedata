@@ -32,7 +32,7 @@ export function ServicePageHeader({
   return (
     <div className="text-center mb-16">
       <Heading className="text-4xl md:text-5xl mb-4">{title}</Heading>
-      <Paragraph className="max-w-2xl mx-auto text-lg">{intro}</Paragraph>
+      <Paragraph className="max-w-[62ch] text-body-lg">{intro}</Paragraph>
     </div>
   );
 }
@@ -66,7 +66,7 @@ export function ServiceSection({
 }): React.ReactElement {
   return (
     <div className="mb-20">
-      <h2 className="text-heading-1 mb-8 text-center">{heading}</h2>
+      <h2 className="mb-8 font-display text-serif-lg">{heading}</h2>
       {children}
     </div>
   );
@@ -85,8 +85,8 @@ export function ServiceCTA({
 }): React.ReactElement {
   return (
     <div className="bg-muted rounded-xl p-8 md:p-12 text-center">
-      <h2 className="text-heading-1 mb-4">{heading}</h2>
-      <p className="text-lg mb-8 max-w-2xl mx-auto">{body}</p>
+      <h2 className="mb-4 font-display text-serif-lg">{heading}</h2>
+      <p className="mb-8 max-w-[62ch] text-body-lg">{body}</p>
       <Button asChild size="lg">
         <Link href={actionHref}>{actionLabel}</Link>
       </Button>

@@ -21,8 +21,8 @@ export function AboutTeam({ title, description, members }: AboutTeamProps): Reac
     <section className="bg-muted/30 py-16 md:py-24">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-display mb-4">{title}</h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <h2 className="mb-4 font-display text-serif-lg">{title}</h2>
+          <p className="max-w-[62ch] text-body-lg text-muted-foreground">
             {description}
           </p>
         </div>
@@ -51,7 +51,7 @@ export function AboutTeam({ title, description, members }: AboutTeamProps): Reac
               </div>
               <div className="p-6">
                 <h3 className="text-heading-3 mb-2">{member.name}</h3>
-                <p className="text-brand font-medium mb-4">{member.role}</p>
+                <p className="mb-4 text-body-sm text-muted-foreground">{member.role}</p>
                 <p className="text-muted-foreground">{member.bio}</p>
               </div>
             </div>

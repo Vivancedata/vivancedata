@@ -17,7 +17,7 @@ export const questions: FAQ[] = [
     answer: "I work with blue-collar and local service businesses: construction, HVAC and the trades, logistics and fleet operations, and manufacturing."
   },
   {
-    question: "How do I get started with your services?",
+    question: "How do I get started?",
     answer: "Fill in the form on the contact page and tell me which job keeps going wrong. You will hear back from me within one working day, and the first call costs nothing."
   }
 ];

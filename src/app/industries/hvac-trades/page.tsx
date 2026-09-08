@@ -33,7 +33,7 @@ A real emergency still reaches a person. What changes is that routine work gets 
   solutionsHeading: "What I build for service businesses",
   solutions: [
     {
-      title: "After-Hours Call Capture",
+      title: "After-hours call capture",
       description: "Answer the calls that currently reach voicemail, take down the job details, judge urgency, and either book the slot or escalate a genuine emergency to the on-call tech.",
       icon: <PhoneCall className="h-6 w-6 text-brand" />,
       benefits: [
@@ -44,7 +44,7 @@ A real emergency still reaches a person. What changes is that routine work gets 
       ],
     },
     {
-      title: "Dispatch and Scheduling Support",
+      title: "Dispatch and scheduling support",
       description: "Match jobs to technicians using skills, parts on the van and travel time, and propose a schedule the dispatcher adjusts rather than builds.",
       icon: <CalendarClock className="h-6 w-6 text-brand" />,
       benefits: [
@@ -55,7 +55,7 @@ A real emergency still reaches a person. What changes is that routine work gets 
       ],
     },
     {
-      title: "Quoting From Service History",
+      title: "Quoting from service history",
       description: "Draft a quote from the job description, prior work at that address and current supplier pricing, ready for the tech to adjust.",
       icon: <Receipt className="h-6 w-6 text-brand" />,
       benefits: [
@@ -66,7 +66,7 @@ A real emergency still reaches a person. What changes is that routine work gets 
       ],
     },
     {
-      title: "Follow-Up and Review Requests",
+      title: "Follow-up and review requests",
       description: "Chase the maintenance intervals, unapproved quotes and review requests that get dropped when the office is busy.",
       icon: <MessageSquare className="h-6 w-6 text-brand" />,
       benefits: [
@@ -77,20 +77,20 @@ A real emergency still reaches a person. What changes is that routine work gets 
       ],
     },
   ],
-  statsHeading: "Where AI Earns Its Keep in the Trades",
+  statsHeading: "Where it earns its keep in the trades",
   stats: [
-    { value: "Phone-First", label: "Built around the call, not a web form" },
-    { value: "After Hours", label: "Covers the times the office cannot" },
-    { value: "Van and Skill Aware", label: "Dispatch that knows who carries what" },
+    { value: "Phone-first", label: "Built around the call, not a web form" },
+    { value: "After hours", label: "Covers the times the office cannot" },
+    { value: "Van and skill aware", label: "Dispatch that knows who carries what" },
     { value: "Escalation", label: "Real emergencies reach a human fast" },
   ],
   scenariosHeading: "What a build looks like",
   scenarios: [
     {
-      title: "Overnight Call Handling",
+      title: "Overnight call handling",
       demo: demos.calls,
-      challenge: "Calls placed after the office closed went to voicemail, and by the time anyone listened the next morning the customer had already booked someone else.",
-      solution: "Set up an after-hours intake that answers the call, records the fault, address and access details in a fixed format, books routine work into open slots, and pages the on-call technician when the description reads as an emergency.",
+      challenge: "Calls placed after the office closes go to voicemail, and by the time anyone listens the next morning the customer has booked someone else.",
+      solution: "An after-hours intake answers the call, records the fault, address and access details in a fixed format, books routine work into open slots, and pages the on-call technician when the description reads as an emergency.",
       results: [
         "Overnight calls answered rather than queued",
         "Job details arrive in one consistent format",
@@ -99,9 +99,9 @@ A real emergency still reaches a person. What changes is that routine work gets 
       ],
     },
     {
-      title: "Dispatch Board Support",
-      challenge: "The dispatcher rebuilt the day's board by hand every time a job overran, and technicians were sent to work they did not carry the parts for.",
-      solution: "Proposed a schedule from technician skills, van stock and travel time, and re-proposed it when a job overran, leaving the dispatcher to accept, edit or ignore each suggestion.",
+      title: "Dispatch board support",
+      challenge: "The dispatcher rebuilds the day by hand every time a job overruns, and technicians get sent to work they do not carry the parts for.",
+      solution: "A schedule is proposed from technician skills, van stock and travel time, and re-proposed when a job overruns. The dispatcher accepts, edits or ignores each suggestion.",
       results: [
         "Fewer trips to jobs the van was not stocked for",
         "Reschedules proposed instead of rebuilt from scratch",
@@ -110,9 +110,9 @@ A real emergency still reaches a person. What changes is that routine work gets 
       ],
     },
     {
-      title: "Quote and Follow-Up Chasing",
-      challenge: "Quotes went out late and unapproved ones were never chased, because the only person who could do it was also running the office.",
-      solution: "Drafted quotes from the technician's job notes, prior work at the address and current supplier pricing for the technician to adjust, then followed up on the ones left unapproved and on lapsed maintenance intervals.",
+      title: "Quote and follow-up chasing",
+      challenge: "Quotes go out late and unapproved ones are never chased, because the only person who could do it is also running the office.",
+      solution: "Quotes are drafted from the technician's job notes, prior work at the address and current supplier pricing, for the technician to adjust. The unapproved ones and the lapsed maintenance intervals get chased on a schedule.",
       results: [
         "Quotes drafted the same day as the visit",
         "Prior work at the address surfaced during quoting",
@@ -121,11 +121,11 @@ A real emergency still reaches a person. What changes is that routine work gets 
       ],
     },
   ],
-  processHeading: "Trades AI Implementation Process",
+  processHeading: "How a build runs in the trades",
   process: [
     {
-      title: "Call and Job Flow Review",
-      description: "We walk the path a job takes from first call to invoice, find where it stalls — usually the phone outside office hours — and agree what a captured job has to contain to be useful.",
+      title: "Call and job flow review",
+      description: "I walk the path a job takes from first call to invoice and find where it stalls, which is usually the phone outside office hours. Then we agree what a captured job has to contain to be worth anything.",
       checks: [
         "Call volume mapped by hour and by outcome",
         "Current voicemail and after-hours handling reviewed",
@@ -134,8 +134,8 @@ A real emergency still reaches a person. What changes is that routine work gets 
       ],
     },
     {
-      title: "Intake and Escalation Design",
-      description: "We define the intake script, the urgency rules and the escalation path, so it is clear in advance which calls book themselves and which reach a person immediately.",
+      title: "Intake and escalation design",
+      description: "The intake script, the urgency rules and the escalation path get written down first, so it is settled in advance which calls book themselves and which reach a person immediately.",
       checks: [
         "Intake script and required fields defined",
         "Urgency rules and escalation thresholds set",
@@ -144,8 +144,8 @@ A real emergency still reaches a person. What changes is that routine work gets 
       ],
     },
     {
-      title: "Live Pilot Alongside the Office",
-      description: "We run the workflow on a defined slice — one shift, one branch or the out-of-hours window — while the office keeps its current process, and compare the two. Typical pilot scope is 3-6 weeks.",
+      title: "Live pilot alongside the office",
+      description: "The workflow runs on one slice: a single shift, a single branch, or just the out-of-hours window. The office keeps its current process and the two get compared. Typical pilot scope is 3-6 weeks.",
       checks: [
         "Run on a defined shift or the out-of-hours window",
         "Captured jobs compared against office handling",
@@ -154,8 +154,8 @@ A real emergency still reaches a person. What changes is that routine work gets 
       ],
     },
     {
-      title: "Extension and Tuning",
-      description: "We extend to more hours, more crews and the follow-up work, and keep tuning the urgency rules against the calls that actually came in.",
+      title: "Extension and tuning",
+      description: "It extends to more hours, more crews and the follow-up work, and I keep tuning the urgency rules against the calls that actually came in.",
       checks: [
         "Extension to more hours and more crews",
         "Follow-up and review workflows added",
@@ -164,7 +164,7 @@ A real emergency still reaches a person. What changes is that routine work gets 
       ],
     },
   ],
-  finalCtaHeading: "Ready to Stop Losing Jobs to Voicemail?",
+  finalCtaHeading: "Losing jobs to voicemail?",
   finalCtaBody: "Tell me what happens to your calls after hours today, and I will tell you what it would take to have them answered, triaged and booked.",
   finalCtaLabel: "Book a call",
 };

@@ -1,6 +1,6 @@
 ---
 title: "AI Implementation Guide: From Strategy to Production"
-description: "A practical roadmap for successfully implementing AI solutions in your organization, from initial strategy to production deployment."
+description: "A practical sequence for taking an AI project from a problem worth solving to something that still works in a year."
 date: "2025-01-08"
 tags: ["AI Strategy", "Implementation", "Best Practices"]
 image: "/images/ai-solutions.png"
@@ -8,313 +8,170 @@ image: "/images/ai-solutions.png"
 
 # AI Implementation Guide: From Strategy to Production
 
-Implementing AI in an organization is both an exciting opportunity and a significant challenge. Many AI initiatives fail not due to technology limitations, but because of poor planning, inadequate change management, or unrealistic expectations.
+Most AI projects that go wrong don't go wrong on the technology. They go wrong because nobody wrote down which problem was being solved, or because the plan quietly assumed people would work differently on the morning the system went live. The model is rarely the part that decides it.
 
-This guide sets out a practical framework for AI implementation, written to apply across industries and organization sizes.
+What follows is a sequence for getting from an idea to something running in production. The week numbers are a shape rather than a promise: a document-processing job inside one office moves faster than anything that has to touch a dispatch board three departments care about.
 
-## Phase 1: Strategic Foundation (Weeks 1-2)
+## Phase 1: strategic foundation (weeks 1-2)
 
-### Define Your "Why"
+### Write the problem down before you look at tools
 
-Before selecting tools or vendors, clearly articulate:
-- **Business Objectives:** What specific business problems are you solving?
-- **Success Metrics:** How will you measure impact?
-- **Timeline:** What's realistic given your resources and constraints?
-- **Budget:** Not just software costs, but training, integration, and ongoing support
+Four answers, on one page, before anyone demos anything.
 
-### Conduct an AI Readiness Assessment
+The problem, stated so that the person who lives with it would recognise the description. Not "improve efficiency" — the invoice typed into two systems by two different people, or the 9pm no-heat call that goes to voicemail and then to whoever answers first by morning.
 
-Evaluate your organization across key dimensions:
+How you will know it got better. Pick the measure now, while you can still take a reading of what it is today. Afterwards is too late; that reading doesn't exist any more.
 
-**Data Readiness**
-- Do you have sufficient quality data?
-- Is your data accessible and organized?
-- Are there privacy or compliance concerns?
+The timeline, judged against who is actually free to work on this, not against the vendor's slide.
 
-**Technical Infrastructure**
-- Can your systems integrate with AI tools?
-- Do you have necessary compute resources?
-- Is your security framework adequate?
+The budget, which is never only the software. Training, integration, and the monthly cost of keeping the thing alive after it ships all belong in the number.
 
-**Organizational Readiness**
-- Do you have executive support?
-- Is there appetite for change?
-- Do you have internal champions?
+### Assess readiness honestly
 
-**Skills and Talent**
-- What AI expertise exists internally?
-- Where are the skill gaps?
-- Can you hire or must you train?
+On data: is there enough of it, can somebody actually get at it, and does any of it carry privacy or compliance weight?
 
-### Select Initial Use Cases
+On systems: can what you already run be connected to, do you have the compute, and does your security setup survive a new integration?
 
-Choose your first AI project carefully. Ideal initial use cases:
-- Have clear, measurable outcomes
-- Can show results in 3-6 months
-- Don't require massive organizational change
-- Provide meaningful value if successful
+On appetite: is there someone senior who wants this to happen, is there any tolerance for the change it implies, and is there one person inside who will champion it day to day? A project with no champion becomes nobody's problem the first week it misbehaves.
 
-**Good First Projects:**
-- Document processing automation
-- Customer inquiry classification
-- Sales forecasting improvements
-- Content generation for marketing
+On skills: what exists internally, what's missing, and can you hire it or must you teach it?
 
-**Avoid as First Projects:**
-- Mission-critical systems
-- Highly complex workflows
-- Areas with significant regulatory concerns
-- Projects requiring extensive custom AI development
+### Pick the first use case for its ability to finish
 
-## Phase 2: Planning and Design (Weeks 3-6)
+The first project should be chosen for whether it can be completed, not for how impressive it sounds. You want an outcome you can see, a result inside a few months, no requirement that the whole company reorganise, and enough value that finishing it matters.
 
-### Assemble Your Team
+Good first jobs tend to look like document processing, sorting incoming customer messages, forecasting from numbers you already keep, or drafting marketing copy someone then edits.
 
-A successful AI implementation requires diverse expertise:
+Bad first jobs are the ones where being wrong is expensive: anything mission-critical, anything with many moving parts, anything a regulator takes an interest in, and anything that needs a model built from scratch.
 
-**Core Team Members:**
-- **Project Sponsor:** Executive-level champion with budget authority
-- **Project Manager:** Coordinates activities and manages timeline
-- **Domain Expert:** Understands the business problem deeply
-- **Data Scientist/AI Engineer:** Technical lead for AI components
-- **IT/DevOps:** Handles infrastructure and integration
-- **Change Manager:** Manages organizational adoption
+I would rather ship a narrow thing that works than pilot a broad thing that generates meetings.
 
-### Design the Solution Architecture
+## Phase 2: planning and design (weeks 3-6)
 
-**Key Decisions:**
-1. **Build vs. Buy vs. Configure**
-   - Pre-built SaaS solutions: Fastest, least flexible
-   - Configurable platforms: Balance of speed and customization
-   - Custom development: Maximum control, longest timeline
+### Who you need
 
-2. **Cloud vs. On-Premise**
-   - Cloud: Easier scaling, faster deployment, ongoing costs
-   - On-premise: Data control, security, higher upfront costs
+Someone senior who owns the budget and can say yes or no without convening anything. Someone keeping the schedule honest. Someone who understands the actual work — the person who does the job today, not the person who manages them. Someone technical to build and run the AI part. Someone who knows the systems it has to plug into. And someone whose job is the human side: telling people what is changing, and why, before it changes.
 
-3. **Integration Approach**
-   - API-based: Clean, maintainable, requires development
-   - Native integrations: Faster, less flexible
-   - Data pipelines: For batch processing scenarios
+In a small business that is three people wearing six hats, which is fine. What is not fine is nobody holding the last one.
 
-### Create a Detailed Project Plan
+### Decide the architecture
 
-Your plan should include:
-- Milestones and deliverables
-- Resource allocation
-- Risk assessment and mitigation strategies
-- Communication plan
-- Training requirements
-- Testing and validation approach
+Build, buy, or configure. Off-the-shelf software is fastest and bends least. A configurable platform sits in the middle. Custom development gives you the most control, takes the longest, and commits you to maintaining it for as long as you use it.
 
-## Phase 3: Development and Testing (Weeks 7-14)
+Cloud or on-premise. Cloud scales, deploys quickly, and bills you every month. On-premise keeps the data in the building and costs more up front.
 
-### Data Preparation
+How it connects. An API integration is clean and maintainable and takes real development time. A native integration is quicker and less flexible. A batch pipeline is the right answer whenever the work does not need answering in the moment.
 
-Budget for this to consume more of the schedule than the modelling does. It routinely does, and it is the phase most often left out of the plan:
+### Write the plan down
 
-**Steps:**
-1. **Data Collection:** Gather all relevant data sources
-2. **Data Cleaning:** Remove errors, handle missing values
-3. **Data Labeling:** If needed for supervised learning
-4. **Data Transformation:** Format data for AI consumption
-5. **Data Validation:** Ensure quality and completeness
+Milestones and what each one produces. Who is on it, for how many hours a week. What could go wrong and what you would do about it. Who gets told what, and when. What training is needed. And how you will test the thing before anyone depends on it.
 
-**Pro Tip:** Don't aim for perfect data. Start with "good enough" and improve iteratively.
+## Phase 3: development and testing (weeks 7-14)
 
-### Model Development or Configuration
+### Data preparation
 
-**For Custom Models:**
-- Start with baseline models (simpler algorithms)
-- Iterate toward more complex solutions
-- Always maintain test/validation splits
-- Document all experiments and results
+Budget for this to consume more of the schedule than the modelling does. It routinely does, and it is the phase most often left out of the plan.
 
-**For Pre-built Solutions:**
-- Configure settings for your use case
-- Customize prompts and instructions
-- Set up proper authentication and permissions
-- Test with real-world scenarios
+The work is gathering the sources, cleaning out errors and deciding what to do about the gaps, labelling if your approach needs labels, reshaping everything into a form the model can read, and then checking the result is what you think it is.
 
-### Integration Development
+Don't aim for perfect data. Get to good enough, ship, and improve it against what the system actually gets wrong rather than against what you imagined it would.
 
-Build the connections between AI and existing systems:
+### Model development or configuration
 
-**Critical Considerations:**
-- Error handling: What happens when AI fails?
-- Fallback mechanisms: Can humans step in if needed?
-- Monitoring: How do you track system health?
-- Logging: What information do you capture?
+If you are building: start with the simplest model that could plausibly work, keep a held-out test set from day one, and write down every experiment including the ones that failed. A baseline you can beat is worth more than a clever result you cannot explain.
 
-### Testing Strategy
+If you are configuring something you bought: set it up for your case, write the prompts and rules against your own material, get authentication and permissions right early, and test it on real inputs. The messy ones — the handwritten delivery note, the PDF that is really a photograph — not the tidy sample the vendor supplied.
 
-**Types of Testing Required:**
-1. **Functional Testing:** Does it work as designed?
-2. **Performance Testing:** Can it handle required volume?
-3. **Accuracy Testing:** Are results sufficiently accurate?
-4. **User Acceptance Testing:** Do end-users find it useful?
-5. **Security Testing:** Are there vulnerabilities?
-6. **Bias Testing:** Are results fair across demographics?
+### Integration
 
-## Phase 4: Pilot Deployment (Weeks 15-20)
+Four questions decide whether this survives contact with a normal Tuesday.
 
-### Start with Limited Rollout
+What happens when the AI is wrong? What happens when it is unavailable? How does a person take over, and do they know they need to? And what do you log — would the log tell you why something went sideways three weeks later, when the person who built it is on holiday?
 
-**Pilot Deployment Best Practices:**
-- Select a controlled user group (10-50 people)
-- Choose users who are tech-savvy and open to providing feedback
-- Run pilot parallel to existing processes
-- Gather quantitative and qualitative feedback
-- Be prepared to make rapid adjustments
+### Testing
 
-### Monitor Key Metrics
+Test that it does what it was designed to do. Test that it holds up at the volume you actually get rather than the volume you demoed. Test that it is accurate enough, deciding what "enough" means before you look at the result rather than after. Put it in front of the people who will use it and watch what they do, which is not always what they say. Test it for security holes. And check whether it behaves differently for different groups of people, because if it does you want to be the one who finds out.
 
-**Track Intensively During Pilot:**
-- Usage rates: Are people actually using it?
-- Accuracy metrics: How often is it correct?
-- Performance metrics: Is it fast enough?
-- User satisfaction: Net Promoter Score, feedback surveys
-- Business impact: Time saved, cost reduced, quality improved
+## Phase 4: pilot (weeks 15-20)
 
-### Iterate Based on Feedback
+### Run it beside the old way
 
-**Common Pilot Phase Findings:**
-- Users need more training than anticipated
-- Interface requires simplification
-- Integration points need adjustment
-- Accuracy needs improvement in specific scenarios
+Pick a small group, 10-50 people, and pick the ones who will tell you when it is annoying rather than the ones who will be polite. Keep the existing process running alongside. Gather numbers and complaints in equal measure, and be ready to change things quickly — a pilot nobody is allowed to change is a demo with witnesses.
 
-**Don't skip this phase.** Issues found in pilot cost hours to fix. Issues found in production cost weeks.
+### Watch these while it runs
 
-## Phase 5: Full Deployment (Weeks 21-26)
+Whether people are using it or quietly going around it. How often it is right. Whether it is fast enough that using it beats not using it. What the people using it say when nobody senior is in the room. And whether anything moved in the business itself: time, cost, quality.
 
-### Prepare for Scale
+### Expect to find these
 
-**Before full rollout:**
-- Document all processes and procedures
-- Create training materials (videos, guides, FAQs)
-- Establish support channels
-- Set up monitoring dashboards
-- Plan communication rollout
+Users need more training than you assumed. The interface needs simplifying. An integration point turns out to be wrong. Accuracy is fine in general and poor on one specific kind of input, which is usually the kind that matters most to somebody.
 
-### Phased Rollout Strategy
+Don't skip this phase. What you find in a pilot costs hours. The same thing found in production costs weeks.
 
-**Recommended Approach:**
-1. **Wave 1:** Pilot group continues (weeks 1-2)
-2. **Wave 2:** Early adopters and champions (weeks 3-4)
-3. **Wave 3:** Broader organization (weeks 5-8)
-4. **Wave 4:** Everyone (weeks 9+)
-
-This approach:
-- Prevents overwhelming support resources
-- Allows for course corrections
-- Builds internal success stories
-- Creates peer-to-peer learning
-
-### Training and Enablement
-
-**Multi-Modal Training Approach:**
-- Live training sessions for initial rollout
-- Recorded videos for reference
-- Written documentation for detail
-- Quick reference guides for common tasks
-- Office hours for questions
-- Internal community/Slack channel
-
-## Phase 6: Optimization and Scale (Ongoing)
-
-### Continuous Improvement
-
-**Establish Regular Review Cycles:**
-- Weekly: Usage metrics and immediate issues
-- Monthly: Business impact and user satisfaction
-- Quarterly: Strategic alignment and ROI assessment
-
-### Expand and Enhance
-
-**After 3-6 Months of Stable Operation:**
-- Add new features based on user requests
-- Expand to additional use cases
-- Integrate with more systems
-- Improve accuracy through additional training
-
-### Build Organizational Capability
-
-**Long-term Success Requires:**
-- Internal AI champions network
-- Regular knowledge sharing sessions
-- Innovation workshops
-- Budget for experimentation
-- Partnership with AI vendors/consultants
-
-## Common Implementation Challenges
-
-### Challenge 1: Resistance to Change
-
-**Solution:**
-- Communicate early and often
-- Involve users in design
-- Show quick wins
-- Address concerns transparently
-- Celebrate successes publicly
-
-### Challenge 2: Data Quality Issues
-
-**Solution:**
-- Start data cleanup early
-- Set realistic quality thresholds
-- Implement data governance
-- Plan for ongoing data maintenance
-
-### Challenge 3: Scope Creep
-
-**Solution:**
-- Clear requirements documentation
-- Formal change request process
-- Regular steering committee review
-- Phase 2 backlog for future enhancements
-
-### Challenge 4: Integration Complexity
-
-**Solution:**
-- Simplify architecture where possible
-- Use standard APIs and protocols
-- Plan for maintenance from day one
-- Document everything thoroughly
-
-## Measuring Success
-
-### Leading Indicators (Weeks 1-12)
-- User adoption rate
-- System availability
-- Support ticket volume
-- User satisfaction scores
-
-### Lagging Indicators (Months 3-12)
-- Time/cost savings
-- Quality improvements
-- Revenue impact
-- ROI achievement
-
-### Qualitative Indicators
-- User testimonials
-- Process improvement stories
-- Competitive advantages gained
-- Cultural shift toward innovation
+## Phase 5: full deployment (weeks 21-26)
+
+### Before you scale
+
+Write down how it works and who to call. Make training material people will actually open: a short video, a one-page guide, and an FAQ built from the questions the pilot really produced. Set up somewhere for questions to go. Get monitoring in place before you need it rather than during the first incident.
+
+### Roll out in waves
+
+The pilot group first, then the early adopters and champions, then the wider business, then everyone. Weeks between waves, not days.
+
+Waves keep your support capacity from drowning and leave room to correct course. They also mean each group hears that it works from a colleague rather than from you, which lands differently.
+
+### Training
+
+Live sessions while it is new. Recordings for the people who miss them, and everyone misses one. Written documentation for the detail nobody remembers. A one-page reference covering the five things people do daily. Office hours at a fixed time, kept up for as long as questions keep coming. And a channel where people can ask each other, which is where most of the real answers end up.
+
+## Phase 6: keeping it working (ongoing)
+
+### Review cycles
+
+Weekly, look at usage and anything on fire. Monthly, look at whether the effect you promised is showing up and at what users think. Quarterly, ask whether this is still worth what it costs — a question worth asking honestly, because sometimes the answer is no and that is a result too.
+
+### After a few months of stable running
+
+Add what users keep asking for. Extend to the next use case. Connect the systems you left out of scope the first time. Improve accuracy on the cases you now know it fails, which by this point you have real examples of rather than guesses about.
+
+### Build the capability
+
+The point of the first project is not the first project. It is the people inside who now know how to run the second one: a couple of internal champions, a habit of sharing what was learned, budget that permits an experiment to fail, and an outside relationship for the parts you would rather not own.
+
+## Where it usually goes wrong
+
+### People don't want it
+
+Tell them early and be specific about what changes for them personally. Involve the people who do the work in the design, because they know where the exceptions live and the exceptions are what break these systems. Ship something small that helps somebody in the first week. And answer the job-security question directly instead of hoping it is not being asked, because it is.
+
+### The data is worse than you thought
+
+Start the cleanup before you need it. Decide what "clean enough" means and stop when you get there. Give one person ownership of it, and budget for keeping it clean rather than treating cleanup as a one-off.
+
+### The scope keeps growing
+
+Write down what is in and what is out, and make "out" an actual list rather than an absence. Have a route for new requests that is not "sure, we'll add it". Keep a phase-two backlog: it is the most useful document in the project, because it lets you say yes and no in the same sentence.
+
+### The integration is harder than the AI
+
+Simplify the architecture wherever you can, since every connection is something to maintain. Prefer standard APIs and protocols. Assume you will be maintaining this in two years, and write it for that person.
+
+## Measuring success
+
+In the first weeks you can only see leading signs: how many people are using it, whether it stays up, how many support tickets it throws off, what users say about it.
+
+From a few months out the real ones arrive — time and cost, quality, revenue where it applies, and how all of that compares against what you said in the business case.
+
+Some of it never becomes a number. Whether people would object if you switched it off tomorrow is worth knowing, and no dashboard reports it.
 
 ## Conclusion
 
-Successful AI implementation is far more about people, process, and change management than it is about the technology. The model is rarely the part that decides whether the project lands. Organizations that recognize this, plan accordingly, and execute with discipline are the ones that see the benefit.
+Implementation is mostly people, process and change management, and only a little bit technology. Teams that know this plan for it and get somewhere. Teams that don't buy a good tool and watch it go unused.
 
-Remember:
-- Start with clear business objectives
-- Choose manageable initial projects
-- Invest heavily in change management
-- Measure everything
-- Iterate based on learnings
+Start from a problem you can state in one sentence. Pick a first project small enough to finish. Spend properly on the human side. Take the baseline reading before you deploy, because it cannot be recovered afterwards. Then change things based on what the first version actually taught you, not on what the plan predicted it would.
 
-The AI transformation journey is marathon, not a sprint. Pace yourself, celebrate wins, learn from setbacks, and continuously improve.
+None of this is fast. It does not need to be. It needs to still be working in a year.
 
 ---
 
-**Need Help?** Vivancedata specializes in guiding organizations through successful AI implementations. [Schedule a consultation](/contact) to discuss your specific needs.
+**Need help?** I build these systems one workflow at a time, on your own documents, and I am the person who scopes it, builds it, and answers the phone afterwards. [Book a call](/contact) and tell me which job goes wrong most often.

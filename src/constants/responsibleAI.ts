@@ -33,90 +33,90 @@ export interface DesignExample {
 export const principles: Principle[] = [
   {
     iconType: "users",
-    title: "Human-Centered & Inclusive",
-    description: "We design AI systems that augment human capabilities, respect human autonomy, and consider the needs of all stakeholders, including underrepresented groups."
+    title: "The judgement stays with your people",
+    description: "A system takes typing off a dispatcher or a project engineer. It does not take the decision off them. Where being wrong is expensive, the step keeps a person in it by design, not as a courtesy."
   },
   {
     iconType: "eye",
-    title: "Transparent & Explainable",
-    description: "We ensure AI systems are understandable, with clear documentation of how decisions are made and the ability to explain outcomes in human terms."
+    title: "You can see why it did that",
+    description: "Every automated decision keeps a record of what it read and which part of which document it read it from. If a figure lands in your project system, you can follow it back to the page it came off."
   },
   {
     iconType: "shield",
-    title: "Fair & Unbiased",
-    description: "We actively identify and mitigate biases in data and algorithms to ensure equitable outcomes across different demographic groups."
+    title: "Trained on your records, checked for what they got wrong",
+    description: "A system that learns from your history inherits your history, including the parts you would not want repeated automatically. I look for those patterns before the build, and I tell you when I find one I cannot design around."
   },
   {
     iconType: "bar-chart-3",
-    title: "Robust & Reliable",
-    description: "We build AI systems that perform consistently, handle edge cases gracefully, and maintain accuracy over time with changing conditions."
+    title: "It says when it is unsure",
+    description: "Anything below the confidence threshold goes to a person instead of being guessed at. An illegible signature comes back as illegible, and accuracy is re-checked as your documents and the systems around them drift."
   },
   {
     iconType: "scale",
-    title: "Accountable & Governed",
-    description: "We establish clear lines of responsibility for AI systems, with appropriate oversight and governance throughout the lifecycle."
+    title: "One name on it",
+    description: "I build it, so the question of why it did something comes to me and gets answered by the person who wrote it. There is no committee between you and the explanation."
   },
   {
     iconType: "file-text",
-    title: "Privacy & Security",
-    description: "We implement strong data protection measures and ensure AI systems respect privacy rights while maintaining security against threats."
+    title: "Scoped to the job it was built for",
+    description: "What the system may read, and what that data may be used for, is agreed in writing before anything is built. Access is limited to what the workflow needs, and the underlying records keep an access trail."
   }
 ];
 
 export const phases: Phase[] = [
   {
     number: "1",
-    title: "Assessment & Planning",
-    description: "Before any AI development begins, we conduct a thorough assessment of potential ethical implications and establish clear guidelines.",
+    title: "Before anything is built",
+    description: "Most of this work is deciding what the system is not allowed to do. That gets written down while it is still cheap to change.",
     checks: [
-      "Stakeholder impact analysis to identify affected groups",
-      "Risk assessment for potential harms or unintended consequences",
-      "Data privacy and security evaluation",
-      "Establishment of ethical boundaries and success metrics"
+      "Who is hurt by a wrong answer, and how badly — the customer, the crew, the driver",
+      "The worst plausible failure, described in one sentence you can argue with",
+      "What the system may read, and what it may never use that data for",
+      "The confidence threshold below which it must hand back to a person"
     ]
   },
   {
     number: "2",
-    title: "Design & Development",
-    description: "During the design and development phase, we incorporate ethical considerations into the technical implementation.",
+    title: "While it is being built",
+    description: "The design decisions that make a system explainable have to be made during the build. They cannot be added to a finished one.",
     checks: [
-      "Diverse and representative data collection and curation",
-      "Bias detection and mitigation in training data",
-      "Explainability mechanisms built into model architecture",
-      "Regular ethical reviews throughout development"
+      "Sample documents drawn from your messy range, not the three clean ones",
+      "A check on whether your own records carry a pattern you would not want automated",
+      "Every extracted value linked back to the page and region it came from",
+      "A human approval kept in any step where being wrong is expensive"
     ]
   },
   {
     number: "3",
-    title: "Testing & Validation",
-    description: "We rigorously test AI systems to ensure they meet our ethical standards before deployment.",
+    title: "Before it goes live",
+    description: "I try to break it on purpose, on your material, while nothing depends on the answer.",
     checks: [
-      "Fairness testing across different demographic groups",
-      "Adversarial testing to identify potential vulnerabilities",
-      "User testing with diverse participants",
-      "Documentation of model limitations and edge cases"
+      "The bad inputs run deliberately: the illegible scan, the heavy accent, the missing page",
+      "Output compared against what your people produce on the same documents",
+      "Put in front of whoever will use it daily, before launch rather than after",
+      "What it cannot do written down in plain terms and handed over with it"
     ]
   },
   {
     number: "4",
-    title: "Deployment & Monitoring",
-    description: "After deployment, we continuously monitor AI systems to ensure they maintain ethical performance.",
+    title: "Once it is running",
+    description: "It runs beside your existing process first, and nothing depends on it until the two agree.",
     checks: [
-      "Ongoing performance monitoring for drift or degradation",
-      "Regular audits for fairness and bias",
-      "Feedback mechanisms for users to report concerns",
-      "Incident response plan for addressing ethical issues"
+      "The disagreements between the system and the old way reviewed, not just counted",
+      "Accuracy re-checked as document formats and upstream APIs drift",
+      "A way for your people to report a bad answer and get a reply from me",
+      "A switch-off procedure, and a named person who is allowed to use it"
     ]
   },
   {
     number: "5",
-    title: "Governance & Improvement",
-    description: "We maintain oversight and continuously improve our AI systems based on real-world performance.",
+    title: "Keeping it honest afterwards",
+    description: "A system nobody is watching degrades quietly. The monthly cost is what stops that.",
     checks: [
-      "Regular review by ethics committee or board",
-      "Continuous learning and improvement based on feedback",
-      "Transparency reporting on system performance",
-      "Version control and responsible updates"
+      "Errors reviewed with you on a set interval, not when someone complains",
+      "Any change to what the system decides agreed before it ships",
+      "Versions kept, so you can see what changed and when",
+      "The data agreement revisited whenever the system's job changes"
     ]
   }
 ];

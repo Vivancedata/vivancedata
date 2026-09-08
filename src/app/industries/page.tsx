@@ -7,12 +7,12 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Industry Solutions - Vivancedata",
-  description: "AI solutions built for the trades and the field: construction, HVAC and the service trades, logistics and fleet operations, and manufacturing.",
+  title: "Industries - Vivancedata",
+  description: "AI built for the trades and the field: construction, HVAC and the service trades, logistics and fleet operations, and manufacturing.",
   keywords: ["industry solutions", "AI for construction", "AI for HVAC", "AI for the trades", "AI for logistics", "AI for fleet operations", "AI for manufacturing"],
   openGraph: {
-    title: "Industry-Specific AI Solutions - Vivancedata",
-    description: "AI solutions for construction, HVAC and the trades, logistics and fleet operations, and manufacturing.",
+    title: "Industries - Vivancedata",
+    description: "AI for construction, HVAC and the trades, logistics and fleet operations, and manufacturing.",
     type: "website",
     url: "https://vivancedata.com/industries",
     images: [
@@ -26,8 +26,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Industry-Specific AI Solutions - Vivancedata",
-    description: "Specialized AI solutions tailored to your industry.",
+    title: "Industries - Vivancedata",
+    description: "AI for construction, HVAC and the trades, logistics and fleet, and manufacturing.",
     images: ["https://vivancedata.com/images/ai-solutions.png"],
   },
 };
@@ -49,7 +49,7 @@ const IndustryCard = ({ title, description, theme, href }: IndustryCardProps) =>
       <p className="text-muted-foreground mb-4">{description}</p>
       <Button asChild variant="outline" className="group">
         <Link href={href}>
-          <span>Explore Solutions</span>
+          <span>See what I build</span>
           <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
         </Link>
       </Button>
@@ -79,7 +79,7 @@ export default function IndustriesPage() {
     },
     {
       title: "Manufacturing",
-      description: "AI-powered systems for predictive maintenance, quality control, supply chain optimization, and smart factory operations.",
+      description: "Quality checks read off photos, maintenance flagged from machine logs, and the paperwork that moves between the floor and the office.",
       theme: "from-primary to-primary/85",
       href: "/industries/manufacturing"
     }
@@ -88,10 +88,10 @@ export default function IndustriesPage() {
   return (
     <Container className="py-16">
       <div className="text-center mb-16">
-        <Heading className="text-4xl md:text-5xl mb-4">Industry-Specific AI Solutions</Heading>
+        <Heading className="mb-4 font-display text-serif-xl">The four trades I work in</Heading>
         <Paragraph className="max-w-3xl mx-auto text-lg">
-          We work with blue-collar and local service businesses — construction, HVAC and the trades,
-          logistics and fleet operations, and manufacturing.
+          Blue-collar and local service businesses — construction, HVAC and the trades,
+          logistics and fleet operations, and manufacturing. Nothing else, on purpose.
         </Paragraph>
       </div>
 
@@ -112,20 +112,20 @@ export default function IndustriesPage() {
       </div>
 
       <div className="mb-20">
-        <h2 className="text-heading-1 mb-8 text-center">Why Choose Industry-Specific AI Solutions</h2>
+        <h2 className="mb-8 font-display text-serif-lg text-center">Why the trade matters</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             {
-              title: "Domain Expertise",
-              description: "Our solutions are built with deep understanding of industry-specific processes, regulations, and challenges."
+              title: "The document decides the design",
+              description: "A submittal, a bill of lading and a work order each go wrong in their own way. Knowing which fields matter and which are noise is most of the accuracy."
             },
             {
-              title: "Faster Time-to-Value",
-              description: "Pre-built industry components and accelerators reduce implementation time and speed up ROI."
+              title: "Narrow on purpose",
+              description: "Four trades rather than every industry. The alternative is a general-purpose tool that needs a long project just to learn what a job number is."
             },
             {
-              title: "Tailored Outcomes",
-              description: "Solutions designed to address the specific KPIs and metrics that matter most in your industry."
+              title: "It has to fit the day",
+              description: "Whoever uses this is on a ladder or in a truck. Anything that assumes a desk and a spare twenty minutes goes unused."
             }
           ].map((benefit) => (
             <div key={benefit.title} className="bg-card p-6 rounded-xl border border-border">
@@ -137,17 +137,17 @@ export default function IndustriesPage() {
       </div>
 
       <div className="mb-20">
-        <h2 className="text-heading-1 mb-8 text-center">Our Industry Approach</h2>
+        <h2 className="mb-8 font-display text-serif-lg text-center">How the work runs</h2>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {[
-            { number: "01", title: "Industry Assessment", description: "We analyze your specific industry context, challenges, and opportunities." },
-            { number: "02", title: "Solution Design", description: "We design AI solutions tailored to your industry's unique requirements and regulations." },
-            { number: "03", title: "Implementation", description: "We deploy industry-optimized AI systems with minimal disruption to your operations." },
-            { number: "04", title: "Continuous Improvement", description: "We continuously refine and enhance your solutions based on industry developments." }
+            { number: "01", title: "Watch the work", description: "A morning with whoever answers the phone and whoever keys in the paperwork." },
+            { number: "02", title: "Pick one workflow", description: "The one that repeats most and fails most clearly. If nothing clears that bar, I say so." },
+            { number: "03", title: "Build it on your documents", description: "Your permits, your calls, your delivery photos, so you can judge it against answers you already know." },
+            { number: "04", title: "Run it beside the old way", description: "The current process keeps going underneath while the new one proves itself, and keeps being tuned as formats drift." }
           ].map((step) => (
             <div key={step.number} className="bg-card p-6 rounded-xl border border-border text-center">
               <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center mx-auto mb-4">
-                <span className="text-brand font-bold">{step.number}</span>
+                <span className="text-label uppercase text-mute">{step.number}</span>
               </div>
               <h3 className="text-heading-3 mb-3">{step.title}</h3>
               <p className="text-muted-foreground">{step.description}</p>
@@ -157,9 +157,9 @@ export default function IndustriesPage() {
       </div>
       
       <div className="bg-muted rounded-xl p-8 md:p-12 text-center">
-        <h2 className="text-heading-1 mb-4">Ready to Transform Your Industry?</h2>
+        <h2 className="mb-4 font-display text-serif-lg">Not sure this fits your operation?</h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
-          Let&apos;s discuss how our industry-specific AI solutions can address your unique challenges and opportunities.
+          Tell me what goes wrong most often in your week, and I will tell you straight whether it is worth building for.
         </p>
         <Button asChild size="lg" >
           <Link href="/contact">Book a call</Link>

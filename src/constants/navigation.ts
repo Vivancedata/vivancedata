@@ -17,7 +17,7 @@ export const navItems: NavItem[] = [
     href: "/services",
     hasDropdown: true,
     dropdownItems: [
-      { name: "Generative AI Solutions", href: "/services/generative-ai" },
+      { name: "Generative AI", href: "/services/generative-ai" },
       { name: "AI Strategy Consulting", href: "/services/consulting" },
       { name: "AI Training & Workshops", href: "/services/training" },
       { name: "How an engagement runs", href: "/methodology" },
@@ -63,7 +63,7 @@ export const navItems: NavItem[] = [
     href: "/about",
     hasDropdown: true,
     dropdownItems: [
-      { name: "Our Story", href: "/about" },
+      { name: "About me", href: "/about" },
       { name: "Careers", href: "/career" },
       { name: "Contact", href: "/contact" },
     ],
@@ -134,7 +134,7 @@ export const footerLinks: FooterSection[] = [
   {
     title: "Company",
     links: [
-      { label: "About Us", href: "/about" },
+      { label: "About", href: "/about" },
       { label: "Pricing", href: "/pricing" },
       { label: "Careers", href: "/career" },
       { label: "Contact", href: "/contact" },

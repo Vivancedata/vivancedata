@@ -37,7 +37,7 @@ const AboutPage = () => {
       id: "1",
       name: "Lorenzo Scaturchio",
       role: "Founder & AI Engineer",
-      bio: "Lorenzo brings a background in software engineering and applied AI to help companies move from proof-of-concept to production. He leads every engagement directly — no hand-off to a junior team.",
+      bio: "Software engineering and applied AI, most of it spent on the gap between a demo that works once and a system that runs every morning. I lead every engagement myself, and there is nobody to hand you off to.",
       initials: "LS",
     },
   ];
@@ -45,12 +45,7 @@ const AboutPage = () => {
   return (
     <div>
       <PageHero
-        eyebrow="About"
-        title={
-          <>
-            About <span className="text-brand">Vivancedata</span>
-          </>
-        }
+        title="About Vivancedata"
         description="I'm Lorenzo. I build the small, specific systems that take the after-hours call and the twice-typed paperwork off a trade business, and I stay on to keep them running."
       />
 

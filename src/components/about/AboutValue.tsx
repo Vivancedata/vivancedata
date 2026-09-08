@@ -25,7 +25,7 @@ export function AboutValue({ title, description, imageSrc }: AboutValueProps): R
         }
       >
         <div>
-          <h2 className="text-display mb-6">{title}</h2>
+          <h2 className="mb-6 font-display text-serif-lg">{title}</h2>
           <p className="text-lg text-muted-foreground leading-relaxed mb-6">
             {description}
           </p>

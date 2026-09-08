@@ -252,7 +252,7 @@ export const useCases: UseCase[] = [
     keyBenefits: [
       "Earlier failure detection from sensor signals",
       "Maintenance scheduled rather than reactive",
-      "Better cost predictability for maintenance budgets",
+      "Parts ordered in normal time rather than couriered",
     ],
   },
   {
@@ -267,7 +267,7 @@ export const useCases: UseCase[] = [
     implementationTime: "8-14 weeks",
     keyBenefits: [
       "Defects caught earlier in the cycle",
-      "Reduced rework and scrap volumes",
+      "Scrap caught at the machine, not at final QC",
       "Root cause traceable to the batch",
     ],
   },

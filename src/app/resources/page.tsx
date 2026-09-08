@@ -12,53 +12,53 @@ import {
 
 export const metadata: Metadata = {
   title: "Resources - Vivancedata",
-  description: "Explore our AI resources including blog articles, ROI calculator, AI readiness assessment, innovation hub, and responsible AI guidelines.",
+  description: "The free things on this site: notes from the work, an ROI calculator, a readiness assessment, what I am testing, and how I handle the risky parts.",
   keywords: ["AI resources", "AI tools", "ROI calculator", "AI readiness", "AI blog", "responsible AI"],
   openGraph: {
     title: "Resources - Vivancedata",
-    description: "Explore our AI resources including tools, calculators, and educational content.",
+    description: "Notes from the work, an ROI calculator, a readiness assessment, and how I handle the parts that can go wrong.",
     type: "website",
     url: "https://vivancedata.com/resources",
   },
   twitter: {
     card: "summary_large_image",
     title: "Resources - Vivancedata",
-    description: "Explore our AI resources including tools, calculators, and educational content.",
+    description: "Notes from the work, an ROI calculator, a readiness assessment, and how I handle the parts that can go wrong.",
   },
 };
 
 const resources = [
   {
     title: "Blog",
-    description: "Practical writing on AI implementation, plus free tools for sizing a project before you commit budget to it.",
+    description: "What happens when a model meets real paperwork, real calls and real crews, including the parts that do not work.",
     href: "/blog",
     icon: BookOpen,
     color: "bg-brand",
   },
   {
     title: "ROI Calculator",
-    description: "Calculate the potential return on investment for your AI initiatives. Get data-driven insights to build your business case.",
+    description: "Put your own numbers in and see what a build would cost, what it might save, and how long before it pays back.",
     href: "/tools/roi-calculator",
     icon: Calculator,
     color: "bg-brand",
   },
   {
     title: "AI Readiness Assessment",
-    description: "Evaluate your organization's readiness for AI adoption. Identify gaps and get recommendations for your AI journey.",
+    description: "Twenty questions about your records, your systems and your people, and a straight read on whether you are ready yet.",
     href: "/tools/ai-readiness",
     icon: ClipboardCheck,
     color: "bg-brand",
   },
   {
     title: "Innovation Hub",
-    description: "Discover cutting-edge AI innovations and explore how emerging technologies can transform your business operations.",
+    description: "What I am testing before it goes near a job someone depends on, and what I am watching but would not build on yet.",
     href: "/innovation-hub",
     icon: Lightbulb,
     color: "bg-brand",
   },
   {
     title: "Responsible AI",
-    description: "Learn about our commitment to ethical AI practices, including fairness, transparency, and accountability in AI systems.",
+    description: "How the parts that can go wrong get handled: what the system decides alone, what waits for a person, and what gets written down.",
     href: "/responsible-ai",
     icon: Shield,
     color: "bg-brand",
@@ -70,11 +70,12 @@ export default function ResourcesPage() {
     <main className="py-16 sm:py-24">
       <Container>
         <div className="mx-auto max-w-2xl text-center mb-16">
-          <h1 className="text-display text-foreground">
+          <h1 className="max-w-[17ch] font-display text-serif-xl text-foreground">
             Resources
           </h1>
           <p className="mt-6 text-lg leading-8 text-muted-foreground">
-            Explore our collection of tools, guides, and insights to help you navigate your AI journey.
+            The free things. Two tools for sizing a project before you commit budget to it, and
+            notes from the work for everything else.
           </p>
         </div>
 

@@ -6,7 +6,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "AI Use Cases Repository - Vivancedata",
+  title: "AI Use Cases - Vivancedata",
   description:
     "Browse practical AI use cases for construction, HVAC and the trades, logistics and fleet operations, and manufacturing.",
   keywords: [
@@ -22,9 +22,9 @@ export const metadata: Metadata = {
     "field service AI",
   ],
   openGraph: {
-    title: "AI Use Cases Repository - Vivancedata",
+    title: "AI Use Cases - Vivancedata",
     description:
-      "Explore practical AI applications across industries. Find the right use case for your business with our searchable database.",
+      "Practical AI use cases for construction, HVAC and the trades, logistics and fleet, and manufacturing. Searchable by industry and function.",
     type: "website",
     url: "https://vivancedata.com/tools/use-cases",
     images: [
@@ -38,9 +38,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Use Cases Repository - Vivancedata",
+    title: "AI Use Cases - Vivancedata",
     description:
-      "Explore practical AI applications across industries. Find the right use case for your business.",
+      "Practical AI use cases for construction, HVAC and the trades, logistics and fleet, and manufacturing.",
     images: ["https://vivancedata.com/images/ai-solutions.png"],
   },
 };
@@ -49,8 +49,8 @@ export default function UseCasesPage() {
   return (
     <Container className="py-16 max-w-7xl">
       <div className="text-center mb-12">
-        <Heading className="text-4xl md:text-5xl mb-4">
-          AI Use Cases Repository
+        <Heading className="mb-4 font-display text-serif-xl">
+          AI use cases
         </Heading>
         <Paragraph className="max-w-3xl mx-auto text-lg">
           Practical AI applications for construction, HVAC and the trades,
@@ -62,7 +62,7 @@ export default function UseCasesPage() {
       <UseCasesExplorer />
 
       <div className="mt-16 bg-muted rounded-xl p-8">
-        <h2 className="text-heading-2 mb-4">Ready to Implement?</h2>
+        <h2 className="mb-4 font-display text-serif-md">Found one that matches?</h2>
         <div className="space-y-4 text-foreground">
           <p>
             These are the workflows I build most often in construction, the
@@ -73,24 +73,24 @@ export default function UseCasesPage() {
           </p>
           <div className="grid md:grid-cols-3 gap-6 mt-6">
             <div>
-              <h3 className="text-heading-4 mb-2">Assessment</h3>
+              <h3 className="text-heading-4 mb-2">First, a look</h3>
               <p className="text-sm">
-                We evaluate your readiness and identify the highest-impact
-                opportunities for AI implementation.
+                I sit with the work, and we pick the one job worth building
+                for. If nothing clears that bar, I say so.
               </p>
             </div>
             <div>
-              <h3 className="text-heading-4 mb-2">Implementation</h3>
+              <h3 className="text-heading-4 mb-2">Then the build</h3>
               <p className="text-sm">
-                We guide you through the entire process, from data
-                preparation to production deployment.
+                Built on your own documents, running beside the existing
+                process until you trust it.
               </p>
             </div>
             <div>
-              <h3 className="text-heading-4 mb-2">Optimization</h3>
+              <h3 className="text-heading-4 mb-2">Then keeping it alive</h3>
               <p className="text-sm">
-                We continuously monitor and improve your AI solutions to
-                maximize ROI over time.
+                Formats drift and APIs change, so something has to watch it.
+                That monthly cost is quoted up front.
               </p>
             </div>
           </div>

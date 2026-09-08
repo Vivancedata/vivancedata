@@ -4,11 +4,11 @@ import { IndustryPage, type IndustryPageConfig } from "@/components/industries/I
 import { demos } from "@/constants/demos";
 
 export const metadata: Metadata = {
-  title: "AI Solutions for Construction - Vivancedata",
+  title: "AI for Construction - Vivancedata",
   description: "Cut the paperwork load on submittals, RFIs, daily reports and permits with AI that writes into the project software your team already runs.",
   keywords: ["construction AI", "submittal processing", "RFI automation", "daily reports", "construction document management", "preconstruction estimating"],
   openGraph: {
-    title: "AI Solutions for Construction - Vivancedata",
+    title: "AI for Construction - Vivancedata",
     description: "Document intake, daily report assembly, bid support and compliance records for construction teams.",
     type: "website",
     url: "https://vivancedata.com/industries/construction",
@@ -17,23 +17,23 @@ export const metadata: Metadata = {
 
 const config: IndustryPageConfig = {
   eyebrow: "Construction",
-  title: "AI Solutions for Construction",
+  title: "AI for construction",
   heroVisual: {
     label: "// Submittal Intake",
     steps: ["Emailed PDF", "Field Extraction", "Validation", "Project System"],
   },
-  introHeading: "Taking the Paperwork Off the Critical Path",
+  introHeading: "Taking the paperwork off the critical path",
   introBody: `Paperwork volume is the constraint. RFIs, submittals, daily reports, permits and invoices move through email and PDFs, and the people who understand them are needed on site.
 
-At Vivancedata, we build workflows that read the documents your projects already generate, check them against your own rules, and hand a superintendent or estimator something to review rather than something to type.
+I build workflows that read the documents your projects already generate, check them against your own rules, and hand a superintendent or estimator something to review rather than something to type.
 
 Nothing here replaces the judgement of the person signing off. The work is drafted, the exceptions are surfaced, and a human decides what goes into the record.`,
   introCtaLabel: "Book a call",
   demo: demos.paperwork,
-  solutionsHeading: "Our Construction AI Solutions",
+  solutionsHeading: "What I build for construction sites",
   solutions: [
     {
-      title: "Document Intake",
+      title: "Document intake",
       description: "Pull structured data out of submittals, permits, RFIs and supplier invoices, validate it against your project rules, and write it into the system you already use.",
       icon: <FileText className="h-6 w-6 text-brand" />,
       benefits: [
@@ -44,7 +44,7 @@ Nothing here replaces the judgement of the person signing off. The work is draft
       ],
     },
     {
-      title: "Daily Report Assembly",
+      title: "Daily report assembly",
       description: "Turn field notes, photos and timesheets into the daily report format your client and insurer expect, drafted for a human to check rather than written from scratch.",
       icon: <ClipboardList className="h-6 w-6 text-brand" />,
       benefits: [
@@ -55,7 +55,7 @@ Nothing here replaces the judgement of the person signing off. The work is draft
       ],
     },
     {
-      title: "Bid and Estimate Support",
+      title: "Bid and estimate support",
       description: "Search prior bids, supplier quotes and cost history so estimators start from what you actually paid last time instead of a blank sheet.",
       icon: <Calculator className="h-6 w-6 text-brand" />,
       benefits: [
@@ -66,7 +66,7 @@ Nothing here replaces the judgement of the person signing off. The work is draft
       ],
     },
     {
-      title: "Compliance and Safety Records",
+      title: "Compliance and safety records",
       description: "Keep certifications, toolbox talks and incident reports searchable and current, with expiries flagged before they lapse.",
       icon: <HardHat className="h-6 w-6 text-brand" />,
       benefits: [
@@ -77,20 +77,20 @@ Nothing here replaces the judgement of the person signing off. The work is draft
       ],
     },
   ],
-  statsHeading: "Where AI Earns Its Keep in Construction",
+  statsHeading: "Where it earns its keep on a project",
   stats: [
-    { value: "Document Intake", label: "Submittals, permits, RFIs and invoices" },
-    { value: "Field-First", label: "Works from photos and notes crews already take" },
-    { value: "Your Software", label: "Writes into the project system you run" },
-    { value: "Human Sign-off", label: "Drafts for review, never filed automatically" },
+    { value: "Document intake", label: "Submittals, permits, RFIs and invoices" },
+    { value: "Field-first", label: "Works from photos and notes crews already take" },
+    { value: "Your software", label: "Writes into the project system you run" },
+    { value: "Human sign-off", label: "Drafts for review, never filed automatically" },
   ],
   scenariosHeading: "What a build looks like",
   scenarios: [
     {
-      title: "Submittal Processing Workflow",
+      title: "Submittal processing",
       demo: demos.paperwork,
-      challenge: "Submittals arrived as emailed PDFs from dozens of subcontractors in no consistent format, and a project engineer was re-keying them into the project system by hand.",
-      solution: "Built an intake workflow that reads each submittal, extracts the spec section, product data and dates, checks them against the project's own requirements, and stages the record for the engineer to approve.",
+      challenge: "Submittals arrive as emailed PDFs from dozens of subcontractors in no consistent format, and a project engineer re-keys them into the project system by hand.",
+      solution: "An intake workflow reads each submittal, pulls out the spec section, product data and dates, checks them against the project's own requirements, and stages the record for the engineer to approve.",
       results: [
         "Re-keying replaced by review",
         "Consistent capture regardless of subcontractor format",
@@ -99,10 +99,10 @@ Nothing here replaces the judgement of the person signing off. The work is draft
       ],
     },
     {
-      title: "Daily Report Drafting",
+      title: "Daily report drafting",
       demo: demos.field,
-      challenge: "Superintendents were writing daily reports in the evening from memory, photos and scattered notes, and the format varied by crew.",
-      solution: "Assembled the field photos, timesheets and voice notes already captured during the day into a draft report in the client's required format, held for the superintendent to correct and submit.",
+      challenge: "Superintendents write daily reports in the evening from memory, photos and scattered notes, and the format varies by crew.",
+      solution: "The photos, timesheets and voice notes already captured during the day are assembled into a draft in the format the client wants, held for the superintendent to correct and submit.",
       results: [
         "Reports drafted from what the crew already recorded",
         "One format across every crew and site",
@@ -111,9 +111,9 @@ Nothing here replaces the judgement of the person signing off. The work is draft
       ],
     },
     {
-      title: "Certification Expiry Tracking",
-      challenge: "Certifications and training records lived in one administrator's spreadsheet, and lapses were usually discovered when a crew arrived at a site that would not let them work.",
-      solution: "Consolidated certification records into a searchable set, extracted the expiry date from each uploaded document, and flagged renewals ahead of the date on a defined schedule.",
+      title: "Certification expiry tracking",
+      challenge: "Certifications and training records live in one administrator's spreadsheet, and a lapse gets discovered when a crew arrives at a site that will not let them work.",
+      solution: "Certification records go into one searchable set, the expiry date is read off each uploaded document, and renewals are raised ahead of the date on a schedule you set.",
       results: [
         "Renewals raised before the certificate lapses",
         "Records retrievable during a site audit",
@@ -122,11 +122,11 @@ Nothing here replaces the judgement of the person signing off. The work is draft
       ],
     },
   ],
-  processHeading: "Construction AI Implementation Process",
+  processHeading: "How a construction build runs",
   process: [
     {
-      title: "Document and Workflow Assessment",
-      description: "We follow the paperwork you already produce — which documents arrive, in what format, who handles them, and where the queue backs up — and pick the one workflow worth automating first.",
+      title: "Document and workflow assessment",
+      description: "I follow the paperwork you already produce: which documents arrive, in what format, who handles them, and where the queue backs up. Then we pick the one workflow worth automating first.",
       checks: [
         "Inventory of document types and where each one arrives",
         "Volume and handling time measured per workflow",
@@ -135,8 +135,8 @@ Nothing here replaces the judgement of the person signing off. The work is draft
       ],
     },
     {
-      title: "Extraction Design and System Fit",
-      description: "We design extraction and validation against your own project rules, and confirm early how results write back into the project software you run rather than a new system beside it.",
+      title: "Extraction design and system fit",
+      description: "I design the extraction and validation against your own project rules, and settle early how results write back into the project software you already run rather than into a new system beside it.",
       checks: [
         "Field mapping against your own project rules",
         "Validation thresholds and exception routing",
@@ -145,8 +145,8 @@ Nothing here replaces the judgement of the person signing off. The work is draft
       ],
     },
     {
-      title: "Pilot on a Live Project",
-      description: "We run the workflow on one active project alongside the current process, compare what it produces against what your team produces, and tune it before anything depends on it. Typical pilot scope is 3-6 weeks.",
+      title: "Pilot on a live project",
+      description: "The workflow runs on one active project alongside your current process. Its output gets compared against what your team produces, and tuned before anything depends on it. Typical pilot scope is 3-6 weeks.",
       checks: [
         "Run in parallel with the current process",
         "Output compared against what your team produces",
@@ -155,8 +155,8 @@ Nothing here replaces the judgement of the person signing off. The work is draft
       ],
     },
     {
-      title: "Rollout and Ongoing Tuning",
-      description: "We extend the workflow to more projects and document types, and keep tuning as subcontractor formats and project requirements change.",
+      title: "Rollout and ongoing tuning",
+      description: "The workflow extends to more projects and document types, and I keep tuning it as subcontractor formats and project requirements change.",
       checks: [
         "Extension to further projects and document types",
         "Monitoring for drift as formats change",
@@ -165,8 +165,8 @@ Nothing here replaces the judgement of the person signing off. The work is draft
       ],
     },
   ],
-  finalCtaHeading: "Ready to Get the Paperwork Off Your Team?",
-  finalCtaBody: "Let's discuss which documents are costing your project team the most time, and what it would take to draft them instead of typing them.",
+  finalCtaHeading: "Which documents cost your team the most evenings?",
+  finalCtaBody: "Tell me which ones, and I will tell you what it would take to draft them instead of typing them.",
   finalCtaLabel: "Book a call",
 };
 

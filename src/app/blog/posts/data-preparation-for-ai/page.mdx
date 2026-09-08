@@ -1,6 +1,6 @@
 ---
 title: "Data Preparation for AI: The Foundation of Success"
-description: "Master the critical but often overlooked process of preparing your data for AI implementation. Learn strategies for data collection, cleaning, and quality assurance."
+description: "The unglamorous work that decides whether a model survives production: finding what you have, cleaning it, and proving it is fit to train on."
 date: "2025-01-29"
 tags: ["Data Preparation", "Data Quality", "AI Implementation"]
 image: "/images/ai-solutions.png"
@@ -8,26 +8,22 @@ image: "/images/ai-solutions.png"
 
 # Data Preparation for AI: The Foundation of Success
 
-There's a saying in AI circles: "Garbage in, garbage out." No matter how sophisticated your AI model, it will only be as good as the data you feed it. Data preparation routinely consumes more of the schedule than the modelling does, and it is almost always the phase that was underestimated when the plan was written.
+A model can only learn what its data contains, and most data contains less than the people who own it think. Preparing it routinely takes more of the schedule than the modelling does, and it is almost always the phase that was underestimated when the plan was written.
 
-This guide provides a practical roadmap for preparing your data for AI success.
+This is a practical route through that work: what to look at, what to fix, and how to know when it is fit to train on.
 
-## Why Data Preparation Matters
+## Why it matters
 
-### The Reality of AI Projects
+### Where AI projects actually break
 
-Most AI projects don't fail because of algorithm selection or computational power. They fail because of data problems:
+Very few projects fail on algorithm selection or compute. They fail on data.
 
-- **Insufficient Volume:** Not enough examples for the AI to learn patterns
-- **Poor Quality:** Errors, inconsistencies, and missing values that confuse models
-- **Bias:** Historical data that reflects past biases, leading to unfair outcomes
-- **Inaccessibility:** Data locked in silos or legacy systems
-- **Lack of Labels:** Unlabeled data when you need supervised learning
+There isn't enough of it, so the model never sees the pattern often enough to learn it. What exists is full of errors, inconsistencies and gaps. It carries the shape of past decisions, so the model reproduces them and calls it a prediction. It sits in a system nobody can get an export out of. Or it isn't labelled, and the approach you chose needs labels.
 
-### The Cost of Poor Data
+### What poor data costs
 
-Three failure patterns worth recognising, because each one produces a model that
-trains cleanly and fails quietly:
+Three failure patterns are worth recognising, because each one produces a model
+that trains cleanly and fails quietly.
 
 **Missing context in the source records.** Consider a readmission prediction model
 built on discharge records where the post-discharge care plan is frequently absent.
@@ -46,31 +42,17 @@ inflate the apparent frequency of whatever those records contain, and the model
 becomes miscalibrated for that population specifically — which is hard to see in
 an aggregate accuracy score.
 
-## The Five Stages of Data Preparation
+## The five stages of data preparation
 
-### Stage 1: Data Discovery and Assessment
+### Stage 1: discovery and assessment
 
-Before you can prepare data, you need to understand what you have.
+Before you can prepare data, you need to know what you have.
 
-**Inventory Your Data Sources**
+Inventory the sources: internal databases like the CRM and the ERP, file storage full of spreadsheets and documents, anything bought or downloaded from outside, real-time streams from sensors or web analytics, and the unstructured pile — emails, PDFs, photographs of paperwork.
 
-Create a comprehensive list:
-- Internal databases (CRM, ERP, etc.)
-- File storage (spreadsheets, documents)
-- External sources (third-party data, public datasets)
-- Real-time streams (IoT sensors, web analytics)
-- Unstructured sources (emails, PDFs, images)
+Then assess each one on five questions. What share of fields is populated? How often are the values correct? Do they match what the same field says in another system? Is the data current? And does it conform to the formats and ranges you expect?
 
-**Assess Data Quality**
-
-For each source, evaluate:
-- **Completeness:** What percentage of fields are populated?
-- **Accuracy:** How often are values correct?
-- **Consistency:** Do values match across systems?
-- **Timeliness:** Is data current or outdated?
-- **Validity:** Do values conform to expected formats and ranges?
-
-**What to record for each source:**
+Record it like this:
 
 ```
 Customer Database Audit:
@@ -87,67 +69,34 @@ nothing on its own — the number is entirely a function of whether you matched 
 exact email, fuzzy name, or address proximity, and the next person to run the audit
 will get a different answer unless the rule travels with it.
 
-### Stage 2: Data Collection and Integration
+### Stage 2: collection and integration
 
 Once you know what you need, gather and consolidate it.
 
-**Define Collection Requirements**
+Be specific about the requirement. How much history do you need, and which attributes actually matter? On volume, there is no universal answer, but the
+ordering is reliable: a simple classifier over a handful of well-separated classes
+needs far less than a model predicting a rare outcome from many weak signals, and
+training a deep model from scratch needs more again by a wide margin. What
+actually governs it is how many examples you have of the *rarest class you care
+about* — the total row count is the number people quote and the least informative
+one. Establish the requirement empirically: train on a fraction of what you have,
+then on more, and see whether performance is still climbing.
 
-Be specific about what you need:
-- **Volume:** How many examples do you need? There is no universal answer, but the
-  ordering is reliable: a simple classifier over a handful of well-separated classes
-  needs far less than a model predicting a rare outcome from many weak signals, and
-  training a deep model from scratch needs more again by a wide margin. What
-  actually governs it is how many examples you have of the *rarest class you care
-  about* — the total row count is the number people quote and the least informative
-  one. Establish the requirement empirically: train on a fraction of what you have,
-  then on more, and see whether performance is still climbing.
-- **Timeframe:** How much historical data?
-- **Features:** What specific attributes matter?
+Combining sources brings two problems. The first is schema: the same concept under different field names (`customer_id` against `cust_num`), the same value in different types (dates as strings, dates as timestamps), and the same quantity in different units (dollars against cents, metres against feet). Define one master schema and the transformation rules into it:
 
-**Integration Challenges**
-
-When combining data from multiple sources:
-
-**Schema Mapping**
-- Different field names for same concept (customer_id vs. cust_num)
-- Different data types (dates as strings vs. timestamps)
-- Different units (dollars vs. cents, meters vs. feet)
-
-**Solution:** Create a master schema and transformation rules
 ```
 Source A: customer_id (string) → Master: customer_identifier (integer)
 Source B: cust_num (integer) → Master: customer_identifier (integer)
 ```
 
-**Temporal Alignment**
-- Events from different systems recorded at different times
-- Time zones inconsistencies
-- Batch vs. real-time data capture
+The second is time. Events land in different systems at different moments, time zones disagree, and batch capture sits alongside real-time capture. Pick one timestamp standard — UTC — and write down the synchronisation rules rather than leaving them in someone's head.
 
-**Solution:** Establish a consistent timestamp standard (UTC) and synchronization rules
+### Stage 3: cleaning
 
-### Stage 3: Data Cleaning
+This is usually the longest phase.
 
-This is often the most time-intensive phase.
+**Missing values.** You have three options. Deletion removes records with missing critical values, and is right when the affected records are a small share of the total *and* the missingness is random. The second condition is the one that matters and the one nobody checks — if a field is missing because of something systematic, deleting those rows deletes a population. Imputation fills the gap with an estimate: mean or median for numbers, mode for categories, a model for anything more complicated. Flagging keeps the record and adds a "missing" indicator, letting the model learn that the absence itself means something, which is often true.
 
-**Handle Missing Values**
-
-**Strategy 1: Deletion**
-- Remove records with missing critical values
-- Use when: the affected records are a small share of the total *and* the missingness is random. The second condition is the one that matters and the one nobody checks — if a field is missing because of something systematic, deleting those rows deletes a population.
-
-**Strategy 2: Imputation**
-- Fill missing values with estimates
-- Mean/median for numerical data
-- Mode for categorical data
-- Predictive models for complex patterns
-
-**Strategy 3: Flagging**
-- Keep the record, create a "missing" indicator
-- Let the AI learn that missing values have meaning
-
-**Example Decision Tree:**
 ```
 Is the field critical for prediction?
 ├─ Yes: Can you impute reliably?
@@ -156,11 +105,8 @@ Is the field critical for prediction?
 └─ No: Keep record, use missing indicator
 ```
 
-**Remove Duplicates**
+**Duplicates.** They corrupt training by making some examples count more than once. Exact matches are easy:
 
-Duplicates corrupt AI training by making certain examples over-represented.
-
-**Simple Duplicates:** Exact matches across all fields
 ```sql
 DELETE FROM customers
 WHERE id NOT IN (
@@ -170,95 +116,51 @@ WHERE id NOT IN (
 )
 ```
 
-**Fuzzy Duplicates:** Similar but not identical records
-- Use algorithms like Levenshtein distance for text similarity
-- Consider phonetic matching for names
-- Geographic proximity for addresses
+Fuzzy duplicates are the real work: Levenshtein distance for text similarity, phonetic matching for names, geographic proximity for addresses. Whatever you pick, write it down — see the note on detection rules above.
 
-**Correct Errors**
+**Errors.** They arrive in three shapes. Format errors, where the same phone number appears as (555) 123-4567, 5551234567 and 555-123-4567, and dates arrive in every ordering anyone has ever used. Out-of-range values: an age of 200 or -5, a historical event dated next year, a negative quantity where negatives are impossible. And inconsistent categories, where "NY", "New York", "NY State" and "new york" are four different places as far as the model is concerned.
 
-**Type 1: Format Errors**
-- Phone numbers: (555) 123-4567 vs. 5551234567 vs. 555-123-4567
-- Dates: MM/DD/YYYY vs. YYYY-MM-DD vs. DD-MMM-YYYY
-- Names: JOHN SMITH vs. John Smith vs. Smith, John
+Regular expressions handle the pattern-based fixes, lookup tables handle standardisation, and automated validation rules catch the rest — with a human path for the exceptions, because there will be exceptions.
 
-**Type 2: Out-of-Range Values**
-- Ages of 200 or -5
-- Dates in the future for historical events
-- Negative quantities where impossible
+### Stage 4: transformation
 
-**Type 3: Inconsistent Categories**
-- "NY" vs. "New York" vs. "NY State" vs. "new york"
-- "M" vs. "Male" vs. "Man"
+Convert the data into something a model can consume.
 
-**Solution Approaches:**
-- Regular expressions for pattern-based corrections
-- Lookup tables for standardization
-- Automated validation rules with manual exception handling
+Categorical variables need encoding. One-hot encoding gives each category its own binary column:
 
-### Stage 4: Data Transformation
+```
+Color: [Red, Blue, Green]
+→ Color_Red: [1,0,0], Color_Blue: [0,1,0], Color_Green: [0,0,1]
+```
 
-Convert data into formats AI models can consume.
+Label encoding assigns numbers instead:
 
-**Numerical Encoding**
+```
+Size: [Small, Medium, Large] → [1, 2, 3]
+```
 
-**For Categorical Variables:**
-- **One-Hot Encoding:** Create binary column for each category
-  ```
-  Color: [Red, Blue, Green]
-  → Color_Red: [1,0,0], Color_Blue: [0,1,0], Color_Green: [0,0,1]
-  ```
-- **Label Encoding:** Assign numbers to categories
-  ```
-  Size: [Small, Medium, Large] → [1, 2, 3]
-  ```
-  Warning: Only use when order matters (Small &lt; Medium &lt; Large)
+Only use it where the order is real (Small &lt; Medium &lt; Large). Numbering unordered categories tells the model that category 3 sits between 2 and 4, which it does not.
 
-**For Numerical Variables:**
-- **Normalization:** Scale to 0-1 range
-  ```
-  normalized = (value - min) / (max - min)
-  ```
-- **Standardization:** Center around mean with unit variance
-  ```
-  standardized = (value - mean) / standard_deviation
-  ```
+Numerical variables usually need scaling, either normalised into a 0-1 range:
 
-**Feature Engineering**
+```
+normalized = (value - min) / (max - min)
+```
 
-Create new features from existing data:
+or standardised around the mean:
 
-**Temporal Features:**
-- Extract day of week, month, quarter from dates
-- Calculate time since last event
-- Identify seasonal patterns
+```
+standardized = (value - mean) / standard_deviation
+```
 
-**Aggregate Features:**
-- Customer: total purchases, average order value, purchase frequency
-- Product: average rating, number of reviews, return rate
+Then there is feature engineering, which is where domain knowledge earns its money. Dates become day of week, month, quarter, and time since the last event. Aggregates summarise a customer's total purchases, average order value and frequency, or a product's rating, review count and return rate. Interactions combine columns: price times quantity is revenue, clicks over impressions is a click-through rate. Text yields length metrics, sentiment scores, named entities, topics.
 
-**Interaction Features:**
-- Combine features: price × quantity = revenue
-- Ratios: clicks / impressions = click-through rate
+### Stage 5: validation and quality assurance
 
-**Text Features:**
-- Length metrics: character count, word count
-- Sentiment scores
-- Named entity extraction
-- Topic modeling
+Before training on it, check it.
 
-### Stage 5: Data Validation and Quality Assurance
+Look at the distributions. Are the numbers skewed? Are the categories balanced, or does one dominate? Are there outliers you cannot explain? An imbalance like this one will bend the model toward electronics and there is nothing in the training run that will tell you:
 
-Before using data for AI, verify it's ready.
-
-**Statistical Validation**
-
-**Check Distributions:**
-- Are numerical values normally distributed or skewed?
-- Are categories balanced or is there class imbalance?
-- Are there unexpected outliers?
-
-**Example Red Flags:**
 ```
 Product Categories:
 - Electronics: 95,000 examples
@@ -268,13 +170,10 @@ Product Categories:
 This severe imbalance will cause AI to be biased toward Electronics.
 ```
 
-**Verify Relationships:**
-- Do correlations make business sense?
-- Are there unexpected patterns?
+Check the relationships too. Do the correlations make business sense? Is there a pattern nobody can account for? An unexplained correlation is either a discovery or a leak, and it is usually a leak.
 
-**Business Rule Validation**
+Then write the business rules down as code, so they run every time rather than when someone remembers:
 
-Create automated checks:
 ```python
 # Example validation rules
 assert all(df['age'] >= 0) and all(df['age'] <= 120), "Invalid ages detected"
@@ -282,9 +181,7 @@ assert all(df['order_date'] <= df['ship_date']), "Ship date before order date"
 assert df['revenue'].sum() == (df['price'] * df['quantity']).sum(), "Revenue mismatch"
 ```
 
-**Create Data Quality Reports**
-
-Regular reporting helps maintain standards:
+And report on it regularly:
 
 ```
 Weekly Data Quality Report:
@@ -310,134 +207,73 @@ completeness figure tells you little; a completeness figure that dropped sharply
 overnight tells you an upstream system changed, and that is the alert you actually
 want.
 
-## Common Data Preparation Challenges
+## Common problems
 
-### Challenge 1: Insufficient Historical Data
+### Not enough history
 
-**Problem:** The learning curve is still climbing when you run out of data — more examples would clearly help, and you do not have them
+The symptom is a learning curve still climbing when you run out of data: more examples would clearly help, and you don't have them.
 
-**Solutions:**
-- Start with simpler AI approaches that need less data
-- Use data augmentation techniques (for images, text)
-- Consider transfer learning (use pre-trained models)
-- Purchase or license additional data
-- Delay project while collecting more data
+The options are to use a simpler approach that needs less data, augment what you have where the data type allows it, start from a pre-trained model instead of from scratch, buy or license more, or wait while you collect. Waiting is unpopular and is sometimes the right answer.
 
-### Challenge 2: Imbalanced Data
+### Imbalanced data
 
-**Problem:** Fraud detection, where legitimate transactions outnumber fraudulent ones by orders of magnitude. A model that labels everything legitimate will score extremely well on accuracy and be worthless.
+Fraud detection is the standard example: legitimate transactions outnumber fraudulent ones by orders of magnitude, and a model that labels everything legitimate scores brilliantly on accuracy while being worthless.
 
-**Solutions:**
-- **Oversampling:** Duplicate minority class examples
-- **Undersampling:** Reduce majority class examples
-- **SMOTE:** Synthesize new minority examples
-- **Adjust Algorithms:** Use class weights or specialized algorithms
-- **Change Metrics:** Focus on precision/recall instead of accuracy
+You can oversample the minority class, undersample the majority, synthesise new minority examples with something like SMOTE, or weight the classes in the algorithm. But the first fix is the metric. If you are still reporting accuracy on a problem like this, nothing else you change will show up.
 
-### Challenge 3: Data Privacy and Compliance
+### Privacy and compliance
 
-**Problem:** Need customer data but must comply with GDPR, CCPA, HIPAA
+If the data is personal, the obligations arrive with it — GDPR, CCPA, HIPAA, depending on where you and it are.
 
-**Solutions:**
-- **Anonymization:** Remove identifying information
-- **Pseudonymization:** Replace identifiers with tokens
-- **Differential Privacy:** Add statistical noise
-- **Synthetic Data:** Generate artificial but realistic data
-- **Federated Learning:** Train models without centralizing data
+Anonymisation strips identifying information. Pseudonymisation replaces identifiers with tokens. Differential privacy adds statistical noise. Synthetic data generates artificial records with the same shape. Federated learning trains without centralising anything. Each buys privacy at some cost in utility, and the trade-off is a decision for somebody with authority, not a technical default.
 
-### Challenge 4: Legacy System Data
+### Legacy systems
 
-**Problem:** Critical data locked in mainframes or outdated systems
+When the data that matters sits in a mainframe or a system nobody maintains, the routes out are: build a modern interface to it, schedule batch exports into somewhere newer, replicate it continuously, or migrate it in pieces. Whichever you choose, the extraction becomes a thing you own and maintain — plan for that rather than treating it as a one-off.
 
-**Solutions:**
-- **API Development:** Build modern interfaces to legacy systems
-- **Batch Exports:** Regular dumps to modern databases
-- **Data Replication:** Mirror legacy data in cloud databases
-- **Gradual Migration:** Move data incrementally to new systems
+## Practices worth keeping
 
-## Data Preparation Best Practices
+**Document the lineage.** Where each field came from, how it was extracted, what was done to it, which checks it passed, and what is known to be wrong with it. The last item is the one that saves someone six months from now.
 
-### 1. Document Everything
+**Version the data like code.**
 
-Create a data lineage document showing:
-- Source systems
-- Extraction methods
-- Transformation rules
-- Quality checks applied
-- Known issues and limitations
-
-### 2. Version Your Data
-
-Just like code, data should be versioned:
 ```
 customer_data_v1.0_2025-01-15.csv
 customer_data_v1.1_2025-02-01.csv (added email validation)
 customer_data_v2.0_2025-03-01.csv (schema change: split name field)
 ```
 
-### 3. Automate Repetitive Tasks
+**Automate the repetitive parts** — extraction, the cleaning rules you have already decided, validation, error reporting. Anything done by hand every week will eventually be done wrong, or not at all.
 
-Build data pipelines for:
-- Regular data extraction
-- Automated cleaning rules
-- Quality validation
-- Error reporting
+**Start small and iterate.** Get a minimum viable dataset, train something, and let the model's failures tell you which data problems actually matter. Fix those, retrain, repeat. This beats a data-cleaning project with no model attached, which has no way of knowing when it is finished.
 
-### 4. Start Small, Iterate
+**Involve the people who know the business.** A data scientist can spot a statistical anomaly. Only someone who does the work can tell you whether it is normal variation or a broken sensor, whether those categories mean anything, and whether that relationship is expected or suspicious.
 
-Don't aim for perfect data on day one:
-1. Get minimum viable dataset
-2. Train initial model
-3. Identify data quality issues from model performance
-4. Improve data
-5. Retrain and reassess
-6. Repeat
+## Measuring whether the preparation worked
 
-### 5. Involve Domain Experts
+On process, track how much of the project went into data preparation, what share of records pass the quality checks, and how quickly errors get corrected.
 
-Data scientists can identify statistical issues, but domain experts catch business logic problems:
-- Is this normal variation or a data error?
-- Are these categories meaningful?
-- Is this relationship expected or suspicious?
+On outcome, compare model accuracy on prepared against raw data, training time, and errors in production.
 
-## Measuring Data Preparation Success
-
-Track these metrics:
-
-**Process Metrics:**
-- Time spent on data preparation vs. total project time
-- Percentage of data passing quality checks
-- Error correction rate
-
-**Outcome Metrics:**
-- Model accuracy with prepared data vs. raw data
-- Reduction in model training time
-- Decrease in production errors
-
-The comparison only means something if you actually keep the raw-data baseline.
+That comparison only means something if you keep the raw-data baseline.
 Train once on the unprepared data first, however badly it performs, and preserve
 that result. Teams routinely skip this because the raw run seems like wasted
-effort, and then have no way to show what the preparation work bought — or to
+effort, and then have no way to show what the preparation bought — or to
 notice when a cleaning rule made things worse.
 
-Be specific about which metric you claim. Faster training and higher accuracy are
+Be specific about which metric you are claiming. Faster training and higher accuracy are
 different results with different causes: deduplication shrinks the dataset and
 speeds up training without necessarily improving anything, and a rise in accuracy
 after you dropped incomplete records may just mean you removed the hard cases.
 
 ## Conclusion
 
-Data preparation is unglamorous but essential work, and it is where most of the difference between a model that works in production and one that only worked in the notebook gets decided.
+Data preparation is unglamorous, and it is where most of the difference gets decided between a model that works in production and one that only ever worked in the notebook.
 
-Remember:
-- **Assess before you collect:** Understand your current data state
-- **Clean rigorously:** Poor data quality guarantees poor AI performance
-- **Transform thoughtfully:** Feature engineering can make or break models
-- **Validate continuously:** Quality checks shouldn't stop after initial preparation
-- **Automate aggressively:** Manual data preparation doesn't scale
+Understand what you have before you go collecting more. Clean it properly, because poor data quality guarantees poor performance no matter what sits on top of it. Engineer the features with someone who knows the domain. Keep the quality checks running after the initial push, since data decays. And automate whatever you will have to do again, because manual preparation does not scale past the first month.
 
-The difference between AI projects that deliver value and those that disappoint often comes down to data preparation. Treat it as the foundation of your AI strategy, not an afterthought.
+None of this is the interesting part of an AI project. It is the part that determines whether there is a project.
 
 ---
 
-**Need Help With Data Preparation?** Vivancedata specializes in data quality assessment, cleaning, and preparation for AI initiatives. [Schedule a consultation](/contact) to discuss your data challenges.
+**Sitting on data you're not sure about?** I work on the client's own documents before anything gets built, precisely so this is discovered early rather than after a model has been trained on it. [Book a call](/contact) and tell me what shape yours is in.
