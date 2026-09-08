@@ -1,124 +1,122 @@
-import { Camera, CheckCircle2, ChevronRight, FileText, PhoneCall } from "lucide-react";
-import { DemoLink } from "@/components/common/DemoLink";
-import { features, type FeatureIcon } from "@/constants/welcome";
+import { ArrowMark } from "@/components/common/Marks";
+import { ctaPrimary, ctaSecondary } from "@/components/common/controls";
+import { ledgerMarks } from "@/constants/nightLog";
 
-// Keys are exhaustive over FeatureIcon: adding a variant there without adding it
-// here fails the build, which is what replaced the old `?? Brain` fallback.
-const featureIcons: Record<FeatureIcon, typeof PhoneCall> = {
-  phone: PhoneCall,
-  fileText: FileText,
-  camera: Camera,
-  checkCircle: CheckCircle2,
-} as const;
-
-// Marketing CTAs are pills; the primary is an ink fill, the secondary a white
-// pill with a hairline. See DESIGN.md for why the shape differs from app chrome.
-const primaryCtaClass =
-  "inline-flex min-h-12 items-center justify-center rounded-pill bg-primary px-6 text-body font-medium text-primary-foreground transition-colors duration-fast hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
-
-const secondaryCtaClass =
-  "inline-flex min-h-12 items-center justify-center rounded-pill border border-border bg-card px-6 text-body font-medium text-foreground transition-colors duration-fast hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
-
+/**
+ * The hero.
+ *
+ * Two beats of serif and nothing else above the fold. It used to be a centred
+ * headline, a grey lead paragraph, four icon-and-text tiles, a bordered demo
+ * panel and two CTAs — five competing things in one viewport, on a page whose
+ * whole argument is that it does not claim anything it cannot show.
+ *
+ * What went, and where it went:
+ *
+ * - The four promise tiles are not deleted; they are the framing on the three
+ *   records in NightLog, verbatim from `welcome.ts` (see `nightLog.ts` for why
+ *   the fourth has no record). Restating them here and again below would have
+ *   been the same claim in two typefaces.
+ * - The demo panel became the night log itself, which shows the demos' output
+ *   rather than linking to it from a box of grey text.
+ *
+ * The headline is left-set, not centred: it is a sentence someone should read
+ * as a sentence, and a 96px centred headline forces the eye back across the
+ * viewport on every line.
+ */
 export default function Welcome() {
   return (
-    <section className="hero-mesh w-full">
-      {/*
-        Asymmetric vertical padding, deliberately.
-
-        The mesh's three radial stops are centred at -10%, -5% and 0% of this
-        band's height, so the wash is at its strongest along the top edge. With
-        128px of symmetric padding the brightest part of the only decoration
-        this design system permits itself landed in dead space above the
-        eyebrow -- a soft coloured stripe between the header and the first
-        word, doing no work. Pulling the top padding in puts the eyebrow and
-        headline inside the wash, which is what a hero mesh is for. The bottom
-        padding is unchanged: it is what separates the hero from ClientLogos.
-      */}
-      <div className="container mx-auto px-4 pb-4xl pt-2xl md:pb-section md:pt-3xl">
-        <div className="mb-3xl flex flex-col items-center justify-center gap-lg text-center">
-          {/* The uppercase Geist Mono eyebrow, labelling the band like a spec sheet. */}
-          <p className="eyebrow">AI for trades and field operations</p>
-          {/*
-            The headline names the two jobs this practice actually does. It read
-            "Transforming Businesses Through Intelligent Automation" -- a sentence
-            with no subject, no industry and no claim, interchangeable with every
-            competitor's. A contractor has about four seconds here; spend them on
-            something they recognise rather than on the category name.
-          */}
+    <section className="bleed">
+      <div className="container relative mx-auto px-4 pb-3xl pt-3xl md:pb-4xl md:pt-4xl">
+        {/* The dot matrix, on the half of the viewport the headline leaves
+          * empty, behind a full-height vertical hairline.
+          *
+          * The rule is the point. This world's structural signature is a ruled
+          * sheet, and the build had horizontal rules everywhere and vertical
+          * ones only inside two grids — so the right of the first viewport had
+          * nothing to stand on and read as unfinished rather than as quiet.
+          * Atmosphere, not pattern: the field fades top and bottom and never
+          * sits under copy. */}
+        <div
+          className="field-dots field-dots-fade pointer-events-none absolute inset-y-0 right-0 -z-10 hidden w-[42%] border-l border-rule lg:block"
+          aria-hidden="true"
+        />
+        <div>
           {/*
             An h1, not an h2. The page shipped with no h1 at all -- the hero
             headline was an h2 and nothing above it -- so screen readers and
             search engines were handed a document whose top level was missing.
+
+            The headline names the two jobs this practice actually does. It read
+            "Transforming Businesses Through Intelligent Automation" -- a
+            sentence with no subject, no industry and no claim, interchangeable
+            with every competitor's. A contractor has about four seconds here.
           */}
-          <h1 className="text-display-xl text-foreground">
-            Someone has to answer the phone and{" "}
-            <span className="text-brand">key in the paperwork</span>
+          {/* The measure sits on the h1, not on a wrapper: `ch` resolves
+            * against the element's own font, and on the wrapper it was
+            * measuring the 16px body sans while the heading set at 96px —
+            * a 176px column that broke the headline one word to a line. */}
+          <h1 className="max-w-[17ch] font-display text-serif-xl text-balance text-foreground">
+            Someone has to answer the phone and key in the paperwork
           </h1>
-          <p className="mx-auto max-w-[60ch] text-body-lg text-muted-foreground">
-            It does not have to be a person on your payroll. I build small,
-            specific systems for construction, HVAC, logistics and manufacturing
-            businesses — one workflow at a time, proved on your own documents
-            before you pay for a build.
-          </p>
-        </div>
-
-        <div className="mb-3xl grid grid-cols-1 gap-lg md:grid-cols-2 lg:grid-cols-4">
-          {features.map((feature) => {
-            const Icon = featureIcons[feature.icon];
-
-            return (
-              /* Level 0: hairline card, no shadow, no hover lift. */
-              <article
-                key={feature.title}
-                className="flex h-full flex-col rounded-md border border-border bg-card p-lg transition-colors duration-default hover:border-brand/40"
-              >
-                <div className="mb-lg w-fit rounded-sm border border-border bg-muted p-3">
-                  <Icon className="h-5 w-5 text-brand" aria-hidden="true" />
-                </div>
-                {/* h2, not h3. Promoting the hero headline to h1 left these
-                    tiles skipping a level straight from h1, which is a
-                    heading-order violation and cost the homepage its
-                    Lighthouse accessibility floor (95 against a floor of 96). */}
-                <h2 className="mb-sm text-heading-3 text-foreground">
-                  {feature.title}
-                </h2>
-                <p className="text-body-sm text-muted-foreground">
-                  {feature.description}
-                </p>
-              </article>
-            );
-          })}
         </div>
 
         {/*
-          The demos used to be 12px mono links buried at the bottom of the four
-          tiles. They are the site's core claim -- "proved on your own documents
-          before you pay" -- made clickable, and the only thing here a visitor
-          can check without talking to anyone, so they get their own band and
-          the secondary pill rather than the smallest text on the page.
-        */}
-        <div className="mb-3xl rounded-md border border-border bg-card p-lg">
-          <p className="mb-md max-w-[60ch] text-body-sm text-muted-foreground">
-            Each of these runs on sample data, right now, with nothing to install
-            and no one to talk to.
-          </p>
-          <div className="flex flex-col gap-md sm:flex-row sm:flex-wrap">
-            {features
-              .filter((feature) => feature.demo)
-              .map((feature) => (
-                <DemoLink key={feature.title} demo={feature.demo!} />
-              ))}
-          </div>
-        </div>
+          The turn, in the serif's italic rather than in green.
 
-        <div className="mt-xl flex flex-col items-center justify-center gap-md sm:flex-row">
-          <a href="/services" className={primaryCtaClass}>
-            <span>Explore Our Services</span>
-            <ChevronRight className="ml-2 h-5 w-5" aria-hidden="true" />
+          Colouring the emphasis brand green is the obvious move and the wrong
+          one: green is this design's evidence mark, spent on values a system
+          actually filled, and spending it on a headline would make it mean
+          "important" instead of "verified" everywhere else on the page. The
+          face has one weight and a real italic, so the italic carries emphasis.
+        */}
+        <p className="mt-lg max-w-[26ch] font-display text-serif-md italic text-muted-foreground">
+          It does not have to be a person on your payroll.
+        </p>
+
+        <p className="mt-2xl max-w-[62ch] text-body-lg text-muted-foreground">
+          I build small, specific systems for construction, HVAC, logistics and
+          manufacturing businesses — one workflow at a time, proved on your own
+          documents before you pay for a build.
+        </p>
+
+        <div className="mt-2xl flex flex-col gap-md sm:flex-row sm:items-center">
+          <a href="/contact" className={ctaPrimary}>
+            <span>Book a call</span>
+            <ArrowMark />
           </a>
-          <a href="/contact" className={secondaryCtaClass}>
-            Book a call
+          <a href="#night-log-heading" className={ctaSecondary}>
+            See what it sends back
           </a>
+        </div>
+      </div>
+
+      {/*
+        The ledger strip: the material of the work, drifting, as texture.
+
+        The reference this design follows runs a field of currency symbols under
+        its hero, because it is a bank. The equivalent material here is the
+        paperwork — the RFI numbers, delivery notes, timestamps and permit codes
+        that are the thing being typed twice. It is decoration and it is marked
+        as such: aria-hidden, in the decorative grey tier, and duplicated only so
+        the loop closes seamlessly. Reduced motion stops it dead.
+      */}
+      <div
+        className="relative overflow-hidden border-y border-rule py-3.5"
+        aria-hidden="true"
+      >
+        <div className="drift flex w-max gap-0">
+          {[0, 1].map((copy) => (
+            <ul key={copy} className="flex shrink-0 items-center gap-0">
+              {ledgerMarks.map((mark) => (
+                <li
+                  key={`${copy}-${mark}`}
+                  className="whitespace-nowrap px-6 font-mono text-data text-faint"
+                >
+                  {mark}
+                </li>
+              ))}
+            </ul>
+          ))}
         </div>
       </div>
     </section>

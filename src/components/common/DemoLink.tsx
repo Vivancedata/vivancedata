@@ -1,6 +1,7 @@
 "use client";
 
 import type { Demo } from "@/constants/demos";
+import { ArrowMark } from "@/components/common/Marks";
 import { ANALYTICS } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 
@@ -18,15 +19,16 @@ export function DemoLink({ demo, className }: { demo: Demo; className?: string }
       href={demo.href}
       onClick={() => ANALYTICS.demoOpened(demo.label)}
       className={cn(
-        "inline-flex min-h-11 items-center justify-center gap-2 rounded-pill border border-border bg-card px-4",
-        "font-mono text-xs uppercase tracking-wider text-brand transition-colors duration-fast",
-        "hover:border-brand/40 hover:bg-accent",
+        "group inline-flex min-h-11 items-center justify-center gap-2.5 rounded-pill border border-rule bg-transparent px-4",
+        "text-label uppercase text-brand transition-colors duration-fast",
+        "hover:border-brand/50 hover:bg-accent",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
         className,
       )}
     >
       {demo.label}
-      <span aria-hidden="true">&rarr;</span>
+      {/* One arrow shape across the site, at one stroke weight. */}
+      <ArrowMark className="transition-transform duration-default group-hover:translate-x-0.5" />
     </a>
   );
 }

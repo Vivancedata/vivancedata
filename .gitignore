@@ -37,3 +37,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 artifacts/
+
+# Impeccable review captures — evidence for a single run, not source.
+.impeccable/review/

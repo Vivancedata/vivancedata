@@ -1,7 +1,8 @@
 import { Factory, HardHat, Truck, Wrench } from "lucide-react";
 import { clients, type ClientIcon } from "@/constants/clients";
 
-// Same string-keyed icon map pattern as Welcome.tsx — constants stay serializable.
+// Same string-keyed icon map pattern as the rest of the site — constants stay
+// serializable, and adding a variant without adding it here is a type error.
 const sectorIcons: Record<ClientIcon, typeof Factory> = {
   "hard-hat": HardHat,
   wrench: Wrench,
@@ -9,63 +10,82 @@ const sectorIcons: Record<ClientIcon, typeof Factory> = {
   factory: Factory,
 };
 
+/**
+ * The four trades, set as a ruled grid rather than as four cards.
+ *
+ * It was four rounded panels with 56px icon tiles and a hover lift, which is
+ * the arrangement this whole direction refuses: the cards were the structure,
+ * and every one of them was the same shape whatever it held. A grid divided by
+ * its own hairlines says the same thing with no chrome at all, and it is what
+ * makes the page read as a sheet rather than as a deck.
+ *
+ * The band also carries the three commitments that used to sit in a separate
+ * centred row. They belong here: the trades say who this is for, the
+ * commitments say what the deal is, and a reader deciding whether to keep
+ * scrolling needs both in one glance.
+ */
 export default function ClientLogos() {
   return (
-    <section
-      className="w-full overflow-hidden bg-muted/20 py-16 md:py-24"
-      aria-label="Industries we serve"
-    >
-      <div className="container mx-auto px-4">
-        <div className="mb-12 text-center md:mb-16">
-          <p className="eyebrow mb-4">Industries We Serve</p>
-          <h2 className="text-display mb-4 text-foreground">
-            Sectors We Work In
+    <section className="bleed border-t border-rule" aria-labelledby="trades-heading">
+      <div className="container mx-auto px-4 py-3xl md:py-4xl">
+        <div className="max-w-[46ch]">
+          <h2 id="trades-heading" className="font-display text-serif-lg text-foreground">
+            Blue-collar and local services, and <em className="italic">nothing else</em>
           </h2>
-          <p className="mx-auto max-w-2xl text-base text-muted-foreground md:text-lg">
-            I work with blue-collar and local service businesses — the ones where the paperwork,
-            the phone and the schedule are what actually hold the day up.
+          <p className="mt-lg text-body-lg text-muted-foreground">
+            I work with the businesses where the paperwork, the phone and the
+            schedule are what actually hold the day up.
           </p>
         </div>
 
-        <ul className="grid grid-cols-2 gap-6 md:grid-cols-4">
+        {/* A single-pixel grid: one outer rule, and cells that borrow their
+          * neighbours' edges. `-mx-px` swallows the doubled outer line. */}
+        <ul className="mt-2xl grid grid-cols-1 border-t border-rule sm:grid-cols-2 lg:grid-cols-4">
           {clients.map((client) => {
             const Icon = sectorIcons[client.icon];
             return (
-              <li key={client.id}>
-                <div className="flex h-full flex-col items-center justify-start rounded-2xl border border-border/60 bg-card/70 px-4 py-6 text-center transition-transform duration-300 hover:-translate-y-1 hover:border-brand/25">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-muted text-brand">
-                    <Icon className="h-7 w-7" aria-hidden="true" />
-                  </div>
-                  <p className="mt-4 text-sm font-semibold text-foreground md:text-base">{client.name}</p>
-                  <p className="mt-1 text-xs text-muted-foreground md:text-sm">{client.blurb}</p>
-                </div>
+              <li
+                key={client.id}
+                className="group border-b border-rule px-0 py-lg transition-colors duration-default sm:px-lg sm:odd:border-r lg:border-r lg:px-lg lg:last:border-r-0 lg:odd:border-r sm:first:pl-0 lg:first:pl-0"
+              >
+                <Icon
+                  className="h-5 w-5 text-mute transition-colors duration-default group-hover:text-foreground"
+                  strokeWidth={1.25}
+                  aria-hidden="true"
+                />
+                <h3 className="mt-lg font-display text-serif-sm text-foreground">{client.name}</h3>
+                <p className="mt-2 max-w-[34ch] text-body-sm text-muted-foreground">{client.blurb}</p>
               </li>
             );
           })}
         </ul>
 
-        <div className="mt-12 border-t border-border pt-8 md:mt-16">
-          <div className="grid grid-cols-1 gap-6 text-center md:grid-cols-3 md:gap-8">
-            <div className="space-y-1">
-              <p className="text-sm font-semibold text-foreground md:text-base">One person, start to finish</p>
-              <p className="text-sm text-muted-foreground">
-                The person who scopes the job builds it and answers the phone afterwards.
-              </p>
+        <dl className="grid grid-cols-1 md:grid-cols-3">
+          {([
+            [
+              "One person, start to finish",
+              "The person who scopes the job builds it and answers the phone afterwards.",
+            ],
+            [
+              "Proved on your own paperwork",
+              "Run on your own documents and call log before you pay for a build.",
+            ],
+            [
+              "Yours when it is done",
+              "Code, prompts and credentials transfer to you on delivery.",
+            ],
+          ] as const).map(([term, detail], index) => (
+            <div
+              key={term}
+              className={`border-b border-rule py-lg md:px-lg ${
+                index === 0 ? "md:pl-0" : ""
+              }`}
+            >
+              <dt className="text-body-sm font-medium text-foreground">{term}</dt>
+              <dd className="mt-1.5 max-w-[38ch] text-body-sm text-muted-foreground">{detail}</dd>
             </div>
-            <div className="space-y-1">
-              <p className="text-sm font-semibold text-foreground md:text-base">Proved on your own paperwork</p>
-              <p className="text-sm text-muted-foreground">
-                Run on your own documents and call log before you pay for a build.
-              </p>
-            </div>
-            <div className="space-y-1">
-              <p className="text-sm font-semibold text-foreground md:text-base">Yours when it is done</p>
-              <p className="text-sm text-muted-foreground">
-                Code, prompts and credentials transfer to you on delivery.
-              </p>
-            </div>
-          </div>
-        </div>
+          ))}
+        </dl>
       </div>
     </section>
   );

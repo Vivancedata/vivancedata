@@ -17,9 +17,14 @@ test("the ROI calculator produces figures from the model", async ({ page }) => {
 test("the readiness quiz scores an answered assessment", async ({ page }) => {
   await page.goto("/tools/ai-readiness");
 
+  // Scoped to the quiz, not the whole document. This read `page.locator("label")`
+  // and took `.last()`, which meant any label added anywhere below the quiz --
+  // the footer newsletter's, for one -- silently became the thing it clicked.
+  const quiz = page.getByRole("radiogroup");
+
   for (let step = 0; step < 16; step += 1) {
     // Click the label, as a visitor does -- the radio itself is a Radix item.
-    await page.locator("label").last().click();
+    await quiz.locator("label").last().click();
     const advance = page.getByRole("button", {
       name: step === 15 ? "View your results" : "Go to next question",
     });
