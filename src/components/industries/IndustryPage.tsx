@@ -44,7 +44,7 @@ const SolutionCard = ({ title, description, icon, benefits }: SolutionCardProps)
       <h3 className="font-display text-serif-sm">{title}</h3>
     </div>
     <p className="mb-md text-body-sm text-muted-foreground">{description}</p>
-    <h4 className="eyebrow mb-sm">Key Benefits</h4>
+    <h4 className="eyebrow mb-sm">What you get</h4>
     <ul className="space-y-2">
       {benefits.map((benefit) => (
         <li key={`${title}-benefit-${benefit}`} className="flex items-start">
@@ -77,12 +77,12 @@ const Scenario = ({ title, challenge, solution, results, demo }: ScenarioProps) 
     <h3 className="mb-md text-heading-3">{title}</h3>
 
     <div className="mb-md">
-      <h4 className="eyebrow mb-1">Challenge</h4>
+      <h4 className="eyebrow mb-1">What goes wrong</h4>
       <p className="text-body-sm text-foreground">{challenge}</p>
     </div>
 
     <div className="mb-md">
-      <h4 className="eyebrow mb-1">Solution</h4>
+      <h4 className="eyebrow mb-1">What I build</h4>
       <p className="text-body-sm text-foreground">{solution}</p>
     </div>
 

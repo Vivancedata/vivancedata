@@ -40,7 +40,7 @@ export function RelatedPosts({ posts, currentSlug }: RelatedPostsProps) {
 
   return (
     <section className="mt-16 pt-16 border-t border-border">
-      <h2 className="mb-8 font-display text-serif-lg">Related Articles</h2>
+      <h2 className="mb-8 font-display text-serif-lg">Related articles</h2>
 
       <m.div
         variants={container}

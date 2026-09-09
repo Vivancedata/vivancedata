@@ -20,26 +20,26 @@ import {
 const COOKIE_CATEGORIES = [
   {
     key: "essential" as const,
-    label: "Essential Cookies",
-    description: "Required for the website to function. Cannot be disabled.",
+    label: "Essential cookies",
+    description: "The site does not work without these, so they cannot be turned off.",
     disabled: true,
   },
   {
     key: "analytics" as const,
-    label: "Analytics Cookies",
-    description: "Help us understand how visitors interact with our website.",
+    label: "Analytics cookies",
+    description: "Tell me which pages get read and which get closed straight away.",
     disabled: false,
   },
   {
     key: "functional" as const,
-    label: "Functional Cookies",
-    description: "Enable enhanced functionality and personalization.",
+    label: "Functional cookies",
+    description: "Remember choices you have already made, so the site stops asking.",
     disabled: false,
   },
   {
     key: "marketing" as const,
-    label: "Marketing Cookies",
-    description: "Used to deliver relevant advertisements and track campaigns.",
+    label: "Marketing cookies",
+    description: "Used for advertising, and to tell which advert sent you here.",
     disabled: false,
   },
 ];
@@ -177,7 +177,7 @@ function CookieCustomizationPanel({
 
             <div className="mt-4 flex justify-end">
               <Button onClick={onSaveCustom} size="sm">
-                Save Preferences
+                Save preferences
               </Button>
             </div>
           </div>
@@ -238,7 +238,7 @@ function CookieConsentBanner({
                   id="cookie-consent-title"
                   className="text-base font-semibold text-foreground"
                 >
-                  Cookie Preferences
+                  Cookie preferences
                 </h2>
                 <button
                   onClick={onClose}
@@ -253,21 +253,21 @@ function CookieConsentBanner({
                 id="cookie-consent-description"
                 className="text-sm text-muted-foreground leading-relaxed"
               >
-                We use cookies for site functionality, analytics, and personalization.
-                You can accept all, reject non-essential cookies, or customize settings.
-                Read our{" "}
+                I use cookies to keep the site working, and to see which pages get
+                read. Accept all of them, keep only the essential ones, or choose
+                category by category. The{" "}
                 <Link
                   href="/privacy-policy"
                   className="text-brand underline underline-offset-2 hover:text-brand/80 transition-colors"
                 >
-                  Privacy Policy
+                  privacy policy
                 </Link>{" "}
-                for more information.
+                has the rest of the detail.
               </p>
 
               <div className="pt-1 space-y-2">
                 <Button onClick={onAcceptAll} className="w-full" size="sm">
-                  Accept All
+                  Accept all
                 </Button>
                 <div className="flex flex-wrap items-center justify-center gap-1 sm:gap-2">
                   <Button
@@ -276,7 +276,7 @@ function CookieConsentBanner({
                     className="h-8 px-2 text-muted-foreground hover:text-foreground sm:h-9"
                     size="sm"
                   >
-                    Reject Non-Essential
+                    Reject non-essential
                   </Button>
                   <Button
                     onClick={onToggleCustomize}

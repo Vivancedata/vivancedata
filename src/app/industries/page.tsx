@@ -35,15 +35,13 @@ export const metadata: Metadata = {
 interface IndustryCardProps {
   title: string;
   description: string;
-  theme: string;
   href: string;
 }
 
-const IndustryCard = ({ title, description, theme, href }: IndustryCardProps) => (
-  <div className="bg-card rounded-xl border border-border overflow-hidden group">
-    <div className={`relative aspect-video bg-gradient-to-br ${theme}`}>
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-      <h3 className="text-heading-2 absolute bottom-4 left-4 text-primary-foreground">{title}</h3>
+const IndustryCard = ({ title, description, href }: IndustryCardProps) => (
+  <div className="group flex flex-col border border-rule bg-card">
+    <div className="field-dots relative flex aspect-[16/7] items-end border-b border-rule px-lg pb-lg">
+      <h3 className="font-display text-serif-md text-foreground">{title}</h3>
     </div>
     <div className="p-6">
       <p className="text-muted-foreground mb-4">{description}</p>
@@ -62,25 +60,21 @@ export default function IndustriesPage() {
     {
       title: "Construction",
       description: "Document intake for submittals, permits and RFIs, daily reports drafted from field notes, bid support, and compliance records that stay current.",
-      theme: "from-primary to-primary/85",
       href: "/industries/construction"
     },
     {
       title: "HVAC & Trades",
       description: "After-hours call capture, dispatch and scheduling support, quoting from service history, and the follow-ups the office never gets to.",
-      theme: "from-primary to-primary/85",
       href: "/industries/hvac-trades"
     },
     {
       title: "Logistics & Fleet",
       description: "Proof of delivery and BOL processing, exception triage before the customer calls, routine driver communication, and claims documentation.",
-      theme: "from-primary to-primary/85",
       href: "/industries/logistics"
     },
     {
       title: "Manufacturing",
       description: "Quality checks read off photos, maintenance flagged from machine logs, and the paperwork that moves between the floor and the office.",
-      theme: "from-primary to-primary/85",
       href: "/industries/manufacturing"
     }
   ];
@@ -104,7 +98,6 @@ export default function IndustriesPage() {
               key={industry.title}
               title={industry.title}
               description={industry.description}
-              theme={industry.theme}
               href={industry.href}
             />
           ))}

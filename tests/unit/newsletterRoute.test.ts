@@ -78,7 +78,7 @@ describe("POST /api/newsletter", () => {
     const response = await postNewsletter({ email: "not-an-email" }, "192.0.2.13");
 
     expect(response.status).toBe(400);
-    await expect(response.json()).resolves.toEqual({ error: "Invalid email address" });
+    await expect(response.json()).resolves.toEqual({ error: "That email address does not look right." });
   });
 
   it("rejects a missing email address", async () => {

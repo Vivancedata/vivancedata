@@ -150,7 +150,7 @@ describe("blog post discovery", () => {
       const frontmatter = getBlogPostFrontmatter("fallback-post");
       expect(frontmatter).not.toBeNull();
       expect(frontmatter?.title).toBe("fallback-post");
-      expect(frontmatter?.description).toBe("Read our article on fallback-post");
+      expect(frontmatter?.description).toBe("A note on fallback-post");
       expect(frontmatter?.image).toBe("/images/ai-solutions.png");
       expect(frontmatter?.tags).toEqual(["AI", "Technology"]);
 

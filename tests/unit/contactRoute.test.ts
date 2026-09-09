@@ -80,7 +80,7 @@ describe("POST /api/contact", () => {
     const response = await postContact({ ...validBody, message: "" }, "198.51.100.13");
 
     expect(response.status).toBe(400);
-    await expect(response.json()).resolves.toEqual({ error: "Missing required fields" });
+    await expect(response.json()).resolves.toEqual({ error: "Some required fields are still empty." });
   });
 
   it("reports an invalid address", async () => {
@@ -90,7 +90,7 @@ describe("POST /api/contact", () => {
     );
 
     expect(response.status).toBe(400);
-    await expect(response.json()).resolves.toEqual({ error: "Invalid email address" });
+    await expect(response.json()).resolves.toEqual({ error: "That email address does not look right." });
   });
 
   it("prefers the missing-field message when both are wrong", async () => {
@@ -100,7 +100,7 @@ describe("POST /api/contact", () => {
     );
 
     // Preserves the precedence of the two sequential checks this replaced.
-    await expect(response.json()).resolves.toEqual({ error: "Missing required fields" });
+    await expect(response.json()).resolves.toEqual({ error: "Some required fields are still empty." });
   });
 
   it("fails the request when the enquiry itself cannot be sent", async () => {

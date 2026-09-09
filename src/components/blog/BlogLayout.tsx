@@ -79,7 +79,7 @@ export function BlogLayout({
             <m.button
               type="button"
               onClick={() => router.back()}
-              aria-label="Go back to blogs"
+              aria-label="Go back to the blog"
               className="group mb-8 flex h-10 w-10 items-center justify-center rounded-full bg-card border border-border transition-colors hover:border-brand/40"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -178,7 +178,7 @@ export function BlogLayout({
                       // Fallback for browsers that don't support the Web Share API
                       navigator.clipboard.writeText(window.location.href)
                         .then(() => {
-                          alert('Link copied to clipboard!');
+                          alert('Link copied to the clipboard');
                         })
                         .catch(error => {
                           console.error('Error copying to clipboard:', error);
