@@ -73,21 +73,21 @@ export default function UseCasesPage() {
           </p>
           <div className="grid md:grid-cols-3 gap-6 mt-6">
             <div>
-              <h3 className="text-heading-4 mb-2">First, a look</h3>
+              <h3 className="mb-2 font-display text-serif-sm">First, a look</h3>
               <p className="text-sm">
                 I sit with the work, and we pick the one job worth building
                 for. If nothing clears that bar, I say so.
               </p>
             </div>
             <div>
-              <h3 className="text-heading-4 mb-2">Then the build</h3>
+              <h3 className="mb-2 font-display text-serif-sm">Then the build</h3>
               <p className="text-sm">
                 Built on your own documents, running beside the existing
                 process until you trust it.
               </p>
             </div>
             <div>
-              <h3 className="text-heading-4 mb-2">Then keeping it alive</h3>
+              <h3 className="mb-2 font-display text-serif-sm">Then keeping it alive</h3>
               <p className="text-sm">
                 Formats drift and APIs change, so something has to watch it.
                 That monthly cost is quoted up front.

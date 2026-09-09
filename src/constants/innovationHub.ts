@@ -22,7 +22,17 @@ export interface InnovationProject {
   title: string;
   description: string;
   technologies: string[];
-  status: "Concept" | "Research" | "Prototype" | "Pilot";
+  /**
+   * How far along a thing is, in this practice's own terms.
+   *
+   * "Pilot" was a fourth value here and it is deliberately gone. A pilot means
+   * somebody else is running the thing on their own work, and this practice is
+   * pre-first-client -- so two entries carrying it were claiming a client trial
+   * that does not exist. Do not add it back until a named client has agreed in
+   * writing that theirs can be described, which is the same bar `caseStudies.ts`
+   * sets for a number.
+   */
+  status: "Concept" | "Research" | "Prototype";
 }
 
 export const emergingTechnologies: EmergingTechnology[] = [
@@ -81,7 +91,7 @@ export const innovationProjects: InnovationProject[] = [
     title: "Privacy-Preserving Analytics Platform",
     description: "Answering questions across several sites' records without those records being copied into one pile first.",
     technologies: ["Federated Learning", "Differential Privacy", "Secure Computing", "Analytics"],
-    status: "Pilot"
+    status: "Research"
   },
   {
     title: "Autonomous Decision Support System",
@@ -105,6 +115,6 @@ export const innovationProjects: InnovationProject[] = [
     title: "Field Document Understanding",
     description: "An extraction system for the photographed and scanned paperwork that field work produces, which reports what it could not read instead of guessing at it.",
     technologies: ["Document Intelligence", "Optical Character Recognition", "Uncertainty Estimation", "Natural Language Generation"],
-    status: "Pilot"
+    status: "Prototype"
   }
 ];

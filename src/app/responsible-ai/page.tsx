@@ -1,10 +1,11 @@
 import { Container } from "@/components/common/Container";
+import { VerdictMark } from "@/components/common/Marks";
 import { Heading } from "@/components/common/Heading";
 import { Paragraph } from "@/components/common/Paragraph";
 import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, Shield, Users, Eye, BarChart3, Scale, FileText } from "lucide-react";
+import { ArrowRight, Shield, Users, Eye, BarChart3, Scale, FileText } from "lucide-react";
 import {
   designExamples,
   phases,
@@ -53,7 +54,7 @@ const Principle = ({ icon, title, description }: PrincipleProps) => (
       <div className="mr-4 p-3 bg-muted rounded-full">
         {icon}
       </div>
-      <h3 className="text-heading-3">{title}</h3>
+      <h3 className="font-display text-serif-sm">{title}</h3>
     </div>
     <p className="text-muted-foreground">{description}</p>
   </div>
@@ -72,14 +73,14 @@ const Phase = ({ number, title, description, checks }: PhaseProps) => (
       <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg mr-4 flex-shrink-0">
         {number}
       </div>
-      <h3 className="text-heading-3">{title}</h3>
+      <h3 className="font-display text-serif-sm">{title}</h3>
     </div>
     <div className="pl-16">
       <p className="text-muted-foreground mb-4">{description}</p>
       <ul className="space-y-2">
         {checks.map((check) => (
           <li key={check} className="flex items-start">
-            <Check className="h-5 w-5 text-brand mt-0.5 mr-2 flex-shrink-0" />
+            <VerdictMark verdict="filled" label="" className="mr-2 mt-1 h-3.5 w-3.5" />
             <span className="text-foreground">{check}</span>
           </li>
         ))}
@@ -97,7 +98,7 @@ interface CaseStudyProps {
 
 const CaseStudy = ({ title, challenge, approach, outcome }: CaseStudyProps) => (
   <div className="bg-card p-6 rounded-xl border border-border">
-    <h3 className="text-heading-3 mb-4">{title}</h3>
+    <h3 className="mb-4 font-display text-serif-sm">{title}</h3>
     
     <div className="mb-4">
       <h4 className="text-sm font-medium text-muted-foreground mb-1">Challenge</h4>
@@ -119,12 +120,12 @@ const CaseStudy = ({ title, challenge, approach, outcome }: CaseStudyProps) => (
 // Icon keys from the constants file resolved to elements here, so the copy
 // stays free of JSX.
 const PRINCIPLE_ICONS: Record<PrincipleIcon, React.ReactNode> = {
-  users: <Users className="h-6 w-6 text-brand" />,
-  eye: <Eye className="h-6 w-6 text-brand" />,
-  shield: <Shield className="h-6 w-6 text-brand" />,
-  "bar-chart-3": <BarChart3 className="h-6 w-6 text-brand" />,
-  scale: <Scale className="h-6 w-6 text-brand" />,
-  "file-text": <FileText className="h-6 w-6 text-brand" />,
+  users: <Users className="h-6 w-6 text-mute" />,
+  eye: <Eye className="h-6 w-6 text-mute" />,
+  shield: <Shield className="h-6 w-6 text-mute" />,
+  "bar-chart-3": <BarChart3 className="h-6 w-6 text-mute" />,
+  scale: <Scale className="h-6 w-6 text-mute" />,
+  "file-text": <FileText className="h-6 w-6 text-mute" />,
 };
 
 export default function ResponsibleAIPage() {
@@ -135,7 +136,7 @@ export default function ResponsibleAIPage() {
 
   return (
     <Container className="py-16">
-      <div className="text-center mb-16">
+      <div className="mb-16">
         <Heading className="mb-4 font-display text-serif-xl">Responsible AI</Heading>
         <Paragraph className="max-w-3xl mx-auto text-lg">
           The parts of this work that can go wrong quietly: what a system decides on its own,
@@ -149,7 +150,7 @@ export default function ResponsibleAIPage() {
             <div className="eyebrow mb-4">Responsible AI principles</div>
             <div className="flex items-center gap-4 mb-5">
               <div className="w-14 h-14 rounded-full bg-muted border-2 border-brand/40 flex items-center justify-center flex-shrink-0">
-                <Shield className="w-7 h-7 text-brand" />
+                <Shield className="w-7 h-7 text-mute" strokeWidth={1.25} />
               </div>
               <p className="text-muted-foreground text-xs leading-relaxed">
                 Applied from the first look at your documents through to what happens months
@@ -186,7 +187,7 @@ export default function ResponsibleAIPage() {
           </p>
           <Button asChild className="self-start group" variant="outline">
             <Link href="/contact">
-              <span>Discuss Responsible AI for Your Business</span>
+              <span>Book a call</span>
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </Button>
@@ -293,12 +294,12 @@ They are not products I sell, and nothing here is a platform you would license.
             }
           ].map((tool) => (
             <div key={tool.title} className="bg-card p-6 rounded-xl border border-border">
-              <h3 className="text-heading-3 mb-3">{tool.title}</h3>
+              <h3 className="mb-3 font-display text-serif-sm">{tool.title}</h3>
               <p className="text-muted-foreground mb-4">{tool.description}</p>
               <ul className="space-y-2">
                 {tool.features.map((feature) => (
                   <li key={feature} className="flex items-start">
-                    <Check className="h-5 w-5 text-brand mt-0.5 mr-2 flex-shrink-0" />
+                    <VerdictMark verdict="filled" label="" className="mr-2 mt-1 h-3.5 w-3.5" />
                     <span className="text-foreground">{feature}</span>
                   </li>
                 ))}

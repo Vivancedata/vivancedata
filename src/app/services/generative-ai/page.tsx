@@ -46,32 +46,32 @@ const features: Feature[] = [
   {
     title: "Fine-tuning on your own material",
     description: "A model that has read the words your trade actually uses: the part numbers, the abbreviations on a scrawled slip, the way your crews write up a job.",
-    icon: <Check className="h-5 w-5 text-brand" />,
+    icon: <Check className="h-5 w-5 text-mute" />,
   },
   {
     title: "Drafting the routine writing",
     description: "Quotes, follow-up emails and service reports drafted from what is already in the job record, for a person to check and send.",
-    icon: <Check className="h-5 w-5 text-brand" />,
+    icon: <Check className="h-5 w-5 text-mute" />,
   },
   {
     title: "Images and mockups",
     description: "Visuals generated to a consistent look, so a one-off flyer or a vehicle wrap does not need a whole design cycle.",
-    icon: <Check className="h-5 w-5 text-brand" />,
+    icon: <Check className="h-5 w-5 text-mute" />,
   },
   {
     title: "Voice",
     description: "A line that answers in a voice rather than a menu, takes the address and the fault, and books the slot or escalates it.",
-    icon: <Check className="h-5 w-5 text-brand" />,
+    icon: <Check className="h-5 w-5 text-mute" />,
   },
   {
     title: "Text, photo and audio together",
     description: "A voicemail, a photo of the panel and a typed note about the same job, read as one record instead of three.",
-    icon: <Check className="h-5 w-5 text-brand" />,
+    icon: <Check className="h-5 w-5 text-mute" />,
   },
   {
     title: "Knowing when it is wrong",
     description: "Confidence thresholds, a person in the loop where a mistake is expensive, and a record of what the system decided and on what basis.",
-    icon: <Check className="h-5 w-5 text-brand" />,
+    icon: <Check className="h-5 w-5 text-mute" />,
   },
 ];
 
@@ -130,15 +130,15 @@ export default function GenerativeAIPage() {
               <div>
                 <div className="eyebrow mb-1">← RESPONSE</div>
                 <div className="text-foreground text-xs bg-muted rounded-sm p-2.5 space-y-1.5">
-                  <div><span className="text-brand">1.</span> job_ref: matched to open job</div>
-                  <div><span className="text-brand">2.</span> quantity: short by two pallets</div>
-                  <div><span className="text-brand">3.</span> signature: unreadable, flagged for a person</div>
+                  <div><span className="text-mute">1.</span> job_ref: matched to open job</div>
+                  <div><span className="text-mute">2.</span> quantity: short by two pallets</div>
+                  <div><span className="text-mute">3.</span> signature: unreadable, flagged for a person</div>
                 </div>
               </div>
               {/* "latency: 1.2s" sat here: a performance figure for a system
                   that has not been benchmarked. */}
               <div className="flex items-center justify-between text-mute text-xs pt-1">
-                <span className="text-brand/50">fine-tuned LLM</span>
+                <span className="text-mute">fine-tuned LLM</span>
                 <span>illustrative output</span>
               </div>
             </div>
@@ -166,7 +166,7 @@ export default function GenerativeAIPage() {
             <div key={feature.title} className="bg-card p-6 rounded-xl border border-border">
               <div className="flex items-center mb-4">
                 {feature.icon}
-                <h3 className="text-heading-3 ml-2">{feature.title}</h3>
+                <h3 className="ml-2 font-display text-serif-sm">{feature.title}</h3>
               </div>
               <p className="text-muted-foreground">{feature.description}</p>
             </div>
@@ -181,7 +181,7 @@ export default function GenerativeAIPage() {
               <div className="mb-4 inline-block rounded-pill border border-rule px-3 py-1 text-label uppercase text-mute">
                 {useCase.industry}
               </div>
-              <h3 className="text-heading-3 mb-3">{useCase.title}</h3>
+              <h3 className="mb-3 font-display text-serif-sm">{useCase.title}</h3>
               <p className="text-muted-foreground">{useCase.description}</p>
             </div>
           ))}

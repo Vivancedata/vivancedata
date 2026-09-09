@@ -35,7 +35,7 @@ Everything writes into the TMS or dispatch board your team already watches. An i
     {
       title: "Proof of delivery and BOL processing",
       description: "Read the photographed paperwork drivers already submit, extract the fields, match it to the load, and push it into billing without someone typing it twice.",
-      icon: <ScanLine className="h-6 w-6 text-brand" />,
+      icon: <ScanLine className="h-6 w-6 text-mute" />,
       benefits: [
         "Documents processed as they arrive",
         "Matched to the correct load automatically",
@@ -46,7 +46,7 @@ Everything writes into the TMS or dispatch board your team already watches. An i
     {
       title: "Exception triage",
       description: "Watch for the loads that are late, mis-scanned or short-delivered and put them in front of a dispatcher before the customer calls.",
-      icon: <AlertTriangle className="h-6 w-6 text-brand" />,
+      icon: <AlertTriangle className="h-6 w-6 text-mute" />,
       benefits: [
         "Problem loads surfaced early",
         "Ranked by customer impact",
@@ -57,7 +57,7 @@ Everything writes into the TMS or dispatch board your team already watches. An i
     {
       title: "Driver communication",
       description: "Handle the routine check-calls, ETA updates and document reminders so dispatch spends its time on the loads that are actually going wrong.",
-      icon: <Radio className="h-6 w-6 text-brand" />,
+      icon: <Radio className="h-6 w-6 text-mute" />,
       benefits: [
         "Routine check-calls handled",
         "ETA updates without a phone call",
@@ -68,7 +68,7 @@ Everything writes into the TMS or dispatch board your team already watches. An i
     {
       title: "Claims and damage documentation",
       description: "Assemble the photographs, delivery records and correspondence a damage claim needs into one file while the details are still recoverable.",
-      icon: <FileWarning className="h-6 w-6 text-brand" />,
+      icon: <FileWarning className="h-6 w-6 text-mute" />,
       benefits: [
         "Evidence gathered while it exists",
         "Consistent claim packages",

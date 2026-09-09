@@ -33,35 +33,30 @@ const resources = [
     description: "What happens when a model meets real paperwork, real calls and real crews, including the parts that do not work.",
     href: "/blog",
     icon: BookOpen,
-    color: "bg-brand",
   },
   {
     title: "ROI Calculator",
     description: "Put your own numbers in and see what a build would cost, what it might save, and how long before it pays back.",
     href: "/tools/roi-calculator",
     icon: Calculator,
-    color: "bg-brand",
   },
   {
     title: "AI Readiness Assessment",
     description: "Twenty questions about your records, your systems and your people, and a straight read on whether you are ready yet.",
     href: "/tools/ai-readiness",
     icon: ClipboardCheck,
-    color: "bg-brand",
   },
   {
     title: "Innovation Hub",
     description: "What I am testing before it goes near a job someone depends on, and what I am watching but would not build on yet.",
     href: "/innovation-hub",
     icon: Lightbulb,
-    color: "bg-brand",
   },
   {
     title: "Responsible AI",
     description: "How the parts that can go wrong get handled: what the system decides alone, what waits for a person, and what gets written down.",
     href: "/responsible-ai",
     icon: Shield,
-    color: "bg-brand",
   },
 ];
 
@@ -88,16 +83,16 @@ export default function ResourcesPage() {
                 href={resource.href}
                 className="group relative flex flex-col rounded-md border border-border bg-card p-8 transition-colors hover:border-brand/40"
               >
-                <div className={`inline-flex h-12 w-12 items-center justify-center rounded-xl ${resource.color} text-brand-foreground mb-4`}>
+                <div className="mb-4 inline-flex h-11 w-11 items-center justify-center border border-rule text-mute">
                   <Icon className="h-6 w-6" />
                 </div>
-                <h2 className="text-heading-3 text-foreground mb-2">
+                <h2 className="mb-2 font-display text-serif-sm text-foreground">
                   {resource.title}
                 </h2>
                 <p className="text-muted-foreground flex-grow">
                   {resource.description}
                 </p>
-                <div className="mt-4 flex items-center text-sm font-medium text-brand dark:text-brand group-hover:text-brand/80">
+                <div className="mt-4 flex items-center text-label uppercase text-mute transition-colors group-hover:text-foreground">
                   Explore
                   <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </div>

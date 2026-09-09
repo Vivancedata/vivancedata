@@ -46,32 +46,32 @@ const services: Service[] = [
   {
     title: "What you actually have",
     description: "Where your documents live, what shape they arrive in, and whether they are consistent enough to build on. Sometimes the answer is not yet, and the cheaper fix is a different one.",
-    icon: <Check className="h-5 w-5 text-brand" />,
+    icon: <Check className="h-5 w-5 text-mute" />,
   },
   {
     title: "An ordered list, not a strategy deck",
     description: "The jobs worth automating, in the order they are worth doing, with the reason each one sits where it does. Short enough to read in one sitting.",
-    icon: <Check className="h-5 w-5 text-brand" />,
+    icon: <Check className="h-5 w-5 text-mute" />,
   },
   {
     title: "Finding the jobs worth doing",
     description: "Going through your week for the tasks that repeat, take someone off the tools, and fail in a way you can point at.",
-    icon: <Check className="h-5 w-5 text-brand" />,
+    icon: <Check className="h-5 w-5 text-mute" />,
   },
   {
     title: "Rules for what it may decide alone",
     description: "Which calls the system makes by itself, which ones wait for a person, and what gets written down. In plain language, so it survives someone leaving.",
-    icon: <Check className="h-5 w-5 text-brand" />,
+    icon: <Check className="h-5 w-5 text-mute" />,
   },
   {
     title: "Picking tools and vendors",
     description: "Reading the pricing pages and the contracts so you do not end up on a per-seat bill that grows faster than the crew does.",
-    icon: <Check className="h-5 w-5 text-brand" />,
+    icon: <Check className="h-5 w-5 text-mute" />,
   },
   {
     title: "Getting it used",
     description: "The dispatcher who has done it the same way for years is who this has to work for. If it does not fit their morning, it sits unopened.",
-    icon: <Check className="h-5 w-5 text-brand" />,
+    icon: <Check className="h-5 w-5 text-mute" />,
   },
 ];
 
@@ -153,7 +153,7 @@ export default function ConsultingPage() {
         </p>
         <Button asChild className="self-start group" variant="outline">
           <Link href="/contact">
-            <span>Schedule a Strategy Session</span>
+            <span>Book a call</span>
             <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </Button>
@@ -165,7 +165,7 @@ export default function ConsultingPage() {
             <div key={service.title} className="bg-card p-6 rounded-xl border border-border">
               <div className="flex items-center mb-4">
                 {service.icon}
-                <h3 className="text-heading-3 ml-2">{service.title}</h3>
+                <h3 className="ml-2 font-display text-serif-sm">{service.title}</h3>
               </div>
               <p className="text-muted-foreground">{service.description}</p>
             </div>
@@ -177,7 +177,7 @@ export default function ConsultingPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {benefits.map((benefit) => (
             <div key={benefit.title} className="bg-card p-6 rounded-xl border border-border">
-              <h3 className="text-heading-3 mb-3">{benefit.title}</h3>
+              <h3 className="mb-3 font-display text-serif-sm">{benefit.title}</h3>
               <p className="text-muted-foreground">{benefit.description}</p>
             </div>
           ))}
@@ -196,7 +196,7 @@ export default function ConsultingPage() {
               <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center mx-auto mb-4">
                 <span className="text-label uppercase text-mute">{phase.step}</span>
               </div>
-              <h3 className="text-heading-3 mb-3">{phase.title}</h3>
+              <h3 className="mb-3 font-display text-serif-sm">{phase.title}</h3>
               <p className="text-muted-foreground">{phase.description}</p>
             </div>
           ))}
@@ -206,7 +206,7 @@ export default function ConsultingPage() {
       <ServiceCTA
         heading="Not sure what to automate first?"
         body="Tell me which part of the week goes wrong most often, and I will tell you whether it is worth building for."
-        actionLabel="Book a Consultation"
+        actionLabel="Book a call"
       />
     </Container>
   );

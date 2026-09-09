@@ -104,7 +104,7 @@ export function RelatedPosts({ posts, currentSlug }: RelatedPostsProps) {
                   )}
                 </div>
 
-                <div className="mt-4 flex items-center gap-2 text-sm font-medium text-brand">
+                <div className="mt-4 flex items-center gap-2 text-label uppercase text-mute transition-colors group-hover:text-foreground">
                   Read article
                   <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </div>

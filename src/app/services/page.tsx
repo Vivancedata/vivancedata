@@ -96,7 +96,8 @@ const ServicesPage = () => {
       category: "Knowledge & Retrieval",
       description: "A private question-answering system grounded in your internal documents, answering with citations back to the source file so replies can be checked.",
       impact: "Typical build: 4-8 weeks",
-      link: "/services/generative-ai"
+      link: "/services/generative-ai",
+      ctaLabel: "See what this looks like"
     },
     {
       id: "3",
@@ -126,7 +127,6 @@ const ServicesPage = () => {
         title="What a build looks like"
         description="Three shapes of work I take on. Each has a fixed scope and a named deliverable, so you know what you are getting before it starts."
         cases={engagements}
-        ctaLabel="Discuss scope"
       />
       
       <FAQSection 

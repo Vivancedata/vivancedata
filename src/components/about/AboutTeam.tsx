@@ -27,7 +27,9 @@ export function AboutTeam({ title, description, members }: AboutTeamProps): Reac
           </p>
         </div>
         
-        <div className={`grid gap-8 ${members.length === 1 ? "grid-cols-1 max-w-lg mx-auto" : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"}`}>
+        {/* Left-set at one member too. `max-w-lg mx-auto` put the single card in
+          the middle of a page whose every other band starts at the gutter. */}
+        <div className={`grid gap-8 ${members.length === 1 ? "grid-cols-1 max-w-lg" : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"}`}>
           {members.map((member) => (
             <div key={member.id} className="bg-card rounded-lg overflow-hidden">
               <div className="relative h-48 w-full">

@@ -184,7 +184,7 @@ export const metadata: Metadata = {
         url: "https://vivancedata.com/images/ai-solutions.png",
         width: 1200,
         height: 630,
-        alt: "Vivancedata Case Studies",
+        alt: "Vivancedata example builds",
       },
     ],
   },
@@ -200,7 +200,7 @@ export const metadata: Metadata = {
 export default function CaseStudiesPage() {
   return (
     <Container className="py-16">
-      <div className="text-center mb-16">
+      <div className="mb-16">
         <Heading className="mb-4 font-display text-serif-xl">Example engagements</Heading>
         <Paragraph className="max-w-2xl mx-auto text-lg">
           Four shapes of work written out end to end: what goes wrong, what gets built, and what
@@ -234,17 +234,17 @@ export default function CaseStudiesPage() {
               <h2 className="mb-4 font-display text-serif-lg">{study.title}</h2>
               
               <div className="mb-4">
-                <h3 className="text-heading-4 mb-2">Challenge</h3>
+                <h3 className="mb-2 font-display text-serif-sm">Challenge</h3>
                 <p className="text-muted-foreground">{study.challenge}</p>
               </div>
               
               <div className="mb-4">
-                <h3 className="text-heading-4 mb-2">Solution</h3>
+                <h3 className="mb-2 font-display text-serif-sm">Solution</h3>
                 <p className="text-muted-foreground">{study.solution}</p>
               </div>
               
               <div className="mb-6">
-                <h3 className="text-heading-4 mb-2">Results</h3>
+                <h3 className="mb-2 font-display text-serif-sm">Results</h3>
                 <ul className="list-disc list-inside text-muted-foreground space-y-1">
                   {study.results.map((result) => (
                     <li key={`${study.id}-${result}`}>{result}</li>

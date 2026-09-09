@@ -8,6 +8,7 @@ import { ArrowRight, Lightbulb, Zap, Brain, Sparkles, Atom, Rocket } from "lucid
 import {
   emergingTechnologies,
   innovationProjects,
+  type InnovationProject,
   type TechnologyIcon,
 } from "@/constants/innovationHub";
 
@@ -49,26 +50,18 @@ interface TechnologyCardProps {
 }
 
 const TechnologyCard = ({ title, description, icon, maturity, timeframe }: TechnologyCardProps) => {
-  const maturityColors = {
-    Emerging: "bg-muted text-muted-foreground",
-    Growing: "bg-muted text-foreground",
-    Maturing: "bg-brand/10 text-brand"
-  };
-
   return (
-    <div className="bg-card p-6 rounded-xl border border-border">
+    <div className="flex flex-col border border-rule bg-card p-6">
       <div className="flex items-center mb-4">
-        <div className="mr-4 p-3 bg-muted rounded-full">
-          {icon}
-        </div>
-        <h3 className="text-heading-3">{title}</h3>
+        <span className="mr-4 text-mute">{icon}</span>
+        <h3 className="font-display text-serif-sm">{title}</h3>
       </div>
       <p className="text-muted-foreground mb-4">{description}</p>
       <div className="flex items-center justify-between">
-        <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${maturityColors[maturity]}`}>
+        <span className="inline-flex items-center rounded-pill border border-rule px-2.5 py-0.5 text-label uppercase text-mute">
           {maturity}
         </span>
-        <span className="text-sm text-muted-foreground">{timeframe}</span>
+        <span className="font-mono text-data text-muted-foreground">{timeframe}</span>
       </div>
     </div>
   );
@@ -78,29 +71,27 @@ interface ProjectCardProps {
   title: string;
   description: string;
   technologies: string[];
-  status: "Concept" | "Research" | "Prototype" | "Pilot";
+  /** Imported rather than restated, so retiring a value here is one edit. */
+  status: InnovationProject["status"];
 }
 
 const ProjectCard = ({ title, description, technologies, status }: ProjectCardProps) => {
-  const statusColors = {
-    Concept: "bg-muted text-muted-foreground",
-    Research: "bg-muted text-muted-foreground",
-    Prototype: "bg-muted text-foreground",
-    Pilot: "bg-brand/10 text-brand"
-  };
-
+  // No colour ladder. The green used to sit on the most advanced status, which
+  // made it mean "notable" -- and in this world green means a system read
+  // something and got it right. The label is the information; the chip is a
+  // hairline pill like every other chip on the site.
 
   return (
-    <div className="bg-card rounded-xl border border-border overflow-hidden">
-      <div className="relative aspect-video border-b border-border bg-muted">
+    <div className="flex flex-col border border-rule bg-card">
+      <div className="field-dots relative aspect-[16/7] border-b border-rule">
         <div className="absolute top-3 right-3">
-          <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${statusColors[status]}`}>
+          <span className="inline-flex items-center rounded-pill border border-rule bg-background px-2.5 py-0.5 text-label uppercase text-mute">
             {status}
           </span>
         </div>
       </div>
       <div className="p-6">
-        <h3 className="text-heading-3 mb-2">{title}</h3>
+        <h3 className="mb-2 font-display text-serif-sm">{title}</h3>
         <p className="text-muted-foreground mb-4">{description}</p>
         <div className="flex flex-wrap gap-1.5">
           {technologies.map((tech) => (
@@ -120,19 +111,19 @@ const ProjectCard = ({ title, description, technologies, status }: ProjectCardPr
 // Icon keys from the constants file resolved to elements here, so the copy
 // stays free of JSX.
 const TECHNOLOGY_ICONS: Record<TechnologyIcon, React.ReactNode> = {
-  brain: <Brain className="h-6 w-6 text-brand" />,
-  atom: <Atom className="h-6 w-6 text-brand" />,
-  zap: <Zap className="h-6 w-6 text-brand" />,
-  sparkles: <Sparkles className="h-6 w-6 text-brand" />,
-  rocket: <Rocket className="h-6 w-6 text-brand" />,
-  lightbulb: <Lightbulb className="h-6 w-6 text-brand" />,
+  brain: <Brain className="h-6 w-6" strokeWidth={1.25} />,
+  atom: <Atom className="h-6 w-6" strokeWidth={1.25} />,
+  zap: <Zap className="h-6 w-6" strokeWidth={1.25} />,
+  sparkles: <Sparkles className="h-6 w-6" strokeWidth={1.25} />,
+  rocket: <Rocket className="h-6 w-6" strokeWidth={1.25} />,
+  lightbulb: <Lightbulb className="h-6 w-6" strokeWidth={1.25} />,
 };
 
 export default function InnovationHubPage() {
 
   return (
     <Container className="py-16">
-      <div className="text-center mb-16">
+      <div className="mb-16">
         <Heading className="mb-4 font-display text-serif-xl">Innovation Hub</Heading>
         <Paragraph className="max-w-3xl mx-auto text-lg">
           What I test before it goes anywhere near a job someone depends on — which new
@@ -142,21 +133,33 @@ export default function InnovationHubPage() {
 
       <div className="flex flex-col md:flex-row gap-12 mb-20">
         <div className="w-full md:w-1/2">
-          <div className="aspect-video rounded-md overflow-hidden border border-border bg-card p-6 md:p-8 flex flex-col">
+          <div className="flex flex-col border border-rule bg-card p-6 md:p-8">
             <div className="eyebrow mb-4">What is actually running</div>
-            <div className="space-y-3 flex-1">
+            {/* Three rows carried a colour ladder that made the third demo green
+              * and the first two not, for no reason a reader could infer. Here
+              * green means what it means everywhere else on this site -- a
+              * system that actually runs -- so all three live demos take the
+              * mark and the policy line underneath does not. */}
+            <ul className="flex-1 border-t border-rule">
               {[
-                { stage: "Call triage", count: "live demo", color: "bg-muted text-muted-foreground border-border" },
-                { stage: "Paperwork extraction", count: "live demo", color: "bg-muted text-foreground border-border" },
-                { stage: "Field note matching", count: "live demo", color: "bg-muted text-brand border-brand/30" },
-                { stage: "Open to anyone", count: "no call required", color: "bg-brand/10 text-brand border-brand/30" },
+                { stage: "Call triage", state: "Live", running: true },
+                { stage: "Paperwork extraction", state: "Live", running: true },
+                { stage: "Field note matching", state: "Live", running: true },
+                { stage: "Open to anyone", state: "No call required", running: false },
               ].map((item) => (
-                <div key={item.stage} className={`border rounded-lg px-4 py-2.5 flex items-center justify-between ${item.color}`}>
-                  <span className="text-xs font-medium">{item.stage}</span>
-                  <span className="text-xs opacity-70">{item.count}</span>
-                </div>
+                <li
+                  key={item.stage}
+                  className="flex items-center justify-between gap-md border-b border-rule py-2.5"
+                >
+                  <span className="text-body-sm text-foreground">{item.stage}</span>
+                  <span
+                    className={`text-label uppercase ${item.running ? "text-brand" : "text-mute"}`}
+                  >
+                    {item.state}
+                  </span>
+                </li>
               ))}
-            </div>
+            </ul>
             <div className="mt-4 text-caption text-mute">Fictional sample data · rate-limited · nothing to sign up for</div>
           </div>
         </div>
@@ -182,7 +185,7 @@ export default function InnovationHubPage() {
       </div>
 
       <div className="mb-20">
-        <h2 className="mb-8 font-display text-serif-lg text-center">Technology radar</h2>
+        <h2 className="mb-8 font-display text-serif-lg">Technology radar</h2>
         <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-10">
           What I am watching, how ready each one looks, and roughly when it might matter for a trade
           or industrial job. Nothing here is advice to go and buy something yet.
@@ -202,7 +205,7 @@ export default function InnovationHubPage() {
       </div>
 
       <div className="mb-20">
-        <h2 className="mb-8 font-display text-serif-lg text-center">Projects</h2>
+        <h2 className="mb-8 font-display text-serif-lg">Projects</h2>
         <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-10">
           What I am building or pulling apart at the moment. The status label says how far along
           each one is, and most of them are not far.
@@ -242,7 +245,7 @@ export default function InnovationHubPage() {
             }
           ].map((tool) => (
             <div key={tool.title} className="bg-card p-6 rounded-xl border border-border flex flex-col">
-              <h3 className="text-heading-3 mb-3">{tool.title}</h3>
+              <h3 className="mb-3 font-display text-serif-sm">{tool.title}</h3>
               <p className="text-muted-foreground mb-6 flex-1">{tool.description}</p>
               <Button asChild className="w-full">
                 <Link href={tool.href}>
@@ -255,52 +258,23 @@ export default function InnovationHubPage() {
         </div>
       </div>
 
-      <div className="mb-20">
-        <h2 className="mb-2 font-display text-serif-lg">Reading</h2>
-        <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
-          Papers from the wider research community that I keep an eye on.
-        </p>
-        <div className="space-y-6">
-          {[
-            {
-              title: "Advancing Explainability in Multimodal Foundation Models",
-              authors: "External research — Journal of Artificial Intelligence Research",
-              publication: "Journal of Artificial Intelligence Research",
-              date: "February 2025",
-              abstract: "Novel techniques for improving the explainability of decisions made by multimodal foundation models, enabling more transparent and trustworthy AI systems."
-            },
-            {
-              title: "Federated Learning for Privacy-Preserving Healthcare Analytics",
-              authors: "External research — IEEE Transactions on Medical Imaging",
-              publication: "IEEE Transactions on Medical Imaging",
-              date: "December 2024",
-              abstract: "A federated learning framework designed for healthcare applications that maintains patient privacy while enabling collaborative model training across multiple institutions."
-            },
-            {
-              title: "Quantum-Enhanced Machine Learning: Opportunities and Challenges",
-              authors: "External research — Quantum Information Processing",
-              publication: "Quantum Information Processing",
-              date: "October 2024",
-              abstract: "A survey examining the current state of quantum machine learning, identifying promising applications and addressing key challenges for practical implementation."
-            }
-          ].map((paper) => (
-            <div key={paper.title} className="bg-card p-6 rounded-xl border border-border">
-              <h3 className="text-heading-3 mb-2">{paper.title}</h3>
-              <div className="flex flex-wrap gap-x-4 gap-y-2 mb-4 text-sm">
-                <span className="text-muted-foreground">{paper.authors}</span>
-                <span className="text-muted-foreground">{paper.publication}</span>
-                <span className="text-muted-foreground">{paper.date}</span>
-              </div>
-              <p className="text-foreground mb-4">{paper.abstract}</p>
-              <Button variant="outline" size="sm" className="group">
-                <span>Read Full Paper</span>
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Button>
-            </div>
-          ))}
-        </div>
-      </div>
-      
+      {/*
+        The "Reading" section was here: three papers with journal names, dates
+        and abstracts, presented as a curated list.
+
+        It was deleted rather than fixed. Every "Read Full Paper" button had no
+        `href` at all, so all three were dead. The `authors` field on each read
+        "External research -- <journal name>", which is a placeholder standing
+        where real authors should be. Two of the three were on healthcare and
+        quantum computing, outside the four trades this practice serves. None
+        could be verified as existing.
+
+        A citation list nobody can follow, on subjects the practice does not
+        work in, is worse than no section: it is the shape of scholarship
+        without the substance. If a real reading list is wanted, it needs real
+        papers with real links.
+      */}
+
       <div className="bg-muted rounded-xl p-8 md:p-12 text-center">
         <h2 className="mb-4 font-display text-serif-lg">Got the awkward one?</h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">

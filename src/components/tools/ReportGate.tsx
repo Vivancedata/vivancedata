@@ -88,7 +88,7 @@ export function ReportGate({
     <Card className="border-brand/30 dark:border-brand/40">
       <CardHeader>
         <CardTitle as="h3" className="flex items-center gap-2 text-xl">
-          <Lock className="h-5 w-5 text-brand" aria-hidden="true" />
+          <Lock className="h-5 w-5 text-mute" aria-hidden="true" />
           {title}
         </CardTitle>
         <CardDescription>{description}</CardDescription>

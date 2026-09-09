@@ -10,6 +10,13 @@ interface Case {
   description: string;
   impact: string;
   link: string;
+  /**
+   * Overrides the section label for this card. One shared label across cards
+   * whose links go to different places was the bug: two of these convert to
+   * /contact and one navigates to a service page, and a single "Discuss scope"
+   * described neither honestly.
+   */
+  ctaLabel?: string;
 }
 
 interface ServicesCasesProps {
@@ -23,7 +30,7 @@ export function ServicesCases({
   title,
   description,
   cases,
-  ctaLabel = "Learn more"
+  ctaLabel = "Book a call"
 }: ServicesCasesProps): React.ReactElement {
   const getCaseVisual = (category: string) => {
     const iconClass = "h-6 w-6 text-mute";
@@ -65,7 +72,7 @@ export function ServicesCases({
                   <p className="text-muted-foreground mb-4">{caseItem.description}</p>
                   <Button variant="outline" size="sm" asChild>
                     <Link href={caseItem.link} className="inline-flex items-center">
-                      {ctaLabel} <ArrowRight className="ml-2 h-4 w-4" />
+                      {caseItem.ctaLabel ?? ctaLabel} <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
                 </div>

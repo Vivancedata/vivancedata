@@ -19,7 +19,7 @@ export function ServicesList({ services }: ServicesListProps): React.ReactElemen
           <div key={service.id} className="bg-card p-8 rounded-lg border border-border">
             <div className="flex items-start gap-4">
               <div className="rounded-full bg-muted p-2 mt-1">
-                <CheckCircle className="h-5 w-5 text-brand" />
+                <CheckCircle className="h-5 w-5 text-mute" />
               </div>
               <div>
                 <h3 className="text-heading-3 mb-3">{service.title}</h3>
