@@ -73,7 +73,7 @@ export async function generateMetadata({ params }: BlogPostParams): Promise<Meta
         : ['AI', 'artificial intelligence', 'technology'];
     
     return {
-      title: `${frontmatter.title} - Vivancedata AI Blog`,
+      title: `${frontmatter.title} - Vivancedata`,
       description: frontmatter.description,
       keywords: keywords.join(', '),
       openGraph: {
@@ -121,7 +121,7 @@ async function getBlogPostData(slug: string, filePath: string) {
     options: { parseFrontmatter: true }
   });
 
-  const description = frontmatter.description || frontmatter.excerpt || `Read our article on ${frontmatter.title}`;
+  const description = frontmatter.description || frontmatter.excerpt || `A note on ${frontmatter.title}`;
   const image = frontmatter.image || "/images/ai-solutions.png";
   const tags = frontmatter.tags || ["AI", "Technology"];
 

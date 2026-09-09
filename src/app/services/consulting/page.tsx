@@ -12,11 +12,11 @@ import {
 
 export const metadata: Metadata = {
   title: "AI Strategy Consulting - Vivancedata",
-  description: "Expert guidance to help you develop and implement an effective AI strategy that aligns with your business goals and delivers measurable results.",
+  description: "Deciding what to automate first, what to leave alone, and what each option costs to build and to run \u2014 before anyone writes code.",
   keywords: ["AI strategy", "AI consulting", "digital transformation", "AI roadmap", "AI implementation", "AI governance"],
   openGraph: {
     title: "AI Strategy Consulting - Vivancedata",
-    description: "Expert guidance for developing and implementing effective AI strategies. From readiness assessment to implementation.",
+    description: "Deciding what to automate first, what to leave alone, and what each option costs. Before anyone writes code.",
     type: "website",
     url: "https://vivancedata.com/services/consulting",
     images: [
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "AI Strategy Consulting - Vivancedata",
-    description: "Expert guidance for developing and implementing effective AI strategies.",
+    description: "Deciding what to automate first and what to leave alone, before anyone writes code.",
     images: ["https://vivancedata.com/images/ai-solutions.png"],
   },
 };
@@ -44,34 +44,34 @@ interface Service {
 
 const services: Service[] = [
   {
-    title: "AI Readiness Assessment",
-    description: "Evaluate your organization's current capabilities, data infrastructure, and processes to determine your readiness for AI adoption.",
-    icon: <Check className="h-5 w-5 text-brand" />,
+    title: "What you actually have",
+    description: "Where your documents live, what shape they arrive in, and whether they are consistent enough to build on. Sometimes the answer is not yet, and the cheaper fix is a different one.",
+    icon: <Check className="h-5 w-5 text-mute" />,
   },
   {
-    title: "Strategic AI Roadmap",
-    description: "Develop a comprehensive plan for AI implementation that aligns with your business objectives and provides a clear path forward.",
-    icon: <Check className="h-5 w-5 text-brand" />,
+    title: "An ordered list, not a strategy deck",
+    description: "The jobs worth automating, in the order they are worth doing, with the reason each one sits where it does. Short enough to read in one sitting.",
+    icon: <Check className="h-5 w-5 text-mute" />,
   },
   {
-    title: "Use Case Identification",
-    description: "Identify high-value AI applications specific to your industry and business that will deliver the greatest ROI.",
-    icon: <Check className="h-5 w-5 text-brand" />,
+    title: "Finding the jobs worth doing",
+    description: "Going through your week for the tasks that repeat, take someone off the tools, and fail in a way you can point at.",
+    icon: <Check className="h-5 w-5 text-mute" />,
   },
   {
-    title: "AI Governance Framework",
-    description: "Establish policies, procedures, and oversight mechanisms to ensure responsible and compliant AI implementation.",
-    icon: <Check className="h-5 w-5 text-brand" />,
+    title: "Rules for what it may decide alone",
+    description: "Which calls the system makes by itself, which ones wait for a person, and what gets written down. In plain language, so it survives someone leaving.",
+    icon: <Check className="h-5 w-5 text-mute" />,
   },
   {
-    title: "Vendor Selection & Management",
-    description: "Navigate the complex AI vendor landscape and select the right partners for your specific needs and objectives.",
-    icon: <Check className="h-5 w-5 text-brand" />,
+    title: "Picking tools and vendors",
+    description: "Reading the pricing pages and the contracts so you do not end up on a per-seat bill that grows faster than the crew does.",
+    icon: <Check className="h-5 w-5 text-mute" />,
   },
   {
-    title: "Change Management",
-    description: "Prepare your organization for AI adoption with strategies to address cultural shifts, skill gaps, and process changes.",
-    icon: <Check className="h-5 w-5 text-brand" />,
+    title: "Getting it used",
+    description: "The dispatcher who has done it the same way for years is who this has to work for. If it does not fit their morning, it sits unopened.",
+    icon: <Check className="h-5 w-5 text-mute" />,
   },
 ];
 
@@ -82,20 +82,20 @@ interface Benefit {
 
 const benefits: Benefit[] = [
   {
-    title: "Accelerated Time-to-Value",
-    description: "Avoid costly mistakes and implementation delays with expert guidance that helps you focus on the right AI initiatives from the start.",
+    title: "You find out early if the answer is no",
+    description: "If nothing in your operation repeats often enough to be worth building for, I say so and the work stops there. That answer costs you a few days rather than a quarter.",
   },
   {
-    title: "Competitive Advantage",
-    description: "Stay ahead of industry trends with strategic AI applications that differentiate your business and create sustainable advantages.",
+    title: "One person, start to finish",
+    description: "Whoever sits with your dispatcher is who writes the code and who picks up the phone when it breaks. There is no delivery team to be handed to.",
   },
   {
-    title: "Risk Mitigation",
-    description: "Navigate the complex ethical, legal, and regulatory landscape of AI with confidence and compliance.",
+    title: "Nothing gets replaced on day one",
+    description: "What you run now keeps running while the new thing runs beside it. During that window a wrong answer costs nothing, and the disagreements are the useful part.",
   },
   {
-    title: "Optimized Investment",
-    description: "Maximize ROI by prioritizing AI initiatives with the highest potential impact and avoiding unnecessary expenditures.",
+    title: "The running cost is quoted up front",
+    description: "APIs change and document formats drift, so an automation is not finished when it ships. You get the monthly number before you commit to the build, not after.",
   },
 ];
 
@@ -103,25 +103,25 @@ export default function ConsultingPage() {
   return (
     <Container className="py-16">
       <ServicePageHeader
-        title="AI Strategy Consulting"
-        intro="Expert guidance to help you develop and implement an effective AI strategy that aligns with your business goals and delivers measurable results."
+        title="AI strategy consulting"
+        intro="Deciding what to automate first, what to leave alone, and what each option costs to build and to run \u2014 before anyone writes code."
       />
 
       <ServiceHeroSplit
         visual={
           <div className="aspect-video rounded-md overflow-hidden border border-border bg-card p-6 md:p-8 flex flex-col">
             <div className="eyebrow mb-5 flex items-center gap-2">
-              <Target className="w-3 h-3" /> AI Strategy Framework
+              <Target className="w-3 h-3" /> How the assessment runs
             </div>
             <div className="flex justify-between gap-2 mb-6">
               {[
-                { n: "1", label: "Assess" },
-                { n: "2", label: "Strategize" },
-                { n: "3", label: "Plan" },
-                { n: "4", label: "Execute" },
+                { n: "1", label: "Watch" },
+                { n: "2", label: "Shortlist" },
+                { n: "3", label: "Cost" },
+                { n: "4", label: "Decide" },
               ].map(({ n, label }) => (
                 <div key={n} className="flex-1 flex flex-col items-center gap-2">
-                  <div className="w-8 h-8 rounded-full bg-muted border border-brand/40 text-brand text-sm font-bold flex items-center justify-center">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-pill border border-rule text-label text-mute">
                     {n}
                   </div>
                   <span className="text-muted-foreground text-xs">{label}</span>
@@ -130,10 +130,10 @@ export default function ConsultingPage() {
             </div>
             <div className="space-y-2">
               {[
-                "AI Readiness Assessment",
-                "Strategic AI Roadmap",
-                "Use Case Prioritization",
-                "ROI Measurement Framework",
+                "Where your documents actually live",
+                "The shortlist, in order",
+                "Build cost and monthly cost",
+                "What to leave alone",
               ].map((item) => (
                 <div key={item} className="flex items-center gap-2 bg-muted rounded-sm px-3 py-1.5">
                   <div className="w-1.5 h-1.5 rounded-full bg-primary/70 flex-shrink-0" />
@@ -144,28 +144,28 @@ export default function ConsultingPage() {
           </div>
         }
       >
-        <h2 className="text-heading-1 mb-4">Strategic AI Guidance for Business Leaders</h2>
+        <h2 className="mb-4 font-display text-serif-lg">Deciding what to build, before building it</h2>
         <p className="text-muted-foreground mb-6">
-          Navigating the complex landscape of artificial intelligence can be challenging. Our consulting services provide the strategic guidance you need to make informed decisions about AI adoption and implementation.
+          Most of these projects fail on the choice of job rather than the technology. Automate a task that runs twice a month, or one where nobody can say what the right answer looks like, and the budget is gone before a line of code is written.
         </p>
         <p className="text-muted-foreground mb-6">
-          We work closely with your leadership team to understand your business objectives, assess your current capabilities, and develop a tailored AI strategy that delivers tangible results and competitive advantages.
+          So I start with the people doing the work — whoever answers the phone, whoever keys in the paperwork — and come back with an ordered list of what is worth automating, what each one costs to build and to run, and what to leave alone.
         </p>
         <Button asChild className="self-start group" variant="outline">
           <Link href="/contact">
-            <span>Schedule a Strategy Session</span>
+            <span>Book a call</span>
             <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </Button>
       </ServiceHeroSplit>
 
-      <ServiceSection heading="Our Consulting Services">
+      <ServiceSection heading="What this covers">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service) => (
             <div key={service.title} className="bg-card p-6 rounded-xl border border-border">
               <div className="flex items-center mb-4">
                 {service.icon}
-                <h3 className="text-heading-3 ml-2">{service.title}</h3>
+                <h3 className="ml-2 font-display text-serif-sm">{service.title}</h3>
               </div>
               <p className="text-muted-foreground">{service.description}</p>
             </div>
@@ -173,30 +173,30 @@ export default function ConsultingPage() {
         </div>
       </ServiceSection>
 
-      <ServiceSection heading="Why Choose Our Consulting Services">
+      <ServiceSection heading="Why it works this way">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {benefits.map((benefit) => (
             <div key={benefit.title} className="bg-card p-6 rounded-xl border border-border">
-              <h3 className="text-heading-3 mb-3">{benefit.title}</h3>
+              <h3 className="mb-3 font-display text-serif-sm">{benefit.title}</h3>
               <p className="text-muted-foreground">{benefit.description}</p>
             </div>
           ))}
         </div>
       </ServiceSection>
 
-      <ServiceSection heading="Our Consulting Process">
+      <ServiceSection heading="How the assessment runs">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {[
-            { step: "1", title: "Discovery", description: "We begin by understanding your business objectives, challenges, and current capabilities." },
-            { step: "2", title: "Assessment", description: "We evaluate your organization's AI readiness and identify potential high-value use cases." },
-            { step: "3", title: "Strategy", description: "We develop a comprehensive AI roadmap tailored to your specific business needs." },
-            { step: "4", title: "Implementation", description: "We provide ongoing guidance and support as you execute your AI strategy." }
+            { step: "1", title: "Watch", description: "A morning with whoever answers the phone and whoever types the paperwork in. Not a workshop." },
+            { step: "2", title: "Shortlist", description: "The tasks that repeat often enough, and fail clearly enough, to be worth building for." },
+            { step: "3", title: "Cost", description: "What each one takes to build, and what it costs to keep running once it is live." },
+            { step: "4", title: "Decide", description: "You pick one to build, or none. Either way the shortlist and the costing are yours." }
           ].map((phase) => (
             <div key={phase.step} className="bg-card p-6 rounded-xl border border-border text-center">
               <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center mx-auto mb-4">
-                <span className="text-brand font-bold">{phase.step}</span>
+                <span className="text-label uppercase text-mute">{phase.step}</span>
               </div>
-              <h3 className="text-heading-3 mb-3">{phase.title}</h3>
+              <h3 className="mb-3 font-display text-serif-sm">{phase.title}</h3>
               <p className="text-muted-foreground">{phase.description}</p>
             </div>
           ))}
@@ -204,9 +204,9 @@ export default function ConsultingPage() {
       </ServiceSection>
       
       <ServiceCTA
-        heading="Ready to Develop Your AI Strategy?"
-        body="Let&apos;s discuss how our consulting services can help you navigate the AI landscape and develop a strategy that drives business value."
-        actionLabel="Book a Consultation"
+        heading="Not sure what to automate first?"
+        body="Tell me which part of the week goes wrong most often, and I will tell you whether it is worth building for."
+        actionLabel="Book a call"
       />
     </Container>
   );

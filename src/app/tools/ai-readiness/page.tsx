@@ -6,11 +6,11 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "AI Readiness Assessment - Vivancedata",
-  description: "Evaluate your organization's readiness for AI adoption. Get personalized recommendations and insights into your data, infrastructure, and organizational capabilities.",
+  description: "A short set of questions about your records, your systems and your people, and an honest read on whether you are ready to automate anything yet.",
   keywords: ["AI readiness assessment", "AI adoption", "AI maturity", "AI strategy", "digital transformation", "AI capabilities"],
   openGraph: {
     title: "AI Readiness Assessment - Vivancedata",
-    description: "Evaluate your organization's readiness for AI adoption. Get personalized recommendations and actionable insights.",
+    description: "Questions about your records, your systems and your people, and an honest read on whether you are ready to automate anything yet.",
     type: "website",
     url: "https://vivancedata.com/tools/ai-readiness",
     images: [
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "AI Readiness Assessment - Vivancedata",
-    description: "Evaluate your organization's readiness for AI adoption.",
+    description: "An honest read on whether you are ready to automate anything yet.",
     images: ["https://vivancedata.com/images/ai-solutions.png"],
   },
 };
@@ -35,46 +35,46 @@ export default function AIReadinessPage() {
     <Container className="py-16">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
-          <Heading className="text-4xl md:text-5xl mb-4">AI Readiness Assessment</Heading>
+          <Heading className="mb-4 font-display text-serif-xl">AI Readiness Assessment</Heading>
           <Paragraph className="max-w-3xl mx-auto text-lg">
-            Discover how prepared your organization is for AI adoption. This comprehensive
-            assessment evaluates your data maturity, technical infrastructure, organizational
-            culture, and strategic alignment.
+            Most operations are not ready for the thing they want to build, and the reason is
+            usually the records rather than the technology. This asks about what you keep, what
+            you run it on, who has to use it, and what you are actually trying to fix.
           </Paragraph>
         </div>
 
         <AIReadinessQuiz />
 
         <div className="mt-16 bg-muted rounded-xl p-8">
-          <h2 className="text-heading-2 mb-4">What This Assessment Covers</h2>
+          <h2 className="mb-4 font-display text-serif-md">What it asks about</h2>
           <div className="grid md:grid-cols-2 gap-6 text-foreground">
             <div>
-              <h3 className="text-heading-4 mb-2 flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-brand"></div>
-                Data Readiness
+              <h3 className="mb-2 font-display text-serif-sm flex items-center gap-2">
+                <div className="h-1.5 w-1.5 rounded-full bg-mute"></div>
+                Your records
               </h3>
-              <p className="text-sm">Quality, accessibility, and governance of your data assets</p>
+              <p className="text-sm">What you keep, where it lives, and whether anyone can get at it</p>
             </div>
             <div>
-              <h3 className="text-heading-4 mb-2 flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-brand"></div>
-                Technical Infrastructure
+              <h3 className="mb-2 font-display text-serif-sm flex items-center gap-2">
+                <div className="h-1.5 w-1.5 rounded-full bg-mute"></div>
+                Your systems
               </h3>
-              <p className="text-sm">Computing resources, cloud capabilities, and integration readiness</p>
+              <p className="text-sm">What you already run, and whether anything new can be wired into it</p>
             </div>
             <div>
-              <h3 className="text-heading-4 mb-2 flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-brand"></div>
-                Organizational Culture
+              <h3 className="mb-2 font-display text-serif-sm flex items-center gap-2">
+                <div className="h-1.5 w-1.5 rounded-full bg-mute"></div>
+                Your people
               </h3>
-              <p className="text-sm">Change readiness, innovation mindset, and leadership support</p>
+              <p className="text-sm">Whether the person who has to use this every day was asked first</p>
             </div>
             <div>
-              <h3 className="text-heading-4 mb-2 flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-brand"></div>
-                Strategic Alignment
+              <h3 className="mb-2 font-display text-serif-sm flex items-center gap-2">
+                <div className="h-1.5 w-1.5 rounded-full bg-mute"></div>
+                The job itself
               </h3>
-              <p className="text-sm">Business goals, use case clarity, and success metrics</p>
+              <p className="text-sm">Whether you can say what the right answer looks like, and how you would know it worked</p>
             </div>
           </div>
         </div>

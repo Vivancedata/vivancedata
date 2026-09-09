@@ -66,16 +66,16 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: "manufacturing-maintenance",
-    title: "Predictive Maintenance Deployment",
+    title: "Maintenance Before the Breakdown",
     client: "Illustrative Industrial Manufacturer",
     industry: "Manufacturing",
-    challenge: "Maintenance teams were reactive, responding to failures rather than preventing them, causing costly production interruptions.",
-    solution: "Deployed sensor telemetry ingestion and anomaly scoring models to flag equipment degradation before failure thresholds were reached.",
+    challenge: "Maintenance happened when something stopped. A bearing that had been getting louder for a fortnight took the line down mid-shift, and afterwards nobody could say whether the warning had been there to see.",
+    solution: "Scored the sensor data the machines already produce for the drift that runs ahead of a failure, and put the affected asset on the maintenance schedule while the part could still be ordered rather than couriered.",
     results: [
-      "Earlier maintenance interventions on priority assets",
-      "Fewer unplanned downtime events",
-      "Improved maintenance team scheduling efficiency",
-      "Better cost predictability for maintenance budgets"
+      "Wear raised while the line is still running",
+      "Maintenance scheduled against a signal instead of a stoppage",
+      "Parts ordered in normal time rather than expedited",
+      "A record of what the machine was doing before it went down"
     ],
     technologies: ["Time Series Analysis", "Anomaly Detection", "Sensor Telemetry", "MES Integration"],
     iconType: "brain",

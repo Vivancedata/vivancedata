@@ -21,7 +21,7 @@ export interface ReportGateProps {
 type GateStatus = "idle" | "submitting" | "unlocked" | "error";
 
 const GENERIC_ERROR =
-  "We could not send your report. Please check the address and try again, or email info@vivancedata.com.";
+  "The report did not send. Check the address for a typo and try again, or email info@vivancedata.com and I will send it over by hand.";
 
 export function ReportGate({
   tool,
@@ -88,7 +88,7 @@ export function ReportGate({
     <Card className="border-brand/30 dark:border-brand/40">
       <CardHeader>
         <CardTitle as="h3" className="flex items-center gap-2 text-xl">
-          <Lock className="h-5 w-5 text-brand" aria-hidden="true" />
+          <Lock className="h-5 w-5 text-mute" aria-hidden="true" />
           {title}
         </CardTitle>
         <CardDescription>{description}</CardDescription>
@@ -98,7 +98,7 @@ export function ReportGate({
           <div className="flex flex-col gap-3 sm:flex-row">
             <div className="flex-1">
               <label htmlFor={emailFieldId} className="sr-only">
-                Work email address
+                Email address to send the report to
               </label>
               <Input
                 id={emailFieldId}
@@ -130,8 +130,8 @@ export function ReportGate({
             </Button>
           </div>
           <p className="text-sm text-muted-foreground">
-            Your results appear here straight away and we email you a copy to keep. No newsletter,
-            and we never share your address.
+            Your results appear here straight away, and I email you a copy to keep. No newsletter,
+            and I never share your address.
           </p>
           <p
             id={`${emailFieldId}-status`}

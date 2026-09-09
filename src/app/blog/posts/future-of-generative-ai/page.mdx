@@ -1,6 +1,6 @@
 ---
 title: "The Future of Generative AI in Business: Trends to Watch"
-description: "Explore the emerging trends in generative AI and how they're reshaping business operations across industries."
+description: "What is actually changing in generative AI for business, which claims to distrust, and how to tell whether any of it applies to you."
 date: "2025-01-15"
 tags: ["AI Trends", "Generative AI", "Business Strategy"]
 image: "/images/ai-solutions.png"
@@ -8,13 +8,20 @@ image: "/images/ai-solutions.png"
 
 # The Future of Generative AI in Business: Trends to Watch
 
-Generative AI has evolved from experimental technology to a critical business tool in remarkably short time. As we move further into 2025, organizations across industries are discovering new applications that transform how they operate, innovate, and compete.
+*Written in January 2025. The near-term window it looks forward to has mostly
+arrived, so read the first half as a record of what looked likely at the time
+rather than as a forecast. I have left it as written; a prediction is only worth
+anything if you can see it after the fact. The part that has held up best is the
+argument about distrusting adoption statistics, which is below.*
 
-## The Current Landscape
 
-The generative AI market has matured significantly. What started with text generation has expanded into multimodal systems capable of working with text, images, code, audio, and video simultaneously. Businesses are moving beyond proof-of-concept projects to production deployments.
+Generative AI went from a demo people forwarded to each other to something with a budget line, quickly. Through 2025, more of the interesting activity is happening in production than in pilots, which changes the questions worth asking about it.
 
-### Reading the Adoption Numbers Carefully
+## Where things stand
+
+What began as text generation now covers text, images, code, audio and video in the same system. The tooling is steadier than it was, and more organizations are running these things for real rather than evaluating them indefinitely.
+
+### Reading the adoption numbers carefully
 
 You will see a great many statistics about enterprise adoption and productivity
 gains. Treat almost all of them sceptically, for two reasons.
@@ -33,311 +40,177 @@ The useful move is to distrust the market-level figure and generate your own:
 baseline a specific task before you introduce the tool, and measure the same task
 after, including the review time.
 
-## Major Trends Shaping 2025
+## What is actually changing
 
-### 1. Multimodal AI Systems
+### 1. Multimodal systems
 
-The future isn't just about text or images—it's about systems that seamlessly work across multiple modalities. Modern AI can analyze a product image, generate marketing copy, create variations, and even produce video demonstrations—all from a single prompt.
+A single system can now take a product photograph, write copy about it, produce variations and generate a video demonstration. For a marketing team that compresses work that used to be sequential and handed between people, and it lets product teams show a concept before committing to building it.
 
-**Business Impact:** Marketing teams can now produce complete campaigns in hours instead of weeks. Product teams can rapidly prototype and visualize concepts before investing in development.
+The catch is the same as it has always been with generated output: producing ten versions is now trivial, and choosing between them is not. The bottleneck moves to whoever has to decide which one is any good.
 
-### 2. AI Agents and Autonomous Workflows
+### 2. Agents and multi-step workflows
 
-Moving beyond simple chatbots, AI agents can now handle complex, multi-step workflows with minimal human intervention. These agents represent a fundamental shift from reactive to proactive AI systems that can autonomously execute business processes.
+An agent, as distinct from a chatbot, carries out a sequence of steps rather than answering a question. It pulls information from databases, documents, APIs and the web; it decides what to do next within rules somebody wrote; it acts across more than one system; and it keeps context across a task that spans days rather than a single conversation.
 
-**Core Capabilities of Modern AI Agents:**
+In customer service that means an agent that doesn't only answer the question but processes the return, books the appointment, updates the record, and hands the awkward cases to a person with the history attached.
 
-- **Information Synthesis:** Research and synthesize information from multiple internal and external sources, including databases, documents, APIs, and web content
-- **Decision-Making:** Make decisions based on predefined business rules, learned patterns, and contextual understanding
-- **Cross-System Integration:** Execute tasks across different systems and platforms without manual intervention or custom integrations
-- **Continuous Learning:** Analyze outcomes to improve future performance, adapting to changing business conditions
-- **Context Retention:** Maintain conversation and task context across multiple interactions over extended time periods
+In financial services it means monitoring conditions, executing within a defined strategy, producing compliance reports and escalating anomalies. Note that the autonomy is bounded on purpose — the interesting question is never what the agent can do but what limits it operates inside and who set them.
 
-**Real-World Applications Across Industries:**
+In healthcare it means scheduling, insurance verification, refills, reminders, and coordination between providers. The administrative burden there is largely a coordination problem across systems that do not talk to each other, which is why it is a natural target and also why integration, not intelligence, is the hard part.
 
-**Customer Service:** AI agents that don't just answer questions but can process returns, schedule appointments, update CRM databases, escalate complex issues to human agents, and follow up with customers—all while maintaining conversation context across multiple channels (email, chat, phone).
+In supply chain it means watching inventory, forecasting, reordering within approved parameters and routing shipments. The dependency to watch is data freshness: an agent acting on stale inventory counts will reorder confidently and wrongly, and will do it faster than a person would have.
 
-**Financial Services:** Agents that monitor market conditions, execute trades within predefined strategies, generate compliance reports, and escalate anomalies for human review. Note that the autonomy here is bounded on purpose — the interesting question is not what the agent can do but what limits it operates inside and who set them.
+That last point generalises. An agent's failure mode is not that it can't do the task. It is that it does the task at speed on the basis of something untrue.
 
-**Healthcare:** Agents that schedule appointments, verify insurance eligibility, send medication reminders, process refills, and coordinate between providers. The administrative burden in healthcare is largely a coordination problem across systems that do not talk to each other, which is why it is a natural target and also why integration, not intelligence, is the hard part.
+### 3. Models trained for one domain
 
-**Supply Chain:** Agents that monitor inventory, forecast demand, reorder automatically, transact with vendors within approved parameters, and route shipments. The dependency to watch is data freshness: an agent acting on stale inventory counts will reorder confidently and wrongly, and will do it faster than a person would have.
+Generic models are giving way to systems trained on the vocabulary, rules and workflows of a single industry. They handle the terminology properly, can be trained on proprietary material, and can sit inside your own infrastructure where that matters.
 
-### 3. Domain-Specific Models
+In legal work, models trained on case law and contracts draft agreements, surface relevant cases and flag compliance issues. Accuracy claims there deserve particular scrutiny, because the errors that matter are not evenly distributed — a tool can be right about most clauses and wrong about the indemnity.
 
-Generic AI models are giving way to specialized systems trained on industry-specific data. Financial services, healthcare, legal, and manufacturing sectors are deploying models that understand their unique terminology, regulations, and workflows. This shift represents the maturation of AI from general-purpose tools to precision instruments tailored for specific industries and use cases.
+In diagnostics, models trained on records, literature and imaging support a clinician and flag cases for attention. The measure that matters is not overall accuracy but the false negative rate on the conditions you deployed it to catch.
 
-**Why It Matters:** Domain-specific models provide more accurate results, better understand context, and can be trained on proprietary data while maintaining security and compliance. Generic models might understand general business concepts, but specialized models comprehend industry nuances that make the difference between useful and exceptional results.
+In financial compliance, models trained on regulatory text and transaction history surface suspicious activity and assemble reports. The value is in the triage; the review still has to happen, and a system that reduces alert volume by being less sensitive has not helped anyone.
 
-**Industry-Specific Implementations:**
+In manufacturing quality control, models trained on specifications, defect history and production data anticipate equipment failure and catch problems before they leave the plant. This is one of the better-suited applications, because the ground truth is unambiguous and arrives quickly — you find out whether the prediction was right.
 
-**Legal Tech:** Models trained on case law, contracts, and precedent can draft agreements, surface relevant cases, and flag potential compliance issues. Accuracy claims in this space deserve particular scrutiny, because the errors that matter are not evenly distributed — a tool can be right about most clauses and wrong about the indemnity.
+The general advantages are real but not automatic. A narrower model makes fewer terminology errors, trains on less data, and can run where your data already lives. Whether it beats a general model on your particular task is an empirical question with a cheap answer: try both on your own material.
 
-**Healthcare Diagnostics:** Medical models trained on patient records, literature, and imaging can support diagnosis and flag cases for attention. The measure that matters clinically is not overall accuracy but the false negative rate on the conditions you deployed it to catch.
+### 4. Governance stops being optional
 
-**Financial Compliance:** Models trained on regulatory text, audit history, and transaction patterns can surface suspicious activity and assemble required reports. The value is in the triage; the review still has to happen, and a system that reduces alert volume by being less sensitive has not helped.
+Organizations are writing down policies on what may be used and on what data, auditing for bias, disclosing what was machine-generated, and defining where a human must sign off.
 
-**Manufacturing Quality Control:** Models trained on specifications, defect history, and production data can anticipate equipment failure and catch quality problems before they leave the plant. This is one of the better-suited applications, because the ground truth is unambiguous and arrives quickly — you find out whether the prediction was right.
+This tends to get sold as a source of competitive advantage. It is more honest to say it is the cost of operating: the regulation is arriving regardless, and a company that cannot say what its systems do with customer data will eventually be asked.
 
-**Competitive Advantages of Domain-Specific Models:**
+### 5. Generative AI inside business intelligence
 
-1. **Higher Accuracy:** Understanding industry terminology and context reduces errors significantly
-2. **Faster Training:** Smaller, focused datasets mean quicker deployment
-3. **Better ROI:** Precision targeting of business problems delivers measurable value faster
-4. **Enhanced Security:** Can be deployed on-premises with proprietary data
-5. **Regulatory Compliance:** Built with industry regulations in mind from the start
+Natural-language querying is arriving in BI tools, which means someone can ask a question of the warehouse without writing SQL or waiting on the data team.
 
-### 4. AI Governance and Responsible AI
-
-As AI systems become more powerful, organizations are establishing formal governance frameworks. This includes:
-
-- Clear policies on AI usage and data handling
-- Regular audits for bias and fairness
-- Transparency requirements for AI-generated content
-- Human oversight mechanisms for critical decisions
-
-**Business Necessity:** Companies that demonstrate responsible AI practices gain competitive advantage through customer trust and regulatory compliance.
-
-### 5. Integration with Business Intelligence
-
-Generative AI is merging with traditional business intelligence tools, enabling natural language queries against complex data sets and automated insight generation. This convergence democratizes data analysis, allowing non-technical stakeholders to extract insights without SQL knowledge or data science expertise.
-
-**Transforming Data Analysis:**
-
-**Natural Language Interfaces:** Business users can now ask questions in plain English and receive instant, accurate responses. No more waiting for data teams to write custom queries or build specialized dashboards.
-
-**Example:** A sales director can ask "Why did revenue drop in Q3 compared to Q2 in the Northeast region?" and receive:
-- The breakdown with supporting visualizations
-- Candidate explanations, decomposed into the factors that moved — deal size, cycle length, win rate
-- Lost-deal and win-rate context
-- Suggested actions, ordered by likely impact
-- Scenario projections for the next quarter
+A sales director asks why revenue fell in the Northeast last quarter and gets a breakdown with charts, candidate explanations decomposed into what actually moved — deal size, cycle length, win rate — some lost-deal context, suggested actions, and a projection.
 
 The caveat belongs next to the capability: these systems answer "why" by finding
 correlations in the data they can see. A decomposition that says deal size fell is
 a description, not a cause, and the actual cause is frequently something the
 warehouse has no column for.
 
-**Automated Reporting and Insights:**
+The same tools monitor KPIs and raise alerts, write the recurring summary nobody enjoys writing, surface correlations, forecast with confidence intervals, and recommend actions. Where this earns its place is on decisions that are numerous, repetitive and individually low-stakes — pricing, stock levels and promotions across a large catalogue, which nobody was reviewing carefully by hand anyway.
 
-Modern AI-powered BI systems can:
-- **Monitor KPIs Continuously:** Alert stakeholders to significant changes or anomalies in real-time
-- **Generate Executive Summaries:** Automatically create weekly/monthly reports highlighting key trends
-- **Identify Hidden Patterns:** Surface correlations and insights that humans might miss
-- **Predict Future Trends:** Use historical data to forecast outcomes with confidence intervals
-- **Recommend Actions:** Suggest data-driven strategies based on successful patterns
+Marketing attribution is a more mixed case. You can ask which campaigns produced qualified leads and get a view across channels with suggested reallocations, but attribution remains a modelling choice rather than a fact. The tool applies a model faster; it does not settle which model is right.
 
-**Where It Applies:**
+Financial planning sits in between. Forecasting across many variables at once is genuinely hard by hand, so the mechanical gain is real. Which assumptions to make stays with the CFO, and always will.
 
-**Retail Analytics:** Pricing, inventory, and promotion decisions across a large catalogue are a good fit, because the decisions are numerous, repetitive, and individually low-stakes — nobody was reviewing them carefully by hand anyway.
+## Putting it into practice
 
-**Marketing Attribution:** Teams can ask which campaigns produced qualified leads and get an attribution view across channels with suggested reallocations. Attribution remains a modelling choice rather than a fact, though; the tool applies a model faster, it does not settle which model is right.
+### Start small, then scale
 
-**Financial Planning:** Forecasting across many variables at once is genuinely hard to do by hand. The gain is in the mechanics — assembling and refreshing the model — rather than in the judgement about which assumptions to make, which stays with the CFO.
+Look for repetitive work that eats time without requiring hard judgement. Prove it in one department before committing the company. Measure it — time, quality, cost — against a reading you took before you started. And let the people using it shape what it becomes, because they will find the exceptions you didn't think of.
 
-## Practical Implementation Strategies
+### Build or buy
 
-### Start Small, Scale Fast
+Build when the data is genuinely yours, the process is unusual enough that no product fits, or you need control over the model itself.
 
-1. **Identify High-Impact Use Cases:** Look for repetitive tasks that consume significant time but don't require complex judgment
-2. **Pilot with One Department:** Prove value before rolling out enterprise-wide
-3. **Measure Everything:** Track time saved, quality improvements, and ROI
-4. **Iterate Based on Feedback:** Let users shape how AI tools evolve
+Buy when a standard product covers most of what you need and the remainder is not the part that differentiates you, when time matters more than fit, or when you have nobody in-house to maintain what you would otherwise build.
 
-### Build vs. Buy Decision Framework
+Most businesses should buy more often than they think and build in the one place where they are actually different.
 
-**Build When:**
-- You have unique proprietary data
-- Your processes are highly specialized
-- You need complete control over the model
+### The people part decides it
 
-**Buy When:**
-- A standard solution covers most of what you need, and the remainder is not the part that differentiates you
-- Time-to-value is critical
-- You lack in-house AI expertise
+Technology alone doesn't change how a company works. What does: someone senior who has said out loud why this is happening, training pitched at every level rather than at the enthusiasts, permission to try things that don't work, and straight answers to the question everyone is asking privately about their own job.
 
-### Change Management Is Critical
+## Common pitfalls
 
-Technology alone doesn't drive transformation. Successful AI adoption requires:
+Expecting it to be right first time. These systems need iteration, and the first version is a starting point.
 
-- Executive sponsorship and clear vision
-- Training programs for all user levels
-- Cultural shift toward experimentation
-- Addressing employee concerns transparently
+Ignoring data quality, which sets the ceiling on everything above it.
 
-## Common Pitfalls to Avoid
+Underestimating change management, which is what most failed rollouts have in common.
 
-1. **Expecting Perfection:** AI systems require iteration and refinement
-2. **Ignoring Data Quality:** Poor data quality = poor AI outputs
-3. **Underestimating Change Management:** User adoption often determines success
-4. **Lack of Clear Metrics:** Define success criteria before deployment
-5. **Overlooking Security:** AI systems can be attack vectors if not secured properly
+Deploying without deciding what success looks like, which guarantees an argument later about whether it worked.
 
-## Looking Ahead: What's Next
+Treating security as a later problem. An AI system connected to your data is a new way in.
 
-### Near-Term (2025-2026)
+## Looking ahead
 
-- **Personalized AI Assistants:** Every knowledge worker will have an AI assistant tuned to their role and preferences
-- **Automated Code Generation:** A growing share of routine coding drafted by AI and reviewed by engineers
-- **Real-Time Translation:** Breaking down language barriers in global business
-- **Predictive Maintenance:** AI systems that prevent problems before they occur
+Over the next couple of years (2025-2026), expect assistants tuned to a particular role rather than one generic chatbot, a growing share of routine code drafted by a model and reviewed by an engineer, translation good enough to stop thinking about, and maintenance prediction moving from pilot to normal.
 
-### Medium-Term (2027-2028)
+Further out (2027-2028), the plausible direction is AI-assisted R&D, workflows that manage themselves within tighter and tighter bounds, personalisation at a scale that used to require headcount, and creative work where the interesting output comes from the back-and-forth rather than the prompt.
 
-- **AI-Driven R&D:** Accelerating product innovation cycles
-- **Autonomous Business Units:** Self-optimizing systems that manage entire workflows
-- **Hyper-Personalization:** Customer experiences tailored to individual preferences at scale
-- **AI-Enhanced Creativity:** Collaboration between humans and AI in creative processes
+I would hold those loosely. Two-year predictions in this field have a poor record, mine included.
 
-## Building Your AI Roadmap
+## Building your roadmap
 
-Creating a successful AI implementation requires a structured approach that balances ambition with pragmatism. Here's a detailed roadmap framework:
+### Phase 1: assessment and planning (weeks 1-4)
 
-### Phase 1: Assessment and Planning (Weeks 1-4)
+Take stock: the state of your data infrastructure, the skills you have and the ones you don't, whether the organization has any appetite for this, and what budget and time actually exist.
 
-**Organizational Readiness:**
-- Evaluate current data infrastructure and quality
-- Assess technical capabilities and skill gaps
-- Identify cultural readiness for AI adoption
-- Review budget and resource availability
+Then find the candidates. Ask departments where the pain is, size the value of each answer, judge whether it is technically feasible, and rank by value against effort. Pick from the top of that list rather than from whatever is most interesting.
 
-**Use Case Identification:**
-- Survey departments for pain points and opportunities
-- Quantify potential value for each use case
-- Assess technical feasibility and resource requirements
-- Prioritize based on value, feasibility, and strategic alignment
+Then define success before you start. Name the measure for each use case, take the baseline reading now, set a target you would defend, and decide how often you will report.
 
-**Success Metrics Definition:**
-- Define clear KPIs for each use case (time saved, cost reduction, revenue impact)
-- Establish baseline measurements
-- Set realistic targets with timeline milestones
-- Plan measurement and reporting cadence
+### Phase 2: pilot (weeks 5-12)
 
-### Phase 2: Pilot Implementation (Weeks 5-12)
+Assemble a small cross-functional group with a sponsor who can unblock things, bring in outside help where it saves months, give people defined roles, and meet on a fixed cadence.
 
-**Team Formation:**
-- Assemble cross-functional team with executive sponsor
-- Engage AI vendor or implementation partner if needed
-- Assign clear roles and responsibilities
-- Establish regular check-in cadence
+Run one use case with a limited group of users. Gather feedback continuously and change things while it is still cheap. Write down what you learn as you learn it, because nobody reconstructs it accurately afterwards.
 
-**Pilot Execution:**
-- Start with single, high-value use case
-- Deploy to limited user group for testing
-- Gather continuous feedback and iterate rapidly
-- Document learnings and best practices
+Track the measures weekly, ask users what they think, and refine.
 
-**Measurement and Iteration:**
-- Track defined KPIs weekly
-- Conduct user satisfaction surveys
-- Identify improvement opportunities
-- Refine approach based on data
+### Phase 3: scale and optimise (weeks 13-26)
 
-### Phase 3: Scale and Optimize (Weeks 13-26)
+Expand what worked to a wider group, add the next use case from your list, and hold quality as the volume rises.
 
-**Gradual Rollout:**
-- Expand successful pilots to broader user base
-- Add additional use cases based on priority list
-- Maintain quality while increasing scale
-- Continue measuring and optimizing
+Connect the system properly into existing workflows, automate the handoffs that are still manual, and build self-service where it makes sense.
 
-**Integration and Automation:**
-- Connect AI systems with existing workflows
-- Automate repetitive tasks and handoffs
-- Build self-service capabilities where appropriate
-- Reduce manual intervention requirements
+Then share it: document what worked, make training material, and let the people who did it tell the next team.
 
-**Knowledge Sharing:**
-- Document best practices and lessons learned
-- Create training materials and resources
-- Share success stories across organization
-- Build internal community of practice
+## Measuring success
 
-## Measuring Success: Key Performance Indicators
+On efficiency: hours saved on specific tasks, cycle time, the share of work the system handles, and where the freed time went. That last one is the question most measurement skips and the one finance will ask.
 
-Track these metrics to validate AI implementation success:
+On quality: error rates, customer satisfaction, first-contact resolution where relevant, and human ratings of the output.
 
-**Efficiency Metrics:**
-- Time saved on specific tasks (hours per week/month)
-- Process cycle time reduction (% improvement)
-- Task automation rate (% of tasks handled by AI)
-- Resource reallocation (hours freed for higher-value work)
+On money: cost reduction, revenue enabled, return against investment, and payback period.
 
-**Quality Metrics:**
-- Error rate reduction (% improvement in accuracy)
-- Customer satisfaction scores (NPS, CSAT improvements)
-- First-contact resolution rate (for customer service AI)
-- Output quality ratings (human evaluations of AI-generated work)
+On adoption: how many eligible users are actively using it, how often, which capabilities they use, and what they say about it.
 
-**Financial Metrics:**
-- Cost savings (direct reduction in operational costs)
-- Revenue impact (new revenue enabled by AI)
-- ROI calculation (value delivered vs. investment)
-- Payback period (time to recover implementation costs)
+## Overcoming common challenges
 
-**Adoption Metrics:**
-- User adoption rate (% of eligible users actively using AI)
-- Usage frequency (interactions per user per day/week)
-- Feature utilization (which capabilities are most valuable)
-- User satisfaction scores (qualitative feedback)
+### Data quality
 
-## Overcoming Common Challenges
+The model can only be as good as what it learns from, and poor data produces unreliable output no matter how capable the model is.
 
-### Data Quality Issues
+Audit the data before you implement. Set governance standards and enforce them in code. Automate cleaning and validation. And build a path for corrections to flow back, so the data gets better rather than staying still.
 
-**Challenge:** AI models are only as good as the data they're trained on. Poor data quality leads to unreliable outputs.
+### Resistance and adoption
 
-**Solution:**
-- Conduct data quality audit before implementation
-- Establish data governance policies and standards
-- Implement automated data cleaning and validation
-- Create feedback loops to improve data quality over time
+People may fear displacement, or simply resent having their workflow rearranged by someone who does not do their job.
 
-### User Resistance and Adoption
+Be explicit about what is being augmented and what is not. Involve users in design and in the pilot. Train properly and keep supporting after launch. Show early wins. And answer concerns directly and quickly, because an unanswered concern becomes the accepted story.
 
-**Challenge:** Employees may fear job displacement or resist changing established workflows.
+### Integration complexity
 
-**Solution:**
-- Communicate clear vision of AI as augmentation, not replacement
-- Involve users in design and pilot phases
-- Provide comprehensive training and ongoing support
-- Celebrate early wins and share success stories
-- Address concerns transparently and promptly
+Connecting to existing enterprise applications is often the hardest engineering in the project.
 
-### Integration Complexity
+Start with systems that have modern APIs. Use middleware where it saves you writing glue. Consider whether an AI-native tool replaces the legacy system rather than integrating with it. And treat integration as part of the architecture from day one rather than as a task at the end.
 
-**Challenge:** Connecting AI systems with existing enterprise applications can be technically complex.
+### Scaling
 
-**Solution:**
-- Start with systems that have modern APIs
-- Use integration platforms and middleware where needed
-- Consider AI-native solutions that replace legacy systems
-- Plan integration as part of initial architecture design
+What works for ten users may not work for a thousand.
 
-### Scaling Challenges
-
-**Challenge:** What works for 10 users may not work for 1,000 users without adjustments.
-
-**Solution:**
-- Design with scale in mind from the beginning
-- Use cloud infrastructure that can grow elastically
-- Monitor performance metrics proactively
-- Plan capacity upgrades before bottlenecks occur
+Design for the load you expect rather than the load you are testing. Use infrastructure that grows without a rebuild. Watch performance before users report it. And plan capacity ahead of the bottleneck, not during it.
 
 ## Conclusion
 
-Generative AI is not a future trend—it's a present reality transforming business operations across every industry. Organizations that embrace these technologies thoughtfully, with clear strategies and responsible governance, will gain significant competitive advantages in efficiency, innovation, and customer satisfaction.
+Generative AI is in production in a lot of businesses now, and the ones getting value from it did something unglamorous: picked a problem, measured it, changed one process, and checked.
 
-Be wary of the urgency argument, including when we make it. The claim that a window
+Be wary of the urgency argument, including when I make it. The claim that a window
 is closing is the oldest device in enterprise technology sales, and it is usually
 deployed to shorten the evaluation rather than to inform it. The organizations that
 get value out of this are not the fastest ones; they are the ones that picked a
 problem worth solving and measured whether it got solved.
 
-Successful AI adoption isn't about chasing the latest technology—it's about solving real business problems effectively. Start with clear objectives, measure rigorously, iterate quickly, and scale what works. Focus on delivering value to users and customers, not just implementing technology for its own sake.
-
-The question worth asking is not how quickly you can adopt generative AI, but which specific problem you would point it at first and how you would know afterwards whether it worked. If you cannot answer the second half, the first half is premature.
+So the question worth sitting with is not how quickly you can adopt generative AI. It is which specific problem you would point it at first, and how you would know afterwards whether it worked. If you cannot answer the second half, the first half is premature.
 
 ---
 
-**About Vivancedata:** We help organizations navigate their AI transformation journey with strategic consulting, custom implementations, and ongoing support. [Contact us](/contact) to discuss how generative AI can transform your business.
+**About me:** I'm Lorenzo Scaturchio. I build small, specific AI systems for construction, HVAC, logistics and manufacturing businesses — one workflow at a time, proved on your own documents. [Book a call](/contact) and tell me which job goes wrong most often.

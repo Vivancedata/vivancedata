@@ -25,15 +25,14 @@ export default function PricingPage() {
   return (
     <Container className="py-16">
       <div className="mx-auto max-w-3xl text-center">
-        <p className="eyebrow mb-4">{pricingPageContent.eyebrow}</p>
-        <Heading className="mb-4 text-4xl md:text-5xl">{pricingPageContent.title}</Heading>
+        <Heading className="mb-4 max-w-[17ch] font-display text-serif-xl">{pricingPageContent.title}</Heading>
         <Paragraph className="mx-auto max-w-[60ch] text-lg">{pricingPageContent.description}</Paragraph>
       </div>
 
       <Pricing showHeader={false} />
 
       <div className="mx-auto max-w-3xl rounded-xl border border-border bg-card p-8">
-        <h2 className="text-heading-2 mb-3">{pricingPageContent.whyRetainer.title}</h2>
+        <h2 className="mb-3 font-display text-serif-md">{pricingPageContent.whyRetainer.title}</h2>
         <p className="max-w-[60ch] text-muted-foreground">{pricingPageContent.whyRetainer.body}</p>
       </div>
 

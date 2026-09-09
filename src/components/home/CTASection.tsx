@@ -19,8 +19,8 @@ export function CTASection({
     <section className="relative w-full border-t border-border py-4xl">
       <div className="container mx-auto px-4 text-center">
         <div className="px-8 py-12 md:px-16">
-          <h2 className="text-display mb-6">{title}</h2>
-          <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto mb-8">
+          <h2 className="mb-6 font-display text-serif-lg">{title}</h2>
+          <p className="mb-8 max-w-[58ch] text-body-lg text-muted-foreground">
             {description}
           </p>
           {/* End-of-page marketing CTA: a pill, per the button-shape split. */}

@@ -5,12 +5,12 @@ import { Metadata } from 'next';
 import { getAllBlogPosts } from '@/lib/blogPosts';
 
 export const metadata: Metadata = {
-  title: 'Blog - Vivancedata AI Solutions',
-  description: 'Explore our latest articles on AI trends, implementation strategies, and industry insights to stay ahead in the rapidly evolving world of artificial intelligence.',
+  title: 'Notes from the work - Vivancedata',
+  description: 'Notes on putting AI into trade and industrial operations: what works on real paperwork and real calls, what breaks, and what is not worth the trouble.',
   keywords: 'AI blog, artificial intelligence trends, machine learning insights, AI implementation, business AI',
   openGraph: {
-    title: 'AI Insights Blog - Vivancedata',
-    description: 'Expert articles on artificial intelligence trends, implementation strategies, and industry insights.',
+    title: 'Notes from the work - Vivancedata',
+    description: 'Notes on putting AI into trade and industrial operations: what works, what breaks, what is not worth the trouble.',
     type: 'website',
     url: 'https://vivancedata.com/blog',
     images: [
@@ -24,8 +24,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Insights Blog - Vivancedata',
-    description: 'Expert articles on AI trends, implementation strategies, and industry insights.',
+    title: 'Notes from the work - Vivancedata',
+    description: 'Notes on putting AI into trade and industrial operations.',
     images: ['https://vivancedata.com/images/ai-solutions.png'],
   },
 };
@@ -35,14 +35,12 @@ export default async function Blog() {
 
   return (
     <>
+      {/* The removed eyebrow was the better of the two lines and is the
+        * owner's own phrase, so it is promoted to the title rather than lost.
+        * "AI Insights Blog" was the generic half. */}
       <PageHero
-        eyebrow="Notes from the work"
-        title={
-          <>
-            AI <span className="text-brand">Insights</span> Blog
-          </>
-        }
-        description="Practical perspectives on AI implementation, strategy, and the decisions that matter most when building production systems."
+        title="Notes from the work"
+        description="What happens when a model meets real paperwork, real calls and real crews \u2014 including the parts that do not work."
       />
       <Container className="py-16">
         <Blogs blogs={posts} />

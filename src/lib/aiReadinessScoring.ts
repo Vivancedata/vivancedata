@@ -74,21 +74,21 @@ export const recommendationsFor = (categoryAverages: CategoryAverages): string[]
   const recommendations: string[] = [];
 
   if (categoryAverages.data < 3) {
-    recommendations.push("Focus on establishing a data governance framework and improving data quality before major AI initiatives.");
+    recommendations.push("Start with data governance, which here means deciding who owns each record and what a complete one looks like. An automation is only as reliable as the paperwork it reads.");
   }
   if (categoryAverages.infrastructure < 3) {
-    recommendations.push("Invest in cloud infrastructure and modern data platforms to support AI workloads.");
+    recommendations.push("Your infrastructure needs sorting before anything runs on top of it: where the files live, what talks to what, and who can reach them.");
   }
   if (categoryAverages.culture < 3) {
-    recommendations.push("Build internal AI capabilities through training and hire data science talent.");
+    recommendations.push("Nobody uses a system they do not trust. Budget time for training on the tools you already own before you buy new ones.");
   }
   if (categoryAverages.strategy < 3) {
-    recommendations.push("Define clear AI use cases aligned with business objectives and establish success metrics.");
+    recommendations.push("Pick two or three use cases and write down what a good result would be in numbers. Without that you cannot tell a working system from a demo.");
   }
 
   if (recommendations.length === 0) {
-    recommendations.push("Your organization is well-positioned for AI adoption. Consider starting with a pilot project in your strongest area.");
-    recommendations.push("Focus on scaling existing capabilities and building an AI center of excellence.");
+    recommendations.push("Nothing in your answers is holding you back, so you are well-positioned to start. Take one workflow and run it beside the way you work now.");
+    recommendations.push("Scale what is already working before you add anything new to it.");
   }
 
   return recommendations;

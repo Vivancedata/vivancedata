@@ -79,7 +79,7 @@ export function BlogLayout({
             <m.button
               type="button"
               onClick={() => router.back()}
-              aria-label="Go back to blogs"
+              aria-label="Go back to the blog"
               className="group mb-8 flex h-10 w-10 items-center justify-center rounded-full bg-card border border-border transition-colors hover:border-brand/40"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -125,7 +125,7 @@ export function BlogLayout({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="mt-8 aspect-video relative overflow-hidden rounded-2xl bg-muted/30"
+                className="mt-8 aspect-video relative overflow-hidden rounded-md border border-rule bg-muted"
               >
                 {isDefaultBlogImage(meta.image) ? (
                   // meta has no slug; the title seeds the same deterministic cover.
@@ -178,7 +178,7 @@ export function BlogLayout({
                       // Fallback for browsers that don't support the Web Share API
                       navigator.clipboard.writeText(window.location.href)
                         .then(() => {
-                          alert('Link copied to clipboard!');
+                          alert('Link copied to the clipboard');
                         })
                         .catch(error => {
                           console.error('Error copying to clipboard:', error);

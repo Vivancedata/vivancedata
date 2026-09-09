@@ -35,7 +35,7 @@ function extractFrontmatter(content: string, slug: string): BlogFrontmatter {
 
   const title = titleMatch?.[1] || slug;
   const description =
-    descriptionMatch?.[1] || excerptMatch?.[1] || `Read our article on ${title}`;
+    descriptionMatch?.[1] || excerptMatch?.[1] || `A note on ${title}`;
   const date = dateMatch?.[1] || new Date().toISOString().split("T")[0];
   const image = imageMatch?.[1] || DEFAULT_IMAGE;
 

@@ -1,6 +1,6 @@
 ---
 title: "Measuring AI ROI: Building a Compelling Business Case"
-description: "Learn how to quantify AI investment returns and build data-driven business cases that secure stakeholder buy-in and funding."
+description: "How to build an AI business case out of your own numbers, cost the parts everyone forgets, and pressure-test it before a finance director does."
 date: "2025-01-22"
 tags: ["AI ROI", "Business Case", "Investment Analysis"]
 image: "/images/ai-solutions.png"
@@ -8,33 +8,35 @@ image: "/images/ai-solutions.png"
 
 # Measuring AI ROI: Building a Compelling Business Case
 
-Securing budget for an AI project requires more than enthusiasm. Executive teams want quantified returns and realistic timelines — and this is exactly where AI business cases tend to go wrong, because the numbers are easy to produce and hard to justify.
+Securing budget for an AI project takes more than enthusiasm. Whoever signs it off wants quantified returns and realistic timelines, and that is exactly where these cases tend to fall over, because the numbers are easy to produce and hard to justify.
 
-This guide is not a set of returns you can expect. Nobody can give you that honestly: the return depends on your cost base, your volumes, your data, and how much of your process the tool actually displaces. What this guide covers is how to build a business case from your own numbers, which costs get left out of nearly every one, and how to pressure-test the result before someone else does.
+This is not a set of returns you can expect. Nobody can give you that honestly: the return depends on your cost base, your volumes, your data, and how much of your process the tool actually displaces. What follows is how to build a case from your own numbers, which costs get left out of nearly every one, and how to attack the result before someone else does.
 
-## The AI ROI Challenge
+## Where AI business cases fall over
 
-Many AI initiatives fail to secure funding or, worse, get cancelled mid-implementation because stakeholders don't see the returns they were promised. Common problems include:
+Projects lose their funding, or get cancelled halfway through, for a small number of repeating reasons.
 
-- **Vague Value Propositions:** "AI will make us more efficient" does not justify a capital request of any size
-- **Overlooked Costs:** Focusing only on software licenses while ignoring integration, training, and ongoing maintenance
-- **Unrealistic Timelines:** Promising results in weeks when reality requires months
-- **Missing Metrics:** Inability to measure whether the AI is actually delivering value
+The value proposition is vague. "AI will make us more efficient" does not justify a capital request of any size, and everyone in the room knows it.
 
-## Framework for AI ROI Analysis
+The costs are half-counted. Software licences are visible and get counted; integration, training and maintenance are not and don't.
 
-### Step 0: Baseline Before You Start
+The timeline is optimistic in a way the author would not defend if asked. Weeks are promised where the work takes months.
+
+And there is no measurement plan, so nobody can say afterwards whether the thing delivered anything at all.
+
+## A framework for AI ROI analysis
+
+### Step 0: baseline before you start
 
 This step comes first and is the one most often skipped. Whatever you intend to
 improve, measure it now, before anything is deployed — and measure it for long
 enough to see its normal variation.
 
-Record, for the specific process in scope:
-- Volume, broken down by type, not as a single total
-- Time per unit, measured rather than estimated by the people who do the work
-- Fully loaded cost per unit, including the supervision and rework the process needs
-- Error and rework rate, and what an error currently costs to fix
-- The seasonal or cyclical pattern across at least a full cycle
+Record, for the specific process in scope: volume broken down by type rather than
+as one total; time per unit, measured rather than estimated by the people who do
+the work; fully loaded cost per unit, including the supervision and rework the
+process needs; the error and rework rate, and what an error currently costs to
+fix; and the seasonal pattern across at least a full cycle.
 
 Without this, you cannot distinguish improvement from normal fluctuation, and
 neither can anyone reviewing your results. A project that deploys in a quiet
@@ -43,54 +45,30 @@ it simply has no way of knowing better. The baseline is the only thing that make
 the post-implementation number mean anything, and it is unrecoverable once the
 system is live.
 
-### Step 1: Identify Tangible Benefits
+### Step 1: identify tangible benefits
 
-Start with benefits you can actually measure and assign dollar values to:
+Start with benefits you can measure and put a currency figure against.
 
-**Direct Cost Reduction**
-- Labor time saved (hours × hourly cost)
-- Error reduction (cost per error × error reduction %)
-- Process automation (transactions × cost per transaction)
-- Resource optimization (waste reduction × cost per unit)
+Direct cost reduction is the most defensible: labour time saved at an hourly cost, errors avoided at a cost per error, transactions handled at a cost per transaction, waste reduced at a cost per unit.
 
-**Revenue Enhancement**
-- Sales increase (conversion rate improvement × average deal size)
-- Customer retention (churn reduction × customer lifetime value)
-- Pricing optimization (price improvement × transaction volume)
-- Market expansion (new customers × average customer value)
+Revenue effects are harder and need a stated mechanism — a conversion improvement against an average deal size, churn reduction against customer lifetime value, better pricing against transaction volume, or new customers at an average value. Each of those is a chain of assumptions, and each link is somewhere the case can break.
 
-**Risk Mitigation**
-- Compliance violation reduction (fines avoided)
-- Fraud detection (fraud losses prevented)
-- Quality improvement (defect costs avoided)
-- Security enhancement (breach costs prevented)
+Risk reduction is the hardest of the three to bank, because you are counting things that did not happen: fines avoided, fraud losses prevented, defect costs sidestepped, breaches that didn't occur. Include them, but never let the case depend on them.
 
-### Step 2: Calculate Total Cost of Ownership
+### Step 2: calculate total cost of ownership
 
-Don't just count software licenses. Include all costs over a 3-year period:
+Don't just count software licences. Take everything over a three-year horizon.
 
-**Direct Costs**
-- Software licensing or subscription fees
-- Hardware/infrastructure (servers, GPUs if needed)
-- Third-party services (APIs, data sources)
-- Professional services (implementation partners)
+The direct costs are the easy ones: licensing or subscription fees, hardware and infrastructure, third-party services and APIs, and any implementation partner.
 
-**Internal Costs**
-- Internal team time (project managers, developers, domain experts)
-- Training and enablement
-- Change management activities
-- Ongoing maintenance and support
+The internal costs are real money even though nobody invoices for them: your own team's time, training, change management, and ongoing maintenance and support.
 
-**Hidden Costs**
-- Data preparation and cleaning, which routinely takes more effort than building the model
-- Integration development and testing
-- Process redesign
-- Opportunity cost (what else could the team be doing?)
+Then there are the costs nobody itemises. Data preparation and cleaning, which routinely takes more effort than building the model. Integration development and testing. Redesigning the process around the new tool. And the opportunity cost of what the team would otherwise have been doing.
 
-**The costs that get forgotten**
+#### The costs that get forgotten
 
 Three categories are missing from most AI business cases, and together they are
-usually larger than the software line item:
+usually larger than the software line item.
 
 *Integration.* The model is a component; the work is connecting it to the systems
 that hold your data and the systems that consume its output. This is normal
@@ -105,37 +83,20 @@ it is wrong by however long the adjustment takes.
 
 *Ongoing upkeep.* AI systems are not build-once assets. Models drift as the world
 they were trained on changes, prompts and rules need revision, upstream data
-sources change format, and someone must monitor quality continuously. Budget for
+sources change format, and someone must watch the quality continuously. Budget for
 this as a standing operational cost, not a warranty period. A business case that
 shows maintenance falling to near zero after year one is describing a system
 nobody is watching.
 
-### Step 3: Build Your Financial Model
+### Step 3: build your financial model
 
-Create a simple spreadsheet that shows:
+A spreadsheet with three periods will do.
 
-**Year 0 (Implementation):**
-- All upfront costs
-- Minimal or no benefits
-- Net: Negative cash flow
+Year 0 is implementation: all the upfront costs, little or no benefit, negative cash flow. Year 1 is stabilisation: ongoing subscription costs against partial benefits — assume a ramp rather than a step change, and state the ramp you assumed. Years 2 and 3 are steady state, where the costs settle and the benefits, if the case is right, arrive in full.
 
-**Year 1 (Stabilization):**
-- Ongoing subscription costs
-- Partial benefits — assume a ramp rather than a step change, and state the ramp you assumed
-- Net: Breakeven or small positive
+From that, four figures. The payback period: how long until cumulative benefits exceed costs. Net present value, in today's money. Internal rate of return, as an effective annual return. And ROI as a percentage — total benefits less total costs, over total costs.
 
-**Year 2-3 (Optimization):**
-- Steady-state costs
-- Full benefits realization
-- Net: Strong positive returns
-
-**Calculate Key Metrics:**
-- **Payback Period:** How long until cumulative benefits exceed costs?
-- **Net Present Value (NPV):** What's the value in today's dollars?
-- **Internal Rate of Return (IRR):** What's the effective annual return?
-- **ROI Percentage:** (Total Benefits - Total Costs) / Total Costs × 100
-
-## Pressure-Testing Your Own Model
+## Pressure-testing your own model
 
 You will find no worked examples with figures in this post, deliberately. Published
 ROI examples are almost always reverse-engineered from a conclusion someone already
@@ -172,20 +133,24 @@ not just the work you removed.
 ### Metrics that move too easily
 
 Some numbers can be improved without anything improving. Be suspicious of these,
-particularly when they are the ones being reported:
+particularly when they are the ones being reported.
 
-- **Deflection or containment rate.** An interaction that was abandoned in
-  frustration and one that was genuinely resolved look identical here. Always pair
-  it with a satisfaction or repeat-contact measure on the deflected traffic
-  specifically.
-- **Average handling time.** Falls when the tool works, and also falls when staff
-  are rushing or when the hard cases were routed elsewhere.
-- **Ticket or case volume.** Falls when problems are solved, and also falls when
-  reporting a problem becomes harder.
-- **Accuracy on an aggregate test set.** Rises when the model improves, and also
-  rises when the test set is easier than production.
-- **Adoption and usage counts.** Measure that people opened the tool, not that it
-  helped them. Mandated usage produces excellent adoption numbers.
+Deflection or containment rate treats an interaction abandoned in frustration and
+one genuinely resolved as the same event. Pair it with a satisfaction or
+repeat-contact measure on the deflected traffic specifically, or it tells you
+nothing.
+
+Average handling time falls when the tool works. It also falls when staff are
+rushing, or when the hard cases got routed somewhere else.
+
+Ticket or case volume falls when problems are solved, and also when reporting a
+problem becomes harder.
+
+Accuracy on an aggregate test set rises when the model improves, and also when the
+test set is easier than production.
+
+Adoption and usage counts measure that people opened the tool, not that it helped
+them. Mandated usage produces excellent adoption numbers.
 
 The general rule: a metric that a system's owner can move by changing their own
 behaviour will eventually be moved that way, without anyone intending to cheat.
@@ -205,109 +170,92 @@ tells a decision-maker exactly what they are betting on. If the case only works 
 the optimistic end of every assumption simultaneously, you have learned something
 important before spending anything.
 
-## Building Your Business Case Document
+## Building the business case document
 
-### Executive Summary (1 page)
+### Executive summary (1 page)
 
-Present the essence in a format executives can digest in two minutes. Four blocks,
-each filled from your own baseline rather than from anyone's benchmark:
+Present the essence in a format a decision-maker can absorb in two minutes. Four
+blocks, each filled from your own baseline rather than from anyone's benchmark.
 
-**The Problem:** State the current volume, the measured cost per unit, and the
-share that is routine — each traceable to the baseline you took in Step 0. Name
-what that resource is being kept from doing.
+*The problem.* The current volume, the measured cost per unit, and the share that
+is routine — each traceable to the baseline you took in Step 0. Name what that
+resource is being kept from doing.
 
-**The Solution:** What the system will handle, and explicitly what it will not.
-The scope boundary is the most useful sentence in this section, because it is what
+*The solution.* What the system will handle, and explicitly what it will not. The
+scope boundary is the most useful sentence in this section, because it is the one
 you will be held to.
 
-**The Investment:** Total cost over the horizon, split into upfront and ongoing,
-with integration, change management and upkeep as visible line items rather than
-folded into a single implementation figure.
+*The investment.* Total cost over the horizon, split into upfront and ongoing,
+with integration, change management and upkeep as visible lines rather than folded
+into a single implementation figure.
 
-**The Return:** The expected benefit as a range, the assumption it is most
-sensitive to, and the break-even point on that assumption. A single confident
-number reads as precision and invites the reader to test it; a range with a stated
-break-even reads as competence and invites them to discuss the assumption.
+*The return.* The expected benefit as a range, the assumption it is most sensitive
+to, and the break-even point on that assumption. A single confident number reads as
+precision and invites the reader to test it; a range with a stated break-even reads
+as competence and invites them to discuss the assumption.
 
-### Problem Statement (1-2 pages)
+### Problem statement (1-2 pages)
 
-- Quantify the current state
-- Explain business impact
-- Describe why now is the right time
-- Outline risks of inaction
+Quantify the current state, explain what it costs the business, say why now rather than next year, and be honest about what happens if nothing changes — which is sometimes "not much", and is worth knowing.
 
-### Proposed Solution (2-3 pages)
+### Proposed solution (2-3 pages)
 
-- Overview of the AI solution
-- How it works (non-technical)
-- Implementation approach
-- Timeline with milestones
-- Success metrics
+What the system is, how it works in language a non-technical reader follows, how it would be implemented, the timeline with its milestones, and the measures you will report against.
 
-### Financial Analysis (2-3 pages)
+### Financial analysis (2-3 pages)
 
-- Detailed cost breakdown
-- Benefit calculations with assumptions
-- 3-year financial model
-- Sensitivity analysis (best/expected/worst case scenarios)
-- Key metrics (ROI, NPV, IRR, payback period)
+The cost breakdown, the benefit calculations with every assumption written next to the number it produced, the three-year model, the sensitivity ranges, and the headline metrics.
 
-### Risk Assessment (1 page)
+### Risk assessment (1 page)
 
-- Technical risks and mitigation
-- Organizational risks and mitigation
-- Market risks and mitigation
-- Contingency plans
+Technical risks, organisational risks, market risks, and what you would do about each. Include the contingency plan, and include the condition under which you would stop.
 
 ### Appendices
 
-- Detailed assumptions
-- Vendor comparisons
-- Reference cases
-- Technical specifications
+Detailed assumptions, vendor comparisons, reference cases you have actually spoken to, and technical specifications.
 
-## Common Pitfalls to Avoid
+## Common pitfalls
 
-### 1. Overpromising Results
+### 1. Overpromising results
 
-**Wrong:** A confident reduction figure with no stated origin.
-**Right:** A projected reduction on a named subset of the work, with the source of
-the projection stated — your own pilot, ideally — and the conditions under which it
+Wrong: a confident reduction figure with no stated origin.
+
+Right: a projected reduction on a named subset of the work, with the source of the
+projection stated — your own pilot, ideally — and the conditions under which it
 would not hold.
 
-### 2. Ignoring Change Management Costs
+### 2. Ignoring change management costs
 
-**Mistake:** Budgeting for software and implementation only.
-**Reality:** Adoption, training and process change are a substantial cost in their
-own right, and unlike licence fees they land on people who have other jobs to do.
+The mistake is budgeting for software and implementation only. Adoption, training
+and process change are a substantial cost in their own right, and unlike licence
+fees they land on people who already have other jobs to do.
 
-### 3. Underestimating Timeline
+### 3. Underestimating the timeline
 
-**Mistake:** Promising delivery on the vendor's implementation timeline.
-**Reality:** That timeline covers configuring the product. It does not cover getting
-your data into usable shape, integrating with your systems, security and procurement
-review, or the period after go-live when people are still learning. Estimate those
-from your own experience of comparable projects, because your organization's
-procurement and integration speed is the binding constraint, not the technology.
+The mistake is promising delivery on the vendor's implementation timeline. That
+timeline covers configuring the product. It does not cover getting your data into
+usable shape, integrating with your systems, security and procurement review, or
+the period after go-live when people are still learning. Estimate those from your
+own experience of comparable projects, because your organization's procurement and
+integration speed is the binding constraint, not the technology.
 
-### 4. Focusing Only on Hard Costs
+### 4. Focusing only on hard costs
 
-**Incomplete:** A labour saving quoted on its own.
-**Complete:** The labour saving, plus the service-quality and speed effects stated
-as separately measured outcomes — clearly marked as secondary, and not silently
-converted into dollars to inflate the headline.
+A labour saving quoted on its own is incomplete. State the service-quality and
+speed effects too, as separately measured outcomes, clearly marked as secondary
+and not silently converted into currency to inflate the headline.
 
-### 5. Single-Point Estimates
+### 5. Single-point estimates
 
-**Risky:** A single exact savings figure. Precision that the underlying assumptions
-cannot support reads as false confidence to anyone who has seen a project before.
-**Better:** A range, with the driver of the range named — usually adoption rate or
+A single exact savings figure is risky, because precision the underlying
+assumptions cannot support reads as false confidence to anyone who has sat through
+a project before. Give a range and name what drives it — usually adoption rate or
 automation rate — so the reviewer can argue with the assumption rather than the
 arithmetic.
 
-## Making Your Case Compelling
+## Making the case stand up
 
-### Compare Against Your Own Track Record
+### Compare against your own track record
 
 The most credible comparison is internal: how this project's projected return and
 payback sit against the IT and process projects your organization has actually
@@ -315,7 +263,7 @@ funded, and how those turned out against their own business cases. Your finance
 team has that history. Using it puts the AI project on the same footing as
 everything else competing for the money, which is where a sound case wants to be.
 
-### Handle Industry Benchmarks Carefully
+### Handle industry benchmarks carefully
 
 Analyst and vendor figures are the weakest evidence in any AI business case, and
 reviewers know it. They are typically averaged across organizations unlike yours,
@@ -327,15 +275,15 @@ projection, name the source precisely, and never present a benchmark as
 A pilot on your own data is worth more than every published benchmark combined,
 and is usually cheaper than the argument you will otherwise have.
 
-### Show Quick Wins
+### Show what will be visible early
 
-Identify what will be measurable early and say what it will and will not prove.
+Identify what becomes measurable soon and say what it will and will not prove.
 Early indicators tend to be leading rather than financial — the system is in use,
 its outputs are accurate on your real inputs — and presenting those honestly as
 evidence that the project is on track beats claiming savings that could not yet
 have accumulated.
 
-### Address Skepticism Directly
+### Address skepticism directly
 
 Acknowledge that AI projects fail, and say what specifically reduces that risk
 here: a scoped pilot with a defined kill criterion, budgeted training, a reference
@@ -343,34 +291,19 @@ you have actually spoken to. State the kill criterion in the case document. A
 project with a pre-agreed condition for stopping is far easier to approve than one
 that can only ever be declared a success.
 
-### Link to Strategic Priorities
+### Connect it to something the business already cares about
 
-"This AI initiative directly supports our strategic goal of improving customer satisfaction while reducing operational costs."
+Tie the project to a goal that existed before the project did. If you cannot name
+one, that is worth pausing on: a case that has to invent its own strategic
+justification is usually solving a problem nobody was asking about.
 
-## Measuring Success Post-Implementation
+## Measuring success after implementation
 
-Once approved and implemented, track the metrics you promised:
+Once it is approved and live, report the measures you promised.
 
-**Month 1-3: Early Indicators**
-- User adoption rate
-- System uptime and performance
-- Initial accuracy metrics
+In the first three months you can see adoption, uptime, and early accuracy on real inputs. Between months four and nine, process efficiency, cost movement and user satisfaction start to mean something. From month ten onwards you can compare full impact against the business case and say what you learned.
 
-**Month 4-9: Intermediate Results**
-- Process efficiency improvements
-- Cost reduction tracking
-- User satisfaction
-
-**Month 10-24: Full Impact**
-- Complete ROI realization
-- Comparison to business case projections
-- Lessons learned and optimization opportunities
-
-**Create a ROI Dashboard** that stakeholders can review regularly, showing:
-- Predicted vs. actual benefits, with the original prediction left visible and unedited
-- Cost tracking, including the internal time nobody invoiced for
-- The headline metrics, each next to the counter-metric that would catch it being gamed
-- User adoption metrics
+Build a dashboard people will actually look at, showing predicted against actual benefits with the original prediction left visible and unedited; cost tracking, including the internal time nobody invoiced for; each headline metric next to the counter-metric that would catch it being gamed; and adoption.
 
 ### Report against the original case, not a revised one
 
@@ -389,21 +322,21 @@ projects miss.
 
 ## Conclusion
 
-A strong business case turns an interesting idea into a funded initiative. But the
-purpose of building one properly is not only to get the money — it is to find out,
-before you spend it, whether the project is worth doing.
+A strong business case turns an interesting idea into a funded one. There is a
+second reason to build one properly, though, and it is the better reason: to find
+out, before you spend the money, whether the project is worth doing at all.
 
-Remember:
-- **Baseline first:** The measurement you skip before deployment cannot be recovered afterwards
-- **Cost the invisible parts:** Integration, change management and ongoing upkeep, as line items
-- **Show your work:** Document every assumption, so reviewers argue with assumptions rather than totals
-- **Give ranges, not points:** And name the break-even on the assumption that matters most
-- **Pick metrics that resist gaming:** Or pair each one with the counter-metric that catches it
-- **Report against the original case:** Including when the variance is in your favour
+The short version: baseline first, because the measurement you skip before
+deployment cannot be recovered afterwards. Cost the invisible parts — integration,
+change management, upkeep — as line items. Document every assumption, so reviewers
+argue with assumptions rather than totals. Give ranges instead of points, and name
+the break-even on the assumption that matters most. Pick metrics that resist
+gaming, or pair each with the counter-metric that catches it. And report against
+the original case, including when the variance is in your favour.
 
 A case built this way is harder to write and considerably harder to argue with.
 It also has a property the confident version does not: if the project is not
-actually worth doing, this process will tell you so while it is still cheap to
-find out.
+actually worth doing, this process tells you so while it is still cheap to find
+out.
 
-**Need Help Building Your AI Business Case?** Vivancedata helps organizations develop data-driven AI strategies and ROI models. [Contact us](/contact) to discuss your specific situation.
+**Working on one of these?** I scope this kind of engagement one workflow at a time and prove it on your own documents before you pay for a build. [Book a call](/contact) and bring the numbers you already have.

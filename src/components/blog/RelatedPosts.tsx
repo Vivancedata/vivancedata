@@ -40,7 +40,7 @@ export function RelatedPosts({ posts, currentSlug }: RelatedPostsProps) {
 
   return (
     <section className="mt-16 pt-16 border-t border-border">
-      <h2 className="text-heading-1 mb-8">Related Articles</h2>
+      <h2 className="mb-8 font-display text-serif-lg">Related articles</h2>
 
       <m.div
         variants={container}
@@ -95,7 +95,7 @@ export function RelatedPosts({ posts, currentSlug }: RelatedPostsProps) {
                       {post.tags.slice(0, 2).map((tag: string) => (
                         <span
                           key={tag}
-                          className="inline-flex items-center rounded-full bg-muted px-2 py-0.5 text-xs font-medium text-brand"
+                          className="inline-flex items-center rounded-pill border border-rule px-2 py-0.5 text-label uppercase text-mute"
                         >
                           {tag}
                         </span>
@@ -104,7 +104,7 @@ export function RelatedPosts({ posts, currentSlug }: RelatedPostsProps) {
                   )}
                 </div>
 
-                <div className="mt-4 flex items-center gap-2 text-sm font-medium text-brand">
+                <div className="mt-4 flex items-center gap-2 text-label uppercase text-mute transition-colors group-hover:text-foreground">
                   Read article
                   <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </div>

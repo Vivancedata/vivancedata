@@ -31,8 +31,11 @@ test("homepage renders", async ({ page }) => {
 
 test("blog index renders", async ({ page }) => {
   await visitCriticalRoute(page, "/blog");
-  await expect(page).toHaveTitle(/AI Insights Blog|Blog - VivanceData/i);
-  await expect(page.locator("body")).toContainText(/AI Insights Blog/i);
+  // The page is titled "Notes from the work". It was "AI Insights Blog", with
+  // "Notes from the work" sitting above it as a kicker -- the kicker was the
+  // better line, so removing the kicker promoted it rather than losing it.
+  await expect(page).toHaveTitle(/Notes from the work/i);
+  await expect(page.getByRole("heading", { level: 1 })).toContainText(/Notes from the work/i);
 });
 
 test("critical routes are reachable", async ({ page }) => {

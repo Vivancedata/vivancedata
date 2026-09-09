@@ -1,10 +1,11 @@
 import { Container } from "@/components/common/Container";
+import { VerdictMark } from "@/components/common/Marks";
 import { Heading } from "@/components/common/Heading";
 import { Paragraph } from "@/components/common/Paragraph";
 import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, Shield, Users, Eye, BarChart3, Scale, FileText } from "lucide-react";
+import { ArrowRight, Shield, Users, Eye, BarChart3, Scale, FileText } from "lucide-react";
 import {
   designExamples,
   phases,
@@ -13,12 +14,12 @@ import {
 } from "@/constants/responsibleAI";
 
 export const metadata: Metadata = {
-  title: "Responsible AI Framework - Vivancedata",
-  description: "Our comprehensive approach to ethical, transparent, and human-centered AI implementation that ensures responsible innovation and sustainable outcomes.",
+  title: "Responsible AI - Vivancedata",
+  description: "What a system is allowed to decide on its own, what waits for a person, and what gets written down. The parts of this work that can go wrong quietly.",
   keywords: ["responsible AI", "ethical AI", "AI governance", "AI ethics", "transparent AI", "AI bias", "AI accountability"],
   openGraph: {
-    title: "Responsible AI Framework | Vivancedata",
-    description: "Ethical, transparent, and human-centered AI implementation. Learn about our approach to responsible AI innovation.",
+    title: "Responsible AI | Vivancedata",
+    description: "What a system is allowed to decide on its own, what waits for a person, and what gets written down.",
     type: "website",
     url: "https://vivancedata.com/responsible-ai",
     siteName: "Vivancedata",
@@ -31,8 +32,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Responsible AI Framework | Vivancedata",
-    description: "Ethical and transparent AI implementation with comprehensive governance.",
+    title: "Responsible AI | Vivancedata",
+    description: "What a system decides on its own, what waits for a person, and what gets written down.",
     images: ["https://vivancedata.com/images/ai-solutions.png"],
   },
   robots: {
@@ -53,7 +54,7 @@ const Principle = ({ icon, title, description }: PrincipleProps) => (
       <div className="mr-4 p-3 bg-muted rounded-full">
         {icon}
       </div>
-      <h3 className="text-heading-3">{title}</h3>
+      <h3 className="font-display text-serif-sm">{title}</h3>
     </div>
     <p className="text-muted-foreground">{description}</p>
   </div>
@@ -72,14 +73,14 @@ const Phase = ({ number, title, description, checks }: PhaseProps) => (
       <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg mr-4 flex-shrink-0">
         {number}
       </div>
-      <h3 className="text-heading-3">{title}</h3>
+      <h3 className="font-display text-serif-sm">{title}</h3>
     </div>
     <div className="pl-16">
       <p className="text-muted-foreground mb-4">{description}</p>
       <ul className="space-y-2">
         {checks.map((check) => (
           <li key={check} className="flex items-start">
-            <Check className="h-5 w-5 text-brand mt-0.5 mr-2 flex-shrink-0" />
+            <VerdictMark verdict="filled" label="" className="mr-2 mt-1 h-3.5 w-3.5" />
             <span className="text-foreground">{check}</span>
           </li>
         ))}
@@ -97,7 +98,7 @@ interface CaseStudyProps {
 
 const CaseStudy = ({ title, challenge, approach, outcome }: CaseStudyProps) => (
   <div className="bg-card p-6 rounded-xl border border-border">
-    <h3 className="text-heading-3 mb-4">{title}</h3>
+    <h3 className="mb-4 font-display text-serif-sm">{title}</h3>
     
     <div className="mb-4">
       <h4 className="text-sm font-medium text-muted-foreground mb-1">Challenge</h4>
@@ -119,12 +120,12 @@ const CaseStudy = ({ title, challenge, approach, outcome }: CaseStudyProps) => (
 // Icon keys from the constants file resolved to elements here, so the copy
 // stays free of JSX.
 const PRINCIPLE_ICONS: Record<PrincipleIcon, React.ReactNode> = {
-  users: <Users className="h-6 w-6 text-brand" />,
-  eye: <Eye className="h-6 w-6 text-brand" />,
-  shield: <Shield className="h-6 w-6 text-brand" />,
-  "bar-chart-3": <BarChart3 className="h-6 w-6 text-brand" />,
-  scale: <Scale className="h-6 w-6 text-brand" />,
-  "file-text": <FileText className="h-6 w-6 text-brand" />,
+  users: <Users className="h-6 w-6 text-mute" />,
+  eye: <Eye className="h-6 w-6 text-mute" />,
+  shield: <Shield className="h-6 w-6 text-mute" />,
+  "bar-chart-3": <BarChart3 className="h-6 w-6 text-mute" />,
+  scale: <Scale className="h-6 w-6 text-mute" />,
+  "file-text": <FileText className="h-6 w-6 text-mute" />,
 };
 
 export default function ResponsibleAIPage() {
@@ -135,23 +136,25 @@ export default function ResponsibleAIPage() {
 
   return (
     <Container className="py-16">
-      <div className="text-center mb-16">
-        <Heading className="text-4xl md:text-5xl mb-4">Responsible AI Framework</Heading>
+      <div className="mb-16">
+        <Heading className="mb-4 font-display text-serif-xl">Responsible AI</Heading>
         <Paragraph className="max-w-3xl mx-auto text-lg">
-          Our comprehensive approach to ethical, transparent, and human-centered AI implementation that ensures responsible innovation and sustainable outcomes.
+          The parts of this work that can go wrong quietly: what a system decides on its own,
+          what waits for a person, and what gets written down so you can go back and check.
         </Paragraph>
       </div>
 
       <div className="flex flex-col md:flex-row gap-12 mb-20">
         <div className="w-full md:w-1/2">
           <div className="aspect-video rounded-md overflow-hidden border border-border bg-card p-6 md:p-8 flex flex-col">
-            <div className="eyebrow mb-4">Responsible AI Principles</div>
+            <div className="eyebrow mb-4">Responsible AI principles</div>
             <div className="flex items-center gap-4 mb-5">
               <div className="w-14 h-14 rounded-full bg-muted border-2 border-brand/40 flex items-center justify-center flex-shrink-0">
-                <Shield className="w-7 h-7 text-brand" />
+                <Shield className="w-7 h-7 text-mute" strokeWidth={1.25} />
               </div>
               <p className="text-muted-foreground text-xs leading-relaxed">
-                Ethical guidelines built in at every stage — from data collection to deployment and monitoring.
+                Applied from the first look at your documents through to what happens months
+                after it is live.
               </p>
             </div>
             <div className="space-y-2">
@@ -171,16 +174,20 @@ export default function ResponsibleAIPage() {
         </div>
         
         <div className="w-full md:w-1/2 flex flex-col justify-center">
-          <h2 className="text-heading-1 mb-4">Why Responsible AI Matters</h2>
+          <h2 className="mb-4 font-display text-serif-lg">Why this page exists</h2>
           <p className="text-muted-foreground mb-6">
-            As AI becomes increasingly integrated into critical business processes and decision-making, ensuring these systems are developed and deployed responsibly is essential. Responsible AI isn&apos;t just an ethical imperative—it&apos;s a business necessity that builds trust, reduces risk, and creates sustainable value.
+            A system that reads your paperwork or answers your phone will get things wrong. The
+            question is whether it gets them wrong somewhere a person notices, or quietly, in a
+            way that surfaces three months later in a billing dispute.
           </p>
           <p className="text-muted-foreground mb-6">
-            At Vivancedata, we believe that AI should be designed to augment human capabilities, not replace them. Our Responsible AI Framework guides every AI solution we develop, ensuring that technology serves humanity in ways that are fair, transparent, and beneficial to all stakeholders.
+            So most of the design work is about limits. What the system settles by itself, what it
+            hands to a person, what it records, and how you check an answer you did not produce
+            yourself. None of that is a product. It is how the build is put together.
           </p>
           <Button asChild className="self-start group" variant="outline">
             <Link href="/contact">
-              <span>Discuss Responsible AI for Your Business</span>
+              <span>Book a call</span>
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </Button>
@@ -188,7 +195,7 @@ export default function ResponsibleAIPage() {
       </div>
 
       <div className="mb-20">
-        <h2 className="text-heading-1 mb-8 text-center">Our Responsible AI Principles</h2>
+        <h2 className="mb-8 font-display text-serif-lg text-center">The principles</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {principles.map((principle) => (
             <Principle
@@ -202,7 +209,7 @@ export default function ResponsibleAIPage() {
       </div>
 
       <div className="mb-20">
-        <h2 className="text-heading-1 mb-8 text-center">Our Responsible AI Implementation Process</h2>
+        <h2 className="mb-8 font-display text-serif-lg text-center">How it runs during a build</h2>
         
         <div className="relative">
           {/* Vertical line connecting phases */}
@@ -223,7 +230,7 @@ export default function ResponsibleAIPage() {
       </div>
 
       <div className="mb-20">
-        <h2 className="text-heading-1 mb-8 text-center">Responsible AI in Action</h2>
+        <h2 className="mb-8 font-display text-serif-lg text-center">What that looks like in practice</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {designExamples.map((study) => (
             <CaseStudy
@@ -238,15 +245,15 @@ export default function ResponsibleAIPage() {
       </div>
 
       <div className="mb-20">
-        <h2 className="text-heading-1 mb-8 text-center">How this shows up in a build</h2>
+        <h2 className="mb-8 font-display text-serif-lg text-center">How this shows up in a build</h2>
         <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-10">
           These are practices applied during delivery using established, mostly open-source tooling.
-          They are not products we sell, and nothing here is a platform you would license from us.
+They are not products I sell, and nothing here is a platform you would license.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {[
             {
-              title: "Bias Testing",
+              title: "Bias testing",
               description: "Model outputs are tested across the attributes that carry risk in your domain before anything reaches production, and again on a schedule afterwards.",
               features: [
                 "Outcome comparison across protected attributes",
@@ -266,7 +273,7 @@ export default function ResponsibleAIPage() {
               ]
             },
             {
-              title: "Privacy-Preserving Techniques",
+              title: "Privacy-preserving techniques",
               description: "Where data cannot or should not move, the architecture works around that constraint rather than asking you to relax it.",
               features: [
                 "Keeping data inside systems that already hold it",
@@ -276,7 +283,7 @@ export default function ResponsibleAIPage() {
               ]
             },
             {
-              title: "Governance and Documentation",
+              title: "Governance and documentation",
               description: "The paperwork a model needs to survive review: what it is, what it was trained on, who approved it, and what changed since.",
               features: [
                 "Model inventory and data lineage",
@@ -287,12 +294,12 @@ export default function ResponsibleAIPage() {
             }
           ].map((tool) => (
             <div key={tool.title} className="bg-card p-6 rounded-xl border border-border">
-              <h3 className="text-heading-3 mb-3">{tool.title}</h3>
+              <h3 className="mb-3 font-display text-serif-sm">{tool.title}</h3>
               <p className="text-muted-foreground mb-4">{tool.description}</p>
               <ul className="space-y-2">
                 {tool.features.map((feature) => (
                   <li key={feature} className="flex items-start">
-                    <Check className="h-5 w-5 text-brand mt-0.5 mr-2 flex-shrink-0" />
+                    <VerdictMark verdict="filled" label="" className="mr-2 mt-1 h-3.5 w-3.5" />
                     <span className="text-foreground">{feature}</span>
                   </li>
                 ))}
@@ -303,9 +310,10 @@ export default function ResponsibleAIPage() {
       </div>
       
       <div className="bg-muted rounded-xl p-8 md:p-12 text-center">
-        <h2 className="text-heading-1 mb-4">Ready to Implement Responsible AI?</h2>
+        <h2 className="mb-4 font-display text-serif-lg">Worried about what it might get wrong?</h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
-          Let&apos;s discuss how our Responsible AI Framework can help your organization develop and deploy ethical, transparent, and human-centered AI solutions.
+          Tell me what a wrong answer would actually cost in your operation, and we can work out
+          where a person has to stay in the loop.
         </p>
         <Button asChild size="lg">
           <Link href="/contact">Book a call</Link>

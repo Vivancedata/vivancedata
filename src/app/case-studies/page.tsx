@@ -171,7 +171,7 @@ const CaseStudyIllustration = ({ industry }: { industry: string }) => {
 };
 
 export const metadata: Metadata = {
-  title: "Example Engagements - Vivancedata AI Solutions",
+  title: "Example Engagements - Vivancedata",
   description: "Composite examples showing how AI engagements are scoped and delivered in construction, the trades and logistics -- the problem, the approach, and what gets handed over.",
   keywords: ["AI engagements", "AI implementation", "AI scoping", "AI delivery", "AI solutions", "machine learning projects"],
   openGraph: {
@@ -184,7 +184,7 @@ export const metadata: Metadata = {
         url: "https://vivancedata.com/images/ai-solutions.png",
         width: 1200,
         height: 630,
-        alt: "Vivancedata Case Studies",
+        alt: "Vivancedata example builds",
       },
     ],
   },
@@ -200,10 +200,11 @@ export const metadata: Metadata = {
 export default function CaseStudiesPage() {
   return (
     <Container className="py-16">
-      <div className="text-center mb-16">
-        <Heading className="text-4xl md:text-5xl mb-4">Example AI Solutions</Heading>
+      <div className="mb-16">
+        <Heading className="mb-4 font-display text-serif-xl">Example engagements</Heading>
         <Paragraph className="max-w-2xl mx-auto text-lg">
-          Explore representative examples of how AI solutions can transform businesses across various industries and deliver measurable results.
+          Four shapes of work written out end to end: what goes wrong, what gets built, and what
+          changes once it runs. They show how a job gets scoped, not jobs already done.
         </Paragraph>
         <div className="mt-6 max-w-3xl mx-auto">
           <div className="bg-warning/10 border border-warning rounded-md p-4 text-sm text-foreground">
@@ -227,23 +228,23 @@ export default function CaseStudiesPage() {
             </div>
             
             <div className="w-full md:w-1/2 flex flex-col justify-center">
-              <div className="inline-block px-3 py-1 rounded-full bg-muted text-brand dark:text-brand/80 text-sm font-medium mb-4">
+              <div className="mb-4 inline-block rounded-pill border border-rule px-3 py-1 text-label uppercase text-mute">
                 {study.industry}
               </div>
-              <h2 className="text-heading-1 mb-4">{study.title}</h2>
+              <h2 className="mb-4 font-display text-serif-lg">{study.title}</h2>
               
               <div className="mb-4">
-                <h3 className="text-heading-4 mb-2">Challenge</h3>
+                <h3 className="mb-2 font-display text-serif-sm">Challenge</h3>
                 <p className="text-muted-foreground">{study.challenge}</p>
               </div>
               
               <div className="mb-4">
-                <h3 className="text-heading-4 mb-2">Solution</h3>
+                <h3 className="mb-2 font-display text-serif-sm">Solution</h3>
                 <p className="text-muted-foreground">{study.solution}</p>
               </div>
               
               <div className="mb-6">
-                <h3 className="text-heading-4 mb-2">Results</h3>
+                <h3 className="mb-2 font-display text-serif-sm">Results</h3>
                 <ul className="list-disc list-inside text-muted-foreground space-y-1">
                   {study.results.map((result) => (
                     <li key={`${study.id}-${result}`}>{result}</li>
@@ -257,9 +258,10 @@ export default function CaseStudiesPage() {
       </div>
       
       <div className="mt-24 text-center bg-muted rounded-xl p-8 md:p-12">
-        <h2 className="text-heading-1 mb-4">Ready to Achieve Similar Results?</h2>
+        <h2 className="mb-4 font-display text-serif-lg">Recognise one of these?</h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
-          Let&apos;s discuss how our AI solutions can help your business overcome challenges and drive measurable outcomes.
+          If one of them looks like your week, tell me which. I will tell you what it would take,
+          or that it is not worth doing yet.
         </p>
         <Button asChild size="lg" >
           <Link href="/contact">Book a call</Link>

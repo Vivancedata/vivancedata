@@ -21,9 +21,9 @@ export function ServicesStack({
 }: ServicesStackProps): React.ReactElement {
   return (
     <section className="container mx-auto py-16 md:py-24 px-4 text-center">
-      <h2 className="text-display mb-6">{title}</h2>
+      <h2 className="mb-6 font-display text-serif-lg">{title}</h2>
       {description && (
-        <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-12">
+        <p className="mb-12 max-w-[62ch] text-body-lg text-muted-foreground">
           {description}
         </p>
       )}
@@ -45,7 +45,7 @@ export function ServicesStack({
                 <div
                   className={cn(
                     "mb-3 flex h-14 w-14 items-center justify-center rounded-xl text-sm font-semibold tracking-wide",
-                    tech.tone ?? "bg-muted text-brand"
+                    tech.tone ?? "border border-rule text-mute"
                   )}
                   aria-hidden="true"
                 >

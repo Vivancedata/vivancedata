@@ -113,7 +113,7 @@ function UseCaseCard({ useCase }: { useCase: UseCase }) {
 
           <div className="pt-3 border-t">
             <p className="text-xs font-medium text-muted-foreground mb-2">
-              Key Benefits:
+              What it changes:
             </p>
             <ul className="space-y-1">
               {useCase.keyBenefits.map((benefit) => (
@@ -121,7 +121,7 @@ function UseCaseCard({ useCase }: { useCase: UseCase }) {
                   key={benefit}
                   className="text-xs text-muted-foreground flex items-start"
                 >
-                  <span className="text-brand mr-2">-</span>
+                  <span className="mr-2 text-mute">-</span>
                   {benefit}
                 </li>
               ))}
@@ -195,7 +195,7 @@ export function UseCasesExplorer() {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
                 type="text"
-                placeholder="Search use cases by title, description, or technology..."
+                placeholder="invoices, dispatch, field notes"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-10"
@@ -289,7 +289,7 @@ export function UseCasesExplorer() {
               {hasActiveFilters && (
                 <button
                   onClick={clearFilters}
-                  className="text-sm text-brand hover:underline focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 rounded"
+                  className="text-sm text-foreground underline decoration-rule underline-offset-4 hover:decoration-current focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 rounded"
                 >
                   Clear all filters
                 </button>
@@ -311,14 +311,14 @@ export function UseCasesExplorer() {
           <CardContent className="py-12">
             <div className="text-center">
               <Search className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-              <h3 className="text-heading-4 mb-2">No use cases found</h3>
+              <h3 className="text-heading-4 mb-2">Nothing matches those filters</h3>
               <p className="text-muted-foreground mb-4">
-                Try adjusting your search or filters to find what you are
-                looking for.
+                Clear them and start again, or search for a single word such as
+                &quot;scheduling&quot;.
               </p>
               <button
                 onClick={clearFilters}
-                className="text-brand hover:underline focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 rounded px-2 py-1"
+                className="text-foreground underline decoration-rule underline-offset-4 hover:decoration-current focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 rounded px-2 py-1"
               >
                 Clear all filters
               </button>

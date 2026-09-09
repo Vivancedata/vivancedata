@@ -64,7 +64,7 @@ const formSchema = z.object({
   // bump behaviour-neutral; making the field genuinely required would be a
   // product change, not a dependency one.
   serviceInterest: z.string({
-    error: "Please select a service you're interested in.",
+    error: "Pick the work that is closest to what you need.",
   }),
   message: z.string().min(10, {
     message: "Message must be at least 10 characters.",
@@ -118,13 +118,20 @@ export function ProfileForm() {
 
       ANALYTICS.contactSubmitted(values.serviceInterest);
       setIsSubmitted(true);
-      toast.success('Message sent successfully!', {
+      toast.success('Message sent.', {
         description: 'You\'ll hear back from me within one working day.'
       });
     } catch (error) {
       console.error('Form submission error:', error);
-      toast.error('Failed to submit form', {
-        description: 'Please try again or contact us directly at info@vivancedata.com'
+      // Surface the API's own message when it sent one. The route distinguishes
+      // "not configured, nothing was sent" (503) from "delivery failed" (502)
+      // and hands over a direct address in both -- and this catch used to throw
+      // all of that away in favour of one generic line. A visitor whose message
+      // could not be delivered is exactly the person who needs the address.
+      const fromApi = error instanceof Error ? error.message.trim() : '';
+      toast.error('Your message did not send.', {
+        description: fromApi ||
+          'Nothing reached me, so please try again. If it fails twice, email me at info@vivancedata.com and I will pick it up there.'
       });
     } finally {
       setIsSubmitting(false);
@@ -144,10 +151,10 @@ export function ProfileForm() {
               tabIndex={-1}
               className="text-2xl font-bold mb-2 outline-none"
             >
-              Thank You!
+              Message received.
             </h2>
             <p className="text-muted-foreground max-w-md">
-              Your message has been received. You&apos;ll hear back from me, not an account manager, within one working day.
+              It is in my inbox. You&apos;ll hear back from me, not an account manager, within one working day.
             </p>
           </div>
         </CardContent>
@@ -158,7 +165,7 @@ export function ProfileForm() {
   return (
     <Card className="border border-border">
       <CardHeader className="bg-muted rounded-t-lg">
-        <CardTitle as="h2" className="text-brand">Book a call</CardTitle>
+        <CardTitle as="h2" className="font-display text-serif-sm">Book a call</CardTitle>
         <CardDescription>Tell me what is going wrong and where to reach you.</CardDescription>
       </CardHeader>
       <CardContent className="pt-6">
@@ -175,10 +182,10 @@ export function ProfileForm() {
                 name="firstName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>First Name</FormLabel>
+                    <FormLabel>First name</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="John"
+                        placeholder="Dana"
                         required
                         autoComplete="given-name"
                         {...field}
@@ -193,10 +200,10 @@ export function ProfileForm() {
                 name="lastName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Last Name</FormLabel>
+                    <FormLabel>Last name</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Doe"
+                        placeholder="Ruiz"
                         required
                         autoComplete="family-name"
                         {...field}
@@ -218,7 +225,7 @@ export function ProfileForm() {
                       <Input
                         type="email"
                         inputMode="email"
-                        placeholder="john.doe@example.com"
+                        placeholder="dana@ruizheating.com"
                         required
                         autoComplete="email"
                         {...field}
@@ -257,7 +264,7 @@ export function ProfileForm() {
                     <FormLabel>Company</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Acme Inc."
+                        placeholder="Ruiz Heating and Air"
                         required
                         autoComplete="organization"
                         {...field}
@@ -273,18 +280,18 @@ export function ProfileForm() {
               name="serviceInterest"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Service Interest</FormLabel>
+                  <FormLabel>What you need</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select a service you're interested in" />
+                        <SelectValue placeholder="Pick the closest one" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="generative-ai">Generative AI Solutions</SelectItem>
+                      <SelectItem value="generative-ai">Generative AI</SelectItem>
                       <SelectItem value="consulting">AI Strategy Consulting</SelectItem>
                       <SelectItem value="training">AI Training & Workshops</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
+                      <SelectItem value="other">Not sure yet</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -318,8 +325,8 @@ export function ProfileForm() {
               {isSubmitting ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden="true" />
-                  <span>Submitting...</span>
-                  <span className="sr-only">Please wait while your form is being submitted</span>
+                  <span>Sending...</span>
+                  <span className="sr-only">Sending your message. This takes a moment.</span>
                 </>
               ) : (
                 "Book a call"

@@ -11,6 +11,8 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import Link from 'next/link';
+import { ArrowMark } from '@/components/common/Marks';
+import { ctaPrimary, ctaSecondary } from '@/components/common/controls';
 import type { Metadata } from 'next';
 import {
   ArrowRight,
@@ -36,7 +38,7 @@ import {
 export const metadata: Metadata = {
   title: 'How an Engagement Runs | Vivancedata',
   description:
-    'The six phases a Vivancedata engagement runs through, from deciding whether a workflow is worth automating to keeping it working afterwards.',
+    'The six phases an engagement runs through, from deciding whether a workflow is worth automating at all to keeping it working once it is live.',
 };
 
 
@@ -65,7 +67,7 @@ const getPhaseIcon = (iconType: MethodologyPhase['iconType']) => {
 // hue.
 const getPhaseColor = (): string => 'bg-primary text-primary-foreground';
 
-const getPhaseAccent = (): string => 'bg-muted text-brand';
+const getPhaseAccent = (): string => 'border border-rule text-mute';
 
 function MethodologyHeroSection() {
   // Ink on canvas, per DESIGN.md: no dark panel, no blur orbs, no glass badge.
@@ -74,29 +76,27 @@ function MethodologyHeroSection() {
   return (
     <section className="relative w-full py-20 md:py-32 border-b border-border">
       <Container className="max-w-6xl">
-        <div className="text-center">
-          <p className="eyebrow mb-md">How an engagement runs</p>
+        <div>
+          {/* The eyebrow here was the literal string `frameworkName` renders
+            * one line below it -- the same six words, twice, in two sizes. */}
+          <h1 className="mb-4 font-display text-serif-xl">{frameworkName}</h1>
 
-          <h1 className="text-display-xl mb-4">{frameworkName}</h1>
-
-          <p className="text-body-lg text-foreground font-medium mb-6">
+          <p className="mb-6 max-w-[52ch] font-display text-serif-md italic text-muted-foreground">
             {frameworkTagline}
           </p>
 
-          <p className="text-body-lg text-muted-foreground max-w-3xl mx-auto mb-10">
+          <p className="mb-10 max-w-[62ch] text-body-lg text-muted-foreground">
             {frameworkDescription}
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" shape="pill">
-              <Link href="/contact">
-                Start Your Transformation
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-            <Button asChild size="lg" variant="secondary" shape="pill">
-              <Link href="/tools/ai-readiness">Take AI Readiness Assessment</Link>
-            </Button>
+          <div className="flex flex-col gap-md sm:flex-row">
+            <Link href="/contact" className={ctaPrimary}>
+              <span>Book a call</span>
+              <ArrowMark />
+            </Link>
+            <Link href="/tools/ai-readiness" className={ctaSecondary}>
+              Take the readiness assessment
+            </Link>
           </div>
         </div>
       </Container>
@@ -108,17 +108,17 @@ function PhasesTimelineSection() {
   return (
     <section className="w-full py-20 md:py-28 bg-muted">
       <Container className="max-w-7xl">
-        <div className="text-center mb-16">
-          <div className="inline-block rounded-full bg-muted px-4 py-1.5 text-sm font-semibold text-brand mb-4">
-            The 6-Phase Journey
+        <div className="mb-16">
+          <div className="mb-4 inline-block rounded-pill border border-rule px-4 py-1.5 text-label uppercase text-mute">
+            Six phases
           </div>
-          <Heading as="h2" className="text-3xl md:text-4xl mb-4">
-            From Discovery to Scale
+          <Heading as="h2" className="mb-4 font-display text-serif-lg">
+            From first look to running system
           </Heading>
           <Paragraph className="max-w-2xl mx-auto text-lg">
-            Each phase builds on the previous, creating a foundation for
-            sustainable AI success with clear deliverables and measurable
-            outcomes.
+            Each phase ends in something you can look at, and any of them can end the engagement.
+            The order exists so the expensive decisions come after the cheap evidence, rather
+            than the other way round.
           </Paragraph>
         </div>
 
@@ -149,8 +149,8 @@ function PhasesTimelineSection() {
                           <span className="text-sm font-semibold text-muted-foreground">
                             Phase {phase.number}
                           </span>
-                          <h3 className="text-heading-2">{phase.title}</h3>
-                          <p className="text-brand font-medium">{phase.subtitle}</p>
+                          <h3 className="font-display text-serif-md">{phase.title}</h3>
+                          <p className="text-body-sm text-muted-foreground">{phase.subtitle}</p>
                         </div>
                       </div>
 
@@ -160,7 +160,7 @@ function PhasesTimelineSection() {
 
                       <div className="space-y-4">
                         <h4 className="text-heading-4 text-sm uppercase tracking-wide text-muted-foreground">
-                          Key Deliverables
+                          What you get
                         </h4>
                         <ul className="space-y-2">
                           {phase.deliverables.map((deliverable) => (
@@ -177,7 +177,7 @@ function PhasesTimelineSection() {
                         <div className="flex items-center gap-2 pt-4 border-t border-border">
                           <Clock className="h-4 w-4 text-mute" />
                           <span className="text-sm text-muted-foreground">
-                            Typical Duration:{' '}
+                            Typical duration:{' '}
                             <span className="font-semibold text-foreground">
                               {phase.duration}
                             </span>
@@ -210,12 +210,12 @@ function BenefitsSection() {
   return (
     <section className="w-full py-20 md:py-28 bg-card">
       <Container className="max-w-6xl">
-        <div className="text-center mb-16">
-          <div className="inline-block rounded-full bg-brand/10 px-4 py-1.5 text-sm font-semibold text-brand mb-4">
-            Why it is shaped this way
+        <div className="mb-16">
+          <div className="mb-4 inline-block rounded-pill border border-rule px-4 py-1.5 text-label uppercase text-mute">
+            The reasoning
           </div>
-          <Heading as="h2" className="text-3xl md:text-4xl mb-4">
-            Why It Is Shaped This Way
+          <Heading as="h2" className="mb-4 font-display text-serif-lg">
+            Why it is shaped this way
           </Heading>
           <Paragraph className="max-w-2xl mx-auto text-lg">
             Each phase exists to make the next decision cheaper to reverse. The
@@ -232,14 +232,7 @@ function BenefitsSection() {
               className="border border-border duration-300"
             >
               <CardContent className="p-8">
-                <div className="flex items-start justify-between mb-4">
-                  <h3 className="text-heading-3">{benefit.title}</h3>
-                  {benefit.metric && (
-                    <span className="inline-flex items-center rounded-full bg-muted px-3 py-1 text-sm font-semibold text-brand">
-                      {benefit.metric}
-                    </span>
-                  )}
-                </div>
+                <h3 className="mb-4 font-display text-serif-sm">{benefit.title}</h3>
                 <p className="text-muted-foreground">
                   {benefit.description}
                 </p>
@@ -256,13 +249,12 @@ function MethodologyFaqSection() {
   return (
     <section className="w-full py-20 md:py-28 bg-card">
       <Container className="max-w-3xl">
-        <div className="text-center mb-12">
-          <Heading as="h2" className="text-3xl md:text-4xl mb-4">
-            Frequently Asked Questions
+        <div className="mb-12">
+          <Heading as="h2" className="mb-4 font-display text-serif-lg">
+            Common questions
           </Heading>
           <Paragraph className="text-lg">
-            Common questions about how an engagement runs and what it
-            process.
+            How an engagement runs, what happens at each phase, and where it can stop.
           </Paragraph>
         </div>
 
@@ -287,8 +279,8 @@ function MethodologyCtaSection() {
   return (
     <section className="w-full py-20 md:py-28 bg-primary text-primary-foreground">
       <Container className="max-w-4xl text-center">
-        <h2 className="text-display mb-6">
-          Ready to Find Out If It Is Worth Automating?
+        <h2 className="mb-6 font-display text-serif-lg">
+          Want to know if it is worth automating?
         </h2>
         <p className="text-xl text-primary-foreground/80 mb-10 max-w-2xl mx-auto">
           Tell me which job goes wrong and how often. I will walk you through
@@ -299,10 +291,10 @@ function MethodologyCtaSection() {
           <Button
             asChild
             size="lg"
-            className="bg-white text-brand hover:bg-white/90 font-semibold"
+            className="bg-primary text-primary-foreground hover:bg-primary/85"
           >
             <Link href="/contact">
-              Schedule a Discovery Call
+              Book a call
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
@@ -312,7 +304,7 @@ function MethodologyCtaSection() {
             variant="outline"
             className="border-white/30 text-white hover:bg-white/10"
           >
-            <Link href="/case-studies">View Success Stories</Link>
+            <Link href="/case-studies">See what a build looks like</Link>
           </Button>
         </div>
       </Container>

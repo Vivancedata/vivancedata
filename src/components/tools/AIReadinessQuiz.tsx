@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, type RefObject } from "react";
+import { VerdictMark } from "@/components/common/Marks";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -20,7 +21,6 @@ import {
   type ReadinessLevelName,
 } from "@/lib/aiReadinessScoring";
 import {
-  CheckCircle2,
   ChevronRight,
   ChevronLeft,
   Database,
@@ -29,7 +29,8 @@ import {
   Target,
   AlertCircle,
   TrendingUp,
-  Award
+  Award,
+  CheckCircle2,
 } from "lucide-react";
 
 // Presentation for what the model returns. The scoring module deals in level
@@ -67,7 +68,7 @@ function ReadinessSummary({ results, readinessLevel }: ReadinessSummaryProps) {
             <ReadinessIcon className={`h-12 w-12 text-${color}-600`} />
           </div>
         </div>
-        <CardTitle as="h2" className="text-3xl">Your AI Readiness Score</CardTitle>
+        <CardTitle as="h2" className="text-3xl">Your readiness score</CardTitle>
         <CardDescription className="text-xl mt-2">
           <span aria-label={`Score: ${Math.round(results.percentageScore)} percent, Level: ${readinessLevel}`}>
             {Math.round(results.percentageScore)}% - {readinessLevel}
@@ -77,7 +78,7 @@ function ReadinessSummary({ results, readinessLevel }: ReadinessSummaryProps) {
 
       <div>
         <div className="flex justify-between mb-2">
-          <span className="text-sm font-medium" id="overall-readiness-label">Overall Readiness</span>
+          <span className="text-sm font-medium" id="overall-readiness-label">Overall readiness</span>
           <span className="text-sm font-medium">{Math.round(results.percentageScore)}%</span>
         </div>
         <Progress
@@ -142,11 +143,11 @@ interface RecommendationsProps {
 function Recommendations({ recommendations }: RecommendationsProps) {
   return (
     <div className="mt-8">
-      <h3 className="text-heading-3 mb-4">Personalized Recommendations</h3>
-      <ul className="space-y-3" role="list" aria-label="Personalized recommendations">
+      <h3 className="text-heading-3 mb-4">Where to start</h3>
+      <ul className="space-y-3" role="list" aria-label="Where to start">
         {recommendations.map((recommendation) => (
           <li key={recommendation} className="flex gap-3 p-4 bg-muted rounded-lg">
-            <CheckCircle2 className="h-5 w-5 text-brand flex-shrink-0 mt-0.5" aria-hidden="true" />
+            <VerdictMark verdict="filled" label="" className="mt-1 h-3.5 w-3.5" />
             <p className="text-sm">{recommendation}</p>
           </li>
         ))}
@@ -189,7 +190,7 @@ function QuizResultsPanel({
             <ReportGate
               tool="ai-readiness"
               title="See what to fix first"
-              description="Your score is above. Enter your email to reveal the recommendations for your weakest areas and get the full assessment sent to you."
+              description="Your score is above. Enter your email to reveal what to fix in your weakest areas, and I will send you the full assessment to keep."
               summary={buildAssessmentSummary(results, readinessLevel)}
               recommendations={recommendations}
             >
@@ -197,20 +198,21 @@ function QuizResultsPanel({
             </ReportGate>
 
             <div className="mt-8 p-6 bg-primary text-primary-foreground rounded-xl">
-              <h3 className="text-heading-3 mb-3">Ready to Take the Next Step?</h3>
+              <h3 className="text-heading-3 mb-3">The score is only as good as the answers</h3>
               <p className="mb-4">
-                Our AI consultants can help you create a customized roadmap based on your assessment results.
+                It comes from what you told me, not from a look at your systems. Book a call and I will go
+                through the weak spots with you and say which one is worth fixing first.
               </p>
               <div className="flex gap-4">
                 <Button asChild variant="secondary">
-                  <Link href="/contact">Schedule Consultation</Link>
+                  <Link href="/contact">Book a call</Link>
                 </Button>
                 <Button
                   variant="outline"
                   className="bg-white/10 border-white/20 text-white hover:bg-white/20"
                   onClick={onRetake}
                 >
-                  Retake Assessment
+                  Start over
                 </Button>
               </div>
             </div>
@@ -306,7 +308,7 @@ function QuizQuestionStep({
                         />
                         <Label
                           htmlFor={`${currentQ.id}-${option.value}`}
-                          className="flex-1 cursor-pointer text-sm leading-relaxed hover:text-brand transition-colors"
+                          className="flex-1 cursor-pointer text-sm leading-relaxed hover:text-foreground transition-colors"
                         >
                           {option.label}
                         </Label>
@@ -336,7 +338,7 @@ function QuizQuestionStep({
           className="bg-primary hover:bg-primary/90"
           aria-label={currentQuestion === questions.length - 1 ? "View your results" : "Go to next question"}
         >
-          {currentQuestion === questions.length - 1 ? "See Results" : "Next"}
+          {currentQuestion === questions.length - 1 ? "See my results" : "Next"}
           <ChevronRight className="ml-2 h-4 w-4" aria-hidden="true" />
         </Button>
       </nav>

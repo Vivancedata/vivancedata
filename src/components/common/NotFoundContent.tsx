@@ -17,12 +17,12 @@ import {
   Sparkles
 } from "lucide-react"
 
-// Popular page links for navigation
+// The four places someone who hit a dead link is most likely headed.
 const popularPages = [
-  { name: "Services", href: "/services", icon: Briefcase, description: "AI solutions for your business" },
+  { name: "Services", href: "/services", icon: Briefcase, description: "What I build, and what it costs" },
   { name: "About", href: "/about", icon: Users, description: "Who you would be working with" },
-  { name: "Contact", href: "/contact", icon: Mail, description: "Get in touch with us" },
-  { name: "Blog", href: "/blog", icon: BookOpen, description: "Latest insights and articles" },
+  { name: "Contact", href: "/contact", icon: Mail, description: "Book a call, or just write to me" },
+  { name: "Blog", href: "/blog", icon: BookOpen, description: "Notes on automating this kind of work" },
 ]
 
 // Floating data particles for AI-themed decoration
@@ -322,7 +322,7 @@ export function NotFoundContent() {
             variants={itemVariants}
             className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4"
           >
-            Oops! Lost in the Data
+            This page is not here
           </m.h1>
 
           {/* Description */}
@@ -330,8 +330,8 @@ export function NotFoundContent() {
             variants={itemVariants}
             className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 max-w-lg mx-auto leading-relaxed"
           >
-            The page you are looking for seems to have wandered off into the digital void.
-            Do not worry, our AI is still here to help you find your way.
+            Either the link is wrong or the page has moved. Nothing is broken on
+            your end. The way back is below.
           </m.p>
 
           {/* Primary Action Buttons */}
@@ -342,13 +342,13 @@ export function NotFoundContent() {
             <Button asChild size="lg" className="w-full sm:w-auto group">
               <Link href="/">
                 <Home className="mr-2 h-5 w-5 transition-transform group-hover:-translate-x-0.5" />
-                <span>Go Back Home</span>
+                <span>Back to the home page</span>
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="w-full sm:w-auto group">
               <Link href="/contact">
                 <Mail className="mr-2 h-5 w-5 transition-transform group-hover:scale-110" />
-                <span>Contact Support</span>
+                <span>Book a call</span>
               </Link>
             </Button>
           </m.div>
@@ -359,17 +359,17 @@ export function NotFoundContent() {
             className="mb-10"
           >
             <div className="inline-flex items-center gap-2 text-sm text-muted-foreground bg-muted/50 dark:bg-muted/30 px-4 py-2.5 rounded-full border border-border/50">
-              <Search className="h-4 w-4 text-brand/70" />
-              <span>Try using the navigation menu to find what you need</span>
+              <Search className="h-4 w-4 text-mute" strokeWidth={1.5} />
+              <span>The menu at the top of the page lists everything on the site</span>
             </div>
           </m.div>
 
           {/* Popular Pages */}
           <m.div variants={itemVariants}>
             <div className="flex items-center justify-center gap-2 mb-5">
-              <Sparkles className="h-5 w-5 text-brand" aria-hidden="true" />
+              <Sparkles className="h-5 w-5 text-mute" aria-hidden="true" />
               <h2 className="text-heading-4 text-foreground">
-                Popular Pages
+                Where to go next
               </h2>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
@@ -388,9 +388,9 @@ export function NotFoundContent() {
                     )}
                   >
                     <div className="flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-muted mb-3 group-hover:bg-muted group-hover:scale-105 transition-all duration-200">
-                      <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-brand" aria-hidden="true" />
+                      <Icon className="h-5 w-5 text-mute sm:h-6 sm:w-6" strokeWidth={1.25} aria-hidden="true" />
                     </div>
-                    <span className="font-medium text-foreground group-hover:text-brand transition-colors">
+                    <span className="font-medium text-foreground group-hover:text-foreground transition-colors">
                       {page.name}
                     </span>
                     <span className="text-xs text-muted-foreground mt-1 text-center line-clamp-2">
