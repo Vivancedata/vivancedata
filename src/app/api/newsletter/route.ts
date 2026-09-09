@@ -132,7 +132,7 @@ export async function POST(request: NextRequest) {
 
     if (!rateLimit.success) {
       return NextResponse.json(
-        { error: 'Too many requests. Please try again later.' },
+        { error: 'That is more sign-ups than this form accepts in a short window. Wait a minute and try again.' },
         { status: 429, headers: rateLimitHeaders }
       );
     }
@@ -141,7 +141,7 @@ export async function POST(request: NextRequest) {
 
     if (!parsed.success) {
       return NextResponse.json(
-        { error: 'Invalid email address' },
+        { error: 'That email address does not look right.' },
         { status: 400, headers: rateLimitHeaders }
       );
     }
@@ -157,7 +157,7 @@ export async function POST(request: NextRequest) {
       if (result.success) {
         return NextResponse.json({
           success: true,
-          message: 'Successfully subscribed to newsletter!',
+          message: 'Subscribed. You will hear from me when there is something worth sending.',
           provider: 'convertkit',
         }, { headers: rateLimitHeaders });
       }
@@ -176,7 +176,7 @@ export async function POST(request: NextRequest) {
       if (result.success) {
         return NextResponse.json({
           success: true,
-          message: 'Successfully subscribed to newsletter!',
+          message: 'Subscribed. You will hear from me when there is something worth sending.',
           provider: 'mailchimp',
         }, { headers: rateLimitHeaders });
       }
@@ -191,7 +191,7 @@ export async function POST(request: NextRequest) {
       console.warn(`Newsletter dry run: not subscribing ${email}`);
       return NextResponse.json({
         success: true,
-        message: 'Successfully subscribed to newsletter!',
+        message: 'Subscribed. You will hear from me when there is something worth sending.',
         provider: 'dry-run',
       }, { headers: rateLimitHeaders });
     }
@@ -206,7 +206,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Newsletter subscription error:', error);
     return NextResponse.json(
-      { error: 'Failed to subscribe. Please try again later.' },
+      { error: 'The sign-up did not go through. Try again in a moment, or write to info@vivancedata.com and I will add you.' },
       { status: 500 }
     );
   }

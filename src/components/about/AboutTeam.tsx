@@ -40,9 +40,9 @@ export function AboutTeam({ title, description, members }: AboutTeamProps): Reac
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                 ) : (
-                  <div className="h-full w-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-                    <div className="w-24 h-24 rounded-full bg-primary/30 flex items-center justify-center ring-4 ring-brand/20">
-                      <span className="text-3xl font-bold text-brand">
+                  <div className="field-dots flex h-full w-full items-center justify-center border-b border-rule">
+                    <div className="flex h-24 w-24 items-center justify-center border border-rule bg-background">
+                      <span className="font-display text-serif-md text-foreground">
                         {member.initials ?? member.name.split(" ").map((n) => n[0]).join("")}
                       </span>
                     </div>

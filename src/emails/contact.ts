@@ -11,10 +11,10 @@ export interface ContactEnquiry {
 }
 
 const SERVICE_NAMES: Record<string, string> = {
-  'generative-ai': 'Generative AI Solutions',
+  'generative-ai': 'Generative AI',
   consulting: 'AI Strategy Consulting',
   training: 'AI Training & Workshops',
-  other: 'Other',
+  other: 'Not sure yet',
 };
 
 function serviceName(serviceInterest?: string): string {
@@ -29,7 +29,7 @@ export function buildEnquiryNotification(enquiry: ContactEnquiry): string {
   const safeEmail = escapeHtml(enquiry.email);
 
   return layout({
-    title: 'New Contact Form Submission',
+    title: 'New enquiry from the contact form',
     body: `
           <div class="field">
             <div class="label">Name</div>
@@ -48,7 +48,7 @@ export function buildEnquiryNotification(enquiry: ContactEnquiry): string {
             <div class="value">${escapeHtml(enquiry.company || 'Not provided')}</div>
           </div>
           <div class="field">
-            <div class="label">Service Interest</div>
+            <div class="label">What they need</div>
             <div class="value">${escapeHtml(serviceName(enquiry.serviceInterest))}</div>
           </div>
           <div class="field">
@@ -64,18 +64,18 @@ export function buildEnquiryNotification(enquiry: ContactEnquiry): string {
 /** The courtesy acknowledgement. The enquiry is already delivered without it. */
 export function buildEnquiryConfirmation(enquiry: ContactEnquiry): string {
   return layout({
-    title: `Thank You, ${enquiry.firstName}!`,
+    title: `Got your message, ${enquiry.firstName}`,
     body: `
-          <p>Your message has reached me.</p>
-          <p>You'll hear back from me, not an account manager, within <strong>one working day</strong>.</p>
-          <p><strong>Here's what you submitted:</strong></p>
+          <p>Your message is in my inbox, and I read them all myself.</p>
+          <p>You'll hear back from me, not an account manager, within <strong>one working day</strong>. If it cannot wait that long, write to info@vivancedata.com and say so.</p>
+          <p><strong>Here's what you sent:</strong></p>
           <ul>
-            <li><strong>Service Interest:</strong> ${escapeHtml(serviceName(enquiry.serviceInterest))}</li>
+            <li><strong>What you need:</strong> ${escapeHtml(serviceName(enquiry.serviceInterest))}</li>
             <li><strong>Company:</strong> ${escapeHtml(enquiry.company || 'Not provided')}</li>
           </ul>
-          <p>In the meantime, feel free to explore our resources:</p>
+          <p>If you want a rough number before we speak, the ROI calculator takes a couple of minutes:</p>
           <p style="text-align: center;">
-            <a href="https://vivancedata.com/tools/roi-calculator" class="button">Try Our AI ROI Calculator</a>
+            <a href="https://vivancedata.com/tools/roi-calculator" class="button">Open the ROI calculator</a>
           </p>
           <div class="footer">
             <p>Vivancedata &mdash; Lorenzo Scaturchio</p>

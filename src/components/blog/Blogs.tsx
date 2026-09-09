@@ -151,7 +151,7 @@ export function Blogs({ blogs }: BlogsProps) {
           className="text-center mt-8"
         >
           <p className="text-muted-foreground">
-            No blogs found matching your criteria.
+            Nothing here matches that. Try a shorter search, or clear the tags.
           </p>
         </m.div>
       )}

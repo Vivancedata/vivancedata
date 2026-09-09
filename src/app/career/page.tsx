@@ -118,7 +118,7 @@ const CareerPage = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="bg-gradient-to-r from-primary/10 to-primary/5 rounded-xl p-8 text-center">
+        <div className="border-t border-rule pt-2xl">
           <h2 className="mb-3 font-display text-serif-md">Here with a project instead?</h2>
           <p className="text-muted-foreground mb-6">
             No roles open, but the consulting side is. If you arrived here with a problem rather

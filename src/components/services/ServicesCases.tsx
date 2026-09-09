@@ -26,25 +26,24 @@ export function ServicesCases({
   ctaLabel = "Learn more"
 }: ServicesCasesProps): React.ReactElement {
   const getCaseVisual = (category: string) => {
-    const gradient = "from-primary to-primary/85";
-    const iconClass = "h-7 w-7 text-primary-foreground/90";
+    const iconClass = "h-6 w-6 text-mute";
 
     switch (category) {
       case "Document Processing":
-        return { icon: <FileText className={iconClass} aria-hidden="true" />, gradient };
+        return { icon: <FileText className={iconClass} aria-hidden="true" /> };
       case "Knowledge & Retrieval":
-        return { icon: <Search className={iconClass} aria-hidden="true" />, gradient };
+        return { icon: <Search className={iconClass} aria-hidden="true" /> };
       case "Workflow Automation":
-        return { icon: <Workflow className={iconClass} aria-hidden="true" />, gradient };
+        return { icon: <Workflow className={iconClass} aria-hidden="true" /> };
       default:
-        return { icon: <Workflow className={iconClass} aria-hidden="true" />, gradient };
+        return { icon: <Workflow className={iconClass} aria-hidden="true" /> };
     }
   };
 
   return (
     <section className="bg-muted/30 py-16 md:py-24">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+        <div className="mb-12">
           <h2 className="mb-4 font-display text-serif-lg">{title}</h2>
           <p className="max-w-[62ch] text-body-lg text-muted-foreground">
             {description}
@@ -55,14 +54,14 @@ export function ServicesCases({
           {cases.map((caseItem) => {
             const visual = getCaseVisual(caseItem.category);
             return (
-              <div key={caseItem.id} className="bg-card rounded-lg overflow-hidden border border-border/60">
-                <div className={`h-44 w-full bg-gradient-to-br ${visual.gradient} p-6 flex flex-col justify-between`}>
+              <div key={caseItem.id} className="flex flex-col border border-rule bg-card">
+                <div className="flex items-center justify-between gap-md border-b border-rule px-lg py-md">
                   {visual.icon}
-                  <p className="text-sm font-medium text-primary-foreground/90">{caseItem.impact}</p>
+                  <p className="text-label uppercase text-mute">{caseItem.impact}</p>
                 </div>
                 <div className="p-6">
-                  <div className="text-sm font-medium text-brand mb-2">{caseItem.category}</div>
-                  <h3 className="text-heading-3 mb-3">{caseItem.title}</h3>
+                  <p className="mb-2 text-label uppercase text-mute">{caseItem.category}</p>
+                  <h3 className="mb-3 font-display text-serif-sm">{caseItem.title}</h3>
                   <p className="text-muted-foreground mb-4">{caseItem.description}</p>
                   <Button variant="outline" size="sm" asChild>
                     <Link href={caseItem.link} className="inline-flex items-center">

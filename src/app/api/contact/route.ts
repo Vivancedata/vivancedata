@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
 
     if (!rateLimit.success) {
       return NextResponse.json(
-        { error: 'Too many requests. Please try again later.' },
+        { error: 'That is more messages than this form accepts in a short window. Wait a minute and send again, or email info@vivancedata.com.' },
         { status: 429, headers: rateLimitHeaders }
       );
     }
@@ -44,7 +44,7 @@ export async function POST(request: NextRequest) {
       const hasMissingField = parsed.error.issues.some((issue) => issue.path[0] !== 'email');
 
       return NextResponse.json(
-        { error: hasMissingField ? 'Missing required fields' : 'Invalid email address' },
+        { error: hasMissingField ? 'Some required fields are still empty.' : 'That email address does not look right.' },
         { status: 400, headers: rateLimitHeaders }
       );
     }
@@ -78,7 +78,7 @@ export async function POST(request: NextRequest) {
         : NextResponse.json(
             {
               error:
-                'We could not deliver your message. Please email info@vivancedata.com directly so it is not lost.',
+                'I could not deliver your message. Please email info@vivancedata.com directly so it is not lost.',
             },
             { status: 502, headers: rateLimitHeaders }
           );
@@ -88,7 +88,7 @@ export async function POST(request: NextRequest) {
       {
         fromName: 'Vivancedata',
         to: enquiry.email,
-        subject: 'Thank you for contacting Vivancedata',
+        subject: 'I have your message',
         html: buildEnquiryConfirmation(enquiry),
       },
       'contact form confirmation'
@@ -97,14 +97,14 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       {
         success: true,
-        message: 'Thank you for your message. We will get back to you soon!',
+        message: 'Message received. You will hear back from me within one working day.',
       },
       { status: 200, headers: rateLimitHeaders }
     );
   } catch (error) {
     console.error('Contact form error:', error);
     return NextResponse.json(
-      { error: 'Failed to process your request. Please try again later.' },
+      { error: 'Something broke on my end and your message did not send. Please try again, or email info@vivancedata.com so it is not lost.' },
       { status: 500 }
     );
   }
