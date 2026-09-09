@@ -10,8 +10,8 @@ const Newsletter = dynamic(
 
 function NewsletterPlaceholder() {
   return (
-    <div className="mb-8 border-t border-border pt-8" aria-hidden="true">
-      <div className="mx-auto min-h-[168px] max-w-md rounded-3xl border border-border/60 bg-card/40" />
+    <div className="border-t border-rule pt-xl" aria-hidden="true">
+      <div className="min-h-[104px]" />
     </div>
   );
 }

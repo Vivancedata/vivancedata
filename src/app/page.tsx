@@ -1,5 +1,6 @@
 import Welcome from "@/components/home/Welcome";
 import ClientLogos from "@/components/home/ClientLogos";
+import NightLog from "@/components/home/NightLog";
 import Process from "@/components/home/Process";
 import Pricing from "@/components/home/Pricing";
 import { DemoBooking } from "@/components/home/DemoBooking";
@@ -89,9 +90,15 @@ const jsonLd = {
 };
 
 /*
- * Five bands and a footer, in the order a buyer needs them: what the problem
- * is, whether it is their trade, how the work runs, what it costs, and how to
- * start. The page used to run fourteen -- 18,915px at 1440 and 38,697px at 390,
+ * Six bands and a footer, in the order a buyer needs them: what the problem is,
+ * proof that anything works at all, whether it is their trade, how the work
+ * runs, what it costs, and how to start.
+ *
+ * The night log sits second, directly under the hero, because it is the only
+ * evidence on this site a visitor can check without talking to anyone and the
+ * hero has already named the four trades — so "is this real" is a better second
+ * question here than "is this for me". It absorbed the four promise tiles and
+ * the demo panel that used to sit inside the hero. The page used to run fourteen -- 18,915px at 1440 and 38,697px at 390,
  * with fourteen CTAs and three consecutive closing asks, which put the booking
  * form at roughly the thirty-seventh screen on a phone. What went made the
  * generic AI-agency case the hero above it contradicts: Overview, TrustSection,
@@ -102,13 +109,14 @@ const jsonLd = {
  */
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between">
+    <div className="flex min-h-screen w-full flex-col">
       <script
         id="homepage-jsonld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Welcome />
+      <NightLog />
       <ClientLogos />
       <Process />
       <Pricing />

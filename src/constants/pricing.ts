@@ -41,7 +41,7 @@ export const pricingTiers: PricingTier[] = [
       { name: "Use-case prioritization by effort and payback", included: true },
       { name: "Tooling and vendor evaluation", included: true },
       { name: "Implementation roadmap with a defined first build", included: true },
-      { name: "Written recommendations report", included: true, tooltip: "Yours to keep and act on, with or without us" },
+      { name: "Written recommendations report", included: true, tooltip: "Yours to keep and act on, with or without me" },
       { name: "Hands-on build", included: false },
       { name: "Monitoring and upkeep", included: false },
       { name: "Direct support channel", included: false },

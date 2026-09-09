@@ -2,8 +2,8 @@
 
 import { useState } from "react"
 import { Menu, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import { ModeToggle } from "@/components/common/ModeToggle"
+import { ctaPrimary } from "@/components/common/controls"
 
 interface NavItem {
   name: string
@@ -21,50 +21,51 @@ export function MainNavMobile({ items }: MainNavMobileProps) {
     <>
       <div className="flex items-center md:hidden">
         <ModeToggle />
-        <Button
-          variant="ghost"
-          size="icon"
+        <button
+          type="button"
           onClick={() => setIsMobileMenuOpen((open) => !open)}
-          className="ml-2"
+          className="ml-1 inline-flex h-11 w-11 items-center justify-center rounded-sm text-mute transition-colors duration-fast hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={isMobileMenuOpen}
           aria-controls="mobile-navigation"
         >
           {isMobileMenuOpen ? (
-            <X className="h-6 w-6" />
+            <X className="h-5 w-5" strokeWidth={1.5} />
           ) : (
-            <Menu className="h-6 w-6" />
+            <Menu className="h-5 w-5" strokeWidth={1.5} />
           )}
-        </Button>
+        </button>
       </div>
 
       {isMobileMenuOpen && (
         <nav
           id="mobile-navigation"
-          className="animate-in fade-in-0 slide-in-from-top-2 absolute inset-x-0 top-full border-b border-border/60 bg-background px-4 py-4 shadow-elevation-2 duration-200 md:hidden"
+          className="animate-in fade-in-0 slide-in-from-top-1 absolute inset-x-0 top-full border-b border-rule bg-background duration-200 md:hidden"
           aria-label="Mobile navigation"
         >
-          <div className="flex flex-col space-y-3">
-            {items.map((item) => (
-              <div key={item.name}>
-                <a
-                  href={item.href}
-                  className="block rounded-md px-4 py-2 text-foreground/80 transition-colors hover:bg-muted hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {item.name}
-                </a>
-              </div>
-            ))}
-            {/* The ink pill every other CTA uses. This was the only
-              * solid-green 6px-radius button in the system. */}
-            <div className="pt-2">
-              <Button className="min-h-11 w-full" shape="pill" asChild>
-                <a href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                  Book a call
-                </a>
-              </Button>
-            </div>
+          {/* A ruled list, like every other list on this site -- the panel is
+            * the sheet continuing under the header, not a floating card. */}
+          <div className="container mx-auto px-4">
+            <ul>
+              {items.map((item) => (
+                <li key={item.name} className="border-b border-rule">
+                  <a
+                    href={item.href}
+                    className="flex min-h-12 items-center text-label uppercase text-mute transition-colors duration-fast hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {item.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <a
+              href="/contact"
+              className={`${ctaPrimary} my-lg w-full`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Book a call
+            </a>
           </div>
         </nav>
       )}

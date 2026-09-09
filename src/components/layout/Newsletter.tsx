@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { toast } from "sonner";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { CheckCircle } from "lucide-react";
+import { VerdictMark } from "@/components/common/Marks";
+import { ctaSecondary } from "@/components/common/controls";
 
 export function Newsletter() {
   const [email, setEmail] = useState("");
@@ -41,14 +41,14 @@ export function Newsletter() {
 
       setIsSubscribed(true);
       setEmail("");
-      toast.success('Successfully subscribed!', {
-        description: 'You\'ll receive our latest AI insights and updates.'
+      toast.success('Subscribed', {
+        description: 'You will hear from me when there is something worth sending.'
       });
     } catch (error) {
       console.error('Newsletter subscription error:', error);
       setError("Failed to subscribe. Please try again later.");
       toast.error('Subscription failed', {
-        description: 'Please try again or contact us directly.'
+        description: 'Please try again, or write to info@vivancedata.com.'
       });
     } finally {
       setIsSubmitting(false);
@@ -57,53 +57,59 @@ export function Newsletter() {
 
   if (isSubscribed) {
     return (
-      <div className="border-t border-border pt-8 mb-8">
-        <div className="max-w-md mx-auto text-center">
-          <div className="flex flex-col items-center gap-3">
-            <div className="rounded-full bg-success/10 p-3">
-              <CheckCircle className="h-6 w-6 text-success" />
-            </div>
-            <div>
-              <h3 className="text-heading-4 mb-1">Thank you for subscribing!</h3>
-              <p className="text-muted-foreground text-sm">
-                You&apos;ll receive our latest AI insights and updates.
-              </p>
-            </div>
-          </div>
-        </div>
+      <div className="border-t border-rule pt-xl">
+        <p className="flex items-center gap-2.5">
+          <VerdictMark verdict="filled" label="" />
+          <span className="text-label uppercase text-mute">Subscribed</span>
+        </p>
+        <h3 className="mt-md font-display text-serif-sm text-foreground">
+          Thank you for subscribing
+        </h3>
+        <p className="mt-2 max-w-[46ch] text-body-sm text-muted-foreground">
+          You will hear from me when there is something worth sending. Not often.
+        </p>
       </div>
     );
   }
 
   return (
-    <div className="border-t border-border pt-8 mb-8">
-      <div className="max-w-md mx-auto text-center">
-        <h3 className="text-heading-4 mb-2">Subscribe to our newsletter</h3>
-        <p className="text-muted-foreground mb-4">
-          Stay updated with the latest in AI and receive our insights directly to your inbox.
+    /* Left-set, like every other block on this sheet. It was a centred column
+     * in the middle of a left-aligned footer, which read as a widget dropped in
+     * from another site. */
+    <div className="grid grid-cols-1 gap-x-xl gap-y-lg border-t border-rule pt-xl md:grid-cols-12">
+      <div className="md:col-span-5">
+        <h3 className="font-display text-serif-sm text-foreground">
+          Subscribe to the newsletter
+        </h3>
+        <p className="mt-2 max-w-[42ch] text-body-sm text-muted-foreground">
+          What I am learning about automating this kind of work, when there is
+          something worth sending.
         </p>
-        <form onSubmit={handleSubmit} className="space-y-2">
-          <div className="flex gap-2">
-            <Input
-              type="email"
-              placeholder="Your email address"
-              className="bg-card"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              disabled={isSubmitting}
-            />
-            <Button
-              type="submit"
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? "Subscribing..." : "Subscribe"}
-            </Button>
-          </div>
-          {error && (
-            <p className="text-sm text-destructive">{error}</p>
-          )}
-        </form>
       </div>
+      <form onSubmit={handleSubmit} className="md:col-span-6 md:col-start-7">
+        <div className="flex flex-col gap-md sm:flex-row">
+          <label htmlFor="newsletter-email" className="sr-only">
+            Email address
+          </label>
+          <Input
+            id="newsletter-email"
+            type="email"
+            placeholder="you@company.com"
+            className="min-h-11 rounded-sm border-input bg-background"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            disabled={isSubmitting}
+          />
+          <button
+            type="submit"
+            className={`${ctaSecondary} shrink-0 disabled:cursor-not-allowed disabled:opacity-50`}
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "Subscribing\u2026" : "Subscribe"}
+          </button>
+        </div>
+        {error && <p className="mt-2 text-body-sm text-destructive">{error}</p>}
+      </form>
     </div>
   );
 }
