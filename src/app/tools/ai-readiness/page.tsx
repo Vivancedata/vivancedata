@@ -49,29 +49,29 @@ export default function AIReadinessPage() {
           <h2 className="mb-4 font-display text-serif-md">What it asks about</h2>
           <div className="grid md:grid-cols-2 gap-6 text-foreground">
             <div>
-              <h3 className="text-heading-4 mb-2 flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-brand"></div>
+              <h3 className="mb-2 font-display text-serif-sm flex items-center gap-2">
+                <div className="h-1.5 w-1.5 rounded-full bg-mute"></div>
                 Your records
               </h3>
               <p className="text-sm">What you keep, where it lives, and whether anyone can get at it</p>
             </div>
             <div>
-              <h3 className="text-heading-4 mb-2 flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-brand"></div>
+              <h3 className="mb-2 font-display text-serif-sm flex items-center gap-2">
+                <div className="h-1.5 w-1.5 rounded-full bg-mute"></div>
                 Your systems
               </h3>
               <p className="text-sm">What you already run, and whether anything new can be wired into it</p>
             </div>
             <div>
-              <h3 className="text-heading-4 mb-2 flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-brand"></div>
+              <h3 className="mb-2 font-display text-serif-sm flex items-center gap-2">
+                <div className="h-1.5 w-1.5 rounded-full bg-mute"></div>
                 Your people
               </h3>
               <p className="text-sm">Whether the person who has to use this every day was asked first</p>
             </div>
             <div>
-              <h3 className="text-heading-4 mb-2 flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-brand"></div>
+              <h3 className="mb-2 font-display text-serif-sm flex items-center gap-2">
+                <div className="h-1.5 w-1.5 rounded-full bg-mute"></div>
                 The job itself
               </h3>
               <p className="text-sm">Whether you can say what the right answer looks like, and how you would know it worked</p>

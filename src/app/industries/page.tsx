@@ -81,7 +81,7 @@ export default function IndustriesPage() {
 
   return (
     <Container className="py-16">
-      <div className="text-center mb-16">
+      <div className="mb-16">
         <Heading className="mb-4 font-display text-serif-xl">The four trades I work in</Heading>
         <Paragraph className="max-w-3xl mx-auto text-lg">
           Blue-collar and local service businesses — construction, HVAC and the trades,
@@ -122,7 +122,7 @@ export default function IndustriesPage() {
             }
           ].map((benefit) => (
             <div key={benefit.title} className="bg-card p-6 rounded-xl border border-border">
-              <h3 className="text-heading-3 mb-3">{benefit.title}</h3>
+              <h3 className="mb-3 font-display text-serif-sm">{benefit.title}</h3>
               <p className="text-muted-foreground">{benefit.description}</p>
             </div>
           ))}
@@ -142,7 +142,7 @@ export default function IndustriesPage() {
               <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center mx-auto mb-4">
                 <span className="text-label uppercase text-mute">{step.number}</span>
               </div>
-              <h3 className="text-heading-3 mb-3">{step.title}</h3>
+              <h3 className="mb-3 font-display text-serif-sm">{step.title}</h3>
               <p className="text-muted-foreground">{step.description}</p>
             </div>
           ))}

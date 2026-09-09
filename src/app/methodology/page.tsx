@@ -108,7 +108,7 @@ function PhasesTimelineSection() {
   return (
     <section className="w-full py-20 md:py-28 bg-muted">
       <Container className="max-w-7xl">
-        <div className="text-center mb-16">
+        <div className="mb-16">
           <div className="mb-4 inline-block rounded-pill border border-rule px-4 py-1.5 text-label uppercase text-mute">
             Six phases
           </div>
@@ -210,7 +210,7 @@ function BenefitsSection() {
   return (
     <section className="w-full py-20 md:py-28 bg-card">
       <Container className="max-w-6xl">
-        <div className="text-center mb-16">
+        <div className="mb-16">
           <div className="mb-4 inline-block rounded-pill border border-rule px-4 py-1.5 text-label uppercase text-mute">
             The reasoning
           </div>
@@ -249,7 +249,7 @@ function MethodologyFaqSection() {
   return (
     <section className="w-full py-20 md:py-28 bg-card">
       <Container className="max-w-3xl">
-        <div className="text-center mb-12">
+        <div className="mb-12">
           <Heading as="h2" className="mb-4 font-display text-serif-lg">
             Common questions
           </Heading>

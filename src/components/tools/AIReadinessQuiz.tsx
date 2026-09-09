@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, type RefObject } from "react";
+import { VerdictMark } from "@/components/common/Marks";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -20,7 +21,6 @@ import {
   type ReadinessLevelName,
 } from "@/lib/aiReadinessScoring";
 import {
-  CheckCircle2,
   ChevronRight,
   ChevronLeft,
   Database,
@@ -29,7 +29,8 @@ import {
   Target,
   AlertCircle,
   TrendingUp,
-  Award
+  Award,
+  CheckCircle2,
 } from "lucide-react";
 
 // Presentation for what the model returns. The scoring module deals in level
@@ -146,7 +147,7 @@ function Recommendations({ recommendations }: RecommendationsProps) {
       <ul className="space-y-3" role="list" aria-label="Where to start">
         {recommendations.map((recommendation) => (
           <li key={recommendation} className="flex gap-3 p-4 bg-muted rounded-lg">
-            <CheckCircle2 className="h-5 w-5 text-brand flex-shrink-0 mt-0.5" aria-hidden="true" />
+            <VerdictMark verdict="filled" label="" className="mt-1 h-3.5 w-3.5" />
             <p className="text-sm">{recommendation}</p>
           </li>
         ))}
@@ -307,7 +308,7 @@ function QuizQuestionStep({
                         />
                         <Label
                           htmlFor={`${currentQ.id}-${option.value}`}
-                          className="flex-1 cursor-pointer text-sm leading-relaxed hover:text-brand transition-colors"
+                          className="flex-1 cursor-pointer text-sm leading-relaxed hover:text-foreground transition-colors"
                         >
                           {option.label}
                         </Label>

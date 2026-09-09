@@ -56,7 +56,7 @@ export default function ROICalculatorPage() {
             </p>
             <div className="grid md:grid-cols-2 gap-6 mt-6">
               <div>
-                <h3 className="text-heading-4 mb-2">What it counts as cost</h3>
+                <h3 className="mb-2 font-display text-serif-sm">What it counts as cost</h3>
                 <ul className="list-disc list-inside space-y-1 text-sm">
                   <li>Building the thing in the first place</li>
                   <li>Hosting and model usage</li>
@@ -65,7 +65,7 @@ export default function ROICalculatorPage() {
                 </ul>
               </div>
               <div>
-                <h3 className="text-heading-4 mb-2">What it counts as saving</h3>
+                <h3 className="mb-2 font-display text-serif-sm">What it counts as saving</h3>
                 <ul className="list-disc list-inside space-y-1 text-sm">
                   <li>Hours no longer spent re-typing</li>
                   <li>Labour freed up for billable work</li>

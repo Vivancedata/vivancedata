@@ -36,7 +36,7 @@ export const navItems: NavItem[] = [
     ],
   },
   {
-    name: "Case Studies",
+    name: "Example builds",
     href: "/case-studies",
     hasDropdown: false,
   },
@@ -84,7 +84,7 @@ export const mainNavItems: NavItem[] = [
     section: "industries"
   },
   {
-    name: "Case Studies",
+    name: "Example builds",
     href: "/case-studies",
     hasDropdown: false,
     section: "case-studies"
@@ -166,7 +166,7 @@ export const footerLinks: FooterSection[] = [
       { label: "ROI Calculator", href: "/tools/roi-calculator" },
       { label: "AI Readiness Assessment", href: "/tools/ai-readiness" },
       { label: "Use Cases Explorer", href: "/tools/use-cases" },
-      { label: "Case Studies", href: "/case-studies" },
+      { label: "Example builds", href: "/case-studies" },
       { label: "Innovation Hub", href: "/innovation-hub" },
       { label: "Responsible AI", href: "/responsible-ai" },
     ],

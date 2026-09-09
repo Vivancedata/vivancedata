@@ -35,7 +35,7 @@ A real emergency still reaches a person. What changes is that routine work gets 
     {
       title: "After-hours call capture",
       description: "Answer the calls that currently reach voicemail, take down the job details, judge urgency, and either book the slot or escalate a genuine emergency to the on-call tech.",
-      icon: <PhoneCall className="h-6 w-6 text-brand" />,
+      icon: <PhoneCall className="h-6 w-6 text-mute" />,
       benefits: [
         "Calls answered outside office hours",
         "Job details captured in a consistent format",
@@ -46,7 +46,7 @@ A real emergency still reaches a person. What changes is that routine work gets 
     {
       title: "Dispatch and scheduling support",
       description: "Match jobs to technicians using skills, parts on the van and travel time, and propose a schedule the dispatcher adjusts rather than builds.",
-      icon: <CalendarClock className="h-6 w-6 text-brand" />,
+      icon: <CalendarClock className="h-6 w-6 text-mute" />,
       benefits: [
         "Fewer wasted trips across town",
         "Skill and parts matched to the job",
@@ -57,7 +57,7 @@ A real emergency still reaches a person. What changes is that routine work gets 
     {
       title: "Quoting from service history",
       description: "Draft a quote from the job description, prior work at that address and current supplier pricing, ready for the tech to adjust.",
-      icon: <Receipt className="h-6 w-6 text-brand" />,
+      icon: <Receipt className="h-6 w-6 text-mute" />,
       benefits: [
         "Quotes out same day",
         "Prior work at the address surfaced",
@@ -68,7 +68,7 @@ A real emergency still reaches a person. What changes is that routine work gets 
     {
       title: "Follow-up and review requests",
       description: "Chase the maintenance intervals, unapproved quotes and review requests that get dropped when the office is busy.",
-      icon: <MessageSquare className="h-6 w-6 text-brand" />,
+      icon: <MessageSquare className="h-6 w-6 text-mute" />,
       benefits: [
         "Service intervals followed up automatically",
         "Unapproved quotes chased",

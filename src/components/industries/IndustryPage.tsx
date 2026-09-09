@@ -7,8 +7,7 @@ import type { Demo } from "@/constants/demos";
 import { Heading } from "@/components/common/Heading";
 import { Paragraph } from "@/components/common/Paragraph";
 import Link from "next/link";
-import { Check } from "lucide-react";
-import { ArrowMark } from "@/components/common/Marks";
+import { ArrowMark, VerdictMark } from "@/components/common/Marks";
 import { ctaPrimary, ctaSecondary } from "@/components/common/controls";
 import { AnimateOnScroll, StaggerContainer } from "@/hooks/useAnimateOnScroll";
 
@@ -48,7 +47,7 @@ const SolutionCard = ({ title, description, icon, benefits }: SolutionCardProps)
     <ul className="space-y-2">
       {benefits.map((benefit) => (
         <li key={`${title}-benefit-${benefit}`} className="flex items-start">
-          <Check className="mr-2 mt-0.5 h-4 w-4 flex-shrink-0 text-brand" />
+          <VerdictMark verdict="filled" label="" className="mr-2 mt-1 h-3.5 w-3.5" />
           <span className="text-body-sm text-foreground">{benefit}</span>
         </li>
       ))}
@@ -91,7 +90,7 @@ const Scenario = ({ title, challenge, solution, results, demo }: ScenarioProps) 
       <ul className="space-y-1">
         {results.map((result) => (
           <li key={`${title}-result-${result}`} className="flex items-start">
-            <Check className="mr-2 mt-0.5 h-4 w-4 flex-shrink-0 text-brand" />
+            <VerdictMark verdict="filled" label="" className="mr-2 mt-1 h-3.5 w-3.5" />
             <span className="text-body-sm text-foreground">{result}</span>
           </li>
         ))}
@@ -116,9 +115,9 @@ const HeroVisual = ({ label, steps }: { label: string; steps: string[] }) => (
         return (
           <div key={step} className="flex items-center gap-3">
             <div
-              className={`h-2 w-2 flex-shrink-0 rounded-full ${isLast ? "bg-border" : "bg-brand"}`}
+              className={`h-1.5 w-1.5 flex-shrink-0 rounded-full ${isLast ? "bg-faint" : "bg-mute"}`}
             />
-            <div className={`h-0.5 flex-1 rounded ${isLast ? "bg-border" : "bg-brand/30"}`} />
+            <div className={`h-px flex-1 ${isLast ? "bg-rule" : "bg-mute/40"}`} />
             <span className="w-28 flex-shrink-0 text-right text-caption text-muted-foreground">
               {step}
             </span>
@@ -322,7 +321,7 @@ export function IndustryPage({ config }: { config: IndustryPageConfig }) {
                 <ul className="grid gap-sm sm:grid-cols-2">
                   {phase.checks.map((check) => (
                     <li key={check} className="flex items-start">
-                      <Check className="mr-2 mt-0.5 h-4 w-4 flex-shrink-0 text-brand" aria-hidden="true" />
+                      <VerdictMark verdict="filled" label="" className="mr-2 mt-1 h-3.5 w-3.5" />
                       <span className="text-body-sm text-foreground">{check}</span>
                     </li>
                   ))}

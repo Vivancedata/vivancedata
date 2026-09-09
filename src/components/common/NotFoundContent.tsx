@@ -359,7 +359,7 @@ export function NotFoundContent() {
             className="mb-10"
           >
             <div className="inline-flex items-center gap-2 text-sm text-muted-foreground bg-muted/50 dark:bg-muted/30 px-4 py-2.5 rounded-full border border-border/50">
-              <Search className="h-4 w-4 text-brand/70" />
+              <Search className="h-4 w-4 text-mute" strokeWidth={1.5} />
               <span>The menu at the top of the page lists everything on the site</span>
             </div>
           </m.div>
@@ -367,7 +367,7 @@ export function NotFoundContent() {
           {/* Popular Pages */}
           <m.div variants={itemVariants}>
             <div className="flex items-center justify-center gap-2 mb-5">
-              <Sparkles className="h-5 w-5 text-brand" aria-hidden="true" />
+              <Sparkles className="h-5 w-5 text-mute" aria-hidden="true" />
               <h2 className="text-heading-4 text-foreground">
                 Where to go next
               </h2>
@@ -388,9 +388,9 @@ export function NotFoundContent() {
                     )}
                   >
                     <div className="flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-muted mb-3 group-hover:bg-muted group-hover:scale-105 transition-all duration-200">
-                      <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-brand" aria-hidden="true" />
+                      <Icon className="h-5 w-5 text-mute sm:h-6 sm:w-6" strokeWidth={1.25} aria-hidden="true" />
                     </div>
-                    <span className="font-medium text-foreground group-hover:text-brand transition-colors">
+                    <span className="font-medium text-foreground group-hover:text-foreground transition-colors">
                       {page.name}
                     </span>
                     <span className="text-xs text-muted-foreground mt-1 text-center line-clamp-2">

@@ -61,7 +61,7 @@ const CareerPage = () => {
     <Container className="py-16">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="mb-16">
           <Heading className="mb-4 font-display text-serif-xl">Work with me</Heading>
           <Paragraph className="max-w-2xl mx-auto text-lg">
             Vivancedata is one person plus a short list of specialists I bring in per project.
@@ -80,10 +80,10 @@ const CareerPage = () => {
                 className="bg-muted rounded-xl p-6 flex gap-4"
               >
                 <div className="bg-muted p-3 rounded-lg h-fit">
-                  <benefit.icon className="h-6 w-6 text-brand" />
+                  <benefit.icon className="h-6 w-6 text-mute" />
                 </div>
                 <div>
-                  <h3 className="text-heading-4 mb-2">{benefit.title}</h3>
+                  <h3 className="mb-2 font-display text-serif-sm">{benefit.title}</h3>
                   <p className="text-muted-foreground text-sm">
                     {benefit.description}
                   </p>
@@ -99,9 +99,9 @@ const CareerPage = () => {
 
           <div className="bg-muted rounded-xl p-8 text-center">
             <div className="bg-muted w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Briefcase className="h-8 w-8 text-brand" />
+              <Briefcase className="h-8 w-8 text-mute" />
             </div>
-            <h3 className="text-heading-3 mb-3">No open roles right now</h3>
+            <h3 className="mb-3 font-display text-serif-sm">No open roles right now</h3>
             <p className="text-muted-foreground max-w-md mx-auto mb-6">
               None at the moment. If you are a senior engineer, ML practitioner or domain
               specialist open to project work, send a note and something you have built. That
@@ -109,7 +109,7 @@ const CareerPage = () => {
             </p>
             <a
               href="mailto:careers@vivancedata.com?subject=Career Interest at Vivancedata"
-              className="inline-flex items-center gap-2 text-brand hover:underline font-medium"
+              className="inline-flex items-center gap-2 text-foreground underline decoration-rule underline-offset-4 hover:decoration-current"
             >
               <Mail className="h-4 w-4" />
               careers@vivancedata.com
@@ -126,7 +126,7 @@ const CareerPage = () => {
           </p>
           <Link href="/contact">
             <Button size="lg" className="gap-2">
-              Get in Touch
+              Book a call
               <ArrowRight className="h-4 w-4" />
             </Button>
           </Link>

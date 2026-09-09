@@ -1,8 +1,9 @@
 import { Container } from "@/components/common/Container";
+import { VerdictMark } from "@/components/common/Marks";
 import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Check, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import {
   ServiceCTA,
   ServiceHeroSplit,
@@ -144,7 +145,7 @@ export default function TrainingPage() {
         </p>
         <Button asChild className="self-start group" variant="outline">
           <Link href="/contact">
-            <span>Inquire About Training</span>
+            <span>Book a call</span>
             <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </Button>
@@ -158,7 +159,7 @@ export default function TrainingPage() {
               <div className="p-6 md:p-8">
                 <div className="flex flex-col md:flex-row gap-6">
                   <div className="w-full md:w-2/3">
-                    <h3 className="text-heading-3 mb-3">{course.title}</h3>
+                    <h3 className="mb-3 font-display text-serif-sm">{course.title}</h3>
                     <p className="text-muted-foreground mb-4">{course.description}</p>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -178,7 +179,7 @@ export default function TrainingPage() {
                     <ul className="space-y-1">
                       {course.topics.map((topic) => (
                         <li key={topic} className="flex items-start">
-                          <Check className="h-4 w-4 text-brand mt-1 mr-2 flex-shrink-0" />
+                          <VerdictMark verdict="filled" label="" className="mr-2 mt-1 h-3.5 w-3.5" />
                           <span className="text-foreground text-sm">{topic}</span>
                         </li>
                       ))}
@@ -193,7 +194,7 @@ export default function TrainingPage() {
                 </span>
                 <Button asChild variant="outline" size="sm">
                   <Link href="/contact">
-                    <span>Request Details</span>
+                    <span>Book a call</span>
                   </Link>
                 </Button>
               </div>
@@ -219,7 +220,7 @@ export default function TrainingPage() {
             }
           ].map((item) => (
             <div key={item.title} className="bg-card p-6 rounded-xl border border-border">
-              <h3 className="text-heading-3 mb-3">{item.title}</h3>
+              <h3 className="mb-3 font-display text-serif-sm">{item.title}</h3>
               <p className="text-muted-foreground">{item.description}</p>
             </div>
           ))}

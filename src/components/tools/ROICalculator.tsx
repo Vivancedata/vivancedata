@@ -170,12 +170,12 @@ function ROIMetrics({ results }: ROIMetricsProps) {
         <Card className="h-full bg-muted border-brand/20 dark:border-brand/30">
           <CardHeader>
             <CardTitle as="h3" className="text-lg flex items-center gap-2">
-              <TrendingUp className="h-5 w-5 text-brand" aria-hidden="true" />
+              <TrendingUp className="h-5 w-5 text-mute" aria-hidden="true" />
               3-year ROI
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-brand tabular-nums whitespace-nowrap" aria-label={`3-year ROI: ${results.roiPercentage} percent`}>{results.roiPercentage}%</div>
+            <div className="text-2xl font-bold text-foreground tabular-nums whitespace-nowrap" aria-label={`3-year ROI: ${results.roiPercentage} percent`}>{results.roiPercentage}%</div>
             <p className="text-sm text-muted-foreground mt-1">
               {formatCurrency(results.netROI)} left after the build is paid for
             </p>
@@ -191,12 +191,12 @@ function ROIMetrics({ results }: ROIMetricsProps) {
         <Card className="h-full bg-muted border-brand/20 dark:border-brand/30">
           <CardHeader>
             <CardTitle as="h3" className="text-lg flex items-center gap-2">
-              <Clock className="h-5 w-5 text-brand" aria-hidden="true" />
+              <Clock className="h-5 w-5 text-mute" aria-hidden="true" />
               Payback period
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-brand tabular-nums whitespace-nowrap" aria-label={`Payback period: ${results.paybackMonths} months`}>{results.paybackMonths} mo</div>
+            <div className="text-2xl font-bold text-foreground tabular-nums whitespace-nowrap" aria-label={`Payback period: ${results.paybackMonths} months`}>{results.paybackMonths} mo</div>
             <p className="text-sm text-muted-foreground mt-1">
               Until the savings cover the cost
             </p>
@@ -212,12 +212,12 @@ function ROIMetrics({ results }: ROIMetricsProps) {
         <Card className="h-full bg-muted border-brand/20 dark:border-brand/30">
           <CardHeader>
             <CardTitle as="h3" className="text-lg flex items-center gap-2">
-              <DollarSign className="h-5 w-5 text-brand" aria-hidden="true" />
+              <DollarSign className="h-5 w-5 text-mute" aria-hidden="true" />
               Total 3-year savings
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-brand tabular-nums whitespace-nowrap" aria-label={`Total three year savings: ${formatCurrency(results.totalThreeYearSavings)}`}>{formatCurrency(results.totalThreeYearSavings)}</div>
+            <div className="text-2xl font-bold text-foreground tabular-nums whitespace-nowrap" aria-label={`Total three year savings: ${formatCurrency(results.totalThreeYearSavings)}`}>{formatCurrency(results.totalThreeYearSavings)}</div>
             <p className="text-sm text-muted-foreground mt-1">
               Before the cost of building it
             </p>
@@ -233,12 +233,12 @@ function ROIMetrics({ results }: ROIMetricsProps) {
         <Card className="h-full bg-muted border-brand/20 dark:border-brand/30">
           <CardHeader>
             <CardTitle as="h3" className="text-lg flex items-center gap-2">
-              <Zap className="h-5 w-5 text-brand" aria-hidden="true" />
+              <Zap className="h-5 w-5 text-mute" aria-hidden="true" />
               Efficiency gain
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-brand tabular-nums whitespace-nowrap" aria-label={`Efficiency gain: ${results.efficiencyGainPercent} percent`}>{results.efficiencyGainPercent}%</div>
+            <div className="text-2xl font-bold text-foreground tabular-nums whitespace-nowrap" aria-label={`Efficiency gain: ${results.efficiencyGainPercent} percent`}>{results.efficiencyGainPercent}%</div>
             <p className="text-sm text-muted-foreground mt-1">
               {formatNumber(results.hoursSaved)} hours a year back
             </p>
@@ -278,7 +278,7 @@ function FinancialBreakdown({ results }: FinancialBreakdownProps) {
             </div>
 
             <div>
-              <h4 className="text-heading-4 mb-3 text-brand">What it saves</h4>
+              <h4 className="mb-3 font-display text-serif-sm">What it saves</h4>
               <div className="space-y-3">
                 <div className="bg-success/10 rounded-md p-4">
                   <div className="flex justify-between items-center">
@@ -311,7 +311,7 @@ function FinancialBreakdown({ results }: FinancialBreakdownProps) {
               <div className="bg-muted rounded-lg p-6 border-2 border-brand/30 dark:border-brand/40">
                 <div className="flex justify-between items-center">
                   <span className="text-xl font-bold text-foreground">Net return over three years</span>
-                  <span className="text-3xl font-bold text-brand">{formatCurrency(results.netROI)}</span>
+                  <span className="text-3xl font-bold text-foreground">{formatCurrency(results.netROI)}</span>
                 </div>
               </div>
             </div>

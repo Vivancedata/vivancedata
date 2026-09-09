@@ -45,7 +45,7 @@ export function ServicesStack({
                 <div
                   className={cn(
                     "mb-3 flex h-14 w-14 items-center justify-center rounded-xl text-sm font-semibold tracking-wide",
-                    tech.tone ?? "bg-muted text-brand"
+                    tech.tone ?? "border border-rule text-mute"
                   )}
                   aria-hidden="true"
                 >

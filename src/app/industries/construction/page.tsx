@@ -35,7 +35,7 @@ Nothing here replaces the judgement of the person signing off. The work is draft
     {
       title: "Document intake",
       description: "Pull structured data out of submittals, permits, RFIs and supplier invoices, validate it against your project rules, and write it into the system you already use.",
-      icon: <FileText className="h-6 w-6 text-brand" />,
+      icon: <FileText className="h-6 w-6 text-mute" />,
       benefits: [
         "Fewer hours re-keying PDFs",
         "Consistent capture across subcontractors",
@@ -46,7 +46,7 @@ Nothing here replaces the judgement of the person signing off. The work is draft
     {
       title: "Daily report assembly",
       description: "Turn field notes, photos and timesheets into the daily report format your client and insurer expect, drafted for a human to check rather than written from scratch.",
-      icon: <ClipboardList className="h-6 w-6 text-brand" />,
+      icon: <ClipboardList className="h-6 w-6 text-mute" />,
       benefits: [
         "Reports drafted in minutes not evenings",
         "Consistent format across crews",
@@ -57,7 +57,7 @@ Nothing here replaces the judgement of the person signing off. The work is draft
     {
       title: "Bid and estimate support",
       description: "Search prior bids, supplier quotes and cost history so estimators start from what you actually paid last time instead of a blank sheet.",
-      icon: <Calculator className="h-6 w-6 text-brand" />,
+      icon: <Calculator className="h-6 w-6 text-mute" />,
       benefits: [
         "Faster turnaround on invitations to bid",
         "Historical pricing surfaced with its source",
@@ -68,7 +68,7 @@ Nothing here replaces the judgement of the person signing off. The work is draft
     {
       title: "Compliance and safety records",
       description: "Keep certifications, toolbox talks and incident reports searchable and current, with expiries flagged before they lapse.",
-      icon: <HardHat className="h-6 w-6 text-brand" />,
+      icon: <HardHat className="h-6 w-6 text-mute" />,
       benefits: [
         "Expiring certifications flagged early",
         "Incident write-ups drafted from field input",

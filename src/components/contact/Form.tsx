@@ -165,7 +165,7 @@ export function ProfileForm() {
   return (
     <Card className="border border-border">
       <CardHeader className="bg-muted rounded-t-lg">
-        <CardTitle as="h2" className="text-brand">Book a call</CardTitle>
+        <CardTitle as="h2" className="font-display text-serif-sm">Book a call</CardTitle>
         <CardDescription>Tell me what is going wrong and where to reach you.</CardDescription>
       </CardHeader>
       <CardContent className="pt-6">
