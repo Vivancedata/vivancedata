@@ -49,18 +49,22 @@ function extractFrontmatter(content: string, slug: string): BlogFrontmatter {
   return { title, description, date, image, tags };
 }
 
-function resolveDirectoryPostPath(directoryPath: string, slug: string): string | null {
-  const slugMdxPath = path.join(directoryPath, `${slug}.mdx`);
-  if (fs.existsSync(slugMdxPath)) {
-    return slugMdxPath;
-  }
-
+/**
+ * A post directory publishes from `page.mdx`, and only from `page.mdx`.
+ *
+ * This used to prefer `<slug>.mdx` inside the directory and fall back to
+ * `page.mdx`, and that preference silently shipped the wrong post for months:
+ * `ai-ethics-guide/` held both, so the listing, the sitemap and the live route
+ * all served a stale 20KB draft while the real post rendered at a URL nothing
+ * linked to. Nothing announced the shadowing -- both files were valid, and the
+ * loser simply never appeared.
+ *
+ * One filename means a second file in a post directory is inert instead of
+ * authoritative, which is the failure mode you can actually see.
+ */
+function resolveDirectoryPostPath(directoryPath: string): string | null {
   const pageMdxPath = path.join(directoryPath, "page.mdx");
-  if (fs.existsSync(pageMdxPath)) {
-    return pageMdxPath;
-  }
-
-  return null;
+  return fs.existsSync(pageMdxPath) ? pageMdxPath : null;
 }
 
 function getBlogFileEntries(): Map<string, BlogFileEntry> {
@@ -78,7 +82,7 @@ function getBlogFileEntries(): Map<string, BlogFileEntry> {
     const entryPath = path.join(BLOG_POSTS_DIRECTORY, entry.name);
 
     if (entry.isDirectory()) {
-      const resolvedPath = resolveDirectoryPostPath(entryPath, entry.name);
+      const resolvedPath = resolveDirectoryPostPath(entryPath);
       if (resolvedPath) {
         slugsToFiles.set(entry.name, {
           filePath: resolvedPath,
