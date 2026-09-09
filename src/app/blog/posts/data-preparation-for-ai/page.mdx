@@ -1,279 +1,101 @@
 ---
-title: "Data Preparation for AI: The Foundation of Success"
-description: "The unglamorous work that decides whether a model survives production: finding what you have, cleaning it, and proving it is fit to train on."
+title: "Your paperwork is a mess. Here's what actually has to be true"
+description: "Everyone apologises for their records on the first call. Tidy is not the requirement — here is what your job files, slips and notes really have to look like before any of this works, and what genuinely stops it."
 date: "2025-01-29"
-tags: ["Data Preparation", "Data Quality", "AI Implementation"]
+tags: ["Construction", "HVAC & Trades", "Logistics", "Manufacturing"]
 image: "/images/ai-solutions.png"
 ---
 
-# Data Preparation for AI: The Foundation of Success
+Somewhere in the first ten minutes of nearly every conversation about automating something, the same sentence arrives, usually with an apology attached: our records are a state.
 
-A model can only learn what its data contains, and most data contains less than the people who own it think. Preparing it routinely takes more of the schedule than the modelling does, and it is almost always the phase that was underestimated when the plan was written.
+They usually are. Job numbers written four ways. Delivery slips that are photographs of delivery slips. A customer who is Smith Builders in the accounts system, Smith Builders Ltd on the invoices, and "Dave" in the dispatch notes. Field notes on the back of a card in somebody's van. The shared drive with folders called `2019 final` and `2019 final USE THIS`.
 
-This is a practical route through that work: what to look at, what to fix, and how to know when it is fit to train on.
+None of that is disqualifying, and I want to be specific about why, because "we'll need to clean the data first" is how a lot of these projects die of exhaustion before they start. Tidy is not the requirement. There are about four things that genuinely have to be true, and the rest is noise you can live with.
 
-## Why it matters
+## The four things that actually matter
 
-### Where AI projects actually break
+**It has to exist somewhere.** Written down, photographed, recorded, typed — the form barely matters. What kills a job is when the information only ever lived in someone's head and got acted on: the reason the delivery was short, the reason that job took two extra days. No system can learn a thing nobody ever recorded.
 
-Very few projects fail on algorithm selection or compute. They fail on data.
+**You have to be able to get it out.** This is the real blocker far more often than mess is, and it has nothing to do with how tidy your records are. If your dispatch system has no export and no way in except the screen, that's a wall. If your supplier's portal shows you the slips but won't give you the file, that's a wall. Neat records inside a locked box are worse than messy ones in a folder.
 
-There isn't enough of it, so the model never sees the pattern often enough to learn it. What exists is full of errors, inconsistencies and gaps. It carries the shape of past decisions, so the model reproduces them and calls it a prediction. It sits in a system nobody can get an export out of. Or it isn't labelled, and the approach you chose needs labels.
+**The same thing needs to be findable under its different names.** Not standardised — findable. If Smith Builders has three spellings, that's fine as long as somebody can tell me they're the same firm. Which they can, immediately, because they've worked with them for nine years. What isn't fine is nobody knowing.
 
-### What poor data costs
+**The hard cases have to be in there.** This is the one people get backwards. The instinct is to send over the clean examples, because that is what you would send anybody. What I want is the ugly ones: the slip photographed at an angle in the cab, the handwritten note with the job number that has a letter in it, the PDF that's actually a photo of a fax. Twenty bad examples teach more than a thousand tidy ones, because the tidy ones were never the problem.
 
-Three failure patterns are worth recognising, because each one produces a model
-that trains cleanly and fails quietly.
+## Start by finding out what you've actually got
 
-**Missing context in the source records.** Consider a readmission prediction model
-built on discharge records where the post-discharge care plan is frequently absent.
-The model does not know the field is missing for a reason; it learns from the
-records that happen to be complete, which are not a random sample of patients.
+Before deciding anything, spend an afternoon writing down where the material lives. It's always in more places than the owner expects.
 
-**Data that records the outcome of a constraint rather than the demand.** Consider
-a demand forecast trained on historical sales that does not distinguish "nobody
-wanted it" from "it was out of stock". The model learns to predict low demand for
-exactly the items you kept failing to stock, and the forecast then justifies not
-stocking them.
+The project or job management system. The accounts package. A shared drive full of spreadsheets, each one somebody's private system. The estimator's email, which is where the submittals really live. The printer that emails scanned PDFs to one address nobody reads. Photos on four phones. The WhatsApp group, which counts, and is frequently where the exceptions get reported. A filing cabinet. A box in the truck.
 
-**Duplicate records that concentrate in one segment.** Consider a fraud model whose
-training data contains duplicated entries from a single region. The duplicates
-inflate the apparent frequency of whatever those records contain, and the model
-becomes miscalibrated for that population specifically — which is hard to see in
-an aggregate accuracy score.
-
-## The five stages of data preparation
-
-### Stage 1: discovery and assessment
-
-Before you can prepare data, you need to know what you have.
-
-Inventory the sources: internal databases like the CRM and the ERP, file storage full of spreadsheets and documents, anything bought or downloaded from outside, real-time streams from sensors or web analytics, and the unstructured pile — emails, PDFs, photographs of paperwork.
-
-Then assess each one on five questions. What share of fields is populated? How often are the values correct? Do they match what the same field says in another system? Is the data current? And does it conform to the formats and ranges you expect?
-
-Record it like this:
+For whichever pile the job actually depends on, get concrete about it. Take one week of it, count what you have, and write the answers down:
 
 ```
-Customer Database Audit:
-- Total records:            <count>
-- Email completeness:       <populated / total>
-- Email validity:           <passing format check / populated>
-- Phone completeness:       <populated / total>
-- Duplicate records:        <count, and the rule used to detect them>
-- Recency distribution:     <share updated within N months>
+Delivery slips, week of <date>
+
+- Slips received:            <count>
+- Arrived as: PDF / photo / paper / portal   <count of each>
+- Legible without squinting: <count>
+- Carry a readable PO number: <count>
+- Carry a readable date:      <count>
+- Line items match the order: <count checked, count matching>
+- Where the copy ends up:     <inbox / drive folder / cabinet>
 ```
 
-Write the detection rule down next to each figure. "Duplicates: 3,200" means
-nothing on its own — the number is entirely a function of whether you matched on
-exact email, fuzzy name, or address proximity, and the next person to run the audit
-will get a different answer unless the rule travels with it.
+That page tells you more than any conversation about data quality. If four in five slips arrive as photographs and a third of them have a thumb over the corner, that's a real constraint and it's better known now than after a build.
 
-### Stage 2: collection and integration
+## The mess that matters and the mess that doesn't
 
-Once you know what you need, gather and consolidate it.
+Some of it is cosmetic and some of it will actually bite.
 
-Be specific about the requirement. How much history do you need, and which attributes actually matter? On volume, there is no universal answer, but the
-ordering is reliable: a simple classifier over a handful of well-separated classes
-needs far less than a model predicting a rare outcome from many weak signals, and
-training a deep model from scratch needs more again by a wide margin. What
-actually governs it is how many examples you have of the *rarest class you care
-about* — the total row count is the number people quote and the least informative
-one. Establish the requirement empirically: train on a fraction of what you have,
-then on more, and see whether performance is still climbing.
+Doesn't matter much: inconsistent formatting, dates written in different orders, extra spaces, mixed capitals, four ways of abbreviating "quantity". These are mechanical to fix and they get fixed once.
 
-Combining sources brings two problems. The first is schema: the same concept under different field names (`customer_id` against `cust_num`), the same value in different types (dates as strings, dates as timestamps), and the same quantity in different units (dollars against cents, metres against feet). Define one master schema and the transformation rules into it:
+Matters: units that silently disagree. Cases against each. Pallets against cartons. Hours against days. If half your records say 12 and mean 12 units while the other half say 12 and mean 12 cases, nothing downstream can tell the difference, and neither can you six months from now.
 
-```
-Source A: customer_id (string) → Master: customer_identifier (integer)
-Source B: cust_num (integer) → Master: customer_identifier (integer)
-```
+Matters: the same job entered twice by two people who each thought the other hadn't. Duplicates aren't just clutter — anything counting or learning from your records will treat that job as twice as common as it is.
 
-The second is time. Events land in different systems at different moments, time zones disagree, and batch capture sits alongside real-time capture. Pick one timestamp standard — UTC — and write down the synchronisation rules rather than leaving them in someone's head.
+Matters more than anything: gaps that aren't random. A field that's empty half the time is not necessarily a problem. A field that's empty except on warranty jobs, because that's the only time anybody's made to fill it in, is a trap. Anything reading those records learns from the ones that happen to be complete, and warranty jobs are not a fair sample of your work.
 
-### Stage 3: cleaning
+## Your records show what you managed, not what people wanted
 
-This is usually the longest phase.
+This one is worth slowing down for, because it's subtle and it's the mistake that produces a confident, useless system.
 
-**Missing values.** You have three options. Deletion removes records with missing critical values, and is right when the affected records are a small share of the total *and* the missingness is random. The second condition is the one that matters and the one nobody checks — if a field is missing because of something systematic, deleting those rows deletes a population. Imputation fills the gap with an estimate: mean or median for numbers, mode for categories, a model for anything more complicated. Flagging keeps the record and adds a "missing" indicator, letting the model learn that the absence itself means something, which is often true.
+Your dispatch records show the jobs you took. They do not show the calls that rang out at 9pm and went to somebody else, because those never became records. Feed a system that history and ask it when you get emergency work, and it will tell you — correctly, according to the data — that almost nothing comes in after hours. It has learned the shape of your answering capacity and called it demand.
 
-```
-Is the field critical for prediction?
-├─ Yes: Can you impute reliably?
-│  ├─ Yes: Impute using appropriate method
-│  └─ No: Delete record or flag for manual review
-└─ No: Keep record, use missing indicator
-```
+Same shape, different trade: a stock history that doesn't distinguish "nobody ordered it" from "we were out of it" will teach a forecast to keep you out of the parts you keep running out of. A line-inspection record that only logs the defects somebody had time to write up tells you about the quiet shifts, not the bad ones.
 
-**Duplicates.** They corrupt training by making some examples count more than once. Exact matches are easy:
+Nobody can spot this from the data alone. It takes someone who knows the work saying "hang on, that's not right, we just stopped logging those in March". Which is why the person who does the job has to be in the room when the records get looked at, and why I'd rather have an hour with your dispatcher than a week with your database.
 
-```sql
-DELETE FROM customers
-WHERE id NOT IN (
-  SELECT MIN(id)
-  FROM customers
-  GROUP BY email, name, address
-)
-```
+## What "enough" looks like
 
-Fuzzy duplicates are the real work: Levenshtein distance for text similarity, phonetic matching for names, geographic proximity for addresses. Whatever you pick, write it down — see the note on detection rules above.
+There's no threshold number of records, and anyone who gives you one is guessing. What matters is how many examples exist of the rarest thing you care about.
 
-**Errors.** They arrive in three shapes. Format errors, where the same phone number appears as (555) 123-4567, 5551234567 and 555-123-4567, and dates arrive in every ordering anyone has ever used. Out-of-range values: an age of 200 or -5, a historical event dated next year, a negative quantity where negatives are impossible. And inconsistent categories, where "NY", "New York", "NY State" and "new york" are four different places as far as the model is concerned.
+If you want a system that flags short deliveries, the question isn't how many slips you have, it's how many short ones — and if the answer is that it happens about once a month, that's the number governing the whole exercise, not your ten thousand tidy slips. If you want after-hours calls sorted into urgent and not, the question is how many genuine emergencies are in there, not how many calls.
 
-Regular expressions handle the pattern-based fixes, lookup tables handle standardisation, and automated validation rules catch the rest — with a human path for the exceptions, because there will be exceptions.
+That usually reframes the conversation usefully. Often you don't need more data, you need six months of it looked at properly.
 
-### Stage 4: transformation
+## Don't clean everything first
 
-Convert the data into something a model can consume.
+The instinct is to sort the records out and then automate. It's the wrong order, and a records cleanup with nothing attached to it never finishes, because nothing tells you when to stop.
 
-Categorical variables need encoding. One-hot encoding gives each category its own binary column:
+Do the opposite. Take the material as it is, warts included, run it through, and let the failures tell you which mess actually matters. You'll find that most of the untidiness makes no difference at all, and one specific thing — the units, the missing PO number, the three spellings of one customer — is causing nearly all of the errors. Fix that one thing. Run it again. That's a week of work with a visible end, rather than a quarter of tidying.
 
-```
-Color: [Red, Blue, Green]
-→ Color_Red: [1,0,0], Color_Blue: [0,1,0], Color_Green: [0,0,1]
-```
+## Keeping it from going back to a mess
 
-Label encoding assigns numbers instead:
+Whatever you fix will drift back unless something holds it. Three things do most of the work.
 
-```
-Size: [Small, Medium, Large] → [1, 2, 3]
-```
+One person owns it. Not a committee, not "everybody's responsible" — one named person who decides how a customer gets spelled.
 
-Only use it where the order is real (Small &lt; Medium &lt; Large). Numbering unordered categories tells the model that category 3 sits between 2 and 4, which it does not.
+Fix it where it's entered, not after. If a driver can photograph a slip in a way that cuts off the corner, they will, so the fix is a phone that says "I can't read the bottom, take it again" while the driver is still standing there. Anything corrected downstream gets corrected forever.
 
-Numerical variables usually need scaling, either normalised into a 0-1 range:
+Watch the change, not the number. A weekly note saying most slips came through readable means nothing on its own. The same count sitting next to last week's means everything, because a sharp drop tells you a supplier changed their form or somebody's phone camera got cracked, and that's the alert you actually want.
 
-```
-normalized = (value - min) / (max - min)
-```
+## Where the compliance bit sits
 
-or standardised around the mean:
+If your records include people — customer addresses, gate codes, recorded voicemails, photographs of the inside of somebody's house — those carry obligations, and putting them into a system doesn't shed the obligations. It's rarely complicated at your scale, but it should be a decision somebody made rather than something that happened. Know what's being stored, know where, and know how you'd delete a customer's records if they asked, before somebody asks.
 
-```
-standardized = (value - mean) / standard_deviation
-```
+## Watch one go through
 
-Then there is feature engineering, which is where domain knowledge earns its money. Dates become day of week, month, quarter, and time since the last event. Aggregates summarise a customer's total purchases, average order value and frequency, or a product's rating, review count and return rate. Interactions combine columns: price times quantity is revenue, clicks over impressions is a click-through rate. Text yields length metrics, sentiment scores, named entities, topics.
+The quickest way to see what this looks like is to watch one document go through it. I built a demo that reads a delivery slip and pulls the numbers off it: [extract a sample delivery slip](https://paperwork.vivancedata.com). The slip is fictional. What's worth looking at is which fields it commits to and which ones it hedges on, because that hedging is the behaviour you want on your real ones.
 
-### Stage 5: validation and quality assurance
-
-Before training on it, check it.
-
-Look at the distributions. Are the numbers skewed? Are the categories balanced, or does one dominate? Are there outliers you cannot explain? An imbalance like this one will bend the model toward electronics and there is nothing in the training run that will tell you:
-
-```
-Product Categories:
-- Electronics: 95,000 examples
-- Clothing: 3,200 examples
-- Food: 180 examples
-
-This severe imbalance will cause AI to be biased toward Electronics.
-```
-
-Check the relationships too. Do the correlations make business sense? Is there a pattern nobody can account for? An unexplained correlation is either a discovery or a leak, and it is usually a leak.
-
-Then write the business rules down as code, so they run every time rather than when someone remembers:
-
-```python
-# Example validation rules
-assert all(df['age'] >= 0) and all(df['age'] <= 120), "Invalid ages detected"
-assert all(df['order_date'] <= df['ship_date']), "Ship date before order date"
-assert df['revenue'].sum() == (df['price'] * df['quantity']).sum(), "Revenue mismatch"
-```
-
-And report on it regularly:
-
-```
-Weekly Data Quality Report:
-
-Sources Processed:  <count>
-Total Records:      <count>
-New Records:        <count since last report>
-
-Quality Metrics (each with its change since last report):
-- Completeness:     <populated fields / expected fields>
-- Accuracy:         <records passing validation / records checked>
-- Duplicates found: <count, by detection rule>
-- Errors corrected: <count, by category>
-
-Top Issues:
-1. <issue>  <affected record count>
-2. <issue>  <affected record count>
-3. <issue>  <affected record count>
-```
-
-The change-since-last-week column is the part that earns its keep. An absolute
-completeness figure tells you little; a completeness figure that dropped sharply
-overnight tells you an upstream system changed, and that is the alert you actually
-want.
-
-## Common problems
-
-### Not enough history
-
-The symptom is a learning curve still climbing when you run out of data: more examples would clearly help, and you don't have them.
-
-The options are to use a simpler approach that needs less data, augment what you have where the data type allows it, start from a pre-trained model instead of from scratch, buy or license more, or wait while you collect. Waiting is unpopular and is sometimes the right answer.
-
-### Imbalanced data
-
-Fraud detection is the standard example: legitimate transactions outnumber fraudulent ones by orders of magnitude, and a model that labels everything legitimate scores brilliantly on accuracy while being worthless.
-
-You can oversample the minority class, undersample the majority, synthesise new minority examples with something like SMOTE, or weight the classes in the algorithm. But the first fix is the metric. If you are still reporting accuracy on a problem like this, nothing else you change will show up.
-
-### Privacy and compliance
-
-If the data is personal, the obligations arrive with it — GDPR, CCPA, HIPAA, depending on where you and it are.
-
-Anonymisation strips identifying information. Pseudonymisation replaces identifiers with tokens. Differential privacy adds statistical noise. Synthetic data generates artificial records with the same shape. Federated learning trains without centralising anything. Each buys privacy at some cost in utility, and the trade-off is a decision for somebody with authority, not a technical default.
-
-### Legacy systems
-
-When the data that matters sits in a mainframe or a system nobody maintains, the routes out are: build a modern interface to it, schedule batch exports into somewhere newer, replicate it continuously, or migrate it in pieces. Whichever you choose, the extraction becomes a thing you own and maintain — plan for that rather than treating it as a one-off.
-
-## Practices worth keeping
-
-**Document the lineage.** Where each field came from, how it was extracted, what was done to it, which checks it passed, and what is known to be wrong with it. The last item is the one that saves someone six months from now.
-
-**Version the data like code.**
-
-```
-customer_data_v1.0_2025-01-15.csv
-customer_data_v1.1_2025-02-01.csv (added email validation)
-customer_data_v2.0_2025-03-01.csv (schema change: split name field)
-```
-
-**Automate the repetitive parts** — extraction, the cleaning rules you have already decided, validation, error reporting. Anything done by hand every week will eventually be done wrong, or not at all.
-
-**Start small and iterate.** Get a minimum viable dataset, train something, and let the model's failures tell you which data problems actually matter. Fix those, retrain, repeat. This beats a data-cleaning project with no model attached, which has no way of knowing when it is finished.
-
-**Involve the people who know the business.** A data scientist can spot a statistical anomaly. Only someone who does the work can tell you whether it is normal variation or a broken sensor, whether those categories mean anything, and whether that relationship is expected or suspicious.
-
-## Measuring whether the preparation worked
-
-On process, track how much of the project went into data preparation, what share of records pass the quality checks, and how quickly errors get corrected.
-
-On outcome, compare model accuracy on prepared against raw data, training time, and errors in production.
-
-That comparison only means something if you keep the raw-data baseline.
-Train once on the unprepared data first, however badly it performs, and preserve
-that result. Teams routinely skip this because the raw run seems like wasted
-effort, and then have no way to show what the preparation bought — or to
-notice when a cleaning rule made things worse.
-
-Be specific about which metric you are claiming. Faster training and higher accuracy are
-different results with different causes: deduplication shrinks the dataset and
-speeds up training without necessarily improving anything, and a rise in accuracy
-after you dropped incomplete records may just mean you removed the hard cases.
-
-## Conclusion
-
-Data preparation is unglamorous, and it is where most of the difference gets decided between a model that works in production and one that only ever worked in the notebook.
-
-Understand what you have before you go collecting more. Clean it properly, because poor data quality guarantees poor performance no matter what sits on top of it. Engineer the features with someone who knows the domain. Keep the quality checks running after the initial push, since data decays. And automate whatever you will have to do again, because manual preparation does not scale past the first month.
-
-None of this is the interesting part of an AI project. It is the part that determines whether there is a project.
-
----
-
-**Sitting on data you're not sure about?** I work on the client's own documents before anything gets built, precisely so this is discovered early rather than after a model has been trained on it. [Book a call](/contact) and tell me what shape yours is in.
+Then [book a call](/contact) and tell me what shape your records are in. Bring the bad ones. I'd rather find out on a Tuesday afternoon that a job can't be done than after you've paid for it.

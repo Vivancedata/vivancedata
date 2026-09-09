@@ -41,6 +41,32 @@ describe("blog post discovery", () => {
     expect(slugs.length).toBe(unique.size);
   });
 
+  // A directory and a top-level file can claim the same slug. The directory
+  // wins, and the file is ignored rather than producing a duplicate entry --
+  // this repo has already shipped one post shadowed by a stale sibling, so the
+  // precedence is worth pinning rather than inferring.
+  it("prefers the directory when a top-level file claims the same slug", () => {
+    const postsDirectory = path.join(process.cwd(), "src", "app", "blog", "posts");
+    const collidingDirectory = path.join(postsDirectory, "colliding-slug");
+    const collidingFile = path.join(postsDirectory, "colliding-slug.mdx");
+
+    fs.mkdirSync(collidingDirectory, { recursive: true });
+    fs.writeFileSync(
+      path.join(collidingDirectory, "page.mdx"),
+      '---\ntitle: "From the directory"\n---\n\nBody.\n'
+    );
+    fs.writeFileSync(collidingFile, '---\ntitle: "From the file"\n---\n\nBody.\n');
+
+    try {
+      const slugs = getBlogSlugs().filter((slug) => slug === "colliding-slug");
+      expect(slugs).toHaveLength(1);
+      expect(getBlogPostFrontmatter("colliding-slug")?.title).toBe("From the directory");
+    } finally {
+      fs.rmSync(collidingDirectory, { recursive: true, force: true });
+      fs.rmSync(collidingFile, { force: true });
+    }
+  });
+
   it("returns posts sorted by date descending", () => {
     const posts = getAllBlogPosts();
     const dates = posts.map((post) => new Date(post.date).getTime());
