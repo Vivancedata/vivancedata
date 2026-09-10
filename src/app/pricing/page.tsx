@@ -24,19 +24,19 @@ export const metadata: Metadata = {
 export default function PricingPage() {
   return (
     <Container className="py-16">
-      <div className="mx-auto max-w-3xl text-center">
+      <div className="max-w-[62ch]">
         <Heading className="mb-4 max-w-[17ch] font-display text-serif-xl">{pricingPageContent.title}</Heading>
         <Paragraph className="mx-auto max-w-[60ch] text-lg">{pricingPageContent.description}</Paragraph>
       </div>
 
       <Pricing showHeader={false} />
 
-      <div className="mx-auto max-w-3xl rounded-xl border border-border bg-card p-8">
+      <div className="max-w-[80ch] border border-rule bg-card p-8">
         <h2 className="mb-3 font-display text-serif-md">{pricingPageContent.whyRetainer.title}</h2>
         <p className="max-w-[60ch] text-muted-foreground">{pricingPageContent.whyRetainer.body}</p>
       </div>
 
-      <div className="mx-auto mt-8 max-w-3xl text-center">
+      <div className="mt-8 max-w-[62ch]">
         <p className="mx-auto max-w-[60ch] text-sm text-muted-foreground">{pricingPageContent.note}</p>
         <Button asChild size="lg" shape="pill" className="mt-6">
           <Link href="/contact">Get a fixed price</Link>

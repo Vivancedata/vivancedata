@@ -219,7 +219,7 @@ export default function TrainingPage() {
               description: "Notes to keep, and a follow-up session once people have hit the first thing the course did not cover."
             }
           ].map((item) => (
-            <div key={item.title} className="bg-card p-6 rounded-xl border border-border">
+            <div key={item.title} className="border border-rule bg-card p-6">
               <h3 className="mb-3 font-display text-serif-sm">{item.title}</h3>
               <p className="text-muted-foreground">{item.description}</p>
             </div>

@@ -125,7 +125,7 @@ export default function InnovationHubPage() {
     <Container className="py-16">
       <div className="mb-16">
         <Heading className="mb-4 font-display text-serif-xl">Innovation Hub</Heading>
-        <Paragraph className="max-w-3xl mx-auto text-lg">
+        <Paragraph className="max-w-[62ch] text-body-lg">
           What I test before it goes anywhere near a job someone depends on — which new
           techniques are ready for a trade or industrial operation, and which are still a demo.
         </Paragraph>
@@ -186,7 +186,7 @@ export default function InnovationHubPage() {
 
       <div className="mb-20">
         <h2 className="mb-8 font-display text-serif-lg">Technology radar</h2>
-        <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-10">
+        <p className="mb-10 max-w-[62ch] text-muted-foreground">
           What I am watching, how ready each one looks, and roughly when it might matter for a trade
           or industrial job. Nothing here is advice to go and buy something yet.
         </p>
@@ -206,11 +206,12 @@ export default function InnovationHubPage() {
 
       <div className="mb-20">
         <h2 className="mb-8 font-display text-serif-lg">Projects</h2>
-        <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-10">
+        <p className="mb-10 max-w-[62ch] text-muted-foreground">
           What I am building or pulling apart at the moment. The status label says how far along
           each one is, and most of them are not far.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Four entries: 2x2 rather than a row of three and a widow. */}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {innovationProjects.map((project) => (
             <ProjectCard
               key={project.title}
@@ -224,8 +225,8 @@ export default function InnovationHubPage() {
       </div>
 
       <div className="mb-20">
-        <h2 className="mb-8 font-display text-serif-lg text-center">Tools you can use right now</h2>
-        <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-10">
+        <h2 className="mb-8 font-display text-serif-lg">Tools you can use right now</h2>
+        <p className="mb-10 max-w-[62ch] text-muted-foreground">
           Two working tools, free and unguarded. Both run entirely in your browser and give you a usable answer without talking to anyone.
         </p>
 
@@ -275,9 +276,9 @@ export default function InnovationHubPage() {
         papers with real links.
       */}
 
-      <div className="bg-muted rounded-xl p-8 md:p-12 text-center">
+      <div className="border-t border-rule pt-2xl">
         <h2 className="mb-4 font-display text-serif-lg">Got the awkward one?</h2>
-        <p className="text-lg mb-8 max-w-2xl mx-auto">
+        <p className="mb-8 max-w-[62ch] text-body-lg">
           If your problem has no obvious off-the-shelf answer, that is the kind I want to hear
           about. Bring the job everybody else told you was not worth automating.
         </p>

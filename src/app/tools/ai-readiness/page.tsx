@@ -34,7 +34,7 @@ export default function AIReadinessPage() {
   return (
     <Container className="py-16">
       <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-12">
+        <div className="mb-12">
           <Heading className="mb-4 font-display text-serif-xl">AI Readiness Assessment</Heading>
           <Paragraph className="max-w-3xl mx-auto text-lg">
             Most operations are not ready for the thing they want to build, and the reason is
@@ -45,7 +45,7 @@ export default function AIReadinessPage() {
 
         <AIReadinessQuiz />
 
-        <div className="mt-16 bg-muted rounded-xl p-8">
+        <div className="mt-16 border-t border-rule pt-2xl">
           <h2 className="mb-4 font-display text-serif-md">What it asks about</h2>
           <div className="grid md:grid-cols-2 gap-6 text-foreground">
             <div>

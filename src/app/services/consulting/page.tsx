@@ -162,7 +162,7 @@ export default function ConsultingPage() {
       <ServiceSection heading="What this covers">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service) => (
-            <div key={service.title} className="bg-card p-6 rounded-xl border border-border">
+            <div key={service.title} className="border border-rule bg-card p-6">
               <div className="flex items-center mb-4">
                 {service.icon}
                 <h3 className="ml-2 font-display text-serif-sm">{service.title}</h3>
@@ -176,7 +176,7 @@ export default function ConsultingPage() {
       <ServiceSection heading="Why it works this way">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {benefits.map((benefit) => (
-            <div key={benefit.title} className="bg-card p-6 rounded-xl border border-border">
+            <div key={benefit.title} className="border border-rule bg-card p-6">
               <h3 className="mb-3 font-display text-serif-sm">{benefit.title}</h3>
               <p className="text-muted-foreground">{benefit.description}</p>
             </div>
@@ -192,7 +192,7 @@ export default function ConsultingPage() {
             { step: "3", title: "Cost", description: "What each one takes to build, and what it costs to keep running once it is live." },
             { step: "4", title: "Decide", description: "You pick one to build, or none. Either way the shortlist and the costing are yours." }
           ].map((phase) => (
-            <div key={phase.step} className="bg-card p-6 rounded-xl border border-border text-center">
+            <div key={phase.step} className="border border-rule bg-card p-6">
               <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center mx-auto mb-4">
                 <span className="text-label uppercase text-mute">{phase.step}</span>
               </div>

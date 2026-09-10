@@ -49,7 +49,7 @@ interface PrincipleProps {
 }
 
 const Principle = ({ icon, title, description }: PrincipleProps) => (
-  <div className="bg-card p-6 rounded-xl border border-border">
+  <div className="border border-rule bg-card p-6">
     <div className="flex items-center mb-4">
       <div className="mr-4 p-3 bg-muted rounded-full">
         {icon}
@@ -97,7 +97,7 @@ interface CaseStudyProps {
 }
 
 const CaseStudy = ({ title, challenge, approach, outcome }: CaseStudyProps) => (
-  <div className="bg-card p-6 rounded-xl border border-border">
+  <div className="border border-rule bg-card p-6">
     <h3 className="mb-4 font-display text-serif-sm">{title}</h3>
     
     <div className="mb-4">
@@ -138,7 +138,7 @@ export default function ResponsibleAIPage() {
     <Container className="py-16">
       <div className="mb-16">
         <Heading className="mb-4 font-display text-serif-xl">Responsible AI</Heading>
-        <Paragraph className="max-w-3xl mx-auto text-lg">
+        <Paragraph className="max-w-[62ch] text-body-lg">
           The parts of this work that can go wrong quietly: what a system decides on its own,
           what waits for a person, and what gets written down so you can go back and check.
         </Paragraph>
@@ -195,7 +195,7 @@ export default function ResponsibleAIPage() {
       </div>
 
       <div className="mb-20">
-        <h2 className="mb-8 font-display text-serif-lg text-center">The principles</h2>
+        <h2 className="mb-8 font-display text-serif-lg">The principles</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {principles.map((principle) => (
             <Principle
@@ -209,7 +209,7 @@ export default function ResponsibleAIPage() {
       </div>
 
       <div className="mb-20">
-        <h2 className="mb-8 font-display text-serif-lg text-center">How it runs during a build</h2>
+        <h2 className="mb-8 font-display text-serif-lg">How it runs during a build</h2>
         
         <div className="relative">
           {/* Vertical line connecting phases */}
@@ -230,7 +230,7 @@ export default function ResponsibleAIPage() {
       </div>
 
       <div className="mb-20">
-        <h2 className="mb-8 font-display text-serif-lg text-center">What that looks like in practice</h2>
+        <h2 className="mb-8 font-display text-serif-lg">What that looks like in practice</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {designExamples.map((study) => (
             <CaseStudy
@@ -245,8 +245,8 @@ export default function ResponsibleAIPage() {
       </div>
 
       <div className="mb-20">
-        <h2 className="mb-8 font-display text-serif-lg text-center">How this shows up in a build</h2>
-        <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-10">
+        <h2 className="mb-8 font-display text-serif-lg">How this shows up in a build</h2>
+        <p className="mb-10 max-w-[62ch] text-muted-foreground">
           These are practices applied during delivery using established, mostly open-source tooling.
 They are not products I sell, and nothing here is a platform you would license.
         </p>
@@ -293,7 +293,7 @@ They are not products I sell, and nothing here is a platform you would license.
               ]
             }
           ].map((tool) => (
-            <div key={tool.title} className="bg-card p-6 rounded-xl border border-border">
+            <div key={tool.title} className="border border-rule bg-card p-6">
               <h3 className="mb-3 font-display text-serif-sm">{tool.title}</h3>
               <p className="text-muted-foreground mb-4">{tool.description}</p>
               <ul className="space-y-2">
@@ -309,9 +309,9 @@ They are not products I sell, and nothing here is a platform you would license.
         </div>
       </div>
       
-      <div className="bg-muted rounded-xl p-8 md:p-12 text-center">
+      <div className="border-t border-rule pt-2xl">
         <h2 className="mb-4 font-display text-serif-lg">Worried about what it might get wrong?</h2>
-        <p className="text-lg mb-8 max-w-2xl mx-auto">
+        <p className="mb-8 max-w-[62ch] text-body-lg">
           Tell me what a wrong answer would actually cost in your operation, and we can work out
           where a person has to stay in the loop.
         </p>

@@ -48,7 +48,7 @@ export const metadata: Metadata = {
 export default function UseCasesPage() {
   return (
     <Container className="py-16 max-w-7xl">
-      <div className="text-center mb-12">
+      <div className="mb-12">
         <Heading className="mb-4 font-display text-serif-xl">
           AI use cases
         </Heading>
@@ -61,7 +61,7 @@ export default function UseCasesPage() {
 
       <UseCasesExplorer />
 
-      <div className="mt-16 bg-muted rounded-xl p-8">
+      <div className="mt-16 border-t border-rule pt-2xl">
         <h2 className="mb-4 font-display text-serif-md">Found one that matches?</h2>
         <div className="space-y-4 text-foreground">
           <p>

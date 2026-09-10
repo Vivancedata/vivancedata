@@ -35,10 +35,10 @@ export const metadata: Metadata = {
 const ContactPage = () => {
   return (
     <Container className="py-16">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl">
         <div className="mb-12">
           <Heading className="mb-4 font-display text-serif-xl">Book a call</Heading>
-          <Paragraph className="max-w-2xl mx-auto text-lg">
+          <Paragraph className="max-w-[62ch] text-body-lg">
             Tell me which job keeps going wrong: the after-hours calls, the paperwork typed twice,
             the photos that never get matched. You&apos;ll hear back from me, not an account manager,
             within one working day.
@@ -48,7 +48,7 @@ const ContactPage = () => {
         <div className="grid md:grid-cols-3 gap-8">
           {/* Contact Information */}
           <div className="md:col-span-1 space-y-6">
-            <div className="bg-muted rounded-xl p-6">
+            <div className="border border-rule bg-card p-6">
               <h2 className="mb-6 font-display text-serif-sm">Contact details</h2>
 
               <div className="space-y-4">
@@ -78,7 +78,7 @@ const ContactPage = () => {
               </div>
             </div>
 
-            <div className="bg-muted rounded-xl p-6">
+            <div className="border border-rule bg-card p-6">
               <h2 className="mb-3 font-display text-serif-sm">What happens next</h2>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex items-center gap-2">

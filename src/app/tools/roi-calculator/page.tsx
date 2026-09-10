@@ -34,7 +34,7 @@ export default function ROICalculatorPage() {
   return (
     <Container className="py-16">
       <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-12">
+        <div className="mb-12">
           <Heading className="mb-4 font-display text-serif-xl">AI ROI Calculator</Heading>
           <Paragraph className="max-w-3xl mx-auto text-lg">
             Put in your own numbers and see what a build would cost, what it might save, and how
@@ -44,7 +44,7 @@ export default function ROICalculatorPage() {
 
         <ROICalculator />
 
-        <div className="mt-16 bg-muted rounded-xl p-8">
+        <div className="mt-16 border-t border-rule pt-2xl">
           <h2 className="mb-4 font-display text-serif-md">How the arithmetic works</h2>
           <div className="space-y-4 text-foreground">
             <p>
