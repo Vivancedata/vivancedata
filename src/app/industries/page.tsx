@@ -83,7 +83,7 @@ export default function IndustriesPage() {
     <Container className="py-16">
       <div className="mb-16">
         <Heading className="mb-4 font-display text-serif-xl">The four trades I work in</Heading>
-        <Paragraph className="max-w-3xl mx-auto text-lg">
+        <Paragraph className="max-w-[62ch] text-body-lg">
           Blue-collar and local service businesses — construction, HVAC and the trades,
           logistics and fleet operations, and manufacturing. Nothing else, on purpose.
         </Paragraph>
@@ -105,7 +105,7 @@ export default function IndustriesPage() {
       </div>
 
       <div className="mb-20">
-        <h2 className="mb-8 font-display text-serif-lg text-center">Why the trade matters</h2>
+        <h2 className="mb-8 font-display text-serif-lg">Why the trade matters</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             {
@@ -121,7 +121,7 @@ export default function IndustriesPage() {
               description: "Whoever uses this is on a ladder or in a truck. Anything that assumes a desk and a spare twenty minutes goes unused."
             }
           ].map((benefit) => (
-            <div key={benefit.title} className="bg-card p-6 rounded-xl border border-border">
+            <div key={benefit.title} className="border border-rule bg-card p-6">
               <h3 className="mb-3 font-display text-serif-sm">{benefit.title}</h3>
               <p className="text-muted-foreground">{benefit.description}</p>
             </div>
@@ -130,7 +130,7 @@ export default function IndustriesPage() {
       </div>
 
       <div className="mb-20">
-        <h2 className="mb-8 font-display text-serif-lg text-center">How the work runs</h2>
+        <h2 className="mb-8 font-display text-serif-lg">How the work runs</h2>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {[
             { number: "01", title: "Watch the work", description: "A morning with whoever answers the phone and whoever keys in the paperwork." },
@@ -138,7 +138,7 @@ export default function IndustriesPage() {
             { number: "03", title: "Build it on your documents", description: "Your permits, your calls, your delivery photos, so you can judge it against answers you already know." },
             { number: "04", title: "Run it beside the old way", description: "The current process keeps going underneath while the new one proves itself, and keeps being tuned as formats drift." }
           ].map((step) => (
-            <div key={step.number} className="bg-card p-6 rounded-xl border border-border text-center">
+            <div key={step.number} className="border border-rule bg-card p-6">
               <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center mx-auto mb-4">
                 <span className="text-label uppercase text-mute">{step.number}</span>
               </div>
@@ -149,9 +149,9 @@ export default function IndustriesPage() {
         </div>
       </div>
       
-      <div className="bg-muted rounded-xl p-8 md:p-12 text-center">
+      <div className="border-t border-rule pt-2xl">
         <h2 className="mb-4 font-display text-serif-lg">Not sure this fits your operation?</h2>
-        <p className="text-lg mb-8 max-w-2xl mx-auto">
+        <p className="mb-8 max-w-[62ch] text-body-lg">
           Tell me what goes wrong most often in your week, and I will tell you straight whether it is worth building for.
         </p>
         <Button asChild size="lg" >

@@ -115,7 +115,7 @@ function PhasesTimelineSection() {
           <Heading as="h2" className="mb-4 font-display text-serif-lg">
             From first look to running system
           </Heading>
-          <Paragraph className="max-w-2xl mx-auto text-lg">
+          <Paragraph className="max-w-[62ch] text-body-lg">
             Each phase ends in something you can look at, and any of them can end the engagement.
             The order exists so the expensive decisions come after the cheap evidence, rather
             than the other way round.
@@ -217,7 +217,7 @@ function BenefitsSection() {
           <Heading as="h2" className="mb-4 font-display text-serif-lg">
             Why it is shaped this way
           </Heading>
-          <Paragraph className="max-w-2xl mx-auto text-lg">
+          <Paragraph className="max-w-[62ch] text-body-lg">
             Each phase exists to make the next decision cheaper to reverse. The
             order is the argument: nothing is built before it has been tried on
             your own documents, and nothing carries weight before it has run
@@ -278,7 +278,7 @@ function MethodologyFaqSection() {
 function MethodologyCtaSection() {
   return (
     <section className="w-full py-20 md:py-28 bg-primary text-primary-foreground">
-      <Container className="max-w-4xl text-center">
+      <Container className="max-w-4xl">
         <h2 className="mb-6 font-display text-serif-lg">
           Want to know if it is worth automating?
         </h2>

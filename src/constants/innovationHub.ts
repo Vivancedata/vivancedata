@@ -1,6 +1,14 @@
 /**
  * Copy for /innovation-hub.
  *
+ * Two entries were removed here: a quantum routing engine and a generative
+ * design collaborator. Both were honestly described, and neither was work for
+ * a construction, HVAC, logistics or manufacturing business. PRODUCT.md's
+ * fourth principle is "stay narrow -- breadth was removed once already and
+ * should not return by accident", and a projects list is exactly where it
+ * returns by accident. Anything added here has to be work one of the four
+ * trades would recognise.
+ *
  * These arrays used to be declared inside the page component, so a wording
  * change meant editing JSX-adjacent code -- against this repo's own rule that
  * page content lives in src/constants. Icons are stored as keys rather than
@@ -98,18 +106,6 @@ export const innovationProjects: InnovationProject[] = [
     description: "Watching live data — loads, sensor readings, calls — and putting the exceptions in front of whoever is on the board, ranked, rather than waiting to be asked.",
     technologies: ["Reinforcement Learning", "Time Series Analysis", "Causal Inference", "Decision Theory"],
     status: "Research"
-  },
-  {
-    title: "Quantum Routing and Scheduling",
-    description: "Routing and scheduling on hybrid classical-quantum hardware. Years away, and on the list because the problem underneath it — a day's work for a yard full of vans — is one I run into constantly.",
-    technologies: ["Quantum Computing", "Optimization Algorithms", "Hybrid Computing", "Operations Research"],
-    status: "Concept"
-  },
-  {
-    title: "Generative Design Collaborator",
-    description: "Drafting design options for a person to throw out quickly, rather than producing one answer that arrives looking finished.",
-    technologies: ["Generative AI", "3D Modeling", "Human-AI Collaboration", "Design Theory"],
-    status: "Prototype"
   },
   {
     title: "Field Document Understanding",

@@ -202,11 +202,11 @@ export default function CaseStudiesPage() {
     <Container className="py-16">
       <div className="mb-16">
         <Heading className="mb-4 font-display text-serif-xl">Example engagements</Heading>
-        <Paragraph className="max-w-2xl mx-auto text-lg">
+        <Paragraph className="max-w-[62ch] text-body-lg">
           Four shapes of work written out end to end: what goes wrong, what gets built, and what
           changes once it runs. They show how a job gets scoped, not jobs already done.
         </Paragraph>
-        <div className="mt-6 max-w-3xl mx-auto">
+        <div className="mt-6 max-w-[72ch]">
           <div className="bg-warning/10 border border-warning rounded-md p-4 text-sm text-foreground">
             <p className="font-medium">Note: these are composite examples, not delivered engagements. No client is named and no outcome is quantified, because none of this has been measured with a client who agreed to publish it.</p>
           </div>
@@ -257,9 +257,9 @@ export default function CaseStudiesPage() {
         ))}
       </div>
       
-      <div className="mt-24 text-center bg-muted rounded-xl p-8 md:p-12">
+      <div className="mt-24 border-t border-rule pt-2xl">
         <h2 className="mb-4 font-display text-serif-lg">Recognise one of these?</h2>
-        <p className="text-lg mb-8 max-w-2xl mx-auto">
+        <p className="mb-8 max-w-[62ch] text-body-lg">
           If one of them looks like your week, tell me which. I will tell you what it would take,
           or that it is not worth doing yet.
         </p>

@@ -64,7 +64,7 @@ export default function ResourcesPage() {
   return (
     <main className="py-16 sm:py-24">
       <Container>
-        <div className="mx-auto max-w-2xl text-center mb-16">
+        <div className="mb-16 max-w-[62ch]">
           <h1 className="max-w-[17ch] font-display text-serif-xl text-foreground">
             Resources
           </h1>
