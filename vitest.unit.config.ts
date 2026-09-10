@@ -16,6 +16,7 @@ export default defineConfig({
         "src/lib/cookieConsent.ts",
         "src/lib/email.ts",
         "src/lib/formatDate.ts",
+        "src/lib/missedCallModel.ts",
         "src/lib/performance.ts",
         "src/lib/rateLimit.ts",
         "src/lib/roiModel.ts",

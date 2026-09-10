@@ -40,9 +40,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { route: '/blog', priority: 0.9, changeFreq: 'daily' },
 
     // Tools
+    { route: '/tools/missed-calls', priority: 0.9, changeFreq: 'monthly' },
     { route: '/tools/roi-calculator', priority: 0.8, changeFreq: 'monthly' },
     { route: '/tools/ai-readiness', priority: 0.8, changeFreq: 'monthly' },
     { route: '/tools/use-cases', priority: 0.8, changeFreq: 'monthly' },
+    { route: '/partners', priority: 0.7, changeFreq: 'monthly' },
 
     // Other pages
     { route: '/innovation-hub', priority: 0.7, changeFreq: 'monthly' },
