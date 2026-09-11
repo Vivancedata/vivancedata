@@ -12,6 +12,7 @@ export default [
       "public/",
       "coverage/",
       "playwright-report/",
+      ".remember/",
       "*.config.js",
       "*.config.mjs",
       "*.config.ts",

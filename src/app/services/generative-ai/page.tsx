@@ -109,7 +109,7 @@ export default function GenerativeAIPage() {
     <Container className="py-16">
       <ServicePageHeader
         title="Generative AI"
-        intro="Language models put to work on your own material \u2014 the documents that arrive as PDFs, the calls that come in after hours, the writing nobody wants to do twice."
+        intro="Language models put to work on your own material — the documents that arrive as PDFs, the calls that come in after hours, the writing nobody wants to do twice."
       />
 
       <ServiceHeroSplit
@@ -190,7 +190,7 @@ export default function GenerativeAIPage() {
       
       <ServiceCTA
         heading="Sitting on a pile of text nobody has time to read?"
-        body="Tell me the shape of it \u2014 the slips, the voicemails, the emailed PDFs \u2014 and I will tell you whether a model handles it well enough to be worth building."
+        body="Tell me the shape of it — the slips, the voicemails, the emailed PDFs — and I will tell you whether a model handles it well enough to be worth building."
         actionLabel="Book a call"
       />
     </Container>

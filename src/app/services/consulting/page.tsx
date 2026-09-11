@@ -104,7 +104,7 @@ export default function ConsultingPage() {
     <Container className="py-16">
       <ServicePageHeader
         title="AI strategy consulting"
-        intro="Deciding what to automate first, what to leave alone, and what each option costs to build and to run \u2014 before anyone writes code."
+        intro="Deciding what to automate first, what to leave alone, and what each option costs to build and to run — before anyone writes code."
       />
 
       <ServiceHeroSplit
