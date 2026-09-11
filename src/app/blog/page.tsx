@@ -40,7 +40,7 @@ export default async function Blog() {
         * "AI Insights Blog" was the generic half. */}
       <PageHero
         title="Notes from the work"
-        description="What happens when a model meets real paperwork, real calls and real crews \u2014 including the parts that do not work."
+        description="What happens when a model meets real paperwork, real calls and real crews — including the parts that do not work."
       />
       <Container className="py-16">
         <Blogs blogs={posts} />

@@ -4,21 +4,15 @@
   "description": "After-hours calls answered and booked. Paperwork read instead of re-keyed.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#000000",
+  "background_color": "#0E0E0C",
+  "theme_color": "#0E0E0C",
   "orientation": "portrait-primary",
   "icons": [
     {
       "src": "/icons/Logo.png",
-      "sizes": "192x192",
+      "sizes": "500x500",
       "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/icons/Logo.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ]
 }
