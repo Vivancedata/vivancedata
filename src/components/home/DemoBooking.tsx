@@ -2,7 +2,7 @@
 
 import React, { useReducer } from "react";
 import Link from "next/link";
-import { ArrowMark, VerdictMark } from "@/components/common/Marks";
+import { ArrowMark, ListMark } from "@/components/common/Marks";
 import { ctaPrimary, ctaSecondary, wallLabel } from "@/components/common/controls";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
@@ -351,7 +351,7 @@ function DemoFormCard({ state, onChange, onSubmit }: DemoFormProps) {
              * happens next. */
             <div className="py-lg">
               <p className="flex items-center gap-2.5">
-                <VerdictMark verdict="filled" label="" />
+                <ListMark label="" />
                 <span className={wallLabel}>Received</span>
               </p>
               <h3 className="mt-md font-display text-serif-sm text-foreground">

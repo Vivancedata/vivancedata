@@ -1,5 +1,5 @@
 import { Container } from "@/components/common/Container";
-import { VerdictMark } from "@/components/common/Marks";
+import { ListMark } from "@/components/common/Marks";
 import { Heading } from "@/components/common/Heading";
 import { Paragraph } from "@/components/common/Paragraph";
 import { Metadata } from "next";
@@ -80,7 +80,7 @@ const Phase = ({ number, title, description, checks }: PhaseProps) => (
       <ul className="space-y-2">
         {checks.map((check) => (
           <li key={check} className="flex items-start">
-            <VerdictMark verdict="filled" label="" className="mr-2 mt-1 h-3.5 w-3.5" />
+            <ListMark label="" className="mr-2 mt-1 h-3.5 w-3.5" />
             <span className="text-foreground">{check}</span>
           </li>
         ))}
@@ -299,7 +299,7 @@ They are not products I sell, and nothing here is a platform you would license.
               <ul className="space-y-2">
                 {tool.features.map((feature) => (
                   <li key={feature} className="flex items-start">
-                    <VerdictMark verdict="filled" label="" className="mr-2 mt-1 h-3.5 w-3.5" />
+                    <ListMark label="" className="mr-2 mt-1 h-3.5 w-3.5" />
                     <span className="text-foreground">{feature}</span>
                   </li>
                 ))}
