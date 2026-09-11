@@ -51,6 +51,7 @@ export const navItems: NavItem[] = [
     hasDropdown: true,
     dropdownItems: [
       { name: "Blog", href: "/blog" },
+      { name: "Missed-call cost", href: "/tools/missed-calls" },
       { name: "ROI Calculator", href: "/tools/roi-calculator" },
       { name: "AI Readiness Assessment", href: "/tools/ai-readiness" },
       { name: "AI Use Cases Explorer", href: "/tools/use-cases" },
@@ -138,6 +139,7 @@ export const footerLinks: FooterSection[] = [
       { label: "Pricing", href: "/pricing" },
       { label: "Careers", href: "/career" },
       { label: "Contact", href: "/contact" },
+      { label: "Partners", href: "/partners" },
     ],
   },
   {
@@ -163,6 +165,7 @@ export const footerLinks: FooterSection[] = [
     title: "Resources",
     links: [
       { label: "Blog", href: "/blog" },
+      { label: "Missed-call cost", href: "/tools/missed-calls" },
       { label: "ROI Calculator", href: "/tools/roi-calculator" },
       { label: "AI Readiness Assessment", href: "/tools/ai-readiness" },
       { label: "Use Cases Explorer", href: "/tools/use-cases" },

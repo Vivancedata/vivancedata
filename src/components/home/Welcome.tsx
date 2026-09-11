@@ -1,6 +1,6 @@
 import { ArrowMark } from "@/components/common/Marks";
 import { ctaPrimary, ctaSecondary } from "@/components/common/controls";
-import { ledgerMarks } from "@/constants/nightLog";
+import { LedgerStrip } from "@/components/home/LedgerStrip";
 
 /**
  * The hero.
@@ -90,35 +90,7 @@ export default function Welcome() {
         </div>
       </div>
 
-      {/*
-        The ledger strip: the material of the work, drifting, as texture.
-
-        The reference this design follows runs a field of currency symbols under
-        its hero, because it is a bank. The equivalent material here is the
-        paperwork — the RFI numbers, delivery notes, timestamps and permit codes
-        that are the thing being typed twice. It is decoration and it is marked
-        as such: aria-hidden, in the decorative grey tier, and duplicated only so
-        the loop closes seamlessly. Reduced motion stops it dead.
-      */}
-      <div
-        className="relative overflow-hidden border-y border-rule py-3.5"
-        aria-hidden="true"
-      >
-        <div className="drift flex w-max gap-0">
-          {[0, 1].map((copy) => (
-            <ul key={copy} className="flex shrink-0 items-center gap-0">
-              {ledgerMarks.map((mark) => (
-                <li
-                  key={`${copy}-${mark}`}
-                  className="whitespace-nowrap px-6 font-mono text-data text-faint"
-                >
-                  {mark}
-                </li>
-              ))}
-            </ul>
-          ))}
-        </div>
-      </div>
+      <LedgerStrip />
     </section>
   );
 }

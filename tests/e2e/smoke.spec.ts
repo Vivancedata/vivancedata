@@ -4,9 +4,11 @@ const CRITICAL_ROUTES = [
   { path: "/", name: "homepage" },
   { path: "/contact", name: "contact page" },
   { path: "/blog", name: "blog index" },
+  { path: "/tools/missed-calls", name: "missed-call cost tool" },
   { path: "/tools/roi-calculator", name: "ROI calculator tool" },
   { path: "/tools/ai-readiness", name: "AI readiness tool" },
   { path: "/tools/use-cases", name: "use cases tool" },
+  { path: "/partners", name: "partners page" },
   { path: "/privacy-policy", name: "privacy policy page" },
   { path: "/terms-of-service", name: "terms of service page" },
 ] as const;
