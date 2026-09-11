@@ -38,17 +38,49 @@ export function escapeHtml(str: string): string {
   return str.replace(/[&<>"']/g, (char) => HTML_ESCAPES[char]);
 }
 
+/**
+ * The email's look, in the DAYLIGHT half of the `nightshift` world.
+ *
+ * Not the dark half, deliberately. The site's canonical ground is a warm
+ * near-black, and an email on that ground is a bad idea: mail clients handle
+ * dark backgrounds inconsistently and several invert them, which turns a
+ * considered dark sheet into an unreadable one on somebody's phone. The world
+ * already has a daylight counterpart -- warm paper, ink, the same hairline and
+ * the same green -- and that is what belongs in an inbox.
+ *
+ * Before this, the header was `#2563eb`: a blue that appears nowhere on the
+ * site, on the first thing a prospect ever receives from this practice.
+ *
+ * Two email-specific departures from the site, both deliberate:
+ *
+ * - Georgia and Helvetica, not Instrument Serif and Geist. Mail clients do not
+ *   load webfonts reliably, so this is the nearest safe pairing with the right
+ *   character. The detector flags `Arial` here as an overused face; in an email
+ *   stylesheet it is the correct answer, not a lapse.
+ * - Colours are literal hex, not `hsl(var(--token))`. There are no custom
+ *   properties in an email client. These values are the light `nightshift`
+ *   tokens written out; if those move, these have to be moved by hand.
+ */
 const STYLES = `
-  body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-  .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-  .header { background: #2563eb; color: white; padding: 20px; border-radius: 8px 8px 0 0; }
-  .content { background: #f9fafb; padding: 20px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px; }
-  .field { margin-bottom: 15px; }
-  .label { font-weight: bold; color: #374151; }
-  .value { margin-top: 5px; padding: 10px; background: white; border-radius: 4px; }
+  body { margin: 0; padding: 0; background: #f7f4ee; color: #1a1810;
+         font-family: Helvetica, Arial, sans-serif; line-height: 1.6; }
+  .container { max-width: 600px; margin: 0 auto; padding: 32px 24px; }
+  .header { border-bottom: 1px solid #e3ded3; padding-bottom: 16px; }
+  .header h2 { font-family: Georgia, "Times New Roman", serif; font-weight: normal;
+               font-size: 26px; line-height: 1.2; color: #1a1810; }
+  .content { padding: 24px 0 0 0; }
+  .field { margin-bottom: 18px; }
+  .label { display: block; font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase;
+           color: #706c65; font-family: Menlo, Consolas, monospace; }
+  .value { margin-top: 6px; padding: 10px 12px; background: #fcfaf6;
+           border: 1px solid #e3ded3; }
   .message { white-space: pre-wrap; }
-  .button { display: inline-block; background: #2563eb; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; margin-top: 20px; }
-  .footer { text-align: center; color: #6b7280; font-size: 12px; margin-top: 20px; }
+  .button { display: inline-block; background: #1a1810; color: #f7f4ee;
+            padding: 13px 22px; text-decoration: none; border-radius: 100px;
+            margin-top: 22px; font-size: 12px; letter-spacing: 0.09em;
+            text-transform: uppercase; font-family: Menlo, Consolas, monospace; }
+  .footer { color: #706c65; font-size: 12px; margin-top: 28px;
+            border-top: 1px solid #e3ded3; padding-top: 16px; }
 `;
 
 /**
