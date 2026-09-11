@@ -47,7 +47,7 @@ export const pricingTiers: PricingTier[] = [
       { name: "Direct support channel", included: false },
       { name: "Ongoing improvement cycles", included: false },
     ],
-    cta: "Get a fixed price",
+    cta: "Book a call",
   },
   {
     name: "Build & Run",
@@ -67,7 +67,7 @@ export const pricingTiers: PricingTier[] = [
       { name: "Direct support channel", included: true },
       { name: "Ongoing improvement cycles", included: false },
     ],
-    cta: "Get a fixed price",
+    cta: "Book a call",
     popular: true,
   },
   {
@@ -88,7 +88,7 @@ export const pricingTiers: PricingTier[] = [
       { name: "Direct support channel", included: true },
       { name: "Ongoing improvement cycles", included: true, tooltip: "Regular reviews, new workflows scoped as they surface" },
     ],
-    cta: "Get a fixed price",
+    cta: "Book a call",
   },
 ];
 

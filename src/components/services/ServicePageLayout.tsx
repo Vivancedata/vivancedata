@@ -2,10 +2,11 @@ import React from "react";
 import Link from "next/link";
 import { Heading } from "@/components/common/Heading";
 import { Paragraph } from "@/components/common/Paragraph";
-import { Button } from "@/components/ui/button";
+import { ArrowMark } from "@/components/common/Marks";
+import { ctaPrimary } from "@/components/common/controls";
 
 /**
- * The shell the three service detail pages share, verbatim: a centred page
+ * The shell the three service detail pages share, verbatim: a page
  * header, a two-column hero split, a section wrapper, and a closing call to
  * action whose markup was byte-identical in all three.
  *
@@ -17,7 +18,7 @@ import { Button } from "@/components/ui/button";
  * a discriminated union of card kinds plus a visual escape hatch, which is a
  * wide interface bought for three callers.
  *
- * `src/app/services/page.tsx` already composes ServicesStack, ServicesList
+ * `src/app/services/page.tsx` already composes ServicesList
  * and ServicesCases this way; this follows that, not IndustryPage. See
  * docs/adr/0001-services-pages-compose-rather-than-configure.md.
  */
@@ -30,7 +31,7 @@ export function ServicePageHeader({
   intro: string;
 }): React.ReactElement {
   return (
-    <div className="text-center mb-16">
+    <div className="mb-16">
       <Heading className="text-4xl md:text-5xl mb-4">{title}</Heading>
       <Paragraph className="max-w-[62ch] text-body-lg">{intro}</Paragraph>
     </div>
@@ -84,12 +85,16 @@ export function ServiceCTA({
   actionHref?: string;
 }): React.ReactElement {
   return (
-    <div className="bg-muted rounded-xl p-8 md:p-12 text-center">
+    // A ruled band, not a tinted card. The rounded panel was the last place a
+    // service page still built its own surface, and its generic <Button> was
+    // the last control on these pages not drawn from the control vocabulary.
+    <div className="border-t border-rule pt-xl">
       <h2 className="mb-4 font-display text-serif-lg">{heading}</h2>
-      <p className="mb-8 max-w-[62ch] text-body-lg">{body}</p>
-      <Button asChild size="lg">
-        <Link href={actionHref}>{actionLabel}</Link>
-      </Button>
+      <p className="mb-8 max-w-[62ch] text-body-lg text-muted-foreground">{body}</p>
+      <Link href={actionHref} className={ctaPrimary}>
+        <span>{actionLabel}</span>
+        <ArrowMark />
+      </Link>
     </div>
   );
 }
