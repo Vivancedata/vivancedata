@@ -2,7 +2,12 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/common/PageHero";
 import { ArrowMark, VerdictMark } from "@/components/common/Marks";
 import { ctaPrimary, ctaSecondary, wallLabel } from "@/components/common/controls";
-import { partnerAudiences, partnerCommitments, partnerTerms } from "@/constants/partners";
+import {
+  partnerAudiences,
+  partnerCommitments,
+  partnerTerms,
+  partnerTermsAreSet,
+} from "@/constants/partners";
 import { demos } from "@/constants/demos";
 
 export const metadata: Metadata = {
@@ -39,6 +44,8 @@ export const metadata: Metadata = {
  * matters more than the first.
  */
 export default function PartnersPage() {
+  const termsReady = partnerTermsAreSet();
+
   return (
     <div className="w-full">
       <PageHero
@@ -151,29 +158,38 @@ export default function PartnersPage() {
         </div>
       </section>
 
-      <section className="bleed border-t border-rule" aria-labelledby="terms-heading">
+      <section
+        className="bleed border-t border-rule"
+        aria-labelledby={termsReady ? "terms-heading" : undefined}
+      >
         <div className="container mx-auto px-4 py-3xl md:py-4xl">
-          <div className="grid grid-cols-1 gap-x-xl gap-y-lg md:grid-cols-12">
-            <h2 id="terms-heading" className="font-display text-serif-lg text-foreground md:col-span-4">
-              {partnerTerms.heading}
-            </h2>
-            <div className="md:col-span-8">
-              <dl className="border-t border-rule">
-                {partnerTerms.items.map((item) => (
-                  <div
-                    key={item.term}
-                    className="flex flex-wrap items-baseline justify-between gap-md border-b border-rule py-3.5"
-                  >
-                    <dt className={wallLabel}>{item.term}</dt>
-                    <dd className="font-mono text-data text-warning">{item.detail}</dd>
-                  </div>
-                ))}
-              </dl>
-              <p className="mt-lg max-w-[58ch] text-body-sm text-muted-foreground">
-                {partnerTerms.note}
-              </p>
+          {/* Renders only once every term is real. While any is a bracketed
+            * placeholder this whole block stays off the page -- saying nothing
+            * about commercials beats publishing "[TO BE SET]" to a partner who
+            * is deciding whether to put their name on this. */}
+          {termsReady ? (
+            <div className="grid grid-cols-1 gap-x-xl gap-y-lg md:grid-cols-12">
+              <h2 id="terms-heading" className="font-display text-serif-lg text-foreground md:col-span-4">
+                {partnerTerms.heading}
+              </h2>
+              <div className="md:col-span-8">
+                <dl className="border-t border-rule">
+                  {partnerTerms.items.map((item) => (
+                    <div
+                      key={item.term}
+                      className="flex flex-wrap items-baseline justify-between gap-md border-b border-rule py-3.5"
+                    >
+                      <dt className={wallLabel}>{item.term}</dt>
+                      <dd className="font-mono text-data text-warning">{item.detail}</dd>
+                    </div>
+                  ))}
+                </dl>
+                <p className="mt-lg max-w-[58ch] text-body-sm text-muted-foreground">
+                  {partnerTerms.note}
+                </p>
+              </div>
             </div>
-          </div>
+          ) : null}
 
           <div className="mt-3xl flex flex-col gap-md sm:flex-row sm:items-center">
             <a href="/contact" className={ctaPrimary}>

@@ -92,3 +92,16 @@ export const partnerTerms = {
     { term: "Who invoices the client", detail: "[TO BE SET]" },
   ],
 } as const;
+
+/**
+ * Whether the commercial section is fit to publish.
+ *
+ * A bracketed value means the term has not been decided. The page checks this
+ * and renders nothing rather than shipping the brackets: a public page that
+ * promises "[TO BE SET]" is worse than one that simply stays quiet about
+ * commercials until they exist. Fill every `detail` in and the section appears
+ * on its own -- no second edit needed, and no way to publish it half-done.
+ */
+export function partnerTermsAreSet(): boolean {
+  return partnerTerms.items.every((item) => !item.detail.includes("["));
+}
