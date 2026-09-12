@@ -7,7 +7,7 @@ import type { Demo } from "@/constants/demos";
 import { Heading } from "@/components/common/Heading";
 import { Paragraph } from "@/components/common/Paragraph";
 import Link from "next/link";
-import { ArrowMark, VerdictMark } from "@/components/common/Marks";
+import { ArrowMark, ListMark } from "@/components/common/Marks";
 import { ctaPrimary, ctaSecondary } from "@/components/common/controls";
 import { AnimateOnScroll, StaggerContainer } from "@/hooks/useAnimateOnScroll";
 
@@ -47,7 +47,7 @@ const SolutionCard = ({ title, description, icon, benefits }: SolutionCardProps)
     <ul className="space-y-2">
       {benefits.map((benefit) => (
         <li key={`${title}-benefit-${benefit}`} className="flex items-start">
-          <VerdictMark verdict="filled" label="" className="mr-2 mt-1 h-3.5 w-3.5" />
+          <ListMark label="" className="mr-2 mt-1 h-3.5 w-3.5" />
           <span className="text-body-sm text-foreground">{benefit}</span>
         </li>
       ))}
@@ -90,7 +90,7 @@ const Scenario = ({ title, challenge, solution, results, demo }: ScenarioProps) 
       <ul className="space-y-1">
         {results.map((result) => (
           <li key={`${title}-result-${result}`} className="flex items-start">
-            <VerdictMark verdict="filled" label="" className="mr-2 mt-1 h-3.5 w-3.5" />
+            <ListMark label="" className="mr-2 mt-1 h-3.5 w-3.5" />
             <span className="text-body-sm text-foreground">{result}</span>
           </li>
         ))}
@@ -321,7 +321,7 @@ export function IndustryPage({ config }: { config: IndustryPageConfig }) {
                 <ul className="grid gap-sm sm:grid-cols-2">
                   {phase.checks.map((check) => (
                     <li key={check} className="flex items-start">
-                      <VerdictMark verdict="filled" label="" className="mr-2 mt-1 h-3.5 w-3.5" />
+                      <ListMark label="" className="mr-2 mt-1 h-3.5 w-3.5" />
                       <span className="text-body-sm text-foreground">{check}</span>
                     </li>
                   ))}

@@ -27,6 +27,54 @@ export function ArrowMark({ className = "" }: { className?: string }) {
   );
 }
 
+/** The check, shared by the machine verdict and the neutral list mark below. */
+const CHECK_PATH = "M2 6.4 4.8 9.2 10 3.4";
+
+/** Absence is a rule, not a cross — see the note in `VerdictMark`. */
+const DASH_PATH = "M2.4 6h7.2";
+
+/**
+ * The mark for an ordinary list — what a tier includes, what a page promises.
+ *
+ * It is deliberately NOT green, and that is the whole point of it existing.
+ * Green means one thing on this site: a machine read something and got it
+ * right. `VerdictMark verdict="filled"` used to draw every marketing bullet
+ * too, which meant a reader met roughly forty green checks attached to claims
+ * no machine had verified before reaching the three in the night log that were
+ * the entire argument. The colour arrived already spent.
+ *
+ * So: if a person is asserting it, it is a `ListMark`. If a machine decided it,
+ * it is a `VerdictMark`. The split is enforced by having two names.
+ */
+export function ListMark({
+  included = true,
+  label,
+  className = "",
+}: {
+  included?: boolean;
+  label?: string;
+  className?: string;
+}) {
+  const decorative = label === "";
+
+  return (
+    <svg
+      viewBox="0 0 12 12"
+      className={`h-3 w-3 shrink-0 text-mute ${className}`}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.25}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...(decorative
+        ? { "aria-hidden": true as const }
+        : { role: "img", "aria-label": label ?? (included ? "Included" : "Not included") })}
+    >
+      <path d={included ? CHECK_PATH : DASH_PATH} />
+    </svg>
+  );
+}
+
 export type Verdict = "filled" | "flag" | "held" | "absent" | "plain";
 
 const verdictMeta: Record<Verdict, { className: string; label: string } | null> = {
@@ -71,7 +119,7 @@ export function VerdictMark({
         ? { "aria-hidden": true as const }
         : { role: "img", "aria-label": label ?? meta.label })}
     >
-      {verdict === "filled" && <path d="M2 6.4 4.8 9.2 10 3.4" />}
+      {verdict === "filled" && <path d={CHECK_PATH} />}
       {verdict === "flag" && (
         <>
           <path d="M6 1.6 11 10.4H1z" />
@@ -87,7 +135,7 @@ export function VerdictMark({
       )}
       {/* Absence is a rule, not a cross. A red X on a cheaper tier scolds the
         * reader for reading the cheaper column; a dash just says "not this one". */}
-      {verdict === "absent" && <path d="M2.4 6h7.2" />}
+      {verdict === "absent" && <path d={DASH_PATH} />}
     </svg>
   );
 }

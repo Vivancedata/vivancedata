@@ -1,4 +1,4 @@
-import { ArrowMark, VerdictMark } from "@/components/common/Marks";
+import { ArrowMark, ListMark } from "@/components/common/Marks";
 import { ctaPrimary, ctaSecondary, wallLabel } from "@/components/common/controls";
 import { pricingTiers } from "@/constants/pricing";
 
@@ -128,8 +128,8 @@ export default function Pricing({ showHeader = true }: PricingProps) {
                         tier.popular ? "bg-muted" : ""
                       }`}
                     >
-                      <VerdictMark
-                        verdict={feature.included ? "filled" : "absent"}
+                      <ListMark
+                        included={feature.included}
                         label={`${name}: ${feature.included ? "included" : "not included"} in ${tier.name}`}
                         className="mt-1"
                       />
@@ -172,8 +172,8 @@ export default function Pricing({ showHeader = true }: PricingProps) {
               <ul className="mt-lg space-y-2.5">
                 {tier.features.map((feature) => (
                   <li key={feature.name} className="flex items-start gap-3">
-                    <VerdictMark
-                      verdict={feature.included ? "filled" : "absent"}
+                    <ListMark
+                      included={feature.included}
                       label={feature.included ? "Included" : "Not included"}
                       className="mt-[0.4rem]"
                     />
@@ -226,7 +226,7 @@ export default function Pricing({ showHeader = true }: PricingProps) {
                 "A fixed price in writing before anything starts",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3 border-b border-rule py-3">
-                  <VerdictMark verdict="filled" label="" className="mt-[0.4rem]" />
+                  <ListMark label="" className="mt-[0.4rem]" />
                   <span className="text-body-sm text-muted-foreground">{item}</span>
                 </li>
               ))}

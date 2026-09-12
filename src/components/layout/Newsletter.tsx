@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import { Input } from "@/components/ui/input";
-import { VerdictMark } from "@/components/common/Marks";
+import { ListMark } from "@/components/common/Marks";
 import { ctaSecondary } from "@/components/common/controls";
 
 export function Newsletter() {
@@ -59,7 +59,7 @@ export function Newsletter() {
     return (
       <div className="border-t border-rule pt-xl">
         <p className="flex items-center gap-2.5">
-          <VerdictMark verdict="filled" label="" />
+          <ListMark label="" />
           <span className="text-label uppercase text-mute">Subscribed</span>
         </p>
         <h3 className="mt-md font-display text-serif-sm text-foreground">

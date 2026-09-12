@@ -1,5 +1,5 @@
 import { Container } from "@/components/common/Container";
-import { VerdictMark } from "@/components/common/Marks";
+import { ListMark } from "@/components/common/Marks";
 import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -179,7 +179,7 @@ export default function TrainingPage() {
                     <ul className="space-y-1">
                       {course.topics.map((topic) => (
                         <li key={topic} className="flex items-start">
-                          <VerdictMark verdict="filled" label="" className="mr-2 mt-1 h-3.5 w-3.5" />
+                          <ListMark label="" className="mr-2 mt-1 h-3.5 w-3.5" />
                           <span className="text-foreground text-sm">{topic}</span>
                         </li>
                       ))}

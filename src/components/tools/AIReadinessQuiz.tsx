@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, type RefObject } from "react";
-import { VerdictMark } from "@/components/common/Marks";
+import { ListMark } from "@/components/common/Marks";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -147,7 +147,7 @@ function Recommendations({ recommendations }: RecommendationsProps) {
       <ul className="space-y-3" role="list" aria-label="Where to start">
         {recommendations.map((recommendation) => (
           <li key={recommendation} className="flex gap-3 p-4 bg-muted rounded-lg">
-            <VerdictMark verdict="filled" label="" className="mt-1 h-3.5 w-3.5" />
+            <ListMark label="" className="mt-1 h-3.5 w-3.5" />
             <p className="text-sm">{recommendation}</p>
           </li>
         ))}

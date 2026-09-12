@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/common/PageHero";
-import { ArrowMark, VerdictMark } from "@/components/common/Marks";
+import { ArrowMark, ListMark } from "@/components/common/Marks";
 import { ctaPrimary, ctaSecondary, wallLabel } from "@/components/common/controls";
 import {
   partnerAudiences,
@@ -110,7 +110,7 @@ export default function PartnersPage() {
                 className="grid grid-cols-1 gap-x-lg gap-y-2 border-b border-rule py-lg md:grid-cols-12"
               >
                 <div className="flex items-start gap-3 md:col-span-5">
-                  <VerdictMark verdict="filled" label="" className="mt-[0.45rem]" />
+                  <ListMark label="" className="mt-[0.45rem]" />
                   <h3 className="font-display text-serif-sm text-foreground">
                     {commitment.title}
                   </h3>
