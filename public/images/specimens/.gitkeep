@@ -1,0 +1,3 @@
+Specimen photographs live here. See docs/specimen-shot-list.md.
+Nothing in this directory is required for the site to build: src/constants/specimens.ts
+checks the filesystem, and a missing photograph renders no figure at all.

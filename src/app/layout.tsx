@@ -125,6 +125,26 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+        {/*
+          * Scroll reveals animate *to* visible, so their hidden state is
+          * server-rendered: /industries/construction ships 22 elements with an
+          * inline `opacity:0`, including every "What I build" block. The text is
+          * in the HTML — crawlers and readers get it — but a person sees a
+          * mostly empty page until JavaScript hydrates and the observer fires.
+          *
+          * This restores them when scripting is off. It does NOT cover the worse
+          * case, where JavaScript is enabled but slow or broken; that needs the
+          * reveals rebuilt to start visible and enhance from there, which is a
+          * change to every call site rather than a line here.
+          */}
+        <noscript>
+          <style
+            dangerouslySetInnerHTML={{
+              __html:
+                '[style*="opacity:0"],[style*="opacity: 0"]{opacity:1!important;transform:none!important;filter:none!important}',
+            }}
+          />
+        </noscript>
       </head>
       <body className="min-h-screen flex flex-col bg-background text-foreground">
       {/* The direction contract for this build. Emitted into the markup, not

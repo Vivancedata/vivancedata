@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { PhoneCall, CalendarClock, Receipt, MessageSquare } from "lucide-react";
 import { IndustryPage, type IndustryPageConfig } from "@/components/industries/IndustryPage";
+import { specimenFor } from "@/constants/specimens";
 import { demos } from "@/constants/demos";
 
 export const metadata: Metadata = {
@@ -18,10 +19,6 @@ export const metadata: Metadata = {
 const config: IndustryPageConfig = {
   eyebrow: "HVAC & Trades",
   title: "Answer the calls you're missing after hours",
-  heroVisual: {
-    label: "// After-Hours Call Capture",
-    steps: ["Missed Call", "Transcribed Intake", "Triaged Urgency", "Booked or Escalated"],
-  },
   introHeading: "The job is won or lost on the phone",
   introBody: `An after-hours call that goes to voicemail is a booked job lost to whoever answers next, and the office cannot staff every hour a boiler fails.
 
@@ -170,5 +167,5 @@ A real emergency still reaches a person. What changes is that routine work gets 
 };
 
 export default function HvacTradesPage() {
-  return <IndustryPage config={config} />;
+  return <IndustryPage config={config} specimen={specimenFor("hvac-trades")} />;
 }
