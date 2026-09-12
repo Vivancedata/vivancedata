@@ -1,7 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, FileText, Search, Workflow } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { FileText, Search, Workflow } from "lucide-react";
+import { ArrowMark } from "@/components/common/Marks";
+import { ctaSecondary } from "@/components/common/controls";
 
 interface Case {
   id: string;
@@ -48,7 +49,7 @@ export function ServicesCases({
   };
 
   return (
-    <section className="bg-muted/30 py-16 md:py-24">
+    <section className="bleed border-t border-rule py-3xl md:py-4xl">
       <div className="container mx-auto px-4">
         <div className="mb-12">
           <h2 className="mb-4 font-display text-serif-lg">{title}</h2>
@@ -66,15 +67,16 @@ export function ServicesCases({
                   {visual.icon}
                   <p className="text-label uppercase text-mute">{caseItem.impact}</p>
                 </div>
-                <div className="p-6">
+                {/* flex-1 + mt-auto so the three actions sit on one line
+                  * regardless of how long each description runs. */}
+                <div className="flex flex-1 flex-col p-6">
                   <p className="mb-2 text-label uppercase text-mute">{caseItem.category}</p>
                   <h3 className="mb-3 font-display text-serif-sm">{caseItem.title}</h3>
-                  <p className="text-muted-foreground mb-4">{caseItem.description}</p>
-                  <Button variant="outline" size="sm" asChild>
-                    <Link href={caseItem.link} className="inline-flex items-center">
-                      {caseItem.ctaLabel ?? ctaLabel} <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
+                  <p className="mb-lg text-body-sm text-muted-foreground">{caseItem.description}</p>
+                  <Link href={caseItem.link} className={`${ctaSecondary} mt-auto self-start`}>
+                    <span>{caseItem.ctaLabel ?? ctaLabel}</span>
+                    <ArrowMark />
+                  </Link>
                 </div>
               </div>
             );

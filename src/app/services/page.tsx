@@ -1,6 +1,5 @@
 import React from "react";
 import { PageHero } from "@/components/common/PageHero";
-import { ServicesStack } from "@/components/services/ServicesStack";
 import { ServicesList } from "@/components/services/ServicesList";
 import { ServicesCases } from "@/components/services/ServicesCases";
 import { FAQSection } from "@/components/home/FAQSection";
@@ -67,15 +66,6 @@ const ServicesPage = () => {
     }
   ];
 
-  const technologies = [
-    { id: "1", name: "Python", shortLabel: "Py", tone: "bg-muted text-muted-foreground", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" },
-    { id: "2", name: "TensorFlow", shortLabel: "TF", tone: "bg-muted text-muted-foreground", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tensorflow/tensorflow-original.svg" },
-    { id: "3", name: "PyTorch", shortLabel: "PT", tone: "bg-muted text-muted-foreground", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg" },
-    { id: "4", name: "Azure", shortLabel: "Az", tone: "bg-muted text-muted-foreground", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg" },
-    { id: "5", name: "AWS", shortLabel: "AWS", tone: "bg-muted text-muted-foreground", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" },
-    { id: "6", name: "Docker", shortLabel: "DK", tone: "bg-muted text-muted-foreground", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" },
-    { id: "7", name: "Kubernetes", shortLabel: "K8s", tone: "bg-muted text-muted-foreground", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg" },
-  ];
 
   // Scoped offers, not client history. These describe what a build covers and
   // roughly how long it takes -- they deliberately claim no past engagements and
@@ -84,7 +74,7 @@ const ServicesPage = () => {
   const engagements = [
     {
       id: "1",
-      title: "Document Intake",
+      title: "Document intake",
       category: "Document Processing",
       description: "Pull structured fields out of invoices, forms, permits and reports, validate them against your rules, and write them into the system you already use.",
       impact: "Typical build: 3-6 weeks",
@@ -101,7 +91,7 @@ const ServicesPage = () => {
     },
     {
       id: "3",
-      title: "Workflow Automation",
+      title: "Workflow automation",
       category: "Workflow Automation",
       description: "Connect the handoffs that currently run on email and copy-paste: intake, routing, follow-up and scheduling. Then keep them running as the tools underneath change.",
       impact: "Typical build: 2-6 weeks",
@@ -116,10 +106,6 @@ const ServicesPage = () => {
         description="Most of this comes down to one question: which job in your week repeats often enough, and goes wrong clearly enough, to be worth automating first? That is where I start, and sometimes the honest answer is that nothing does yet."
       />
       
-      <ServicesStack 
-        title="What I build with"
-        technologies={technologies}
-      />
       
       <ServicesList services={services} />
       

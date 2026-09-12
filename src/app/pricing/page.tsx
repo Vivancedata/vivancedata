@@ -39,7 +39,7 @@ export default function PricingPage() {
       <div className="mt-8 max-w-[62ch]">
         <p className="mx-auto max-w-[60ch] text-sm text-muted-foreground">{pricingPageContent.note}</p>
         <Button asChild size="lg" shape="pill" className="mt-6">
-          <Link href="/contact">Get a fixed price</Link>
+          <Link href="/contact">Book a call</Link>
         </Button>
       </div>
     </Container>

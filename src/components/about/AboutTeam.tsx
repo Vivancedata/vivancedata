@@ -20,7 +20,7 @@ export function AboutTeam({ title, description, members }: AboutTeamProps): Reac
   return (
     <section className="bg-muted/30 py-16 md:py-24">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+        <div className="mb-12">
           <h2 className="mb-4 font-display text-serif-lg">{title}</h2>
           <p className="max-w-[62ch] text-body-lg text-muted-foreground">
             {description}

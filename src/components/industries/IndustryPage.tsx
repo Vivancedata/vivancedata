@@ -72,8 +72,8 @@ interface ScenarioProps {
 }
 
 const Scenario = ({ title, challenge, solution, results, demo }: ScenarioProps) => (
-  <div className="flex h-full flex-col rounded-md border border-border bg-card p-lg transition-colors duration-default hover:border-brand/40">
-    <h3 className="mb-md text-heading-3">{title}</h3>
+  <div className="flex h-full flex-col border-t border-rule pt-lg">
+    <h3 className="mb-md font-display text-serif-sm">{title}</h3>
 
     <div className="mb-md">
       <h4 className="eyebrow mb-1">What goes wrong</h4>
@@ -259,7 +259,7 @@ export function IndustryPage({ config }: { config: IndustryPageConfig }) {
 
       <AnimateOnScroll
         variant="fadeIn"
-        className="mb-3xl rounded-lg border border-border bg-muted p-xl md:p-2xl"
+        className="mb-3xl border-t border-rule pt-xl"
       >
         <h2 className="mb-xl font-display text-serif-lg">{config.statsHeading}</h2>
         <div className="grid grid-cols-2 gap-lg md:grid-cols-4">
@@ -268,7 +268,7 @@ export function IndustryPage({ config }: { config: IndustryPageConfig }) {
               key={stat.label}
               variant="scaleIn"
               delay={index * 0.1}
-              className="text-center"
+              
             >
               <div className="mb-2 font-display text-serif-md text-foreground">{stat.value}</div>
               <p className="text-body-sm text-muted-foreground">{stat.label}</p>
