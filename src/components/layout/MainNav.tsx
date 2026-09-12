@@ -29,7 +29,7 @@ export function MainNav() {
           <a
             href="/"
             aria-label={siteConfig.name}
-            className="flex shrink-0 items-center gap-2.5 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+            className="flex min-h-11 shrink-0 items-center gap-2.5 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
           >
             <Icons.logo className="h-7 w-7" />
             {/* Set in the display serif: the wordmark is the one place on this
@@ -56,7 +56,7 @@ export function MainNav() {
             <a
               href="/blog"
               aria-label="Search blog content"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-sm text-mute transition-colors duration-fast hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-sm text-mute transition-colors duration-fast hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               <Search className="h-[1.125rem] w-[1.125rem]" strokeWidth={1.5} />
             </a>

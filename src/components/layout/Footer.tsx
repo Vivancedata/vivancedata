@@ -37,7 +37,7 @@ export function SiteFooter() {
           <div className="col-span-2 lg:col-span-4 lg:pr-2xl">
             <a
               href="/"
-              className="inline-flex items-center gap-2.5 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+              className="inline-flex min-h-11 items-center gap-2.5 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
             >
               {/* The SVG mark, not the PNG. `Logo.png` is dark ink on
                 * transparent and disappeared completely on this sheet — the
@@ -72,7 +72,7 @@ export function SiteFooter() {
                   <li key={`${column.title}-${link.href}`}>
                     <a
                       href={link.href}
-                      className="inline-flex py-1.5 text-body-sm text-muted-foreground transition-colors duration-fast hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                      className="flex min-h-11 items-center text-body-sm text-muted-foreground transition-colors duration-fast hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                     >
                       {link.label}
                     </a>
@@ -95,13 +95,13 @@ export function SiteFooter() {
           <div className="flex flex-wrap items-center gap-x-lg gap-y-md">
             <a
               href="/privacy-policy"
-              className="text-label uppercase text-mute transition-colors duration-fast hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              className="inline-flex min-h-11 min-w-11 items-center justify-center text-label uppercase text-mute transition-colors duration-fast hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               Privacy
             </a>
             <a
               href="/terms-of-service"
-              className="text-label uppercase text-mute transition-colors duration-fast hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              className="inline-flex min-h-11 min-w-11 items-center justify-center text-label uppercase text-mute transition-colors duration-fast hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               Terms
             </a>

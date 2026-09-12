@@ -242,7 +242,7 @@ function CookieConsentBanner({
                 </h2>
                 <button
                   onClick={onClose}
-                  className="rounded-md p-1 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                   aria-label="Close cookie consent banner"
                 >
                   <X className="h-4 w-4" />
@@ -266,14 +266,14 @@ function CookieConsentBanner({
               </p>
 
               <div className="pt-1 space-y-2">
-                <Button onClick={onAcceptAll} className="w-full" size="sm">
+                <Button onClick={onAcceptAll} className="min-h-11 w-full" size="sm">
                   Accept all
                 </Button>
                 <div className="flex flex-wrap items-center justify-center gap-1 sm:gap-2">
                   <Button
                     onClick={onRejectNonEssential}
                     variant="ghost"
-                    className="h-8 px-2 text-muted-foreground hover:text-foreground sm:h-9"
+                    className="min-h-11 px-3 text-muted-foreground hover:text-foreground"
                     size="sm"
                   >
                     Reject non-essential
@@ -281,7 +281,7 @@ function CookieConsentBanner({
                   <Button
                     onClick={onToggleCustomize}
                     variant="ghost"
-                    className="h-8 px-2 gap-1 text-muted-foreground hover:text-foreground sm:h-9"
+                    className="min-h-11 gap-1 px-3 text-muted-foreground hover:text-foreground"
                     size="sm"
                   >
                     <Settings className="h-4 w-4" />
