@@ -10,7 +10,7 @@ export default defineConfig({
       provider: "v8",
       reporter: ["text", "json-summary", "html"],
       reportsDirectory: "coverage/integration",
-      include: ["src/lib/blogPosts.ts"],
+      include: ["src/lib/blogPosts.ts", "src/constants/specimens.ts"],
       exclude: ["**/*.d.ts"],
       thresholds: {
         statements: 95,

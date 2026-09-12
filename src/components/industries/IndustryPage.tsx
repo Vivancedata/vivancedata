@@ -10,6 +10,8 @@ import Link from "next/link";
 import { ArrowMark, ListMark } from "@/components/common/Marks";
 import { ctaPrimary, ctaSecondary } from "@/components/common/controls";
 import { AnimateOnScroll, StaggerContainer } from "@/hooks/useAnimateOnScroll";
+import { Specimen } from "@/components/common/Specimen";
+import type { Specimen as SpecimenData } from "@/constants/specimens";
 
 /**
  * The single layout every /industries/* page renders. It was extracted from the
@@ -101,37 +103,9 @@ const Scenario = ({ title, challenge, solution, results, demo }: ScenarioProps) 
   </div>
 );
 
-/**
- * The hero mock. Ink on white, hairline bordered -- the system renders mocks in
- * the same palette as the page, not as a dark panel. It shows the *shape* of the
- * workflow and never a result, which is why it takes steps rather than tiles.
- */
-const HeroVisual = ({ label, steps }: { label: string; steps: string[] }) => (
-  <div className="flex aspect-video flex-col justify-center overflow-hidden rounded-md border border-border bg-card p-lg">
-    <div className="eyebrow mb-md">{label}</div>
-    <div className="space-y-3">
-      {steps.map((step, index) => {
-        const isLast = index === steps.length - 1;
-        return (
-          <div key={step} className="flex items-center gap-3">
-            <div
-              className={`h-1.5 w-1.5 flex-shrink-0 rounded-full ${isLast ? "bg-faint" : "bg-mute"}`}
-            />
-            <div className={`h-px flex-1 ${isLast ? "bg-rule" : "bg-mute/40"}`} />
-            <span className="w-28 flex-shrink-0 text-right text-caption text-muted-foreground">
-              {step}
-            </span>
-          </div>
-        );
-      })}
-    </div>
-  </div>
-);
-
 export interface IndustryPageConfig {
   eyebrow: string;
   title: string;
-  heroVisual: { label: string; steps: string[] };
   introHeading: string;
   /**
    * Blank-line separated. The first block is the lead line under the page
@@ -172,7 +146,14 @@ export interface IndustryPageConfig {
   finalCtaLabel: string;
 }
 
-export function IndustryPage({ config }: { config: IndustryPageConfig }) {
+export function IndustryPage({
+  config,
+  specimen = null,
+}: {
+  config: IndustryPageConfig;
+  /** Resolved on the server: null until a real photograph exists on disk. */
+  specimen?: SpecimenData | null;
+}) {
   const [leadParagraph, ...bodyParagraphs] = config.introBody
     .split(/\n\s*\n/)
     .map((block) => block.trim())
@@ -196,14 +177,20 @@ export function IndustryPage({ config }: { config: IndustryPageConfig }) {
         </Paragraph>
       </AnimateOnScroll>
 
+      {/* Two columns when there is a specimen to show, one when there is not.
+        * The old hero rendered a wireframe of four dashed lines here whether or
+        * not it had anything to say, and at 390px that read as a page that had
+        * failed to load -- on the four routes search traffic actually lands on.
+        * No photograph now means no figure, and the intro simply runs full
+        * width, which is what /partners does and it reads as finished. */}
       <div className="mb-3xl flex flex-col gap-xl md:flex-row">
-        <AnimateOnScroll variant="fadeInLeft" className="w-full md:w-1/2">
-          <HeroVisual label={config.heroVisual.label} steps={config.heroVisual.steps} />
-        </AnimateOnScroll>
+        {specimen ? (
+          <Specimen specimen={specimen} priority className="w-full md:w-1/2" />
+        ) : null}
 
         <AnimateOnScroll
           variant="fadeInRight"
-          className="flex w-full flex-col justify-center md:w-1/2"
+          className={`flex w-full flex-col justify-center ${specimen ? "md:w-1/2" : ""}`}
         >
           <h2 className="mb-lg font-display text-serif-lg">{config.introHeading}</h2>
           {bodyParagraphs.map((paragraph) => (

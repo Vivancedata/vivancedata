@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { ScanLine, AlertTriangle, Radio, FileWarning } from "lucide-react";
 import { IndustryPage, type IndustryPageConfig } from "@/components/industries/IndustryPage";
+import { specimenFor } from "@/constants/specimens";
 import { demos } from "@/constants/demos";
 
 export const metadata: Metadata = {
@@ -18,10 +19,6 @@ export const metadata: Metadata = {
 const config: IndustryPageConfig = {
   eyebrow: "Logistics & Fleet",
   title: "AI for logistics and fleet operations",
-  heroVisual: {
-    label: "// Proof of Delivery",
-    steps: ["Driver Photo", "Field Extraction", "Match to Load", "Billing"],
-  },
   introHeading: "Working from the paper your drivers already photograph",
   introBody: `Paperwork and exceptions set the pace. Proof of delivery, bills of lading and damage claims arrive as photographs of paper, and a delayed load is found by someone noticing rather than being told.
 
@@ -170,5 +167,5 @@ Everything writes into the TMS or dispatch board your team already watches. An i
 };
 
 export default function LogisticsPage() {
-  return <IndustryPage config={config} />;
+  return <IndustryPage config={config} specimen={specimenFor("logistics")} />;
 }
