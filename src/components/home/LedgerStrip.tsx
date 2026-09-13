@@ -56,7 +56,7 @@ export function LedgerStrip() {
             {ledgerMarks.map((mark) => (
               <li
                 key={`${copy}-${mark}`}
-                className="whitespace-nowrap px-6 font-mono text-data text-faint"
+                className="whitespace-nowrap px-6 font-mono text-data text-mute"
               >
                 {mark}
               </li>

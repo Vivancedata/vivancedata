@@ -55,7 +55,7 @@ export function buildEnquiryNotification(enquiry: ContactEnquiry): string {
             <div class="label">Message</div>
             <div class="value message">${escapeHtml(enquiry.message)}</div>
           </div>
-          <p style="color: #6b7280; font-size: 12px; margin-top: 20px;">
+          <p style="color: #706c65; font-size: 12px; margin-top: 20px;">
             Submitted at ${new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' })} PST
           </p>`,
   });
