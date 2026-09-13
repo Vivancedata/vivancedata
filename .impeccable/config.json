@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "helvetica",
+        "createdAt": "2026-09-13T23:13:17.100Z",
+        "reason": "src/lib/email.ts is an HTML email; mail clients do not load web fonts, so a system sans is the correct stack there, not a lapse"
+      }
+    ]
+  }
+}

@@ -61,7 +61,7 @@ function TierHead({ tier, as: Heading }: { tier: (typeof pricingTiers)[number]; 
         // sentence on it spoken in the first person. So it takes the serif
         // italic that carries the hero's turn -- the world's own device for a
         // human voice rather than a machine one.
-        <p className="mt-md font-display text-[1.0625rem] italic leading-none text-foreground">
+        <p className="mt-md font-display text-body-lg italic leading-none text-foreground">
           Where I&apos;d start
         </p>
       ) : null}

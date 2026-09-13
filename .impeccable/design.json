@@ -1,0 +1,446 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-13T23:14:18.815Z",
+  "title": "Design System: Vivancedata (nightshift)",
+  "extensions": {
+    "colorMeta": {
+      "background": {
+        "role": "neutral",
+        "displayName": "Warm Near-Black",
+        "canonical": "hsl(60 8% 5%)",
+        "tonalRamp": [
+          "hsl(60 8% 15%)",
+          "hsl(60 8% 25%)",
+          "hsl(60 8% 35%)",
+          "hsl(60 8% 45%)",
+          "hsl(60 8% 60%)",
+          "hsl(60 8% 75%)",
+          "hsl(60 8% 87%)",
+          "hsl(60 8% 95%)"
+        ]
+      },
+      "background-light": {
+        "role": "neutral",
+        "displayName": "Warm Paper",
+        "canonical": "hsl(44 24% 96%)",
+        "tonalRamp": [
+          "hsl(44 24% 15%)",
+          "hsl(44 24% 25%)",
+          "hsl(44 24% 35%)",
+          "hsl(44 24% 45%)",
+          "hsl(44 24% 60%)",
+          "hsl(44 24% 75%)",
+          "hsl(44 24% 87%)",
+          "hsl(44 24% 95%)"
+        ]
+      },
+      "foreground": {
+        "role": "primary",
+        "displayName": "Cream",
+        "canonical": "hsl(38 18% 91%)",
+        "tonalRamp": [
+          "hsl(38 18% 15%)",
+          "hsl(38 18% 25%)",
+          "hsl(38 18% 35%)",
+          "hsl(38 18% 45%)",
+          "hsl(38 18% 60%)",
+          "hsl(38 18% 75%)",
+          "hsl(38 18% 87%)",
+          "hsl(38 18% 95%)"
+        ]
+      },
+      "foreground-light": {
+        "role": "primary",
+        "displayName": "Warm Ink",
+        "canonical": "hsl(48 12% 9%)",
+        "tonalRamp": [
+          "hsl(48 12% 15%)",
+          "hsl(48 12% 25%)",
+          "hsl(48 12% 35%)",
+          "hsl(48 12% 45%)",
+          "hsl(48 12% 60%)",
+          "hsl(48 12% 75%)",
+          "hsl(48 12% 87%)",
+          "hsl(48 12% 95%)"
+        ]
+      },
+      "card": {
+        "role": "neutral",
+        "displayName": "Panel",
+        "canonical": "hsl(60 6% 7%)",
+        "tonalRamp": [
+          "hsl(60 6% 15%)",
+          "hsl(60 6% 25%)",
+          "hsl(60 6% 35%)",
+          "hsl(60 6% 45%)",
+          "hsl(60 6% 60%)",
+          "hsl(60 6% 75%)",
+          "hsl(60 6% 87%)",
+          "hsl(60 6% 95%)"
+        ]
+      },
+      "brand": {
+        "role": "secondary",
+        "displayName": "Evidence Green",
+        "canonical": "hsl(152 42% 58%)",
+        "tonalRamp": [
+          "hsl(152 42% 15%)",
+          "hsl(152 42% 25%)",
+          "hsl(152 42% 35%)",
+          "hsl(152 42% 45%)",
+          "hsl(152 42% 60%)",
+          "hsl(152 42% 75%)",
+          "hsl(152 42% 87%)",
+          "hsl(152 42% 95%)"
+        ]
+      },
+      "brand-light": {
+        "role": "secondary",
+        "displayName": "Evidence Green (light)",
+        "canonical": "hsl(152 52% 24%)",
+        "tonalRamp": [
+          "hsl(152 52% 15%)",
+          "hsl(152 52% 25%)",
+          "hsl(152 52% 35%)",
+          "hsl(152 52% 45%)",
+          "hsl(152 52% 60%)",
+          "hsl(152 52% 75%)",
+          "hsl(152 52% 87%)",
+          "hsl(152 52% 95%)"
+        ]
+      },
+      "muted-foreground": {
+        "role": "neutral",
+        "displayName": "Prose Grey",
+        "canonical": "hsl(40 5% 66%)",
+        "tonalRamp": [
+          "hsl(40 5% 15%)",
+          "hsl(40 5% 25%)",
+          "hsl(40 5% 35%)",
+          "hsl(40 5% 45%)",
+          "hsl(40 5% 60%)",
+          "hsl(40 5% 75%)",
+          "hsl(40 5% 87%)",
+          "hsl(40 5% 95%)"
+        ]
+      },
+      "mute": {
+        "role": "neutral",
+        "displayName": "Wall Grey",
+        "canonical": "hsl(45 4% 52%)",
+        "tonalRamp": [
+          "hsl(45 4% 15%)",
+          "hsl(45 4% 25%)",
+          "hsl(45 4% 35%)",
+          "hsl(45 4% 45%)",
+          "hsl(45 4% 60%)",
+          "hsl(45 4% 75%)",
+          "hsl(45 4% 87%)",
+          "hsl(45 4% 95%)"
+        ]
+      },
+      "faint": {
+        "role": "neutral",
+        "displayName": "Texture Grey",
+        "canonical": "hsl(45 4% 33%)",
+        "tonalRamp": [
+          "hsl(45 4% 15%)",
+          "hsl(45 4% 25%)",
+          "hsl(45 4% 35%)",
+          "hsl(45 4% 45%)",
+          "hsl(45 4% 60%)",
+          "hsl(45 4% 75%)",
+          "hsl(45 4% 87%)",
+          "hsl(45 4% 95%)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "hsl(55 7% 14%)",
+        "tonalRamp": [
+          "hsl(55 7% 15%)",
+          "hsl(55 7% 25%)",
+          "hsl(55 7% 35%)",
+          "hsl(55 7% 45%)",
+          "hsl(55 7% 60%)",
+          "hsl(55 7% 75%)",
+          "hsl(55 7% 87%)",
+          "hsl(55 7% 95%)"
+        ]
+      },
+      "dot": {
+        "role": "neutral",
+        "displayName": "Dot",
+        "canonical": "hsl(50 6% 31%)",
+        "tonalRamp": [
+          "hsl(50 6% 15%)",
+          "hsl(50 6% 25%)",
+          "hsl(50 6% 35%)",
+          "hsl(50 6% 45%)",
+          "hsl(50 6% 60%)",
+          "hsl(50 6% 75%)",
+          "hsl(50 6% 87%)",
+          "hsl(50 6% 95%)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Well",
+        "canonical": "hsl(55 6% 11%)",
+        "tonalRamp": [
+          "hsl(55 6% 15%)",
+          "hsl(55 6% 25%)",
+          "hsl(55 6% 35%)",
+          "hsl(55 6% 45%)",
+          "hsl(55 6% 60%)",
+          "hsl(55 6% 75%)",
+          "hsl(55 6% 87%)",
+          "hsl(55 6% 95%)"
+        ]
+      },
+      "accent": {
+        "role": "neutral",
+        "displayName": "Hover Wash",
+        "canonical": "hsl(60 5% 12%)",
+        "tonalRamp": [
+          "hsl(60 5% 15%)",
+          "hsl(60 5% 25%)",
+          "hsl(60 5% 35%)",
+          "hsl(60 5% 45%)",
+          "hsl(60 5% 60%)",
+          "hsl(60 5% 75%)",
+          "hsl(60 5% 87%)",
+          "hsl(60 5% 95%)"
+        ]
+      },
+      "warning": {
+        "role": "tertiary",
+        "displayName": "Flag Amber",
+        "canonical": "hsl(38 78% 62%)",
+        "tonalRamp": [
+          "hsl(38 78% 15%)",
+          "hsl(38 78% 25%)",
+          "hsl(38 78% 35%)",
+          "hsl(38 78% 45%)",
+          "hsl(38 78% 60%)",
+          "hsl(38 78% 75%)",
+          "hsl(38 78% 87%)",
+          "hsl(38 78% 95%)"
+        ]
+      },
+      "destructive": {
+        "role": "tertiary",
+        "displayName": "Destructive",
+        "canonical": "hsl(8 72% 62%)",
+        "tonalRamp": [
+          "hsl(8 72% 15%)",
+          "hsl(8 72% 25%)",
+          "hsl(8 72% 35%)",
+          "hsl(8 72% 45%)",
+          "hsl(8 72% 60%)",
+          "hsl(8 72% 75%)",
+          "hsl(8 72% 87%)",
+          "hsl(8 72% 95%)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "serif-xl": {
+        "displayName": "Serif XL",
+        "purpose": "The page's one h1, capped at 17ch on the element."
+      },
+      "serif-md": {
+        "displayName": "Serif MD",
+        "purpose": "The hero's italic turn under the headline."
+      },
+      "serif-sm": {
+        "displayName": "Serif SM",
+        "purpose": "The wordmark, tier names, closing lines."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase mono: controls, column heads, field names, nav. Never above a heading."
+      },
+      "data": {
+        "displayName": "Data",
+        "purpose": "Mono at reading size, tabular: times, job numbers, values, the ledger strip."
+      },
+      "email-body": {
+        "displayName": "Email body",
+        "purpose": "System sans for the transactional email; mail clients load no web fonts."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "settle",
+        "value": "620ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Machine-filled values settle into place from an already-visible default; staggered 70ms per row."
+      },
+      {
+        "name": "drift",
+        "value": "90s linear infinite",
+        "purpose": "The ledger strip only; paused off-screen."
+      },
+      {
+        "name": "duration-fast",
+        "value": "150ms",
+        "purpose": "Every control colour transition."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      },
+      {
+        "name": "2xl",
+        "value": "1400px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary CTA",
+      "kind": "button",
+      "refersTo": "cta-primary",
+      "description": "The cream pill. One per band at most.",
+      "html": "<a class=\"ds-cta ds-cta-primary\" href=\"#\">Book a call</a>",
+      "css": ".ds-cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 20px;border-radius:100px;border:1px solid transparent;font-family:\"Geist Mono\",ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;line-height:1.2;font-weight:500;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:background-color .15s,border-color .15s,color .15s}.ds-cta:focus-visible{outline:2px solid hsl(var(--ring,152 42% 58%));outline-offset:2px}.ds-cta-primary{background:hsl(var(--primary,38 18% 91%));color:hsl(var(--primary-foreground,60 8% 5%))}.ds-cta-primary:hover{background:hsl(var(--primary,38 18% 91%)/.85)}"
+    },
+    {
+      "name": "Secondary CTA",
+      "kind": "button",
+      "refersTo": "cta-secondary",
+      "description": "The hairline pill, for a real alternative rather than a fallback.",
+      "html": "<a class=\"ds-cta ds-cta-secondary\" href=\"#\">See the night log</a>",
+      "css": ".ds-cta-secondary{background:transparent;color:hsl(var(--foreground,38 18% 91%));border-color:hsl(var(--rule,55 7% 14%))}.ds-cta-secondary:hover{border-color:hsl(var(--mute,45 4% 52%));background:hsl(var(--accent,60 5% 12%))}"
+    },
+    {
+      "name": "Quiet CTA",
+      "kind": "button",
+      "refersTo": "cta-quiet",
+      "description": "Mono green link with the arrow mark. Only for a link that opens a running system.",
+      "html": "<a class=\"ds-cta-quiet\" href=\"#\">Open the demo <svg class=\"ds-arrow\" width=\"14\" height=\"14\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 8h10M9 4l4 4-4 4\"/></svg></a>",
+      "css": ".ds-cta-quiet{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-family:\"Geist Mono\",ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;line-height:1.2;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:hsl(var(--brand,152 42% 58%));text-decoration:none;transition:color .15s}.ds-cta-quiet:hover{color:hsl(var(--foreground,38 18% 91%))}.ds-arrow{transition:transform .15s}.ds-cta-quiet:hover .ds-arrow{transform:translateX(2px)}"
+    },
+    {
+      "name": "Nav link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Uppercase mono at wall grey, to cream on hover; no wash.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\">Industries</a><a href=\"#\">Case studies</a><a href=\"#\">Pricing</a></nav>",
+      "css": ".ds-nav{display:flex;gap:4px}.ds-nav a{padding:8px 12px;border-radius:6px;font-family:\"Geist Mono\",ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;line-height:1.2;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:hsl(var(--mute,45 4% 52%));text-decoration:none;transition:color .15s}.ds-nav a:hover{color:hsl(var(--foreground,38 18% 91%))}.ds-nav a:focus-visible{outline:2px solid hsl(var(--ring,152 42% 58%));outline-offset:2px}"
+    },
+    {
+      "name": "Wall label",
+      "kind": "chip",
+      "refersTo": "wall-label",
+      "description": "A column head or a field name. Never above a heading.",
+      "html": "<span class=\"ds-wall-label\">Extracted fields</span>",
+      "css": ".ds-wall-label{font-family:\"Geist Mono\",ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;line-height:1.2;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:hsl(var(--mute,45 4% 52%))}"
+    },
+    {
+      "name": "Record panel",
+      "kind": "card",
+      "refersTo": "record-panel",
+      "description": "The night log's record: a ruled panel with a mono header, a quoted input and a list of filled fields.",
+      "html": "<div class=\"ds-record\"><div class=\"ds-record-head\"><p class=\"ds-data\">21:14 <span class=\"ds-sep\" aria-hidden=\"true\">/</span> <span class=\"ds-src\">voicemail</span></p><p class=\"ds-wall-label\">Sample</p></div><blockquote class=\"ds-record-quote\"><p>\"Hi it's Dana at 14 Rowe, the furnace is making a noise again, can someone come tomorrow morning\"</p></blockquote><dl class=\"ds-record-list\"><div class=\"ds-record-row\"><dt class=\"ds-wall-label\">Caller</dt><dd class=\"ds-data\"><svg class=\"ds-mark ds-mark-filled\" width=\"14\" height=\"14\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 8.5l3 3 7-7\"/></svg>Dana Whitlock</dd></div><div class=\"ds-record-row\"><dt class=\"ds-wall-label\">Address</dt><dd class=\"ds-data\"><svg class=\"ds-mark ds-mark-filled\" width=\"14\" height=\"14\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 8.5l3 3 7-7\"/></svg>14 Rowe St</dd></div><div class=\"ds-record-row\"><dt class=\"ds-wall-label\">Window</dt><dd class=\"ds-data\"><svg class=\"ds-mark ds-mark-held\" width=\"14\" height=\"14\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"8\" cy=\"8\" r=\"6\"/><path d=\"M5 8h6\"/></svg>Held for a person</dd></div></dl></div>",
+      "css": ".ds-record{background:hsl(var(--card,60 6% 7%));color:hsl(var(--foreground,38 18% 91%));border:1px solid hsl(var(--rule,55 7% 14%));font-family:Geist,Inter,ui-sans-serif,system-ui,sans-serif}.ds-record-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:12px 24px;border-bottom:1px solid hsl(var(--rule,55 7% 14%))}.ds-record-head p{margin:0}.ds-data{display:flex;align-items:flex-start;gap:10px;margin:0;font-family:\"Geist Mono\",ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;line-height:1.5;letter-spacing:.005em;font-variant-numeric:tabular-nums;color:hsl(var(--foreground,38 18% 91%))}.ds-sep{color:hsl(var(--faint,45 4% 33%))}.ds-src{color:hsl(var(--mute,45 4% 52%))}.ds-record-quote{margin:0;padding:24px;border-bottom:1px solid hsl(var(--rule,55 7% 14%))}.ds-record-quote p{margin:0;max-width:52ch;font-size:16px;line-height:1.5;color:hsl(var(--muted-foreground,40 5% 66%))}.ds-record-list{margin:0}.ds-record-row{display:grid;grid-template-columns:8rem 1fr;gap:4px 16px;padding:12px 24px;border-bottom:1px solid hsl(var(--rule,55 7% 14%))}.ds-record-row:last-child{border-bottom:0}.ds-record-row dt{padding-top:2px}.ds-record-row dd{margin:0}.ds-mark{flex:none;margin-top:3px}.ds-mark-filled{color:hsl(var(--brand,152 42% 58%))}.ds-mark-held{color:hsl(var(--foreground,38 18% 91%))}.ds-wall-label{font-family:\"Geist Mono\",ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;line-height:1.2;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:hsl(var(--mute,45 4% 52%))}"
+    },
+    {
+      "name": "Tabs",
+      "kind": "custom",
+      "refersTo": "tab-selected",
+      "description": "Pills, not a well. Selected takes the primary fill.",
+      "html": "<div class=\"ds-tabs\" role=\"tablist\"><button class=\"ds-tab\" role=\"tab\" aria-selected=\"true\">Missed call</button><button class=\"ds-tab\" role=\"tab\">Delivery note</button><button class=\"ds-tab\" role=\"tab\">Permit</button></div>",
+      "css": ".ds-tabs{display:flex;flex-wrap:wrap;gap:8px}.ds-tab{min-height:44px;padding:0 16px;border-radius:100px;border:1px solid hsl(var(--rule,55 7% 14%));background:transparent;font-family:\"Geist Mono\",ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;line-height:1.2;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:hsl(var(--mute,45 4% 52%));cursor:pointer;transition:background-color .15s,border-color .15s,color .15s}.ds-tab:hover{border-color:hsl(var(--mute,45 4% 52%));color:hsl(var(--foreground,38 18% 91%))}.ds-tab[aria-selected=\"true\"]{background:hsl(var(--primary,38 18% 91%));border-color:transparent;color:hsl(var(--primary-foreground,60 8% 5%))}.ds-tab:focus-visible{outline:2px solid hsl(var(--ring,152 42% 58%));outline-offset:2px}"
+    },
+    {
+      "name": "Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "A field cut into the sheet, with its label above in wall grey.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-wall-label\">Phone</span><input class=\"ds-input\" placeholder=\"Best number between jobs\" /></label>",
+      "css": ".ds-field{display:flex;flex-direction:column;gap:8px}.ds-input{display:block;width:100%;height:44px;padding:8px 12px;border-radius:6px;border:1px solid hsl(var(--input,55 7% 18%));background:hsl(var(--background,60 8% 5%));color:hsl(var(--foreground,38 18% 91%));font-family:Geist,Inter,ui-sans-serif,system-ui,sans-serif;font-size:14px;caret-color:hsl(var(--brand,152 42% 58%))}.ds-input::placeholder{color:hsl(var(--mute,45 4% 52%));opacity:1}.ds-input:focus-visible{outline:2px solid hsl(var(--ring,152 42% 58%));outline-offset:2px}.ds-wall-label{font-family:\"Geist Mono\",ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;line-height:1.2;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:hsl(var(--mute,45 4% 52%))}"
+    },
+    {
+      "name": "Ledger strip",
+      "kind": "custom",
+      "refersTo": "ledger-strip",
+      "description": "Mono paperwork marks between two rules; aria-hidden texture, set in the readable wall grey.",
+      "html": "<div class=\"ds-ledger\" aria-hidden=\"true\"><ul><li>RFI-0417</li><li>POD 22-1183</li><li>21:14</li><li>PERMIT B-88213</li><li>DN 5521</li><li>07:42</li></ul></div>",
+      "css": ".ds-ledger{overflow:hidden;padding:14px 0;border-top:1px solid hsl(var(--rule,55 7% 14%));border-bottom:1px solid hsl(var(--rule,55 7% 14%))}.ds-ledger ul{display:flex;gap:0;margin:0;padding:0;list-style:none;white-space:nowrap}.ds-ledger li{padding:0 24px;font-family:\"Geist Mono\",ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;line-height:1.5;letter-spacing:.005em;font-variant-numeric:tabular-nums;color:hsl(var(--mute,45 4% 52%))}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Night Log",
+    "overview": "A night log is the record a system leaves behind while nobody is watching: a timestamp, a source, the mess that came in, and the fields something managed to fill. The sheet is a warm near-black under cream ink; the structure is a 1px hairline grid and a dot matrix; the display voice is Instrument Serif at one weight; every machine fact is set in Geist Mono; and the green is spent only where a system actually did something right.\n\nThe scene the dark ground was chosen from is the argument for the whole world: an owner-operator reading on a phone at 9pm, in a truck cab or a shop office after the lights are off. It refuses the AI-consultancy hero and it equally refuses the stark white platform sheet this site used to be.",
+    "keyCharacteristics": [
+      "Warm near-black sheet under cream ink; dark is canonical, light is its counterpart",
+      "Nothing is a card and nothing casts a shadow; depth is a 1px rule",
+      "Three faces with three jobs: Instrument Serif display, Geist Sans prose, Geist Mono facts",
+      "Green marks affirmative machine state only",
+      "Every control is a mono uppercase pill, 44px minimum"
+    ],
+    "rules": [
+      {
+        "name": "The Evidence Green Rule",
+        "body": "Green means a machine got this right. If you cannot name the machine that verified the thing you just coloured, it is not green.",
+        "section": "colors"
+      },
+      {
+        "name": "The Wall-Label Floor Rule",
+        "body": "mute is a readable tier and clears 4.5:1 on every surface; faint is for wordless aria-hidden glyphs only.",
+        "section": "colors"
+      },
+      {
+        "name": "The Italic Turn Rule",
+        "body": "Emphasis is the serif's italic, on one word or phrase, once per band. Bold does not exist here.",
+        "section": "typography"
+      },
+      {
+        "name": "The Mono-Is-Machine Rule",
+        "body": "Geist Mono is for things a machine produced or an operator types; a human sentence is sans or serif.",
+        "section": "typography"
+      },
+      {
+        "name": "The Ramp Rule",
+        "body": "Every size is a named preset step; a text-[…] value between steps is a defect.",
+        "section": "typography"
+      },
+      {
+        "name": "The Hairline-Only Rule",
+        "body": "A panel is bounded by border-rule on all four edges or it is not a panel. No shadow, no lift.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do build structure out of border-rule hairlines and let cells borrow neighbours' edges.",
+      "Do spend brand only on affirmative machine state.",
+      "Do carry emphasis with the serif's italic, once per band.",
+      "Do keep every control at a 44px minimum height.",
+      "Do set any readable text in mute or darker; faint is for wordless glyphs."
+    ],
+    "donts": [
+      "Don't put the green on emphasis, prices, headings, icons or links in general.",
+      "Don't add a card, a shadow, a hover lift or a rounded panel.",
+      "Don't set words in faint, even in an aria-hidden strip.",
+      "Don't put an eyebrow or kicker above a heading.",
+      "Don't pick a size between the ramp's steps with text-[…]."
+    ]
+  }
+}
