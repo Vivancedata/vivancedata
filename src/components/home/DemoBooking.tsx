@@ -6,7 +6,6 @@ import { ArrowMark, ListMark } from "@/components/common/Marks";
 import { ctaPrimary, ctaSecondary, wallLabel } from "@/components/common/controls";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import { toast } from "sonner";
 
 interface DemoFeature {
   title: string;
@@ -381,6 +380,24 @@ function DemoFormCard({ state, onChange, onSubmit }: DemoFormProps) {
  * one ask does not need a second row of reassurance under it.
  */
 
+/**
+ * The toast library is fetched when a submission finishes, not when the page
+ * loads. This form is the last band on the home page, and `sonner` was the one
+ * static import that put a 10 KB (gzip) chunk in front of the hero for a
+ * visitor who may never scroll this far. The wait it adds is a chunk fetch
+ * after a network round-trip that already happened, and the fallback is the
+ * inline status the form renders from `state` -- a lost chunk costs the toast,
+ * not the message.
+ */
+async function notify(kind: "success" | "error", title: string, description: string): Promise<void> {
+  try {
+    const { toast } = await import("sonner");
+    toast[kind](title, { description });
+  } catch {
+    // The inline status already told the visitor what happened.
+  }
+}
+
 export function DemoBooking(): React.ReactElement {
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -432,9 +449,7 @@ export function DemoBooking(): React.ReactElement {
       }
 
       dispatch({ type: "submit_success" });
-      toast.success("Call request received", {
-        description: "You will hear back within one working day.",
-      });
+      await notify("success", "Call request received", "You will hear back within one working day.");
     } catch (error) {
       console.error("Demo booking submission error:", error);
       dispatch({
@@ -442,9 +457,7 @@ export function DemoBooking(): React.ReactElement {
         message:
           "I could not take your request just now. Please try again, or use the contact page.",
       });
-      toast.error("Could not submit your request", {
-        description: "Please try again in a moment.",
-      });
+      await notify("error", "Could not submit your request", "Please try again in a moment.");
     }
   };
 

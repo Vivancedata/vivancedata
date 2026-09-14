@@ -86,6 +86,35 @@ const nextConfig = {
   poweredByHeader: false,
 
   /**
+   * Vercel's skew protection stamps every asset URL with `?dpl=<deployment
+   * id>`, and next/font bakes that query into the `@font-face` rules it emits.
+   * Those rules are the output of a webpack loader, and Next keys its
+   * persistent webpack cache on the Next version plus a subset of this config
+   * that does not include the deployment id. Vercel restores `.next/cache`
+   * between builds, so from the second deploy on, the CSS names the fonts of
+   * an earlier deployment while the `<link rel="preload">` tags name the
+   * current one. Measured on production: three deployment ids in one
+   * document, every preload unused, and all four fonts fetched twice.
+   *
+   * Reproduced locally with `NOW_BUILDER=1 NEXT_DEPLOYMENT_ID=a npm run build`
+   * followed by the same with `b`: the second build's CSS still said `a`.
+   *
+   * Folding the id into the cache version invalidates the cache exactly when
+   * the id changes -- once per deploy -- which is the only time the baked
+   * URLs go stale. Local builds have no id and keep their cache.
+   */
+  webpack(webpackConfig, { config }) {
+    const deploymentId = config.deploymentId;
+    if (deploymentId && webpackConfig.cache && typeof webpackConfig.cache === 'object') {
+      webpackConfig.cache = {
+        ...webpackConfig.cache,
+        version: `${webpackConfig.cache.version}|${deploymentId}`,
+      };
+    }
+    return webpackConfig;
+  },
+
+  /**
    * The five enterprise verticals the site used to carry. Their pages are gone,
    * but the URLs are indexed, so they redirect to the industries hub rather than
    * 404. Permanent (308) because the pages are not coming back.
