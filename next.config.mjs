@@ -217,6 +217,13 @@ const sentryWebpackPluginOptions = {
   // Automatically tree-shake Sentry logger statements to reduce bundle size
   disableLogger: true,
 
+  // Also strip the SDK's internal debug-only code paths. `debug: false` is set
+  // in every init, so nothing observable changes; the dead branches just stop
+  // shipping. Replay helpers are NOT excluded: replay is in use.
+  bundleSizeOptimizations: {
+    excludeDebugStatements: true,
+  },
+
   // Enables automatic instrumentation of Vercel Cron Monitors. (Does not yet work with App Router route handlers.)
   // See the following for more information:
   // https://docs.sentry.io/product/crons/
