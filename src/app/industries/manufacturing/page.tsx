@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { Activity, Settings, Shield, BarChart3, Wrench } from "lucide-react";
 import { IndustryPage, type IndustryPageConfig } from "@/components/industries/IndustryPage";
+import { specimenFor } from "@/constants/specimens";
 
 export const metadata: Metadata = {
   title: "AI for Manufacturing - Vivancedata",
@@ -17,10 +18,6 @@ export const metadata: Metadata = {
 const config: IndustryPageConfig = {
   eyebrow: "Manufacturing",
   title: "AI for manufacturing",
-  heroVisual: {
-    label: "// Predictive Maintenance",
-    steps: ["Sensor Telemetry", "Anomaly Scoring", "Maintenance Alert", "Work Order"],
-  },
   introHeading: "Reading what the floor already tells you",
   introBody: `The plant produces more signal than anyone has time to read: sensor history, shift logs, defect records, inspection photos, and the forms that move between the line and the office.
 
@@ -142,5 +139,5 @@ It has to work with the MES, historian and quality system you already run. Nothi
 };
 
 export default function ManufacturingPage() {
-  return <IndustryPage config={config} />;
+  return <IndustryPage config={config} specimen={specimenFor("manufacturing")} />;
 }

@@ -125,8 +125,36 @@ const rotateInVariants: Variants = {
   }
 };
 
+/**
+ * The scroll-driven twin of the design system's `.settle` utility.
+ *
+ * `settle-in` in `@vivancedata/ui` runs on load: opacity 0.32 -> 1, a 3px rise,
+ * and a 2px blur clearing, over 620ms on cubic-bezier(0.16, 1, 0.3, 1). The
+ * values here are that keyframe, to the number, driven by the viewport instead
+ * of by page load.
+ *
+ * Deliberately not a new gesture. The site already has one motion idea — a
+ * thing arriving into focus rather than flying in — and a photograph developing
+ * as it enters is that same idea applied to an image. It starts at 0.32 rather
+ * than 0 because a specimen fading up from nothing reads as a loading state,
+ * which is the exact failure the wireframe hero it replaces was guilty of.
+ */
+const settleVariants: Variants = {
+  hidden: { opacity: 0.32, y: 3, filter: "blur(2px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.62,
+      ease: [0.16, 1, 0.3, 1] as const,
+    },
+  },
+};
+
 // Map of variant names to their implementations
 const variantMap = {
+  settle: settleVariants,
   fadeInUp: fadeInUpVariants,
   fadeInLeft: fadeInLeftVariants,
   fadeInRight: fadeInRightVariants,

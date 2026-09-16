@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { ClipboardList, FileText, HardHat, Calculator } from "lucide-react";
 import { IndustryPage, type IndustryPageConfig } from "@/components/industries/IndustryPage";
+import { specimenFor } from "@/constants/specimens";
 import { demos } from "@/constants/demos";
 
 export const metadata: Metadata = {
@@ -18,10 +19,6 @@ export const metadata: Metadata = {
 const config: IndustryPageConfig = {
   eyebrow: "Construction",
   title: "AI for construction",
-  heroVisual: {
-    label: "// Submittal Intake",
-    steps: ["Emailed PDF", "Field Extraction", "Validation", "Project System"],
-  },
   introHeading: "Taking the paperwork off the critical path",
   introBody: `Paperwork volume is the constraint. RFIs, submittals, daily reports, permits and invoices move through email and PDFs, and the people who understand them are needed on site.
 
@@ -171,5 +168,5 @@ Nothing here replaces the judgement of the person signing off. The work is draft
 };
 
 export default function ConstructionPage() {
-  return <IndustryPage config={config} />;
+  return <IndustryPage config={config} specimen={specimenFor("construction")} />;
 }
