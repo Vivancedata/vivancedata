@@ -49,9 +49,10 @@ run_content_check() {
   local name="$1"
   local file="$2"
   local pattern="$3"
+  local grep_flags="${4:--q}"
 
   checks=$((checks + 1))
-  if grep -q "$pattern" "$file"; then
+  if grep "$grep_flags" "$pattern" "$file"; then
     pass "$name"
   else
     fail "$name (pattern not found: $pattern)"
@@ -91,13 +92,18 @@ run_status_check "Homepage responds" "GET" "$BASE_URL/" "200" "$TMP_DIR/home.htm
 # repositioning (Aug 9 it became "AI for construction, HVAC, logistics and
 # manufacturing" and this check cried wolf hourly for 10 days). The check
 # exists to catch a wrong/empty deploy, and the brand in the <title> does that.
-run_content_check "Homepage title carries the brand" "$TMP_DIR/home.html" "<title>VivanceData"
+# Match the brand case-insensitively: #85 (Sep 3) recased "VivanceData" to
+# "Vivancedata" and this check failed hourly for 17 days over the one letter.
+run_content_check "Homepage title carries the brand" "$TMP_DIR/home.html" "<title>vivancedata" "-qi"
 
 run_status_check "Blog index responds" "GET" "$BASE_URL/blog" "200" "$TMP_DIR/blog.html"
 run_content_check "Blog index contains heading text" "$TMP_DIR/blog.html" "AI Insights Blog"
 
 run_status_check "Contact page responds" "GET" "$BASE_URL/contact" "200" "$TMP_DIR/contact.html"
-run_content_check "Contact page contains expected title" "$TMP_DIR/contact.html" "Contact Us - VivanceData"
+# The contact page's title is copy too ("Contact Us" became "Book a call" in
+# #85). Assert the brand in the <title> and that the form actually rendered.
+run_content_check "Contact page title carries the brand" "$TMP_DIR/contact.html" "<title>[^<]*vivancedata" "-qi"
+run_content_check "Contact page renders the contact form" "$TMP_DIR/contact.html" 'aria-label="Contact form"' 
 
 run_status_check "robots.txt responds" "GET" "$BASE_URL/robots.txt" "200" "$TMP_DIR/robots.txt"
 run_content_check "robots.txt protects API path" "$TMP_DIR/robots.txt" "Disallow: /api/"
@@ -107,7 +113,11 @@ run_content_check "sitemap.xml includes blog URL" "$TMP_DIR/sitemap.xml" "<loc>h
 
 run_status_check "Contact API GET returns method not allowed" "GET" "$BASE_URL/api/contact" "405" "$TMP_DIR/api-contact-get.json"
 run_status_check "Contact API POST validation triggers on empty payload" "POST" "$BASE_URL/api/contact" "400" "$TMP_DIR/api-contact-post.json" "{}"
-run_content_check "Contact API POST includes validation message" "$TMP_DIR/api-contact-post.json" "\"Missing required fields\""
+# The validation message is copy ("Missing required fields" became "Some
+# required fields are still empty." in #114). Assert the error contract: a JSON
+# body with a non-empty "error" string.
+run_content_check "Contact API POST returns a JSON error message" "$TMP_DIR/api-contact-post.json" '"error":"[^"]'
+
 
 echo "Completed $checks production smoke checks."
 if [[ "$failures" -gt 0 ]]; then
