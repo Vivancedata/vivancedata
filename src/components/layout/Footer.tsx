@@ -2,7 +2,13 @@
 
 import React from "react";
 import { siteConfig } from "@/config/site";
-import { Facebook, Twitter, Linkedin, Instagram, Github } from "lucide-react";
+import {
+  FacebookIcon,
+  GithubIcon,
+  InstagramIcon,
+  LinkedinIcon,
+  TwitterIcon,
+} from "@/components/common/SocialIcons";
 import { Icons } from "@/components/common/Icons";
 import { footerLinks, socialLinks } from "@/constants/navigation";
 import { DeferredNewsletter } from "@/components/layout/DeferredNewsletter";
@@ -19,12 +25,12 @@ import { wallLabel } from "@/components/common/controls";
  * print.
  */
 
-const socialIcons: Record<string, typeof Linkedin> = {
-  linkedin: Linkedin,
-  twitter: Twitter,
-  facebook: Facebook,
-  instagram: Instagram,
-  github: Github,
+const socialIcons: Record<string, typeof LinkedinIcon> = {
+  linkedin: LinkedinIcon,
+  twitter: TwitterIcon,
+  facebook: FacebookIcon,
+  instagram: InstagramIcon,
+  github: GithubIcon,
 };
 
 export function SiteFooter() {
@@ -107,7 +113,7 @@ export function SiteFooter() {
             </a>
             <ul className="flex items-center gap-1">
               {socialLinks.map((link) => {
-                const Icon = socialIcons[link.icon] ?? Linkedin;
+                const Icon = socialIcons[link.icon] ?? LinkedinIcon;
                 return (
                   <li key={link.label}>
                     <a
