@@ -94,13 +94,22 @@ export const recommendationsFor = (categoryAverages: CategoryAverages): string[]
   return recommendations;
 };
 
+/** Scores print to one decimal ("3.5 / 5.0"), through Intl rather than toFixed. */
+const scoreFormatter = new Intl.NumberFormat("en-US", {
+  minimumFractionDigits: 1,
+  maximumFractionDigits: 1,
+});
+
+export const formatCategoryScore = (score: number): string =>
+  `${scoreFormatter.format(score)} / ${scoreFormatter.format(5)}`;
+
 export const buildAssessmentSummary = (
   results: AssessmentResults,
   level: ReadinessLevelName
 ): Record<string, string | number> => ({
   "Overall readiness": `${Math.round(results.percentageScore)}% - ${level}`,
-  [CATEGORY_LABELS.data]: `${results.categoryAverages.data.toFixed(1)} / 5.0`,
-  [CATEGORY_LABELS.infrastructure]: `${results.categoryAverages.infrastructure.toFixed(1)} / 5.0`,
-  [CATEGORY_LABELS.culture]: `${results.categoryAverages.culture.toFixed(1)} / 5.0`,
-  [CATEGORY_LABELS.strategy]: `${results.categoryAverages.strategy.toFixed(1)} / 5.0`,
+  [CATEGORY_LABELS.data]: formatCategoryScore(results.categoryAverages.data),
+  [CATEGORY_LABELS.infrastructure]: formatCategoryScore(results.categoryAverages.infrastructure),
+  [CATEGORY_LABELS.culture]: formatCategoryScore(results.categoryAverages.culture),
+  [CATEGORY_LABELS.strategy]: formatCategoryScore(results.categoryAverages.strategy),
 });
