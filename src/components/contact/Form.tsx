@@ -44,7 +44,7 @@ const formSchema = z.object({
     message: "Last name must be at least 2 characters.",
   }),
   email: z.string().email({
-    message: "Enter a full email address, like dana@ruizheating.com.",
+    message: "Invalid email address. Enter a full one, like dana@ruizheating.com.",
   }),
   // The buyer here is phone-first and reads this between jobs. Optional,
   // because insisting on a number costs more submissions than it wins.
