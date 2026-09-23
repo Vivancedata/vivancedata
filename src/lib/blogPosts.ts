@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { cache } from "react";
 import type { BlogPost } from "@/types/blog";
 
 const BLOG_POSTS_DIRECTORY = path.join(
@@ -11,6 +12,15 @@ const BLOG_POSTS_DIRECTORY = path.join(
 );
 const DEFAULT_IMAGE = "/images/ai-solutions.png";
 const DEFAULT_TAGS = ["AI", "Technology"];
+const WORDS_PER_MINUTE = 200;
+const WHITESPACE = /\s+/;
+const QUOTE_EDGES = /^['"]|['"]$/g;
+
+/** Minutes to read a post, from its raw source. Computed here, on the server,
+ * so the listing never ships a post's full text to the client to count it. */
+function readingMinutesFor(source: string): number {
+  return Math.ceil(source.split(WHITESPACE).length / WORDS_PER_MINUTE);
+}
 
 interface BlogFrontmatter {
   title: string;
@@ -40,10 +50,10 @@ function extractFrontmatter(content: string, slug: string): BlogFrontmatter {
   const image = imageMatch?.[1] || DEFAULT_IMAGE;
 
   const tags = tagsMatch
-    ? tagsMatch[1]
-        .split(",")
-        .map((tag) => tag.trim().replace(/^['"]|['"]$/g, ""))
-        .filter(Boolean)
+    ? tagsMatch[1].split(",").flatMap((raw) => {
+        const tag = raw.trim().replace(QUOTE_EDGES, "");
+        return tag ? [tag] : [];
+      })
     : DEFAULT_TAGS;
 
   return { title, description, date, image, tags };
@@ -67,7 +77,12 @@ function resolveDirectoryPostPath(directoryPath: string): string | null {
   return fs.existsSync(pageMdxPath) ? pageMdxPath : null;
 }
 
-function getBlogFileEntries(): Map<string, BlogFileEntry> {
+/**
+ * One directory read per render. `generateMetadata`, the page and
+ * `getAllBlogPosts` each resolve slugs through this; `cache` dedupes them to a
+ * single `readdirSync` within a request (and is a plain call outside React).
+ */
+const getBlogFileEntries = cache(function getBlogFileEntries(): Map<string, BlogFileEntry> {
   const slugsToFiles = new Map<string, BlogFileEntry>();
 
   if (!fs.existsSync(BLOG_POSTS_DIRECTORY)) {
@@ -106,7 +121,7 @@ function getBlogFileEntries(): Map<string, BlogFileEntry> {
   }
 
   return slugsToFiles;
-}
+});
 
 export function findBlogPostPath(slug: string): string | null {
   return getBlogFileEntries().get(slug)?.filePath ?? null;
@@ -145,7 +160,7 @@ export function getAllBlogPosts(): BlogPost[] {
         date: frontmatter.date,
         image: frontmatter.image,
         tags: frontmatter.tags,
-        content: fileContents,
+        readingMinutes: readingMinutesFor(fileContents),
       });
     } catch (error) {
       console.error(`Error reading blog post "${slug}":`, error);
