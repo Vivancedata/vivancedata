@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useDeferredValue, useMemo } from "react";
 import {
   Card,
   CardContent,
@@ -26,6 +26,7 @@ import {
   type UseCase,
   type Complexity,
 } from "@/constants/useCases";
+import { useUrlSearchParams, useUrlTextParam } from "@/hooks/useUrlSearchParams";
 
 const ALL_FILTER = "all";
 
@@ -134,20 +135,28 @@ function UseCaseCard({ useCase }: { useCase: UseCase }) {
 }
 
 export function UseCasesExplorer() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedIndustry, setSelectedIndustry] = useState<string>(ALL_FILTER);
-  const [selectedFunction, setSelectedFunction] = useState<string>(ALL_FILTER);
-  const [selectedComplexity, setSelectedComplexity] =
-    useState<string>(ALL_FILTER);
+  // Every filter lives in the query string, so a filtered view can be linked:
+  // `/tools/use-cases?industry=Construction&complexity=Low`.
+  const [params, setParams] = useUrlSearchParams();
+  const [searchQuery, setSearchQuery] = useUrlTextParam("q");
+  const selectedIndustry = params.get("industry") ?? ALL_FILTER;
+  const selectedFunction = params.get("function") ?? ALL_FILTER;
+  const selectedComplexity = params.get("complexity") ?? ALL_FILTER;
+  const deferredQuery = useDeferredValue(searchQuery);
+
+  const setFilter = (key: "industry" | "function" | "complexity") => (value: string) =>
+    setParams({ [key]: value === ALL_FILTER ? null : value });
 
   const filteredUseCases = useMemo(() => {
+    const query = deferredQuery.toLowerCase();
+
     return useCases.filter((useCase) => {
       const matchesSearch =
-        searchQuery === "" ||
-        useCase.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        useCase.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        query === "" ||
+        useCase.title.toLowerCase().includes(query) ||
+        useCase.description.toLowerCase().includes(query) ||
         useCase.technologies.some((tech) =>
-          tech.toLowerCase().includes(searchQuery.toLowerCase())
+          tech.toLowerCase().includes(query)
         );
 
       const matchesIndustry =
@@ -169,13 +178,11 @@ export function UseCasesExplorer() {
         matchesComplexity
       );
     });
-  }, [searchQuery, selectedIndustry, selectedFunction, selectedComplexity]);
+  }, [deferredQuery, selectedIndustry, selectedFunction, selectedComplexity]);
 
   const clearFilters = () => {
-    setSearchQuery("");
-    setSelectedIndustry(ALL_FILTER);
-    setSelectedFunction(ALL_FILTER);
-    setSelectedComplexity(ALL_FILTER);
+    setSearchQuery("", { immediate: true });
+    setParams({ industry: null, function: null, complexity: null });
   };
 
   const hasActiveFilters =
@@ -194,8 +201,10 @@ export function UseCasesExplorer() {
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
-                type="text"
-                placeholder="invoices, dispatch, field notes"
+                type="search"
+                name="q"
+                autoComplete="off"
+                placeholder="invoices, dispatch, field notes…"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-10"
@@ -214,7 +223,7 @@ export function UseCasesExplorer() {
                 </label>
                 <Select
                   value={selectedIndustry}
-                  onValueChange={setSelectedIndustry}
+                  onValueChange={setFilter("industry")}
                 >
                   <SelectTrigger id="industry-filter" aria-label="Filter by industry">
                     <SelectValue placeholder="All Industries" />
@@ -239,7 +248,7 @@ export function UseCasesExplorer() {
                 </label>
                 <Select
                   value={selectedFunction}
-                  onValueChange={setSelectedFunction}
+                  onValueChange={setFilter("function")}
                 >
                   <SelectTrigger id="function-filter" aria-label="Filter by business function">
                     <SelectValue placeholder="All Functions" />
@@ -264,7 +273,7 @@ export function UseCasesExplorer() {
                 </label>
                 <Select
                   value={selectedComplexity}
-                  onValueChange={setSelectedComplexity}
+                  onValueChange={setFilter("complexity")}
                 >
                   <SelectTrigger id="complexity-filter" aria-label="Filter by complexity">
                     <SelectValue placeholder="All Levels" />
@@ -283,13 +292,14 @@ export function UseCasesExplorer() {
 
             {/* Results Count and Clear */}
             <div className="flex items-center justify-between pt-2">
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-muted-foreground" role="status" aria-live="polite">
                 Showing {filteredUseCases.length} of {useCases.length} use cases
               </p>
               {hasActiveFilters && (
                 <button
+                  type="button"
                   onClick={clearFilters}
-                  className="text-sm text-foreground underline decoration-rule underline-offset-4 hover:decoration-current focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 rounded"
+                  className="text-sm text-foreground underline decoration-rule underline-offset-4 hover:decoration-current focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 rounded"
                 >
                   Clear all filters
                 </button>
@@ -314,11 +324,12 @@ export function UseCasesExplorer() {
               <h3 className="text-heading-4 mb-2">Nothing matches those filters</h3>
               <p className="text-muted-foreground mb-4">
                 Clear them and start again, or search for a single word such as
-                &quot;scheduling&quot;.
+                “scheduling”.
               </p>
               <button
+                type="button"
                 onClick={clearFilters}
-                className="text-foreground underline decoration-rule underline-offset-4 hover:decoration-current focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 rounded px-2 py-1"
+                className="text-foreground underline decoration-rule underline-offset-4 hover:decoration-current focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 rounded px-2 py-1"
               >
                 Clear all filters
               </button>

@@ -4,6 +4,8 @@ import { Skeleton, SkeletonInput, SkeletonButton } from "@/components/ui/skeleto
 export default function ROICalculatorLoading() {
   return (
     <Container className="py-16">
+      {/* Skeletons are silent to a screen reader; this says what is happening. */}
+      <p role="status" className="sr-only">Loading…</p>
       <div className="max-w-5xl mx-auto">
         {/* Page Header Skeleton */}
         <div className="text-center mb-12">

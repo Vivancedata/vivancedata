@@ -1,1 +1,40 @@
 /* Shared design tokens and global utilities are imported from @vivancedata/ui/styles. */
+
+/*
+ * App-level interaction defaults (Vercel Web Interface Guidelines).
+ *
+ * - The header is `sticky top-0` and 64px tall. `scroll-padding-top` keeps an
+ *   in-page anchor (the hero's "#night-log-heading" link, the skip link) and a
+ *   keyboard-focused element from landing underneath it.
+ * - `touch-action: manipulation` removes the double-tap-to-zoom delay on
+ *   controls without disabling pinch zoom.
+ * - The tap highlight is set on purpose rather than left to the browser's
+ *   default grey box: a faint tint of the foreground, so a tap still shows.
+ * - Headings balance their lines so a two-line serif headline does not leave a
+ *   single word stranded on the second line.
+ */
+html {
+  scroll-padding-top: 5rem;
+  -webkit-tap-highlight-color: hsl(var(--foreground) / 0.08);
+}
+
+a,
+button,
+input,
+label,
+select,
+summary,
+textarea,
+[role="button"],
+[role="tab"] {
+  touch-action: manipulation;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}

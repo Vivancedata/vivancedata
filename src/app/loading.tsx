@@ -3,6 +3,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 export default function Loading() {
   return (
     <section className="container mx-auto min-h-screen px-4 py-16 md:py-24">
+      {/* Skeletons are silent to a screen reader; this says what is happening. */}
+      <p role="status" className="sr-only">Loading…</p>
       <div className="mx-auto max-w-6xl">
         <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
           <Skeleton className="h-6 w-40 rounded-full" />

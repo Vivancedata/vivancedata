@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useState, type FormEvent, type ReactNode } from "react";
+import { useId, useState, useTransition, type FormEvent, type ReactNode } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -18,7 +18,7 @@ export interface ReportGateProps {
   children: ReactNode;
 }
 
-type GateStatus = "idle" | "submitting" | "unlocked" | "error";
+type GateStatus = "idle" | "unlocked" | "error";
 
 const GENERIC_ERROR =
   "The report did not send. Check the address for a typo and try again, or email info@vivancedata.com and I will send it over by hand.";
@@ -35,12 +35,11 @@ export function ReportGate({
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<GateStatus>("idle");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  // The request is a transition: React owns the pending flag and clears it
+  // however the request ends, instead of a hand-set "submitting" status.
+  const [isSubmitting, startSubmit] = useTransition();
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setStatus("submitting");
-    setErrorMessage(null);
-
+  const requestReport = async () => {
     try {
       const response = await fetch("/api/tool-report", {
         method: "POST",
@@ -63,6 +62,12 @@ export function ReportGate({
     }
   };
 
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setErrorMessage(null);
+    startSubmit(requestReport);
+  };
+
   if (status === "unlocked") {
     return (
       <div className="space-y-4">
@@ -81,8 +86,6 @@ export function ReportGate({
       </div>
     );
   }
-
-  const isSubmitting = status === "submitting";
 
   return (
     <Card className="border-brand/30 dark:border-brand/40">
@@ -106,7 +109,8 @@ export function ReportGate({
                 name="email"
                 required
                 autoComplete="email"
-                placeholder="you@company.com"
+                spellCheck={false}
+                placeholder="you@company.com…"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
                 disabled={isSubmitting}
@@ -121,8 +125,10 @@ export function ReportGate({
             >
               {isSubmitting ? (
                 <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden="true" />
-                  <span>Sending...</span>
+                  <span className="mr-2 inline-flex animate-spin" aria-hidden="true">
+                    <Loader2 className="h-4 w-4" />
+                  </span>
+                  <span>Sending…</span>
                 </>
               ) : (
                 "Show my full report"

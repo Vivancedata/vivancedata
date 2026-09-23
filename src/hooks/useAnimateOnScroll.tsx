@@ -88,11 +88,13 @@ const bounceInVariants: Variants = {
   }
 };
 
+// Opacity and scale only: animating `filter: blur()` repaints on every frame
+// instead of compositing, so the "blur" is now a soft scale-in.
 const blurInVariants: Variants = {
-  hidden: { opacity: 0, filter: "blur(20px)" },
+  hidden: { opacity: 0, scale: 0.98 },
   visible: { 
     opacity: 1, 
-    filter: "blur(0px)",
+    scale: 1,
     transition: { 
       duration: 0.8,
       ease: "easeOut" as const
@@ -138,13 +140,16 @@ const rotateInVariants: Variants = {
  * as it enters is that same idea applied to an image. It starts at 0.32 rather
  * than 0 because a specimen fading up from nothing reads as a loading state,
  * which is the exact failure the wireframe hero it replaces was guilty of.
+ *
+ * The 2px blur of the CSS keyframe is left out here: `filter` is not a
+ * compositor property, so animating it on a full-width photograph repaints the
+ * image every frame. Opacity and the 3px rise carry the same arrival.
  */
 const settleVariants: Variants = {
-  hidden: { opacity: 0.32, y: 3, filter: "blur(2px)" },
+  hidden: { opacity: 0.32, y: 3 },
   visible: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
     transition: {
       duration: 0.62,
       ease: [0.16, 1, 0.3, 1] as const,

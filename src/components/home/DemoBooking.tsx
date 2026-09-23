@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useReducer } from "react";
+import React, { useReducer, useTransition } from "react";
 import Link from "next/link";
 import { ArrowMark, ListMark } from "@/components/common/Marks";
 import { ctaPrimary, ctaSecondary, wallLabel } from "@/components/common/controls";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
+import { useUnsavedChangesWarning } from "@/hooks/useUnsavedChangesWarning";
 
 interface DemoFeature {
   title: string;
@@ -57,7 +58,6 @@ interface FormErrors {
 interface DemoBookingState {
   formData: FormData;
   errors: FormErrors;
-  isSubmitting: boolean;
   isSubmitted: boolean;
   submitError: string | null;
 }
@@ -76,7 +76,6 @@ const initialState: DemoBookingState = {
     company: "",
   },
   errors: {},
-  isSubmitting: false,
   isSubmitted: false,
   submitError: null,
 };
@@ -105,19 +104,16 @@ function reducer(state: DemoBookingState, action: DemoBookingAction): DemoBookin
     case "submit_start":
       return {
         ...state,
-        isSubmitting: true,
         submitError: null,
       };
     case "submit_success":
       return {
         ...state,
-        isSubmitting: false,
         isSubmitted: true,
       };
     case "submit_failure":
       return {
         ...state,
-        isSubmitting: false,
         submitError: action.message,
       };
     default:
@@ -125,21 +121,30 @@ function reducer(state: DemoBookingState, action: DemoBookingAction): DemoBookin
   }
 }
 
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+/** Field order on the page, so the first invalid one can take focus. */
+const FIELD_IDS: Record<keyof FormData, string> = {
+  name: "demo-name",
+  email: "demo-email",
+  company: "demo-company",
+};
+
 function validateForm(formData: FormData): FormErrors {
   const errors: FormErrors = {};
 
   if (!formData.name.trim()) {
-    errors.name = "Name is required";
+    errors.name = "Enter your name so I know who to ask for.";
   }
 
   if (!formData.email.trim()) {
-    errors.email = "Email is required";
-  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-    errors.email = "Please enter a valid email";
+    errors.email = "Enter the email address I should reply to.";
+  } else if (!EMAIL_PATTERN.test(formData.email)) {
+    errors.email = "Enter a full email address, like john@company.com.";
   }
 
   if (!formData.company.trim()) {
-    errors.company = "Company name is required";
+    errors.company = "Enter your company name.";
   }
 
   return errors;
@@ -174,11 +179,12 @@ function DemoFeatureColumn() {
 
 interface DemoFormProps {
   state: DemoBookingState;
+  isSubmitting: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onSubmit: (e: React.FormEvent) => Promise<void>;
+  onSubmit: (e: React.FormEvent) => void;
 }
 
-function DemoFormCard({ state, onChange, onSubmit }: DemoFormProps) {
+function DemoFormCard({ state, isSubmitting, onChange, onSubmit }: DemoFormProps) {
   return (
     <div className="border border-rule bg-card">
       <div className="p-lg md:p-xl">
@@ -203,7 +209,7 @@ function DemoFormCard({ state, onChange, onSubmit }: DemoFormProps) {
                     id="demo-name"
                     name="name"
                     type="text"
-                    placeholder="John Smith"
+                    placeholder="John Smith…"
                     autoComplete="name"
                     value={state.formData.name}
                     onChange={onChange}
@@ -232,7 +238,7 @@ function DemoFormCard({ state, onChange, onSubmit }: DemoFormProps) {
                     id="demo-email"
                     name="email"
                     type="email"
-                    placeholder="john@company.com"
+                    placeholder="john@company.com…"
                     autoComplete="email"
                     inputMode="email"
                     spellCheck={false}
@@ -263,7 +269,7 @@ function DemoFormCard({ state, onChange, onSubmit }: DemoFormProps) {
                     id="demo-company"
                     name="company"
                     type="text"
-                    placeholder="Acme Inc."
+                    placeholder="Acme Inc…"
                     autoComplete="organization"
                     value={state.formData.company}
                     onChange={onChange}
@@ -284,17 +290,19 @@ function DemoFormCard({ state, onChange, onSubmit }: DemoFormProps) {
                 <button
                   type="submit"
                   className={`${ctaPrimary} mt-lg w-full disabled:cursor-not-allowed disabled:opacity-50`}
-                  disabled={state.isSubmitting}
-                  aria-disabled={state.isSubmitting}
+                  disabled={isSubmitting}
+                  aria-disabled={isSubmitting}
                 >
-                  {state.isSubmitting ? (
+                  {isSubmitting ? (
                     <span className="flex items-center justify-center">
+                      {/* The wrapper spins rather than the <svg>, which not
+                        * every browser composites on the GPU. */}
+                      <span className="-ml-1 mr-3 inline-flex animate-spin" aria-hidden="true">
                       <svg
-                        className="-ml-1 mr-3 h-4 w-4 animate-spin"
+                        className="h-4 w-4"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
-                        aria-hidden="true"
                       >
                         <circle
                           className="opacity-25"
@@ -307,9 +315,10 @@ function DemoFormCard({ state, onChange, onSubmit }: DemoFormProps) {
                         <path
                           className="opacity-75"
                           fill="currentColor"
-                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                          d="M4 12a8 8 0 0 1 8-8V0C5.4 0 0 5.4 0 12h4zm2 5.3A8 8 0 0 1 4 12H0c0 3 1.1 5.8 3 7.9l3-2.6z"
                         />
                       </svg>
+                      </span>
                       {"Submitting\u2026"}
                     </span>
                   ) : (
@@ -400,6 +409,13 @@ async function notify(kind: "success" | "error", title: string, description: str
 
 export function DemoBooking(): React.ReactElement {
   const [state, dispatch] = useReducer(reducer, initialState);
+  // React owns the pending flag for the request (see 6.11 in the React
+  // best-practices guide); the reducer keeps only what the request produced.
+  const [isSubmitting, startSubmit] = useTransition();
+
+  const hasUnsavedInput =
+    !state.isSubmitted && Object.values(state.formData).some((value) => value.trim() !== "");
+  useUnsavedChangesWarning(hasUnsavedInput);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
@@ -410,18 +426,7 @@ export function DemoBooking(): React.ReactElement {
     });
   };
 
-  const handleSubmit = async (e: React.FormEvent): Promise<void> => {
-    e.preventDefault();
-
-    const nextErrors = validateForm(state.formData);
-    dispatch({ type: "set_errors", errors: nextErrors });
-
-    if (Object.keys(nextErrors).length > 0) {
-      return;
-    }
-
-    dispatch({ type: "submit_start" });
-
+  const submitRequest = async (): Promise<void> => {
     try {
       const fullNameParts = state.formData.name.trim().split(/\s+/);
       const firstName = fullNameParts[0] || "Guest";
@@ -449,7 +454,9 @@ export function DemoBooking(): React.ReactElement {
       }
 
       dispatch({ type: "submit_success" });
-      await notify("success", "Call request received", "You will hear back within one working day.");
+      // Not awaited: the pending state ends with the request, not with the
+      // toast chunk's download.
+      void notify("success", "Call request received", "You will hear back within one working day.");
     } catch (error) {
       console.error("Demo booking submission error:", error);
       dispatch({
@@ -457,8 +464,28 @@ export function DemoBooking(): React.ReactElement {
         message:
           "I could not take your request just now. Please try again, or use the contact page.",
       });
-      await notify("error", "Could not submit your request", "Please try again in a moment.");
+      void notify("error", "Could not submit your request", "Please try again in a moment.");
     }
+  };
+
+  const handleSubmit = (e: React.FormEvent): void => {
+    e.preventDefault();
+
+    const nextErrors = validateForm(state.formData);
+    dispatch({ type: "set_errors", errors: nextErrors });
+
+    // Focus the first field that needs fixing; its error is announced through
+    // aria-describedby when it takes focus.
+    const firstInvalid = (Object.keys(FIELD_IDS) as Array<keyof FormData>).find(
+      (field) => nextErrors[field]
+    );
+    if (firstInvalid) {
+      document.getElementById(FIELD_IDS[firstInvalid])?.focus();
+      return;
+    }
+
+    dispatch({ type: "submit_start" });
+    startSubmit(submitRequest);
   };
 
   return (
@@ -469,7 +496,12 @@ export function DemoBooking(): React.ReactElement {
             <DemoFeatureColumn />
           </div>
           <div className="lg:col-span-6">
-            <DemoFormCard state={state} onChange={handleInputChange} onSubmit={handleSubmit} />
+            <DemoFormCard
+              state={state}
+              isSubmitting={isSubmitting}
+              onChange={handleInputChange}
+              onSubmit={handleSubmit}
+            />
           </div>
         </div>
       </div>

@@ -3,72 +3,37 @@
 import { Input } from "@/components/ui/input";
 import { m } from "framer-motion";
 import { Search, Tag as TagIcon, X } from "lucide-react";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
+
+const MAX_VISIBLE_TAGS = 10;
 
 interface BlogFiltersProps {
   allTags: string[];
-  onSearch: (query: string) => void;
-  onTagsChange: (tags: string[]) => void;
+  searchQuery: string;
+  selectedTags: string[];
+  onSearchChange: (query: string, options?: { immediate?: boolean }) => void;
+  onTagToggle: (tag: string) => void;
 }
 
 /**
- * Custom hook for debouncing a value
- * @param value - The value to debounce
- * @param delay - Delay in milliseconds
- * @returns The debounced value
+ * Controlled by `Blogs`, which keeps both values in the query string. This used
+ * to hold its own copy of the query and the tags and push each one up through
+ * an effect, so every change rendered twice and the two copies could drift.
  */
-function useDebounce<T>(value: T, delay: number): T {
-  const [debouncedValue, setDebouncedValue] = useState<T>(value);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setDebouncedValue(value);
-    }, delay);
-
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [value, delay]);
-
-  return debouncedValue;
-}
-
-export function BlogFilters({ allTags, onSearch, onTagsChange }: BlogFiltersProps) {
-  const MAX_VISIBLE_TAGS = 10;
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+export function BlogFilters({
+  allTags,
+  searchQuery,
+  selectedTags,
+  onSearchChange,
+  onTagToggle,
+}: BlogFiltersProps) {
   const [showAllTags, setShowAllTags] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Debounce search query with 300ms delay for better UX
-  const debouncedSearchQuery = useDebounce(searchQuery, 300);
-
-  // Trigger search callback when debounced value changes
-  useEffect(() => {
-    onSearch(debouncedSearchQuery);
-  }, [debouncedSearchQuery, onSearch]);
-
-  const handleSearchChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(e.target.value);
-  }, []);
-
-  const handleClearSearch = useCallback(() => {
-    setSearchQuery("");
+  const handleClearSearch = () => {
+    onSearchChange("", { immediate: true });
     inputRef.current?.focus();
-  }, []);
-
-  const handleTagToggle = useCallback((tag: string) => {
-    setSelectedTags(prev => {
-      const newTags = prev.includes(tag)
-        ? prev.filter(t => t !== tag)
-        : [...prev, tag];
-      return newTags;
-    });
-  }, []);
-
-  useEffect(() => {
-    onTagsChange(selectedTags);
-  }, [selectedTags, onTagsChange]);
+  };
 
   const visibleTags = showAllTags ? allTags : allTags.slice(0, MAX_VISIBLE_TAGS);
 
@@ -83,10 +48,12 @@ export function BlogFilters({ allTags, onSearch, onTagsChange }: BlogFiltersProp
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground pointer-events-none" aria-hidden="true" />
         <Input
           ref={inputRef}
-          type="text"
-          placeholder={"Search by title, description, or tags\u2026"}
+          type="search"
+          name="q"
+          autoComplete="off"
+          placeholder={"Search by title, description, or tags…"}
           value={searchQuery}
-          onChange={handleSearchChange}
+          onChange={(event) => onSearchChange(event.target.value)}
           className="w-full pl-10 pr-10 bg-secondary/50 border-0 focus-visible:ring-2 focus-visible:ring-brand/20"
           aria-label="Search blogs by title, description, or tags"
         />
@@ -115,11 +82,11 @@ export function BlogFilters({ allTags, onSearch, onTagsChange }: BlogFiltersProp
             <button
               key={tag}
               type="button"
-              onClick={() => handleTagToggle(tag)}
-              className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium transition-colors ${
+              onClick={() => onTagToggle(tag)}
+              className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
                 isSelected
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-secondary hover:bg-secondary/80 text-muted-foreground"
+                  ? "bg-primary text-primary-foreground hover:bg-primary/90"
+                  : "bg-secondary hover:bg-secondary/80 text-muted-foreground hover:text-foreground"
               }`}
               aria-label={isSelected ? `Remove ${tag} filter` : `Filter by ${tag}`}
               aria-pressed={isSelected}
@@ -127,7 +94,7 @@ export function BlogFilters({ allTags, onSearch, onTagsChange }: BlogFiltersProp
               <TagIcon className="size-3" aria-hidden="true" />
               {tag}
               {isSelected && (
-                <X className="size-3 hover:text-primary-foreground/80" aria-hidden="true" />
+                <X className="size-3" aria-hidden="true" />
               )}
             </button>
           );

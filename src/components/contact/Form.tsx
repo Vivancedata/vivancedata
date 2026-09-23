@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { useState, useRef, useEffect } from "react"
+import { useUnsavedChangesWarning } from "@/hooks/useUnsavedChangesWarning"
 import { toast } from "sonner"
 
 import { Button } from "@/components/ui/button"
@@ -43,7 +44,7 @@ const formSchema = z.object({
     message: "Last name must be at least 2 characters.",
   }),
   email: z.string().email({
-    message: "Invalid email address.",
+    message: "Invalid email address. Enter a full one, like dana@ruizheating.com.",
   }),
   // The buyer here is phone-first and reads this between jobs. Optional,
   // because insisting on a number costs more submissions than it wins.
@@ -72,7 +73,6 @@ const formSchema = z.object({
 })
 
 export function ProfileForm() {
-  const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const successHeadingRef = useRef<HTMLHeadingElement>(null)
 
@@ -96,11 +96,15 @@ export function ProfileForm() {
       message: "",
     },
   })
+  // react-hook-form already tracks the request: it is pending for exactly as
+  // long as onSubmit's promise, so no second loading flag is kept here.
+  const { isSubmitting, isDirty } = form.formState
+
+  // A half-written message is lost on a reload or a closed tab; ask first.
+  useUnsavedChangesWarning(isDirty && !isSubmitted)
 
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    setIsSubmitting(true);
-
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -133,8 +137,6 @@ export function ProfileForm() {
         description: fromApi ||
           'Nothing reached me, so please try again. If it fails twice, email me at info@vivancedata.com and I will pick it up there.'
       });
-    } finally {
-      setIsSubmitting(false);
     }
   }
 
@@ -185,7 +187,7 @@ export function ProfileForm() {
                     <FormLabel>First name</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Dana"
+                        placeholder="Dana…"
                         required
                         autoComplete="given-name"
                         {...field}
@@ -203,7 +205,7 @@ export function ProfileForm() {
                     <FormLabel>Last name</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Ruiz"
+                        placeholder="Ruiz…"
                         required
                         autoComplete="family-name"
                         {...field}
@@ -225,9 +227,10 @@ export function ProfileForm() {
                       <Input
                         type="email"
                         inputMode="email"
-                        placeholder="dana@ruizheating.com"
+                        placeholder="dana@ruizheating.com…"
                         required
                         autoComplete="email"
+                        spellCheck={false}
                         {...field}
                       />
                     </FormControl>
@@ -245,7 +248,7 @@ export function ProfileForm() {
                       <Input
                         type="tel"
                         inputMode="tel"
-                        placeholder="(555) 010-1234"
+                        placeholder="(555) 010-1234…"
                         autoComplete="tel"
                         {...field}
                       />
@@ -264,7 +267,7 @@ export function ProfileForm() {
                     <FormLabel>Company</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Ruiz Heating and Air"
+                        placeholder="Ruiz Heating and Air…"
                         required
                         autoComplete="organization"
                         {...field}
@@ -284,7 +287,7 @@ export function ProfileForm() {
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Pick the closest one" />
+                        <SelectValue placeholder="Pick the closest one…" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
@@ -306,8 +309,9 @@ export function ProfileForm() {
                   <FormLabel>Message</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder="Which job goes wrong, and how often?"
+                      placeholder="Which job goes wrong, and how often…"
                       className="min-h-[120px]"
+                      autoComplete="off"
                       required
                       {...field}
                     />
@@ -324,8 +328,12 @@ export function ProfileForm() {
             >
               {isSubmitting ? (
                 <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden="true" />
-                  <span>Sending...</span>
+                  {/* The wrapper spins, not the SVG: transforms on an <svg>
+                    * element are not GPU-composited in every browser. */}
+                  <span className="mr-2 inline-flex animate-spin" aria-hidden="true">
+                    <Loader2 className="h-4 w-4" />
+                  </span>
+                  <span>Sending…</span>
                   <span className="sr-only">Sending your message. This takes a moment.</span>
                 </>
               ) : (

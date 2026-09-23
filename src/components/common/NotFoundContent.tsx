@@ -1,11 +1,10 @@
 "use client"
 
-import { useState } from "react"
 import Link from "next/link"
 import { LazyMotion, domAnimation, m } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import { prefersReducedMotion } from "@/lib/performance"
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion"
 import {
   Home,
   Briefcase,
@@ -25,14 +24,16 @@ const popularPages = [
   { name: "Blog", href: "/blog", icon: BookOpen, description: "Notes on automating this kind of work" },
 ]
 
-// Floating data particles for AI-themed decoration
+// Floating data particles for AI-themed decoration. Every loop on this page
+// plays once and settles within five seconds: decorative motion that runs
+// indefinitely beside content needs a pause control, and this has none.
 function FloatingParticles({ reducedMotion }: { reducedMotion: boolean }) {
   if (reducedMotion) return null
 
   const particles = [
     { x: 10, y: 20, size: 4, delay: 0, duration: 4 },
     { x: 85, y: 15, size: 6, delay: 0.5, duration: 3.5 },
-    { x: 20, y: 75, size: 5, delay: 1, duration: 4.5 },
+    { x: 20, y: 75, size: 5, delay: 1, duration: 4 },
     { x: 90, y: 80, size: 4, delay: 0.3, duration: 3.8 },
     { x: 5, y: 50, size: 3, delay: 0.7, duration: 4.2 },
     { x: 95, y: 45, size: 5, delay: 1.2, duration: 3.6 },
@@ -57,7 +58,6 @@ function FloatingParticles({ reducedMotion }: { reducedMotion: boolean }) {
           }}
           transition={{
             duration: particle.duration,
-            repeat: Infinity,
             delay: particle.delay,
             ease: "easeInOut" as const,
           }}
@@ -150,7 +150,7 @@ function Illustration({ reducedMotion }: { reducedMotion: boolean }) {
               r="6"
               className="fill-primary/40"
               animate={{ y: [0, -12, 0], opacity: [0.4, 0.8, 0.4] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" as const }}
+              transition={{ duration: 3, ease: "easeInOut" as const }}
             />
             <m.circle
               cx="310"
@@ -158,7 +158,7 @@ function Illustration({ reducedMotion }: { reducedMotion: boolean }) {
               r="5"
               className="fill-primary/30"
               animate={{ y: [0, -8, 0], opacity: [0.3, 0.6, 0.3] }}
-              transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" as const, delay: 0.5 }}
+              transition={{ duration: 2.5, ease: "easeInOut" as const, delay: 0.5 }}
             />
             <m.circle
               cx="100"
@@ -166,7 +166,7 @@ function Illustration({ reducedMotion }: { reducedMotion: boolean }) {
               r="4"
               className="fill-primary/25"
               animate={{ y: [0, -10, 0], opacity: [0.25, 0.5, 0.25] }}
-              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" as const, delay: 1 }}
+              transition={{ duration: 3.5, ease: "easeInOut" as const, delay: 1 }}
             />
             <m.circle
               cx="300"
@@ -174,7 +174,7 @@ function Illustration({ reducedMotion }: { reducedMotion: boolean }) {
               r="6"
               className="fill-primary/35"
               animate={{ y: [0, -6, 0], opacity: [0.35, 0.65, 0.35] }}
-              transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" as const, delay: 0.3 }}
+              transition={{ duration: 2.8, ease: "easeInOut" as const, delay: 0.3 }}
             />
           </>
         )}
@@ -229,7 +229,7 @@ function Illustration({ reducedMotion }: { reducedMotion: boolean }) {
             className="fill-none stroke-primary"
             strokeWidth="2"
             animate={reducedMotion ? {} : { scale: [1, 1.1, 1] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" as const }}
+            transition={{ duration: 2, ease: "easeInOut" as const }}
           />
           {/* Inner brain pattern */}
           <m.path
@@ -274,7 +274,7 @@ function Illustration({ reducedMotion }: { reducedMotion: boolean }) {
 }
 
 export function NotFoundContent() {
-  const [reducedMotion] = useState(() => prefersReducedMotion())
+  const reducedMotion = usePrefersReducedMotion()
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -384,10 +384,10 @@ export function NotFoundContent() {
                       "bg-card border border-border",
                       "hover:bg-accent/50 hover:border-brand/30",
                       "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-                      "transition-all duration-200"
+                      "transition-colors duration-200"
                     )}
                   >
-                    <div className="flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-muted mb-3 group-hover:bg-muted group-hover:scale-105 transition-all duration-200">
+                    <div className="flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-muted mb-3 group-hover:bg-muted group-hover:scale-105 transition-transform duration-200">
                       <Icon className="h-5 w-5 text-mute sm:h-6 sm:w-6" strokeWidth={1.25} aria-hidden="true" />
                     </div>
                     <span className="font-medium text-foreground group-hover:text-foreground transition-colors">

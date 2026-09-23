@@ -124,7 +124,7 @@ export default function GenerativeAIPage() {
               <div>
                 <div className="eyebrow mb-1">› PROMPT</div>
                 <div className="text-foreground text-xs bg-muted rounded-sm p-2.5 leading-relaxed">
-                  &quot;Read this delivery slip and pull out the fields we post to the job record...&quot;
+                  “Read this delivery slip and pull out the fields we post to the job record…”
                 </div>
               </div>
               <div>

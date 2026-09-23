@@ -23,17 +23,25 @@ import { ledgerMarks } from "@/constants/nightLog";
  * the whole of the JavaScript here, it runs no work on load, and if the
  * observer never fires the strip simply stays paused — the failure mode is a
  * static strip, not a missing one.
+ *
+ * It also carries a pause control. A loop that moves for longer than five
+ * seconds beside readable content has to be stoppable (WCAG 2.2.2), and
+ * `aria-hidden` does not exempt it: a sighted visitor distracted by motion is
+ * exactly who the rule is for. Under reduced motion the strip is already still,
+ * so the control is hidden there.
  */
 export function LedgerStrip() {
   const ref = useRef<HTMLDivElement | null>(null);
-  const [running, setRunning] = useState(false);
+  const [inView, setInView] = useState(false);
+  const [paused, setPaused] = useState(false);
+  const running = inView && !paused;
 
   useEffect(() => {
     const node = ref.current;
     if (!node) return;
 
     const observer = new IntersectionObserver(
-      ([entry]) => setRunning(entry.isIntersecting),
+      ([entry]) => setInView(entry.isIntersecting),
       { rootMargin: "80px" }
     );
     observer.observe(node);
@@ -42,14 +50,11 @@ export function LedgerStrip() {
   }, []);
 
   return (
-    <div
-      ref={ref}
-      className="relative overflow-hidden border-y border-rule py-3.5"
-      aria-hidden="true"
-    >
+    <div ref={ref} className="relative overflow-hidden border-y border-rule py-3.5">
       <div
         className="drift flex w-max gap-0"
         style={{ animationPlayState: running ? "running" : "paused" }}
+        aria-hidden="true"
       >
         {[0, 1].map((copy) => (
           <ul key={copy} className="flex shrink-0 items-center gap-0">
@@ -64,6 +69,15 @@ export function LedgerStrip() {
           </ul>
         ))}
       </div>
+      <button
+        type="button"
+        onClick={() => setPaused((value) => !value)}
+        aria-pressed={paused}
+        aria-label={paused ? "Play the moving strip" : "Pause the moving strip"}
+        className="absolute inset-y-0 right-0 inline-flex min-w-11 items-center justify-center border-l border-rule bg-background px-3 text-label uppercase text-mute transition-colors duration-fast hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring motion-reduce:hidden"
+      >
+        {paused ? "Play" : "Pause"}
+      </button>
     </div>
   );
 }
