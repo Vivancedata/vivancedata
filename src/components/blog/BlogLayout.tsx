@@ -2,7 +2,7 @@
 
 import { m } from "framer-motion";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { formatDate } from "@/lib/formatDate";
 import { Container } from "@/components/common/Container";
 import { Heading } from "@/components/common/Heading";
@@ -35,7 +35,6 @@ export function BlogLayout({
   relatedPosts,
   currentSlug,
 }: BlogLayoutProps) {
-  const router = useRouter();
   const [isPlaying, setIsPlaying] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -76,16 +75,16 @@ export function BlogLayout({
       <div className="xl:relative">
         <div className="mx-auto max-w-2xl">
           {previousPathname && (
-            <m.button
-              type="button"
-              onClick={() => router.back()}
+            // A link, not a router.back() button: it has a real destination,
+            // so it opens in a new tab and works when the post was the
+            // visitor's first page.
+            <Link
+              href={previousPathname}
               aria-label="Go back to the blog"
-              className="group mb-8 flex h-10 w-10 items-center justify-center rounded-full bg-card border border-border transition-colors hover:border-brand/40"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="group mb-8 flex h-10 w-10 items-center justify-center rounded-full bg-card border border-border transition-[border-color,transform] duration-200 hover:scale-105 hover:border-brand/40 active:scale-95"
             >
-              <ArrowLeft className="h-4 w-4 stroke-zinc-500 transition group-hover:stroke-zinc-700 dark:stroke-zinc-500 dark:group-hover:stroke-zinc-400" />
-            </m.button>
+              <ArrowLeft className="h-4 w-4 stroke-zinc-500 transition-colors group-hover:stroke-zinc-700 dark:stroke-zinc-500 dark:group-hover:stroke-zinc-400" />
+            </Link>
           )}
           <article>
             <header className="flex flex-col">

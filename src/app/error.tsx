@@ -54,12 +54,13 @@ export default function Error({
             Try Again
           </Button>
 
-          <Link href="/">
-            <Button variant="outline" className="gap-2">
+          {/* asChild: one link element, not a <button> nested inside an <a>. */}
+          <Button asChild variant="outline" className="gap-2">
+            <Link href="/">
               <Home className="h-4 w-4" />
               Back to Home
-            </Button>
-          </Link>
+            </Link>
+          </Button>
         </div>
 
         <div className="mt-12 pt-8 border-t border-border">

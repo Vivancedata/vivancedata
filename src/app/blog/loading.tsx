@@ -4,6 +4,8 @@ import { Skeleton, SkeletonCard } from "@/components/ui/skeleton";
 export default function BlogLoading() {
   return (
     <Container className="py-16">
+      {/* Skeletons are silent to a screen reader; this says what is happening. */}
+      <p role="status" className="sr-only">Loading…</p>
       {/* Page Header Skeleton */}
       <div className="text-center mb-12">
         <Skeleton className="h-12 w-80 mx-auto mb-4" />
