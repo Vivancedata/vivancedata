@@ -9,11 +9,10 @@ import { cn } from "@/lib/utils";
 import { prefersReducedMotion } from "@/lib/performance";
 import {
   ALL_ACCEPTED_COOKIE_PREFERENCES,
-  CONSENT_STORAGE_KEY,
   CONSENT_UPDATED_EVENT,
   DEFAULT_COOKIE_PREFERENCES,
-  parseCookiePreferences,
   readCookiePreferences,
+  writeCookiePreferences,
   type CookiePreferences,
 } from "@/lib/cookieConsent";
 
@@ -132,46 +131,50 @@ function CookieCustomizationPanel({
         >
           <div className="border-t border-border px-3 py-3 sm:px-4">
             <div className="space-y-3">
+              {/* The whole row is the label, so the text and the switch are one
+                * hit target instead of a switch with a dead zone beside it. */}
               {COOKIE_CATEGORIES.map((category) => (
-                <div
+                <label
                   key={category.key}
                   className={cn(
                     "flex items-center justify-between gap-4 rounded-md p-3",
-                    "bg-muted/50 dark:bg-muted/30"
+                    "bg-muted/50 dark:bg-muted/30",
+                    category.disabled ? "cursor-not-allowed" : "cursor-pointer"
                   )}
                 >
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-foreground">
+                  <span className="flex-1 min-w-0">
+                    <span className="block text-sm font-medium text-foreground">
                       {category.label}
-                    </p>
-                    <p className="text-xs text-muted-foreground mt-0.5 truncate">
+                    </span>
+                    <span className="block text-xs text-muted-foreground mt-0.5 truncate">
                       {category.description}
-                    </p>
-                  </div>
-                  <label className="relative inline-flex items-center cursor-pointer">
+                    </span>
+                  </span>
+                  <span className="relative inline-flex items-center">
                     <input
                       type="checkbox"
+                      name={`cookies-${category.key}`}
                       checked={preferences[category.key]}
                       onChange={() => toggleCategory(category.key)}
                       disabled={category.disabled}
                       className="sr-only peer"
-                      aria-label={`Toggle ${category.label}`}
                     />
-                    <div
+                    <span
+                      aria-hidden="true"
                       className={cn(
-                        "w-11 h-6 rounded-full peer",
+                        "block w-11 h-6 rounded-full peer",
                         "bg-muted-foreground/30 dark:bg-muted-foreground/20",
                         "peer-checked:bg-primary",
                         "peer-focus-visible:ring-2 peer-focus-visible:ring-ring peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-background",
                         "after:content-[''] after:absolute after:top-[2px] after:start-[2px]",
                         "after:bg-background after:rounded-full after:h-5 after:w-5",
-                        "after:transition-all after:duration-200",
+                        "after:transition-transform after:duration-200",
                         "peer-checked:after:translate-x-5",
-                        category.disabled && "opacity-60 cursor-not-allowed"
+                        category.disabled && "opacity-60"
                       )}
                     />
-                  </label>
-                </div>
+                  </span>
+                </label>
               ))}
             </div>
 
@@ -319,9 +322,7 @@ export function CookieConsent() {
   const [reducedMotion] = useState(() => prefersReducedMotion());
 
   useEffect(() => {
-    const storedConsent = parseCookiePreferences(
-      localStorage.getItem(CONSENT_STORAGE_KEY)
-    );
+    const storedConsent = readCookiePreferences();
 
     if (!storedConsent) {
       const revealBanner = () => {
@@ -341,7 +342,7 @@ export function CookieConsent() {
   }, []);
 
   const saveConsent = useCallback((prefs: CookiePreferences) => {
-    localStorage.setItem(CONSENT_STORAGE_KEY, JSON.stringify(prefs));
+    writeCookiePreferences(prefs);
     window.dispatchEvent(
       new CustomEvent(CONSENT_UPDATED_EVENT, {
         detail: prefs,

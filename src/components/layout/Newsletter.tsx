@@ -1,29 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState, useTransition } from "react";
 import { toast } from "sonner";
 import { Input } from "@/components/ui/input";
 import { ListMark } from "@/components/common/Marks";
 import { ctaSecondary } from "@/components/common/controls";
 
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export function Newsletter() {
   const [email, setEmail] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [error, setError] = useState("");
+  const [isSubmitting, startSubmit] = useTransition();
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    // Basic email validation
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      setError("Please enter a valid email address");
-      return;
-    }
-
-    setError("");
-    setIsSubmitting(true);
-
+  const subscribe = async () => {
     try {
       const response = await fetch('/api/newsletter', {
         method: 'POST',
@@ -46,13 +38,25 @@ export function Newsletter() {
       });
     } catch (error) {
       console.error('Newsletter subscription error:', error);
-      setError("Failed to subscribe. Please try again later.");
+      setError("That did not go through. Try again in a minute, or write to info@vivancedata.com.");
       toast.error('Subscription failed', {
         description: 'Please try again, or write to info@vivancedata.com.'
       });
-    } finally {
-      setIsSubmitting(false);
     }
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!email || !EMAIL_PATTERN.test(email)) {
+      setError("Enter a full email address, like you@company.com.");
+      // The error sits under the field; put the cursor back where the fix is.
+      inputRef.current?.focus();
+      return;
+    }
+
+    setError("");
+    startSubmit(subscribe);
   };
 
   if (isSubscribed) {
@@ -92,9 +96,15 @@ export function Newsletter() {
             Email address
           </label>
           <Input
+            ref={inputRef}
             id="newsletter-email"
+            name="email"
             type="email"
-            placeholder="you@company.com"
+            autoComplete="email"
+            spellCheck={false}
+            aria-invalid={error ? true : undefined}
+            aria-describedby="newsletter-email-error"
+            placeholder="you@company.com…"
             className="min-h-11 rounded-sm border-input bg-background"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -108,7 +118,14 @@ export function Newsletter() {
             {isSubmitting ? "Subscribing\u2026" : "Subscribe"}
           </button>
         </div>
-        {error && <p className="mt-2 text-body-sm text-destructive">{error}</p>}
+        {/* Always mounted so the live region exists before the message does. */}
+        <p
+          id="newsletter-email-error"
+          className="mt-2 text-body-sm text-destructive empty:hidden"
+          aria-live="polite"
+        >
+          {error}
+        </p>
       </form>
     </div>
   );

@@ -88,7 +88,7 @@ export const nightLog: LogRecord[] = [
     fields: [
       { label: "Supplier", value: "Kembrook Aggregates", verdict: "filled" },
       { label: "Against PO", value: "PO-2291-B", verdict: "filled", note: "Matched on supplier and date, not on a barcode" },
-      { label: "Net weight", value: "12,480 lb", verdict: "filled" },
+      { label: "Net weight", value: "12,480\u00a0lb", verdict: "filled" },
       {
         label: "Count",
         value: "14 of 16 bundles",
@@ -148,7 +148,7 @@ export const ledgerMarks = [
   "07:12",
   "IMG_4471",
   "WO-5518",
-  "12,480 lb",
+  "12,480\u00a0lb",
   "NO HEAT",
   "PERMIT B-2209",
   "17:56",

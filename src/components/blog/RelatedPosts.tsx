@@ -52,7 +52,7 @@ export function RelatedPosts({ posts, currentSlug }: RelatedPostsProps) {
           <Link key={post.slug} href={`/blog/${post.slug}`}>
             <m.article
               variants={item}
-              className="group relative flex h-full flex-col overflow-hidden rounded-xl bg-secondary/50 transition-all hover:bg-secondary/70"
+              className="group relative flex h-full flex-col overflow-hidden rounded-xl bg-secondary/50 transition-colors hover:bg-secondary/70"
             >
               <div className="relative aspect-video w-full overflow-hidden">
                 {isDefaultBlogImage(post.image) ? (
@@ -77,7 +77,7 @@ export function RelatedPosts({ posts, currentSlug }: RelatedPostsProps) {
                     </div>
                     <div className="flex items-center gap-1">
                       <Clock className="size-3" />
-                      <span>{post.content ? Math.ceil(post.content.split(/\s+/).length / 200) : 5} min read</span>
+                      <span>{post.readingMinutes ?? 5} min read</span>
                     </div>
                   </div>
 

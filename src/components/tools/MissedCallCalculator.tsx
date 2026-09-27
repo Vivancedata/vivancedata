@@ -23,6 +23,7 @@ const currency = new Intl.NumberFormat("en-US", {
   currency: "USD",
   maximumFractionDigits: 0,
 });
+const count = new Intl.NumberFormat("en-US");
 
 interface FieldProps {
   id: string;
@@ -47,7 +48,9 @@ function Field({ id, label, hint, value, min, max, step, suffix, prefix, onChang
         {prefix ? <span className="font-mono text-data text-mute">{prefix}</span> : null}
         <input
           id={id}
+          name={id}
           type="number"
+          autoComplete="off"
           inputMode="numeric"
           min={min}
           max={max}
@@ -135,8 +138,8 @@ export function MissedCallCalculator() {
                 * they have to take on trust. */}
               <dl className="mt-xl border-t border-rule">
                 {[
-                  ["Calls a year", `${missedCallsPerWeek} × 52 = ${missedCallsPerWeek * 52}`],
-                  ["Of those, booked", `${bookingSharePercent}% = ${results.jobsLostPerYear} jobs`],
+                  ["Calls a year", `${count.format(missedCallsPerWeek)} × 52 = ${count.format(missedCallsPerWeek * 52)}`],
+                  ["Of those, booked", `${bookingSharePercent}% = ${count.format(results.jobsLostPerYear)} jobs`],
                   ["At", `${currency.format(averageJobValue)} a job`],
                   ["A month", currency.format(results.revenueLostPerMonth)],
                 ].map(([term, detail]) => (

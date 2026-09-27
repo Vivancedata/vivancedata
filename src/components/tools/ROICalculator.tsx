@@ -12,14 +12,18 @@ import { m, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { calculateROI, type ROIInputs, type ROIResults } from "@/lib/roiModel";
 
-const formatCurrency = (value: number) => new Intl.NumberFormat("en-US", {
+// Built once: an Intl formatter is expensive to construct, and these run a
+// dozen times per render.
+const currencyFormatter = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD",
   minimumFractionDigits: 0,
   maximumFractionDigits: 0,
-}).format(value);
+});
+const numberFormatter = new Intl.NumberFormat("en-US");
 
-const formatNumber = (value: number) => new Intl.NumberFormat("en-US").format(value);
+const formatCurrency = (value: number) => currencyFormatter.format(value);
+const formatNumber = (value: number) => numberFormatter.format(value);
 
 
 const buildROISummary = (results: ROIResults): Record<string, string | number> => ({
@@ -61,11 +65,14 @@ function ROIInputForm({ inputs, onInputChange, onCalculate }: ROIInputFormProps)
               <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-mute" aria-hidden="true" />
               <Input
                 id="revenue"
+                name="revenue"
                 type="number"
+                inputMode="numeric"
+                autoComplete="off"
                 value={inputs.annualRevenue}
                 onChange={(event) => onInputChange("annualRevenue", event.target.value)}
                 className="pl-10"
-                placeholder="5000000"
+                placeholder="5000000…"
                 aria-describedby="revenue-hint"
               />
             </div>
@@ -78,11 +85,14 @@ function ROIInputForm({ inputs, onInputChange, onCalculate }: ROIInputFormProps)
               <Users className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-mute" aria-hidden="true" />
               <Input
                 id="employees"
+                name="employees"
                 type="number"
+                inputMode="numeric"
+                autoComplete="off"
                 value={inputs.employeeCount}
                 onChange={(event) => onInputChange("employeeCount", event.target.value)}
                 className="pl-10"
-                placeholder="50"
+                placeholder="50…"
                 aria-describedby="employees-hint"
               />
             </div>
@@ -95,11 +105,14 @@ function ROIInputForm({ inputs, onInputChange, onCalculate }: ROIInputFormProps)
               <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-mute" aria-hidden="true" />
               <Input
                 id="hourlyRate"
+                name="hourlyRate"
                 type="number"
+                inputMode="decimal"
+                autoComplete="off"
                 value={inputs.avgHourlyRate}
                 onChange={(event) => onInputChange("avgHourlyRate", event.target.value)}
                 className="pl-10"
-                placeholder="50"
+                placeholder="50…"
                 aria-describedby="hourly-rate-hint"
               />
             </div>
@@ -112,11 +125,14 @@ function ROIInputForm({ inputs, onInputChange, onCalculate }: ROIInputFormProps)
               <Clock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-mute" aria-hidden="true" />
               <Input
                 id="inefficiencyHours"
+                name="inefficiencyHours"
                 type="number"
+                inputMode="decimal"
+                autoComplete="off"
                 value={inputs.inefficiencyHours}
                 onChange={(event) => onInputChange("inefficiencyHours", event.target.value)}
                 className="pl-10"
-                placeholder="10"
+                placeholder="10…"
                 aria-describedby="inefficiency-hint"
               />
             </div>
@@ -272,7 +288,7 @@ function FinancialBreakdown({ results }: FinancialBreakdownProps) {
               <div className="bg-destructive/10 rounded-md p-4">
                 <div className="flex justify-between items-center">
                   <span className="text-foreground">Build and setup</span>
-                  <span className="font-bold text-lg">{formatCurrency(results.totalCost)}</span>
+                  <span className="font-bold text-lg tabular-nums">{formatCurrency(results.totalCost)}</span>
                 </div>
               </div>
             </div>
@@ -283,25 +299,25 @@ function FinancialBreakdown({ results }: FinancialBreakdownProps) {
                 <div className="bg-success/10 rounded-md p-4">
                   <div className="flex justify-between items-center">
                     <span className="text-foreground">Year 1</span>
-                    <span className="font-bold text-lg">{formatCurrency(results.yearOneSavings)}</span>
+                    <span className="font-bold text-lg tabular-nums">{formatCurrency(results.yearOneSavings)}</span>
                   </div>
                 </div>
                 <div className="bg-success/10 rounded-md p-4">
                   <div className="flex justify-between items-center">
                     <span className="text-foreground">Year 2</span>
-                    <span className="font-bold text-lg">{formatCurrency(results.yearTwoSavings)}</span>
+                    <span className="font-bold text-lg tabular-nums">{formatCurrency(results.yearTwoSavings)}</span>
                   </div>
                 </div>
                 <div className="bg-success/10 rounded-md p-4">
                   <div className="flex justify-between items-center">
                     <span className="text-foreground">Year 3</span>
-                    <span className="font-bold text-lg">{formatCurrency(results.yearThreeSavings)}</span>
+                    <span className="font-bold text-lg tabular-nums">{formatCurrency(results.yearThreeSavings)}</span>
                   </div>
                 </div>
                 <div className="bg-success/10 rounded-md p-4 border border-success">
                   <div className="flex justify-between items-center">
                     <span className="font-semibold text-foreground">Total over three years</span>
-                    <span className="font-bold text-xl text-success">{formatCurrency(results.totalThreeYearSavings)}</span>
+                    <span className="font-bold text-xl text-success tabular-nums">{formatCurrency(results.totalThreeYearSavings)}</span>
                   </div>
                 </div>
               </div>
@@ -311,7 +327,7 @@ function FinancialBreakdown({ results }: FinancialBreakdownProps) {
               <div className="bg-muted rounded-lg p-6 border-2 border-brand/30 dark:border-brand/40">
                 <div className="flex justify-between items-center">
                   <span className="text-xl font-bold text-foreground">Net return over three years</span>
-                  <span className="text-3xl font-bold text-foreground">{formatCurrency(results.netROI)}</span>
+                  <span className="text-3xl font-bold text-foreground tabular-nums">{formatCurrency(results.netROI)}</span>
                 </div>
               </div>
             </div>

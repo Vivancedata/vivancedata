@@ -49,7 +49,7 @@ export function SiteFooter() {
                 * transparent and disappeared completely on this sheet — the
                 * footer shipped with a 28px hole where the logo should be. */}
               <Icons.logo className="h-7 w-7" />
-              <span className="font-display text-[1.375rem] leading-none text-foreground">
+              <span translate="no" className="font-display text-[1.375rem] leading-none text-foreground">
                 {siteConfig.name}
               </span>
             </a>

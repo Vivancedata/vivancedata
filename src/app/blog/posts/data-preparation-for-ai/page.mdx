@@ -8,9 +8,9 @@ image: "/images/ai-solutions.png"
 
 Somewhere in the first ten minutes of nearly every conversation about automating something, the same sentence arrives, usually with an apology attached: our records are a state.
 
-They usually are. Job numbers written four ways. Delivery slips that are photographs of delivery slips. A customer who is Smith Builders in the accounts system, Smith Builders Ltd on the invoices, and "Dave" in the dispatch notes. Field notes on the back of a card in somebody's van. The shared drive with folders called `2019 final` and `2019 final USE THIS`.
+They usually are. Job numbers written four ways. Delivery slips that are photographs of delivery slips. A customer who is Smith Builders in the accounts system, Smith Builders Ltd on the invoices, and “Dave” in the dispatch notes. Field notes on the back of a card in somebody's van. The shared drive with folders called `2019 final` and `2019 final USE THIS`.
 
-None of that is disqualifying, and I want to be specific about why, because "we'll need to clean the data first" is how a lot of these projects die of exhaustion before they start. Tidy is not the requirement. There are about four things that genuinely have to be true, and the rest is noise you can live with.
+None of that is disqualifying, and I want to be specific about why, because “we'll need to clean the data first” is how a lot of these projects die of exhaustion before they start. Tidy is not the requirement. There are about four things that genuinely have to be true, and the rest is noise you can live with.
 
 ## The four things that actually matter
 
@@ -48,7 +48,7 @@ That page tells you more than any conversation about data quality. If four in fi
 
 Some of it is cosmetic and some of it will actually bite.
 
-Doesn't matter much: inconsistent formatting, dates written in different orders, extra spaces, mixed capitals, four ways of abbreviating "quantity". These are mechanical to fix and they get fixed once.
+Doesn't matter much: inconsistent formatting, dates written in different orders, extra spaces, mixed capitals, four ways of abbreviating “quantity”. These are mechanical to fix and they get fixed once.
 
 Matters: units that silently disagree. Cases against each. Pallets against cartons. Hours against days. If half your records say 12 and mean 12 units while the other half say 12 and mean 12 cases, nothing downstream can tell the difference, and neither can you six months from now.
 
@@ -62,11 +62,11 @@ This one is worth slowing down for, because it's subtle and it's the mistake tha
 
 Your dispatch records show the jobs you took. They do not show the calls that rang out at 9pm and went to somebody else, because those never became records. Feed a system that history and ask it when you get emergency work, and it will tell you — correctly, according to the data — that almost nothing comes in after hours. It has learned the shape of your answering capacity and called it demand.
 
-Same shape, different trade: a stock history that doesn't distinguish "nobody ordered it" from "we were out of it" will teach a forecast to keep you out of the parts you keep running out of. A line-inspection record that only logs the defects somebody had time to write up tells you about the quiet shifts, not the bad ones.
+Same shape, different trade: a stock history that doesn't distinguish “nobody ordered it” from “we were out of it” will teach a forecast to keep you out of the parts you keep running out of. A line-inspection record that only logs the defects somebody had time to write up tells you about the quiet shifts, not the bad ones.
 
-Nobody can spot this from the data alone. It takes someone who knows the work saying "hang on, that's not right, we just stopped logging those in March". Which is why the person who does the job has to be in the room when the records get looked at, and why I'd rather have an hour with your dispatcher than a week with your database.
+Nobody can spot this from the data alone. It takes someone who knows the work saying “hang on, that's not right, we just stopped logging those in March”. Which is why the person who does the job has to be in the room when the records get looked at, and why I'd rather have an hour with your dispatcher than a week with your database.
 
-## What "enough" looks like
+## What “enough” looks like
 
 There's no threshold number of records, and anyone who gives you one is guessing. What matters is how many examples exist of the rarest thing you care about.
 
@@ -84,9 +84,9 @@ Do the opposite. Take the material as it is, warts included, run it through, and
 
 Whatever you fix will drift back unless something holds it. Three things do most of the work.
 
-One person owns it. Not a committee, not "everybody's responsible" — one named person who decides how a customer gets spelled.
+One person owns it. Not a committee, not “everybody's responsible” — one named person who decides how a customer gets spelled.
 
-Fix it where it's entered, not after. If a driver can photograph a slip in a way that cuts off the corner, they will, so the fix is a phone that says "I can't read the bottom, take it again" while the driver is still standing there. Anything corrected downstream gets corrected forever.
+Fix it where it's entered, not after. If a driver can photograph a slip in a way that cuts off the corner, they will, so the fix is a phone that says “I can't read the bottom, take it again” while the driver is still standing there. Anything corrected downstream gets corrected forever.
 
 Watch the change, not the number. A weekly note saying most slips came through readable means nothing on its own. The same count sitting next to last week's means everything, because a sharp drop tells you a supplier changed their form or somebody's phone camera got cracked, and that's the alert you actually want.
 

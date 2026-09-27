@@ -5,6 +5,7 @@ import {
   hasAnalyticsConsent,
   parseCookiePreferences,
   readCookiePreferences,
+  writeCookiePreferences,
 } from "../../src/lib/cookieConsent";
 
 describe("cookie consent parsing", () => {
@@ -72,6 +73,38 @@ describe("cookie consent parsing", () => {
     localStorage.setItem(CONSENT_STORAGE_KEY, "{bad-json");
     expect(readCookiePreferences()).toBeNull();
     expect(hasAnalyticsConsent()).toBe(false);
+  });
+
+  it("moves a choice stored under the unversioned key to the versioned one", () => {
+    localStorage.setItem(
+      "vivancedata-cookie-consent",
+      JSON.stringify(DEFAULT_COOKIE_PREFERENCES)
+    );
+
+    expect(readCookiePreferences()).toEqual(DEFAULT_COOKIE_PREFERENCES);
+    expect(localStorage.getItem(CONSENT_STORAGE_KEY)).toBe(
+      JSON.stringify(DEFAULT_COOKIE_PREFERENCES)
+    );
+    expect(localStorage.getItem("vivancedata-cookie-consent")).toBeNull();
+  });
+
+  it("treats storage that throws as no choice made, and never throws", () => {
+    Object.defineProperty(globalThis, "localStorage", {
+      configurable: true,
+      value: {
+        getItem: () => {
+          throw new Error("SecurityError");
+        },
+        setItem: () => {
+          throw new Error("QuotaExceededError");
+        },
+        removeItem: () => {},
+        clear: () => {},
+      },
+    });
+
+    expect(readCookiePreferences()).toBeNull();
+    expect(() => writeCookiePreferences(DEFAULT_COOKIE_PREFERENCES)).not.toThrow();
   });
 
   it("returns null when browser globals are unavailable", () => {

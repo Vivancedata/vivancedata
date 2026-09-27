@@ -5,8 +5,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { formatDate } from "@/lib/formatDate";
 import { Clock, Calendar, ArrowUpRight } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useDeferredValue, useMemo } from "react";
 import { BlogFilters } from "./BlogFilters";
+import { useUrlSearchParams, useUrlTextParam } from "@/hooks/useUrlSearchParams";
 import { BlogCover, isDefaultBlogImage } from "./BlogCover";
 import { BlogPost } from "@/types/blog";
 
@@ -30,8 +31,20 @@ export interface BlogsProps {
 }
 
 export function Blogs({ blogs }: BlogsProps) {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  // Search and tags live in the query string (`?q=…&tag=…`), so a filtered
+  // list can be linked and survives Back.
+  const [params, setParams] = useUrlSearchParams();
+  const [searchQuery, setSearchQuery] = useUrlTextParam("q");
+  const selectedTags = useMemo(() => params.getAll("tag"), [params]);
+  // Typing stays responsive; the list re-filters when React is idle.
+  const deferredQuery = useDeferredValue(searchQuery);
+
+  const toggleTag = (tag: string) => {
+    const nextTags = selectedTags.includes(tag)
+      ? selectedTags.filter((selected) => selected !== tag)
+      : [...selectedTags, tag];
+    setParams({ tag: nextTags });
+  };
 
   // Get all unique tags from blogs
   const allTags = useMemo(() => {
@@ -46,9 +59,9 @@ export function Blogs({ blogs }: BlogsProps) {
 
   // Filter blogs based on search query and selected tags
   const filteredBlogs = useMemo(() => {
-    return blogs.filter(blog => {
-      const query = searchQuery.toLowerCase().trim();
+    const query = deferredQuery.toLowerCase().trim();
 
+    return blogs.filter(blog => {
       // Check if search query matches title, description, or tags
       const matchesSearch = query === "" ||
         blog.title.toLowerCase().includes(query) ||
@@ -61,14 +74,16 @@ export function Blogs({ blogs }: BlogsProps) {
 
       return matchesSearch && matchesTags;
     });
-  }, [blogs, searchQuery, selectedTags]);
+  }, [blogs, deferredQuery, selectedTags]);
 
   return (
     <div>
       <BlogFilters
         allTags={allTags}
-        onSearch={setSearchQuery}
-        onTagsChange={setSelectedTags}
+        searchQuery={searchQuery}
+        selectedTags={selectedTags}
+        onSearchChange={setSearchQuery}
+        onTagToggle={toggleTag}
       />
 
       <m.div
@@ -81,7 +96,7 @@ export function Blogs({ blogs }: BlogsProps) {
           <Link key={blog.slug} href={`/blog/${blog.slug}`}>
             <m.article
               variants={item}
-              className="group relative flex h-full flex-col overflow-hidden rounded-xl bg-secondary/50 transition-all hover:bg-secondary/70"
+              className="group relative flex h-full flex-col overflow-hidden rounded-xl bg-secondary/50 transition-colors hover:bg-secondary/70"
             >
               <div className="relative aspect-video w-full overflow-hidden">
                 {isDefaultBlogImage(blog.image) ? (
@@ -107,7 +122,7 @@ export function Blogs({ blogs }: BlogsProps) {
                     </div>
                     <div className="flex items-center gap-1">
                       <Clock className="size-3" />
-                      <span>{blog.content ? Math.ceil(blog.content.split(/\s+/).length / 200) : 5} min read</span>
+                      <span>{blog.readingMinutes ?? 5} min read</span>
                     </div>
                   </div>
 
@@ -143,6 +158,12 @@ export function Blogs({ blogs }: BlogsProps) {
           </Link>
         ))}
       </m.div>
+
+      {/* Announced politely so a screen-reader user hears the result of a
+        * search or a tag toggle without the focus moving. */}
+      <p className="sr-only" role="status" aria-live="polite">
+        {filteredBlogs.length === 1 ? "1 post" : `${filteredBlogs.length} posts`}
+      </p>
 
       {filteredBlogs.length === 0 && (
         <m.div

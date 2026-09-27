@@ -146,6 +146,9 @@ export interface IndustryPageConfig {
   finalCtaLabel: string;
 }
 
+/** A blank line between blocks of `introBody` starts a new paragraph. */
+const PARAGRAPH_BREAK = /\n\s*\n/;
+
 export function IndustryPage({
   config,
   specimen = null,
@@ -155,9 +158,11 @@ export function IndustryPage({
   specimen?: SpecimenData | null;
 }) {
   const [leadParagraph, ...bodyParagraphs] = config.introBody
-    .split(/\n\s*\n/)
-    .map((block) => block.trim())
-    .filter(Boolean);
+    .split(PARAGRAPH_BREAK)
+    .flatMap((block) => {
+      const paragraph = block.trim();
+      return paragraph ? [paragraph] : [];
+    });
 
   // Manufacturing carries five solutions and renders them 3 + 2. Four fit a 2x2
   // grid instead; dropping them into a three-column row would strand the fourth

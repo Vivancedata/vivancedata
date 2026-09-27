@@ -4,6 +4,20 @@ import { POST } from "../../src/app/api/tool-report/route";
 
 const sendMock = vi.fn();
 
+// after() needs a live request scope, which a direct POST() call does not have.
+// Run the deferred work at once and have each request helper wait for it, so
+// the assertions below still see the courtesy send and its failure log.
+const { deferred } = vi.hoisted(() => ({ deferred: [] as Promise<unknown>[] }));
+vi.mock("next/server", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("next/server")>();
+  return {
+    ...actual,
+    after: (task: unknown) => {
+      deferred.push(Promise.resolve(typeof task === "function" ? task() : task));
+    },
+  };
+});
+
 // The seam is the resend package itself. The route builds its client per send,
 // so stubbing the module here reaches the real delivery path -- which no test
 // exercised while the client was constructed at module scope.
@@ -22,8 +36,8 @@ interface ToolReportBody {
 
 // Each test uses its own client IP so the shared in-memory rate limiter
 // buckets never leak between cases.
-const postToolReport = (body: ToolReportBody, ip: string) =>
-  POST(
+const postToolReport = async (body: ToolReportBody, ip: string) => {
+  const response = await POST(
     new NextRequest("http://localhost/api/tool-report", {
       method: "POST",
       headers: {
@@ -33,6 +47,9 @@ const postToolReport = (body: ToolReportBody, ip: string) =>
       body: JSON.stringify(body),
     })
   );
+  await Promise.all(deferred.splice(0));
+  return response;
+};
 
 const validBody = {
   email: "Visitor@Example.com",

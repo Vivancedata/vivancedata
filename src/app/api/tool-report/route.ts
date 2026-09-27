@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse, after } from 'next/server';
 import { z } from 'zod';
 import { buildRateLimitHeaders, enforceRateLimit } from '@/lib/rateLimit';
 import { emailAddress, sendCourtesy, sendCritical, teamInbox } from '@/lib/email';
@@ -27,17 +27,21 @@ const TOOL_REPORT_RATE_LIMIT_OPTIONS = {
 
 export async function POST(request: NextRequest) {
   try {
+    // The body and the rate-limit check are independent, so both start now;
+    // a request that is turned away simply never reads its body.
+    const bodyPromise = request.json();
+    bodyPromise.catch(() => {});
     const rateLimit = await enforceRateLimit(request, TOOL_REPORT_RATE_LIMIT_OPTIONS);
     const rateLimitHeaders = buildRateLimitHeaders(rateLimit);
 
     if (!rateLimit.success) {
       return NextResponse.json(
-        { error: 'Too many requests. Please try again later.' },
+        { error: 'That is more reports than this form sends in a short window. Wait a minute and try again.' },
         { status: 429, headers: rateLimitHeaders }
       );
     }
 
-    const parsed = toolReportSchema.safeParse(await request.json());
+    const parsed = toolReportSchema.safeParse(await bodyPromise);
 
     if (!parsed.success) {
       return NextResponse.json(
@@ -60,24 +64,28 @@ export async function POST(request: NextRequest) {
       // The visitor asked for this and did not get it -- tell them.
       return visitorCopy.reason === 'unconfigured'
         ? NextResponse.json(
-            { error: 'Email service not configured. Please try again later.' },
+            { error: 'Email service not configured, so the report could not be sent. Email info@vivancedata.com and I will send it by hand.' },
             { status: 503, headers: rateLimitHeaders }
           )
         : NextResponse.json(
-            { error: 'We could not send your report. Please check the address and try again.' },
+            { error: 'I could not send your report. Check the address for a typo and try again, or email info@vivancedata.com.' },
             { status: 502, headers: rateLimitHeaders }
           );
     }
 
-    await sendCourtesy(
-      {
-        fromName: 'Vivancedata Tools',
-        to: teamInbox(),
-        replyTo: report.email,
-        subject: `New ${toolLabel} lead: ${report.email}`,
-        html: buildLeadNotification(report),
-      },
-      `${toolLabel} lead notification`
+    // The visitor's report has been delivered; the lead notification to the
+    // team runs after the response is sent rather than in front of it.
+    after(() =>
+      sendCourtesy(
+        {
+          fromName: 'Vivancedata Tools',
+          to: teamInbox(),
+          replyTo: report.email,
+          subject: `New ${toolLabel} lead: ${report.email}`,
+          html: buildLeadNotification(report),
+        },
+        `${toolLabel} lead notification`
+      )
     );
 
     return NextResponse.json(
@@ -90,7 +98,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Tool report error:', error);
     return NextResponse.json(
-      { error: 'Failed to process your request. Please try again later.' },
+      { error: 'Something broke on my end and the report did not send. Try again, or email info@vivancedata.com.' },
       { status: 500 }
     );
   }

@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse, after } from 'next/server';
 import { z } from 'zod';
 import { buildRateLimitHeaders, enforceRateLimit } from '@/lib/rateLimit';
 import { emailAddress, sendCourtesy, sendCritical, teamInbox } from '@/lib/email';
@@ -25,6 +25,10 @@ const CONTACT_RATE_LIMIT_OPTIONS = {
 
 export async function POST(request: NextRequest) {
   try {
+    // The body and the rate-limit check are independent, so both start now;
+    // a request that is turned away simply never reads its body.
+    const bodyPromise = request.json();
+    bodyPromise.catch(() => {});
     const rateLimit = await enforceRateLimit(request, CONTACT_RATE_LIMIT_OPTIONS);
     const rateLimitHeaders = buildRateLimitHeaders(rateLimit);
 
@@ -35,7 +39,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const parsed = contactSchema.safeParse(await request.json());
+    const parsed = contactSchema.safeParse(await bodyPromise);
 
     if (!parsed.success) {
       // The schema is an implementation detail; the two messages callers have
@@ -84,14 +88,20 @@ export async function POST(request: NextRequest) {
           );
     }
 
-    await sendCourtesy(
-      {
-        fromName: 'Vivancedata',
-        to: enquiry.email,
-        subject: 'I have your message',
-        html: buildEnquiryConfirmation(enquiry),
-      },
-      'contact form confirmation'
+    // The confirmation is a courtesy: the enquiry has already been delivered,
+    // so the visitor's response does not wait on a second Resend round-trip.
+    // after() runs it once the response is sent (Vercel keeps the function
+    // alive for it), and sendCourtesy logs a failure recoverably.
+    after(() =>
+      sendCourtesy(
+        {
+          fromName: 'Vivancedata',
+          to: enquiry.email,
+          subject: 'I have your message',
+          html: buildEnquiryConfirmation(enquiry),
+        },
+        'contact form confirmation'
+      )
     );
 
     return NextResponse.json(

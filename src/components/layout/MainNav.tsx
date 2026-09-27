@@ -35,7 +35,7 @@ export function MainNav() {
             {/* Set in the display serif: the wordmark is the one place on this
               * site where the brand speaks in its own voice rather than in the
               * machine's. */}
-            <span className="font-display text-[1.375rem] leading-none text-foreground">
+            <span translate="no" className="font-display text-[1.375rem] leading-none text-foreground">
               {siteConfig.name}
             </span>
           </a>

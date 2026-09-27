@@ -14,6 +14,7 @@ import { CATEGORY_LABELS, questions, type ReadinessCategory } from "@/constants/
 import {
   buildAssessmentSummary,
   classifyReadiness,
+  formatCategoryScore,
   recommendationsFor,
   scoreAssessment,
   type AssessmentResults,
@@ -79,7 +80,7 @@ function ReadinessSummary({ results, readinessLevel }: ReadinessSummaryProps) {
       <div>
         <div className="flex justify-between mb-2">
           <span className="text-sm font-medium" id="overall-readiness-label">Overall readiness</span>
-          <span className="text-sm font-medium">{Math.round(results.percentageScore)}%</span>
+          <span className="text-sm font-medium tabular-nums">{Math.round(results.percentageScore)}%</span>
         </div>
         <Progress
           value={results.percentageScore}
@@ -117,8 +118,8 @@ function CategoryBreakdown({ categoryAverages }: CategoryBreakdownProps) {
                 <span className="font-semibold" id={labelId}>{info.label}</span>
               </div>
               <div className="flex justify-between mb-2">
-                <span className="text-sm">{score.toFixed(1)} / 5.0</span>
-                <span className="text-sm">{Math.round(percentage)}%</span>
+                <span className="text-sm tabular-nums">{formatCategoryScore(score)}</span>
+                <span className="text-sm tabular-nums">{Math.round(percentage)}%</span>
               </div>
               <Progress
                 value={percentage}
@@ -299,20 +300,21 @@ function QuizQuestionStep({
                   aria-labelledby={`question-${currentQ.id}`}
                 >
                   <div className="space-y-3" role="radiogroup">
+                    {/* The label wraps the radio, so the whole row -- control,
+                      * gap and text -- is one hit target with no dead zone. */}
                     {currentQ.options.map((option) => (
-                      <div key={option.value} className="flex items-start space-x-3">
+                      <Label
+                        key={option.value}
+                        htmlFor={`${currentQ.id}-${option.value}`}
+                        className="flex cursor-pointer items-start gap-3 text-sm leading-relaxed transition-colors hover:text-foreground"
+                      >
                         <RadioGroupItem
                           value={option.value.toString()}
                           id={`${currentQ.id}-${option.value}`}
                           className="mt-1"
                         />
-                        <Label
-                          htmlFor={`${currentQ.id}-${option.value}`}
-                          className="flex-1 cursor-pointer text-sm leading-relaxed hover:text-foreground transition-colors"
-                        >
-                          {option.label}
-                        </Label>
-                      </div>
+                        <span className="flex-1">{option.label}</span>
+                      </Label>
                     ))}
                   </div>
                 </RadioGroup>
@@ -352,6 +354,10 @@ export function AIReadinessQuiz() {
   const [showResults, setShowResults] = useState(false);
   const resultsRef = useRef<HTMLDivElement>(null);
   const questionRef = useRef<HTMLDivElement>(null);
+  // Focus follows the visitor's own navigation. Without this guard the effect
+  // below also ran on mount and pulled focus (and, on a phone, the scroll
+  // position) into the quiz the moment the page loaded.
+  const hasNavigatedRef = useRef(false);
 
   useEffect(() => {
     if (showResults && resultsRef.current) {
@@ -360,7 +366,7 @@ export function AIReadinessQuiz() {
   }, [showResults]);
 
   useEffect(() => {
-    if (!showResults && questionRef.current) {
+    if (!showResults && hasNavigatedRef.current && questionRef.current) {
       questionRef.current.focus();
     }
   }, [currentQuestion, showResults]);
@@ -370,6 +376,7 @@ export function AIReadinessQuiz() {
   };
 
   const handleNext = () => {
+    hasNavigatedRef.current = true;
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion((previousQuestion) => previousQuestion + 1);
       return;
@@ -378,6 +385,7 @@ export function AIReadinessQuiz() {
   };
 
   const handleRetake = () => {
+    hasNavigatedRef.current = true;
     setShowResults(false);
     setCurrentQuestion(0);
     setAnswers({});
@@ -403,7 +411,10 @@ export function AIReadinessQuiz() {
       questionRef={questionRef}
       onAnswer={handleAnswer}
       onNext={handleNext}
-      onPrevious={() => setCurrentQuestion((previousQuestion) => Math.max(0, previousQuestion - 1))}
+      onPrevious={() => {
+        hasNavigatedRef.current = true;
+        setCurrentQuestion((previousQuestion) => Math.max(0, previousQuestion - 1));
+      }}
     />
   );
 }

@@ -30,6 +30,8 @@ export interface BlogPost {
     role: string;
     avatar: string;
   };
-  /** Optional raw MDX/markdown content */
+  /** Optional raw MDX/markdown content. Never passed to a client component. */
   content?: string;
+  /** Minutes to read, computed on the server from the post source. */
+  readingMinutes?: number;
 }

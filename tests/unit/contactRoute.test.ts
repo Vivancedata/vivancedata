@@ -4,6 +4,20 @@ import { POST } from "../../src/app/api/contact/route";
 
 const sendMock = vi.fn();
 
+// after() needs a live request scope, which a direct POST() call does not have.
+// Run the deferred work at once and have each request helper wait for it, so
+// the assertions below still see the courtesy send and its failure log.
+const { deferred } = vi.hoisted(() => ({ deferred: [] as Promise<unknown>[] }));
+vi.mock("next/server", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("next/server")>();
+  return {
+    ...actual,
+    after: (task: unknown) => {
+      deferred.push(Promise.resolve(typeof task === "function" ? task() : task));
+    },
+  };
+});
+
 vi.mock("resend", () => ({
   Resend: class {
     emails = { send: sendMock };
@@ -12,8 +26,8 @@ vi.mock("resend", () => ({
 
 // Each test uses its own client IP so the shared in-memory rate limiter
 // buckets never leak between cases.
-const postContact = (body: Record<string, unknown>, ip: string) =>
-  POST(
+const postContact = async (body: Record<string, unknown>, ip: string) => {
+  const response = await POST(
     new NextRequest("http://localhost/api/contact", {
       method: "POST",
       headers: {
@@ -23,6 +37,9 @@ const postContact = (body: Record<string, unknown>, ip: string) =>
       body: JSON.stringify(body),
     })
   );
+  await Promise.all(deferred.splice(0));
+  return response;
+};
 
 const validBody = {
   firstName: "Dana",

@@ -127,6 +127,10 @@ async function subscribeToMailchimp(email: string, firstName?: string): Promise<
 
 export async function POST(request: NextRequest) {
   try {
+    // The body and the rate-limit check are independent, so both start now;
+    // a request that is turned away simply never reads its body.
+    const bodyPromise = request.json();
+    bodyPromise.catch(() => {});
     const rateLimit = await enforceRateLimit(request, NEWSLETTER_RATE_LIMIT_OPTIONS);
     const rateLimitHeaders = buildRateLimitHeaders(rateLimit);
 
@@ -137,7 +141,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const parsed = newsletterSchema.safeParse(await request.json());
+    const parsed = newsletterSchema.safeParse(await bodyPromise);
 
     if (!parsed.success) {
       return NextResponse.json(
@@ -200,7 +204,7 @@ export async function POST(request: NextRequest) {
     // subscription that did not happen is the same lie the contact form used
     // to tell, and NODE_ENV is not consent.
     return NextResponse.json(
-      { error: 'Newsletter service not configured. Please try again later.' },
+      { error: 'Newsletter service not configured, so nothing was signed up. Write to info@vivancedata.com and I will add you by hand.' },
       { status: 503, headers: rateLimitHeaders }
     );
   } catch (error) {
