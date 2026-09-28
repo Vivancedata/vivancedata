@@ -44,7 +44,12 @@ async function loadWithUpstash() {
 }
 
 describe("enforceRateLimit via Upstash", () => {
-  beforeEach(() => limitMock.mockReset());
+  // A block body, not `() => limitMock.mockReset()`: mockReset returns the
+  // mock, and vitest calls a function returned from beforeEach as cleanup --
+  // which invoked limitMock once more after every test.
+  beforeEach(() => {
+    limitMock.mockReset();
+  });
   afterEach(() => {
     vi.unstubAllEnvs();
     vi.resetModules();
@@ -112,5 +117,25 @@ describe("enforceRateLimit via Upstash", () => {
     await enforceRateLimit(request(), { ...options, keyPrefix: "test:other" });
 
     expect(limitMock).toHaveBeenCalledTimes(3);
+  });
+
+  it("falls back to the memory store when Upstash is unreachable", async () => {
+    // A rejected limit() used to propagate into each route's outer catch, so
+    // an Upstash outage turned every contact, newsletter and report request
+    // into a 500 -- the rate limiter taking the forms down with it.
+    limitMock.mockRejectedValue(new Error("fetch failed"));
+    const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
+    const { enforceRateLimit } = await loadWithUpstash();
+
+    const result = await enforceRateLimit(request(), {
+      ...options,
+      keyPrefix: "test:upstash-down",
+    });
+
+    expect(limitMock).toHaveBeenCalledTimes(1);
+    expect(result.success).toBe(true);
+    expect(result.source).toBe("memory");
+    expect(errorSpy).toHaveBeenCalled();
+    errorSpy.mockRestore();
   });
 });

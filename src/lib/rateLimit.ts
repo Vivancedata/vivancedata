@@ -174,7 +174,17 @@ export async function enforceRateLimit(
     return applyMemoryRateLimit(bucketKey, options);
   }
 
-  const result = await limiter.limit(bucketKey);
+  let result: Awaited<ReturnType<Ratelimit["limit"]>>;
+  try {
+    result = await limiter.limit(bucketKey);
+  } catch (error) {
+    // The limiter protects the forms; it must not be able to take them down.
+    // Uncaught, an Upstash outage reached every route's outer catch as a 500
+    // and each enquiry in that window was lost. The per-instance memory store
+    // is weaker, but it is still a limit.
+    console.error("Upstash rate limit unavailable; using the memory store:", error);
+    return applyMemoryRateLimit(bucketKey, options);
+  }
   const resetAt = normalizeResetTimestamp(result.reset);
   const now = Date.now();
 
