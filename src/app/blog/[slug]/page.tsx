@@ -1,7 +1,6 @@
 import fs from 'node:fs';
 import { compileMDX } from 'next-mdx-remote/rsc';
 import { notFound } from 'next/navigation';
-import Script from 'next/script';
 import { BlogLayout } from '@/components/blog/BlogLayout';
 import { Metadata } from 'next';
 import type { BlogPost } from '@/types/blog';
@@ -48,6 +47,8 @@ function getRelatedPosts(currentSlug: string, currentTags: string[], allPosts: B
     .map(({ post }) => post);
 }
 
+const SHARE_IMAGE = 'https://vivancedata.com/images/banner.png';
+
 // Generate metadata for the blog post
 export async function generateMetadata({ params }: BlogPostParams): Promise<Metadata> {
   const { slug } = await params;
@@ -84,11 +85,17 @@ export async function generateMetadata({ params }: BlogPostParams): Promise<Meta
         publishedTime: frontmatter.date,
         url: `https://vivancedata.com/blog/${slug}`,
         tags: keywords,
+        // A page's openGraph replaces the root's rather than merging with it,
+        // so without this every post shared with no image at all. The site
+        // banner, not the frontmatter image: that file is WebP under a .png
+        // name, which some link unfurlers refuse.
+        images: [SHARE_IMAGE],
       },
       twitter: {
         card: 'summary_large_image',
         title: frontmatter.title,
         description: frontmatter.description,
+        images: [SHARE_IMAGE],
       }
     };
   } catch (error) {
@@ -188,9 +195,14 @@ export default async function BlogPost({ params }: BlogPostParams) {
 
   return (
     <>
-      <Script id={`blog-jsonld-${slug}`} type="application/ld+json">
-        {JSON.stringify(jsonLd)}
-      </Script>
+      {/* A plain script, not next/script: that injects inline scripts on the
+        * client after hydration, so the structured data was missing from the
+        * server HTML crawlers read. `<` is escaped so frontmatter cannot close
+        * the tag. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
+      />
       <BlogLayout meta={meta} previousPathname="/blog" relatedPosts={relatedPosts} currentSlug={slug}>
         {content}
       </BlogLayout>
