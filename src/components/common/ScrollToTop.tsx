@@ -54,7 +54,7 @@ export function ScrollToTop() {
         // still takes keyboard focus, which is how a hidden button becomes a
         // dead tab stop on every page.
         {...(isVisible ? {} : { tabIndex: -1, "aria-hidden": true as const })}
-        className="inline-flex min-h-11 items-center gap-2.5 rounded-pill border border-rule bg-background px-4 text-label uppercase text-mute transition-colors duration-fast hover:border-mute hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+        className="inline-flex min-h-11 items-center gap-2.5 rounded-pill border border-rule bg-background px-4 text-label uppercase text-mute transition-colors duration-fast hover:border-mute hover:text-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
       >
         <ArrowMark className="-rotate-90" />
         <span>Top</span>

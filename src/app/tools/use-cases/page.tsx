@@ -47,7 +47,7 @@ export const metadata: Metadata = {
 
 export default function UseCasesPage() {
   return (
-    <Container className="py-16 max-w-7xl">
+    <Container className="max-w-7xl">
       <div className="mb-12">
         <Heading className="mb-4 font-display text-serif-xl">
           AI use cases
@@ -71,7 +71,7 @@ export default function UseCasesPage() {
             that goes wrong in your operation and I will tell you honestly
             whether it is worth automating yet.
           </p>
-          <div className="grid md:grid-cols-3 gap-6 mt-6">
+          <div className="grid md:grid-cols-3 gap-6">
             <div>
               <h3 className="mb-2 font-display text-serif-sm">First, a look</h3>
               <p className="text-sm">
@@ -94,7 +94,7 @@ export default function UseCasesPage() {
               </p>
             </div>
           </div>
-          <div className="mt-6">
+          <div>
             <Link
               href="/contact"
               className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"

@@ -56,7 +56,7 @@ function UseCaseCard({ useCase }: { useCase: UseCase }) {
   return (
     <Card className="h-full flex flex-col transition-colors hover:border-brand/40">
       <CardHeader className="pb-3">
-        <div className="flex flex-wrap gap-2 mb-3">
+        <div className="flex flex-wrap gap-2 mb-4.5">
           <Badge className={getIndustryColor()}>
             {useCase.industry}
           </Badge>
@@ -299,7 +299,7 @@ export function UseCasesExplorer() {
                 <button
                   type="button"
                   onClick={clearFilters}
-                  className="text-sm text-foreground underline decoration-rule underline-offset-4 hover:decoration-current focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 rounded"
+                  className="text-sm text-foreground underline decoration-rule underline-offset-4 hover:decoration-current focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 rounded"
                 >
                   Clear all filters
                 </button>
@@ -329,7 +329,7 @@ export function UseCasesExplorer() {
               <button
                 type="button"
                 onClick={clearFilters}
-                className="text-foreground underline decoration-rule underline-offset-4 hover:decoration-current focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 rounded px-2 py-1"
+                className="text-foreground underline decoration-rule underline-offset-4 hover:decoration-current focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 rounded px-2 py-1"
               >
                 Clear all filters
               </button>

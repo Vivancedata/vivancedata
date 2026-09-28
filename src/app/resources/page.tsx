@@ -89,7 +89,7 @@ export default function ResourcesPage() {
                 <h2 className="mb-2 font-display text-serif-sm text-foreground">
                   {resource.title}
                 </h2>
-                <p className="text-muted-foreground flex-grow">
+                <p className="text-muted-foreground grow">
                   {resource.description}
                 </p>
                 <div className="mt-4 flex items-center text-label uppercase text-mute transition-colors group-hover:text-foreground">

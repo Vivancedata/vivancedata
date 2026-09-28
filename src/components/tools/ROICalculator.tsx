@@ -58,8 +58,9 @@ function ROIInputForm({ inputs, onInputChange, onCalculate }: ROIInputFormProps)
         </CardDescription>
       </CardHeader>
       <CardContent>
+        {/* `[&>*+*]:mt-2` rather than `space-y-2`: see FormItem in ui/form.tsx. */}
         <div className="grid md:grid-cols-2 gap-6">
-          <div className="space-y-2">
+          <div className="[&>*+*]:mt-2">
             <Label htmlFor="revenue">Annual revenue</Label>
             <div className="relative">
               <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-mute" aria-hidden="true" />
@@ -79,7 +80,7 @@ function ROIInputForm({ inputs, onInputChange, onCalculate }: ROIInputFormProps)
             <span id="revenue-hint" className="sr-only">Your company&apos;s annual revenue, in US dollars</span>
           </div>
 
-          <div className="space-y-2">
+          <div className="[&>*+*]:mt-2">
             <Label htmlFor="employees">People on the payroll</Label>
             <div className="relative">
               <Users className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-mute" aria-hidden="true" />
@@ -99,7 +100,7 @@ function ROIInputForm({ inputs, onInputChange, onCalculate }: ROIInputFormProps)
             <span id="employees-hint" className="sr-only">Everyone you employ, office and field</span>
           </div>
 
-          <div className="space-y-2">
+          <div className="[&>*+*]:mt-2">
             <Label htmlFor="hourlyRate">Average hourly rate ($)</Label>
             <div className="relative">
               <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-mute" aria-hidden="true" />
@@ -119,7 +120,7 @@ function ROIInputForm({ inputs, onInputChange, onCalculate }: ROIInputFormProps)
             <span id="hourly-rate-hint" className="sr-only">What an hour of that time costs you, in US dollars</span>
           </div>
 
-          <div className="space-y-2">
+          <div className="[&>*+*]:mt-2">
             <Label htmlFor="inefficiencyHours">Hours a week each person loses to repeat work</Label>
             <div className="relative">
               <Clock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-mute" aria-hidden="true" />
@@ -139,7 +140,7 @@ function ROIInputForm({ inputs, onInputChange, onCalculate }: ROIInputFormProps)
             <span id="inefficiency-hint" className="sr-only">Hours a week the average person spends re-typing, chasing or re-checking work a machine could do</span>
           </div>
 
-          <div className="space-y-2 md:col-span-2">
+          <div className="[&>*+*]:mt-2 md:col-span-2">
             <Label htmlFor="useCase">The job you would automate first</Label>
             <Select value={inputs.useCase} onValueChange={(value) => onInputChange("useCase", value)}>
               <SelectTrigger id="useCase" aria-describedby="usecase-hint">
@@ -377,7 +378,7 @@ function ROIResultsPanel({ results, resultsRef }: ROIResultsPanelProps) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.4 }}
-      className="space-y-6 outline-none"
+      className="space-y-6 outline-hidden"
       role="region"
       aria-label="ROI calculation results"
       aria-live="polite"

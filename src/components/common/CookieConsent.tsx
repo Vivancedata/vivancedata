@@ -166,7 +166,7 @@ function CookieCustomizationPanel({
                         "bg-muted-foreground/30 dark:bg-muted-foreground/20",
                         "peer-checked:bg-primary",
                         "peer-focus-visible:ring-2 peer-focus-visible:ring-ring peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-background",
-                        "after:content-[''] after:absolute after:top-[2px] after:start-[2px]",
+                        "after:content-[''] after:absolute after:top-[2px] after:inset-s-[2px]",
                         "after:bg-background after:rounded-full after:h-5 after:w-5",
                         "after:transition-transform after:duration-200",
                         "peer-checked:after:translate-x-5",
@@ -228,7 +228,7 @@ function CookieConsentBanner({
       aria-labelledby="cookie-consent-title"
       aria-describedby="cookie-consent-description"
     >
-      <div className="mx-auto rounded-xl border border-border bg-background/95 backdrop-blur-sm dark:bg-background/90 max-h-[80vh] overflow-y-auto overscroll-contain">
+      <div className="mx-auto rounded-xl border border-border bg-background/95 backdrop-blur-xs dark:bg-background/90 max-h-[80vh] overflow-y-auto overscroll-contain">
         <div className="p-3 sm:p-4">
           <div className="flex items-start gap-4">
             <div className="hidden h-10 w-10 shrink-0 items-center justify-center border border-rule text-mute md:flex">
@@ -245,7 +245,7 @@ function CookieConsentBanner({
                 </h2>
                 <button
                   onClick={onClose}
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                   aria-label="Close cookie consent banner"
                 >
                   <X className="h-4 w-4" />

@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 
 export default function PricingPage() {
   return (
-    <Container className="py-16">
+    <Container>
       <div className="max-w-[62ch]">
         <Heading className="mb-4 max-w-[17ch] font-display text-serif-xl">{pricingPageContent.title}</Heading>
         <Paragraph className="mx-auto max-w-[60ch] text-lg">{pricingPageContent.description}</Paragraph>

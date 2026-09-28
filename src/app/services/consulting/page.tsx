@@ -101,7 +101,7 @@ const benefits: Benefit[] = [
 
 export default function ConsultingPage() {
   return (
-    <Container className="py-16">
+    <Container>
       <ServicePageHeader
         title="AI strategy consulting"
         intro="Deciding what to automate first, what to leave alone, and what each option costs to build and to run — before anyone writes code."
@@ -136,7 +136,7 @@ export default function ConsultingPage() {
                 "What to leave alone",
               ].map((item) => (
                 <div key={item} className="flex items-center gap-2 bg-muted rounded-sm px-3 py-1.5">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary/70 flex-shrink-0" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary/70 shrink-0" />
                   <span className="text-muted-foreground text-xs">{item}</span>
                 </div>
               ))}

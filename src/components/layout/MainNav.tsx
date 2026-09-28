@@ -23,13 +23,13 @@ import { MainNavMobile } from "@/components/layout/MainNavMobile"
  */
 export function MainNav() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-rule bg-background/85 backdrop-blur-md supports-[backdrop-filter]:bg-background/70">
+    <header className="sticky top-0 z-50 w-full border-b border-rule bg-background/85 backdrop-blur-md supports-backdrop-filter:bg-background/70">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between gap-md">
           <a
             href="/"
             aria-label={siteConfig.name}
-            className="flex min-h-11 shrink-0 items-center gap-2.5 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+            className="flex min-h-11 shrink-0 items-center gap-2.5 rounded-sm focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
           >
             <Icons.logo className="h-7 w-7" />
             {/* Set in the display serif: the wordmark is the one place on this
@@ -45,7 +45,7 @@ export function MainNav() {
               <a
                 key={item.name}
                 href={item.href}
-                className="rounded-sm px-3 py-2 text-label uppercase text-mute transition-colors duration-fast hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                className="rounded-sm px-3 py-2 text-label uppercase text-mute transition-colors duration-fast hover:text-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
                 {item.name}
               </a>
@@ -56,9 +56,9 @@ export function MainNav() {
             <a
               href="/blog"
               aria-label="Search blog content"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-sm text-mute transition-colors duration-fast hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-sm text-mute transition-colors duration-fast hover:text-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
-              <Search className="h-[1.125rem] w-[1.125rem]" strokeWidth={1.5} />
+              <Search className="h-4.5 w-4.5" strokeWidth={1.5} />
             </a>
             <ModeToggle />
             <a href="/contact" className={`${ctaPrimary} ml-2`}>

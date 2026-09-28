@@ -151,7 +151,7 @@ export function ProfileForm() {
             <h2
               ref={successHeadingRef}
               tabIndex={-1}
-              className="text-2xl font-bold mb-2 outline-none"
+              className="text-2xl font-bold mb-2 outline-hidden"
             >
               Message received.
             </h2>

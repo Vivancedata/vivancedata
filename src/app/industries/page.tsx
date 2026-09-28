@@ -40,7 +40,7 @@ interface IndustryCardProps {
 
 const IndustryCard = ({ title, description, href }: IndustryCardProps) => (
   <div className="group flex flex-col border border-rule bg-card">
-    <div className="field-dots relative flex aspect-[16/7] items-end border-b border-rule px-lg pb-lg">
+    <div className="field-dots relative flex aspect-16/7 items-end border-b border-rule px-lg pb-lg">
       <h3 className="font-display text-serif-md text-foreground">{title}</h3>
     </div>
     <div className="p-6">
@@ -80,7 +80,7 @@ export default function IndustriesPage() {
   ];
 
   return (
-    <Container className="py-16">
+    <Container>
       <div className="mb-16">
         <Heading className="mb-4 font-display text-serif-xl">The four trades I work in</Heading>
         <Paragraph className="max-w-[62ch] text-body-lg">

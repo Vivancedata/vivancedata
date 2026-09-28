@@ -70,7 +70,7 @@ interface PhaseProps {
 const Phase = ({ number, title, description, checks }: PhaseProps) => (
   <div className="relative">
     <div className="flex items-center mb-4">
-      <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg mr-4 flex-shrink-0">
+      <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg mr-4 shrink-0">
         {number}
       </div>
       <h3 className="font-display text-serif-sm">{title}</h3>
@@ -135,7 +135,7 @@ export default function ResponsibleAIPage() {
   // No number goes in here without a named client who has agreed to publish it.
 
   return (
-    <Container className="py-16">
+    <Container>
       <div className="mb-16">
         <Heading className="mb-4 font-display text-serif-xl">Responsible AI</Heading>
         <Paragraph className="max-w-[62ch] text-body-lg">
@@ -149,7 +149,7 @@ export default function ResponsibleAIPage() {
           <div className="aspect-video rounded-md overflow-hidden border border-border bg-card p-6 md:p-8 flex flex-col">
             <div className="eyebrow mb-4">Responsible AI principles</div>
             <div className="flex items-center gap-4 mb-5">
-              <div className="w-14 h-14 rounded-full bg-muted border-2 border-brand/40 flex items-center justify-center flex-shrink-0">
+              <div className="w-14 h-14 rounded-full bg-muted border-2 border-brand/40 flex items-center justify-center shrink-0">
                 <Shield className="w-7 h-7 text-mute" strokeWidth={1.25} />
               </div>
               <p className="text-muted-foreground text-xs leading-relaxed">
@@ -165,7 +165,7 @@ export default function ResponsibleAIPage() {
                 "Human oversight preserved",
               ].map((principle) => (
                 <div key={principle} className="flex items-center gap-2 bg-muted rounded-sm px-3 py-1.5">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary/70 flex-shrink-0" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary/70 shrink-0" />
                   <span className="text-muted-foreground text-xs">{principle}</span>
                 </div>
               ))}

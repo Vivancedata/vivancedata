@@ -22,7 +22,7 @@ export function DemoLink({ demo, className }: { demo: Demo; className?: string }
         "group inline-flex min-h-11 items-center justify-center gap-2.5 rounded-pill border border-rule bg-transparent px-4",
         "text-label uppercase text-brand transition-colors duration-fast",
         "hover:border-brand/50 hover:bg-accent",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+        "focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
         className,
       )}
     >

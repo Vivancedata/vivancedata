@@ -24,7 +24,7 @@ export function MainNavMobile({ items }: MainNavMobileProps) {
         <button
           type="button"
           onClick={() => setIsMobileMenuOpen((open) => !open)}
-          className="ml-1 inline-flex h-11 w-11 items-center justify-center rounded-sm text-mute transition-colors duration-fast hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          className="ml-1 inline-flex h-11 w-11 items-center justify-center rounded-sm text-mute transition-colors duration-fast hover:text-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={isMobileMenuOpen}
           aria-controls="mobile-navigation"
@@ -51,7 +51,7 @@ export function MainNavMobile({ items }: MainNavMobileProps) {
                 <li key={item.name} className="border-b border-rule">
                   <a
                     href={item.href}
-                    className="flex min-h-12 items-center text-label uppercase text-mute transition-colors duration-fast hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                    className="flex min-h-12 items-center text-label uppercase text-mute transition-colors duration-fast hover:text-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.name}

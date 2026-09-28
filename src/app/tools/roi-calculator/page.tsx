@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 
 export default function ROICalculatorPage() {
   return (
-    <Container className="py-16">
+    <Container>
       <div className="max-w-5xl mx-auto">
         <div className="mb-12">
           <Heading className="mb-4 font-display text-serif-xl">AI ROI Calculator</Heading>
@@ -54,7 +54,7 @@ export default function ROICalculatorPage() {
               to pressure-test a business case, not a forecast, and it is only as good as the
               inputs you give it.
             </p>
-            <div className="grid md:grid-cols-2 gap-6 mt-6">
+            <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <h3 className="mb-2 font-display text-serif-sm">What it counts as cost</h3>
                 <ul className="list-disc list-inside space-y-1 text-sm">
@@ -74,7 +74,7 @@ export default function ROICalculatorPage() {
                 </ul>
               </div>
             </div>
-            <p className="text-sm mt-6 text-muted-foreground">
+            <p className="text-sm text-muted-foreground">
               <strong>Note:</strong> the output is only as good as the numbers you put in, and it
               assumes a build that works. Use it to pressure-test a business case, not as a promise.
               For a real figure, book a call and I will scope the actual job.

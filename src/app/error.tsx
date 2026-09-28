@@ -21,7 +21,7 @@ export default function Error({
   }, [error]);
 
   return (
-    <Container className="py-24 md:py-32">
+    <Container className="md:py-32">
       <div className="max-w-2xl mx-auto text-center">
         <div className="mb-8 flex justify-center">
           <div className="rounded-full bg-destructive/10 p-6">

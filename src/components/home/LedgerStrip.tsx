@@ -74,7 +74,7 @@ export function LedgerStrip() {
         onClick={() => setPaused((value) => !value)}
         aria-pressed={paused}
         aria-label={paused ? "Play the moving strip" : "Pause the moving strip"}
-        className="absolute inset-y-0 right-0 inline-flex min-w-11 items-center justify-center border-l border-rule bg-background px-3 text-label uppercase text-mute transition-colors duration-fast hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring motion-reduce:hidden"
+        className="absolute inset-y-0 right-0 inline-flex min-w-11 items-center justify-center border-l border-rule bg-background px-3 text-label uppercase text-mute transition-colors duration-fast hover:text-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring motion-reduce:hidden"
       >
         {paused ? "Play" : "Pause"}
       </button>

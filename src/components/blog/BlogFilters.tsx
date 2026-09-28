@@ -61,7 +61,7 @@ export function BlogFilters({
           <button
             type="button"
             onClick={handleClearSearch}
-            className="absolute right-1 top-1/2 -translate-y-1/2 inline-flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            className="absolute right-1 top-1/2 -translate-y-1/2 inline-flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             aria-label="Clear search"
           >
             <X className="size-4" aria-hidden="true" />
@@ -83,7 +83,7 @@ export function BlogFilters({
               key={tag}
               type="button"
               onClick={() => onTagToggle(tag)}
-              className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
+              className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
                 isSelected
                   ? "bg-primary text-primary-foreground hover:bg-primary/90"
                   : "bg-secondary hover:bg-secondary/80 text-muted-foreground hover:text-foreground"
@@ -103,7 +103,7 @@ export function BlogFilters({
           <button
             type="button"
             onClick={() => setShowAllTags(prev => !prev)}
-            className="inline-flex items-center rounded-pill border border-rule px-3 py-1 text-label uppercase text-mute transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            className="inline-flex items-center rounded-pill border border-rule px-3 py-1 text-label uppercase text-mute transition-colors hover:text-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             aria-label={showAllTags ? "Show fewer blog topics" : `Show all ${allTags.length} blog topics`}
           >
             {showAllTags ? "Show fewer topics" : `Show all ${allTags.length} topics`}

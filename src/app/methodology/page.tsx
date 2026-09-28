@@ -168,7 +168,7 @@ function PhasesTimelineSection() {
                               key={deliverable}
                               className="flex items-start gap-2 text-foreground"
                             >
-                              <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                              <CheckCircle2 className="h-5 w-5 text-success shrink-0 mt-0.5" />
                               <span>{deliverable}</span>
                             </li>
                           ))}

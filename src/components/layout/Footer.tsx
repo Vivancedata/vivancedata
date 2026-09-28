@@ -43,7 +43,7 @@ export function SiteFooter() {
           <div className="col-span-2 lg:col-span-4 lg:pr-2xl">
             <a
               href="/"
-              className="inline-flex min-h-11 items-center gap-2.5 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+              className="inline-flex min-h-11 items-center gap-2.5 rounded-sm focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
             >
               {/* The SVG mark, not the PNG. `Logo.png` is dark ink on
                 * transparent and disappeared completely on this sheet — the
@@ -58,7 +58,7 @@ export function SiteFooter() {
             </p>
             <a
               href="mailto:info@vivancedata.com"
-              className="mt-lg inline-flex min-h-11 items-center font-mono text-data text-foreground underline decoration-rule underline-offset-4 transition-colors duration-fast hover:decoration-current focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              className="mt-lg inline-flex min-h-11 items-center font-mono text-data text-foreground underline decoration-rule underline-offset-4 transition-colors duration-fast hover:decoration-current focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               info@vivancedata.com
             </a>
@@ -78,7 +78,7 @@ export function SiteFooter() {
                   <li key={`${column.title}-${link.href}`}>
                     <a
                       href={link.href}
-                      className="flex min-h-11 items-center text-body-sm text-muted-foreground transition-colors duration-fast hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                      className="flex min-h-11 items-center text-body-sm text-muted-foreground transition-colors duration-fast hover:text-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                     >
                       {link.label}
                     </a>
@@ -101,13 +101,13 @@ export function SiteFooter() {
           <div className="flex flex-wrap items-center gap-x-lg gap-y-md">
             <a
               href="/privacy-policy"
-              className="inline-flex min-h-11 min-w-11 items-center justify-center text-label uppercase text-mute transition-colors duration-fast hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              className="inline-flex min-h-11 min-w-11 items-center justify-center text-label uppercase text-mute transition-colors duration-fast hover:text-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               Privacy
             </a>
             <a
               href="/terms-of-service"
-              className="inline-flex min-h-11 min-w-11 items-center justify-center text-label uppercase text-mute transition-colors duration-fast hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              className="inline-flex min-h-11 min-w-11 items-center justify-center text-label uppercase text-mute transition-colors duration-fast hover:text-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               Terms
             </a>
@@ -121,9 +121,9 @@ export function SiteFooter() {
                       target="_blank"
                       rel="noreferrer"
                       aria-label={link.label}
-                      className="inline-flex h-11 w-11 items-center justify-center rounded-sm text-mute transition-colors duration-fast hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                      className="inline-flex h-11 w-11 items-center justify-center rounded-sm text-mute transition-colors duration-fast hover:text-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                     >
-                      <Icon className="h-[1.125rem] w-[1.125rem]" strokeWidth={1.5} />
+                      <Icon className="h-4.5 w-4.5" strokeWidth={1.5} />
                     </a>
                   </li>
                 );

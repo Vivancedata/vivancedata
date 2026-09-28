@@ -57,7 +57,7 @@ function Field({ id, label, hint, value, min, max, step, suffix, prefix, onChang
           step={step}
           value={Number.isFinite(value) ? value : 0}
           onChange={(event) => onChange(event.target.valueAsNumber)}
-          className="w-32 min-h-11 border-b border-input bg-transparent font-display text-serif-sm text-foreground focus-visible:border-brand focus-visible:outline-none"
+          className="w-32 min-h-11 border-b border-input bg-transparent font-display text-serif-sm text-foreground focus-visible:border-brand focus-visible:outline-hidden"
         />
         {suffix ? <span className="text-body-sm text-mute">{suffix}</span> : null}
       </div>

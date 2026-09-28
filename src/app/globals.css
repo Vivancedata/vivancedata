@@ -1,4 +1,98 @@
-/* Shared design tokens and global utilities are imported from @vivancedata/ui/styles. */
+/*
+ * Tailwind CSS v4 entry.
+ *
+ * The shared design tokens and global utilities come from @vivancedata/ui/styles.
+ * That sheet still opens with v3's `@tailwind base/components/utilities`
+ * directives; v4 drops the first two and places utilities where
+ * `@import "tailwindcss"` puts them. So it is imported here, inside this one
+ * compile after the framework, rather than from layout.tsx as a stylesheet of
+ * its own.
+ *
+ * The preset itself is still a v3-style JS config, loaded through `@config`
+ * (tailwind.config.ts). It cannot be expressed as CSS without forking it from
+ * the package.
+ */
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
+@import "@vivancedata/ui/styles";
+
+/*
+ * The preset's spacing scale names its steps xs..4xl. v3's max-width scale
+ * overrode those names with the container widths; v4 resolves `max-w-*`
+ * against `--max-width-*`, then spacing, then containers, so without these
+ * `max-w-2xl` would be the 40px spacing step. Pins the v3 widths back.
+ */
+@theme {
+  --max-width-xs: 20rem;
+  --max-width-sm: 24rem;
+  --max-width-md: 28rem;
+  --max-width-lg: 32rem;
+  --max-width-xl: 36rem;
+  --max-width-2xl: 42rem;
+  --max-width-3xl: 48rem;
+  --max-width-4xl: 56rem;
+  --max-width-5xl: 64rem;
+  --max-width-6xl: 72rem;
+  --max-width-7xl: 80rem;
+}
+
+/*
+ * v3 compatibility.
+ *
+ * - v4's preflight sets `border-color: currentcolor`; v3's used the theme's
+ *   gray-200. The shared sheet already restores `border-border` on elements,
+ *   so only the pseudo-elements it does not reach need the old default.
+ * - v4 no longer gives buttons `cursor: pointer`.
+ */
+@layer base {
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+/*
+ * v3 cascade compatibility for the nightshift world.
+ *
+ * v3 compiled the shared sheet's `@layer base` into one flat cascade with the
+ * utilities, so these rules -- attribute selector plus element or class --
+ * outranked a single-class utility on specificity: every heading kept the
+ * world's tracking and leading whatever `text-*` token it carried, and an
+ * `.eyebrow` stayed a grey wall label. v4 puts them in native cascade layers,
+ * where any utility beats any base rule. Restating them in a utilities layer
+ * block that sorts after the generated utilities restores the v3 outcome:
+ * they beat single-class utilities again. (v4's `dark:`/`group-*:` variants
+ * wrap their selectors in `:where()`, so unlike v3 those lose here too -- to
+ * restyle one of these properties on a heading, eyebrow or link, use `!`.)
+ */
+@layer utilities {
+  [data-world="nightshift"] h1,
+  [data-world="nightshift"] h2,
+  [data-world="nightshift"] h3,
+  [data-world="nightshift"] h4,
+  [data-world="nightshift"] h5,
+  [data-world="nightshift"] h6 {
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+  }
+
+  [data-world="nightshift"] .eyebrow {
+    color: hsl(var(--mute));
+    letter-spacing: 0.09em;
+  }
+
+  [data-world="nightshift"] a {
+    text-underline-offset: 0.22em;
+    text-decoration-thickness: 1px;
+  }
+}
 
 /*
  * App-level interaction defaults (Vercel Web Interface Guidelines).
@@ -12,29 +106,35 @@
  *   default grey box: a faint tint of the foreground, so a tap still shows.
  * - Headings balance their lines so a two-line serif headline does not leave a
  *   single word stranded on the second line.
+ *
+ * Layered as base so a utility on the same element still wins. Under v3 the
+ * utilities outranked these element selectors on specificity; unlayered CSS
+ * in v4 would outrank every utility instead.
  */
-html {
-  scroll-padding-top: 5rem;
-  -webkit-tap-highlight-color: hsl(var(--foreground) / 0.08);
-}
+@layer base {
+  html {
+    scroll-padding-top: 5rem;
+    -webkit-tap-highlight-color: hsl(var(--foreground) / 0.08);
+  }
 
-a,
-button,
-input,
-label,
-select,
-summary,
-textarea,
-[role="button"],
-[role="tab"] {
-  touch-action: manipulation;
-}
+  a,
+  button,
+  input,
+  label,
+  select,
+  summary,
+  textarea,
+  [role="button"],
+  [role="tab"] {
+    touch-action: manipulation;
+  }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  text-wrap: balance;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-wrap: balance;
+  }
 }

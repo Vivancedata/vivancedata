@@ -64,13 +64,13 @@ function ReadinessSummary({ results, readinessLevel }: ReadinessSummaryProps) {
   return (
     <>
       <CardHeader className="text-center">
-        <div className="flex justify-center mb-4" aria-hidden="true">
+        <div className="flex justify-center mb-5.5" aria-hidden="true">
           <div className={`rounded-full p-4 bg-${color}-100 dark:bg-${color}-900/20`}>
             <ReadinessIcon className={`h-12 w-12 text-${color}-600`} />
           </div>
         </div>
         <CardTitle as="h2" className="text-3xl">Your readiness score</CardTitle>
-        <CardDescription className="text-xl mt-2">
+        <CardDescription className="text-xl">
           <span aria-label={`Score: ${Math.round(results.percentageScore)} percent, Level: ${readinessLevel}`}>
             {Math.round(results.percentageScore)}% - {readinessLevel}
           </span>
@@ -178,7 +178,7 @@ function QuizResultsPanel({
       tabIndex={-1}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="space-y-8 outline-none"
+      className="space-y-8 outline-hidden"
       role="region"
       aria-label="Assessment results"
       aria-live="polite"
@@ -277,11 +277,11 @@ function QuizQuestionStep({
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -20 }}
           transition={{ duration: 0.3 }}
-          className="outline-none"
+          className="outline-hidden"
         >
           <Card>
             <CardHeader>
-              <div className="flex items-center gap-3 mb-2">
+              <div className="flex items-center gap-3 mb-3.5">
                 <div className={`rounded-full p-2 bg-${categoryInfo[currentQ.category].color}-100 dark:bg-${categoryInfo[currentQ.category].color}-900/20`} aria-hidden="true">
                   <CategoryIcon className={`h-5 w-5 text-${categoryInfo[currentQ.category].color}-600`} />
                 </div>

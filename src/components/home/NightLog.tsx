@@ -68,7 +68,7 @@ function Record({ record, runKey }: { record: LogRecord; runKey: number }) {
                 <span className="min-w-0">{field.value}</span>
               </p>
               {field.note ? (
-                <p className="mt-1 max-w-[46ch] pl-[1.375rem] text-caption text-muted-foreground">{field.note}</p>
+                <p className="mt-1 max-w-[46ch] pl-5.5 text-caption text-muted-foreground">{field.note}</p>
               ) : null}
             </dd>
           </div>
@@ -168,7 +168,7 @@ export default function NightLog() {
                     tabIndex={selected ? 0 : -1}
                     onClick={() => select(index)}
                     onKeyDown={onKeyDown}
-                    className={`inline-flex min-h-11 items-center rounded-pill border px-4 text-label uppercase transition-colors duration-fast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
+                    className={`inline-flex min-h-11 items-center rounded-pill border px-4 text-label uppercase transition-colors duration-fast focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
                       selected
                         ? "border-transparent bg-primary text-primary-foreground"
                         : "border-rule text-mute hover:border-mute hover:text-foreground"
