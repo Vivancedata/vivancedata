@@ -63,7 +63,7 @@ export function buildEnquiryNotification(enquiry: ContactEnquiry): string {
             <div class="value message">${escapeHtml(enquiry.message)}</div>
           </div>
           <p style="color: #706c65; font-size: 12px; margin-top: 20px;">
-            Submitted at ${new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' })} PST
+            Submitted at ${new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles', timeZoneName: 'short' })}
           </p>`,
   });
 }
