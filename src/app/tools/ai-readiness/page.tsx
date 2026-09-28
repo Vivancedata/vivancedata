@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 
 export default function AIReadinessPage() {
   return (
-    <Container className="py-16">
+    <Container>
       <div className="max-w-4xl mx-auto">
         <div className="mb-12">
           <Heading className="mb-4 font-display text-serif-xl">AI Readiness Assessment</Heading>

@@ -383,7 +383,7 @@ export function NotFoundContent() {
                       "group flex flex-col items-center p-4 rounded-xl",
                       "bg-card border border-border",
                       "hover:bg-accent/50 hover:border-brand/30",
-                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+                      "focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
                       "transition-colors duration-200"
                     )}
                   >
@@ -416,7 +416,7 @@ export function NotFoundContent() {
                 className={cn(
                   "inline-flex items-center text-sm text-muted-foreground",
                   "hover:text-foreground transition-colors",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-md px-2 py-1"
+                  "focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-md px-2 py-1"
                 )}
                 type="button"
               >

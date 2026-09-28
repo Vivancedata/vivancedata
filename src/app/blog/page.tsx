@@ -42,7 +42,7 @@ export default async function Blog() {
         title="Notes from the work"
         description="What happens when a model meets real paperwork, real calls and real crews — including the parts that do not work."
       />
-      <Container className="py-16">
+      <Container>
         <Blogs blogs={posts} />
       </Container>
     </>

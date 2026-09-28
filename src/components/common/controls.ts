@@ -16,7 +16,7 @@
  */
 
 const base =
-  "inline-flex min-h-11 shrink-0 items-center justify-center gap-2.5 rounded-pill px-5 text-label uppercase transition-colors duration-fast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+  "inline-flex min-h-11 shrink-0 items-center justify-center gap-2.5 rounded-pill px-5 text-label uppercase transition-colors duration-fast focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
 /** The cream pill. One per band, at most — it marks the only thing to do next. */
 export const ctaPrimary = `${base} bg-primary text-primary-foreground hover:bg-primary/85`;
@@ -30,7 +30,7 @@ export const ctaSecondary = `${base} border border-rule bg-transparent text-fore
  * heading.
  */
 export const ctaQuiet =
-  "group inline-flex min-h-11 items-center gap-2 text-label uppercase text-brand transition-colors duration-fast hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+  "group inline-flex min-h-11 items-center gap-2 text-label uppercase text-brand transition-colors duration-fast hover:text-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
 
 /** The wall label: a mono column head or a field name. Never above a heading. */
 export const wallLabel = "text-label uppercase text-mute";

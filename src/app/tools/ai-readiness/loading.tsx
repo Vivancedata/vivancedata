@@ -3,7 +3,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export default function AIReadinessLoading() {
   return (
-    <Container className="py-16">
+    <Container>
       {/* Skeletons are silent to a screen reader; this says what is happening. */}
       <p role="status" className="sr-only">Loading…</p>
       <div className="max-w-4xl mx-auto">
@@ -40,7 +40,7 @@ export default function AIReadinessLoading() {
             <div className="space-y-4">
               {[1, 2, 3, 4, 5].map((option) => (
                 <div key={`option-${option}`} className="flex items-start gap-3">
-                  <Skeleton variant="circular" className="h-5 w-5 mt-0.5 flex-shrink-0" />
+                  <Skeleton variant="circular" className="h-5 w-5 mt-0.5 shrink-0" />
                   <Skeleton className="h-5 w-full" style={{ maxWidth: `${85 - option * 5}%` }} />
                 </div>
               ))}

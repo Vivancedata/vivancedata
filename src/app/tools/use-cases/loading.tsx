@@ -44,7 +44,7 @@ function SkeletonCard() {
 
 export default function UseCasesLoading() {
   return (
-    <Container className="py-16 max-w-7xl">
+    <Container className="max-w-7xl">
       {/* Skeletons are silent to a screen reader; this says what is happening. */}
       <p role="status" className="sr-only">Loading…</p>
       {/* Page Header Skeleton */}

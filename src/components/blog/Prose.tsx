@@ -15,7 +15,7 @@ export function Prose({
         "prose-headings:text-foreground prose-headings:font-bold",
         "prose-p:text-foreground/90",
         "prose-strong:text-foreground",
-        "prose-a:text-foreground prose-a:decoration-rule prose-a:underline-offset-4 hover:prose-a:decoration-current",
+        "prose-a:text-foreground prose-a:decoration-rule prose-a:underline-offset-4 prose-a:hover:decoration-current",
         "prose-ul:text-foreground/90",
         "prose-ol:text-foreground/90",
         "prose-li:text-foreground/90",

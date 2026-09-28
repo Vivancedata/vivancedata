@@ -289,7 +289,7 @@ function DemoFormCard({ state, isSubmitting, onChange, onSubmit }: DemoFormProps
 
                 <button
                   type="submit"
-                  className={`${ctaPrimary} mt-lg w-full disabled:cursor-not-allowed disabled:opacity-50`}
+                  className={`${ctaPrimary} w-full disabled:cursor-not-allowed disabled:opacity-50`}
                   disabled={isSubmitting}
                   aria-disabled={isSubmitting}
                 >
@@ -331,7 +331,7 @@ function DemoFormCard({ state, isSubmitting, onChange, onSubmit }: DemoFormProps
 
                 {state.submitError && (
                   <p
-                    className="mt-md text-body-sm text-destructive"
+                    className="text-body-sm text-destructive"
                     role="alert"
                     aria-live="polite"
                   >

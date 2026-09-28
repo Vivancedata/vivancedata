@@ -83,7 +83,7 @@ const ProjectCard = ({ title, description, technologies, status }: ProjectCardPr
 
   return (
     <div className="flex flex-col border border-rule bg-card">
-      <div className="field-dots relative aspect-[16/7] border-b border-rule">
+      <div className="field-dots relative aspect-16/7 border-b border-rule">
         <div className="absolute top-3 right-3">
           <span className="inline-flex items-center rounded-pill border border-rule bg-background px-2.5 py-0.5 text-label uppercase text-mute">
             {status}
@@ -122,7 +122,7 @@ const TECHNOLOGY_ICONS: Record<TechnologyIcon, React.ReactNode> = {
 export default function InnovationHubPage() {
 
   return (
-    <Container className="py-16">
+    <Container>
       <div className="mb-16">
         <Heading className="mb-4 font-display text-serif-xl">Innovation Hub</Heading>
         <Paragraph className="max-w-[62ch] text-body-lg">

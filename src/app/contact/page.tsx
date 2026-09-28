@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 
 const ContactPage = () => {
   return (
-    <Container className="py-16">
+    <Container>
       <div className="max-w-6xl">
         <div className="mb-12">
           <Heading className="mb-4 font-display text-serif-xl">Book a call</Heading>

@@ -199,7 +199,7 @@ export const metadata: Metadata = {
 
 export default function CaseStudiesPage() {
   return (
-    <Container className="py-16">
+    <Container>
       <div className="mb-16">
         <Heading className="mb-4 font-display text-serif-xl">Example engagements</Heading>
         <Paragraph className="max-w-[62ch] text-body-lg">

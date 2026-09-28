@@ -58,7 +58,7 @@ const collaborationTerms = [
 
 const CareerPage = () => {
   return (
-    <Container className="py-16">
+    <Container>
       <div className="max-w-4xl">
         {/* Header */}
         <div className="mb-16">

@@ -303,7 +303,7 @@ export function IndustryPage({
               className="relative"
             >
               <div className="mb-md flex items-center">
-                <div className="mr-md flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-primary text-body font-medium text-primary-foreground">
+                <div className="mr-md flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary text-body font-medium text-primary-foreground">
                   {index + 1}
                 </div>
                 <h3 className="text-heading-3">{phase.title}</h3>

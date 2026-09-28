@@ -106,7 +106,7 @@ const useCases: UseCase[] = [
 
 export default function GenerativeAIPage() {
   return (
-    <Container className="py-16">
+    <Container>
       <ServicePageHeader
         title="Generative AI"
         intro="Language models put to work on your own material — the documents that arrive as PDFs, the calls that come in after hours, the writing nobody wants to do twice."
@@ -115,7 +115,7 @@ export default function GenerativeAIPage() {
       <ServiceHeroSplit
         visual={
           <div className="aspect-video rounded-md overflow-hidden border border-border bg-card p-4 md:p-6 flex flex-col font-mono text-sm">
-            <div className="flex gap-1.5 mb-4 flex-shrink-0">
+            <div className="flex gap-1.5 mb-4 shrink-0">
               <div className="w-3 h-3 rounded-full border border-border bg-muted" />
               <div className="w-3 h-3 rounded-full border border-border bg-muted" />
               <div className="w-3 h-3 rounded-full border border-border bg-muted" />

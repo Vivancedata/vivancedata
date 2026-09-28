@@ -3,7 +3,7 @@ import { Skeleton, SkeletonCard } from "@/components/ui/skeleton";
 
 export default function BlogLoading() {
   return (
-    <Container className="py-16">
+    <Container>
       {/* Skeletons are silent to a screen reader; this says what is happening. */}
       <p role="status" className="sr-only">Loading…</p>
       {/* Page Header Skeleton */}

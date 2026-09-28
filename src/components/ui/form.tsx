@@ -70,9 +70,13 @@ const FormItem = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEl
   ({ className, ...props }, ref) => {
     const id = React.useId()
 
+    // Not `space-y-2`: Tailwind v4 moved that to a bottom margin on every
+    // child but the last, and a bottom margin on the inline <label> that opens
+    // each item does nothing -- the label would sit flush on its input. This is
+    // v3's form of the rule, a top margin on every child after the first.
     return (
       <FormItemContext.Provider value={{ id }}>
-        <div ref={ref} className={cn("space-y-2", className)} {...props} />
+        <div ref={ref} className={cn("[&>*+*]:mt-2", className)} {...props} />
       </FormItemContext.Provider>
     )
   }

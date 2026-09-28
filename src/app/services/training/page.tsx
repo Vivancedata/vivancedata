@@ -102,7 +102,7 @@ const courses: Course[] = [
 
 export default function TrainingPage() {
   return (
-    <Container className="py-16">
+    <Container>
       <ServicePageHeader
         title="AI training and workshops"
         intro="For the people who will run these systems after the build: what a model can and cannot do, how to check it, and what to do the first time it is wrong."
@@ -124,7 +124,7 @@ export default function TrainingPage() {
                 <div key={course.title}>
                   <div className="flex justify-between gap-4 mb-1">
                     <span className="text-foreground text-xs">{course.title}</span>
-                    <span className="text-mute text-xs font-mono flex-shrink-0">{course.duration}</span>
+                    <span className="text-mute text-xs font-mono shrink-0">{course.duration}</span>
                   </div>
                   <div className="text-muted-foreground text-xs">{course.audience}</div>
                 </div>
