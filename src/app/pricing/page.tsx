@@ -8,6 +8,7 @@ import Pricing from "@/components/home/Pricing";
 import { pricingPageContent } from "@/constants/pricing";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/pricing" },
   title: "Pricing - Vivancedata",
   description:
     "What an AI build costs: a one-off fee to scope and build it, and a monthly fee to keep it working. Starting figures for assessment, build and ongoing partnership.",

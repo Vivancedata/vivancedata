@@ -11,6 +11,7 @@ import {
 import { demos } from "@/constants/demos";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/partners" },
   title: "For people who already serve trades - Vivancedata",
   description:
     "Your customers are asking about AI and you do not want to own a model you did not train. I build the workflow, you keep the relationship.",

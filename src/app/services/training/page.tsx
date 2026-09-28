@@ -12,6 +12,7 @@ import {
 } from "@/components/services/ServicePageLayout";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/services/training" },
   title: "AI Training & Workshops - Vivancedata",
   description: "Training for the people who will run these systems day to day: what a model can and cannot do, how to check it, and what to do the first time it is wrong.",
   keywords: ["AI training", "AI workshops", "AI education", "AI skills", "AI literacy", "AI upskilling"],

@@ -6,6 +6,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/tools/use-cases" },
   title: "AI Use Cases - Vivancedata",
   description:
     "Browse practical AI use cases for construction, HVAC and the trades, logistics and fleet operations, and manufacturing.",

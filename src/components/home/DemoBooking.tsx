@@ -184,6 +184,12 @@ interface DemoFormProps {
   onSubmit: (e: React.FormEvent) => void;
 }
 
+// The form is replaced by the confirmation on success, which would otherwise
+// drop keyboard and screen-reader focus to <body> with nothing announced (the
+// toast loads lazily and may never arrive). Focusing the heading reads it out.
+// Module-level so the ref's identity is stable and it fires on mount only.
+const focusOnMount = (element: HTMLElement | null) => element?.focus();
+
 function DemoFormCard({ state, isSubmitting, onChange, onSubmit }: DemoFormProps) {
   return (
     <div className="border border-rule bg-card">
@@ -211,6 +217,7 @@ function DemoFormCard({ state, isSubmitting, onChange, onSubmit }: DemoFormProps
                     type="text"
                     placeholder="John Smith…"
                     autoComplete="name"
+                    maxLength={100}
                     value={state.formData.name}
                     onChange={onChange}
                     className={cn(
@@ -271,6 +278,7 @@ function DemoFormCard({ state, isSubmitting, onChange, onSubmit }: DemoFormProps
                     type="text"
                     placeholder="Acme Inc…"
                     autoComplete="organization"
+                    maxLength={200}
                     value={state.formData.company}
                     onChange={onChange}
                     className={cn(
@@ -362,7 +370,11 @@ function DemoFormCard({ state, isSubmitting, onChange, onSubmit }: DemoFormProps
                 <ListMark label="" />
                 <span className={wallLabel}>Received</span>
               </p>
-              <h3 className="mt-md font-display text-serif-sm text-foreground">
+              <h3
+                ref={focusOnMount}
+                tabIndex={-1}
+                className="mt-md font-display text-serif-sm text-foreground outline-hidden"
+              >
                 Call request received
               </h3>
               <p className="mt-md max-w-[46ch] text-body-sm text-muted-foreground">

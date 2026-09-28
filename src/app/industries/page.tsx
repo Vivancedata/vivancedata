@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/industries" },
   title: "Industries - Vivancedata",
   description: "AI built for the trades and the field: construction, HVAC and the service trades, logistics and fleet operations, and manufacturing.",
   keywords: ["industry solutions", "AI for construction", "AI for HVAC", "AI for the trades", "AI for logistics", "AI for fleet operations", "AI for manufacturing"],
