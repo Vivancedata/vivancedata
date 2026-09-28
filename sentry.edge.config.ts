@@ -1,9 +1,12 @@
 import * as Sentry from "@sentry/nextjs";
+import { dataCollection } from "./sentry.data-collection";
 
 const dsn = process.env.SENTRY_DSN || process.env.NEXT_PUBLIC_SENTRY_DSN;
 
 Sentry.init({
   dsn,
+
+  dataCollection,
 
   // Adjust this value in production, or use tracesSampler for greater control
   tracesSampleRate: 1.0,

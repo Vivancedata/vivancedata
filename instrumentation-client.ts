@@ -3,12 +3,15 @@
 // never reaching the bundle, so production shipped no browser SDK. Options are
 // unchanged.
 import * as Sentry from "@sentry/nextjs";
+import { dataCollection } from "./sentry.data-collection";
 
 const dsn = process.env.NEXT_PUBLIC_SENTRY_DSN;
 const enabled = process.env.NODE_ENV === "production" && Boolean(dsn);
 
 Sentry.init({
   dsn,
+
+  dataCollection,
 
   // Adjust this value in production, or use tracesSampler for greater control
   tracesSampleRate: 1.0,
