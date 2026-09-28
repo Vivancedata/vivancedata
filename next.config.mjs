@@ -1,4 +1,4 @@
-import { withSentryConfig } from '@sentry/nextjs';
+import { withSentryConfig } from '@sentry/nextjs/config';
 import bundleAnalyzer from '@next/bundle-analyzer';
 import path from 'node:path';
 import { createRequire } from 'node:module';
