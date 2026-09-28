@@ -196,6 +196,7 @@ export function ProfileForm() {
                         placeholder="Dana…"
                         required
                         autoComplete="given-name"
+                        maxLength={100}
                         {...field}
                       />
                     </FormControl>
@@ -214,6 +215,7 @@ export function ProfileForm() {
                         placeholder="Ruiz…"
                         required
                         autoComplete="family-name"
+                        maxLength={100}
                         {...field}
                       />
                     </FormControl>
@@ -276,6 +278,7 @@ export function ProfileForm() {
                         placeholder="Ruiz Heating and Air…"
                         required
                         autoComplete="organization"
+                        maxLength={200}
                         {...field}
                       />
                     </FormControl>

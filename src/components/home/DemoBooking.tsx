@@ -217,6 +217,7 @@ function DemoFormCard({ state, isSubmitting, onChange, onSubmit }: DemoFormProps
                     type="text"
                     placeholder="John Smith…"
                     autoComplete="name"
+                    maxLength={100}
                     value={state.formData.name}
                     onChange={onChange}
                     className={cn(
@@ -277,6 +278,7 @@ function DemoFormCard({ state, isSubmitting, onChange, onSubmit }: DemoFormProps
                     type="text"
                     placeholder="Acme Inc…"
                     autoComplete="organization"
+                    maxLength={200}
                     value={state.formData.company}
                     onChange={onChange}
                     className={cn(
