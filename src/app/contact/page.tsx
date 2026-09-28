@@ -19,8 +19,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "https://vivancedata.com/images/banner.png",
-        width: 1200,
-        height: 630,
+        width: 2560,
+        height: 1280,
         alt: "Contact Vivancedata",
       },
     ],
