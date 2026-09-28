@@ -168,6 +168,46 @@ describe("POST /api/contact", () => {
     expect(sendMock).not.toHaveBeenCalled();
   });
 
+  it("rejects a service that is not on the form instead of crashing", async () => {
+    // "constructor" resolved through the plain-object lookup to a function,
+    // and escaping it threw before the enquiry was sent: a 500, lead lost.
+    const response = await postContact(
+      { ...validBody, serviceInterest: "constructor" },
+      "198.51.100.16"
+    );
+
+    expect(response.status).toBe(400);
+    expect(sendMock).not.toHaveBeenCalled();
+  });
+
+  it("accepts the empty service the contact form sends by default", async () => {
+    const response = await postContact({ ...validBody, serviceInterest: "" }, "198.51.100.17");
+
+    expect(response.status).toBe(200);
+  });
+
+  it("says so when a field is longer than the form accepts", async () => {
+    const response = await postContact(
+      { ...validBody, message: "x".repeat(10_001) },
+      "198.51.100.18"
+    );
+
+    expect(response.status).toBe(400);
+    await expect(response.json()).resolves.toEqual({
+      error: "Something you entered is longer than this form accepts.",
+    });
+  });
+
+  it("refuses a line break in a name that becomes the subject line", async () => {
+    const response = await postContact(
+      { ...validBody, lastName: "O'Brien\r\nBcc: someone@example.com" },
+      "198.51.100.19"
+    );
+
+    expect(response.status).toBe(400);
+    expect(sendMock).not.toHaveBeenCalled();
+  });
+
   it("rejects malformed JSON with a 500 rather than throwing", async () => {
     const response = await POST(
       new NextRequest("http://localhost/api/contact", {

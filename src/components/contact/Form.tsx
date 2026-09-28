@@ -69,6 +69,8 @@ const formSchema = z.object({
   }),
   message: z.string().min(10, {
     message: "Message must be at least 10 characters.",
+  }).max(10_000, {
+    message: "Keep the message under 10,000 characters.",
   }),
 })
 
@@ -114,10 +116,14 @@ export function ProfileForm() {
         body: JSON.stringify(values),
       });
 
-      const data = await response.json();
+      // A 504 from the platform is an HTML page, not JSON. Parsing it threw a
+      // SyntaxError whose "Unexpected token" text the catch below showed as the
+      // toast, in place of the fallback that hands over the direct address.
+      const data: { error?: string } = await response.json().catch(() => ({}));
 
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to submit form');
+        // No message of its own: the catch then shows the fallback with the address.
+        throw new Error(data.error || '');
       }
 
       ANALYTICS.contactSubmitted(values.serviceInterest);
