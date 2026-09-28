@@ -11,6 +11,7 @@ import {
 } from "@/components/services/ServicePageLayout";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/services/generative-ai" },
   title: "Generative AI - Vivancedata",
   description: "Language models put to work on your own material: reading the documents that arrive as PDFs, answering the phone after hours, drafting the routine writing. Fine-tuning and multimodal where they earn it.",
   keywords: ["generative AI", "AI content creation", "LLM fine-tuning", "image generation", "voice synthesis", "multimodal AI"],

@@ -39,10 +39,10 @@ const displaySerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: {
-    default: "Vivancedata - AI for construction, HVAC, logistics and manufacturing",
-    template: "%s | Vivancedata"
-  },
+  // No title template here, because every page already names the brand in its own title
+  // ("About - Vivancedata"), so a "%s | Vivancedata" template produced
+  // "About - Vivancedata | Vivancedata" in every tab and search result.
+  title: "Vivancedata - AI for construction, HVAC, logistics and manufacturing",
   description: "After-hours calls answered and booked. Permits and delivery paperwork read instead of re-keyed. Built by Lorenzo Scaturchio on your own documents, and yours to keep.",
   keywords: ["AI for contractors", "HVAC after-hours call answering", "construction document automation", "proof of delivery automation", "AI consulting for trades"],
   authors: [{ name: "Lorenzo Scaturchio" }],
@@ -54,9 +54,9 @@ export const metadata: Metadata = {
     telephone: false,
   },
   metadataBase: new URL("https://vivancedata.com"),
-  alternates: {
-    canonical: "/",
-  },
+  // No `alternates.canonical` here: metadata is inherited, so a root canonical
+  // of "/" told search engines every page without its own was a duplicate of
+  // the homepage. Each page declares its own canonical instead.
   openGraph: {
     type: "website",
     locale: "en_US",

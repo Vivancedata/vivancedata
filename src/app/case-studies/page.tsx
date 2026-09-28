@@ -171,6 +171,7 @@ const CaseStudyIllustration = ({ industry }: { industry: string }) => {
 };
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/case-studies" },
   title: "Example Engagements - Vivancedata",
   description: "Composite examples showing how AI engagements are scoped and delivered in construction, the trades and logistics -- the problem, the approach, and what gets handed over.",
   keywords: ["AI engagements", "AI implementation", "AI scoping", "AI delivery", "AI solutions", "machine learning projects"],

@@ -10,6 +10,7 @@ import { Metadata } from "next";
 // not type "intelligent automation" -- they type the trade and the problem, so
 // the title and keywords name both rather than the category.
 export const metadata: Metadata = {
+  alternates: { canonical: "/" },
   title: "Vivancedata - AI for construction, HVAC, logistics and manufacturing",
   description: "Small, specific AI systems for trades and field operations: after-hours calls answered and booked, permits and delivery paperwork read instead of re-keyed. Built on your own documents, and yours to keep.",
   keywords: ["AI for contractors", "HVAC after-hours call answering", "construction document automation", "permit data extraction", "proof of delivery automation", "AI consulting for trades", "field operations automation"],

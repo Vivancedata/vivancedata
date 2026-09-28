@@ -75,6 +75,7 @@ export async function generateMetadata({ params }: BlogPostParams): Promise<Meta
     return {
       title: `${frontmatter.title} - Vivancedata`,
       description: frontmatter.description,
+      alternates: { canonical: `/blog/${slug}` },
       keywords: keywords.join(', '),
       openGraph: {
         title: frontmatter.title,

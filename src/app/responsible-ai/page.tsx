@@ -14,6 +14,7 @@ import {
 } from "@/constants/responsibleAI";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/responsible-ai" },
   title: "Responsible AI - Vivancedata",
   description: "What a system is allowed to decide on its own, what waits for a person, and what gets written down. The parts of this work that can go wrong quietly.",
   keywords: ["responsible AI", "ethical AI", "AI governance", "AI ethics", "transparent AI", "AI bias", "AI accountability"],

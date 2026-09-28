@@ -7,6 +7,7 @@ import { Metadata } from 'next';
 import { Mail, Clock } from 'lucide-react';
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/contact" },
   title: "Book a call - Vivancedata",
   description: "Tell me what is slowing your operation down. You will hear back from me, not an account manager, within one working day.",
   keywords: ["contact Vivancedata", "book a call", "AI for contractors", "after-hours call answering", "paperwork automation"],

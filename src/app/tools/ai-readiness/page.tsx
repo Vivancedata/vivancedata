@@ -5,6 +5,7 @@ import { AIReadinessQuiz } from "@/components/tools/AIReadinessQuiz";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/tools/ai-readiness" },
   title: "AI Readiness Assessment - Vivancedata",
   description: "A short set of questions about your records, your systems and your people, and an honest read on whether you are ready to automate anything yet.",
   keywords: ["AI readiness assessment", "AI adoption", "AI maturity", "AI strategy", "digital transformation", "AI capabilities"],
