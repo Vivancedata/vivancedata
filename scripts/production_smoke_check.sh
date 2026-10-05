@@ -8,6 +8,7 @@ trap 'rm -rf "$TMP_DIR"' EXIT
 
 checks=0
 failures=0
+suspended=0
 
 pass() {
   printf "PASS: %s\n" "$1"
@@ -42,6 +43,11 @@ run_status_check() {
     pass "$name (code=$code, time=${time_total}s, effective=$effective_url)"
   else
     fail "$name (expected $expected_code, got $code, effective=$effective_url)"
+    if [[ "$code" == "402" ]]; then
+      # 402 DEPLOYMENT_DISABLED is the whole Vercel team suspended for billing,
+      # not this deploy: 2026-09-20 to 10-02 every site served it for 12 days.
+      suspended=1
+    fi
   fi
 }
 
@@ -97,7 +103,10 @@ run_status_check "Homepage responds" "GET" "$BASE_URL/" "200" "$TMP_DIR/home.htm
 run_content_check "Homepage title carries the brand" "$TMP_DIR/home.html" "<title>vivancedata" "-qi"
 
 run_status_check "Blog index responds" "GET" "$BASE_URL/blog" "200" "$TMP_DIR/blog.html"
-run_content_check "Blog index contains heading text" "$TMP_DIR/blog.html" "AI Insights Blog"
+# Brand in the <title>, for the same reason as the homepage: this asserted the
+# heading "AI Insights Blog", which became "Notes from the work", so it would
+# have failed hourly against a healthy site.
+run_content_check "Blog index title carries the brand" "$TMP_DIR/blog.html" "<title>[^<]*vivancedata" "-qi"
 
 run_status_check "Contact page responds" "GET" "$BASE_URL/contact" "200" "$TMP_DIR/contact.html"
 # The contact page's title is copy too ("Contact Us" became "Book a call" in
@@ -118,10 +127,31 @@ run_status_check "Contact API POST validation triggers on empty payload" "POST" 
 # body with a non-empty "error" string.
 run_content_check "Contact API POST returns a JSON error message" "$TMP_DIR/api-contact-post.json" '"error":"[^"]'
 
+# --- Can a lead actually land? -------------------------------------------
+# Every check above passed while no lead could reach anyone: production had no
+# email provider, so the form answered 503 "please email info@vivancedata.com",
+# and vivancedata.com had no MX record, so that email bounced. A page that
+# loads is not a practice that can be contacted.
+run_status_check "Contact form can deliver (email provider configured)" "GET" "$BASE_URL/api/health/email" "200" "$TMP_DIR/health-email.json"
+
+checks=$((checks + 1))
+mx_domain="${CANONICAL_BASE_URL#https://}"
+# DNS-over-HTTPS rather than dig: curl is the one tool every runner has. Match
+# type 15 inside "Answer" only: the echoed "Question" carries type 15 as well,
+# so a bare match passes for a domain with no MX at all.
+if curl -sS "https://dns.google/resolve?name=${mx_domain}&type=MX" | grep -q '"Answer": *\[[^]]*"type": *15'; then
+  pass "Inbox exists: ${mx_domain} has an MX record (info@ can receive)"
+else
+  fail "Inbox exists: ${mx_domain} has NO MX record, so mail to info@${mx_domain} bounces"
+fi
+
 
 echo "Completed $checks production smoke checks."
 if [[ "$failures" -gt 0 ]]; then
   echo "Result: $failures check(s) failed."
+  if [[ "$suspended" -eq 1 ]]; then
+    echo "HTTP 402: the Vercel team is suspended (billing), not this deploy. Fix the payment method; every site on the team is down."
+  fi
   exit 1
 fi
 

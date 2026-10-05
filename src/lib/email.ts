@@ -134,6 +134,23 @@ export function isDryRun(): boolean {
   return flag === '1' || flag === 'true';
 }
 
+export type DeliveryStatus = 'ready' | 'dry-run' | 'unconfigured';
+
+/**
+ * Whether an enquiry submitted right now could reach the inbox, without
+ * sending one to find out. A dry run counts as NOT deliverable: it reports
+ * success to the visitor and delivers nothing, which is the failure this
+ * module exists to prevent.
+ *
+ * Production ran with no RESEND_API_KEY from the site's launch until at least
+ * 2026-10-05, so every "Book a call" ended in a 503. Nothing noticed, because
+ * every check asked whether the page loaded, never whether a lead could land.
+ */
+export function deliveryStatus(): DeliveryStatus {
+  if (isDryRun()) return 'dry-run';
+  return process.env.RESEND_API_KEY ? 'ready' : 'unconfigured';
+}
+
 export interface OutboundEmail {
   /** Display name in the From header, e.g. "VivanceData Contact Form". */
   fromName: string;
