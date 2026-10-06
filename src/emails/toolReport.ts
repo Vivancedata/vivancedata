@@ -88,7 +88,7 @@ export function buildLeadNotification(report: ToolReport): string {
           ${renderSummaryRows(report.summary)}
           ${renderRecommendations(report.recommendations ?? [])}
           <p style="color: #706c65; font-size: 12px; margin-top: 20px;">
-            Submitted at ${new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' })} PST
+            Submitted at ${new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles', timeZoneName: 'short' })}
           </p>`,
   });
 }

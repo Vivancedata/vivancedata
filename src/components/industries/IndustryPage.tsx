@@ -1,5 +1,3 @@
-"use client";
-
 import type { ReactNode } from "react";
 import { Container } from "@/components/common/Container";
 import { DemoLink } from "@/components/common/DemoLink";

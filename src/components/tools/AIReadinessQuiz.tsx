@@ -35,20 +35,26 @@ import {
 } from "lucide-react";
 
 // Presentation for what the model returns. The scoring module deals in level
-// names and category keys; the icons and Tailwind colours live here so that
+// names and category keys; the icons live here so that
 // src/lib stays free of React and the thresholds stay testable without one.
-const LEVEL_PRESENTATION: Record<ReadinessLevelName, { color: string; icon: typeof Award }> = {
-  Excellent: { color: "green", icon: Award },
-  Good: { color: "blue", icon: TrendingUp },
-  Moderate: { color: "yellow", icon: CheckCircle2 },
-  Beginning: { color: "orange", icon: AlertCircle },
+//
+// There are no per-level or per-category colours. They used to be built at
+// runtime (`bg-${color}-100`), which Tailwind cannot see, so none of those
+// classes were ever generated and the icons already rendered uncoloured. The
+// design system keeps its one hue for affirmative machine state, so the
+// surfaces below use its tokens rather than reviving a palette it rules out.
+const LEVEL_PRESENTATION: Record<ReadinessLevelName, { icon: typeof Award }> = {
+  Excellent: { icon: Award },
+  Good: { icon: TrendingUp },
+  Moderate: { icon: CheckCircle2 },
+  Beginning: { icon: AlertCircle },
 };
 
-const categoryInfo: Record<ReadinessCategory, { icon: typeof Database; color: string; label: string }> = {
-  data: { icon: Database, color: "blue", label: CATEGORY_LABELS.data },
-  infrastructure: { icon: Server, color: "green", label: CATEGORY_LABELS.infrastructure },
-  culture: { icon: Users, color: "purple", label: CATEGORY_LABELS.culture },
-  strategy: { icon: Target, color: "orange", label: CATEGORY_LABELS.strategy },
+const categoryInfo: Record<ReadinessCategory, { icon: typeof Database; label: string }> = {
+  data: { icon: Database, label: CATEGORY_LABELS.data },
+  infrastructure: { icon: Server, label: CATEGORY_LABELS.infrastructure },
+  culture: { icon: Users, label: CATEGORY_LABELS.culture },
+  strategy: { icon: Target, label: CATEGORY_LABELS.strategy },
 };
 
 
@@ -59,14 +65,14 @@ interface ReadinessSummaryProps {
 }
 
 function ReadinessSummary({ results, readinessLevel }: ReadinessSummaryProps) {
-  const { color, icon: ReadinessIcon } = LEVEL_PRESENTATION[readinessLevel];
+  const { icon: ReadinessIcon } = LEVEL_PRESENTATION[readinessLevel];
 
   return (
     <>
       <CardHeader className="text-center">
         <div className="flex justify-center mb-5.5" aria-hidden="true">
-          <div className={`rounded-full p-4 bg-${color}-100 dark:bg-${color}-900/20`}>
-            <ReadinessIcon className={`h-12 w-12 text-${color}-600`} />
+          <div className="rounded-full bg-muted p-4">
+            <ReadinessIcon className="h-12 w-12 text-foreground" />
           </div>
         </div>
         <CardTitle as="h2" className="text-3xl">Your readiness score</CardTitle>
@@ -112,8 +118,8 @@ function CategoryBreakdown({ categoryAverages }: CategoryBreakdownProps) {
           <Card key={category} role="listitem">
             <CardContent className="p-4">
               <div className="flex items-center gap-3 mb-3">
-                <div className={`rounded-full p-2 bg-${info.color}-100 dark:bg-${info.color}-900/20`} aria-hidden="true">
-                  <CategoryIcon className={`h-4 w-4 text-${info.color}-600`} />
+                <div className="rounded-full bg-muted p-2" aria-hidden="true">
+                  <CategoryIcon className="h-4 w-4 text-muted-foreground" />
                 </div>
                 <span className="font-semibold" id={labelId}>{info.label}</span>
               </div>
@@ -282,8 +288,8 @@ function QuizQuestionStep({
           <Card>
             <CardHeader>
               <div className="flex items-center gap-3 mb-3.5">
-                <div className={`rounded-full p-2 bg-${categoryInfo[currentQ.category].color}-100 dark:bg-${categoryInfo[currentQ.category].color}-900/20`} aria-hidden="true">
-                  <CategoryIcon className={`h-5 w-5 text-${categoryInfo[currentQ.category].color}-600`} />
+                <div className="rounded-full bg-muted p-2" aria-hidden="true">
+                  <CategoryIcon className="h-5 w-5 text-muted-foreground" />
                 </div>
                 <span className="text-sm font-medium text-muted-foreground">
                   {categoryInfo[currentQ.category].label}
@@ -299,7 +305,10 @@ function QuizQuestionStep({
                   onValueChange={(value) => onAnswer(currentQ.id, parseInt(value, 10))}
                   aria-labelledby={`question-${currentQ.id}`}
                 >
-                  <div className="space-y-3" role="radiogroup">
+                  {/* No role here: RadioGroup already renders the named radiogroup, and a
+                    * second, unnamed one inside it is what screen readers
+                    * announced as the radios' group. */}
+                  <div className="space-y-3">
                     {/* The label wraps the radio, so the whole row -- control,
                       * gap and text -- is one hit target with no dead zone. */}
                     {currentQ.options.map((option) => (

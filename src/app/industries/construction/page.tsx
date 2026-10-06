@@ -5,6 +5,7 @@ import { specimenFor } from "@/constants/specimens";
 import { demos } from "@/constants/demos";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/industries/construction" },
   title: "AI for Construction - Vivancedata",
   description: "Cut the paperwork load on submittals, RFIs, daily reports and permits with AI that writes into the project software your team already runs.",
   keywords: ["construction AI", "submittal processing", "RFI automation", "daily reports", "construction document management", "preconstruction estimating"],

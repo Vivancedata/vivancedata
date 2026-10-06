@@ -4,6 +4,7 @@ import { IndustryPage, type IndustryPageConfig } from "@/components/industries/I
 import { specimenFor } from "@/constants/specimens";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/industries/manufacturing" },
   title: "AI for Manufacturing - Vivancedata",
   description: "Machine degradation flagged before the line stops, defects caught during the run, and the paperwork between the floor and the office read rather than re-keyed.",
   keywords: ["manufacturing AI", "predictive maintenance", "quality control AI", "OEE optimization", "industrial AI", "IIoT analytics"],

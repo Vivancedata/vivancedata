@@ -7,6 +7,7 @@ import { CTASection } from "@/components/home/CTASection";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/services" },
   title: "AI Services - Vivancedata",
   description: "What I build for trade and industrial businesses: document intake, private question-answering over your own files, and workflow automation. Scoped, built on your documents, and run afterwards.",
   keywords: ["AI services", "LLM engineering", "AI implementation", "data platform", "machine learning services", "AI consulting", "team upskilling"],

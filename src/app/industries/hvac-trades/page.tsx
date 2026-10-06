@@ -5,6 +5,7 @@ import { specimenFor } from "@/constants/specimens";
 import { demos } from "@/constants/demos";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/industries/hvac-trades" },
   title: "Answer the calls you are missing after hours - Vivancedata",
   description: "Answer the after-hours calls that go to voicemail, triage the emergencies, and get quotes and follow-ups out while the job is still fresh.",
   keywords: ["HVAC AI", "trades AI", "after-hours call answering", "dispatch software", "service scheduling", "field service automation"],

@@ -2,18 +2,25 @@ import { NextRequest, NextResponse, after } from 'next/server';
 import { z } from 'zod';
 import { buildRateLimitHeaders, enforceRateLimit } from '@/lib/rateLimit';
 import { emailAddress, sendCourtesy, sendCritical, teamInbox } from '@/lib/email';
-import { buildEnquiryConfirmation, buildEnquiryNotification } from '@/emails/contact';
+import { SERVICE_KEYS, buildEnquiryConfirmation, buildEnquiryNotification } from '@/emails/contact';
+
+// Names go into the notification's subject line, a plain-text header, so a
+// line break in one is refused rather than passed on to the mail provider.
+const nameField = z.string().trim().min(1).max(100).regex(/^[^\r\n]*$/);
 
 const contactSchema = z.object({
-  firstName: z.string().trim().min(1),
-  lastName: z.string().trim().min(1),
+  firstName: nameField,
+  lastName: nameField,
   email: emailAddress,
   // The buyer here is phone-first and reads this between jobs, so the form
   // offers a number and the enquiry carries it. Optional: not everyone will.
-  phone: z.string().trim().optional(),
-  company: z.string().trim().optional(),
-  serviceInterest: z.string().trim().optional(),
-  message: z.string().trim().min(1),
+  phone: z.string().trim().max(32).optional(),
+  company: z.string().trim().max(200).optional(),
+  // The contact form sends "" until a service is picked. Anything else must be
+  // one of the select's values: the field is echoed into the confirmation sent
+  // to whatever address the request names.
+  serviceInterest: z.union([z.enum(SERVICE_KEYS), z.literal('')]).optional(),
+  message: z.string().trim().min(1).max(10_000),
 });
 
 const CONTACT_RATE_LIMIT_OPTIONS = {
@@ -45,10 +52,19 @@ export async function POST(request: NextRequest) {
       // The schema is an implementation detail; the two messages callers have
       // always seen are the interface. A missing field still outranks a bad
       // address, as it did when these were two sequential checks.
-      const hasMissingField = parsed.error.issues.some((issue) => issue.path[0] !== 'email');
+      const hasMissingField = parsed.error.issues.some(
+        (issue) => issue.path[0] !== 'email' && issue.code !== 'too_big'
+      );
+      const hasOverlongField = parsed.error.issues.some((issue) => issue.code === 'too_big');
 
       return NextResponse.json(
-        { error: hasMissingField ? 'Some required fields are still empty.' : 'That email address does not look right.' },
+        {
+          error: hasMissingField
+            ? 'Some required fields are still empty.'
+            : hasOverlongField
+              ? 'Something you entered is longer than this form accepts.'
+              : 'That email address does not look right.',
+        },
         { status: 400, headers: rateLimitHeaders }
       );
     }

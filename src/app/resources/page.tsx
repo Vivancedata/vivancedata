@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/resources" },
   title: "Resources - Vivancedata",
   description: "The free things on this site: notes from the work, an ROI calculator, a readiness assessment, what I am testing, and how I handle the risky parts.",
   keywords: ["AI resources", "AI tools", "ROI calculator", "AI readiness", "AI blog", "responsible AI"],

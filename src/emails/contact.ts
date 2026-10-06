@@ -10,7 +10,10 @@ export interface ContactEnquiry {
   message: string;
 }
 
-const SERVICE_NAMES: Record<string, string> = {
+/** The values the contact form's service select offers; the route accepts only these. */
+export const SERVICE_KEYS = ['generative-ai', 'consulting', 'training', 'other'] as const;
+
+const SERVICE_NAMES: Record<(typeof SERVICE_KEYS)[number], string> = {
   'generative-ai': 'Generative AI',
   consulting: 'AI Strategy Consulting',
   training: 'AI Training & Workshops',
@@ -21,7 +24,11 @@ function serviceName(serviceInterest?: string): string {
   if (!serviceInterest) {
     return 'Not provided';
   }
-  return SERVICE_NAMES[serviceInterest] || serviceInterest;
+  // Own keys only: a plain-object lookup of "constructor" returns a function,
+  // which escapeHtml then threw on.
+  return Object.hasOwn(SERVICE_NAMES, serviceInterest)
+    ? SERVICE_NAMES[serviceInterest as keyof typeof SERVICE_NAMES]
+    : serviceInterest;
 }
 
 /** The enquiry itself. Losing this loses the lead, so it is sent as critical. */
@@ -56,7 +63,7 @@ export function buildEnquiryNotification(enquiry: ContactEnquiry): string {
             <div class="value message">${escapeHtml(enquiry.message)}</div>
           </div>
           <p style="color: #706c65; font-size: 12px; margin-top: 20px;">
-            Submitted at ${new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' })} PST
+            Submitted at ${new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles', timeZoneName: 'short' })}
           </p>`,
   });
 }
