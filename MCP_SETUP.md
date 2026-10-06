@@ -6,17 +6,16 @@ This repository includes a sample MCP configuration in `.mcp.json`.
 
 - `next-devtools`
 - `sequential-thinking`
-- `filesystem`
-- `git`
 - `memory`
 - `brave-search`
 - `github`
-- `fetch`
 
-## Important Path Update
+Every server is pinned to an exact version. `npx -y` runs whatever it downloads, so an
+unpinned server would run a compromised upstream release automatically. To upgrade, check
+the new release, then bump the version in `.mcp.json`.
 
-The checked-in `.mcp.json` uses Windows example paths for `filesystem` and `git` (`c:\\_Code\\vivancedata`).
-Update those paths to your local project path before using MCP locally.
+`brave-search` and `github` are deprecated on npm and no longer receive fixes. Prefer the
+`gh` CLI for GitHub work.
 
 ## Environment Variables
 
@@ -29,6 +28,5 @@ You can copy `.env.example` and set values in your local environment file.
 
 ## Verify Configuration
 
-1. Confirm `.mcp.json` points to the correct local path.
-2. Confirm required API keys are set.
-3. Restart your MCP-compatible client and verify all configured servers connect.
+1. Confirm required API keys are set.
+2. Restart your MCP-compatible client and verify all configured servers connect.
