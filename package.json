@@ -56,7 +56,7 @@
     "cmdk": "^1.0.0",
     "critters": "^0.0.25",
     "embla-carousel-react": "^8.1.6",
-    "framer-motion": "^13.4.6",
+    "framer-motion": "^14.0.0",
     "lucide-react": "^1.52.0",
     "next": "^16.4.0",
     "next-mdx-remote": "^6.0.0",
