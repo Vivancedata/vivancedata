@@ -105,7 +105,10 @@
     "flatted": "^3.4.0",
     "undici": "^7.24.0",
     "postcss": "^8.5.23",
-    "sharp": "^0.35.3"
+    "sharp": "^0.35.3",
+    "@tailwindcss/typography": {
+      "postcss-selector-parser": "^7.1.6"
+    }
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.7",
