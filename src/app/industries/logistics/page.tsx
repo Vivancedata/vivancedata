@@ -5,6 +5,7 @@ import { specimenFor } from "@/constants/specimens";
 import { demos } from "@/constants/demos";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/industries/logistics" },
   title: "AI for Logistics and Fleet Operations - Vivancedata",
   description: "Read the photographed paperwork drivers already submit, surface the loads going wrong before the customer calls, and keep claims evidence together.",
   keywords: ["logistics AI", "fleet operations", "proof of delivery", "bill of lading processing", "dispatch exception management", "freight claims"],

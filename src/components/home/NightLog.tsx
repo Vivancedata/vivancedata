@@ -164,7 +164,7 @@ export default function NightLog() {
                     role="tab"
                     id={`night-log-tab-${index}`}
                     aria-selected={selected}
-                    aria-controls={`night-log-panel-${index}`}
+                    aria-controls={selected ? `night-log-panel-${index}` : undefined}
                     tabIndex={selected ? 0 : -1}
                     onClick={() => select(index)}
                     onKeyDown={onKeyDown}

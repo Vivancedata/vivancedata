@@ -2,6 +2,7 @@ import { Container } from "@/components/common/Container";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/terms-of-service" },
   title: "Terms of Service | Vivancedata",
   description: "Terms and conditions for using Vivancedata's AI consulting, generative AI, and training services.",
   openGraph: {

@@ -3,6 +3,7 @@ import { PageHero } from "@/components/common/PageHero";
 import { MissedCallCalculator } from "@/components/tools/MissedCallCalculator";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/tools/missed-calls" },
   title: "What are missed calls costing you? - Vivancedata",
   description:
     "Three questions and a number, worked out from your own figures: how many after-hours calls go unanswered, what a job is worth, and how many of those callers would have booked.",

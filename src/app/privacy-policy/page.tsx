@@ -2,6 +2,7 @@ import { Container } from "@/components/common/Container";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/privacy-policy" },
   title: "Privacy Policy & Transparency | Vivancedata",
   description: "Transparency about data handling, analytics, and business practices for Vivancedata's AI consulting services.",
   openGraph: {

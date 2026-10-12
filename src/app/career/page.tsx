@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { Briefcase, Users, Rocket, Heart, Mail, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/career" },
   title: "Careers at Vivancedata | Working with me",
   description: "How Vivancedata works with specialists. A founder-led practice that brings in senior people per project rather than hiring a bench.",
   keywords: ["AI careers", "AI consultant jobs", "data science careers", "machine learning jobs", "AI engineering"],

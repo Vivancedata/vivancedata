@@ -13,6 +13,7 @@ import {
 } from "@/constants/innovationHub";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/innovation-hub" },
   title: "Innovation Hub - Vivancedata",
   description: "What I test before it goes anywhere near a job someone depends on: which new AI techniques are ready for a trade or industrial operation, and which are not.",
   keywords: ["AI innovation", "emerging technology", "R&D", "AI research", "technology trends", "future of AI", "AI experimentation"],

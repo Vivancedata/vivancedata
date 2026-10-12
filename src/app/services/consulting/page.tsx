@@ -11,6 +11,7 @@ import {
 } from "@/components/services/ServicePageLayout";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/services/consulting" },
   title: "AI Strategy Consulting - Vivancedata",
   description: "Deciding what to automate first, what to leave alone, and what each option costs to build and to run \u2014 before anyone writes code.",
   keywords: ["AI strategy", "AI consulting", "digital transformation", "AI roadmap", "AI implementation", "AI governance"],

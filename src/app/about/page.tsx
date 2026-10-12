@@ -6,6 +6,7 @@ import { AboutTeam } from "@/components/about/AboutTeam";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/about" },
   title: "About - Vivancedata",
   description: "A founder-led AI practice working with construction, HVAC, logistics and manufacturing operations. Senior delivery, no hand-off to a junior team.",
   keywords: ["about Vivancedata", "Lorenzo Scaturchio", "founder-led AI practice", "AI for contractors", "AI for trades"],
