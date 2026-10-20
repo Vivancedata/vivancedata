@@ -95,3 +95,17 @@ export function hasAnalyticsConsent(): boolean {
   const preferences = readCookiePreferences();
   return preferences?.analytics ?? false;
 }
+
+/**
+ * Forget the stored choice so the banner asks again, and tell listeners
+ * (analytics, Session Replay) that consent is no longer given.
+ */
+export function clearCookiePreferences(): void {
+  try {
+    localStorage.removeItem(CONSENT_STORAGE_KEY);
+    localStorage.removeItem(LEGACY_CONSENT_STORAGE_KEY);
+  } catch {
+    // Storage unavailable: nothing was stored to clear.
+  }
+  window.dispatchEvent(new Event(CONSENT_UPDATED_EVENT));
+}

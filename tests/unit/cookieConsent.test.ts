@@ -1,7 +1,10 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
+  ALL_ACCEPTED_COOKIE_PREFERENCES,
   CONSENT_STORAGE_KEY,
+  CONSENT_UPDATED_EVENT,
   DEFAULT_COOKIE_PREFERENCES,
+  clearCookiePreferences,
   hasAnalyticsConsent,
   parseCookiePreferences,
   readCookiePreferences,
@@ -115,5 +118,42 @@ describe("cookie consent parsing", () => {
     expect(hasAnalyticsConsent()).toBe(false);
 
     vi.stubGlobal("window", currentWindow);
+  });
+
+  it("clears the stored choice and notifies listeners so consent is withdrawn", () => {
+    writeCookiePreferences(ALL_ACCEPTED_COOKIE_PREFERENCES);
+    localStorage.setItem("vivancedata-cookie-consent", JSON.stringify(ALL_ACCEPTED_COOKIE_PREFERENCES));
+    expect(hasAnalyticsConsent()).toBe(true);
+
+    const listener = vi.fn();
+    window.addEventListener(CONSENT_UPDATED_EVENT, listener);
+    clearCookiePreferences();
+    window.removeEventListener(CONSENT_UPDATED_EVENT, listener);
+
+    expect(localStorage.getItem(CONSENT_STORAGE_KEY)).toBeNull();
+    expect(readCookiePreferences()).toBeNull();
+    expect(hasAnalyticsConsent()).toBe(false);
+    expect(listener).toHaveBeenCalledTimes(1);
+  });
+
+  it("still notifies listeners when storage throws on clear", () => {
+    Object.defineProperty(globalThis, "localStorage", {
+      configurable: true,
+      value: {
+        getItem: () => null,
+        setItem: () => {},
+        removeItem: () => {
+          throw new Error("blocked");
+        },
+        clear: () => {},
+      },
+    });
+    const listener = vi.fn();
+    window.addEventListener(CONSENT_UPDATED_EVENT, listener);
+
+    expect(() => clearCookiePreferences()).not.toThrow();
+    expect(listener).toHaveBeenCalledTimes(1);
+
+    window.removeEventListener(CONSENT_UPDATED_EVENT, listener);
   });
 });
