@@ -48,7 +48,7 @@ const ServicesPage = () => {
     {
       id: "3",
       title: "Data plumbing",
-      description: "Where documents land, how they are stored, and what feeds the model. Built on Azure, and boring on purpose."
+      description: "Where documents land, how they are stored, and what feeds the model. It goes on the cloud you already run rather than a new one, and is boring on purpose."
     },
     {
       id: "4",

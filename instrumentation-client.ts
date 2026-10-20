@@ -4,6 +4,7 @@
 // unchanged.
 import * as Sentry from "@sentry/nextjs";
 import { dataCollection } from "./sentry.data-collection";
+import { CONSENT_UPDATED_EVENT, hasAnalyticsConsent } from "./src/lib/cookieConsent";
 
 const dsn = process.env.NEXT_PUBLIC_SENTRY_DSN;
 const enabled = process.env.NODE_ENV === "production" && Boolean(dsn);
@@ -28,10 +29,11 @@ Sentry.init({
   // in development and sample at a lower rate in production
   replaysSessionSampleRate: 0.1,
 
-  // Session Replay is registered below, after the page has painted. Listing it
-  // here would put its ~40 KB gz / ~125 KB parsed (rrweb) chunk in the initial
-  // script graph of every route, which Lighthouse mobile counted as the last
-  // remaining deduction after the hero work in #132.
+  // Session Replay is registered below, after the page has painted and only
+  // once the visitor has allowed analytics cookies. Listing it here would put
+  // its ~40 KB gz / ~125 KB parsed (rrweb) chunk in the initial script graph of
+  // every route, which Lighthouse mobile counted as the last remaining
+  // deduction after the hero work in #132. /privacy-policy describes this.
 });
 
 // Lets the SDK instrument App Router navigations as transactions.
@@ -55,6 +57,8 @@ export const onRouterTransitionStart = Sentry.captureRouterTransitionStart;
 function loadReplay() {
   import(/* webpackExports: ["replayIntegration"] */ "@sentry/nextjs")
     .then(({ replayIntegration }) => {
+      // Consent can be withdrawn while the chunk is loading.
+      if (!hasAnalyticsConsent()) return;
       Sentry.getClient()?.addIntegration(
         replayIntegration({
           maskAllText: true,
@@ -67,7 +71,11 @@ function loadReplay() {
     });
 }
 
-if (enabled && typeof window !== "undefined") {
+let replayRequested = false;
+
+function scheduleReplay() {
+  if (replayRequested) return;
+  replayRequested = true;
   if (typeof window.requestIdleCallback === "function") {
     // The timeout keeps replay from being postponed indefinitely on a page
     // that never goes idle; 2 s is well past LCP on the throttled mobile lane.
@@ -75,4 +83,23 @@ if (enabled && typeof window !== "undefined") {
   } else {
     window.setTimeout(loadReplay, 1000);
   }
+}
+
+/**
+ * Replay records only with analytics consent (the cookie banner). Consent
+ * given later in the visit loads it then; consent withdrawn stops it, and it
+ * stays stopped for the rest of that page view. Errors are still reported
+ * without replay either way.
+ */
+function syncReplayWithConsent() {
+  if (hasAnalyticsConsent()) {
+    scheduleReplay();
+  } else {
+    void Sentry.getReplay()?.stop();
+  }
+}
+
+if (enabled && typeof window !== "undefined") {
+  syncReplayWithConsent();
+  window.addEventListener(CONSENT_UPDATED_EVENT, syncReplayWithConsent);
 }
