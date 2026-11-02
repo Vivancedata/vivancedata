@@ -98,7 +98,7 @@ export default function TermsOfServicePage() {
         <h2>Contact</h2>
         <p>
           For questions about these terms, please contact me at{" "}
-          <a href="mailto:contact@lscaturchio.xyz">contact@lscaturchio.xyz</a>.
+          <a href="mailto:info@vivancedata.com">info@vivancedata.com</a>.
         </p>
       </div>
     </Container>
