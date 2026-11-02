@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 /**
  * Keep this page in step with the code. The data flows it describes live in:
  * - instrumentation-client.ts / sentry.data-collection.ts (Sentry, Replay)
- * - src/components/analytics/GoogleAnalytics.tsx and src/lib/cookieConsent.ts
+ * - src/components/analytics/GoogleAnalytics.tsx, VercelAnalytics.tsx and src/lib/cookieConsent.ts
  * - src/app/api/contact, src/app/api/tool-report, src/app/api/newsletter
  * - src/lib/rateLimit.ts (Upstash)
  * When one of those changes what is collected or where it goes, update this
@@ -39,7 +39,7 @@ export default function PrivacyPolicyPage() {
       <div className="prose prose-neutral dark:prose-invert max-w-none">
         <h1>Privacy Policy & Transparency</h1>
         <p className="lead">
-          Last updated: October 20, 2026
+          Last updated: November 1, 2026
         </p>
 
         <h2>Transparency Statement</h2>
@@ -66,7 +66,14 @@ export default function PrivacyPolicyPage() {
           still load only for visitors who have allowed analytics.
         </p>
         <p>
-          The site does not use Vercel Analytics, Speed Insights or advertising pixels.
+          <strong>Vercel Web Analytics.</strong> This also loads only after you allow analytics cookies. If you
+          do, Vercel receives the page address and the page that sent you here, your approximate location, and
+          your browser, operating system and device type. Vercel&apos;s documentation says it uses no third-party
+          cookies, recognises a visit by a hash of the incoming request, discards that visit session after 24
+          hours, and gives me aggregated figures rather than a record of any one person.
+        </p>
+        <p>
+          The site does not use Vercel Speed Insights or advertising pixels.
         </p>
 
         <h2>Error monitoring and Session Replay</h2>
@@ -125,6 +132,7 @@ export default function PrivacyPolicyPage() {
           <li>Upstash: rate limiting to protect the forms from abuse</li>
           <li>Sentry: error tracking, and Session Replay if you allow analytics</li>
           <li>ConvertKit or Mailchimp: the newsletter list, if you subscribe</li>
+          <li>Vercel Web Analytics: only if you allow analytics</li>
           <li>Google Analytics: only if configured and only if you allow analytics (not active as of the date above)</li>
           <li>GitHub: code repository and version control</li>
         </ul>

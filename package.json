@@ -50,6 +50,7 @@
     "@tailwindcss/typography": "^0.5.20",
     "@upstash/ratelimit": "^2.2.0",
     "@upstash/redis": "^1.40.0",
+    "@vercel/analytics": "^2.0.1",
     "@vivancedata/ui": "https://github.com/Vivancedata/ui/archive/refs/tags/v0.5.0.tar.gz",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
