@@ -88,7 +88,7 @@ Copy `.env.example` to `.env.local` and configure the variables below. Only `RES
 | `NEXT_PUBLIC_APP_URL` | No | Public site URL (default: `http://localhost:3000`) |
 | **Email (Resend)** | | |
 | `RESEND_API_KEY` | Yes | Resend API key for contact form delivery |
-| `CONTACT_FORM_TO_EMAIL` | No | Recipient email (default: `info@vivancedata.com`) |
+| `CONTACT_FORM_TO_EMAIL` | No | Recipient email (default: `lorenzo@vivancedata.com`) |
 | `CONTACT_FORM_FROM_EMAIL` | No | Sender email (default: `noreply@vivancedata.com`) |
 | **Rate Limiting** | | |
 | `UPSTASH_REDIS_REST_URL` | No | Upstash Redis URL for distributed rate limiting |
@@ -555,7 +555,7 @@ npx shadcn-ui@latest add [component-name]
 
 ## Contact
 
-For any inquiries, please reach out to us through the contact form on the website or email us at info@vivancedata.com.
+For any inquiries, please reach out to us through the contact form on the website or email us at lorenzo@vivancedata.com.
 
 ## License
 

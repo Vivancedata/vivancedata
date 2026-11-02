@@ -142,7 +142,7 @@ flag is a 503, in every environment.
 Required env vars:
 - `RESEND_API_KEY` — contact form and tool-report email delivery
 - `UPSTASH_REDIS_REST_URL` + `UPSTASH_REDIS_REST_TOKEN` — rate limiting (if absent, or if Upstash errors, a per-instance in-memory limiter is used instead)
-- `CONTACT_FORM_TO_EMAIL` / `CONTACT_FORM_FROM_EMAIL` — optional; default to `info@` and `noreply@vivancedata.com`
+- `CONTACT_FORM_TO_EMAIL` / `CONTACT_FORM_FROM_EMAIL` — optional; default to `lorenzo@` and `noreply@vivancedata.com`
 - `EMAIL_DRY_RUN=1` — local only; report success without sending
 
 ### Styling & Theming

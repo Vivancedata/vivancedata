@@ -21,7 +21,7 @@ export interface ReportGateProps {
 type GateStatus = "idle" | "unlocked" | "error";
 
 const GENERIC_ERROR =
-  "The report did not send. Check the address for a typo and try again, or email info@vivancedata.com and I will send it over by hand.";
+  "The report did not send. Check the address for a typo and try again, or email lorenzo@vivancedata.com and I will send it over by hand.";
 
 export function ReportGate({
   tool,

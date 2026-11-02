@@ -74,7 +74,7 @@ export function buildEnquiryConfirmation(enquiry: ContactEnquiry): string {
     title: `Got your message, ${enquiry.firstName}`,
     body: `
           <p>Your message is in my inbox, and I read them all myself.</p>
-          <p>You'll hear back from me, not an account manager, within <strong>one working day</strong>. If it cannot wait that long, write to info@vivancedata.com and say so.</p>
+          <p>You'll hear back from me, not an account manager, within <strong>one working day</strong>. If it cannot wait that long, write to lorenzo@vivancedata.com and say so.</p>
           <p><strong>Here's what you sent:</strong></p>
           <ul>
             <li><strong>What you need:</strong> ${escapeHtml(serviceName(enquiry.serviceInterest))}</li>

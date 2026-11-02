@@ -152,7 +152,7 @@ describe("POST /api/contact", () => {
     expect(response.status).toBe(503);
     await expect(response.json()).resolves.toMatchObject({
       success: false,
-      error: expect.stringContaining("info@vivancedata.com"),
+      error: expect.stringContaining("lorenzo@vivancedata.com"),
     });
     expect(sendMock).not.toHaveBeenCalled();
   });

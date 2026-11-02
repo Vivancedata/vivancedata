@@ -140,9 +140,9 @@ mx_domain="${CANONICAL_BASE_URL#https://}"
 # type 15 inside "Answer" only: the echoed "Question" carries type 15 as well,
 # so a bare match passes for a domain with no MX at all.
 if curl -sS "https://dns.google/resolve?name=${mx_domain}&type=MX" | grep -q '"Answer": *\[[^]]*"type": *15'; then
-  pass "Inbox exists: ${mx_domain} has an MX record (info@ can receive)"
+  pass "Inbox exists: ${mx_domain} has an MX record (lorenzo@ can receive)"
 else
-  fail "Inbox exists: ${mx_domain} has NO MX record, so mail to info@${mx_domain} bounces"
+  fail "Inbox exists: ${mx_domain} has NO MX record, so mail to lorenzo@${mx_domain} bounces"
 fi
 
 

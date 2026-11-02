@@ -112,7 +112,7 @@ export function layout({ title, body }: { title: string; body: string }): string
 
 /** The inbox enquiries and leads are delivered to. */
 export function teamInbox(): string {
-  return process.env.CONTACT_FORM_TO_EMAIL || 'info@vivancedata.com';
+  return process.env.CONTACT_FORM_TO_EMAIL || 'lorenzo@vivancedata.com';
 }
 
 function fromAddress(): string {

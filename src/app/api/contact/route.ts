@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
 
     if (!rateLimit.success) {
       return NextResponse.json(
-        { error: 'That is more messages than this form accepts in a short window. Wait a minute and send again, or email info@vivancedata.com.' },
+        { error: 'That is more messages than this form accepts in a short window. Wait a minute and send again, or email lorenzo@vivancedata.com.' },
         { status: 429, headers: rateLimitHeaders }
       );
     }
@@ -91,14 +91,14 @@ export async function POST(request: NextRequest) {
             {
               success: false,
               error:
-                'The contact form is not able to send right now. Please email info@vivancedata.com directly.',
+                'The contact form is not able to send right now. Please email lorenzo@vivancedata.com directly.',
             },
             { status: 503, headers: rateLimitHeaders }
           )
         : NextResponse.json(
             {
               error:
-                'I could not deliver your message. Please email info@vivancedata.com directly so it is not lost.',
+                'I could not deliver your message. Please email lorenzo@vivancedata.com directly so it is not lost.',
             },
             { status: 502, headers: rateLimitHeaders }
           );
@@ -130,7 +130,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Contact form error:', error);
     return NextResponse.json(
-      { error: 'Something broke on my end and your message did not send. Please try again, or email info@vivancedata.com so it is not lost.' },
+      { error: 'Something broke on my end and your message did not send. Please try again, or email lorenzo@vivancedata.com so it is not lost.' },
       { status: 500 }
     );
   }
