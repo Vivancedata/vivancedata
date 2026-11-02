@@ -80,3 +80,28 @@ test("a demo open records nothing when analytics consent is refused", async ({ p
   await expect(demo).toBeVisible();
   expect(await eventsOn(page)).toHaveLength(0);
 });
+
+function recordInsightsRequests(page: import("@playwright/test").Page) {
+  const requests: string[] = [];
+  page.on("request", (request) => {
+    if (request.url().includes("/_vercel/insights/")) requests.push(request.url());
+  });
+  return requests;
+}
+
+test("Vercel Analytics does not load when analytics consent is refused", async ({ page }) => {
+  const insightsRequests = recordInsightsRequests(page);
+
+  await recordEvents(page, false);
+  await page.goto("/");
+  await page.waitForLoadState("networkidle");
+  expect(insightsRequests).toEqual([]);
+});
+
+test("Vercel Analytics loads once analytics consent is given", async ({ page }) => {
+  const insightsRequests = recordInsightsRequests(page);
+
+  await recordEvents(page, true);
+  await page.goto("/");
+  await expect.poll(() => insightsRequests.length).toBeGreaterThan(0);
+});

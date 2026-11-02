@@ -58,3 +58,11 @@ export const ANALYTICS = {
     trackEvent('contact_submitted', 'conversion', serviceInterest || 'unspecified'),
   toolReportRequested: (tool: string) => trackEvent('tool_report_requested', 'conversion', tool),
 } as const;
+
+/**
+ * beforeSend for Vercel Web Analytics. Its script keeps running after a visitor
+ * withdraws consent mid-session, so each event is checked as it leaves.
+ */
+export function keepEventWithConsent<T>(event: T): T | null {
+  return hasAnalyticsConsent() ? event : null;
+}

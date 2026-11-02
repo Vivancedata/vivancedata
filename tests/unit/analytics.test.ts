@@ -4,7 +4,7 @@ import {
   CONSENT_STORAGE_KEY,
   DEFAULT_COOKIE_PREFERENCES,
 } from "../../src/lib/cookieConsent";
-import { ANALYTICS, trackEvent, trackPageView } from "../../src/lib/analytics";
+import { ANALYTICS, keepEventWithConsent, trackEvent, trackPageView } from "../../src/lib/analytics";
 
 /**
  * Consent is set through real localStorage rather than by mocking
@@ -51,6 +51,27 @@ describe("analytics", () => {
   afterEach(() => {
     vi.unstubAllEnvs();
     detachGtag();
+  });
+
+  describe("keepEventWithConsent", () => {
+    const event = { type: "pageview" as const, url: "https://www.vivancedata.com/" };
+
+    it("passes the event through while consent is granted", () => {
+      grantConsent();
+
+      expect(keepEventWithConsent(event)).toBe(event);
+    });
+
+    it("drops the event once consent is withdrawn", () => {
+      grantConsent();
+      denyConsent();
+
+      expect(keepEventWithConsent(event)).toBeNull();
+    });
+
+    it("drops the event when no choice was ever made", () => {
+      expect(keepEventWithConsent(event)).toBeNull();
+    });
   });
 
   describe("trackEvent", () => {
