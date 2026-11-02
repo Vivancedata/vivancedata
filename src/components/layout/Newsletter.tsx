@@ -38,9 +38,9 @@ export function Newsletter() {
       });
     } catch (error) {
       console.error('Newsletter subscription error:', error);
-      setError("That did not go through. Try again in a minute, or write to info@vivancedata.com.");
+      setError("That did not go through. Try again in a minute, or write to lorenzo@vivancedata.com.");
       toast.error('Subscription failed', {
-        description: 'Please try again, or write to info@vivancedata.com.'
+        description: 'Please try again, or write to lorenzo@vivancedata.com.'
       });
     }
   };

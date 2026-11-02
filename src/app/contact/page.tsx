@@ -59,8 +59,8 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <p className="font-medium">Email</p>
-                    <a href="mailto:info@vivancedata.com" className="text-muted-foreground hover:text-foreground">
-                      info@vivancedata.com
+                    <a href="mailto:lorenzo@vivancedata.com" className="text-muted-foreground hover:text-foreground">
+                      lorenzo@vivancedata.com
                     </a>
                   </div>
                 </div>

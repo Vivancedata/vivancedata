@@ -141,7 +141,7 @@ export function ProfileForm() {
       const fromApi = error instanceof Error ? error.message.trim() : '';
       toast.error('Your message did not send.', {
         description: fromApi ||
-          'Nothing reached me, so please try again. If it fails twice, email me at info@vivancedata.com and I will pick it up there.'
+          'Nothing reached me, so please try again. If it fails twice, email me at lorenzo@vivancedata.com and I will pick it up there.'
       });
     }
   }

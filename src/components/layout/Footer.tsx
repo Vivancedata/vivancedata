@@ -57,10 +57,10 @@ export function SiteFooter() {
               {siteConfig.description}
             </p>
             <a
-              href="mailto:info@vivancedata.com"
+              href="mailto:lorenzo@vivancedata.com"
               className="mt-lg inline-flex min-h-11 items-center font-mono text-data text-foreground underline decoration-rule underline-offset-4 transition-colors duration-fast hover:decoration-current focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
-              info@vivancedata.com
+              lorenzo@vivancedata.com
             </a>
           </div>
 

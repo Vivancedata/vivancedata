@@ -138,11 +138,13 @@ checks=$((checks + 1))
 mx_domain="${CANONICAL_BASE_URL#https://}"
 # DNS-over-HTTPS rather than dig: curl is the one tool every runner has. Match
 # type 15 inside "Answer" only: the echoed "Question" carries type 15 as well,
-# so a bare match passes for a domain with no MX at all.
+# so a bare match passes for a domain with no MX at all. This is about the domain
+# only: info@ bounced as "recipient not found" while this passed, and Google's MX
+# accepts any address at RCPT, so no DNS or SMTP probe here can prove a mailbox.
 if curl -sS "https://dns.google/resolve?name=${mx_domain}&type=MX" | grep -q '"Answer": *\[[^]]*"type": *15'; then
-  pass "Inbox exists: ${mx_domain} has an MX record (info@ can receive)"
+  pass "Domain mail: ${mx_domain} has an MX record (does not prove any one mailbox exists)"
 else
-  fail "Inbox exists: ${mx_domain} has NO MX record, so mail to info@${mx_domain} bounces"
+  fail "Domain mail: ${mx_domain} has NO MX record, so mail to every address there bounces"
 fi
 
 

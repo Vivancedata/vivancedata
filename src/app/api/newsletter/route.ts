@@ -204,13 +204,13 @@ export async function POST(request: NextRequest) {
     // subscription that did not happen is the same lie the contact form used
     // to tell, and NODE_ENV is not consent.
     return NextResponse.json(
-      { error: 'Newsletter service not configured, so nothing was signed up. Write to info@vivancedata.com and I will add you by hand.' },
+      { error: 'Newsletter service not configured, so nothing was signed up. Write to lorenzo@vivancedata.com and I will add you by hand.' },
       { status: 503, headers: rateLimitHeaders }
     );
   } catch (error) {
     console.error('Newsletter subscription error:', error);
     return NextResponse.json(
-      { error: 'The sign-up did not go through. Try again in a moment, or write to info@vivancedata.com and I will add you.' },
+      { error: 'The sign-up did not go through. Try again in a moment, or write to lorenzo@vivancedata.com and I will add you.' },
       { status: 500 }
     );
   }
