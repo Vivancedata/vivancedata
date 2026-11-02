@@ -146,6 +146,20 @@ else
 fi
 
 
+checks=$((checks + 1))
+# The health route only knows the key exists. Resend still rejects a send from a
+# domain it hasn't verified, and the form then answers 502, so look for the
+# record verification depends on. This is the domain of the default sender in
+# src/lib/email.ts: if CONTACT_FORM_FROM_EMAIL moves to another, change it here.
+# Type 16 inside "Answer" only, for the same reason as the MX check above, and
+# it must carry key data: a bare "v=DKIM1; p=" is the published form of "no key".
+dkim_host="resend._domainkey.${mx_domain}"
+if curl -sS "https://dns.google/resolve?name=${dkim_host}&type=TXT" | grep -q '"Answer": *\[[^]]*"type": *16[^]]*p=[A-Za-z0-9+/]'; then
+  pass "Form sender: ${dkim_host} has a DKIM key (Resend can verify ${mx_domain})"
+else
+  fail "Form sender: ${dkim_host} has NO DKIM key, so Resend rejects the form's email"
+fi
+
 echo "Completed $checks production smoke checks."
 if [[ "$failures" -gt 0 ]]; then
   echo "Result: $failures check(s) failed."
