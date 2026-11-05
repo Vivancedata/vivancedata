@@ -40,3 +40,6 @@ artifacts/
 
 # Impeccable review captures — evidence for a single run, not source.
 .impeccable/review/
+
+# Claude Code machine-local settings
+.claude/settings.local.json
