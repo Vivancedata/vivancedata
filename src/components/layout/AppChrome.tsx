@@ -5,6 +5,7 @@ import { type ComponentType, useEffect, useState } from "react";
 export function AppChrome() {
   const [DeferredChromeComponent, setDeferredChromeComponent] = useState<null | ComponentType>(null);
   const [GoogleAnalyticsComponent, setGoogleAnalyticsComponent] = useState<null | ComponentType>(null);
+  const [VercelAnalyticsComponent, setVercelAnalyticsComponent] = useState<null | ComponentType>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -21,6 +22,12 @@ export function AppChrome() {
       }
     });
 
+    void import("@/components/analytics/VercelAnalytics").then((module) => {
+      if (!cancelled) {
+        setVercelAnalyticsComponent(() => module.VercelAnalytics);
+      }
+    });
+
     return () => {
       cancelled = true;
     };
@@ -29,6 +36,7 @@ export function AppChrome() {
   return (
     <>
       {GoogleAnalyticsComponent ? <GoogleAnalyticsComponent /> : null}
+      {VercelAnalyticsComponent ? <VercelAnalyticsComponent /> : null}
       {DeferredChromeComponent ? <DeferredChromeComponent /> : null}
     </>
   );
