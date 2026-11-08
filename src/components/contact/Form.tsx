@@ -35,6 +35,7 @@ import {
 } from "@/components/ui/card"
 import { CheckCircle, Loader2 } from "lucide-react"
 import { ANALYTICS } from "@/lib/analytics";
+import { BOT_TRAP_FIELD, BotTrapField, readBotTrap } from "@/components/contact/BotTrapField";
 
 const formSchema = z.object({
   firstName: z.string().min(2, {
@@ -106,14 +107,14 @@ export function ProfileForm() {
   useUnsavedChangesWarning(isDirty && !isSubmitted)
 
   // 2. Define a submit handler.
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>, event?: React.BaseSyntheticEvent) {
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(values),
+        body: JSON.stringify({ ...values, [BOT_TRAP_FIELD]: readBotTrap(event?.target) }),
       });
 
       // A 504 from the platform is an HTML page, not JSON. Parsing it threw a
@@ -329,6 +330,7 @@ export function ProfileForm() {
                 </FormItem>
               )}
             />
+            <BotTrapField id="contact-check" />
             <Button
               type="submit"
               className="w-full bg-primary hover:bg-primary/90"

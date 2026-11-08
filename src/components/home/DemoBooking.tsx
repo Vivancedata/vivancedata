@@ -7,6 +7,7 @@ import { ctaPrimary, ctaSecondary, wallLabel } from "@/components/common/control
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { useUnsavedChangesWarning } from "@/hooks/useUnsavedChangesWarning";
+import { BOT_TRAP_FIELD, BotTrapField, readBotTrap } from "@/components/contact/BotTrapField";
 
 interface DemoFeature {
   title: string;
@@ -295,6 +296,7 @@ function DemoFormCard({ state, isSubmitting, onChange, onSubmit }: DemoFormProps
                   )}
                 </div>
 
+                <BotTrapField id="demo-contact-check" />
                 <button
                   type="submit"
                   className={`${ctaPrimary} w-full disabled:cursor-not-allowed disabled:opacity-50`}
@@ -438,7 +440,7 @@ export function DemoBooking(): React.ReactElement {
     });
   };
 
-  const submitRequest = async (): Promise<void> => {
+  const submitRequest = async (botTrap: string): Promise<void> => {
     try {
       const fullNameParts = state.formData.name.trim().split(/\s+/);
       const firstName = fullNameParts[0] || "Guest";
@@ -457,6 +459,7 @@ export function DemoBooking(): React.ReactElement {
           serviceInterest: "consulting",
           message:
             "Call request submitted from the homepage booking form. Please follow up to arrange a time.",
+          [BOT_TRAP_FIELD]: botTrap,
         }),
       });
 
@@ -496,8 +499,9 @@ export function DemoBooking(): React.ReactElement {
       return;
     }
 
+    const botTrap = readBotTrap(e.currentTarget);
     dispatch({ type: "submit_start" });
-    startSubmit(submitRequest);
+    startSubmit(() => submitRequest(botTrap));
   };
 
   return (

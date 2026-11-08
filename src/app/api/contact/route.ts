@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse, after } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { buildRateLimitHeaders, enforceRateLimit } from '@/lib/rateLimit';
-import { emailAddress, sendCourtesy, sendCritical, teamInbox } from '@/lib/email';
-import { SERVICE_KEYS, buildEnquiryConfirmation, buildEnquiryNotification } from '@/emails/contact';
+import { emailAddress, sendCritical, teamInbox } from '@/lib/email';
+import { SERVICE_KEYS, buildEnquiryNotification } from '@/emails/contact';
 
 // Names go into the notification's subject line, a plain-text header, so a
 // line break in one is refused rather than passed on to the mail provider.
@@ -17,10 +17,11 @@ const contactSchema = z.object({
   phone: z.string().trim().max(32).optional(),
   company: z.string().trim().max(200).optional(),
   // The contact form sends "" until a service is picked. Anything else must be
-  // one of the select's values: the field is echoed into the confirmation sent
-  // to whatever address the request names.
+  // one of the select's values.
   serviceInterest: z.union([z.enum(SERVICE_KEYS), z.literal('')]).optional(),
   message: z.string().trim().min(1).max(10_000),
+  // BotTrapField: hidden from people, so a value here was typed by a bot.
+  contactCheck: z.string().trim().max(200).optional(),
 });
 
 const CONTACT_RATE_LIMIT_OPTIONS = {
@@ -70,6 +71,22 @@ export async function POST(request: NextRequest) {
     }
 
     const enquiry = parsed.data;
+    const received = () =>
+      NextResponse.json(
+        {
+          success: true,
+          message: 'Message received. You will hear back from me within one working day.',
+        },
+        { status: 200, headers: rateLimitHeaders }
+      );
+
+    if (enquiry.contactCheck) {
+      // The one place a send is skipped and success still reported, and it is
+      // deliberate: an error would tell the bot to retry with the field empty.
+      // A person cannot reach this, because the field is never shown to one.
+      console.warn('Contact form: bot trap filled, enquiry dropped');
+      return received();
+    }
 
     const notification = await sendCritical({
       fromName: 'Vivancedata Contact Form',
@@ -104,29 +121,12 @@ export async function POST(request: NextRequest) {
           );
     }
 
-    // The confirmation is a courtesy: the enquiry has already been delivered,
-    // so the visitor's response does not wait on a second Resend round-trip.
-    // after() runs it once the response is sent (Vercel keeps the function
-    // alive for it), and sendCourtesy logs a failure recoverably.
-    after(() =>
-      sendCourtesy(
-        {
-          fromName: 'Vivancedata',
-          to: enquiry.email,
-          subject: 'I have your message',
-          html: buildEnquiryConfirmation(enquiry),
-        },
-        'contact form confirmation'
-      )
-    );
-
-    return NextResponse.json(
-      {
-        success: true,
-        message: 'Message received. You will hear back from me within one working day.',
-      },
-      { status: 200, headers: rateLimitHeaders }
-    );
+    // No confirmation goes to the address in the form. Bots fill this form
+    // with strangers' addresses, and each confirmation was mail from this
+    // domain to someone who never wrote: the complaints that earns put
+    // Resend sending, and the domain's inbox placement, at risk. The page
+    // already tells a real visitor the message arrived.
+    return received();
   } catch (error) {
     console.error('Contact form error:', error);
     return NextResponse.json(

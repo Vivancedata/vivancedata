@@ -91,8 +91,8 @@ export default function PrivacyPolicyPage() {
         <ul>
           <li>
             <strong>Contact form:</strong> your name, email address, and, if you give them, your phone number,
-            company, the service you are interested in, and your message. It is emailed to my inbox and you get
-            a confirmation email. It is not stored in a database on this site.
+            company, the service you are interested in, and your message. It is emailed to my inbox. It is not
+            stored in a database on this site.
           </li>
           <li>
             <strong>ROI calculator and AI readiness reports:</strong> when you ask for your results by email,
@@ -121,7 +121,7 @@ export default function PrivacyPolicyPage() {
         </p>
         <ul>
           <li>Vercel: website hosting and deployment (Vercel keeps standard request logs, including IP addresses)</li>
-          <li>Resend: delivery of contact form, confirmation and report emails</li>
+          <li>Resend: delivery of contact form and report emails</li>
           <li>Upstash: rate limiting to protect the forms from abuse</li>
           <li>Sentry: error tracking, and Session Replay if you allow analytics</li>
           <li>ConvertKit or Mailchimp: the newsletter list, if you subscribe</li>

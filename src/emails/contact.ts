@@ -67,26 +67,3 @@ export function buildEnquiryNotification(enquiry: ContactEnquiry): string {
           </p>`,
   });
 }
-
-/** The courtesy acknowledgement. The enquiry is already delivered without it. */
-export function buildEnquiryConfirmation(enquiry: ContactEnquiry): string {
-  return layout({
-    title: `Got your message, ${enquiry.firstName}`,
-    body: `
-          <p>Your message is in my inbox, and I read them all myself.</p>
-          <p>You'll hear back from me, not an account manager, within <strong>one working day</strong>. If it cannot wait that long, write to lorenzo@vivancedata.com and say so.</p>
-          <p><strong>Here's what you sent:</strong></p>
-          <ul>
-            <li><strong>What you need:</strong> ${escapeHtml(serviceName(enquiry.serviceInterest))}</li>
-            <li><strong>Company:</strong> ${escapeHtml(enquiry.company || 'Not provided')}</li>
-          </ul>
-          <p>If you want a rough number before we speak, the ROI calculator takes a couple of minutes:</p>
-          <p style="text-align: center;">
-            <a href="https://vivancedata.com/tools/roi-calculator" class="button">Open the ROI calculator</a>
-          </p>
-          <div class="footer">
-            <p>Vivancedata &mdash; Lorenzo Scaturchio</p>
-            <p>https://vivancedata.com</p>
-          </div>`,
-  });
-}
