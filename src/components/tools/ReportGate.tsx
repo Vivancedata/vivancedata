@@ -61,7 +61,9 @@ export function ReportGate({
         throw new Error(data.error || GENERIC_ERROR);
       }
 
-      ANALYTICS.toolReportRequested(tool);
+      // A filled trap still gets the normal success, but nothing was sent, so
+      // it must not count as a conversion.
+      if (!botTrap) ANALYTICS.toolReportRequested(tool);
       setStatus("unlocked");
     } catch (error) {
       console.error("Tool report request failed:", error);

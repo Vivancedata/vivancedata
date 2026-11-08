@@ -3,6 +3,7 @@ import { createElement } from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { ReportGate } from "../../src/components/tools/ReportGate";
+import { ANALYTICS } from "../../src/lib/analytics";
 
 vi.mock("@/lib/analytics", () => ({
   ANALYTICS: { toolReportRequested: vi.fn() },
@@ -39,6 +40,7 @@ const submitWith = async (container: HTMLElement): Promise<Record<string, unknow
 
 describe("ReportGate bot trap", () => {
   beforeEach(() => {
+    vi.mocked(ANALYTICS.toolReportRequested).mockClear();
     fetchMock.mockReset();
     fetchMock.mockResolvedValue(new Response(JSON.stringify({ success: true }), { status: 200 }));
     vi.stubGlobal("fetch", fetchMock);
@@ -65,6 +67,9 @@ describe("ReportGate bot trap", () => {
     const body = await submitWith(container);
 
     expect(body).toMatchObject({ email: "visitor@example.com", contactCheck: "" });
+    await waitFor(() =>
+      expect(ANALYTICS.toolReportRequested).toHaveBeenCalledWith("roi-calculator")
+    );
   });
 
   it("forwards whatever a bot typed into the trap", async () => {
@@ -74,5 +79,8 @@ describe("ReportGate bot trap", () => {
     const body = await submitWith(container);
 
     expect(body.contactCheck).toBe("https://spam.example");
+    // The gate still unlocks (the bot must see success), but it is no conversion.
+    await screen.findByText("Full breakdown");
+    expect(ANALYTICS.toolReportRequested).not.toHaveBeenCalled();
   });
 });
