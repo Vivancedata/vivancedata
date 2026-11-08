@@ -1,7 +1,7 @@
 /**
  * A field people never see and bots fill in. Bots post this site's forms with
- * strangers' addresses; /api/contact drops any enquiry that arrives with this
- * field set, so it never reaches the inbox.
+ * strangers' addresses; /api/contact and /api/tool-report drop any request that
+ * arrives with this field set, so nothing is sent.
  *
  * It is moved off-screen rather than hidden with display:none, which some bots
  * check for, and kept out of the tab order and the accessibility tree. The name
