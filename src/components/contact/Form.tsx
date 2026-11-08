@@ -108,13 +108,14 @@ export function ProfileForm() {
 
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>, event?: React.BaseSyntheticEvent) {
+    const botTrap = readBotTrap(event?.target);
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ ...values, [BOT_TRAP_FIELD]: readBotTrap(event?.target) }),
+        body: JSON.stringify({ ...values, [BOT_TRAP_FIELD]: botTrap }),
       });
 
       // A 504 from the platform is an HTML page, not JSON. Parsing it threw a
@@ -127,7 +128,9 @@ export function ProfileForm() {
         throw new Error(data.error || '');
       }
 
-      ANALYTICS.contactSubmitted(values.serviceInterest);
+      // A filled trap still gets the normal success, but nothing was sent, so
+      // it must not count as a conversion.
+      if (!botTrap) ANALYTICS.contactSubmitted(values.serviceInterest);
       setIsSubmitted(true);
       toast.success('Message sent.', {
         description: 'You\'ll hear back from me within one working day.'
