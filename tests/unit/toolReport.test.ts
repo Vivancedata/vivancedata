@@ -32,6 +32,7 @@ interface ToolReportBody {
   tool?: unknown;
   summary?: unknown;
   recommendations?: unknown;
+  contactCheck?: unknown;
 }
 
 // Each test uses its own client IP so the shared in-memory rate limiter
@@ -82,6 +83,28 @@ describe("POST /api/tool-report", () => {
     expect(response.status).toBe(200);
     await expect(response.json()).resolves.toMatchObject({ success: true });
     expect(response.headers.get("X-RateLimit-Limit")).toBe("5");
+    expect(sendMock).toHaveBeenCalledTimes(2);
+  });
+
+  it("sends nothing when the bot trap is filled, and still reports success", async () => {
+    const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
+
+    const response = await postToolReport(
+      { ...validBody, contactCheck: "https://spam.example" },
+      "203.0.113.30"
+    );
+
+    expect(response.status).toBe(200);
+    await expect(response.json()).resolves.toMatchObject({ success: true });
+    // The typed address belongs to a stranger: no report, no lead notification.
+    expect(sendMock).not.toHaveBeenCalled();
+    expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining("bot trap"));
+  });
+
+  it("sends the report when the bot trap is empty", async () => {
+    const response = await postToolReport({ ...validBody, contactCheck: "" }, "203.0.113.31");
+
+    expect(response.status).toBe(200);
     expect(sendMock).toHaveBeenCalledTimes(2);
   });
 

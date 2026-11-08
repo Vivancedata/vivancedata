@@ -16,6 +16,8 @@ const toolReportSchema = z.object({
       message: 'Summary contains too many entries',
     }),
   recommendations: z.array(z.string().min(1).max(500)).max(10).optional(),
+  // BotTrapField: hidden from people, so a value here was typed by a bot.
+  contactCheck: z.string().trim().max(200).optional(),
 });
 
 const TOOL_REPORT_RATE_LIMIT_OPTIONS = {
@@ -50,8 +52,25 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const report = parsed.data;
+    const { contactCheck, ...report } = parsed.data;
     const toolLabel = TOOL_LABELS[report.tool];
+    const onItsWay = () =>
+      NextResponse.json(
+        {
+          success: true,
+          message: 'Your report is on its way. Check your inbox in a few minutes.',
+        },
+        { status: 200, headers: rateLimitHeaders }
+      );
+
+    if (contactCheck) {
+      // This form mails the typed address, so a bot posting strangers'
+      // addresses makes this domain send them mail they never asked for.
+      // Success, not an error: an error would tell the bot to retry with the
+      // field empty. A person cannot reach this; the field is never shown.
+      console.warn('Tool report: bot trap filled, report not sent');
+      return onItsWay();
+    }
 
     const visitorCopy = await sendCritical({
       fromName: 'Vivancedata',
@@ -88,13 +107,7 @@ export async function POST(request: NextRequest) {
       )
     );
 
-    return NextResponse.json(
-      {
-        success: true,
-        message: 'Your report is on its way. Check your inbox in a few minutes.',
-      },
-      { status: 200, headers: rateLimitHeaders }
-    );
+    return onItsWay();
   } catch (error) {
     console.error('Tool report error:', error);
     return NextResponse.json(

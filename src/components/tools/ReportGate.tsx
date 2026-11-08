@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, Loader2, Lock } from "lucide-react";
 import { ANALYTICS } from "@/lib/analytics";
+import { BOT_TRAP_FIELD, BotTrapField, readBotTrap } from "@/components/contact/BotTrapField";
 
 export type ReportGateTool = "roi-calculator" | "ai-readiness";
 
@@ -32,6 +33,7 @@ export function ReportGate({
   children,
 }: ReportGateProps) {
   const emailFieldId = useId();
+  const botTrapId = useId();
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<GateStatus>("idle");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -39,12 +41,18 @@ export function ReportGate({
   // however the request ends, instead of a hand-set "submitting" status.
   const [isSubmitting, startSubmit] = useTransition();
 
-  const requestReport = async () => {
+  const requestReport = async (botTrap: string): Promise<void> => {
     try {
       const response = await fetch("/api/tool-report", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, tool, summary, recommendations }),
+        body: JSON.stringify({
+          email,
+          tool,
+          summary,
+          recommendations,
+          [BOT_TRAP_FIELD]: botTrap,
+        }),
       });
 
       const data: { error?: string } = await response.json().catch(() => ({}));
@@ -65,7 +73,9 @@ export function ReportGate({
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setErrorMessage(null);
-    startSubmit(requestReport);
+    // Read before the transition: the form element is only certain here.
+    const botTrap = readBotTrap(event.currentTarget);
+    startSubmit(() => requestReport(botTrap));
   };
 
   if (status === "unlocked") {
@@ -97,7 +107,8 @@ export function ReportGate({
         <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-3" aria-label={title}>
+        <form onSubmit={handleSubmit} className="relative space-y-3" aria-label={title}>
+          <BotTrapField id={botTrapId} />
           <div className="flex flex-col gap-3 sm:flex-row">
             <div className="flex-1">
               <label htmlFor={emailFieldId} className="sr-only">
