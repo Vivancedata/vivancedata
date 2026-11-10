@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   keywords: ["about VivanceData", "Lorenzo Scaturchio", "founder-led AI practice", "AI for contractors", "AI for trades"],
   openGraph: {
     title: "About - VivanceData",
-    description: "A founder-led AI practice for construction, HVAC, logistics and manufacturing. The person who scopes the work builds it and answers the phone afterwards.",
+    description: "A founder-led AI practice for construction, HVAC, logistics and manufacturing. The person who scopes the work builds it and answers you afterwards.",
     type: "website",
     url: "https://vivancedata.com/about",
     images: [

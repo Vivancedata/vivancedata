@@ -88,7 +88,7 @@ const benefits: Benefit[] = [
   },
   {
     title: "One person, start to finish",
-    description: "Whoever sits with your dispatcher is who writes the code and who picks up the phone when it breaks. There is no delivery team to be handed to.",
+    description: "Whoever sits with your dispatcher is who writes the code and who answers you when it breaks. There is no delivery team to be handed to.",
   },
   {
     title: "Nothing gets replaced on day one",

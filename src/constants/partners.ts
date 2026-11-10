@@ -63,7 +63,7 @@ export const partnerCommitments: PartnerCommitment[] = [
   },
   {
     title: "One person builds it",
-    body: "The person who scopes the work builds it and answers the phone afterwards. Nobody gets handed to an account manager, including you.",
+    body: "The person who scopes the work builds it and answers you afterwards. Nobody gets handed to an account manager, including you.",
   },
   {
     title: "Priced as build and run",
