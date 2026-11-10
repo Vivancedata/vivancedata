@@ -113,9 +113,14 @@ The recurring material of their day, and of any engagement:
 
 ## Evidence on Hand
 
-**The practice is pre-first-client. There are no delivered engagements.** This
-governs what may ever appear on the site and is the most load-bearing fact in
-this record.
+**The practice has had one paying client: a website build for a local business,
+paid in October 2026. It has delivered none of the work this site sells.** That
+client is not named anywhere on the site and has not agreed in writing to be
+named, so the job is not usable as proof. For every claim the site makes about
+call handling, paperwork and field systems, the practice is still
+pre-first-client. This governs what may ever appear on the site and is the most
+load-bearing fact in this record. (Corrected 2026-11-09: this section used to
+say there were no clients at all.)
 
 Real and usable:
 

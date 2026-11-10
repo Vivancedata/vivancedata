@@ -138,7 +138,7 @@ A real emergency still reaches a person. What changes is that routine work gets 
         "Intake script and required fields defined",
         "Urgency rules and escalation thresholds set",
         "On-call routing path confirmed",
-        "Booking write-back into your scheduling system",
+        "How a booking reaches your scheduling system, agreed up front",
       ],
     },
     {

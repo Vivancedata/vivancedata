@@ -52,7 +52,7 @@ const AboutPage = () => {
 
       <AboutDescription
         title="A focused practice, not a large agency"
-        description="Vivancedata is my practice, and it has no staff on purpose. I do the work on every engagement myself and bring in vetted specialists, project by project, when a job needs one. You deal with the person who scoped your build, wrote it and will pick up the phone when something changes — not an account manager."
+        description="Vivancedata is my practice, and it has no staff on purpose. I do the work on every engagement myself and bring in vetted specialists, project by project, when a job needs one. You deal with the person who scoped your build, wrote it and will answer you when something changes — not an account manager."
       />
 
       <AboutValue
