@@ -9,19 +9,19 @@ import { Briefcase, Users, Rocket, Heart, Mail, ArrowRight } from 'lucide-react'
 
 export const metadata: Metadata = {
   alternates: { canonical: "/career" },
-  title: "Careers at Vivancedata | Working with me",
-  description: "How Vivancedata works with specialists. A founder-led practice that brings in senior people per project rather than hiring a bench.",
+  title: "Careers at VivanceData | Working with me",
+  description: "How VivanceData works with specialists. A founder-led practice that brings in senior people per project rather than hiring a bench.",
   keywords: ["AI careers", "AI consultant jobs", "data science careers", "machine learning jobs", "AI engineering"],
   openGraph: {
-    title: "Careers at Vivancedata | Project-based collaboration",
+    title: "Careers at VivanceData | Project-based collaboration",
     description: "A founder-led practice that works with senior specialists on a per-project basis.",
     type: "website",
     url: "https://vivancedata.com/career",
-    siteName: "Vivancedata",
+    siteName: "VivanceData",
   },
   twitter: {
     card: "summary",
-    title: "Careers at Vivancedata",
+    title: "Careers at VivanceData",
     description: "A founder-led practice that brings in senior specialists per project. No open roles right now.",
   },
   robots: {
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
 };
 
-// Vivancedata is a founder-led practice with a network of project-based
+// VivanceData is a founder-led practice with a network of project-based
 // specialists -- not an employer with a benefits package. These describe how
 // collaboration actually works here. Do not add employment perks (PTO, training
 // budgets, team culture) until there is an actual payroll behind them.
@@ -65,7 +65,7 @@ const CareerPage = () => {
         <div className="mb-16">
           <Heading className="mb-4 font-display text-serif-xl">Work with me</Heading>
           <Paragraph className="max-w-[62ch] text-body-lg">
-            Vivancedata is one person plus a short list of specialists I bring in per project.
+            VivanceData is one person plus a short list of specialists I bring in per project.
             I am not hiring employees. I do add people to that list when a job calls for depth
             I do not have.
           </Paragraph>
@@ -109,7 +109,7 @@ const CareerPage = () => {
               tells me more than a resume does.
             </p>
             <a
-              href="mailto:careers@vivancedata.com?subject=Career Interest at Vivancedata"
+              href="mailto:careers@vivancedata.com?subject=Career Interest at VivanceData"
               className="inline-flex items-center gap-2 text-foreground underline decoration-rule underline-offset-4 hover:decoration-current"
             >
               <Mail className="h-4 w-4" />

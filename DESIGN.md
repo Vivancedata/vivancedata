@@ -1,5 +1,5 @@
 ---
-name: Vivancedata (nightshift)
+name: VivanceData (nightshift)
 description: >
   The night log: a warm near-black sheet under cream ink, structure as a 1px
   hairline grid and a dot matrix, Instrument Serif for the human voice, Geist
@@ -268,7 +268,7 @@ components:
     padding: "13px 22px"
 ---
 
-# Design System: Vivancedata
+# Design System: VivanceData
 
 This site runs the **nightshift** world of the shared `@vivancedata/ui` package
 (pinned at v0.5.0 in `package.json`). The package's own `DESIGN.md` is the

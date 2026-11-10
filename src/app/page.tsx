@@ -11,11 +11,11 @@ import { Metadata } from "next";
 // the title and keywords name both rather than the category.
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
-  title: "Vivancedata - AI for construction, HVAC, logistics and manufacturing",
+  title: "VivanceData - AI for construction, HVAC, logistics and manufacturing",
   description: "Small, specific AI systems for trades and field operations: after-hours calls answered and booked, permits and delivery paperwork read instead of re-keyed. Built on your own documents, and yours to keep.",
   keywords: ["AI for contractors", "HVAC after-hours call answering", "construction document automation", "permit data extraction", "proof of delivery automation", "AI consulting for trades", "field operations automation"],
   openGraph: {
-    title: "Vivancedata - AI for construction, HVAC, logistics and manufacturing",
+    title: "VivanceData - AI for construction, HVAC, logistics and manufacturing",
     description: "After-hours calls answered and booked. Permits and delivery paperwork read instead of re-keyed. Built on your own documents.",
     type: "website",
     url: "https://vivancedata.com",
@@ -24,13 +24,13 @@ export const metadata: Metadata = {
         url: "https://vivancedata.com/images/banner.png",
         width: 2560,
         height: 1280,
-        alt: "Vivancedata AI Solutions",
+        alt: "VivanceData AI Solutions",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vivancedata - AI for construction, HVAC, logistics and manufacturing",
+    title: "VivanceData - AI for construction, HVAC, logistics and manufacturing",
     description: "After-hours calls answered and booked. Paperwork read instead of re-keyed.",
     images: ["https://vivancedata.com/images/banner.png"],
   },
@@ -50,7 +50,7 @@ const jsonLd = {
     {
       "@type": "Organization",
       "@id": "https://vivancedata.com/#organization",
-      "name": "Vivancedata",
+      "name": "VivanceData",
       "url": "https://vivancedata.com",
       "logo": {
         "@type": "ImageObject",
@@ -58,7 +58,7 @@ const jsonLd = {
         "width": 180,
         "height": 60
       },
-      "description": "Vivancedata builds small, specific AI systems for construction, HVAC, logistics and manufacturing businesses \u2014 after-hours call handling and document intake, built on the client's own paperwork.",
+      "description": "VivanceData builds small, specific AI systems for construction, HVAC, logistics and manufacturing businesses \u2014 after-hours call handling and document intake, built on the client's own paperwork.",
       "sameAs": [
         "https://github.com/Vivancedata",
         "https://www.linkedin.com/in/lorenzo-scaturchio"
@@ -68,7 +68,7 @@ const jsonLd = {
       "@type": "WebSite",
       "@id": "https://vivancedata.com/#website",
       "url": "https://vivancedata.com",
-      "name": "Vivancedata - AI for construction, HVAC, logistics and manufacturing",
+      "name": "VivanceData - AI for construction, HVAC, logistics and manufacturing",
       "description": "After-hours calls answered and booked. Permits and delivery paperwork read instead of re-keyed.",
       "publisher": {
         "@id": "https://vivancedata.com/#organization"
@@ -78,7 +78,7 @@ const jsonLd = {
       "@type": "WebPage",
       "@id": "https://vivancedata.com/#webpage",
       "url": "https://vivancedata.com",
-      "name": "Vivancedata - AI for construction, HVAC, logistics and manufacturing",
+      "name": "VivanceData - AI for construction, HVAC, logistics and manufacturing",
       "description": "Small, specific AI systems for trades and field operations, proved on your own documents before you pay for a build.",
       "isPartOf": {
         "@id": "https://vivancedata.com/#website"

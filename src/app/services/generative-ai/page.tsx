@@ -12,11 +12,11 @@ import {
 
 export const metadata: Metadata = {
   alternates: { canonical: "/services/generative-ai" },
-  title: "Generative AI - Vivancedata",
+  title: "Generative AI - VivanceData",
   description: "Language models put to work on your own material: reading the documents that arrive as PDFs, answering the phone after hours, drafting the routine writing. Fine-tuning and multimodal where they earn it.",
   keywords: ["generative AI", "AI content creation", "LLM fine-tuning", "image generation", "voice synthesis", "multimodal AI"],
   openGraph: {
-    title: "Generative AI - Vivancedata",
+    title: "Generative AI - VivanceData",
     description: "Language models put to work on your own documents, calls and routine writing. Fine-tuning and multimodal where they earn it.",
     type: "website",
     url: "https://vivancedata.com/services/generative-ai",
@@ -25,13 +25,13 @@ export const metadata: Metadata = {
         url: "https://vivancedata.com/images/ai-solutions.png",
         width: 1200,
         height: 630,
-        alt: "Vivancedata Generative AI Solutions",
+        alt: "VivanceData Generative AI Solutions",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Generative AI - Vivancedata",
+    title: "Generative AI - VivanceData",
     description: "Language models put to work on your own documents, calls and routine writing.",
     images: ["https://vivancedata.com/images/ai-solutions.png"],
   },

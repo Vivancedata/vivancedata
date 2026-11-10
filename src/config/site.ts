@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "Vivancedata",
+  name: "VivanceData",
   url: "https://vivancedata.com",
   ogImage: "https://vivancedata.com/images/banner.png",
   // First person singular, like the rest of the site. This was the last piece

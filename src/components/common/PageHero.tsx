@@ -18,8 +18,8 @@ interface PageHeroProps {
  * preference:
  *
  * 1. **The eyebrow prop is gone.** Every call site passed a line that restated
- *    the title underneath it ("About" over "About Vivancedata", "Our Services"
- *    over "Vivancedata Solutions"). A stacked pre-title is furniture; the
+ *    the title underneath it ("About" over "About VivanceData", "Our Services"
+ *    over "VivanceData Solutions"). A stacked pre-title is furniture; the
  *    heading carries its own weight. Where the eyebrow was genuinely the better
  *    line, it became the title instead of sitting above it.
  * 2. **Left-set, not centred.** A 76px centred headline sends the eye back

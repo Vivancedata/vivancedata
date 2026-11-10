@@ -14,25 +14,25 @@ import {
 
 export const metadata: Metadata = {
   alternates: { canonical: "/innovation-hub" },
-  title: "Innovation Hub - Vivancedata",
+  title: "Innovation Hub - VivanceData",
   description: "What I test before it goes anywhere near a job someone depends on: which new AI techniques are ready for a trade or industrial operation, and which are not.",
   keywords: ["AI innovation", "emerging technology", "R&D", "AI research", "technology trends", "future of AI", "AI experimentation"],
   openGraph: {
-    title: "Innovation Hub | Vivancedata",
+    title: "Innovation Hub | VivanceData",
     description: "What I test before it goes near a job someone depends on, plus two free tools you can use right now.",
     type: "website",
     url: "https://vivancedata.com/innovation-hub",
-    siteName: "Vivancedata",
+    siteName: "VivanceData",
     images: [{
       url: "https://vivancedata.com/images/ai-solutions.png",
       width: 1200,
       height: 630,
-      alt: "Vivancedata Innovation Hub - Emerging AI Technologies",
+      alt: "VivanceData Innovation Hub - Emerging AI Technologies",
     }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Innovation Hub | Vivancedata",
+    title: "Innovation Hub | VivanceData",
     description: "What I test before it goes near a job someone depends on.",
     images: ["https://vivancedata.com/images/ai-solutions.png"],
   },

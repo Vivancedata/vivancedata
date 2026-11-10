@@ -3,18 +3,18 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/terms-of-service" },
-  title: "Terms of Service | Vivancedata",
-  description: "Terms and conditions for using Vivancedata's AI consulting, generative AI, and training services.",
+  title: "Terms of Service | VivanceData",
+  description: "Terms and conditions for using VivanceData's AI consulting, generative AI, and training services.",
   openGraph: {
-    title: "Terms of Service | Vivancedata",
+    title: "Terms of Service | VivanceData",
     description: "Terms and conditions for AI consulting, build and training work.",
     type: "website",
     url: "https://vivancedata.com/terms-of-service",
-    siteName: "Vivancedata",
+    siteName: "VivanceData",
   },
   twitter: {
     card: "summary",
-    title: "Terms of Service | Vivancedata",
+    title: "Terms of Service | VivanceData",
     description: "Terms and conditions for AI consulting, build and training work.",
   },
   robots: {

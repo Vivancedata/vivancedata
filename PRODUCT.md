@@ -89,8 +89,11 @@ The recurring material of their day, and of any engagement:
 
 ## Brand Commitments
 
-- **Name: "Vivancedata"** — one capital V. The older "VivanceData" casing was
-  retired across the site.
+- **Name: "VivanceData"** — capital V, capital D. This is the spelling the
+  business name is registered under, so the site matches it. The one-capital
+  "Vivancedata" casing, adopted 2026-09-03, was reversed on 2026-11-09. The
+  GitHub organization path (`Vivancedata/…`) and the lowercase domain and
+  package names are identifiers and stay as they are.
 - **Founder: Lorenzo Scaturchio.** Named publicly, on the about page and in
   outbound email.
 - **First person, singular.** "You'll hear back from me, not an account

@@ -89,7 +89,7 @@ export async function POST(request: NextRequest) {
     }
 
     const notification = await sendCritical({
-      fromName: 'Vivancedata Contact Form',
+      fromName: 'VivanceData Contact Form',
       to: teamInbox(),
       replyTo: enquiry.email,
       subject: `New Contact Form Submission from ${enquiry.firstName} ${enquiry.lastName}`,

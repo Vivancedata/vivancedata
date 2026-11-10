@@ -6,11 +6,11 @@ import { getAllBlogPosts } from '@/lib/blogPosts';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/blog' },
-  title: 'Notes from the work - Vivancedata',
+  title: 'Notes from the work - VivanceData',
   description: 'Notes on putting AI into trade and industrial operations: what works on real paperwork and real calls, what breaks, and what is not worth the trouble.',
   keywords: 'AI blog, artificial intelligence trends, machine learning insights, AI implementation, business AI',
   openGraph: {
-    title: 'Notes from the work - Vivancedata',
+    title: 'Notes from the work - VivanceData',
     description: 'Notes on putting AI into trade and industrial operations: what works, what breaks, what is not worth the trouble.',
     type: 'website',
     url: 'https://vivancedata.com/blog',
@@ -19,13 +19,13 @@ export const metadata: Metadata = {
         url: 'https://vivancedata.com/images/ai-solutions.png',
         width: 1200,
         height: 630,
-        alt: 'Vivancedata AI Insights Blog',
+        alt: 'VivanceData AI Insights Blog',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Notes from the work - Vivancedata',
+    title: 'Notes from the work - VivanceData',
     description: 'Notes on putting AI into trade and industrial operations.',
     images: ['https://vivancedata.com/images/ai-solutions.png'],
   },

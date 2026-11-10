@@ -140,7 +140,7 @@ export const methodologyFAQs: MethodologyFAQ[] = [
     answer: 'That is common, and it does not mean starting over. I can look at what is already running, say plainly where the gaps are, and build alongside it rather than replacing work you have already paid for.',
   },
   {
-    question: 'Do we need a data science team to work with Vivancedata?',
+    question: 'Do we need a data science team to work with VivanceData?',
     answer: 'No. I do the work myself. If you have your own data or engineering people, I work alongside them and hand over documentation as we go.',
   },
   {

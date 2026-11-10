@@ -9,12 +9,12 @@ import { pricingPageContent } from "@/constants/pricing";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/pricing" },
-  title: "Pricing - Vivancedata",
+  title: "Pricing - VivanceData",
   description:
     "What an AI build costs: a one-off fee to scope and build it, and a monthly fee to keep it working. Starting figures for assessment, build and ongoing partnership.",
   keywords: ["AI consulting pricing", "AI automation cost", "AI retainer", "AI project pricing"],
   openGraph: {
-    title: "Pricing - Vivancedata",
+    title: "Pricing - VivanceData",
     description:
       "A build has two costs: getting it working, and keeping it working. Both are listed.",
     type: "website",

@@ -40,14 +40,14 @@ const displaySerif = Instrument_Serif({
 
 export const metadata: Metadata = {
   // No title template here, because every page already names the brand in its own title
-  // ("About - Vivancedata"), so a "%s | Vivancedata" template produced
-  // "About - Vivancedata | Vivancedata" in every tab and search result.
-  title: "Vivancedata - AI for construction, HVAC, logistics and manufacturing",
+  // ("About - VivanceData"), so a "%s | VivanceData" template produced
+  // "About - VivanceData | VivanceData" in every tab and search result.
+  title: "VivanceData - AI for construction, HVAC, logistics and manufacturing",
   description: "After-hours calls answered and booked. Permits and delivery paperwork read instead of re-keyed. Built by Lorenzo Scaturchio on your own documents, and yours to keep.",
   keywords: ["AI for contractors", "HVAC after-hours call answering", "construction document automation", "proof of delivery automation", "AI consulting for trades"],
   authors: [{ name: "Lorenzo Scaturchio" }],
   creator: "Lorenzo Scaturchio",
-  publisher: "Vivancedata",
+  publisher: "VivanceData",
   formatDetection: {
     email: false,
     address: false,
@@ -61,21 +61,21 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://vivancedata.com",
-    title: "Vivancedata - AI for construction, HVAC, logistics and manufacturing",
+    title: "VivanceData - AI for construction, HVAC, logistics and manufacturing",
     description: "After-hours calls answered and booked. Paperwork read instead of re-keyed.",
-    siteName: "Vivancedata",
+    siteName: "VivanceData",
     images: [
       {
         url: "https://vivancedata.com/images/banner.png",
         width: 2560,
         height: 1280,
-        alt: "Vivancedata - AI for construction, HVAC, logistics and manufacturing",
+        alt: "VivanceData - AI for construction, HVAC, logistics and manufacturing",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vivancedata - AI for construction, HVAC, logistics and manufacturing",
+    title: "VivanceData - AI for construction, HVAC, logistics and manufacturing",
     description: "After-hours calls answered and booked. Paperwork read instead of re-keyed.",
     images: ["https://vivancedata.com/images/banner.png"],
   },

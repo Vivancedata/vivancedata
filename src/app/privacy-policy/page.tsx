@@ -4,18 +4,18 @@ import { CookieSettingsButton } from "./CookieSettingsButton";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/privacy-policy" },
-  title: "Privacy Policy & Transparency | Vivancedata",
-  description: "Transparency about data handling, analytics, and business practices for Vivancedata's AI consulting services.",
+  title: "Privacy Policy & Transparency | VivanceData",
+  description: "Transparency about data handling, analytics, and business practices for VivanceData's AI consulting services.",
   openGraph: {
-    title: "Privacy Policy & Transparency | Vivancedata",
+    title: "Privacy Policy & Transparency | VivanceData",
     description: "How I handle data, what the analytics do and do not collect, and which third-party services this site uses.",
     type: "website",
     url: "https://vivancedata.com/privacy-policy",
-    siteName: "Vivancedata",
+    siteName: "VivanceData",
   },
   twitter: {
     card: "summary",
-    title: "Privacy Policy | Vivancedata",
+    title: "Privacy Policy | VivanceData",
     description: "How I handle data and what this site collects.",
   },
   robots: {

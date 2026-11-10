@@ -8,8 +8,8 @@ import path from "node:path";
  * declared `canonical: "/"`, which told search engines that every page on the
  * site was a duplicate of the homepage.
  *
- * The same inheritance applied the root's `"%s | Vivancedata"` title template
- * to page titles that already ended in "- Vivancedata".
+ * The same inheritance applied the root's `"%s | VivanceData"` title template
+ * to page titles that already ended in "- VivanceData".
  *
  * This reads the page sources rather than importing them: the pages pull in
  * client components and CSS that the node test environment cannot load.

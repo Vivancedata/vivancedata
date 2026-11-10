@@ -12,18 +12,18 @@ import {
 
 export const metadata: Metadata = {
   alternates: { canonical: "/resources" },
-  title: "Resources - Vivancedata",
+  title: "Resources - VivanceData",
   description: "The free things on this site: notes from the work, an ROI calculator, a readiness assessment, what I am testing, and how I handle the risky parts.",
   keywords: ["AI resources", "AI tools", "ROI calculator", "AI readiness", "AI blog", "responsible AI"],
   openGraph: {
-    title: "Resources - Vivancedata",
+    title: "Resources - VivanceData",
     description: "Notes from the work, an ROI calculator, a readiness assessment, and how I handle the parts that can go wrong.",
     type: "website",
     url: "https://vivancedata.com/resources",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Resources - Vivancedata",
+    title: "Resources - VivanceData",
     description: "Notes from the work, an ROI calculator, a readiness assessment, and how I handle the parts that can go wrong.",
   },
 };

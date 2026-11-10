@@ -13,11 +13,11 @@ import {
 
 export const metadata: Metadata = {
   alternates: { canonical: "/services/training" },
-  title: "AI Training & Workshops - Vivancedata",
+  title: "AI Training & Workshops - VivanceData",
   description: "Training for the people who will run these systems day to day: what a model can and cannot do, how to check it, and what to do the first time it is wrong.",
   keywords: ["AI training", "AI workshops", "AI education", "AI skills", "AI literacy", "AI upskilling"],
   openGraph: {
-    title: "AI Training & Workshops - Vivancedata",
+    title: "AI Training & Workshops - VivanceData",
     description: "Sessions for owners, data teams and developers, run on your own systems and documents rather than a slide deck.",
     type: "website",
     url: "https://vivancedata.com/services/training",
@@ -26,13 +26,13 @@ export const metadata: Metadata = {
         url: "https://vivancedata.com/images/ai-solutions.png",
         width: 1200,
         height: 630,
-        alt: "Vivancedata AI Training & Workshops",
+        alt: "VivanceData AI Training & Workshops",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Training & Workshops - Vivancedata",
+    title: "AI Training & Workshops - VivanceData",
     description: "Sessions for owners, data teams and developers, run on your own systems and documents.",
     images: ["https://vivancedata.com/images/ai-solutions.png"],
   },

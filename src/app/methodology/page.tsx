@@ -37,7 +37,7 @@ import {
 
 export const metadata: Metadata = {
   alternates: { canonical: '/methodology' },
-  title: 'How an Engagement Runs | Vivancedata',
+  title: 'How an Engagement Runs | VivanceData',
   description:
     'The six phases an engagement runs through, from deciding whether a workflow is worth automating at all to keeping it working once it is live.',
 };

@@ -6,11 +6,11 @@ import { demos } from "@/constants/demos";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/industries/hvac-trades" },
-  title: "Answer the calls you are missing after hours - Vivancedata",
+  title: "Answer the calls you are missing after hours - VivanceData",
   description: "Answer the after-hours calls that go to voicemail, triage the emergencies, and get quotes and follow-ups out while the job is still fresh.",
   keywords: ["HVAC AI", "trades AI", "after-hours call answering", "dispatch software", "service scheduling", "field service automation"],
   openGraph: {
-    title: "Answer the calls you are missing after hours - Vivancedata",
+    title: "Answer the calls you are missing after hours - VivanceData",
     description: "Call capture, dispatch support, quoting and follow-up for HVAC, plumbing, electrical and other service trades.",
     type: "website",
     url: "https://vivancedata.com/industries/hvac-trades",
