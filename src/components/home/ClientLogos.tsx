@@ -64,7 +64,7 @@ export default function ClientLogos() {
           {([
             [
               "One person, start to finish",
-              "The person who scopes the job builds it and answers the phone afterwards.",
+              "The person who scopes the job builds it and answers you afterwards.",
             ],
             [
               "Proved on your own paperwork",
