@@ -8,11 +8,11 @@ import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/industries" },
-  title: "Industries - Vivancedata",
+  title: "Industries - VivanceData",
   description: "AI built for the trades and the field: construction, HVAC and the service trades, logistics and fleet operations, and manufacturing.",
   keywords: ["industry solutions", "AI for construction", "AI for HVAC", "AI for the trades", "AI for logistics", "AI for fleet operations", "AI for manufacturing"],
   openGraph: {
-    title: "Industries - Vivancedata",
+    title: "Industries - VivanceData",
     description: "AI for construction, HVAC and the trades, logistics and fleet operations, and manufacturing.",
     type: "website",
     url: "https://vivancedata.com/industries",
@@ -21,13 +21,13 @@ export const metadata: Metadata = {
         url: "https://vivancedata.com/images/ai-solutions.png",
         width: 1200,
         height: 630,
-        alt: "Vivancedata Industry Solutions",
+        alt: "VivanceData Industry Solutions",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Industries - Vivancedata",
+    title: "Industries - VivanceData",
     description: "AI for construction, HVAC and the trades, logistics and fleet, and manufacturing.",
     images: ["https://vivancedata.com/images/ai-solutions.png"],
   },

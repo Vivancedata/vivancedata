@@ -7,11 +7,11 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/about" },
-  title: "About - Vivancedata",
+  title: "About - VivanceData",
   description: "A founder-led AI practice working with construction, HVAC, logistics and manufacturing operations. Senior delivery, no hand-off to a junior team.",
-  keywords: ["about Vivancedata", "Lorenzo Scaturchio", "founder-led AI practice", "AI for contractors", "AI for trades"],
+  keywords: ["about VivanceData", "Lorenzo Scaturchio", "founder-led AI practice", "AI for contractors", "AI for trades"],
   openGraph: {
-    title: "About - Vivancedata",
+    title: "About - VivanceData",
     description: "A founder-led AI practice for construction, HVAC, logistics and manufacturing. The person who scopes the work builds it and answers the phone afterwards.",
     type: "website",
     url: "https://vivancedata.com/about",
@@ -20,13 +20,13 @@ export const metadata: Metadata = {
         url: "https://vivancedata.com/images/ai-solutions.png",
         width: 1200,
         height: 630,
-        alt: "Lorenzo Scaturchio, founder of Vivancedata",
+        alt: "Lorenzo Scaturchio, founder of VivanceData",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "About - Vivancedata",
+    title: "About - VivanceData",
     description: "A founder-led AI practice for the trades. One person, senior on every engagement, no hand-off.",
     images: ["https://vivancedata.com/images/ai-solutions.png"],
   },
@@ -46,13 +46,13 @@ const AboutPage = () => {
   return (
     <div>
       <PageHero
-        title="About Vivancedata"
+        title="About VivanceData"
         description="I'm Lorenzo. I build the small, specific systems that take the after-hours call and the twice-typed paperwork off a trade business, and I stay on to keep them running."
       />
 
       <AboutDescription
         title="A focused practice, not a large agency"
-        description="Vivancedata is my practice, and it has no staff on purpose. I do the work on every engagement myself and bring in vetted specialists, project by project, when a job needs one. You deal with the person who scoped your build, wrote it and will pick up the phone when something changes — not an account manager."
+        description="VivanceData is my practice, and it has no staff on purpose. I do the work on every engagement myself and bring in vetted specialists, project by project, when a job needs one. You deal with the person who scoped your build, wrote it and will answer you when something changes — not an account manager."
       />
 
       <AboutValue

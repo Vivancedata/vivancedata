@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/tools/use-cases" },
-  title: "AI Use Cases - Vivancedata",
+  title: "AI Use Cases - VivanceData",
   description:
     "Browse practical AI use cases for construction, HVAC and the trades, logistics and fleet operations, and manufacturing.",
   keywords: [
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     "field service AI",
   ],
   openGraph: {
-    title: "AI Use Cases - Vivancedata",
+    title: "AI Use Cases - VivanceData",
     description:
       "Practical AI use cases for construction, HVAC and the trades, logistics and fleet, and manufacturing. Searchable by industry and function.",
     type: "website",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Use Cases - Vivancedata",
+    title: "AI Use Cases - VivanceData",
     description:
       "Practical AI use cases for construction, HVAC and the trades, logistics and fleet, and manufacturing.",
     images: ["https://vivancedata.com/images/ai-solutions.png"],

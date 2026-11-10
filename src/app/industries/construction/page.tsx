@@ -6,11 +6,11 @@ import { demos } from "@/constants/demos";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/industries/construction" },
-  title: "AI for Construction - Vivancedata",
+  title: "AI for Construction - VivanceData",
   description: "Cut the paperwork load on submittals, RFIs, daily reports and permits with AI that writes into the project software your team already runs.",
   keywords: ["construction AI", "submittal processing", "RFI automation", "daily reports", "construction document management", "preconstruction estimating"],
   openGraph: {
-    title: "AI for Construction - Vivancedata",
+    title: "AI for Construction - VivanceData",
     description: "Document intake, daily report assembly, bid support and compliance records for construction teams.",
     type: "website",
     url: "https://vivancedata.com/industries/construction",

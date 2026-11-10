@@ -12,11 +12,11 @@ import {
 
 export const metadata: Metadata = {
   alternates: { canonical: "/services/consulting" },
-  title: "AI Strategy Consulting - Vivancedata",
+  title: "AI Strategy Consulting - VivanceData",
   description: "Deciding what to automate first, what to leave alone, and what each option costs to build and to run \u2014 before anyone writes code.",
   keywords: ["AI strategy", "AI consulting", "digital transformation", "AI roadmap", "AI implementation", "AI governance"],
   openGraph: {
-    title: "AI Strategy Consulting - Vivancedata",
+    title: "AI Strategy Consulting - VivanceData",
     description: "Deciding what to automate first, what to leave alone, and what each option costs. Before anyone writes code.",
     type: "website",
     url: "https://vivancedata.com/services/consulting",
@@ -25,13 +25,13 @@ export const metadata: Metadata = {
         url: "https://vivancedata.com/images/ai-solutions.png",
         width: 1200,
         height: 630,
-        alt: "Vivancedata AI Strategy Consulting",
+        alt: "VivanceData AI Strategy Consulting",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Strategy Consulting - Vivancedata",
+    title: "AI Strategy Consulting - VivanceData",
     description: "Deciding what to automate first and what to leave alone, before anyone writes code.",
     images: ["https://vivancedata.com/images/ai-solutions.png"],
   },

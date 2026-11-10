@@ -15,25 +15,25 @@ import {
 
 export const metadata: Metadata = {
   alternates: { canonical: "/responsible-ai" },
-  title: "Responsible AI - Vivancedata",
+  title: "Responsible AI - VivanceData",
   description: "What a system is allowed to decide on its own, what waits for a person, and what gets written down. The parts of this work that can go wrong quietly.",
   keywords: ["responsible AI", "ethical AI", "AI governance", "AI ethics", "transparent AI", "AI bias", "AI accountability"],
   openGraph: {
-    title: "Responsible AI | Vivancedata",
+    title: "Responsible AI | VivanceData",
     description: "What a system is allowed to decide on its own, what waits for a person, and what gets written down.",
     type: "website",
     url: "https://vivancedata.com/responsible-ai",
-    siteName: "Vivancedata",
+    siteName: "VivanceData",
     images: [{
       url: "https://vivancedata.com/images/ai-solutions.png",
       width: 1200,
       height: 630,
-      alt: "Vivancedata Responsible AI Framework",
+      alt: "VivanceData Responsible AI Framework",
     }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Responsible AI | Vivancedata",
+    title: "Responsible AI | VivanceData",
     description: "What a system decides on its own, what waits for a person, and what gets written down.",
     images: ["https://vivancedata.com/images/ai-solutions.png"],
   },

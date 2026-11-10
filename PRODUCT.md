@@ -89,8 +89,11 @@ The recurring material of their day, and of any engagement:
 
 ## Brand Commitments
 
-- **Name: "Vivancedata"** — one capital V. The older "VivanceData" casing was
-  retired across the site.
+- **Name: "VivanceData"** — capital V, capital D. This is the spelling the
+  business name is registered under, so the site matches it. The one-capital
+  "Vivancedata" casing, adopted 2026-09-03, was reversed on 2026-11-09. The
+  GitHub organization path (`Vivancedata/…`) and the lowercase domain and
+  package names are identifiers and stay as they are.
 - **Founder: Lorenzo Scaturchio.** Named publicly, on the about page and in
   outbound email.
 - **First person, singular.** "You'll hear back from me, not an account
@@ -113,9 +116,14 @@ The recurring material of their day, and of any engagement:
 
 ## Evidence on Hand
 
-**The practice is pre-first-client. There are no delivered engagements.** This
-governs what may ever appear on the site and is the most load-bearing fact in
-this record.
+**The practice has had one paying client: a website build for a local business,
+paid in October 2026. It has delivered none of the work this site sells.** That
+client is not named anywhere on the site and has not agreed in writing to be
+named, so the job is not usable as proof. For every claim the site makes about
+call handling, paperwork and field systems, the practice is still
+pre-first-client. This governs what may ever appear on the site and is the most
+load-bearing fact in this record. (Corrected 2026-11-09: this section used to
+say there were no clients at all.)
 
 Real and usable:
 

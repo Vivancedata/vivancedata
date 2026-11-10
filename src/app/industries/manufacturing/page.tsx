@@ -5,11 +5,11 @@ import { specimenFor } from "@/constants/specimens";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/industries/manufacturing" },
-  title: "AI for Manufacturing - Vivancedata",
+  title: "AI for Manufacturing - VivanceData",
   description: "Machine degradation flagged before the line stops, defects caught during the run, and the paperwork between the floor and the office read rather than re-keyed.",
   keywords: ["manufacturing AI", "predictive maintenance", "quality control AI", "OEE optimization", "industrial AI", "IIoT analytics"],
   openGraph: {
-    title: "AI for Manufacturing - Vivancedata",
+    title: "AI for Manufacturing - VivanceData",
     description: "Predictive maintenance, in-line quality inspection and production analytics for manufacturing teams.",
     type: "website",
     url: "https://vivancedata.com/industries/manufacturing",

@@ -172,11 +172,11 @@ const CaseStudyIllustration = ({ industry }: { industry: string }) => {
 
 export const metadata: Metadata = {
   alternates: { canonical: "/case-studies" },
-  title: "Example Engagements - Vivancedata",
+  title: "Example Engagements - VivanceData",
   description: "Composite examples showing how AI engagements are scoped and delivered in construction, the trades and logistics -- the problem, the approach, and what gets handed over.",
   keywords: ["AI engagements", "AI implementation", "AI scoping", "AI delivery", "AI solutions", "machine learning projects"],
   openGraph: {
-    title: "Example Engagements - Vivancedata",
+    title: "Example Engagements - VivanceData",
     description: "Composite examples of how AI work is scoped and delivered across document intake, call capture and dispatch exceptions.",
     type: "website",
     url: "https://vivancedata.com/case-studies",
@@ -185,13 +185,13 @@ export const metadata: Metadata = {
         url: "https://vivancedata.com/images/ai-solutions.png",
         width: 1200,
         height: 630,
-        alt: "Vivancedata example builds",
+        alt: "VivanceData example builds",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Example Engagements - Vivancedata",
+    title: "Example Engagements - VivanceData",
     description: "Composite examples of how AI work is scoped and delivered.",
     images: ["https://vivancedata.com/images/ai-solutions.png"],
   },

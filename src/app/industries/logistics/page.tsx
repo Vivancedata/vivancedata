@@ -6,11 +6,11 @@ import { demos } from "@/constants/demos";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/industries/logistics" },
-  title: "AI for Logistics and Fleet Operations - Vivancedata",
+  title: "AI for Logistics and Fleet Operations - VivanceData",
   description: "Read the photographed paperwork drivers already submit, surface the loads going wrong before the customer calls, and keep claims evidence together.",
   keywords: ["logistics AI", "fleet operations", "proof of delivery", "bill of lading processing", "dispatch exception management", "freight claims"],
   openGraph: {
-    title: "AI for Logistics and Fleet Operations - Vivancedata",
+    title: "AI for Logistics and Fleet Operations - VivanceData",
     description: "Proof of delivery processing, exception triage, driver communication and claims documentation for carriers and fleets.",
     type: "website",
     url: "https://vivancedata.com/industries/logistics",

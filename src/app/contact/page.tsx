@@ -8,11 +8,11 @@ import { Mail, Clock } from 'lucide-react';
 
 export const metadata: Metadata = {
   alternates: { canonical: "/contact" },
-  title: "Book a call - Vivancedata",
+  title: "Book a call - VivanceData",
   description: "Tell me what is slowing your operation down. You will hear back from me, not an account manager, within one working day.",
-  keywords: ["contact Vivancedata", "book a call", "AI for contractors", "after-hours call answering", "paperwork automation"],
+  keywords: ["contact VivanceData", "book a call", "AI for contractors", "after-hours call answering", "paperwork automation"],
   openGraph: {
-    title: "Book a call - Vivancedata",
+    title: "Book a call - VivanceData",
     description: "Book a consultation and talk directly to the person who would build it.",
     type: "website",
     url: "https://vivancedata.com/contact",
@@ -21,13 +21,13 @@ export const metadata: Metadata = {
         url: "https://vivancedata.com/images/banner.png",
         width: 2560,
         height: 1280,
-        alt: "Contact Vivancedata",
+        alt: "Contact VivanceData",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Book a call - Vivancedata",
+    title: "Book a call - VivanceData",
     description: "Book a consultation and talk directly to the person who would build it.",
     images: ["https://vivancedata.com/images/banner.png"],
   },

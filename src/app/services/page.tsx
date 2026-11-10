@@ -8,11 +8,11 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/services" },
-  title: "AI Services - Vivancedata",
+  title: "AI Services - VivanceData",
   description: "What I build for trade and industrial businesses: document intake, private question-answering over your own files, and workflow automation. Scoped, built on your documents, and run afterwards.",
   keywords: ["AI services", "LLM engineering", "AI implementation", "data platform", "machine learning services", "AI consulting", "team upskilling"],
   openGraph: {
-    title: "AI Services - Vivancedata",
+    title: "AI Services - VivanceData",
     description: "Document intake, answers from your own files, and workflow automation. Scoped, built on your documents, and run afterwards.",
     type: "website",
     url: "https://vivancedata.com/services",
@@ -21,13 +21,13 @@ export const metadata: Metadata = {
         url: "https://vivancedata.com/images/ai-solutions.png",
         width: 1200,
         height: 630,
-        alt: "Vivancedata AI Services",
+        alt: "VivanceData AI Services",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Services - Vivancedata",
+    title: "AI Services - VivanceData",
     description: "Document intake, answers from your own files, and workflow automation.",
     images: ["https://vivancedata.com/images/ai-solutions.png"],
   },

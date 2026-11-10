@@ -74,7 +74,7 @@ export async function generateMetadata({ params }: BlogPostParams): Promise<Meta
         : ['AI', 'artificial intelligence', 'technology'];
     
     return {
-      title: `${frontmatter.title} - Vivancedata`,
+      title: `${frontmatter.title} - VivanceData`,
       description: frontmatter.description,
       alternates: { canonical: `/blog/${slug}` },
       keywords: keywords.join(', '),
@@ -101,7 +101,7 @@ export async function generateMetadata({ params }: BlogPostParams): Promise<Meta
   } catch (error) {
     console.error(`Error generating metadata for slug ${slug}:`, error);
     return {
-      title: 'Blog Post - Vivancedata',
+      title: 'Blog Post - VivanceData',
     };
   }
 }
@@ -154,12 +154,12 @@ async function getBlogPostData(slug: string, filePath: string) {
     "dateModified": meta.date,
     "author": {
       "@type": "Organization",
-      "name": "Vivancedata",
+      "name": "VivanceData",
       "url": "https://vivancedata.com"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Vivancedata",
+      "name": "VivanceData",
       "logo": {
         "@type": "ImageObject",
         "url": "https://vivancedata.com/icons/Logo.png"

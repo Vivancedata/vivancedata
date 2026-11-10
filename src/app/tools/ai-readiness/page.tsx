@@ -6,11 +6,11 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/tools/ai-readiness" },
-  title: "AI Readiness Assessment - Vivancedata",
+  title: "AI Readiness Assessment - VivanceData",
   description: "A short set of questions about your records, your systems and your people, and an honest read on whether you are ready to automate anything yet.",
   keywords: ["AI readiness assessment", "AI adoption", "AI maturity", "AI strategy", "digital transformation", "AI capabilities"],
   openGraph: {
-    title: "AI Readiness Assessment - Vivancedata",
+    title: "AI Readiness Assessment - VivanceData",
     description: "Questions about your records, your systems and your people, and an honest read on whether you are ready to automate anything yet.",
     type: "website",
     url: "https://vivancedata.com/tools/ai-readiness",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Readiness Assessment - Vivancedata",
+    title: "AI Readiness Assessment - VivanceData",
     description: "An honest read on whether you are ready to automate anything yet.",
     images: ["https://vivancedata.com/images/ai-solutions.png"],
   },
