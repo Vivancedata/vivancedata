@@ -15,10 +15,10 @@ export const metadata: Metadata = {
     title: "Industries - VivanceData",
     description: "AI for construction, HVAC and the trades, logistics and fleet operations, and manufacturing.",
     type: "website",
-    url: "https://vivancedata.com/industries",
+    url: "https://www.vivancedata.com/industries",
     images: [
       {
-        url: "https://vivancedata.com/images/ai-solutions.png",
+        url: "https://www.vivancedata.com/images/ai-solutions.png",
         width: 1200,
         height: 630,
         alt: "VivanceData Industry Solutions",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Industries - VivanceData",
     description: "AI for construction, HVAC and the trades, logistics and fleet, and manufacturing.",
-    images: ["https://vivancedata.com/images/ai-solutions.png"],
+    images: ["https://www.vivancedata.com/images/ai-solutions.png"],
   },
 };
 

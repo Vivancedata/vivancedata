@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     title: "Careers at VivanceData | Project-based collaboration",
     description: "A founder-led practice that works with senior specialists on a per-project basis.",
     type: "website",
-    url: "https://vivancedata.com/career",
+    url: "https://www.vivancedata.com/career",
     siteName: "VivanceData",
   },
   twitter: {

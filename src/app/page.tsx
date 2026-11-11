@@ -18,10 +18,10 @@ export const metadata: Metadata = {
     title: "VivanceData - AI for construction, HVAC, logistics and manufacturing",
     description: "After-hours calls answered and booked. Permits and delivery paperwork read instead of re-keyed. Built on your own documents.",
     type: "website",
-    url: "https://vivancedata.com",
+    url: "https://www.vivancedata.com",
     images: [
       {
-        url: "https://vivancedata.com/images/banner.png",
+        url: "https://www.vivancedata.com/images/banner.png",
         width: 2560,
         height: 1280,
         alt: "VivanceData AI Solutions",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "VivanceData - AI for construction, HVAC, logistics and manufacturing",
     description: "After-hours calls answered and booked. Paperwork read instead of re-keyed.",
-    images: ["https://vivancedata.com/images/banner.png"],
+    images: ["https://www.vivancedata.com/images/banner.png"],
   },
 };
 
@@ -49,12 +49,12 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://vivancedata.com/#organization",
+      "@id": "https://www.vivancedata.com/#organization",
       "name": "VivanceData",
-      "url": "https://vivancedata.com",
+      "url": "https://www.vivancedata.com",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://vivancedata.com/icons/Logo.png",
+        "url": "https://www.vivancedata.com/icons/Logo.png",
         "width": 180,
         "height": 60
       },
@@ -66,25 +66,25 @@ const jsonLd = {
     },
     {
       "@type": "WebSite",
-      "@id": "https://vivancedata.com/#website",
-      "url": "https://vivancedata.com",
+      "@id": "https://www.vivancedata.com/#website",
+      "url": "https://www.vivancedata.com",
       "name": "VivanceData - AI for construction, HVAC, logistics and manufacturing",
       "description": "After-hours calls answered and booked. Permits and delivery paperwork read instead of re-keyed.",
       "publisher": {
-        "@id": "https://vivancedata.com/#organization"
+        "@id": "https://www.vivancedata.com/#organization"
       }
     },
     {
       "@type": "WebPage",
-      "@id": "https://vivancedata.com/#webpage",
-      "url": "https://vivancedata.com",
+      "@id": "https://www.vivancedata.com/#webpage",
+      "url": "https://www.vivancedata.com",
       "name": "VivanceData - AI for construction, HVAC, logistics and manufacturing",
       "description": "Small, specific AI systems for trades and field operations, proved on your own documents before you pay for a build.",
       "isPartOf": {
-        "@id": "https://vivancedata.com/#website"
+        "@id": "https://www.vivancedata.com/#website"
       },
       "about": {
-        "@id": "https://vivancedata.com/#organization"
+        "@id": "https://www.vivancedata.com/#organization"
       }
     }
   ]

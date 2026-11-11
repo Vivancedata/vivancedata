@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     title: "Answer the calls you are missing after hours - VivanceData",
     description: "Call capture, dispatch support, quoting and follow-up for HVAC, plumbing, electrical and other service trades.",
     type: "website",
-    url: "https://vivancedata.com/industries/hvac-trades",
+    url: "https://www.vivancedata.com/industries/hvac-trades",
   },
 };
 

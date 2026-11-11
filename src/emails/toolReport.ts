@@ -56,11 +56,11 @@ export function buildVisitorReport(report: ToolReport): string {
           ${renderRecommendations(report.recommendations ?? [])}
           <p>These figures come from the answers you entered, not from a look at your systems. They are a planning aid, not a forecast &mdash; if you want a real number, send me the job you would automate first and I will scope it.</p>
           <p style="text-align: center;">
-            <a href="https://vivancedata.com/contact" class="button">Book a call</a>
+            <a href="https://www.vivancedata.com/contact" class="button">Book a call</a>
           </p>
           <div class="footer">
             <p>VivanceData</p>
-            <p>https://vivancedata.com</p>
+            <p>https://www.vivancedata.com</p>
           </div>`,
   });
 }
