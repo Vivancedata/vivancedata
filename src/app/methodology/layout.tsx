@@ -19,10 +19,10 @@ export const metadata: Metadata = {
     description:
       'The six-phase way a VivanceData engagement runs: discover, architect, prototype on your own documents, implement, deploy beside the existing process, and keep it working.',
     type: 'website',
-    url: 'https://vivancedata.com/methodology',
+    url: 'https://www.vivancedata.com/methodology',
     images: [
       {
-        url: 'https://vivancedata.com/images/ai-solutions.png',
+        url: 'https://www.vivancedata.com/images/ai-solutions.png',
         width: 1200,
         height: 630,
         alt: 'How a VivanceData engagement runs',
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     title: 'How an Engagement Runs - VivanceData',
     description:
       'The six-phase way an engagement runs, one workflow at a time, proved on your own documents.',
-    images: ['https://vivancedata.com/images/ai-solutions.png'],
+    images: ['https://www.vivancedata.com/images/ai-solutions.png'],
   },
 };
 

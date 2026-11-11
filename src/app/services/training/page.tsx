@@ -20,10 +20,10 @@ export const metadata: Metadata = {
     title: "AI Training & Workshops - VivanceData",
     description: "Sessions for owners, data teams and developers, run on your own systems and documents rather than a slide deck.",
     type: "website",
-    url: "https://vivancedata.com/services/training",
+    url: "https://www.vivancedata.com/services/training",
     images: [
       {
-        url: "https://vivancedata.com/images/ai-solutions.png",
+        url: "https://www.vivancedata.com/images/ai-solutions.png",
         width: 1200,
         height: 630,
         alt: "VivanceData AI Training & Workshops",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AI Training & Workshops - VivanceData",
     description: "Sessions for owners, data teams and developers, run on your own systems and documents.",
-    images: ["https://vivancedata.com/images/ai-solutions.png"],
+    images: ["https://www.vivancedata.com/images/ai-solutions.png"],
   },
 };
 

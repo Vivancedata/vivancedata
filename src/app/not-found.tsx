@@ -12,10 +12,10 @@ export const metadata: Metadata = {
     title: "404 - Page Not Found | VivanceData",
     description: "The page you are looking for could not be found. Explore our AI solutions and services.",
     type: "website",
-    url: "https://vivancedata.com/404",
+    url: "https://www.vivancedata.com/404",
     images: [
       {
-        url: "https://vivancedata.com/images/banner.png",
+        url: "https://www.vivancedata.com/images/banner.png",
         width: 2560,
         height: 1280,
         alt: "VivanceData - AI Solutions",

@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     title: "Resources - VivanceData",
     description: "Notes from the work, an ROI calculator, a readiness assessment, and how I handle the parts that can go wrong.",
     type: "website",
-    url: "https://vivancedata.com/resources",
+    url: "https://www.vivancedata.com/resources",
   },
   twitter: {
     card: "summary_large_image",

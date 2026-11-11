@@ -15,10 +15,10 @@ export const metadata: Metadata = {
     title: "Book a call - VivanceData",
     description: "Book a consultation and talk directly to the person who would build it.",
     type: "website",
-    url: "https://vivancedata.com/contact",
+    url: "https://www.vivancedata.com/contact",
     images: [
       {
-        url: "https://vivancedata.com/images/banner.png",
+        url: "https://www.vivancedata.com/images/banner.png",
         width: 2560,
         height: 1280,
         alt: "Contact VivanceData",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Book a call - VivanceData",
     description: "Book a consultation and talk directly to the person who would build it.",
-    images: ["https://vivancedata.com/images/banner.png"],
+    images: ["https://www.vivancedata.com/images/banner.png"],
   },
 };
 

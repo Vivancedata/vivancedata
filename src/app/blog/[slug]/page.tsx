@@ -47,7 +47,7 @@ function getRelatedPosts(currentSlug: string, currentTags: string[], allPosts: B
     .map(({ post }) => post);
 }
 
-const SHARE_IMAGE = 'https://vivancedata.com/images/banner.png';
+const SHARE_IMAGE = 'https://www.vivancedata.com/images/banner.png';
 
 // Generate metadata for the blog post
 export async function generateMetadata({ params }: BlogPostParams): Promise<Metadata> {
@@ -83,7 +83,7 @@ export async function generateMetadata({ params }: BlogPostParams): Promise<Meta
         description: frontmatter.description,
         type: 'article',
         publishedTime: frontmatter.date,
-        url: `https://vivancedata.com/blog/${slug}`,
+        url: `https://www.vivancedata.com/blog/${slug}`,
         tags: keywords,
         // A page's openGraph replaces the root's rather than merging with it,
         // so without this every post shared with no image at all. The site
@@ -149,25 +149,25 @@ async function getBlogPostData(slug: string, filePath: string) {
     "@type": "BlogPosting",
     "headline": meta.title,
     "description": meta.description,
-    "image": `https://vivancedata.com${meta.image}`,
+    "image": `https://www.vivancedata.com${meta.image}`,
     "datePublished": meta.date,
     "dateModified": meta.date,
     "author": {
       "@type": "Organization",
       "name": "VivanceData",
-      "url": "https://vivancedata.com"
+      "url": "https://www.vivancedata.com"
     },
     "publisher": {
       "@type": "Organization",
       "name": "VivanceData",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://vivancedata.com/icons/Logo.png"
+        "url": "https://www.vivancedata.com/icons/Logo.png"
       }
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://vivancedata.com/blog/${slug}`
+      "@id": `https://www.vivancedata.com/blog/${slug}`
     },
     "keywords": meta.tags.join(", ")
   };

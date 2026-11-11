@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     description:
       "Three questions and a number, from your own figures. Not a benchmark, not anybody else's data.",
     type: "website",
-    url: "https://vivancedata.com/tools/missed-calls",
+    url: "https://www.vivancedata.com/tools/missed-calls",
   },
 };
 
