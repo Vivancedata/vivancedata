@@ -171,14 +171,16 @@ export function IndustryPage({
 
   return (
     <Container className="py-4xl">
-      <AnimateOnScroll variant="fadeInUp" className="mb-3xl">
+      {/* Not a scroll reveal: this block is the first viewport and holds the
+        * LCP element, which a reveal keeps at opacity 0 until hydration. */}
+      <div className="mb-3xl">
         <Heading className="mb-xl max-w-[17ch] font-display text-serif-xl text-balance">
           {config.title}
         </Heading>
         <Paragraph className="max-w-[62ch] text-body-lg text-muted-foreground">
           {leadParagraph}
         </Paragraph>
-      </AnimateOnScroll>
+      </div>
 
       {/* Two columns when there is a specimen to show, one when there is not.
         * The old hero rendered a wireframe of four dashed lines here whether or
