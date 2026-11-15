@@ -35,7 +35,7 @@ jobs:
         run: npm ci
 
       - name: Run ESLint
-        run: npm run lint
+        run: npm run verify:lint
 
   react_doctor:
     name: React Doctor (ratchet)
@@ -59,7 +59,7 @@ jobs:
       # Deterministic full-repo score compared against a committed baseline,
       # so no base-branch diff is needed.
       - name: Enforce React Doctor ratchet
-        run: npm run react-doctor:ci
+        run: npm run verify:react-doctor
 
   test:
     name: Tests + Coverage + E2E
@@ -81,8 +81,35 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
 
-      - name: Run tests
-        run: npm run test
+      # Each stage appends its VERIFY line to the job summary.
+      - name: Unit tests
+        run: npm run verify:unit
+
+      - name: Integration tests
+        run: npm run verify:integration
+
+      - name: E2E tests
+        run: npm run verify:e2e
+
+      - name: Upload UI evidence
+        id: ui-evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: ui-evidence
+          path: test-results
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: List UI evidence in summary
+        if: always() && steps.ui-evidence.outputs.artifact-url != ''
+        run: |
+          {
+            echo "### UI evidence"
+            echo "Artifact: [ui-evidence](${{ steps.ui-evidence.outputs.artifact-url }}) (screenshots + Playwright traces)"
+            echo
+            find test-results -name '*.png' | sort | sed 's/^/- /'
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload coverage artifacts
         if: always()
@@ -110,7 +137,7 @@ jobs:
         run: npm ci
 
       - name: Build application
-        run: npm run build
+        run: npm run verify:build
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v7
@@ -193,4 +220,4 @@ jobs:
         run: npm ci
 
       - name: Run TypeScript compiler
-        run: npx tsc --noEmit
+        run: npm run verify:typecheck

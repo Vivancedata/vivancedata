@@ -26,6 +26,14 @@
     "test:coverage": "npm run test:unit && npm run test:integration",
     "test:e2e": "playwright test",
     "analyze": "ANALYZE=true next build",
+    "verify": "npm run verify:lint && npm run verify:typecheck && npm run verify:react-doctor && npm run verify:unit && npm run verify:integration && npm run verify:build",
+    "verify:lint": "npm run lint",
+    "verify:typecheck": "npm run type-check",
+    "verify:react-doctor": "npm run react-doctor:ci",
+    "verify:unit": "vitest run --config vitest.unit.config.ts --coverage --reporter=default --reporter=json --outputFile.json=reports/unit.json && node scripts/verify-summary.mjs unit reports/unit.json",
+    "verify:integration": "vitest run --config vitest.integration.config.ts --coverage --reporter=default --reporter=json --outputFile.json=reports/integration.json && node scripts/verify-summary.mjs integration reports/integration.json",
+    "verify:build": "npm run build",
+    "verify:e2e": "playwright test && node scripts/verify-summary.mjs e2e reports/e2e.json",
     "clean": "rm -rf .next node_modules/.cache"
   },
   "dependencies": {

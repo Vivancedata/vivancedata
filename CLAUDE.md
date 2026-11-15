@@ -30,6 +30,10 @@ npm run analyze
 
 E2E tests run against port `4317` (not 3000). The `PLAYWRIGHT_BASE_URL` env var skips the built-in webserver.
 
+## Checks
+
+Run `npm run verify` (lint, type-check, React Doctor ratchet, unit, integration, build) and `npm run verify:e2e` (Playwright) before opening a PR. These are the same `verify:*` stages the CI jobs call, so local == CI. Each test stage prints one `VERIFY stage=… tests=… passed=… failed=… skipped=…` line (parsed from the runner's JSON report by `scripts/verify-summary.mjs`); paste those lines into the PR body under **Evidence**, with a link to the run's `ui-evidence` artifact (Playwright screenshots + traces).
+
 ## Architecture
 
 ### Data-Driven Content

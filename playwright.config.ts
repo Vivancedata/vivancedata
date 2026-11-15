@@ -6,10 +6,17 @@ export default defineConfig({
   testDir: "tests/e2e",
   fullyParallel: true,
   retries: process.env.CI ? 2 : 0,
-  reporter: [["list"], ["html", { open: "never" }]],
+  reporter: [
+    ["list"],
+    ["html", { open: "never" }],
+    // Machine-readable counts for scripts/verify-summary.mjs.
+    ["json", { outputFile: "reports/e2e.json" }],
+  ],
   use: {
     baseURL,
-    trace: "on-first-retry",
+    // Always captured: CI uploads them as the `ui-evidence` artifact.
+    trace: "on",
+    screenshot: "on",
   },
   webServer: process.env.PLAYWRIGHT_BASE_URL
     ? undefined
