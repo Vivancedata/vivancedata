@@ -54,7 +54,6 @@ These are the variables the app code reads. `.env.example` also lists some that 
 | `CONVERTKIT_API_KEY`, `CONVERTKIT_FORM_ID` | Newsletter sign-up through ConvertKit. |
 | `MAILCHIMP_API_KEY`, `MAILCHIMP_AUDIENCE_ID` | Newsletter sign-up through Mailchimp. |
 | `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN` | Rate limiting for the API routes. Without them, each server instance keeps its own in-memory limit. |
-| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Google Analytics 4. |
 | `SENTRY_DSN`, `NEXT_PUBLIC_SENTRY_DSN` | Error tracking. The server uses `SENTRY_DSN` first, then the public one. |
 | `SENTRY_ORG`, `SENTRY_PROJECT` | Sentry build settings. |
 | `OBSERVABILITY_TEST_TOKEN` | Authorizes `POST /api/observability/sentry-test`. |

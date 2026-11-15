@@ -14,7 +14,7 @@ This checklist is intentionally strict. A release should not be marked productio
 | E2E baseline | Critical user journeys pass (home, contact, blog, tools) | `npm run test:e2e` | Pass |
 | Content credibility | No placeholder or unverifiable trust claims | Manual review of `team`, `testimonials`, `case studies`, `contact` | Pass |
 | Blog publishing integrity | Same post discovery logic for list, slug page, sitemap | Code review + tests in `tests/integration/blogPosts.test.ts` | Pass |
-| Privacy/compliance | Analytics scripts load only after explicit consent | Manual test + code review | Pass (code-level) |
+| Privacy/compliance | Session Replay loads only after explicit consent; Vercel Web Analytics is cookieless | Manual test + code review | Pass (code-level) |
 | Security baseline | No high/critical runtime vulnerabilities without explicit exception | `npm audit --omit=dev` | Pass |
 | Observability | Error tracking configured and tested in production env | `vercel env ls` includes Sentry DSN + `POST /api/observability/sentry-test` returns `eventId` | In progress (2026-02-22: DSN verified, token/event validation pending) |
 | Production smoke monitoring | Hourly checks across critical URLs and contact API behavior | GitHub Actions: `Production Smoke Checks` | Pass |

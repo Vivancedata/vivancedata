@@ -114,11 +114,10 @@ Removed non-existent posts from constants.
 **Status**: ~~Not implemented~~ RESOLVED
 
 **Solution Applied**:
-- Created `src/components/analytics/GoogleAnalytics.tsx` component
-- Added to root layout
-- Configurable via `NEXT_PUBLIC_GA_MEASUREMENT_ID` environment variable
-- Includes helper functions for event tracking
-- Only loads in production when configured
+- Vercel Web Analytics (`@vercel/analytics`), rendered once in the root layout
+- Three named custom events in `src/lib/analytics.ts`
+- Collects nothing until Web Analytics is enabled for the project in the Vercel dashboard
+- Replaced Google Analytics, which was never configured in production
 
 ---
 
@@ -253,9 +252,6 @@ CONTACT_FORM_FROM_EMAIL=  # Sender address for contact form
 # Newsletter
 CONVERTKIT_API_KEY=
 CONVERTKIT_FORM_ID=
-
-# Analytics
-GOOGLE_ANALYTICS_ID=
 
 # Error Tracking
 SENTRY_DSN=

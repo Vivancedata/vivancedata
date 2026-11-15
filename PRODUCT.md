@@ -136,10 +136,16 @@ Real and usable:
 - **Three measured actions**, added 2026-09-03: a demo opened, a contact form
   submitted, and a tool report requested (`src/lib/analytics.ts`). Before this
   the site measured page views and nothing else, so the demos — the only real
-  proof it has — produced no signal at all. All three are gated on analytics
-  consent. This is the cheapest instrument available for the open audience
-  question above; it does not answer it, but nothing could while no action was
-  recorded.
+  proof it has — produced no signal at all. This is the cheapest instrument
+  available for the open audience question above; it does not answer it, but
+  nothing could while no action was recorded. **Until 2026-11-15 they recorded
+  nothing either:** they were wired to Google Analytics, and no GA measurement
+  ID was ever set in production, so the tracker never loaded and every event was
+  a no-op. They now go to Vercel Web Analytics (cookieless, not consent-gated),
+  which records nothing until Web Analytics is enabled in the Vercel dashboard
+  (project `vivancedata` → Analytics → Enable). Custom events need the Pro plan;
+  on Hobby only page views are recorded. Treat any count as starting from that
+  enablement, not from 2026-09-03.
 
 Absences future work must not fabricate:
 

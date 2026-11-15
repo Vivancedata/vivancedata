@@ -39,7 +39,7 @@ export default function PrivacyPolicyPage() {
       <div className="prose prose-neutral dark:prose-invert max-w-none">
         <h1>Privacy Policy & Transparency</h1>
         <p className="lead">
-          Last updated: October 20, 2026
+          Last updated: November 15, 2026
         </p>
 
         <h2>Transparency Statement</h2>
@@ -59,14 +59,16 @@ export default function PrivacyPolicyPage() {
 
         <h2>Analytics & Tracking</h2>
         <p>
-          <strong>Google Analytics.</strong> The site can load Google Analytics, but only after you allow
-          analytics cookies. If you do, Google receives the pages you visit, your browser and device details
-          and your IP address, and sets its own cookies. As of the date above no Google Analytics property is
-          configured, so nothing is sent to Google even if you allow analytics. If I switch it on, it will
-          still load only for visitors who have allowed analytics.
+          <strong>Vercel Web Analytics.</strong> The site counts page views and three actions (opening a
+          demo, sending the contact form and requesting a tool report) with Vercel Web Analytics. It does
+          not use cookies. Vercel identifies a visit by a hash created from the incoming request, discards
+          it after 24 hours, and gives me aggregated statistics only: the page address, the referring site,
+          approximate location, browser, operating system and device type. It does not tell me who you are.
+          Because it sets no cookies, it is not one of the cookie banner&apos;s categories and runs
+          whatever you choose there.
         </p>
         <p>
-          The site does not use Vercel Analytics, Speed Insights or advertising pixels.
+          The site does not use Google Analytics, Speed Insights or advertising pixels.
         </p>
 
         <h2>Error monitoring and Session Replay</h2>
@@ -121,11 +123,11 @@ export default function PrivacyPolicyPage() {
         </p>
         <ul>
           <li>Vercel: website hosting and deployment (Vercel keeps standard request logs, including IP addresses)</li>
+          <li>Vercel Web Analytics: cookieless, aggregated page view and action counts</li>
           <li>Resend: delivery of contact form and report emails</li>
           <li>Upstash: rate limiting to protect the forms from abuse</li>
           <li>Sentry: error tracking, and Session Replay if you allow analytics</li>
           <li>ConvertKit or Mailchimp: the newsletter list, if you subscribe</li>
-          <li>Google Analytics: only if configured and only if you allow analytics (not active as of the date above)</li>
           <li>GitHub: code repository and version control</li>
         </ul>
         <p>
