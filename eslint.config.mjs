@@ -40,11 +40,34 @@ export default [
       "react-hooks/purity": "off",
       "react-hooks/set-state-in-effect": "warn",
       "react-hooks/error-boundaries": "warn",
+      "no-restricted-syntax": [
+        "error",
+        {
+          selector: "ExportNamedDeclaration[source.value='@vivancedata/ui'], ExportAllDeclaration[source.value='@vivancedata/ui']",
+          message:
+            "Do not re-export from the @vivancedata/ui barrel: optimizePackageImports only rewrites `import` declarations, so a re-export in a server module makes Next register every client component in the package for that route (~100 KB gz). Write `import { X } from \"@vivancedata/ui\"` and then `export { X }`.",
+        },
+      ],
     },
     settings: {
       react: {
         version: "detect",
       },
+    },
+  },
+  {
+    // The vivance-ui-boundary check requires these files to be bare re-exports,
+    // so the client boundary is what keeps the barrel walk out of server routes.
+    files: ["src/components/ui/**/*.{ts,tsx}"],
+    rules: {
+      "no-restricted-syntax": [
+        "error",
+        {
+          selector: "Program:not(:has(> ExpressionStatement[directive='use client']))",
+          message:
+            "Start this file with \"use client\". It re-exports from the @vivancedata/ui barrel, and imported from a server component without the directive it makes Next register every client component in the package for that route (~100 KB gz).",
+        },
+      ],
     },
   },
 ];
