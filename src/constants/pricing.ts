@@ -102,5 +102,5 @@ export const pricingPageContent = {
     body: "An automation is not finished when it ships. The APIs it talks to change, the documents it reads drift in format, and accuracy quietly degrades if nobody is watching. The monthly fee covers monitoring, fixing those breakages, and the small adjustments that keep a workflow trustworthy. If you would rather run it yourself, the build tier can be taken as handover-only. Say so during scoping and I will price it that way.",
   },
   note:
-    "Every figure here is a starting point, not a quote. Scope drives the number, and you get a fixed price in writing before anything begins.",
+    "Every figure here is a starting point, not a quote. Scope drives the number, and you get a fixed price in writing before anything begins. If you want a smaller first step, a one-workflow audit is a fixed $750 and is credited in full against a build.",
 };
