@@ -1,65 +1,85 @@
 // Named `instrumentation-client.ts` because that is the entry point Next loads
-// natively for browser instrumentation; the old `sentry.client.config.ts` was
-// never reaching the bundle, so production shipped no browser SDK. Options are
-// unchanged.
-import * as Sentry from "@sentry/nextjs";
+// natively for browser instrumentation.
+//
+// Only `import type` from "@sentry/nextjs" at the top level: a value import
+// here puts the whole browser SDK (~80 KB gz, plus ~40 KB gz of Replay once
+// anything touches `getReplay`) in the initial script graph of every route,
+// where it was the largest block of main-thread work on Lighthouse mobile. The
+// SDK is loaded once the page is idle instead. Errors thrown before then are
+// not reported; pageload timing and web vitals still are, because the SDK reads
+// them from buffered performance entries.
+import type * as SentryNamespace from "@sentry/nextjs";
 import { dataCollection } from "./sentry.data-collection";
 import { CONSENT_UPDATED_EVENT, hasAnalyticsConsent } from "./src/lib/cookieConsent";
+
+type ReplayIntegration = ReturnType<typeof SentryNamespace.replayIntegration>;
 
 const dsn = process.env.NEXT_PUBLIC_SENTRY_DSN;
 const enabled = process.env.NODE_ENV === "production" && Boolean(dsn);
 
-Sentry.init({
-  dsn,
-
-  dataCollection,
-
-  // Adjust this value in production, or use tracesSampler for greater control
-  tracesSampleRate: 1.0,
-
-  // Setting this option to true will print useful information to the console while you're setting up Sentry.
-  debug: false,
-
-  // Only enable in production
-  enabled,
-
-  replaysOnErrorSampleRate: 1.0,
-
-  // This sets the sample rate to be 10%. You may want this to be 100% while
-  // in development and sample at a lower rate in production
-  replaysSessionSampleRate: 0.1,
-
-  // Session Replay is registered below, after the page has painted and only
-  // once the visitor has allowed analytics cookies. Listing it here would put
-  // its ~40 KB gz / ~125 KB parsed (rrweb) chunk in the initial script graph of
-  // every route, which Lighthouse mobile counted as the last remaining
-  // deduction after the hero work in #132. /privacy-policy describes this.
-});
+let sdk: Pick<typeof SentryNamespace, "captureRouterTransitionStart" | "getClient"> | null = null;
 
 // Lets the SDK instrument App Router navigations as transactions.
-export const onRouterTransitionStart = Sentry.captureRouterTransitionStart;
+export function onRouterTransitionStart(
+  ...args: Parameters<typeof SentryNamespace.captureRouterTransitionStart>
+) {
+  sdk?.captureRouterTransitionStart(...args);
+}
+
+function loadSentry() {
+  // `webpackExports` narrows the import to what is used, which keeps Replay
+  // (rrweb) out of this chunk; it is fetched separately, and only with consent.
+  import(
+    /* webpackExports: ["init", "captureRouterTransitionStart", "getClient"] */ "@sentry/nextjs"
+  )
+    .then((Sentry) => {
+      Sentry.init({
+        dsn,
+
+        dataCollection,
+
+        // Adjust this value in production, or use tracesSampler for greater control
+        tracesSampleRate: 1.0,
+
+        debug: false,
+
+        enabled,
+
+        replaysOnErrorSampleRate: 1.0,
+
+        // This sets the sample rate to be 10%. You may want this to be 100% while
+        // in development and sample at a lower rate in production
+        replaysSessionSampleRate: 0.1,
+
+        // Session Replay is added by `syncReplayWithConsent`, only once the
+        // visitor has allowed analytics cookies. /privacy-policy describes this.
+      });
+      sdk = Sentry;
+      syncReplayWithConsent();
+      window.addEventListener(CONSENT_UPDATED_EVENT, syncReplayWithConsent);
+    })
+    .catch(() => {
+      // A failed chunk load (offline, blocked) must never break the page.
+    });
+}
 
 /**
- * Replay recording is not needed to paint the page, so it is fetched once the
- * main thread is idle. `webpackExports` narrows the dynamic import to the one
- * export we use, which lets webpack emit the replay module as its own async
- * chunk instead of pulling the whole SDK namespace into it.
- *
- * Deliberately a same-origin chunk rather than `Sentry.lazyLoadIntegration`,
- * which injects `https://browser.sentry-cdn.com/...` at runtime: the site
- * routes Sentry through `tunnelRoute: "/monitoring"` precisely so ad-blockers
- * cannot cut monitoring off, and a script from sentry-cdn.com is on the same
- * blocklists. It would also be a new third-party origin on every page.
- *
  * `addIntegration` after `init` is the SDK's supported path for late
  * integrations; the sample rates above still govern what gets recorded.
+ * Deliberately a same-origin chunk rather than `Sentry.lazyLoadIntegration`,
+ * which injects a script from browser.sentry-cdn.com: that origin is on
+ * ad-blocker lists and would be a new third party on every page.
  */
+let replayRequested = false;
+
 function loadReplay() {
+  if (replayRequested) return;
+  replayRequested = true;
   import(/* webpackExports: ["replayIntegration"] */ "@sentry/nextjs")
     .then(({ replayIntegration }) => {
       // Consent can be withdrawn while the chunk is loading.
       if (!hasAnalyticsConsent()) return;
-      Sentry.getClient()?.addIntegration(
+      sdk?.getClient()?.addIntegration(
         replayIntegration({
           maskAllText: true,
           blockAllMedia: true,
@@ -71,20 +91,6 @@ function loadReplay() {
     });
 }
 
-let replayRequested = false;
-
-function scheduleReplay() {
-  if (replayRequested) return;
-  replayRequested = true;
-  if (typeof window.requestIdleCallback === "function") {
-    // The timeout keeps replay from being postponed indefinitely on a page
-    // that never goes idle; 2 s is well past LCP on the throttled mobile lane.
-    window.requestIdleCallback(loadReplay, { timeout: 2000 });
-  } else {
-    window.setTimeout(loadReplay, 1000);
-  }
-}
-
 /**
  * Replay records only with analytics consent (the cookie banner). Consent
  * given later in the visit loads it then; consent withdrawn stops it, and it
@@ -93,13 +99,18 @@ function scheduleReplay() {
  */
 function syncReplayWithConsent() {
   if (hasAnalyticsConsent()) {
-    scheduleReplay();
+    loadReplay();
   } else {
-    void Sentry.getReplay()?.stop();
+    void sdk?.getClient()?.getIntegrationByName<ReplayIntegration>("Replay")?.stop();
   }
 }
 
 if (enabled && typeof window !== "undefined") {
-  syncReplayWithConsent();
-  window.addEventListener(CONSENT_UPDATED_EVENT, syncReplayWithConsent);
+  if (typeof window.requestIdleCallback === "function") {
+    // The timeout keeps monitoring from being postponed indefinitely on a page
+    // that never goes idle.
+    window.requestIdleCallback(loadSentry, { timeout: 3000 });
+  } else {
+    window.setTimeout(loadSentry, 1000);
+  }
 }

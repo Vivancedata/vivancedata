@@ -3,4 +3,6 @@
 // `twMerge(clsx(inputs))` copy classifies those classes as text colours and
 // silently deletes the size/colour pair's first member. Do not reintroduce a
 // local implementation here.
-export { cn } from "@vivancedata/ui"
+import { cn } from "@vivancedata/ui"
+
+export { cn }

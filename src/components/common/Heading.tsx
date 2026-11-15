@@ -3,4 +3,6 @@
 // ladder the package's Heading renders. Call sites that pass explicit size
 // classes keep their look (caller classes win in cn()); sites without them
 // move onto the ladder, which is the point.
-export { Heading, headingVariants, type HeadingProps } from "@vivancedata/ui";
+import { Heading, headingVariants, type HeadingProps } from "@vivancedata/ui";
+
+export { Heading, headingVariants, type HeadingProps };
