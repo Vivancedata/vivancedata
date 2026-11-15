@@ -118,7 +118,7 @@ run_status_check "robots.txt responds" "GET" "$BASE_URL/robots.txt" "200" "$TMP_
 run_content_check "robots.txt protects API path" "$TMP_DIR/robots.txt" "Disallow: /api/"
 
 run_status_check "sitemap.xml responds" "GET" "$BASE_URL/sitemap.xml" "200" "$TMP_DIR/sitemap.xml"
-run_content_check "sitemap.xml includes blog URL" "$TMP_DIR/sitemap.xml" "<loc>https://vivancedata.com/blog</loc>"
+run_content_check "sitemap.xml includes blog URL" "$TMP_DIR/sitemap.xml" "<loc>https://www.vivancedata.com/blog</loc>"
 
 run_status_check "Contact API GET returns method not allowed" "GET" "$BASE_URL/api/contact" "405" "$TMP_DIR/api-contact-get.json"
 run_status_check "Contact API POST validation triggers on empty payload" "POST" "$BASE_URL/api/contact" "400" "$TMP_DIR/api-contact-post.json" "{}"

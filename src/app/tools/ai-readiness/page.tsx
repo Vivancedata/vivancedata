@@ -13,10 +13,10 @@ export const metadata: Metadata = {
     title: "AI Readiness Assessment - VivanceData",
     description: "Questions about your records, your systems and your people, and an honest read on whether you are ready to automate anything yet.",
     type: "website",
-    url: "https://vivancedata.com/tools/ai-readiness",
+    url: "https://www.vivancedata.com/tools/ai-readiness",
     images: [
       {
-        url: "https://vivancedata.com/images/ai-solutions.png",
+        url: "https://www.vivancedata.com/images/ai-solutions.png",
         width: 1200,
         height: 630,
         alt: "AI Readiness Assessment",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AI Readiness Assessment - VivanceData",
     description: "An honest read on whether you are ready to automate anything yet.",
-    images: ["https://vivancedata.com/images/ai-solutions.png"],
+    images: ["https://www.vivancedata.com/images/ai-solutions.png"],
   },
 };
 

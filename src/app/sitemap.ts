@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 import { getBlogSlugs } from '@/lib/blogPosts';
 
-const BASE_URL = 'https://vivancedata.com';
+const BASE_URL = 'https://www.vivancedata.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const blogSlugs = getBlogSlugs();

@@ -13,10 +13,10 @@ export const metadata: Metadata = {
     title: 'Notes from the work - VivanceData',
     description: 'Notes on putting AI into trade and industrial operations: what works, what breaks, what is not worth the trouble.',
     type: 'website',
-    url: 'https://vivancedata.com/blog',
+    url: 'https://www.vivancedata.com/blog',
     images: [
       {
-        url: 'https://vivancedata.com/images/ai-solutions.png',
+        url: 'https://www.vivancedata.com/images/ai-solutions.png',
         width: 1200,
         height: 630,
         alt: 'VivanceData AI Insights Blog',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Notes from the work - VivanceData',
     description: 'Notes on putting AI into trade and industrial operations.',
-    images: ['https://vivancedata.com/images/ai-solutions.png'],
+    images: ['https://www.vivancedata.com/images/ai-solutions.png'],
   },
 };
 

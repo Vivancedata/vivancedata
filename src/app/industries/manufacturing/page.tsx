@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: "AI for Manufacturing - VivanceData",
     description: "Predictive maintenance, in-line quality inspection and production analytics for manufacturing teams.",
     type: "website",
-    url: "https://vivancedata.com/industries/manufacturing",
+    url: "https://www.vivancedata.com/industries/manufacturing",
   },
 };
 

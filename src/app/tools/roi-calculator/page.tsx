@@ -13,10 +13,10 @@ export const metadata: Metadata = {
     title: "AI ROI Calculator - VivanceData",
     description: "Put your own numbers in and see what an automation would cost, what it might save, and how long before it pays for itself.",
     type: "website",
-    url: "https://vivancedata.com/tools/roi-calculator",
+    url: "https://www.vivancedata.com/tools/roi-calculator",
     images: [
       {
-        url: "https://vivancedata.com/images/ai-solutions.png",
+        url: "https://www.vivancedata.com/images/ai-solutions.png",
         width: 1200,
         height: 630,
         alt: "AI ROI Calculator",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AI ROI Calculator - VivanceData",
     description: "What an automation would cost, what it might save, and how long before it pays for itself.",
-    images: ["https://vivancedata.com/images/ai-solutions.png"],
+    images: ["https://www.vivancedata.com/images/ai-solutions.png"],
   },
 };
 

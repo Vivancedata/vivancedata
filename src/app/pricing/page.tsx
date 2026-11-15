@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     description:
       "A build has two costs: getting it working, and keeping it working. Both are listed.",
     type: "website",
-    url: "https://vivancedata.com/pricing",
+    url: "https://www.vivancedata.com/pricing",
   },
 };
 

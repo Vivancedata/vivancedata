@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     title: "For people who already serve trades",
     description: "I build the workflow. You keep the relationship.",
     type: "website",
-    url: "https://vivancedata.com/partners",
+    url: "https://www.vivancedata.com/partners",
   },
 };
 

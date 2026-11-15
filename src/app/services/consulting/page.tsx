@@ -19,10 +19,10 @@ export const metadata: Metadata = {
     title: "AI Strategy Consulting - VivanceData",
     description: "Deciding what to automate first, what to leave alone, and what each option costs. Before anyone writes code.",
     type: "website",
-    url: "https://vivancedata.com/services/consulting",
+    url: "https://www.vivancedata.com/services/consulting",
     images: [
       {
-        url: "https://vivancedata.com/images/ai-solutions.png",
+        url: "https://www.vivancedata.com/images/ai-solutions.png",
         width: 1200,
         height: 630,
         alt: "VivanceData AI Strategy Consulting",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AI Strategy Consulting - VivanceData",
     description: "Deciding what to automate first and what to leave alone, before anyone writes code.",
-    images: ["https://vivancedata.com/images/ai-solutions.png"],
+    images: ["https://www.vivancedata.com/images/ai-solutions.png"],
   },
 };
 

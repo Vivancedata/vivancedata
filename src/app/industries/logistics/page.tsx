@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     title: "AI for Logistics and Fleet Operations - VivanceData",
     description: "Proof of delivery processing, exception triage, driver communication and claims documentation for carriers and fleets.",
     type: "website",
-    url: "https://vivancedata.com/industries/logistics",
+    url: "https://www.vivancedata.com/industries/logistics",
   },
 };
 

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "Privacy Policy & Transparency | VivanceData",
     description: "How I handle data, what the analytics do and do not collect, and which third-party services this site uses.",
     type: "website",
-    url: "https://vivancedata.com/privacy-policy",
+    url: "https://www.vivancedata.com/privacy-policy",
     siteName: "VivanceData",
   },
   twitter: {

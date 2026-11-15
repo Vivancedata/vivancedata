@@ -15,10 +15,10 @@ export const metadata: Metadata = {
     title: "AI Services - VivanceData",
     description: "Document intake, answers from your own files, and workflow automation. Scoped, built on your documents, and run afterwards.",
     type: "website",
-    url: "https://vivancedata.com/services",
+    url: "https://www.vivancedata.com/services",
     images: [
       {
-        url: "https://vivancedata.com/images/ai-solutions.png",
+        url: "https://www.vivancedata.com/images/ai-solutions.png",
         width: 1200,
         height: 630,
         alt: "VivanceData AI Services",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AI Services - VivanceData",
     description: "Document intake, answers from your own files, and workflow automation.",
-    images: ["https://vivancedata.com/images/ai-solutions.png"],
+    images: ["https://www.vivancedata.com/images/ai-solutions.png"],
   },
 };
 

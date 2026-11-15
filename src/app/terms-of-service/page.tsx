@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: "Terms of Service | VivanceData",
     description: "Terms and conditions for AI consulting, build and training work.",
     type: "website",
-    url: "https://vivancedata.com/terms-of-service",
+    url: "https://www.vivancedata.com/terms-of-service",
     siteName: "VivanceData",
   },
   twitter: {

@@ -19,10 +19,10 @@ export const metadata: Metadata = {
     title: "Generative AI - VivanceData",
     description: "Language models put to work on your own documents, calls and routine writing. Fine-tuning and multimodal where they earn it.",
     type: "website",
-    url: "https://vivancedata.com/services/generative-ai",
+    url: "https://www.vivancedata.com/services/generative-ai",
     images: [
       {
-        url: "https://vivancedata.com/images/ai-solutions.png",
+        url: "https://www.vivancedata.com/images/ai-solutions.png",
         width: 1200,
         height: 630,
         alt: "VivanceData Generative AI Solutions",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Generative AI - VivanceData",
     description: "Language models put to work on your own documents, calls and routine writing.",
-    images: ["https://vivancedata.com/images/ai-solutions.png"],
+    images: ["https://www.vivancedata.com/images/ai-solutions.png"],
   },
 };
 

@@ -53,20 +53,20 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://vivancedata.com"),
+  metadataBase: new URL("https://www.vivancedata.com"),
   // No `alternates.canonical` here: metadata is inherited, so a root canonical
   // of "/" told search engines every page without its own was a duplicate of
   // the homepage. Each page declares its own canonical instead.
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://vivancedata.com",
+    url: "https://www.vivancedata.com",
     title: "VivanceData - AI for construction, HVAC, logistics and manufacturing",
     description: "After-hours calls answered and booked. Paperwork read instead of re-keyed.",
     siteName: "VivanceData",
     images: [
       {
-        url: "https://vivancedata.com/images/banner.png",
+        url: "https://www.vivancedata.com/images/banner.png",
         width: 2560,
         height: 1280,
         alt: "VivanceData - AI for construction, HVAC, logistics and manufacturing",
@@ -77,7 +77,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "VivanceData - AI for construction, HVAC, logistics and manufacturing",
     description: "After-hours calls answered and booked. Paperwork read instead of re-keyed.",
-    images: ["https://vivancedata.com/images/banner.png"],
+    images: ["https://www.vivancedata.com/images/banner.png"],
   },
   robots: {
     index: true,

@@ -14,10 +14,10 @@ export const metadata: Metadata = {
     title: "About - VivanceData",
     description: "A founder-led AI practice for construction, HVAC, logistics and manufacturing. The person who scopes the work builds it and answers you afterwards.",
     type: "website",
-    url: "https://vivancedata.com/about",
+    url: "https://www.vivancedata.com/about",
     images: [
       {
-        url: "https://vivancedata.com/images/ai-solutions.png",
+        url: "https://www.vivancedata.com/images/ai-solutions.png",
         width: 1200,
         height: 630,
         alt: "Lorenzo Scaturchio, founder of VivanceData",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "About - VivanceData",
     description: "A founder-led AI practice for the trades. One person, senior on every engagement, no hand-off.",
-    images: ["https://vivancedata.com/images/ai-solutions.png"],
+    images: ["https://www.vivancedata.com/images/ai-solutions.png"],
   },
 };
 

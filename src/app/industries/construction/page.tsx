@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     title: "AI for Construction - VivanceData",
     description: "Document intake, daily report assembly, bid support and compliance records for construction teams.",
     type: "website",
-    url: "https://vivancedata.com/industries/construction",
+    url: "https://www.vivancedata.com/industries/construction",
   },
 };
 

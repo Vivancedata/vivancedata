@@ -1,5 +1,5 @@
 # VivanceData Robots.txt
-# https://vivancedata.com
+# https://www.vivancedata.com
 
 # Allow all crawlers
 User-agent: *
@@ -11,4 +11,4 @@ Disallow: /private/
 Disallow: /api/
 
 # Sitemap location
-Sitemap: https://vivancedata.com/sitemap.xml
+Sitemap: https://www.vivancedata.com/sitemap.xml
