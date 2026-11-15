@@ -76,11 +76,12 @@ The recurring material of their day, and of any engagement:
   deliberately and 308-redirect to `/industries`. Re-adding an enterprise
   vertical reopens the positioning decision.
 - Three service pages: consulting, generative AI, training.
-- A fourth offer on `/services`, added 2026-11-14: a trade website whose request
-  form writes the client and request straight into Jobber (from $3,000, then
-  from $150/month). It is the one kind of work the practice has delivered and
-  been paid for, and it is a lead-intake system rather than a brochure, which
-  keeps it inside the narrow positioning.
+- A fourth offer on `/services`, added 2026-11-14: a trade website whose
+  request forms email each lead (reply goes to the customer) or create a Jobber
+  client and request (from $1,500, optional upkeep $300/year). It is the one kind
+  of work the practice has delivered and been paid for (the first one at an
+  introductory $350), and it is lead intake rather than a brochure, which keeps
+  it inside the narrow positioning.
 - A fixed $750 one-workflow audit, credited in full against a build, offered on
   `/pricing` as a smaller first step than the $2,500 Assessment.
 - Three interactive tools: ROI calculator, AI readiness assessment, use-case

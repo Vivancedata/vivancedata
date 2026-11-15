@@ -100,10 +100,10 @@ const ServicesPage = () => {
     },
     {
       id: "4",
-      title: "A website that puts the lead in Jobber",
+      title: "A website that catches every lead",
       category: "Lead Intake",
-      description: "A fast site for your trade with a request form that creates the client and the request in Jobber directly, so nobody re-types a lead from an inbox. Hosting and upkeep included.",
-      impact: "From $3,000, then from $150/month",
+      description: "A fast site for your trade whose request forms land in your inbox with a reply-to that goes straight to the customer, or in Jobber as a new client and request if you use it. Hosting and the domain stay in your name.",
+      impact: "From $1,500, optional upkeep $300/year",
       link: "/contact"
     }
   ];
