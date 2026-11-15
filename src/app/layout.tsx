@@ -217,7 +217,8 @@ provenance.
             <AppChrome />
           </MotionProvider>
         </ThemeProvider>
-        <Analytics />
+        {/* The script is served from /_vercel/insights, which only exists on Vercel deployments. */}
+        {process.env.VERCEL ? <Analytics /> : null}
       </body>
     </html>
   );
