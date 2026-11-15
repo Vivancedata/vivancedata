@@ -2,6 +2,7 @@ import { MainNav } from "@/components/layout/MainNav";
 import { SiteFooter as Footer } from "@/components/layout/Footer";
 import PageWrapper from "@/components/layout/PageWrapper";
 import { AppChrome } from "@/components/layout/AppChrome";
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
@@ -216,6 +217,8 @@ provenance.
             <AppChrome />
           </MotionProvider>
         </ThemeProvider>
+        {/* The script is served from /_vercel/insights, which only exists on Vercel deployments. */}
+        {process.env.VERCEL ? <Analytics /> : null}
       </body>
     </html>
   );

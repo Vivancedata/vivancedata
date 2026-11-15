@@ -1,165 +1,76 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import {
-  ALL_ACCEPTED_COOKIE_PREFERENCES,
-  CONSENT_STORAGE_KEY,
-  DEFAULT_COOKIE_PREFERENCES,
-} from "../../src/lib/cookieConsent";
-import { ANALYTICS, trackEvent, trackPageView } from "../../src/lib/analytics";
+import { ANALYTICS } from "../../src/lib/analytics";
 
 /**
- * Consent is set through real localStorage rather than by mocking
- * hasAnalyticsConsent, so these also prove the two modules agree on the
- * stored shape. A mock would pass even if that contract drifted.
+ * `track()` from @vercel/analytics hands each event to `window.va`, the queue
+ * the <Analytics /> component installs. Recording calls on `window.va` checks
+ * the real package's output shape rather than a mock of our own wrapper.
  */
-const grantConsent = () =>
-  localStorage.setItem(CONSENT_STORAGE_KEY, JSON.stringify(ALL_ACCEPTED_COOKIE_PREFERENCES));
-const denyConsent = () =>
-  localStorage.setItem(CONSENT_STORAGE_KEY, JSON.stringify(DEFAULT_COOKIE_PREFERENCES));
-
-const gtagMock = vi.fn();
-const attachGtag = () => {
-  (window as unknown as { gtag: unknown }).gtag = gtagMock;
-};
-const detachGtag = () => {
-  delete (window as unknown as { gtag?: unknown }).gtag;
-};
+const va = vi.fn();
 
 describe("analytics", () => {
   beforeEach(() => {
-    // jsdom does not supply localStorage in this setup; the cookie-consent
-    // suite installs the same stub.
-    const store = new Map<string, string>();
-    Object.defineProperty(globalThis, "localStorage", {
-      configurable: true,
-      value: {
-        getItem: (key: string) => store.get(key) ?? null,
-        setItem: (key: string, value: string) => {
-          store.set(key, value);
-        },
-        removeItem: (key: string) => {
-          store.delete(key);
-        },
-        clear: () => {
-          store.clear();
-        },
-      },
-    });
-    gtagMock.mockReset();
-    detachGtag();
+    va.mockReset();
+    (window as unknown as { va: unknown }).va = va;
   });
 
   afterEach(() => {
-    vi.unstubAllEnvs();
-    detachGtag();
+    delete (window as unknown as { va?: unknown }).va;
   });
 
-  describe("trackEvent", () => {
-    it("sends the event when consent is granted and gtag is present", () => {
-      grantConsent();
-      attachGtag();
+  it("records a demo open against the proof category", () => {
+    ANALYTICS.demoOpened("Extract a sample delivery slip");
 
-      trackEvent("demo_opened", "proof", "Triage a sample voicemail", 1);
-
-      expect(gtagMock).toHaveBeenCalledWith("event", "demo_opened", {
-        event_category: "proof",
-        event_label: "Triage a sample voicemail",
-        value: 1,
-      });
-    });
-
-    it("stays silent without analytics consent", () => {
-      denyConsent();
-      attachGtag();
-
-      trackEvent("demo_opened", "proof");
-
-      // gtag can linger after a visitor withdraws consent mid-session, so the
-      // consent check has to hold independently of gtag being present.
-      expect(gtagMock).not.toHaveBeenCalled();
-    });
-
-    it("stays silent when no consent has been recorded at all", () => {
-      attachGtag();
-
-      trackEvent("demo_opened", "proof");
-
-      expect(gtagMock).not.toHaveBeenCalled();
-    });
-
-    it("stays silent when gtag never loaded", () => {
-      grantConsent();
-
-      expect(() => trackEvent("demo_opened", "proof")).not.toThrow();
-      expect(gtagMock).not.toHaveBeenCalled();
+    expect(va).toHaveBeenCalledWith("event", {
+      name: "demo_opened",
+      data: { category: "proof", label: "Extract a sample delivery slip" },
+      options: undefined,
     });
   });
 
-  describe("trackPageView", () => {
-    it("configures the page path when a measurement id is set", () => {
-      vi.stubEnv("NEXT_PUBLIC_GA_MEASUREMENT_ID", "G-TEST");
-      grantConsent();
-      attachGtag();
+  it("records a contact submission with its service interest", () => {
+    ANALYTICS.contactSubmitted("consulting");
 
-      trackPageView("/pricing");
-
-      expect(gtagMock).toHaveBeenCalledWith("config", "G-TEST", { page_path: "/pricing" });
-    });
-
-    it("does nothing without a measurement id", () => {
-      vi.stubEnv("NEXT_PUBLIC_GA_MEASUREMENT_ID", "");
-      grantConsent();
-      attachGtag();
-
-      trackPageView("/pricing");
-
-      expect(gtagMock).not.toHaveBeenCalled();
-    });
+    expect(va).toHaveBeenCalledWith(
+      "event",
+      expect.objectContaining({
+        name: "contact_submitted",
+        data: { category: "conversion", label: "consulting" },
+      })
+    );
   });
 
-  describe("the three named actions", () => {
-    beforeEach(() => {
-      grantConsent();
-      attachGtag();
-    });
+  it("labels a contact submission with no service interest rather than dropping it", () => {
+    ANALYTICS.contactSubmitted(undefined);
 
-    it("records a demo open against the proof category", () => {
-      ANALYTICS.demoOpened("Extract a sample delivery slip");
+    expect(va).toHaveBeenCalledWith(
+      "event",
+      expect.objectContaining({ data: { category: "conversion", label: "unspecified" } })
+    );
+  });
 
-      expect(gtagMock).toHaveBeenCalledWith("event", "demo_opened", {
-        event_category: "proof",
-        event_label: "Extract a sample delivery slip",
-        value: undefined,
-      });
-    });
+  it("records which tool a report was requested from", () => {
+    ANALYTICS.toolReportRequested("roi-calculator");
 
-    it("records a contact submission with its service interest", () => {
-      ANALYTICS.contactSubmitted("consulting");
+    expect(va).toHaveBeenCalledWith(
+      "event",
+      expect.objectContaining({
+        name: "tool_report_requested",
+        data: { category: "conversion", label: "roi-calculator" },
+      })
+    );
+  });
 
-      expect(gtagMock).toHaveBeenCalledWith(
-        "event",
-        "contact_submitted",
-        expect.objectContaining({ event_category: "conversion", event_label: "consulting" })
-      );
-    });
+  it("does not depend on cookie consent, because the analytics are cookieless", () => {
+    // Nothing is stored for consent here; the event is still recorded.
+    ANALYTICS.demoOpened("Triage a sample voicemail");
 
-    it("labels a contact submission with no service interest rather than dropping it", () => {
-      ANALYTICS.contactSubmitted(undefined);
+    expect(va).toHaveBeenCalledTimes(1);
+  });
 
-      expect(gtagMock).toHaveBeenCalledWith(
-        "event",
-        "contact_submitted",
-        expect.objectContaining({ event_label: "unspecified" })
-      );
-    });
+  it("does not throw before the analytics script has installed its queue", () => {
+    delete (window as unknown as { va?: unknown }).va;
 
-    it("records which tool a report was requested from", () => {
-      ANALYTICS.toolReportRequested("roi-calculator");
-
-      expect(gtagMock).toHaveBeenCalledWith(
-        "event",
-        "tool_report_requested",
-        expect.objectContaining({ event_category: "conversion", event_label: "roi-calculator" })
-      );
-    });
+    expect(() => ANALYTICS.demoOpened("Triage a sample voicemail")).not.toThrow();
   });
 });

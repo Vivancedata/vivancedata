@@ -26,7 +26,7 @@ const COOKIE_CATEGORIES = [
   {
     key: "analytics" as const,
     label: "Analytics cookies",
-    description: "Tell me which pages get read and which get closed straight away.",
+    description: "Let Session Replay record a masked replay of your visit, so I can fix what breaks.",
     disabled: false,
   },
   {
@@ -256,8 +256,8 @@ function CookieConsentBanner({
                 id="cookie-consent-description"
                 className="text-sm text-muted-foreground leading-relaxed"
               >
-                I use cookies to keep the site working, and to see which pages get
-                read. Accept all of them, keep only the essential ones, or choose
+                I use cookies to keep the site working and, if you allow it, to
+                record masked replays that help me fix errors. Accept all of them, keep only the essential ones, or choose
                 category by category. The{" "}
                 <Link
                   href="/privacy-policy"
