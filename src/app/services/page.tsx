@@ -97,6 +97,14 @@ const ServicesPage = () => {
       description: "Connect the handoffs that currently run on email and copy-paste: intake, routing, follow-up and scheduling. Then keep them running as the tools underneath change.",
       impact: "Typical build: 2-6 weeks",
       link: "/contact"
+    },
+    {
+      id: "4",
+      title: "A website that catches every lead",
+      category: "Lead Intake",
+      description: "A fast site for your trade whose request forms land in your inbox with a reply-to that goes straight to the customer, or in Jobber as a new client and request if you use it. Hosting and the domain stay in your name.",
+      impact: "From $1,500, optional upkeep $300/year",
+      link: "/contact"
     }
   ];
 
@@ -112,7 +120,7 @@ const ServicesPage = () => {
       
       <ServicesCases
         title="What a build looks like"
-        description="Three shapes of work I take on. Each has a fixed scope and a named deliverable, so you know what you are getting before it starts."
+        description="Four shapes of work I take on. Each has a fixed scope and a named deliverable, so you know what you are getting before it starts."
         cases={engagements}
       />
       

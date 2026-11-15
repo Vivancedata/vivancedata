@@ -76,6 +76,14 @@ The recurring material of their day, and of any engagement:
   deliberately and 308-redirect to `/industries`. Re-adding an enterprise
   vertical reopens the positioning decision.
 - Three service pages: consulting, generative AI, training.
+- A fourth offer on `/services`, added 2026-11-14: a trade website whose
+  request forms email each lead (reply goes to the customer) or create a Jobber
+  client and request (from $1,500, optional upkeep $300/year). It is the one kind
+  of work the practice has delivered and been paid for (the first one at an
+  introductory $350), and it is lead intake rather than a brochure, which keeps
+  it inside the narrow positioning.
+- A fixed $750 one-workflow audit, credited in full against a build, offered on
+  `/pricing` as a smaller first step than the $2,500 Assessment.
 - Three interactive tools: ROI calculator, AI readiness assessment, use-case
   explorer. Each computes from visitor input and can email a report.
 - Contact and tool reports send via Resend; the newsletter uses ConvertKit or
@@ -117,7 +125,8 @@ The recurring material of their day, and of any engagement:
 ## Evidence on Hand
 
 **The practice has had one paying client: a website build for a local business,
-paid in October 2026. It has delivered none of the work this site sells.** That
+paid in October 2026. Apart from the website offer added 2026-11-14, it has
+delivered none of the work this site sells.** That
 client is not named anywhere on the site and has not agreed in writing to be
 named, so the job is not usable as proof. For every claim the site makes about
 call handling, paperwork and field systems, the practice is still
