@@ -14,7 +14,7 @@ interface BlogCoverProps {
 export function isDefaultBlogImage(
   image: string | StaticImageData | undefined
 ): image is undefined {
-  return !image || image === "/images/ai-solutions.png";
+  return !image || image === "/images/banner.png";
 }
 
 // Deterministic PRNG so the cover is a pure function of the slug: the server

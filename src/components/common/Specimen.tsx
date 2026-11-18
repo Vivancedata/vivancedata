@@ -1,6 +1,5 @@
 import Image from "next/image";
 import type { Specimen as SpecimenData } from "@/constants/specimens";
-import { AnimateOnScroll } from "@/hooks/useAnimateOnScroll";
 import { wallLabel } from "@/components/common/controls";
 
 interface SpecimenProps {
@@ -35,8 +34,7 @@ interface SpecimenProps {
  */
 export function Specimen({ specimen, priority = false, className = "" }: SpecimenProps) {
   return (
-    <AnimateOnScroll variant="settle" className={className}>
-      <figure className="flex flex-col">
+    <figure className={`flex flex-col ${className}`}>
         <p className={`${wallLabel} mb-md`}>{specimen.label}</p>
 
         {/* Hairline, square, flush. The document supplies the only warmth on
@@ -56,7 +54,6 @@ export function Specimen({ specimen, priority = false, className = "" }: Specime
         <figcaption className="mt-md max-w-[52ch] text-body-sm text-muted-foreground">
           {specimen.caption}
         </figcaption>
-      </figure>
-    </AnimateOnScroll>
+    </figure>
   );
 }

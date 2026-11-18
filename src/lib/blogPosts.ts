@@ -10,7 +10,7 @@ const BLOG_POSTS_DIRECTORY = path.join(
   "blog",
   "posts"
 );
-const DEFAULT_IMAGE = "/images/ai-solutions.png";
+const DEFAULT_IMAGE = "/images/banner.png";
 const DEFAULT_TAGS = ["AI", "Technology"];
 const WORDS_PER_MINUTE = 200;
 const WHITESPACE = /\s+/;

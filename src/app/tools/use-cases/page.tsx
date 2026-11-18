@@ -30,9 +30,9 @@ export const metadata: Metadata = {
     url: "https://www.vivancedata.com/tools/use-cases",
     images: [
       {
-        url: "https://www.vivancedata.com/images/ai-solutions.png",
-        width: 1200,
-        height: 630,
+        url: "https://www.vivancedata.com/images/banner.png",
+        width: 2560,
+        height: 1280,
         alt: "AI Use Cases Repository",
       },
     ],
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     title: "AI Use Cases - VivanceData",
     description:
       "Practical AI use cases for construction, HVAC and the trades, logistics and fleet, and manufacturing.",
-    images: ["https://www.vivancedata.com/images/ai-solutions.png"],
+    images: ["https://www.vivancedata.com/images/banner.png"],
   },
 };
 

@@ -444,7 +444,9 @@ the nearest system pairing with the same character: Georgia for its one 26px
 heading, Helvetica/Arial for 16px prose and 12px captions, Menlo/Consolas for
 11px uppercase labels at `+0.09em`. Its colours are the **light** nightshift
 tokens written out as hex, because an email client has no custom properties.
-It is the one surface where those faces and literals are correct.
+It is the one surface where those faces and literals are correct. Every email
+closes on the same footer, built once in `layout()`: the small-cut mark, the
+wordmark in Georgia, who is writing, and the site in the mono label.
 
 ### Named Rules
 
@@ -532,6 +534,15 @@ stroke, round caps and joins, `currentColor` throughout. The set is one arrow
 `absent` (a dash, `mute`). Lucide is used at 1.5px stroke for the nav's search
 icon and the footer's social marks only.
 
+**The logo.** A V lit in the dot matrix, resolving to one green dot: the
+atmosphere of the site turned into its signature. `Icons.logo` draws the small
+cut (the nine lit dots) for the nav and footer; the full 5x5 matrix with its
+unlit dots is for avatars, and turns to noise below about 40px. Both cuts, and
+every rendered asset (favicon, Open Graph banner, GitHub and LinkedIn art, the
+email signature), come from `profile/assets/source/` in the organisation's
+`.github` repo, documented in its `BRAND.md`. The point of the V is the one
+place green is identity rather than evidence.
+
 **The Dash-Not-Cross Rule.** Absence is a dash, not a cross. A red X on a
 cheaper tier scolds the reader for reading the cheaper column.
 
@@ -598,14 +609,33 @@ an IntersectionObserver when it leaves the viewport. It is set in `mute`, not
 a screen reader is told to skip them.
 
 ### Motion
-One authored moment and one ambient drift.
-- **`.settle`** (620ms, `cubic-bezier(0.16, 1, 0.3, 1)`): machine-filled
-  values settle into place, opacity 0.32 to 1, a 3px rise, 2px blur to none,
-  staggered 70ms per row. It animates from an already-visible default and
-  re-fires on tab selection.
+Two voices move, and they move differently. Everything runs on the settle
+curve, `cubic-bezier(0.16, 1, 0.3, 1)`.
+
+**The machine fades.**
+- **`.settle`** (620ms): machine-filled values settle into place, opacity 0.32
+  to 1, a 3px rise, 2px blur to none, staggered 70ms per row. It animates from
+  an already-visible default and re-fires on tab selection.
 - **`.drift`** (90s linear, infinite): the ledger strip only.
-- `prefers-reduced-motion: reduce` kills both outright, and `MotionProvider`
-  respects the same preference for any Framer Motion entrance.
+
+**The sheet rules itself, and never fades.**
+- **Register** (620ms): the page's `h1` rises 12px into place on load; every
+  `h2` and `figure` below the fold does the same as it arrives.
+- **Rule draw** (900ms): a band's hairline draws left to right as the band
+  arrives, and the hairline under an interior page's hero draws on load. The
+  band hairline is a pseudo-element for this reason; see `globals.css`.
+- **Mark** (420ms per dot, 55ms apart): the nav mark lights dot by dot on a
+  hard load, the green one last.
+
+The scroll gestures are run by `SheetMotion` through the Web Animations API.
+Nothing waits at reduced opacity: a waiting heading sits 12px low and fully
+visible, so a page without JavaScript is still, not blank, and no text drops
+below its contrast floor.
+
+`prefers-reduced-motion: reduce` removes all of it: the CSS gestures sit behind
+the media query, `SheetMotion` checks the preference itself, and
+`MotionProvider` does the same for the Framer Motion entrances in the blog and
+the tools.
 
 ## Do's and Don'ts
 

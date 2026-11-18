@@ -130,7 +130,7 @@ async function getBlogPostData(slug: string, filePath: string) {
   });
 
   const description = frontmatter.description || frontmatter.excerpt || `A note on ${frontmatter.title}`;
-  const image = frontmatter.image || "/images/ai-solutions.png";
+  const image = frontmatter.image || "/images/banner.png";
   const tags = frontmatter.tags || ["AI", "Technology"];
 
   const meta = {

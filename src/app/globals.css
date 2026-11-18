@@ -138,3 +138,84 @@
     text-wrap: balance;
   }
 }
+
+/*
+ * Motion: the sheet rules itself.
+ *
+ * Three gestures, all on the settle curve, none of them a fade. Fading is the
+ * machine's gesture (`.settle`, a value arriving); these are the sheet's.
+ *
+ * - On load, the page's h1 rises into register, the hairline under an interior
+ *   page's hero draws across, and the nav mark lights up dot by dot, the green
+ *   one last.
+ * - On scroll, a band's hairline draws left to right and a heading or figure
+ *   rises 12px into register as each arrives. `SheetMotion` runs those; only
+ *   the load gestures are here.
+ *
+ * A band's hairline is a pseudo-element rather than a border, because a border
+ * cannot be drawn along its length.
+ */
+@keyframes register {
+  from {
+    transform: translateY(12px);
+  }
+}
+
+@keyframes rule-draw {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes mark-light {
+  from {
+    opacity: 0.2;
+  }
+}
+
+@layer utilities {
+  main section.bleed:is(.border-t, .border-b) {
+    position: relative;
+  }
+
+  main section.bleed.border-t {
+    border-top-color: transparent;
+  }
+
+  main section.bleed.border-b {
+    border-bottom-color: transparent;
+  }
+
+  main section.bleed.border-t::before,
+  main section.bleed.border-b::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    height: 1px;
+    background: hsl(var(--rule));
+    transform-origin: left;
+  }
+
+  main section.bleed.border-t::before {
+    top: -1px;
+  }
+
+  main section.bleed.border-b::after {
+    bottom: -1px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    main h1 {
+      animation: register 620ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    main section.bleed.border-b::after {
+      animation: rule-draw 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .mark-light circle {
+      animation: mark-light 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-delay: calc(var(--i) * 55ms + 120ms);
+    }
+  }
+}
