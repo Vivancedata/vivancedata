@@ -1,118 +1,40 @@
-"use client";
-
-import { m } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
 import { formatDate } from "@/lib/formatDate";
-import { Clock, Calendar, ArrowRight } from "lucide-react";
+import { ArrowMark } from "@/components/common/Marks";
 import { BlogPost } from "@/types/blog";
-import { BlogCover, isDefaultBlogImage } from "@/components/blog/BlogCover";
 
 interface RelatedPostsProps {
   posts: BlogPost[];
   currentSlug?: string;
 }
 
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0 }
-};
-
 export function RelatedPosts({ posts, currentSlug }: RelatedPostsProps) {
-  // Filter out the current post if slug is provided
-  const relatedPosts = currentSlug
-    ? posts.filter(post => post.slug !== currentSlug).slice(0, 3)
-    : posts.slice(0, 3);
+  const relatedPosts = posts.filter((post) => post.slug !== currentSlug).slice(0, 3);
 
   if (relatedPosts.length === 0) {
     return null;
   }
 
   return (
-    <section className="mt-16 pt-16 border-t border-border">
-      <h2 className="mb-8 font-display text-serif-lg">Related articles</h2>
+    <section className="mt-3xl">
+      <h2 className="font-display text-serif-md text-foreground">Keep reading</h2>
 
-      <m.div
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="grid grid-cols-1 md:grid-cols-3 gap-6"
-      >
+      <ol data-rows className="mt-lg border-t border-rule">
         {relatedPosts.map((post) => (
-          <Link key={post.slug} href={`/blog/${post.slug}`}>
-            <m.article
-              variants={item}
-              className="group relative flex h-full flex-col overflow-hidden rounded-xl bg-secondary/50 transition-colors hover:bg-secondary/70"
+          <li key={post.slug} className="border-b border-rule">
+            <Link
+              href={`/blog/${post.slug}`}
+              className="rule-link group flex flex-col gap-1 py-md focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:flex-row sm:items-baseline sm:justify-between sm:gap-lg"
             >
-              <div className="relative aspect-video w-full overflow-hidden">
-                {isDefaultBlogImage(post.image) ? (
-                  <BlogCover slug={post.slug} />
-                ) : (
-                  <Image
-                    src={post.image}
-                    alt={`Featured image for ${post.title}`}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover p-2 transform group-hover:scale-105 transition-transform duration-300"
-                  />
-                )}
-              </div>
-
-              <div className="flex flex-1 flex-col justify-between p-4">
-                <div className="flex-1 space-y-3">
-                  <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                    <div className="flex items-center gap-1">
-                      <Calendar className="size-3" />
-                      <time dateTime={post.date}>{formatDate(post.date)}</time>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Clock className="size-3" />
-                      <span>{post.readingMinutes ?? 5} min read</span>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h3 className="text-heading-4 line-clamp-2">
-                      {post.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
-                      {post.description}
-                    </p>
-                  </div>
-
-                  {post.tags && post.tags.length > 0 && (
-                    <div className="flex flex-wrap gap-1.5">
-                      {post.tags.slice(0, 2).map((tag: string) => (
-                        <span
-                          key={tag}
-                          className="inline-flex items-center rounded-pill border border-rule px-2 py-0.5 text-label uppercase text-mute"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-
-                <div className="mt-4 flex items-center gap-2 text-label uppercase text-mute transition-colors group-hover:text-foreground">
-                  Read article
-                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </div>
-              </div>
-            </m.article>
-          </Link>
+              <span className="font-display text-serif-sm text-foreground">{post.title}</span>
+              <span className="flex shrink-0 items-center gap-2.5 font-mono text-data text-mute transition-colors duration-fast group-hover:text-foreground">
+                <time dateTime={post.date}>{formatDate(post.date)}</time>
+                <ArrowMark />
+              </span>
+            </Link>
+          </li>
         ))}
-      </m.div>
+      </ol>
     </section>
   );
 }

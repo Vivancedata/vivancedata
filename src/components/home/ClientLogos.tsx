@@ -40,7 +40,7 @@ export default function ClientLogos() {
 
         {/* A single-pixel grid: one outer rule, and cells that borrow their
           * neighbours' edges. `-mx-px` swallows the doubled outer line. */}
-        <ul className="mt-2xl grid grid-cols-1 border-t border-rule sm:grid-cols-2 lg:grid-cols-4">
+        <ul data-rows className="mt-2xl grid grid-cols-1 border-t border-rule sm:grid-cols-2 lg:grid-cols-4">
           {clients.map((client) => {
             const Icon = sectorIcons[client.icon];
             return (
@@ -60,7 +60,7 @@ export default function ClientLogos() {
           })}
         </ul>
 
-        <dl className="grid grid-cols-1 md:grid-cols-3">
+        <dl data-rows className="grid grid-cols-1 md:grid-cols-3">
           {([
             [
               "One person, start to finish",

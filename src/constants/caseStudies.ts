@@ -69,7 +69,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Maintenance Before the Breakdown",
     client: "Illustrative Industrial Manufacturer",
     industry: "Manufacturing",
-    challenge: "Maintenance happened when something stopped. A bearing that had been getting louder for a fortnight took the line down mid-shift, and afterwards nobody could say whether the warning had been there to see.",
+    challenge: "Maintenance happened when something stopped. A bearing that had been getting louder for two weeks took the line down mid-shift, and afterwards nobody could say whether the warning had been there to see.",
     solution: "Scored the sensor data the machines already produce for the drift that runs ahead of a failure, and put the affected asset on the maintenance schedule while the part could still be ordered rather than couriered.",
     results: [
       "Wear raised while the line is still running",

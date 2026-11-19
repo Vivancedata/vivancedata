@@ -1,5 +1,6 @@
 import { ArrowMark } from "@/components/common/Marks";
 import { ctaPrimary, ctaSecondary } from "@/components/common/controls";
+import { DotField } from "@/components/common/DotField";
 import { LedgerStrip } from "@/components/home/LedgerStrip";
 
 /**
@@ -36,10 +37,7 @@ export default function Welcome() {
           * nothing to stand on and read as unfinished rather than as quiet.
           * Atmosphere, not pattern: the field fades top and bottom and never
           * sits under copy. */}
-        <div
-          className="field-dots field-dots-fade pointer-events-none absolute inset-y-0 right-0 -z-10 hidden w-[42%] border-l border-rule lg:block"
-          aria-hidden="true"
-        />
+        <DotField className="w-[42%] border-l border-rule" />
         <div>
           {/*
             An h1, not an h2. The page shipped with no h1 at all -- the hero
@@ -69,17 +67,17 @@ export default function Welcome() {
           "important" instead of "verified" everywhere else on the page. The
           face has one weight and a real italic, so the italic carries emphasis.
         */}
-        <p className="mt-lg max-w-[26ch] font-display text-serif-md italic text-muted-foreground">
+        <p className="arrive mt-lg max-w-[26ch] font-display text-serif-md italic text-muted-foreground">
           It does not have to be a person on your payroll.
         </p>
 
-        <p className="mt-2xl max-w-[62ch] text-body-lg text-muted-foreground">
+        <p className="arrive mt-2xl max-w-[62ch] text-body-lg text-muted-foreground" style={{ "--i": 2 } as React.CSSProperties}>
           I build small, specific systems for construction, HVAC, logistics and
           manufacturing businesses — one workflow at a time, proved on your own
           documents before you pay for a build.
         </p>
 
-        <div className="mt-2xl flex flex-col gap-md sm:flex-row sm:items-center">
+        <div className="arrive mt-2xl flex flex-col gap-md sm:flex-row sm:items-center" style={{ "--i": 3 } as React.CSSProperties}>
           <a href="/contact" className={ctaPrimary}>
             <span>Book a call</span>
             <ArrowMark />
@@ -89,6 +87,10 @@ export default function Welcome() {
           </a>
         </div>
       </div>
+
+      {/* A phone has no empty half for the matrix to stand in, so it gets a
+        * band of its own under the controls: still scanned, never under copy. */}
+      <DotField className="relative block h-24 border-t border-rule lg:hidden" />
 
       <LedgerStrip />
     </section>

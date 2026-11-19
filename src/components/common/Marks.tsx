@@ -13,7 +13,7 @@ export function ArrowMark({ className = "" }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 16 16"
-      className={`h-3.5 w-3.5 shrink-0 ${className}`}
+      className={`arrow-mark h-3.5 w-3.5 shrink-0 ${className}`}
       fill="none"
       stroke="currentColor"
       strokeWidth={1.5}
@@ -119,23 +119,23 @@ export function VerdictMark({
         ? { "aria-hidden": true as const }
         : { role: "img", "aria-label": label ?? meta.label })}
     >
-      {verdict === "filled" && <path d={CHECK_PATH} />}
+      {verdict === "filled" && <path d={CHECK_PATH} pathLength={1} />}
       {verdict === "flag" && (
         <>
-          <path d="M6 1.6 11 10.4H1z" />
-          <path d="M6 5v2.1" />
+          <path d="M6 1.6 11 10.4H1z" pathLength={1} />
+          <path d="M6 5v2.1" pathLength={1} />
           <path d="M6 9h.01" />
         </>
       )}
       {verdict === "held" && (
         <>
-          <circle cx="6" cy="6" r="4.6" />
-          <path d="M3.6 6h4.8" />
+          <circle cx="6" cy="6" r="4.6" pathLength={1} />
+          <path d="M3.6 6h4.8" pathLength={1} />
         </>
       )}
       {/* Absence is a rule, not a cross. A red X on a cheaper tier scolds the
         * reader for reading the cheaper column; a dash just says "not this one". */}
-      {verdict === "absent" && <path d={DASH_PATH} />}
+      {verdict === "absent" && <path d={DASH_PATH} pathLength={1} />}
     </svg>
   );
 }

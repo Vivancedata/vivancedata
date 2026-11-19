@@ -16,9 +16,9 @@ export const metadata: Metadata = {
     url: "https://www.vivancedata.com/tools/roi-calculator",
     images: [
       {
-        url: "https://www.vivancedata.com/images/ai-solutions.png",
-        width: 1200,
-        height: 630,
+        url: "https://www.vivancedata.com/images/banner.png",
+        width: 2560,
+        height: 1280,
         alt: "AI ROI Calculator",
       },
     ],
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AI ROI Calculator - VivanceData",
     description: "What an automation would cost, what it might save, and how long before it pays for itself.",
-    images: ["https://www.vivancedata.com/images/ai-solutions.png"],
+    images: ["https://www.vivancedata.com/images/banner.png"],
   },
 };
 
@@ -69,7 +69,7 @@ export default function ROICalculatorPage() {
                 <h3 className="mb-2 font-display text-serif-sm">What it counts as saving</h3>
                 <ul className="list-disc list-inside space-y-1 text-sm">
                   <li>Hours no longer spent re-typing</li>
-                  <li>Labour freed up for billable work</li>
+                  <li>Labor freed up for billable work</li>
                   <li>Work quoted or invoiced sooner</li>
                   <li>Mistakes that do not have to be unpicked later</li>
                 </ul>

@@ -182,9 +182,9 @@ export const metadata: Metadata = {
     url: "https://www.vivancedata.com/case-studies",
     images: [
       {
-        url: "https://www.vivancedata.com/images/ai-solutions.png",
-        width: 1200,
-        height: 630,
+        url: "https://www.vivancedata.com/images/banner.png",
+        width: 2560,
+        height: 1280,
         alt: "VivanceData example builds",
       },
     ],
@@ -193,7 +193,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Example Engagements - VivanceData",
     description: "Composite examples of how AI work is scoped and delivered.",
-    images: ["https://www.vivancedata.com/images/ai-solutions.png"],
+    images: ["https://www.vivancedata.com/images/banner.png"],
   },
 };
 
@@ -259,7 +259,7 @@ export default function CaseStudiesPage() {
       </div>
       
       <div className="mt-24 border-t border-rule pt-2xl">
-        <h2 className="mb-4 font-display text-serif-lg">Recognise one of these?</h2>
+        <h2 className="mb-4 font-display text-serif-lg">Recognize one of these?</h2>
         <p className="mb-8 max-w-[62ch] text-body-lg">
           If one of them looks like your week, tell me which. I will tell you what it would take,
           or that it is not worth doing yet.

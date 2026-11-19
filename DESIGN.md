@@ -444,7 +444,9 @@ the nearest system pairing with the same character: Georgia for its one 26px
 heading, Helvetica/Arial for 16px prose and 12px captions, Menlo/Consolas for
 11px uppercase labels at `+0.09em`. Its colours are the **light** nightshift
 tokens written out as hex, because an email client has no custom properties.
-It is the one surface where those faces and literals are correct.
+It is the one surface where those faces and literals are correct. Every email
+closes on the same footer, built once in `layout()`: the small-cut mark, the
+wordmark in Georgia, who is writing, and the site in the mono label.
 
 ### Named Rules
 
@@ -488,6 +490,8 @@ The dot matrix occupies the half of a viewport the type leaves empty (42 to
 50% width, right-aligned, `-z-10`, `lg` and up), behind a vertical hairline
 where it needs something to stand on. It is masked top and bottom
 (`.field-dots-fade`) so no copy is ever set on texture, and it is `aria-hidden`.
+Below `lg` there is no empty half, so the home hero carries one 6rem band of
+the matrix under its controls instead, ruled above and holding no copy.
 
 ## Elevation & Depth
 
@@ -532,6 +536,15 @@ stroke, round caps and joins, `currentColor` throughout. The set is one arrow
 `absent` (a dash, `mute`). Lucide is used at 1.5px stroke for the nav's search
 icon and the footer's social marks only.
 
+**The logo.** A V lit in the dot matrix, resolving to one green dot: the
+atmosphere of the site turned into its signature. `Icons.logo` draws the small
+cut (the nine lit dots) for the nav and footer; the full 5x5 matrix with its
+unlit dots is for avatars, and turns to noise below about 40px. Both cuts, and
+every rendered asset (favicon, Open Graph banner, GitHub and LinkedIn art, the
+email signature), come from `profile/assets/source/` in the organisation's
+`.github` repo, documented in its `BRAND.md`. The point of the V is the one
+place green is identity rather than evidence.
+
 **The Dash-Not-Cross Rule.** Absence is a dash, not a cross. A red X on a
 cheaper tier scolds the reader for reading the cheaper column.
 
@@ -567,7 +580,16 @@ refuses to guess is the evidence.
 ### Tabs
 Pills, not a well. Resting: `rule` hairline, `mute` label; hover to `mute`
 border and `foreground` text. Selected: `primary` fill, transparent border.
-Roving tabindex, and selecting re-fires the panel's settle animation.
+Roving tabindex, and selecting re-reads the panel's record. The blog index's
+topic filters are the same pill.
+
+### Blog
+The index is a ruled list, not cards: the date in mono Data at `mute`, the
+title in Serif MD, the description in Body, and a wall label with the topic
+and reading time beside the arrow. A post is one 42rem column: back link, `h1`
+in Serif LG, lead, a mono line of dates and topics, then the body. Body
+headings are the serif at its one weight; a code fence is a ruled, square
+`card` panel in mono Data. No cover art.
 
 ### Inputs / Fields
 6px square, 1px `input` hairline, sheet-coloured fill (`background`, not
@@ -598,14 +620,60 @@ an IntersectionObserver when it leaves the viewport. It is set in `mute`, not
 a screen reader is told to skip them.
 
 ### Motion
-One authored moment and one ambient drift.
-- **`.settle`** (620ms, `cubic-bezier(0.16, 1, 0.3, 1)`): machine-filled
-  values settle into place, opacity 0.32 to 1, a 3px rise, 2px blur to none,
-  staggered 70ms per row. It animates from an already-visible default and
-  re-fires on tab selection.
+Three voices move, and they move differently. Arrivals run on the settle curve,
+`cubic-bezier(0.16, 1, 0.3, 1)`; sweeps that cross a surface run on
+`cubic-bezier(0.45, 0, 0.2, 1)`.
+
+**The machine fades.**
+- **`.settle`** (620ms): machine-filled values settle into place, opacity 0.32
+  to 1, a 3px rise, 2px blur to none, staggered 70ms per row through `--d`. It
+  animates from an already-visible default.
+- **Read** (620ms sweep, then the settle): a night-log record is swept top to
+  bottom (`.read`) before its fields settle, and each verdict mark is drawn
+  along its stroke. It runs once when the record first comes into view and
+  again on every tab selection.
 - **`.drift`** (90s linear, infinite): the ledger strip only.
-- `prefers-reduced-motion: reduce` kills both outright, and `MotionProvider`
-  respects the same preference for any Framer Motion entrance.
+
+**The sheet rules itself, and never fades.**
+- **Register** (620ms): the page's `h1` rises 12px into place on load; every
+  `h2`, `figure` and row of a `data-rows` list below the fold does the same as
+  it arrives. Rows that arrive together register 70ms apart.
+- **Rule draw** (900ms): a band's hairline draws left to right as the band
+  arrives, and the hairline under an interior page's hero draws on load. The
+  band hairline is a pseudo-element for this reason; see `globals.css`.
+- **Mark** (420ms per dot, 55ms apart): the nav mark lights dot by dot on a
+  hard load, the green one last.
+- **Turn** (160ms out, 460ms in): page to page, the old sheet fades and the
+  next rises 8px, as a cross-document view transition. The nav holds still.
+
+**The reader reads.**
+- **Arrive** (`.arrive`, 720ms, 110ms apart through `--i`): what follows a
+  page's `h1` (the italic turn, the lead, the controls) settles in after it,
+  in order. Never on the `h1` itself.
+- **Dot field** (`DotField`): the matrix prints in left to right on load
+  (1400ms), a scan band crosses it every 12s while it is on screen, and under
+  a mouse the dots within 11rem light to `foreground`, like a flashlight on a
+  dark desk. The lit dots are cream, never green. A phone's band is scanned and
+  never lit: there is no pointer to follow.
+- **Ink** (`.rule-link`, 520ms): a ruled row that is a link inks its own
+  hairline in `foreground` on hover or focus. Every `ArrowMark` leans 3px the
+  way it points.
+- **Reading rule** (`.reading-rule`): on a blog post the hairline under the
+  nav inks left to right with scroll position, on a CSS scroll timeline.
+- A `details` in `main` opens and closes its height over 320ms where
+  `interpolate-size` is supported.
+
+The scroll gestures are run by `SheetMotion` through the Web Animations API.
+A waiting heading or row sits 12px low and fully visible, so a page without
+JavaScript is still, not blank, and no text drops below its contrast floor.
+Everything else is CSS: transform, opacity, mask or clip from a visible
+default. Nothing lifts, scales or glows on hover, and nothing loops except the
+ledger strip and the scan band, both of which stop off screen.
+
+`prefers-reduced-motion: reduce` removes all of it: the CSS gestures sit behind
+the media query, the view transition is switched off, `SheetMotion` checks the
+preference itself, and `MotionProvider` does the same for the Framer Motion
+entrances in the tools.
 
 ## Do's and Don'ts
 

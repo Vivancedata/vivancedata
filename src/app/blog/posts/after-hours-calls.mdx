@@ -1,0 +1,88 @@
+---
+title: "What happens to the call you don't answer at 9pm"
+description: "Where after-hours calls go in a small trade business, why an answering service and a website chatbot both disappoint, and what a triage system should be allowed to decide by itself."
+date: "2025-02-25"
+updated: "2026-11-18"
+image: "/images/banner.png"
+tags: ["Calls"]
+---
+
+The call comes in at ten past nine on a Tuesday in February. The furnace has quit, there's a baby in the house, and the caller is in no mood to wait. They get your voicemail greeting. Maybe they leave a message. Either way, the next thing they do is hang up and call the next name on the list.
+
+By the time you play it back over coffee, the job belongs to somebody else. Nobody tells you. There's no missed-job report, just a voicemail from a stranger who stopped needing you around 9:25.
+
+The obvious fixes for this are worse than they look, so here's how I'd think about it.
+
+## A missed call is four different things
+
+Some of it is urgent and yours: no heat, no hot water, water coming through a ceiling. That call is worth money tonight, and whoever answers it probably gets that customer's furnace work for years.
+
+Some of it is urgent to the caller and routine to you. It can wait until seven, but somebody has to tell them it can wait.
+
+Some of it isn't work. A customer from March asking about an invoice. A supplier. Someone who wants a price on something you don't do.
+
+And some of it is one person calling three times in twenty minutes because nobody called back. The log shows three calls. It's one job.
+
+You half-know this mix already. What you likely don't know is the proportions, and they decide whether anything below is worth doing. [Two weeks of writing down every after-hours call](/blog/count-it-first) costs nothing and settles it. If the count comes back small, a better voicemail greeting fixes it and you skip the project.
+
+## Why the answering service disappoints
+
+The traditional answer is to pay people to pick up. It works in the narrow sense: a polite human answers the phone.
+
+The trouble is what reaches you afterward. The person answering doesn't know your trade, your service area, or your schedule. They take a name, a number, and a sentence, and they can't tell that "it's making a noise like a kettle" and "there's water under it" are different levels of trouble. What lands on your phone is a message saying a message was left. You still have to call the customer at seven to find out what's wrong.
+
+Most are also priced per call or per minute, so the invoice question costs the same as the no-heat call, and you pay three times when one person calls three times.
+
+They're not useless. If your volume is low and a human voice matters to your customers, a person answering is hard to beat. But what most owners want is to start the morning already knowing which of last night's calls needed them, and an answering service doesn't deliver that.
+
+## Why the website chatbot disappoints
+
+The other thing you'll be sold is a chat widget.
+
+Think about where your caller is at ten past nine: in a cold house, on a phone, standing in front of a dead furnace. They aren't browsing. A box asking them to type out the problem is the slow version of what they were already doing fast.
+
+The bigger problem is that these things answer. That's the pitch. But answering commits you: to a time, to a price, to whether this is covered under the work you did in November. A system that tells somebody you'll be there by nine has made a promise about a morning it can't see. You find out when the customer calls at 9:10 asking where you are.
+
+## What triage should decide
+
+Here's the narrower version, and it's the one I built a demo of.
+
+The line rolls over after six. The caller says what's wrong in their own words and leaves a message, same as always. Nothing talks back and nothing promises anything.
+
+What changes is what's waiting for you. Instead of nine voicemails to play at half speed over breakfast, there's a written list. Each entry has the number, what the caller seems to need, how bad it sounds, and what the system couldn't make out.
+
+I care about that last field more than the rest. Real voicemails have a compressor running in the background. People say their address once, fast. Half of them start talking before the beep. A summary that quietly guesses a house number is worse than no summary, because after two weeks you stop checking it. One that says "address unclear, sounded like Marsh or March Road" tells you where to spend your attention.
+
+So the scope is: sort, summarize, flag what's uncertain, put the urgent ones on top. Nothing gets booked, quoted, or answered. The decision stays yours. You just make it from a list instead of from nine recordings.
+
+That's unambitious on purpose. When this version gets something wrong, you reread a line on a Tuesday morning. When the ambitious version gets something wrong, a customer stands in a driveway waiting for a van that was never coming.
+
+## What stays with a person
+
+I'd keep four things off a system like this for good.
+
+Committing to a time. Only you know who called in sick and which job is going to run over.
+
+Money. Prices, warranty questions, whether November's work should have covered it. Get that wrong once in writing and you'll argue about it for two weeks.
+
+Safety. If a caller says gas, or smoke, or mentions a smell, that goes to the top with a note and a person calls them back.
+
+And anger. A complaint answered by a machine turns into a worse complaint.
+
+You also need to decide in advance what happens when the whole thing is down, because one evening it will be. There should be a way back to plain voicemail that takes one phone call, and somebody other than me should know how to do it.
+
+## What this doesn't fix
+
+It doesn't answer your phone. A customer who wants a human voice at 9pm still doesn't get one. If that matters in your market, the answer is hiring.
+
+It doesn't book the job overnight. If the first shop to call back wins where you work, being sorted at 6am beats being sorted at 8am, and it still loses to whoever answered at 9pm.
+
+And it doesn't stay fixed. Phone systems change, and so does the way people talk to them. That's [what the monthly fee is for](/blog/what-the-monthly-fee-covers).
+
+## Look at the output
+
+The demo takes a sample voicemail, works out what the caller needs and how urgent it is, and says what it couldn't make out: [triage a sample voicemail](https://calls.vivancedata.com). The data is made up and it takes about a minute.
+
+Read what comes out and ask one question. If that had been on your phone at 6am, would you have called someone different first?
+
+If yes, [the missed-call calculator](/tools/missed-calls) will put a rough dollar figure on it using your own numbers, and you can [book a call](/contact) to tell me what your after-hours volume looks like.

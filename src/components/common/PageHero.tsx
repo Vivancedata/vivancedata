@@ -40,9 +40,13 @@ export function PageHero({ title, description, meta }: PageHeroProps): React.Rea
           {title}
         </h1>
         {description && (
-          <p className="mt-xl max-w-[62ch] text-body-lg text-muted-foreground">{description}</p>
+          <p className="arrive mt-xl max-w-[62ch] text-body-lg text-muted-foreground">{description}</p>
         )}
-        {meta && <p className="mt-lg font-mono text-data text-mute">{meta}</p>}
+        {meta && (
+          <p className="arrive mt-lg font-mono text-data text-mute" style={{ "--i": 2 } as React.CSSProperties}>
+            {meta}
+          </p>
+        )}
       </div>
     </section>
   );

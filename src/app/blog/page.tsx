@@ -1,5 +1,4 @@
 import { Blogs } from '@/components/blog/Blogs';
-import { Container } from '@/components/common/Container';
 import { PageHero } from '@/components/common/PageHero';
 import { Metadata } from 'next';
 import { getAllBlogPosts } from '@/lib/blogPosts';
@@ -16,9 +15,9 @@ export const metadata: Metadata = {
     url: 'https://www.vivancedata.com/blog',
     images: [
       {
-        url: 'https://www.vivancedata.com/images/ai-solutions.png',
-        width: 1200,
-        height: 630,
+        url: 'https://www.vivancedata.com/images/banner.png',
+        width: 2560,
+        height: 1280,
         alt: 'VivanceData AI Insights Blog',
       },
     ],
@@ -27,7 +26,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Notes from the work - VivanceData',
     description: 'Notes on putting AI into trade and industrial operations.',
-    images: ['https://www.vivancedata.com/images/ai-solutions.png'],
+    images: ['https://www.vivancedata.com/images/banner.png'],
   },
 };
 
@@ -41,11 +40,13 @@ export default async function Blog() {
         * "AI Insights Blog" was the generic half. */}
       <PageHero
         title="Notes from the work"
-        description="What happens when a model meets real paperwork, real calls and real crews — including the parts that do not work."
+        description="What happens when a model meets real paperwork, real calls and real crews, including the parts that do not work."
       />
-      <Container>
-        <Blogs blogs={posts} />
-      </Container>
+      <section className="bleed">
+        <div className="container mx-auto px-4">
+          <Blogs blogs={posts} />
+        </div>
+      </section>
     </>
   );
 }

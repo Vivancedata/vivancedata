@@ -92,7 +92,7 @@ export const useCases: UseCase[] = [
     keyBenefits: [
       "Faster turnaround on invitations to bid",
       "Historical pricing surfaced with its source",
-      "Estimator judgement stays in the loop",
+      "Estimator judgment stays in the loop",
     ],
   },
   {

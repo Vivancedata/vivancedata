@@ -16,19 +16,19 @@ describe("blog post discovery", () => {
   it("includes directory-based page.mdx posts", () => {
     const slugs = getBlogSlugs();
 
-    expect(slugs).toContain("ai-implementation-guide");
-    expect(slugs).toContain("ai-roi-business-case");
-    expect(slugs).toContain("data-preparation-for-ai");
+    expect(slugs).toContain("automate-one-job");
+    expect(slugs).toContain("is-it-worth-automating");
+    expect(slugs).toContain("messy-records");
   });
 
   it("resolves page.mdx path for directory-based posts", () => {
-    const postPath = findBlogPostPath("ai-implementation-guide");
+    const postPath = findBlogPostPath("automate-one-job");
 
     expect(postPath).not.toBeNull();
     expect(postPath).toMatch(
       new RegExp(
         path
-          .join("ai-implementation-guide", "page.mdx")
+          .join("automate-one-job", "page.mdx")
           .replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
       )
     );
@@ -98,7 +98,7 @@ describe("blog post discovery", () => {
   });
 
   it("returns null frontmatter when a post cannot be read", () => {
-    const targetPath = findBlogPostPath("ai-implementation-guide");
+    const targetPath = findBlogPostPath("automate-one-job");
     expect(targetPath).not.toBeNull();
 
     const originalReadFileSync = fs.readFileSync;
@@ -109,7 +109,7 @@ describe("blog post discovery", () => {
       return originalReadFileSync(filePath as Parameters<typeof fs.readFileSync>[0], options as Parameters<typeof fs.readFileSync>[1]);
     });
 
-    expect(getBlogPostFrontmatter("ai-implementation-guide")).toBeNull();
+    expect(getBlogPostFrontmatter("automate-one-job")).toBeNull();
   });
 
   it("continues loading posts when one file read fails", () => {
@@ -117,7 +117,7 @@ describe("blog post discovery", () => {
     const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
 
     vi.spyOn(fs, "readFileSync").mockImplementation((filePath, options) => {
-      if (String(filePath).includes("ai-customer-service")) {
+      if (String(filePath).includes("after-hours-calls")) {
         throw new Error("read failure");
       }
       return originalReadFileSync(filePath as Parameters<typeof fs.readFileSync>[0], options as Parameters<typeof fs.readFileSync>[1]);
@@ -126,7 +126,7 @@ describe("blog post discovery", () => {
     const posts = getAllBlogPosts();
 
     expect(posts.length).toBeGreaterThan(0);
-    expect(posts.some((post) => post.slug === "ai-customer-service")).toBe(false);
+    expect(posts.some((post) => post.slug === "after-hours-calls")).toBe(false);
     expect(errorSpy).toHaveBeenCalled();
   });
 
@@ -177,7 +177,7 @@ describe("blog post discovery", () => {
       expect(frontmatter).not.toBeNull();
       expect(frontmatter?.title).toBe("fallback-post");
       expect(frontmatter?.description).toBe("A note on fallback-post");
-      expect(frontmatter?.image).toBe("/images/ai-solutions.png");
+      expect(frontmatter?.image).toBe("/images/banner.png");
       expect(frontmatter?.tags).toEqual(["AI", "Technology"]);
 
       const expectedDate = new Date().toISOString().split("T")[0];

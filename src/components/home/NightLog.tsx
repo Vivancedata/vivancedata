@@ -1,8 +1,9 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowMark, VerdictMark } from "@/components/common/Marks";
 import { ctaQuiet, wallLabel } from "@/components/common/controls";
+import { DotField } from "@/components/common/DotField";
 import { nightLog, promiseFor, type LogRecord } from "@/constants/nightLog";
 import { ANALYTICS } from "@/lib/analytics";
 
@@ -20,9 +21,10 @@ import { ANALYTICS } from "@/lib/analytics";
  * 1. The "held" verdict is styled as prominently as the successes. A system that
  *    refuses to read an illegible word is the difference between this and a
  *    demo, and hiding that under an error style would sell the opposite.
- * 2. Switching tabs re-runs the settle animation via `runKey`. The motion is the
- *    page's one authored moment and it belongs to the act of reading a record,
- *    not to scrolling past a section.
+ * 2. A record is read once when it first comes into view and again on every
+ *    tab switch, via `runKey`: the input is swept, then the fields settle and
+ *    their marks are drawn. It used to run only on load, below the fold, where
+ *    nobody saw the page's one authored moment.
  * 3. Nothing is a card. The panel is bounded by a hairline on a shared sheet,
  *    which is what keeps this from becoming the dashboard screenshot the whole
  *    direction refuses.
@@ -44,7 +46,7 @@ function Record({ record, runKey }: { record: LogRecord; runKey: number }) {
 
       {/* What went in. Set as a quotation rather than as a field, because the
        * reader has to see the mess before the tidy version means anything. */}
-      <blockquote className="border-b border-rule px-md py-lg md:px-lg">
+      <blockquote key={`read-${runKey}`} className="read border-b border-rule px-md py-lg md:px-lg">
         <p className="max-w-[52ch] text-body text-muted-foreground">
           <span aria-hidden="true">“</span>
           {record.input}
@@ -57,7 +59,7 @@ function Record({ record, runKey }: { record: LogRecord; runKey: number }) {
           <div
             key={field.label}
             className="settle grid grid-cols-[1fr] gap-x-md gap-y-1 px-md py-3 md:grid-cols-[8rem_1fr] md:px-lg"
-            style={{ animationDelay: `${index * 70}ms` }}
+            style={{ "--d": `${index * 70 + 380}ms` } as React.CSSProperties}
           >
             <dt className={`${wallLabel} md:pt-0.5`}>{field.label}</dt>
             <dd className="min-w-0">
@@ -82,6 +84,24 @@ export default function NightLog() {
   const [active, setActive] = useState(0);
   const [runKey, setRunKey] = useState(0);
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const panel = panelRef.current;
+    if (!panel) return;
+
+    const arrival = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setRunKey((key) => key + 1);
+        arrival.disconnect();
+      },
+      { threshold: 0.35 }
+    );
+    arrival.observe(panel);
+
+    return () => arrival.disconnect();
+  }, []);
 
   const select = (index: number) => {
     setActive(index);
@@ -109,10 +129,7 @@ export default function NightLog() {
   return (
     <section className="bleed border-t border-rule" aria-labelledby="night-log-heading">
       <div className="container relative mx-auto px-4 py-3xl md:py-4xl">
-        <div
-          className="field-dots field-dots-fade pointer-events-none absolute inset-y-0 right-0 -z-10 hidden w-1/2 lg:block"
-          aria-hidden="true"
-        />
+        <DotField className="w-1/2" />
 
         <div className="grid grid-cols-1 gap-2xl lg:grid-cols-12 lg:gap-xl">
           <div className="lg:col-span-5 lg:pr-lg">
@@ -128,7 +145,7 @@ export default function NightLog() {
             {/* The legend earns its place: it teaches the mark system the
               * records use, and the third line is the practice's whole
               * argument stated as a rule rather than as a promise. */}
-            <dl className="mt-2xl border-t border-rule">
+            <dl data-rows className="mt-2xl border-t border-rule">
               {(
                 [
                   ["filled", "Read from the source, and matched"],
@@ -181,6 +198,7 @@ export default function NightLog() {
             </div>
 
             <div
+              ref={panelRef}
               role="tabpanel"
               id={`night-log-panel-${active}`}
               aria-labelledby={`night-log-tab-${active}`}
@@ -209,7 +227,7 @@ export default function NightLog() {
                 onClick={() => ANALYTICS.demoOpened(record.demo.label)}
               >
                 <span>{record.demo.label}</span>
-                <ArrowMark className="transition-transform duration-default group-hover:translate-x-0.5" />
+                <ArrowMark />
               </a>
             </div>
           </div>

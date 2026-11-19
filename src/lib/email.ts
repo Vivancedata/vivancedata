@@ -79,9 +79,34 @@ const STYLES = `
             padding: 13px 22px; text-decoration: none; border-radius: 100px;
             margin-top: 22px; font-size: 12px; letter-spacing: 0.09em;
             text-transform: uppercase; font-family: Menlo, Consolas, monospace; }
-  .footer { color: #706c65; font-size: 12px; margin-top: 28px;
-            border-top: 1px solid #e3ded3; padding-top: 16px; }
+  .footer { color: #706c65; font-size: 12px; line-height: 1.5; margin-top: 32px;
+            border-top: 1px solid #e3ded3; padding-top: 18px; }
+  .footer .name { font-family: Georgia, "Times New Roman", serif; font-size: 18px;
+                  line-height: 1.2; color: #1a1810; }
+  .footer .site { font-family: Menlo, Consolas, monospace; font-size: 11px; letter-spacing: 0.09em;
+                  text-transform: uppercase; }
+  .footer a { color: #706c65; }
 `;
+
+/**
+ * The signature every email closes on: the mark, the wordmark, who is writing
+ * and where to find them. A table, because that is the only layout every mail
+ * client agrees on. The mark is a hosted image and the footer holds without it,
+ * since most clients block images until asked.
+ */
+const FOOTER = `
+        <table role="presentation" class="footer" width="100%" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="44" valign="top">
+              <img src="https://www.vivancedata.com/icons/mark.png" width="32" height="32" alt="" style="display: block;">
+            </td>
+            <td valign="top">
+              <div class="name">VivanceData</div>
+              <div>Lorenzo Scaturchio &middot; <a href="mailto:lorenzo@vivancedata.com">lorenzo@vivancedata.com</a></div>
+              <div class="site"><a href="https://www.vivancedata.com">vivancedata.com</a></div>
+            </td>
+          </tr>
+        </table>`;
 
 /**
  * The frame every email from this site shares. `title` is plain text and is
@@ -104,6 +129,7 @@ export function layout({ title, body }: { title: string; body: string }): string
         <div class="content">
           ${body}
         </div>
+        ${FOOTER}
       </div>
     </body>
     </html>

@@ -28,7 +28,7 @@ interface ServicesListProps {
 export function ServicesList({ services }: ServicesListProps): React.ReactElement {
   return (
     <section className="container mx-auto px-4 py-3xl md:py-4xl">
-      <div className="grid grid-cols-1 gap-x-2xl gap-y-xl md:grid-cols-2">
+      <div data-rows className="grid grid-cols-1 gap-x-2xl gap-y-xl md:grid-cols-2">
         {services.map((service) => (
           <div key={service.id} className="flex flex-col border-t border-rule pt-lg">
             <h3 className="font-display text-serif-sm text-foreground">{service.title}</h3>

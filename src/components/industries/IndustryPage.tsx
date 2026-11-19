@@ -7,7 +7,6 @@ import { Paragraph } from "@/components/common/Paragraph";
 import Link from "next/link";
 import { ArrowMark, ListMark } from "@/components/common/Marks";
 import { ctaPrimary, ctaSecondary } from "@/components/common/controls";
-import { AnimateOnScroll, StaggerContainer } from "@/hooks/useAnimateOnScroll";
 import { Specimen } from "@/components/common/Specimen";
 import type { Specimen as SpecimenData } from "@/constants/specimens";
 
@@ -193,10 +192,7 @@ export function IndustryPage({
           <Specimen specimen={specimen} priority className="w-full md:w-1/2" />
         ) : null}
 
-        <AnimateOnScroll
-          variant="fadeInRight"
-          className={`flex w-full flex-col justify-center ${specimen ? "md:w-1/2" : ""}`}
-        >
+        <div className={`flex w-full flex-col justify-center ${specimen ? "md:w-1/2" : ""}`}>
           <h2 className="mb-lg font-display text-serif-lg">{config.introHeading}</h2>
           {bodyParagraphs.map((paragraph) => (
             <p key={paragraph} className="mb-lg max-w-[60ch] text-body text-muted-foreground">
@@ -206,24 +202,22 @@ export function IndustryPage({
           <div className="flex flex-col gap-md self-start sm:flex-row sm:flex-wrap sm:items-center">
             <Link href="/contact" className={`${ctaSecondary} group`}>
               <span>{config.introCtaLabel}</span>
-              <ArrowMark className="transition-transform duration-default group-hover:translate-x-0.5" />
+              <ArrowMark />
             </Link>
             {config.demo ? (
               <DemoLink demo={config.demo} className="whitespace-nowrap" />
             ) : null}
           </div>
-        </AnimateOnScroll>
+        </div>
       </div>
 
-      <AnimateOnScroll variant="fadeInUp" className="mb-lg">
+      <div className="mb-lg">
         <h2 className="mb-xl font-display text-serif-lg">{config.solutionsHeading}</h2>
-      </AnimateOnScroll>
+      </div>
 
-      <StaggerContainer
-        className={`mb-3xl grid grid-cols-1 gap-lg md:grid-cols-2 ${
+      <div data-rows className={`mb-3xl grid grid-cols-1 gap-lg md:grid-cols-2 ${
           isSplitGrid ? "lg:grid-cols-3" : ""
-        }`}
-      >
+        }`}>
         {primarySolutions.map((solution) => (
           <SolutionCard
             key={`solution-primary-${solution.title}`}
@@ -233,10 +227,10 @@ export function IndustryPage({
             benefits={solution.benefits}
           />
         ))}
-      </StaggerContainer>
+      </div>
 
       {secondarySolutions.length > 0 && (
-        <StaggerContainer className="mb-3xl grid grid-cols-1 gap-lg md:grid-cols-2">
+        <div data-rows className="mb-3xl grid grid-cols-1 gap-lg md:grid-cols-2">
           {secondarySolutions.map((solution) => (
             <SolutionCard
               key={`solution-secondary-${solution.title}`}
@@ -246,34 +240,26 @@ export function IndustryPage({
               benefits={solution.benefits}
             />
           ))}
-        </StaggerContainer>
+        </div>
       )}
 
-      <AnimateOnScroll
-        variant="fadeIn"
-        className="mb-3xl border-t border-rule pt-xl"
-      >
+      <div className="mb-3xl border-t border-rule pt-xl">
         <h2 className="mb-xl font-display text-serif-lg">{config.statsHeading}</h2>
-        <div className="grid grid-cols-2 gap-lg md:grid-cols-4">
-          {config.stats.map((stat, index) => (
-            <AnimateOnScroll
-              key={stat.label}
-              variant="scaleIn"
-              delay={index * 0.1}
-              
-            >
+        <div data-rows className="grid grid-cols-2 gap-lg md:grid-cols-4">
+          {config.stats.map((stat) => (
+            <div key={stat.label}>
               <div className="mb-2 font-display text-serif-md text-foreground">{stat.value}</div>
               <p className="text-body-sm text-muted-foreground">{stat.label}</p>
-            </AnimateOnScroll>
+            </div>
           ))}
         </div>
-      </AnimateOnScroll>
+      </div>
 
-      <AnimateOnScroll variant="fadeInUp" className="mb-lg">
+      <div className="mb-lg">
         <h2 className="mb-xl font-display text-serif-lg">{config.scenariosHeading}</h2>
-      </AnimateOnScroll>
+      </div>
 
-      <StaggerContainer className="mb-3xl grid grid-cols-1 gap-lg md:grid-cols-3">
+      <div data-rows className="mb-3xl grid grid-cols-1 gap-lg md:grid-cols-3">
         {config.scenarios.map((scenario) => (
           <Scenario
             key={scenario.title}
@@ -284,11 +270,11 @@ export function IndustryPage({
             demo={scenario.demo}
           />
         ))}
-      </StaggerContainer>
+      </div>
 
-      <AnimateOnScroll variant="fadeInUp" className="mb-lg">
+      <div className="mb-lg">
         <h2 className="mb-xl font-display text-serif-lg">{config.processHeading}</h2>
-      </AnimateOnScroll>
+      </div>
 
       <div className="relative mb-3xl">
         {/* Hairline connecting the phases. */}
@@ -296,12 +282,7 @@ export function IndustryPage({
 
         <div className="space-y-xl">
           {config.process.map((phase, index) => (
-            <AnimateOnScroll
-              key={phase.title}
-              variant="fadeInLeft"
-              delay={index * 0.2}
-              className="relative"
-            >
+            <div key={phase.title} className="relative">
               <div className="mb-md flex items-center">
                 <div className="mr-md flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary text-body font-medium text-primary-foreground">
                   {index + 1}
@@ -319,12 +300,12 @@ export function IndustryPage({
                   ))}
                 </ul>
               </div>
-            </AnimateOnScroll>
+            </div>
           ))}
         </div>
       </div>
 
-      <AnimateOnScroll variant="fadeInUp" className="border-t border-rule pt-2xl">
+      <div className="border-t border-rule pt-2xl">
         <h2 className="mb-md max-w-[24ch] font-display text-serif-lg">{config.finalCtaHeading}</h2>
         <p className="mb-xl max-w-[58ch] text-body-lg text-muted-foreground">
           {config.finalCtaBody}
@@ -333,7 +314,7 @@ export function IndustryPage({
           <span>{config.finalCtaLabel}</span>
           <ArrowMark />
         </Link>
-      </AnimateOnScroll>
+      </div>
     </Container>
   );
 }
