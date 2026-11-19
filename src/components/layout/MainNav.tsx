@@ -31,7 +31,7 @@ export function MainNav() {
             aria-label={siteConfig.name}
             className="flex min-h-11 shrink-0 items-center gap-2.5 rounded-sm focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
           >
-            <Icons.logo className="h-7 w-7" />
+            <Icons.logo className="mark-light h-7 w-7" />
             {/* Set in the display serif: the wordmark is the one place on this
               * site where the brand speaks in its own voice rather than in the
               * machine's. */}

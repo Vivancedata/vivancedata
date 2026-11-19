@@ -24,9 +24,9 @@ export const metadata: Metadata = {
     url: "https://www.vivancedata.com/innovation-hub",
     siteName: "VivanceData",
     images: [{
-      url: "https://www.vivancedata.com/images/ai-solutions.png",
-      width: 1200,
-      height: 630,
+      url: "https://www.vivancedata.com/images/banner.png",
+      width: 2560,
+      height: 1280,
       alt: "VivanceData Innovation Hub - Emerging AI Technologies",
     }],
   },
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Innovation Hub | VivanceData",
     description: "What I test before it goes near a job someone depends on.",
-    images: ["https://www.vivancedata.com/images/ai-solutions.png"],
+    images: ["https://www.vivancedata.com/images/banner.png"],
   },
   robots: {
     index: true,

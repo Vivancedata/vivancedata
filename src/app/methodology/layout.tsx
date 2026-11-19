@@ -22,9 +22,9 @@ export const metadata: Metadata = {
     url: 'https://www.vivancedata.com/methodology',
     images: [
       {
-        url: 'https://www.vivancedata.com/images/ai-solutions.png',
-        width: 1200,
-        height: 630,
+        url: 'https://www.vivancedata.com/images/banner.png',
+        width: 2560,
+        height: 1280,
         alt: 'How a VivanceData engagement runs',
       },
     ],
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     title: 'How an Engagement Runs - VivanceData',
     description:
       'The six-phase way an engagement runs, one workflow at a time, proved on your own documents.',
-    images: ['https://www.vivancedata.com/images/ai-solutions.png'],
+    images: ['https://www.vivancedata.com/images/banner.png'],
   },
 };
 

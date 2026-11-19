@@ -177,7 +177,7 @@ describe("blog post discovery", () => {
       expect(frontmatter).not.toBeNull();
       expect(frontmatter?.title).toBe("fallback-post");
       expect(frontmatter?.description).toBe("A note on fallback-post");
-      expect(frontmatter?.image).toBe("/images/ai-solutions.png");
+      expect(frontmatter?.image).toBe("/images/banner.png");
       expect(frontmatter?.tags).toEqual(["AI", "Technology"]);
 
       const expectedDate = new Date().toISOString().split("T")[0];
