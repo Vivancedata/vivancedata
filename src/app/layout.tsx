@@ -185,9 +185,9 @@ provenance.
             * feature bundle; without this provider they stay pinned at their
             * `hidden` variant, which is opacity 0. */}
           <MotionProvider>
-            <header>
-              <MainNav />
-            </header>
+            {/* Not wrapped: a parent the height of the nav is a sticky
+              * element's whole scroll range, so the nav scrolled away. */}
+            <MainNav />
             <PageWrapper className="grow w-full">
               <main className="w-full overflow-x-clip px-4" id="main-content">
                 {children}

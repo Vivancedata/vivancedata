@@ -23,7 +23,7 @@ import { MainNavMobile } from "@/components/layout/MainNavMobile"
  */
 export function MainNav() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-rule bg-background/85 backdrop-blur-md supports-backdrop-filter:bg-background/70">
+    <header className="sticky top-0 z-50 w-full [view-transition-name:site-nav] border-b border-rule bg-background/85 backdrop-blur-md supports-backdrop-filter:bg-background/70">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between gap-md">
           <a

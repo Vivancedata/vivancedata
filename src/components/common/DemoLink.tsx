@@ -28,7 +28,7 @@ export function DemoLink({ demo, className }: { demo: Demo; className?: string }
     >
       {demo.label}
       {/* One arrow shape across the site, at one stroke weight. */}
-      <ArrowMark className="transition-transform duration-default group-hover:translate-x-0.5" />
+      <ArrowMark />
     </a>
   );
 }

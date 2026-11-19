@@ -2,7 +2,9 @@
 
 import { useEffect } from "react";
 
-const TARGETS = "main :is(h2, figure, section.bleed.border-t)";
+const TARGETS =
+  "main :is(h2:not([data-rows] *), figure, section.bleed.border-t, [data-rows] > *)";
+const ROW_STAGGER_MS = 70;
 const SETTLE = "cubic-bezier(0.16, 1, 0.3, 1)";
 
 /** Holds a target at its first keyframe until `play()`. */
@@ -23,8 +25,9 @@ function arm(target: Element): Animation {
 }
 
 /**
- * The sheet's scroll motion: a band's hairline draws across, and a heading or
- * figure rises 12px into register, as each enters the viewport.
+ * The sheet's scroll motion: a band's hairline draws across, and a heading,
+ * figure or ruled row rises 12px into register, as each enters the viewport.
+ * Rows of a `data-rows` list that arrive together register one after another.
  *
  * Three choices that are easy to undo by accident:
  *
@@ -49,9 +52,14 @@ export function SheetMotion(): null {
 
     const arrivals = new IntersectionObserver(
       (entries) => {
+        let row = 0;
         for (const { target, isIntersecting, boundingClientRect } of entries) {
           if (isIntersecting) {
-            waiting.get(target)?.play();
+            const animation = waiting.get(target);
+            if (animation && target.parentElement?.hasAttribute("data-rows")) {
+              animation.effect?.updateTiming({ delay: row++ * ROW_STAGGER_MS, fill: "backwards" });
+            }
+            animation?.play();
             waiting.delete(target);
             settled.add(target);
             arrivals.unobserve(target);

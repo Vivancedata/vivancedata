@@ -69,7 +69,7 @@ export default function ROICalculatorPage() {
                 <h3 className="mb-2 font-display text-serif-sm">What it counts as saving</h3>
                 <ul className="list-disc list-inside space-y-1 text-sm">
                   <li>Hours no longer spent re-typing</li>
-                  <li>Labour freed up for billable work</li>
+                  <li>Labor freed up for billable work</li>
                   <li>Work quoted or invoiced sooner</li>
                   <li>Mistakes that do not have to be unpicked later</li>
                 </ul>

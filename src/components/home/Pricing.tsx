@@ -165,7 +165,7 @@ export default function Pricing({ showHeader = true }: PricingProps) {
         </div>
 
         {/* Narrow: one tier at a time, each with its own list. */}
-        <div className="mt-2xl border-t border-rule lg:hidden">
+        <div data-rows className="mt-2xl border-t border-rule lg:hidden">
           {pricingTiers.map((tier) => (
             <div key={tier.name} className="border-b border-rule py-xl">
               <TierHead tier={tier} as={HeadingLevel} />
@@ -219,7 +219,7 @@ export default function Pricing({ showHeader = true }: PricingProps) {
               much of it you want to run yourself. Tell me what is going wrong and
               I will come back with a scope and a fixed price in writing.
             </p>
-            <ul className="mt-lg border-t border-rule">
+            <ul data-rows className="mt-lg border-t border-rule">
               {[
                 "Works with the dispatch, accounting and phone systems you already have",
                 "Handover-only if you would rather run it without me",

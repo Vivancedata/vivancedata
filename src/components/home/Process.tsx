@@ -31,7 +31,7 @@ const Process = () => {
           </p>
         </div>
 
-        <ol className="mt-2xl border-t border-rule">
+        <ol data-rows className="mt-2xl border-t border-rule">
           {processSteps.map((step) => (
             <li
               key={step.number}

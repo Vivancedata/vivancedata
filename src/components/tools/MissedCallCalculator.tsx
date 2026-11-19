@@ -178,7 +178,7 @@ export function MissedCallCalculator() {
               onClick={() => ANALYTICS.demoOpened(demos.calls.label)}
             >
               <span>See one triaged</span>
-              <ArrowMark className="transition-transform duration-default group-hover:translate-x-0.5" />
+              <ArrowMark />
             </a>
           </div>
         </div>

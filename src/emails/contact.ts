@@ -36,7 +36,7 @@ export function buildEnquiryNotification(enquiry: ContactEnquiry): string {
   const safeEmail = escapeHtml(enquiry.email);
 
   return layout({
-    title: 'New enquiry from the contact form',
+    title: 'New inquiry from the contact form',
     body: `
           <div class="field">
             <div class="label">Name</div>

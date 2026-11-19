@@ -159,6 +159,6 @@ Two scheduled workflows watch the live site:
 
 [Book a call](https://www.vivancedata.com/contact) through the form on the site.
 
-## Licence
+## License
 
-This code is proprietary. The repository is public to read, but no licence is granted to copy, distribute or reuse it.
+This code is proprietary. The repository is public to read, but no license is granted to copy, distribute or reuse it.

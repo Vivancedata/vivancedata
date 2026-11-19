@@ -278,7 +278,7 @@ They are not products I sell, and nothing here is a platform you would license.
               description: "Where data cannot or should not move, the architecture works around that constraint rather than asking you to relax it.",
               features: [
                 "Keeping data inside systems that already hold it",
-                "Minimising what is extracted and retained",
+                "Minimizing what is extracted and retained",
                 "Differential privacy where aggregate release is needed",
                 "Tiered access with audit trails"
               ]

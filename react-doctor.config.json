@@ -1,4 +1,7 @@
 {
   "deadCode": false,
-  "diff": false
+  "diff": false,
+  "ignore": {
+    "files": ["playwright-report/**", "test-results/**"]
+  }
 }

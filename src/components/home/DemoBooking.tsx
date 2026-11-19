@@ -164,7 +164,7 @@ function DemoFeatureColumn() {
         operation runs on today.
       </p>
 
-      <dl className="mt-2xl border-t border-rule">
+      <dl data-rows className="mt-2xl border-t border-rule">
         {demoFeatures.map((feature) => (
           <div key={feature.title} className="border-b border-rule py-lg">
             <dt className="text-body-sm font-medium text-foreground">{feature.title}</dt>

@@ -115,12 +115,16 @@ const nextConfig = {
   },
 
   /**
-   * The five enterprise verticals the site used to carry. Their pages are gone,
-   * but the URLs are indexed, so they redirect to the industries hub rather than
-   * 404. Permanent (308) because the pages are not coming back.
+   * URLs that are indexed but no longer served. Permanent (308): none of the
+   * old addresses is coming back.
+   *
+   * - The five enterprise verticals the site used to carry go to the hub.
+   * - Six posts kept `ai-*` slugs from before they were rewritten, so a URL
+   *   like `/blog/ai-ethics-guide` named a post that no longer existed under
+   *   it. Each slug now says what the post is about.
    */
   async redirects() {
-    return [
+    const industries = [
       'financial-services',
       'healthcare',
       'retail',
@@ -131,6 +135,21 @@ const nextConfig = {
       destination: '/industries',
       permanent: true,
     }));
+
+    const posts = Object.entries({
+      'ai-customer-service': 'after-hours-calls',
+      'ai-implementation-guide': 'automate-one-job',
+      'ai-roi-business-case': 'is-it-worth-automating',
+      'data-preparation-for-ai': 'messy-records',
+      'future-of-generative-ai': 'which-ai-is-for-you',
+      'ai-ethics-guide': 'who-is-answerable',
+    }).map(([from, to]) => ({
+      source: `/blog/${from}`,
+      destination: `/blog/${to}`,
+      permanent: true,
+    }));
+
+    return [...industries, ...posts];
   },
 
   // Configure headers for better security and performance
