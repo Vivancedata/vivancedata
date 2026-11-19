@@ -226,7 +226,7 @@ function BenefitsSection() {
           </Paragraph>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div data-rows className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {frameworkBenefits.map((benefit) => (
             <Card
               key={benefit.title}

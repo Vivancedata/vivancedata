@@ -1,30 +1,12 @@
 "use client";
 
-import { m } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
 import { formatDate } from "@/lib/formatDate";
-import { Clock, Calendar, ArrowUpRight } from "lucide-react";
+import { ArrowMark } from "@/components/common/Marks";
 import { useDeferredValue, useMemo } from "react";
 import { BlogFilters } from "./BlogFilters";
 import { useUrlSearchParams, useUrlTextParam } from "@/hooks/useUrlSearchParams";
-import { BlogCover, isDefaultBlogImage } from "./BlogCover";
 import { BlogPost } from "@/types/blog";
-
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0 }
-};
 
 export interface BlogsProps {
   blogs: BlogPost[];
@@ -77,7 +59,7 @@ export function Blogs({ blogs }: BlogsProps) {
   }, [blogs, deferredQuery, selectedTags]);
 
   return (
-    <div>
+    <div className="pb-3xl md:pb-4xl">
       <BlogFilters
         allTags={allTags}
         searchQuery={searchQuery}
@@ -86,78 +68,35 @@ export function Blogs({ blogs }: BlogsProps) {
         onTagToggle={toggleTag}
       />
 
-      <m.div
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4 mt-8"
-      >
-        {filteredBlogs.map((blog, index) => (
-          <Link key={blog.slug} href={`/blog/${blog.slug}`}>
-            <m.article
-              variants={item}
-              className="group relative flex h-full flex-col overflow-hidden rounded-xl bg-secondary/50 transition-colors hover:bg-secondary/70"
+      {/* An index, not a wall of cards: one ruled row per note, the date in the
+        * machine's voice and the title in the writer's. */}
+      <ol data-rows className="mt-2xl border-t border-rule">
+        {filteredBlogs.map((blog) => (
+          <li key={blog.slug} className="border-b border-rule">
+            <Link
+              href={`/blog/${blog.slug}`}
+              className="rule-link group grid grid-cols-1 gap-x-lg gap-y-sm py-lg focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background md:grid-cols-12 md:py-xl"
             >
-              <div className="relative aspect-video w-full overflow-hidden">
-                {isDefaultBlogImage(blog.image) ? (
-                  <BlogCover slug={blog.slug} />
-                ) : (
-                  <Image
-                    src={blog.image}
-                    alt={`Featured image for ${blog.title}`}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover p-2 transform group-hover:scale-105 transition-transform duration-300"
-                    priority={index < 3} // Prioritize loading for the first 3 images
-                  />
-                )}
+              <p className="font-mono text-data text-mute md:col-span-2 md:pt-2">
+                <time dateTime={blog.date}>{formatDate(blog.date)}</time>
+              </p>
+              <div className="md:col-span-7">
+                <h2 className="font-display text-serif-md text-foreground">{blog.title}</h2>
+                <p className="mt-sm max-w-[60ch] text-body text-muted-foreground">
+                  {blog.description}
+                </p>
               </div>
-
-              <div className="flex flex-1 flex-col justify-between p-4">
-                <div className="flex-1 space-y-3">
-                  <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                    <div className="flex items-center gap-1">
-                      <Calendar className="size-3" />
-                      <time dateTime={blog.date}>{formatDate(blog.date)}</time>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Clock className="size-3" />
-                      <span>{blog.readingMinutes ?? 5} min read</span>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h3 className="text-heading-4">
-                      {blog.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
-                      {blog.description}
-                    </p>
-                  </div>
-
-                  {blog.tags && (
-                    <div className="flex flex-wrap gap-1.5">
-                      {blog.tags.map((tag: string) => (
-                        <span
-                          key={tag}
-                          className="inline-flex items-center rounded-pill border border-rule px-2 py-0.5 text-label uppercase text-mute"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-
-                <div className="mt-4 flex items-center gap-2 text-sm font-medium">
-                  Read article
-                  <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </div>
-              </div>
-            </m.article>
-          </Link>
+              <p className="flex items-center gap-2.5 text-label uppercase text-mute transition-colors duration-fast group-hover:text-foreground md:col-span-3 md:justify-end md:self-start md:pt-2.5">
+                <span>
+                  {blog.tags?.[0] ? `${blog.tags[0]} / ` : ""}
+                  {blog.readingMinutes ?? 5} min
+                </span>
+                <ArrowMark />
+              </p>
+            </Link>
+          </li>
         ))}
-      </m.div>
+      </ol>
 
       {/* Announced politely so a screen-reader user hears the result of a
         * search or a tag toggle without the focus moving. */}
@@ -166,15 +105,9 @@ export function Blogs({ blogs }: BlogsProps) {
       </p>
 
       {filteredBlogs.length === 0 && (
-        <m.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="text-center mt-8"
-        >
-          <p className="text-muted-foreground">
-            Nothing here matches that. Try a shorter search, or clear the tags.
-          </p>
-        </m.div>
+        <p className="mt-xl text-body text-muted-foreground">
+          Nothing here matches that. Try a shorter search, or clear the tags.
+        </p>
       )}
     </div>
   );

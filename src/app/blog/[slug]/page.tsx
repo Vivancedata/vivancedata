@@ -22,6 +22,7 @@ interface BlogFrontmatter {
   description?: string;
   excerpt?: string;
   date: string;
+  updated?: string;
   image?: string;
   tags?: string[] | string;
 }
@@ -137,6 +138,7 @@ async function getBlogPostData(slug: string, filePath: string) {
     title: frontmatter.title,
     description,
     date: frontmatter.date,
+    updated: frontmatter.updated,
     image,
     tags: Array.isArray(tags) ? tags : typeof tags === 'string' ? [tags] : ["AI", "Technology"]
   };
@@ -151,7 +153,7 @@ async function getBlogPostData(slug: string, filePath: string) {
     "description": meta.description,
     "image": `https://www.vivancedata.com${meta.image}`,
     "datePublished": meta.date,
-    "dateModified": meta.date,
+    "dateModified": meta.updated ?? meta.date,
     "author": {
       "@type": "Organization",
       "name": "VivanceData",

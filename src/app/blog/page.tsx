@@ -1,5 +1,4 @@
 import { Blogs } from '@/components/blog/Blogs';
-import { Container } from '@/components/common/Container';
 import { PageHero } from '@/components/common/PageHero';
 import { Metadata } from 'next';
 import { getAllBlogPosts } from '@/lib/blogPosts';
@@ -41,11 +40,13 @@ export default async function Blog() {
         * "AI Insights Blog" was the generic half. */}
       <PageHero
         title="Notes from the work"
-        description="What happens when a model meets real paperwork, real calls and real crews — including the parts that do not work."
+        description="What happens when a model meets real paperwork, real calls and real crews, including the parts that do not work."
       />
-      <Container>
-        <Blogs blogs={posts} />
-      </Container>
+      <section className="bleed">
+        <div className="container mx-auto px-4">
+          <Blogs blogs={posts} />
+        </div>
+      </section>
     </>
   );
 }

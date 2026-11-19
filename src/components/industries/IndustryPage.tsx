@@ -202,7 +202,7 @@ export function IndustryPage({
           <div className="flex flex-col gap-md self-start sm:flex-row sm:flex-wrap sm:items-center">
             <Link href="/contact" className={`${ctaSecondary} group`}>
               <span>{config.introCtaLabel}</span>
-              <ArrowMark className="transition-transform duration-default group-hover:translate-x-0.5" />
+              <ArrowMark />
             </Link>
             {config.demo ? (
               <DemoLink demo={config.demo} className="whitespace-nowrap" />
@@ -215,7 +215,7 @@ export function IndustryPage({
         <h2 className="mb-xl font-display text-serif-lg">{config.solutionsHeading}</h2>
       </div>
 
-      <div className={`mb-3xl grid grid-cols-1 gap-lg md:grid-cols-2 ${
+      <div data-rows className={`mb-3xl grid grid-cols-1 gap-lg md:grid-cols-2 ${
           isSplitGrid ? "lg:grid-cols-3" : ""
         }`}>
         {primarySolutions.map((solution) => (
@@ -230,7 +230,7 @@ export function IndustryPage({
       </div>
 
       {secondarySolutions.length > 0 && (
-        <div className="mb-3xl grid grid-cols-1 gap-lg md:grid-cols-2">
+        <div data-rows className="mb-3xl grid grid-cols-1 gap-lg md:grid-cols-2">
           {secondarySolutions.map((solution) => (
             <SolutionCard
               key={`solution-secondary-${solution.title}`}
@@ -245,7 +245,7 @@ export function IndustryPage({
 
       <div className="mb-3xl border-t border-rule pt-xl">
         <h2 className="mb-xl font-display text-serif-lg">{config.statsHeading}</h2>
-        <div className="grid grid-cols-2 gap-lg md:grid-cols-4">
+        <div data-rows className="grid grid-cols-2 gap-lg md:grid-cols-4">
           {config.stats.map((stat) => (
             <div key={stat.label}>
               <div className="mb-2 font-display text-serif-md text-foreground">{stat.value}</div>
@@ -259,7 +259,7 @@ export function IndustryPage({
         <h2 className="mb-xl font-display text-serif-lg">{config.scenariosHeading}</h2>
       </div>
 
-      <div className="mb-3xl grid grid-cols-1 gap-lg md:grid-cols-3">
+      <div data-rows className="mb-3xl grid grid-cols-1 gap-lg md:grid-cols-3">
         {config.scenarios.map((scenario) => (
           <Scenario
             key={scenario.title}

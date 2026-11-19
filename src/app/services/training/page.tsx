@@ -49,7 +49,7 @@ interface Course {
 const courses: Course[] = [
   {
     title: "AI fundamentals for owners and managers",
-    description: "What these systems do, what they cost to keep running, and how to tell a real use from a good demo. No maths.",
+    description: "What these systems do, what they cost to keep running, and how to tell a real use from a good demo. No math.",
     audience: "Executives, Directors, Managers",
     duration: "1 Day",
     topics: [
@@ -119,7 +119,7 @@ export default function TrainingPage() {
         below, so it cannot drift from what is actually offered.
       */
       <div className="aspect-video rounded-md overflow-hidden border border-border bg-card p-6 md:p-8 flex flex-col">
-            <div className="eyebrow mb-5">Course catalogue</div>
+            <div className="eyebrow mb-5">Course catalog</div>
             <div className="space-y-4 flex-1">
               {courses.map((course) => (
                 <div key={course.title}>

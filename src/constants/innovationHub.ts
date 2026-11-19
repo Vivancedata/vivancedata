@@ -53,7 +53,7 @@ export const emergingTechnologies: EmergingTechnology[] = [
   },
   {
     title: "Neuromorphic Computing",
-    description: "Chips built more like a brain than a processor, aimed at running models on a fraction of the power. Interesting for the day inspection runs on the machine rather than in a data centre. Not yet something to plan around.",
+    description: "Chips built more like a brain than a processor, aimed at running models on a fraction of the power. Interesting for the day inspection runs on the machine rather than in a data center. Not yet something to plan around.",
     iconType: "atom",
     maturity: "Emerging" as const,
     timeframe: "3-5 years"

@@ -219,3 +219,272 @@
     }
   }
 }
+
+/*
+ * Motion: the sheet gets read.
+ *
+ * The gestures above rule the sheet. These are what a reader does to it, and
+ * each one is spent on a thing that is being read:
+ *
+ * - The dot matrix prints in on load, a scan band crosses it every twelve
+ *   seconds, and under a mouse it lights like a flashlight on a dark desk
+ *   (`DotField`).
+ * - A night-log record is swept top to bottom before its fields settle, and
+ *   each verdict mark is drawn rather than shown.
+ * - What follows a page's h1 settles in after it, in order (`.arrive`).
+ * - A ruled row that is a link inks its own hairline on hover (`.rule-link`),
+ *   and every arrow leans the way it points.
+ * - A blog post inks the rule under the nav as it is read (`.reading-rule`).
+ * - Page to page, the old sheet is lifted and the next one registers.
+ *
+ * All of it is transform, opacity, mask or clip, from a visible default, and
+ * none of it runs under `prefers-reduced-motion: reduce`.
+ */
+@keyframes field-print {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+
+/* The band and the dots inside it travel in opposite directions by the same
+ * distance, so the lit dots stay registered on the matrix beneath them. */
+@keyframes dot-scan {
+  from {
+    transform: translateX(-28cqw);
+  }
+  55%,
+  to {
+    transform: translateX(100cqw);
+  }
+}
+
+@keyframes dot-scan-back {
+  from {
+    transform: translateX(28cqw);
+  }
+  55%,
+  to {
+    transform: translateX(-100cqw);
+  }
+}
+
+@keyframes read-sweep {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes mark-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+
+@keyframes sheet-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes sheet-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@keyframes ink {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@view-transition {
+  navigation: auto;
+}
+
+@layer utilities {
+  .dot-field {
+    container-type: size;
+    overflow: hidden;
+  }
+
+  .dot-lamp,
+  .dot-scan > i {
+    background-image: radial-gradient(hsl(var(--foreground) / 0.8) 0.75px, transparent 0.75px);
+    background-size: 12px 12px;
+    background-position: -1px -1px;
+  }
+
+  .dot-lamp {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 500ms;
+    -webkit-mask-image: radial-gradient(11rem circle at var(--mx, 50%) var(--my, 50%), #000, transparent);
+    mask-image: radial-gradient(11rem circle at var(--mx, 50%) var(--my, 50%), #000, transparent);
+  }
+
+  .dot-field[data-lit] .dot-lamp {
+    opacity: 1;
+  }
+
+  .dot-scan {
+    position: absolute;
+    inset-block: 0;
+    left: 0;
+    width: 28cqw;
+    overflow: hidden;
+    border-right: 1px solid hsl(var(--foreground) / 0.16);
+    transform: translateX(-28cqw);
+    -webkit-mask-image: linear-gradient(to right, transparent, #000);
+    mask-image: linear-gradient(to right, transparent, #000);
+  }
+
+  .dot-scan > i {
+    position: absolute;
+    inset-block: 0;
+    left: 0;
+    width: 100cqw;
+    transform: translateX(28cqw);
+  }
+
+  .settle {
+    animation-delay: var(--d, 0ms);
+  }
+
+  .read {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .arrow-mark {
+    transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  :is(a, button):is(:hover, :focus-visible) .arrow-mark {
+    transform: translateX(3px);
+  }
+
+  .rule-link {
+    position: relative;
+  }
+
+  .rule-link::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: -1px;
+    height: 1px;
+    background: hsl(var(--foreground));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .rule-link:is(:hover, :focus-visible)::after {
+    transform: scaleX(1);
+  }
+
+  .reading-rule {
+    position: fixed;
+    inset-inline: 0;
+    top: calc(4rem - 1px);
+    z-index: 50;
+    height: 1px;
+    background: hsl(var(--foreground));
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  @supports (animation-timeline: scroll()) {
+    .reading-rule {
+      animation: ink linear both;
+      animation-timeline: scroll(root block);
+    }
+  }
+
+  @supports (interpolate-size: allow-keywords) {
+    main details {
+      interpolate-size: allow-keywords;
+    }
+
+    main details::details-content {
+      block-size: 0;
+      overflow: clip;
+      transition:
+        block-size 320ms cubic-bezier(0.16, 1, 0.3, 1),
+        content-visibility 320ms allow-discrete;
+    }
+
+    main details[open]::details-content {
+      block-size: auto;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .dot-field {
+      animation: field-print 1400ms cubic-bezier(0.16, 1, 0.3, 1) 200ms both;
+    }
+
+    .dot-field[data-live] .dot-scan {
+      animation: dot-scan 12s cubic-bezier(0.45, 0, 0.2, 1) 1600ms infinite;
+    }
+
+    .dot-field[data-live] .dot-scan > i {
+      animation: dot-scan-back 12s cubic-bezier(0.45, 0, 0.2, 1) 1600ms infinite;
+    }
+
+    .arrive {
+      animation: settle-in 720ms cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-delay: calc(var(--i, 1) * 110ms + 140ms);
+    }
+
+    .read::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      border-bottom: 1px solid hsl(var(--foreground) / 0.4);
+      background: linear-gradient(to bottom, transparent 55%, hsl(var(--foreground) / 0.07));
+      animation: read-sweep 620ms cubic-bezier(0.45, 0, 0.2, 1) both;
+    }
+
+    .settle svg :is(path, circle) {
+      stroke-dasharray: 1;
+      animation: mark-draw 460ms cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-delay: calc(var(--d, 0ms) + 240ms);
+    }
+
+    ::view-transition-old(root) {
+      animation: sheet-out 160ms ease-out both;
+    }
+
+    ::view-transition-new(root) {
+      animation: sheet-in 460ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    ::view-transition-old(site-nav) {
+      display: none;
+    }
+
+    ::view-transition-new(site-nav) {
+      animation: none;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+}

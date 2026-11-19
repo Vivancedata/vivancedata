@@ -33,7 +33,7 @@ export interface DesignExample {
 export const principles: Principle[] = [
   {
     iconType: "users",
-    title: "The judgement stays with your people",
+    title: "The judgment stays with your people",
     description: "A system takes typing off a dispatcher or a project engineer. It does not take the decision off them. Where being wrong is expensive, the step keeps a person in it by design, not as a courtesy."
   },
   {
@@ -136,7 +136,7 @@ export const designExamples: DesignExample[] = [
   },
   {
     title: "Logistics: Monitoring Loads Without Monitoring Drivers",
-    challenge: "A carrier wants late and off-plan loads surfaced early, and the same telematics data would also support scoring individual drivers on behaviour they were never told was being measured.",
+    challenge: "A carrier wants late and off-plan loads surfaced early, and the same telematics data would also support scoring individual drivers on behavior they were never told was being measured.",
     approach: "Scope the data to the load rather than the person, agree in advance what the signals may and may not be used for, tell drivers what is collected, and keep an access trail on the underlying records.",
     outcome: "The design goal is exception visibility for dispatch that does not quietly become a performance surveillance system."
   }

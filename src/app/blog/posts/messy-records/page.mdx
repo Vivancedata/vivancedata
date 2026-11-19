@@ -1,0 +1,100 @@
+---
+title: "Your records are a mess. Four things have to be true anyway"
+description: "Tidy records aren't the requirement. Here are the four things your job files, slips, and notes need before any of this works, and the kind of mess that will bite you."
+date: "2025-01-29"
+updated: "2026-11-18"
+tags: ["Paperwork", "Getting started"]
+image: "/images/banner.png"
+---
+
+Ask someone who runs a trade business about their records and the first thing you get is an apology.
+
+It's usually deserved. Job numbers written four ways. Delivery slips that are photos of delivery slips. A customer who is Smith Builders in accounting, Smith Builders LLC on the invoices, and "Dave" in the dispatch notes. Field notes on the back of a card in somebody's truck. A shared drive with folders named `2019 final` and `2019 final USE THIS`.
+
+None of that rules you out. "We need to clean up the data first" is how these projects die before they start, so I want to be specific about what matters. Four things have to be true. The rest is mess you can live with.
+
+## The four things
+
+It has to exist somewhere. Written, photographed, recorded, typed. The form barely matters. What can't be worked with is information that only ever lived in someone's head: why the delivery was short, why that job ran two days over. Nothing can learn from what nobody recorded.
+
+You have to be able to get it out. This blocks more projects than mess does. If your dispatch system has no export and no way in except the screen, that's a wall. Same if your supplier's portal shows you the slips but won't give you the files. Messy records in a folder beat neat ones in a locked box.
+
+The same thing has to be findable under its different names. It doesn't need to be standardized. Three spellings of Smith Builders is fine as long as somebody can tell me they're one company, and somebody always can, because they've worked with Dave for nine years.
+
+The hard cases have to be in there. People get this one backwards. The instinct is to send the clean examples. I want the ugly ones: the slip photographed at an angle in the cab, the handwritten note where the job number has a character that could be a 1 or an l, the PDF that's a photo of a fax. The clean ones were never the problem.
+
+## Find out what you have
+
+Before deciding anything, spend an afternoon listing where the material lives. It's always in more places than you'd guess.
+
+The job management system. The accounting package. A shared drive of spreadsheets, each one somebody's private system. The estimator's email, where the submittals really live. The scanner that emails PDFs to an address nobody reads. Photos on four phones. The group text, which counts, and is often where exceptions get reported. A filing cabinet. A box in the truck.
+
+Then pick the pile the job depends on, take one week of it, and write down what's there:
+
+```
+Delivery slips, week of <date>
+
+- Slips received:             <count>
+- Arrived as: PDF / photo / paper / portal   <count of each>
+- Legible without squinting:  <count>
+- Carry a readable PO number: <count>
+- Carry a readable date:      <count>
+- Line items match the order: <count checked, count matching>
+- Where the copy ends up:     <inbox / drive folder / cabinet>
+```
+
+That page tells you more than any conversation about data quality. If four in five slips arrive as photos and a third have a thumb over the corner, you want to know that before anyone builds anything.
+
+## Which mess matters
+
+Cosmetic mess: inconsistent formatting, dates in different orders, stray spaces, four abbreviations for "quantity." These get fixed once, mechanically.
+
+Units that silently disagree are a real problem. Cases versus each. Pallets versus cartons. Hours versus days. If half your records say 12 and mean 12 units and the other half mean 12 cases, nothing downstream can tell, and in six months neither can you.
+
+Duplicates are a real problem. The same job entered twice by two people who each thought the other hadn't. Anything that counts your records will think that job happens twice as often as it does.
+
+The worst is a gap with a pattern. A field that's empty half the time at random is survivable. A field that's empty except on warranty jobs, because that's the only time anyone is made to fill it in, will mislead anything that reads it. The complete records are all warranty jobs, and warranty jobs aren't a fair sample of your work.
+
+## Your records show what you handled
+
+This mistake produces a confident, useless system, so it's worth a minute.
+
+Your dispatch records show the jobs you took. They don't show the calls that rang unanswered at 9pm and went to a competitor, because those never became records. Ask a system trained on that history when emergency work comes in, and it will tell you almost none arrives after hours. It learned when you answer the phone and reported that as demand.
+
+The same thing happens in other trades. A stock history that can't tell "nobody ordered it" from "we were out" will teach a forecast to keep you out of the parts you already run out of. An inspection log that only has the defects someone had time to write up describes the quiet shifts.
+
+You can't spot this from the data. It takes someone who knows the work saying "wait, we stopped logging those in March." That's why I'd take an hour with your dispatcher over a week with your database.
+
+## How much is enough
+
+There's no magic record count, and anyone who quotes you one is guessing. What matters is how many examples you have of the rarest thing you care about.
+
+If you want short deliveries flagged, the question is how many short ones you have on file. If that happens about once a month, that's the number the whole project runs on, however many thousand clean slips sit beside it. For after-hours calls, it's how many real emergencies are in there.
+
+Often you don't need more data. You need six months of what you have looked at carefully.
+
+## Don't clean everything first
+
+The instinct is to tidy the records and then automate. A cleanup with nothing attached never finishes, because nothing tells you when to stop.
+
+Go the other way. Run the material as it is and let the failures show you which mess matters. Most of the untidiness won't make any difference, and one specific thing (the units, the missing PO number, the three spellings) will cause most of the errors. Fix that and run it again. That's a week of work with an end.
+
+## Keeping it from sliding back
+
+Whatever you fix drifts back unless something holds it.
+
+Give it one owner. One named person decides how a customer gets spelled.
+
+Fix it at the point of entry. If a driver can photograph a slip with the corner cut off, they will. The fix is a phone that says "I can't read the bottom, take it again" while the driver is still standing there. Anything you correct downstream, you'll be correcting forever.
+
+Watch the change week to week. "Most slips came through readable" means little alone. Next to last week's count, a sharp drop tells you a supplier changed their form or somebody cracked a phone camera.
+
+## The privacy part
+
+If your records include people (addresses, gate codes, recorded voicemails, photos inside someone's house), they carry obligations, and moving them into a system doesn't remove those. At your size it's rarely complicated. Know what's stored, where, and how you'd delete a customer's records if they asked.
+
+## Watch one go through
+
+I built a demo that reads a delivery slip and pulls the numbers off it: [extract a sample delivery slip](https://paperwork.vivancedata.com). The slip is fictional. Watch which fields it commits to and which ones it hedges on. You want that hedging on your real ones.
+
+Then [book a call](/contact) and tell me what shape your records are in. Bring the bad ones.

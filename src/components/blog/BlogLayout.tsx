@@ -1,22 +1,21 @@
 "use client";
 
-import { m } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { formatDate } from "@/lib/formatDate";
-import { Container } from "@/components/common/Container";
-import { Heading } from "@/components/common/Heading";
-import { Paragraph } from "@/components/common/Paragraph";
+import { ArrowMark } from "@/components/common/Marks";
+import { ctaSecondary, wallLabel } from "@/components/common/controls";
 import { Prose } from "@/components/blog/Prose";
-import { BlogCover, isDefaultBlogImage } from "@/components/blog/BlogCover";
 import { RelatedPosts } from "@/components/blog/RelatedPosts";
-import { ReadingProgress } from "@/components/blog/ReadingProgress";
-import { ArrowLeft, Share2, Calendar, Tag, Play, Pause } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { useState, useEffect, useRef, ReactNode } from "react";
 import { BlogPost } from "@/types/blog";
 
-type BlogMeta = Omit<BlogPost, 'slug' | 'content'>;
+type BlogMeta = Omit<BlogPost, "slug" | "content">;
+
+// Every post points its frontmatter image at the site banner, for link
+// previews. That is not cover art, so the page only shows an image a post
+// actually has.
+const SHARE_BANNER = "/images/banner.png";
 
 interface BlogLayoutProps {
   children: ReactNode;
@@ -36,31 +35,45 @@ export function BlogLayout({
   currentSlug,
 }: BlogLayoutProps) {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [shareNote, setShareNote] = useState("");
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Cleanup speech synthesis on unmount
-    return () => {
-      if (typeof window !== "undefined" && window.speechSynthesis) {
-        window.speechSynthesis.cancel();
-      }
-    };
+    return () => window.speechSynthesis?.cancel();
   }, []);
 
   const handlePlay = () => {
     if (!contentRef.current) return;
 
-    if (!isPlaying) {
-      // Create a new utterance each time to avoid mutation issues
-      const newUtterance = new SpeechSynthesisUtterance();
-      newUtterance.rate = 0.9;
-      newUtterance.text = contentRef.current.textContent || "";
-      newUtterance.onend = () => setIsPlaying(false);
-      window.speechSynthesis.speak(newUtterance);
-      setIsPlaying(true);
-    } else {
+    if (isPlaying) {
       window.speechSynthesis.cancel();
       setIsPlaying(false);
+      return;
+    }
+
+    const utterance = new SpeechSynthesisUtterance(contentRef.current.textContent || "");
+    utterance.rate = 0.9;
+    utterance.onend = () => setIsPlaying(false);
+    window.speechSynthesis.speak(utterance);
+    setIsPlaying(true);
+  };
+
+  const handleShare = async () => {
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: meta.title,
+          text: meta.description,
+          url: window.location.href,
+        });
+        return;
+      }
+      await navigator.clipboard.writeText(window.location.href);
+      setShareNote("Link copied");
+    } catch (error) {
+      // Dismissing the share sheet rejects with AbortError; that is not a failure.
+      if (error instanceof DOMException && error.name === "AbortError") return;
+      setShareNote("Could not copy. The address bar has the link.");
     }
   };
 
@@ -68,146 +81,89 @@ export function BlogLayout({
     return children;
   }
 
+  const cover = meta.image && meta.image !== SHARE_BANNER ? meta.image : null;
+
   return (
     <>
-      <ReadingProgress />
-      <Container className="mt-16 lg:mt-32">
-      <div className="xl:relative">
-        <div className="mx-auto max-w-2xl">
+      <div className="reading-rule" aria-hidden="true" />
+      <article className="mx-auto max-w-2xl py-3xl md:py-4xl">
+        <header>
           {previousPathname && (
             // A link, not a router.back() button: it has a real destination,
             // so it opens in a new tab and works when the post was the
             // visitor's first page.
             <Link
               href={previousPathname}
-              aria-label="Go back to the blog"
-              className="group mb-8 flex h-10 w-10 items-center justify-center rounded-full bg-card border border-border transition-[border-color,transform] duration-200 hover:scale-105 hover:border-brand/40 active:scale-95"
+              className={`${wallLabel} group mb-lg inline-flex min-h-11 items-center gap-2 transition-colors duration-fast hover:text-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background`}
             >
-              <ArrowLeft className="h-4 w-4 stroke-zinc-500 transition-colors group-hover:stroke-zinc-700 dark:stroke-zinc-500 dark:group-hover:stroke-zinc-400" />
+              <ArrowMark className="rotate-180" />
+              <span>Notes from the work</span>
             </Link>
           )}
-          <article>
-            <header className="flex flex-col">
-              <m.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                <div className="flex items-center gap-4 text-sm">
-                  <div className="flex items-center gap-2">
-                    <Calendar className="h-4 w-4" />
-                    <time dateTime={meta.date} className="text-muted-foreground">
-                      {formatDate(meta.date)}
-                    </time>
-                  </div>
-                  {meta.tags && meta.tags.length > 0 && (
-                    <div className="flex items-center gap-2">
-                      <Tag className="h-4 w-4" />
-                      <div className="flex gap-2">
-                        {meta.tags.map((tag) => (
-                          <span key={tag} className="text-muted-foreground">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-                <Heading className="mt-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-                  {meta.title}
-                </Heading>
-                <Paragraph className="mt-4 text-sm leading-8 text-muted-foreground">
-                  {meta.description}
-                </Paragraph>
-              </m.div>
-              <m.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="mt-8 aspect-video relative overflow-hidden rounded-md border border-rule bg-muted"
-              >
-                {isDefaultBlogImage(meta.image) ? (
-                  // meta has no slug; the title seeds the same deterministic cover.
-                  <BlogCover slug={meta.title} />
-                ) : (
-                  <Image
-                    src={meta.image}
-                    alt={`Featured image for ${meta.title}`}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 800px"
-                    className="object-cover"
-                    priority
-                  />
-                )}
-              </m.div>
-            </header>
-            <m.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="mt-8"
-            >
-              <div className="flex justify-between items-center mb-8">
-                <Button
-                  onClick={handlePlay}
-                  variant="outline"
-                  className="flex items-center gap-2"
-                >
-                  {isPlaying ? (
-                    <>
-                      <Pause className="h-4 w-4" /> Pause
-                    </>
-                  ) : (
-                    <>
-                      <Play className="h-4 w-4" /> Listen
-                    </>
-                  )}
-                </Button>
-                <Button
-                  onClick={() => {
-                    if (navigator.share) {
-                      navigator.share({
-                        title: meta.title,
-                        text: meta.description,
-                        url: window.location.href,
-                      }).catch(error => {
-                        console.error('Error sharing:', error);
-                      });
-                    } else {
-                      // Fallback for browsers that don't support the Web Share API
-                      navigator.clipboard.writeText(window.location.href)
-                        .then(() => {
-                          alert('Link copied to the clipboard');
-                        })
-                        .catch(error => {
-                          console.error('Error copying to clipboard:', error);
-                        });
-                    }
-                  }}
-                  variant="outline"
-                  className="flex items-center gap-2"
-                  aria-label="Share this article"
-                >
-                  <Share2 className="h-4 w-4" /> Share
-                </Button>
-              </div>
-              <Prose>
-                <div ref={contentRef}>{children}</div>
-              </Prose>
-            </m.div>
-            {relatedPosts && relatedPosts.length > 0 && (
-              <m.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-              >
-                <RelatedPosts posts={relatedPosts} currentSlug={currentSlug} />
-              </m.div>
+
+          <h1 className="font-display text-serif-lg text-foreground">{meta.title}</h1>
+          <p className="arrive mt-lg text-body-lg text-muted-foreground">{meta.description}</p>
+
+          <p
+            className="arrive mt-lg font-mono text-data text-mute"
+            style={{ "--i": 2 } as CSSProperties}
+          >
+            <time dateTime={meta.date}>{formatDate(meta.date)}</time>
+            {meta.updated && (
+              <>
+                <span className="px-2 text-faint" aria-hidden="true">
+                  /
+                </span>
+                Updated <time dateTime={meta.updated}>{formatDate(meta.updated)}</time>
+              </>
             )}
-          </article>
-        </div>
-      </div>
-    </Container>
+            {meta.tags?.map((tag) => (
+              <span key={tag}>
+                <span className="px-2 text-faint" aria-hidden="true">
+                  /
+                </span>
+                {tag}
+              </span>
+            ))}
+          </p>
+
+          <div
+            className="arrive mt-xl flex flex-wrap items-center gap-2 border-t border-rule pt-lg"
+            style={{ "--i": 3 } as CSSProperties}
+          >
+            <button type="button" onClick={handlePlay} aria-pressed={isPlaying} className={ctaSecondary}>
+              {isPlaying ? "Stop" : "Listen"}
+            </button>
+            <button type="button" onClick={handleShare} className={ctaSecondary}>
+              Share
+            </button>
+            <p className="pl-2 text-body-sm text-muted-foreground" role="status" aria-live="polite">
+              {shareNote}
+            </p>
+          </div>
+
+          {cover && (
+            <div className="relative mt-xl aspect-video overflow-hidden border border-rule">
+              <Image
+                src={cover}
+                alt=""
+                fill
+                sizes="(max-width: 768px) 100vw, 672px"
+                className="object-cover"
+                priority
+              />
+            </div>
+          )}
+        </header>
+
+        <Prose className="mt-2xl">
+          <div ref={contentRef}>{children}</div>
+        </Prose>
+
+        {relatedPosts && relatedPosts.length > 0 && (
+          <RelatedPosts posts={relatedPosts} currentSlug={currentSlug} />
+        )}
+      </article>
     </>
   );
 }

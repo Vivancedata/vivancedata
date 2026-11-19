@@ -25,7 +25,7 @@ const config: IndustryPageConfig = {
 
 I build workflows that read the documents your projects already generate, check them against your own rules, and hand a superintendent or estimator something to review rather than something to type.
 
-Nothing here replaces the judgement of the person signing off. The work is drafted, the exceptions are surfaced, and a human decides what goes into the record.`,
+Nothing here replaces the judgment of the person signing off. The work is drafted, the exceptions are surfaced, and a human decides what goes into the record.`,
   introCtaLabel: "Book a call",
   demo: demos.paperwork,
   solutionsHeading: "What I build for construction sites",
@@ -60,7 +60,7 @@ Nothing here replaces the judgement of the person signing off. The work is draft
         "Faster turnaround on invitations to bid",
         "Historical pricing surfaced with its source",
         "Fewer missed scope items",
-        "Estimator judgement stays in the loop",
+        "Estimator judgment stays in the loop",
       ],
     },
     {

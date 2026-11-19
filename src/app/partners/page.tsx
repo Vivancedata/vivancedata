@@ -150,7 +150,7 @@ export default function PartnersPage() {
                     className="group flex min-h-16 items-center justify-between gap-md py-lg text-body text-foreground transition-colors duration-fast hover:text-brand focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                   >
                     <span>{demo.label}</span>
-                    <ArrowMark className="transition-transform duration-default group-hover:translate-x-0.5" />
+                    <ArrowMark />
                   </a>
                 </li>
               ))}

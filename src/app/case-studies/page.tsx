@@ -259,7 +259,7 @@ export default function CaseStudiesPage() {
       </div>
       
       <div className="mt-24 border-t border-rule pt-2xl">
-        <h2 className="mb-4 font-display text-serif-lg">Recognise one of these?</h2>
+        <h2 className="mb-4 font-display text-serif-lg">Recognize one of these?</h2>
         <p className="mb-8 max-w-[62ch] text-body-lg">
           If one of them looks like your week, tell me which. I will tell you what it would take,
           or that it is not worth doing yet.
