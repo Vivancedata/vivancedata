@@ -45,9 +45,6 @@ export function SiteFooter() {
               href="/"
               className="inline-flex min-h-11 items-center gap-2.5 rounded-sm focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
             >
-              {/* The SVG mark, not the PNG. `Logo.png` is dark ink on
-                * transparent and disappeared completely on this sheet — the
-                * footer shipped with a 28px hole where the logo should be. */}
               <Icons.logo className="h-7 w-7" />
               <span translate="no" className="font-display text-[1.375rem] leading-none text-foreground">
                 {siteConfig.name}
