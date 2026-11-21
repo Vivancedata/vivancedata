@@ -28,6 +28,9 @@ export default defineConfig({
         command:
           "npm run build && npx next start --hostname 127.0.0.1 --port 4317",
         url: baseURL,
+        // The e2e suite submits real forms. A dry run lets them take the
+        // success path without mailing the team inbox from every CI run.
+        env: { EMAIL_DRY_RUN: "1" },
         reuseExistingServer: false,
         timeout: 240000,
       },
