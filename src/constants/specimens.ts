@@ -48,25 +48,25 @@ const SPECIMEN_DIR = "images/specimens";
 export const specimens: Readonly<Record<string, Specimen>> = {
   construction: {
     src: `${SPECIMEN_DIR}/construction.jpg`,
-    label: "Sample — submittal transmittal",
+    label: "Sample: submittal transmittal",
     caption:
       "A submittal transmittal as it arrives: a subcontractor's letterhead, spec section 03 21 00, a revision stamp, and a date somebody has to key into the project system by hand.",
   },
   "hvac-trades": {
     src: `${SPECIMEN_DIR}/hvac-trades.jpg`,
-    label: "Sample — after-hours message",
+    label: "Sample: after-hours message",
     caption:
       "A message pad beside the phone at 22:41. No heat, a number half-written, and the road name spelled two different ways on the same page.",
   },
   logistics: {
     src: `${SPECIMEN_DIR}/logistics.jpg`,
-    label: "Sample — delivery slip",
+    label: "Sample: delivery slip",
     caption:
       "A delivery slip after a day in a cab: docket DR-88301, sixteen bundles, gross 24,910 against tare 12,430, and a signature nobody is going to read back.",
   },
   manufacturing: {
     src: `${SPECIMEN_DIR}/manufacturing.jpg`,
-    label: "Sample — QC check sheet",
+    label: "Sample: QC check sheet",
     caption:
       "A shift's QC check sheet on a clipboard: a column of tallies, two corrections, and one box the operator left empty.",
   },

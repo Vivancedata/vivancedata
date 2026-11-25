@@ -6,11 +6,11 @@ import { demos } from "@/constants/demos";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/industries/hvac-trades" },
-  title: "Answer the calls you are missing after hours - VivanceData",
+  title: "Answer the calls you're missing after hours - VivanceData",
   description: "Answer the after-hours calls that go to voicemail, triage the emergencies, and get quotes and follow-ups out while the job is still fresh.",
   keywords: ["HVAC AI", "trades AI", "after-hours call answering", "dispatch software", "service scheduling", "field service automation"],
   openGraph: {
-    title: "Answer the calls you are missing after hours - VivanceData",
+    title: "Answer the calls you're missing after hours - VivanceData",
     description: "Call capture, dispatch support, quoting and follow-up for HVAC, plumbing, electrical and other service trades.",
     type: "website",
     url: "https://www.vivancedata.com/industries/hvac-trades",
@@ -21,9 +21,9 @@ const config: IndustryPageConfig = {
   eyebrow: "HVAC & Trades",
   title: "Answer the calls you're missing after hours",
   introHeading: "The job is won or lost on the phone",
-  introBody: `An after-hours call that goes to voicemail is a booked job lost to whoever answers next, and the office cannot staff every hour a boiler fails.
+  introBody: `An after-hours call that goes to voicemail is a booked job lost to whoever answers next, and the office can't staff every hour a boiler fails.
 
-I build call handling, dispatch and follow-up around the way a service business actually runs — the phone first, the schedule second, and the paperwork last.
+I build call handling, dispatch and follow-up around the way a service business actually runs: the phone first, the schedule second, the paperwork last.
 
 A real emergency still reaches a person. What changes is that routine work gets booked instead of sitting in a voicemail box until morning.`,
   introCtaLabel: "Book a call",
@@ -60,7 +60,7 @@ A real emergency still reaches a person. What changes is that routine work gets 
         "Quotes out same day",
         "Prior work at the address surfaced",
         "Pricing pulled from current supplier data",
-        "Technician adjusts before it is sent",
+        "Technician adjusts before it's sent",
       ],
     },
     {
@@ -78,7 +78,7 @@ A real emergency still reaches a person. What changes is that routine work gets 
   statsHeading: "Where it earns its keep in the trades",
   stats: [
     { value: "Phone-first", label: "Built around the call, not a web form" },
-    { value: "After hours", label: "Covers the times the office cannot" },
+    { value: "After hours", label: "Covers the times the office can't" },
     { value: "Van and skill aware", label: "Dispatch that knows who carries what" },
     { value: "Escalation", label: "Real emergencies reach a human fast" },
   ],
@@ -93,15 +93,15 @@ A real emergency still reaches a person. What changes is that routine work gets 
         "Overnight calls answered rather than queued",
         "Job details arrive in one consistent format",
         "On-call technician paged only for genuine emergencies",
-        "Every call logged, including the ones that did not convert",
+        "Every call logged, including the ones that didn't convert",
       ],
     },
     {
       title: "Dispatch board support",
-      challenge: "The dispatcher rebuilds the day by hand every time a job overruns, and technicians get sent to work they do not carry the parts for.",
+      challenge: "The dispatcher rebuilds the day by hand every time a job overruns, and technicians get sent to work they don't carry the parts for.",
       solution: "A schedule is proposed from technician skills, van stock and travel time, and re-proposed when a job overruns. The dispatcher accepts, edits or ignores each suggestion.",
       results: [
-        "Fewer trips to jobs the van was not stocked for",
+        "Fewer trips to jobs the van wasn't stocked for",
         "Reschedules proposed instead of rebuilt from scratch",
         "Skill matching applied before the assignment",
         "Dispatcher keeps the final call on every move",
@@ -133,7 +133,7 @@ A real emergency still reaches a person. What changes is that routine work gets 
     },
     {
       title: "Intake and escalation design",
-      description: "The intake script, the urgency rules and the escalation path get written down first, so it is settled in advance which calls book themselves and which reach a person immediately.",
+      description: "The intake script, the urgency rules and the escalation path get written down first, so it's settled in advance which calls book themselves and which reach a person immediately.",
       checks: [
         "Intake script and required fields defined",
         "Urgency rules and escalation thresholds set",
@@ -143,7 +143,7 @@ A real emergency still reaches a person. What changes is that routine work gets 
     },
     {
       title: "Live pilot alongside the office",
-      description: "The workflow runs on one slice: a single shift, a single branch, or just the out-of-hours window. The office keeps its current process and the two get compared. Typical pilot scope is 3-6 weeks.",
+      description: "The workflow runs on one slice: a single shift, a single branch, or just the out-of-hours window. The office keeps its current process and the two get compared. Typical pilot scope is 3 to 6 weeks.",
       checks: [
         "Run on a defined shift or the out-of-hours window",
         "Captured jobs compared against office handling",
@@ -163,7 +163,7 @@ A real emergency still reaches a person. What changes is that routine work gets 
     },
   ],
   finalCtaHeading: "Losing jobs to voicemail?",
-  finalCtaBody: "Tell me what happens to your calls after hours today, and I will tell you what it would take to have them answered, triaged and booked.",
+  finalCtaBody: "Tell me what happens to your calls after hours today, and I'll tell you what it would take to have them answered, triaged and booked.",
   finalCtaLabel: "Book a call",
 };
 

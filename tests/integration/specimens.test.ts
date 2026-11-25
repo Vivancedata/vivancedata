@@ -46,7 +46,7 @@ describe("specimenFor", () => {
     const specimen = specimenFor("logistics");
     expect(specimen).not.toBeNull();
     expect(specimen?.src).toBe("images/specimens/logistics.jpg");
-    expect(specimen?.label).toBe("Sample — delivery slip");
+    expect(specimen?.label).toBe("Sample: delivery slip");
   });
 
   it("resolves each trade to its own photograph and never another's", () => {

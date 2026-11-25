@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/partners" },
   title: "For people who already serve trades - VivanceData",
   description:
-    "Your customers are asking about AI and you do not want to own a model you did not train. I build the workflow, you keep the relationship.",
+    "Your customers are asking about AI and you don't want to own a model you didn't train. I build the workflow, you keep the relationship.",
   keywords: [
     "field service software partner",
     "AI implementation partner trades",
@@ -55,7 +55,7 @@ export default function PartnersPage() {
             I build the workflow. You keep the <em className="italic">relationship</em>.
           </>
         }
-        description="Your customers are asking you about AI. Building it yourself means owning a model you did not train and a failure mode you cannot explain at 9pm. This is the other option."
+        description="Your customers are asking you about AI. Building it yourself means owning a model you didn't train and a failure mode you can't explain at 9pm. This is the other option."
       />
 
       <section className="container mx-auto px-4 py-3xl md:py-4xl" aria-labelledby="who-heading">
@@ -64,9 +64,9 @@ export default function PartnersPage() {
             Who this is for
           </h2>
           <p className="mt-lg text-body-lg text-muted-foreground">
-            An owner-operator does not find a consultant by reading a website.
-            They get a name from someone they already pay. That is you, and it is
-            the part I cannot do myself.
+            An owner-operator doesn&apos;t find a consultant by reading a website.
+            They get a name from someone they already pay. That&apos;s you, and it&apos;s
+            the part I can&apos;t do myself.
           </p>
         </div>
 
@@ -94,13 +94,13 @@ export default function PartnersPage() {
         <div className="container mx-auto px-4 py-3xl md:py-4xl">
           <div className="max-w-[46ch]">
             <h2 id="commitments-heading" className="font-display text-serif-lg text-foreground">
-              What I will and will not do
+              What I will and won&apos;t do
             </h2>
             <p className="mt-lg text-body-lg text-muted-foreground">
               The second half of this list matters more than the first. Your
-              question is not whether the work is any good — it is what happens
-              to your customer, and what lands on your desk when something goes
-              wrong.
+              real question isn&apos;t whether the work is any good. It&apos;s what
+              happens to your customer, and what lands on your desk when
+              something goes wrong.
             </p>
           </div>
 
@@ -133,7 +133,7 @@ export default function PartnersPage() {
                 Check it before you put your name on it
               </h2>
               <p className="mt-lg max-w-[46ch] text-body-lg text-muted-foreground">
-                You are being asked to introduce me to someone who trusts you,
+                You&apos;re being asked to introduce me to someone who trusts you,
                 so you should be able to see the work first without talking to
                 anyone. Three systems are deployed and running on sample data.
                 Open them.

@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   alternates: { canonical: '/methodology' },
   title: 'How an Engagement Runs | VivanceData',
   description:
-    'The six phases an engagement runs through, from deciding whether a workflow is worth automating at all to keeping it working once it is live.',
+    "The six phases an engagement runs through, from deciding whether a workflow is worth automating at all to keeping it working once it's live.",
 };
 
 
@@ -216,11 +216,11 @@ function BenefitsSection() {
             The reasoning
           </div>
           <Heading as="h2" className="mb-4 font-display text-serif-lg">
-            Why it is shaped this way
+            Why it&apos;s shaped this way
           </Heading>
           <Paragraph className="max-w-[62ch] text-body-lg">
-            Each phase exists to make the next decision cheaper to reverse. The
-            order is the argument: nothing is built before it has been tried on
+            Each phase exists to make the next decision cheaper to reverse. That&apos;s
+            why the order matters: nothing is built before it has been tried on
             your own documents, and nothing carries weight before it has run
             beside the process it replaces.
           </Paragraph>
@@ -281,12 +281,12 @@ function MethodologyCtaSection() {
     <section className="w-full py-20 md:py-28 bg-primary text-primary-foreground">
       <Container className="max-w-4xl">
         <h2 className="mb-6 font-display text-serif-lg">
-          Want to know if it is worth automating?
+          Want to know if it&apos;s worth automating?
         </h2>
         <p className="text-xl text-primary-foreground/80 mb-10 max-w-2xl mx-auto">
-          Tell me which job goes wrong and how often. I will walk you through
+          Tell me which job goes wrong and how often. I&apos;ll walk you through
           what the first phase would look like on your own documents, and say
-          plainly if it is not worth doing yet.
+          plainly if it isn&apos;t worth doing yet.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button

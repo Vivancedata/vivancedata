@@ -136,7 +136,7 @@ export async function POST(request: NextRequest) {
 
     if (!rateLimit.success) {
       return NextResponse.json(
-        { error: 'That is more sign-ups than this form accepts in a short window. Wait a minute and try again.' },
+        { error: 'That\'s more sign-ups than this form accepts in a short window. Wait a minute and try again.' },
         { status: 429, headers: rateLimitHeaders }
       );
     }
@@ -145,7 +145,7 @@ export async function POST(request: NextRequest) {
 
     if (!parsed.success) {
       return NextResponse.json(
-        { error: 'That email address does not look right.' },
+        { error: 'That email address doesn\'t look right.' },
         { status: 400, headers: rateLimitHeaders }
       );
     }
@@ -161,7 +161,7 @@ export async function POST(request: NextRequest) {
       if (result.success) {
         return NextResponse.json({
           success: true,
-          message: 'Subscribed. You will hear from me when there is something worth sending.',
+          message: 'Subscribed. You\'ll hear from me when there\'s something worth sending.',
           provider: 'convertkit',
         }, { headers: rateLimitHeaders });
       }
@@ -180,7 +180,7 @@ export async function POST(request: NextRequest) {
       if (result.success) {
         return NextResponse.json({
           success: true,
-          message: 'Subscribed. You will hear from me when there is something worth sending.',
+          message: 'Subscribed. You\'ll hear from me when there\'s something worth sending.',
           provider: 'mailchimp',
         }, { headers: rateLimitHeaders });
       }
@@ -195,7 +195,7 @@ export async function POST(request: NextRequest) {
       console.warn(`Newsletter dry run: not subscribing ${email}`);
       return NextResponse.json({
         success: true,
-        message: 'Subscribed. You will hear from me when there is something worth sending.',
+        message: 'Subscribed. You\'ll hear from me when there\'s something worth sending.',
         provider: 'dry-run',
       }, { headers: rateLimitHeaders });
     }
@@ -204,13 +204,13 @@ export async function POST(request: NextRequest) {
     // subscription that did not happen is the same lie the contact form used
     // to tell, and NODE_ENV is not consent.
     return NextResponse.json(
-      { error: 'Newsletter service not configured, so nothing was signed up. Write to lorenzo@vivancedata.com and I will add you by hand.' },
+      { error: 'Newsletter service not configured, so nothing was signed up. Write to lorenzo@vivancedata.com and I\'ll add you by hand.' },
       { status: 503, headers: rateLimitHeaders }
     );
   } catch (error) {
     console.error('Newsletter subscription error:', error);
     return NextResponse.json(
-      { error: 'The sign-up did not go through. Try again in a moment, or write to lorenzo@vivancedata.com and I will add you.' },
+      { error: 'The sign-up didn\'t go through. Try again in a moment, or write to lorenzo@vivancedata.com and I\'ll add you.' },
       { status: 500 }
     );
   }

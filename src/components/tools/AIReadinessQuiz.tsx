@@ -197,7 +197,7 @@ function QuizResultsPanel({
             <ReportGate
               tool="ai-readiness"
               title="See what to fix first"
-              description="Your score is above. Enter your email to reveal what to fix in your weakest areas, and I will send you the full assessment to keep."
+              description="Your score is above. Enter your email to see what to fix in your weakest areas. I'll also send you the full assessment to keep."
               summary={buildAssessmentSummary(results, readinessLevel)}
               recommendations={recommendations}
             >
@@ -207,7 +207,7 @@ function QuizResultsPanel({
             <div className="mt-8 p-6 bg-primary text-primary-foreground rounded-xl">
               <h3 className="text-heading-3 mb-3">The score is only as good as the answers</h3>
               <p className="mb-4">
-                It comes from what you told me, not from a look at your systems. Book a call and I will go
+                It comes from what you told me, not from a look at your systems. Book a call and I&apos;ll go
                 through the weak spots with you and say which one is worth fixing first.
               </p>
               <div className="flex gap-4">

@@ -66,7 +66,7 @@ const formSchema = z.object({
   // bump behaviour-neutral; making the field genuinely required would be a
   // product change, not a dependency one.
   serviceInterest: z.string({
-    error: "Pick the work that is closest to what you need.",
+    error: "Pick the work that's closest to what you need.",
   }),
   message: z.string().min(10, {
     message: "Message must be at least 10 characters.",
@@ -143,9 +143,9 @@ export function ProfileForm() {
       // all of that away in favour of one generic line. A visitor whose message
       // could not be delivered is exactly the person who needs the address.
       const fromApi = error instanceof Error ? error.message.trim() : '';
-      toast.error('Your message did not send.', {
+      toast.error("Your message didn't send.", {
         description: fromApi ||
-          'Nothing reached me, so please try again. If it fails twice, email me at lorenzo@vivancedata.com and I will pick it up there.'
+          "Nothing reached me, so please try again. If it fails twice, email me at lorenzo@vivancedata.com and I'll pick it up there."
       });
     }
   }
@@ -166,7 +166,7 @@ export function ProfileForm() {
               Message received.
             </h2>
             <p className="text-muted-foreground max-w-md">
-              It is in my inbox. You&apos;ll hear back from me, not an account manager, within one working day.
+              It&apos;s in my inbox. You&apos;ll hear back from me, not an account manager, within one working day.
             </p>
           </div>
         </CardContent>
@@ -178,7 +178,7 @@ export function ProfileForm() {
     <Card className="border border-border">
       <CardHeader className="bg-muted rounded-t-lg">
         <CardTitle as="h2" className="font-display text-serif-sm">Book a call</CardTitle>
-        <CardDescription>Tell me what is going wrong and where to reach you.</CardDescription>
+        <CardDescription>Tell me what&apos;s going wrong and where to reach you.</CardDescription>
       </CardHeader>
       <CardContent className="pt-6">
         <Form {...form}>

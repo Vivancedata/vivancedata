@@ -139,7 +139,7 @@ export default function NightLog() {
             <p className="mt-lg max-w-[46ch] text-body-lg text-muted-foreground">
               Three systems are deployed and running right now on sample data. What
               follows is what they send back. Open any one of them and run the
-              sample yourself — nothing to install, and no one to talk to first.
+              sample yourself. There&apos;s nothing to install, and no one to talk to first.
             </p>
 
             {/* The legend earns its place: it teaches the mark system the
@@ -216,8 +216,8 @@ export default function NightLog() {
 
             <div className="mt-md flex flex-wrap items-center justify-between gap-md">
               <p className="max-w-[42ch] text-caption text-muted-foreground">
-                Invented names, addresses and job numbers, in the same register the
-                demos themselves run on.
+                Invented names, addresses and job numbers, the same kind of sample
+                data the demos themselves run on.
               </p>
               <a
                 href={record.demo.href}

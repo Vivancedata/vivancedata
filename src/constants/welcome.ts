@@ -40,7 +40,7 @@ export const features: Feature[] = [
     icon: "fileText",
     title: "Paperwork typed twice",
     demo: demos.paperwork,
-    description: "Permits, submittals, invoices and delivery slips read once and turned into records, rather than re-keyed by someone who should be on site."
+    description: "Permits, submittals, invoices and delivery slips read once and turned into records, so the person who should be on site isn't re-keying them."
   },
   {
     icon: "camera",

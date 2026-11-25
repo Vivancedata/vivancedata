@@ -7,11 +7,11 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   alternates: { canonical: "/tools/ai-readiness" },
   title: "AI Readiness Assessment - VivanceData",
-  description: "A short set of questions about your records, your systems and your people, and an honest read on whether you are ready to automate anything yet.",
+  description: "A short set of questions about your records, your systems and your people, and an honest read on whether you're ready to automate anything yet.",
   keywords: ["AI readiness assessment", "AI adoption", "AI maturity", "AI strategy", "digital transformation", "AI capabilities"],
   openGraph: {
     title: "AI Readiness Assessment - VivanceData",
-    description: "Questions about your records, your systems and your people, and an honest read on whether you are ready to automate anything yet.",
+    description: "Questions about your records, your systems and your people, and an honest read on whether you're ready to automate anything yet.",
     type: "website",
     url: "https://www.vivancedata.com/tools/ai-readiness",
     images: [
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "AI Readiness Assessment - VivanceData",
-    description: "An honest read on whether you are ready to automate anything yet.",
+    description: "An honest read on whether you're ready to automate anything yet.",
     images: ["https://www.vivancedata.com/images/banner.png"],
   },
 };
@@ -38,9 +38,9 @@ export default function AIReadinessPage() {
         <div className="mb-12">
           <Heading className="mb-4 font-display text-serif-xl">AI Readiness Assessment</Heading>
           <Paragraph className="max-w-3xl mx-auto text-lg">
-            Most operations are not ready for the thing they want to build, and the reason is
+            Most operations aren&apos;t ready for the thing they want to build, and the reason is
             usually the records rather than the technology. This asks about what you keep, what
-            you run it on, who has to use it, and what you are actually trying to fix.
+            you run it on, who has to use it, and what you&apos;re actually trying to fix.
           </Paragraph>
         </div>
 
@@ -75,7 +75,7 @@ export default function AIReadinessPage() {
                 <div className="h-1.5 w-1.5 rounded-full bg-mute"></div>
                 The job itself
               </h3>
-              <p className="text-sm">Whether you can say what the right answer looks like, and how you would know it worked</p>
+              <p className="text-sm">Whether you can say what the right answer looks like, and how you&apos;d know it worked</p>
             </div>
           </div>
         </div>

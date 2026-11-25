@@ -141,7 +141,7 @@ function ROIInputForm({ inputs, onInputChange, onCalculate }: ROIInputFormProps)
           </div>
 
           <div className="[&>*+*]:mt-2 md:col-span-2">
-            <Label htmlFor="useCase">The job you would automate first</Label>
+            <Label htmlFor="useCase">The job you&apos;d automate first</Label>
             <Select value={inputs.useCase} onValueChange={(value) => onInputChange("useCase", value)}>
               <SelectTrigger id="useCase" aria-describedby="usecase-hint">
                 <SelectValue />
@@ -155,7 +155,7 @@ function ROIInputForm({ inputs, onInputChange, onCalculate }: ROIInputFormProps)
                 <SelectItem value="recommendation-engine">Suggesting the next job or part</SelectItem>
               </SelectContent>
             </Select>
-            <span id="usecase-hint" className="sr-only">The kind of work you would hand over first</span>
+            <span id="usecase-hint" className="sr-only">The kind of work you&apos;d hand over first</span>
           </div>
         </div>
 
@@ -350,8 +350,8 @@ function ROICallToAction() {
         <CardContent className="p-8 text-center">
           <h3 className="text-heading-2 mb-3">These are estimates, not a quote</h3>
           <p className="mb-6 text-primary-foreground/80">
-            They come from the figures you typed above, not from your books. Tell me which job you would
-            automate first and I will come back with a scope and a fixed price.
+            They come from the figures you typed above, not from your books. Tell me which job you&apos;d
+            automate first and I&apos;ll come back with a scope and a fixed price.
           </p>
           <Button asChild size="lg" variant="secondary">
             <Link href="/contact" aria-label="Book a call to discuss your AI ROI potential">
@@ -388,7 +388,7 @@ function ROIResultsPanel({ results, resultsRef }: ROIResultsPanelProps) {
       <ReportGate
         tool="roi-calculator"
         title="See the full financial breakdown"
-        description="Your headline numbers are above. Enter your email to reveal the year-by-year savings and the cost behind them, and I will send you the same breakdown to keep."
+        description="Your headline numbers are above. Enter your email to see the year-by-year savings and the cost behind them. I'll also send you the same breakdown to keep."
         summary={buildROISummary(results)}
       >
         <FinancialBreakdown results={results} />

@@ -34,11 +34,11 @@ export function Newsletter() {
       setIsSubscribed(true);
       setEmail("");
       toast.success('Subscribed', {
-        description: 'You will hear from me when there is something worth sending.'
+        description: "You'll hear from me when there's something worth sending."
       });
     } catch (error) {
       console.error('Newsletter subscription error:', error);
-      setError("That did not go through. Try again in a minute, or write to lorenzo@vivancedata.com.");
+      setError("That didn't go through. Try again in a minute, or write to lorenzo@vivancedata.com.");
       toast.error('Subscription failed', {
         description: 'Please try again, or write to lorenzo@vivancedata.com.'
       });
@@ -67,10 +67,10 @@ export function Newsletter() {
           <span className="text-label uppercase text-mute">Subscribed</span>
         </p>
         <h3 className="mt-md font-display text-serif-sm text-foreground">
-          Thank you for subscribing
+          Thanks for subscribing
         </h3>
         <p className="mt-2 max-w-[46ch] text-body-sm text-muted-foreground">
-          You will hear from me when there is something worth sending. Not often.
+          You&apos;ll hear from me when there&apos;s something worth sending. Not often.
         </p>
       </div>
     );
@@ -86,7 +86,7 @@ export function Newsletter() {
           Subscribe to the newsletter
         </h3>
         <p className="mt-2 max-w-[42ch] text-body-sm text-muted-foreground">
-          What I am learning about automating this kind of work, when there is
+          What I&apos;m learning about automating this kind of work, when there&apos;s
           something worth sending.
         </p>
       </div>

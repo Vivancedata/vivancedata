@@ -9,7 +9,7 @@ import { Mail, Clock } from 'lucide-react';
 export const metadata: Metadata = {
   alternates: { canonical: "/contact" },
   title: "Book a call - VivanceData",
-  description: "Tell me what is slowing your operation down. You will hear back from me, not an account manager, within one working day.",
+  description: "Tell me what's slowing your operation down. You'll hear back from me, not an account manager, within one working day.",
   keywords: ["contact VivanceData", "book a call", "AI for contractors", "after-hours call answering", "paperwork automation"],
   openGraph: {
     title: "Book a call - VivanceData",
@@ -72,7 +72,7 @@ const ContactPage = () => {
                   <div>
                     <p className="font-medium">Hours</p>
                     <p className="text-muted-foreground">
-                      Mon - Fri: 9:00 AM - 6:00 PM PST
+                      Mon to Fri, 9:00 AM to 6:00 PM PST
                     </p>
                   </div>
                 </div>

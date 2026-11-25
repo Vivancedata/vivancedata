@@ -80,15 +80,15 @@ export const recommendationsFor = (categoryAverages: CategoryAverages): string[]
     recommendations.push("Your infrastructure needs sorting before anything runs on top of it: where the files live, what talks to what, and who can reach them.");
   }
   if (categoryAverages.culture < 3) {
-    recommendations.push("Nobody uses a system they do not trust. Budget time for training on the tools you already own before you buy new ones.");
+    recommendations.push("Nobody uses a system they don't trust. Budget time for training on the tools you already own before you buy new ones.");
   }
   if (categoryAverages.strategy < 3) {
-    recommendations.push("Pick two or three use cases and write down what a good result would be in numbers. Without that you cannot tell a working system from a demo.");
+    recommendations.push("Pick two or three use cases and write down what a good result would be in numbers. Without that you can't tell a working system from a demo.");
   }
 
   if (recommendations.length === 0) {
-    recommendations.push("Nothing in your answers is holding you back, so you are well-positioned to start. Take one workflow and run it beside the way you work now.");
-    recommendations.push("Scale what is already working before you add anything new to it.");
+    recommendations.push("Nothing in your answers is holding you back, so you're well-positioned to start. Take one workflow and run it beside the way you work now.");
+    recommendations.push("Scale what's already working before you add anything new to it.");
   }
 
   return recommendations;

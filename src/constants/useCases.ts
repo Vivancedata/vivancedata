@@ -60,7 +60,7 @@ export const useCases: UseCase[] = [
     keyBenefits: [
       "Re-keying replaced by review",
       "Consistent capture across subcontractors",
-      "Exceptions surfaced instead of buried",
+      "Exceptions flagged for someone to check",
     ],
   },
   {
@@ -91,7 +91,7 @@ export const useCases: UseCase[] = [
     implementationTime: "6-10 weeks",
     keyBenefits: [
       "Faster turnaround on invitations to bid",
-      "Historical pricing surfaced with its source",
+      "Past prices shown with their source",
       "Estimator judgment stays in the loop",
     ],
   },
@@ -147,7 +147,7 @@ export const useCases: UseCase[] = [
     id: "quote-drafting",
     title: "Quoting From Service History",
     description:
-      "Draft a quote from the technician's job notes, prior work at that address and current supplier pricing, ready for the technician to adjust before it is sent.",
+      "Draft a quote from the technician's job notes, prior work at that address and current supplier pricing, ready for the technician to adjust before it's sent.",
     industry: "HVAC & Trades",
     function: "Finance",
     technologies: ["Large Language Models", "Pricing Data Integration", "Service History Search"],
@@ -155,7 +155,7 @@ export const useCases: UseCase[] = [
     implementationTime: "6-10 weeks",
     keyBenefits: [
       "Quotes drafted the same day as the visit",
-      "Prior work at the address surfaced",
+      "Prior work at the address pulled up",
       "Technician adjusts before it goes out",
     ],
   },
@@ -179,7 +179,7 @@ export const useCases: UseCase[] = [
     id: "pod-processing",
     title: "Proof of Delivery and BOL Processing",
     description:
-      "Read the photographed paperwork drivers already submit, extract the fields, match the document to its load, and push it into billing — holding back anything too illegible to read.",
+      "Read the photographed paperwork drivers already submit, extract the fields, match the document to its load, and push it into billing. Anything too illegible to read is held back.",
     industry: "Logistics & Fleet",
     function: "Operations",
     technologies: ["Optical Character Recognition", "Document Intelligence", "Billing Integration"],
@@ -202,7 +202,7 @@ export const useCases: UseCase[] = [
     complexity: "High",
     implementationTime: "8-14 weeks",
     keyBenefits: [
-      "Problem loads surfaced early",
+      "Problem loads spotted early",
       "Ranked by customer impact",
       "Fewer surprises on the customer call",
     ],
@@ -259,7 +259,7 @@ export const useCases: UseCase[] = [
     id: "quality-inspection",
     title: "Visual Quality Inspection",
     description:
-      "Inspect products on the line with computer vision and statistical process control, flagging out-of-spec output at the point it is produced rather than at final QC.",
+      "Inspect products on the line with computer vision and statistical process control, flagging out-of-spec output where it's produced instead of at final QC.",
     industry: "Manufacturing",
     function: "Operations",
     technologies: ["Computer Vision", "Statistical Process Control", "Edge Computing"],

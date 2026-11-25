@@ -85,7 +85,7 @@ export default function IndustriesPage() {
       <div className="mb-16">
         <Heading className="mb-4 font-display text-serif-xl">The four trades I work in</Heading>
         <Paragraph className="max-w-[62ch] text-body-lg">
-          Blue-collar and local service businesses — construction, HVAC and the trades,
+          Blue-collar and local service businesses: construction, HVAC and the trades,
           logistics and fleet operations, and manufacturing. Nothing else, on purpose.
         </Paragraph>
       </div>
@@ -153,7 +153,7 @@ export default function IndustriesPage() {
       <div className="border-t border-rule pt-2xl">
         <h2 className="mb-4 font-display text-serif-lg">Not sure this fits your operation?</h2>
         <p className="mb-8 max-w-[62ch] text-body-lg">
-          Tell me what goes wrong most often in your week, and I will tell you straight whether it is worth building for.
+          Tell me what goes wrong most often in your week, and I&apos;ll tell you straight whether it&apos;s worth building for.
         </p>
         <Button asChild size="lg" >
           <Link href="/contact">Book a call</Link>

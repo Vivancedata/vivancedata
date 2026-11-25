@@ -34,7 +34,7 @@ export const principles: Principle[] = [
   {
     iconType: "users",
     title: "The judgment stays with your people",
-    description: "A system takes typing off a dispatcher or a project engineer. It does not take the decision off them. Where being wrong is expensive, the step keeps a person in it by design, not as a courtesy."
+    description: "A system takes typing off a dispatcher or a project engineer. It doesn't take the decision off them. Where being wrong is expensive, the step is built so a person stays in it."
   },
   {
     iconType: "eye",
@@ -44,17 +44,17 @@ export const principles: Principle[] = [
   {
     iconType: "shield",
     title: "Trained on your records, checked for what they got wrong",
-    description: "A system that learns from your history inherits your history, including the parts you would not want repeated automatically. I look for those patterns before the build, and I tell you when I find one I cannot design around."
+    description: "A system that learns from your history inherits your history, including the parts you wouldn't want repeated automatically. I look for those patterns before the build, and I tell you when I find one I can't design around."
   },
   {
     iconType: "bar-chart-3",
-    title: "It says when it is unsure",
+    title: "It says when it's unsure",
     description: "Anything below the confidence threshold goes to a person instead of being guessed at. An illegible signature comes back as illegible, and accuracy is re-checked as your documents and the systems around them drift."
   },
   {
     iconType: "scale",
     title: "One name on it",
-    description: "I build it, so the question of why it did something comes to me and gets answered by the person who wrote it. There is no committee between you and the explanation."
+    description: "I build it, so when you ask why it did something, the person who wrote it answers. There's no committee between you and the explanation."
   },
   {
     iconType: "file-text",
@@ -67,9 +67,9 @@ export const phases: Phase[] = [
   {
     number: "1",
     title: "Before anything is built",
-    description: "Most of this work is deciding what the system is not allowed to do. That gets written down while it is still cheap to change.",
+    description: "Most of this work is deciding what the system isn't allowed to do. That gets written down while it's still cheap to change.",
     checks: [
-      "Who is hurt by a wrong answer, and how badly — the customer, the crew, the driver",
+      "Who gets hurt by a wrong answer, and how badly: the customer, the crew, the driver",
       "The worst plausible failure, described in one sentence you can argue with",
       "What the system may read, and what it may never use that data for",
       "The confidence threshold below which it must hand back to a person"
@@ -77,11 +77,11 @@ export const phases: Phase[] = [
   },
   {
     number: "2",
-    title: "While it is being built",
-    description: "The design decisions that make a system explainable have to be made during the build. They cannot be added to a finished one.",
+    title: "While it's being built",
+    description: "The design decisions that make a system explainable have to be made during the build. They can't be added to a finished one.",
     checks: [
       "Sample documents drawn from your messy range, not the three clean ones",
-      "A check on whether your own records carry a pattern you would not want automated",
+      "A check on whether your own records carry a pattern you wouldn't want automated",
       "Every extracted value linked back to the page and region it came from",
       "A human approval kept in any step where being wrong is expensive"
     ]
@@ -93,13 +93,13 @@ export const phases: Phase[] = [
     checks: [
       "The bad inputs run deliberately: the illegible scan, the heavy accent, the missing page",
       "Output compared against what your people produce on the same documents",
-      "Put in front of whoever will use it daily, before launch rather than after",
-      "What it cannot do written down in plain terms and handed over with it"
+      "Put in front of whoever will use it daily, before launch",
+      "What it can't do, written down in plain terms and handed over with it"
     ]
   },
   {
     number: "4",
-    title: "Once it is running",
+    title: "Once it's running",
     description: "It runs beside your existing process first, and nothing depends on it until the two agree.",
     checks: [
       "The disagreements between the system and the old way reviewed, not just counted",
@@ -111,9 +111,9 @@ export const phases: Phase[] = [
   {
     number: "5",
     title: "Keeping it honest afterwards",
-    description: "A system nobody is watching degrades quietly. The monthly cost is what stops that.",
+    description: "A system nobody watches gets worse quietly. The monthly cost is what stops that.",
     checks: [
-      "Errors reviewed with you on a set interval, not when someone complains",
+      "Errors reviewed with you on a set schedule, not only when someone complains",
       "Any change to what the system decides agreed before it ships",
       "Versions kept, so you can see what changed and when",
       "The data agreement revisited whenever the system's job changes"
@@ -131,13 +131,13 @@ export const designExamples: DesignExample[] = [
   {
     title: "HVAC & Trades: Call Triage That Escalates Honestly",
     challenge: "A service business wants after-hours calls answered, but a system that misreads an emergency as routine leaves someone without heat overnight, and one that escalates everything is just a pager.",
-    approach: "Bias the urgency rules toward escalation, state plainly to the caller that they are speaking to an automated intake, keep a human escalation path open at every point, and review the misclassified calls weekly.",
+    approach: "Bias the urgency rules toward escalation, tell the caller plainly that they're speaking to an automated intake, keep a human escalation path open at every point, and review the misclassified calls weekly.",
     outcome: "The design goal is triage whose failure mode is waking an on-call technician unnecessarily, never leaving a genuine emergency in a queue."
   },
   {
     title: "Logistics: Monitoring Loads Without Monitoring Drivers",
-    challenge: "A carrier wants late and off-plan loads surfaced early, and the same telematics data would also support scoring individual drivers on behavior they were never told was being measured.",
+    challenge: "A carrier wants late and off-plan loads flagged early, and the same telematics data would also support scoring individual drivers on behavior they were never told was being measured.",
     approach: "Scope the data to the load rather than the person, agree in advance what the signals may and may not be used for, tell drivers what is collected, and keep an access trail on the underlying records.",
-    outcome: "The design goal is exception visibility for dispatch that does not quietly become a performance surveillance system."
+    outcome: "The design goal is giving dispatch a view of problem loads that doesn't quietly turn into a system for watching drivers."
   }
 ];

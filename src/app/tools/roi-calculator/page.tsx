@@ -51,9 +51,8 @@ export default function ROICalculatorPage() {
             <p>
               This calculator applies a transparent cost model to the numbers you enter: a base
               implementation cost that scales with headcount, a multiplier per use case, and a
-              three-year savings ramp that assumes a partial first year. It is a planning estimate
-              to pressure-test a business case, not a forecast, and it is only as good as the
-              inputs you give it.
+              three-year savings ramp that assumes a partial first year. It&apos;s a planning estimate
+              for testing a business case. It isn&apos;t a forecast.
             </p>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
@@ -61,8 +60,8 @@ export default function ROICalculatorPage() {
                 <ul className="list-disc list-inside space-y-1 text-sm">
                   <li>Building the thing in the first place</li>
                   <li>Hosting and model usage</li>
-                  <li>Training the people who will use it</li>
-                  <li>Keeping it running once it is live</li>
+                  <li>Training the people who&apos;ll use it</li>
+                  <li>Keeping it running once it&apos;s live</li>
                 </ul>
               </div>
               <div>
@@ -71,14 +70,14 @@ export default function ROICalculatorPage() {
                   <li>Hours no longer spent re-typing</li>
                   <li>Labor freed up for billable work</li>
                   <li>Work quoted or invoiced sooner</li>
-                  <li>Mistakes that do not have to be unpicked later</li>
+                  <li>Mistakes that don&apos;t have to be unpicked later</li>
                 </ul>
               </div>
             </div>
             <p className="text-sm text-muted-foreground">
               <strong>Note:</strong> the output is only as good as the numbers you put in, and it
-              assumes a build that works. Use it to pressure-test a business case, not as a promise.
-              For a real figure, book a call and I will scope the actual job.
+              assumes a build that works. Treat it as a rough check, not a promise.
+              For a real figure, book a call and I&apos;ll scope the actual job.
             </p>
           </div>
         </div>

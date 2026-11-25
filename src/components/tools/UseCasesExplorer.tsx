@@ -324,7 +324,7 @@ export function UseCasesExplorer() {
               <h3 className="text-heading-4 mb-2">Nothing matches those filters</h3>
               <p className="text-muted-foreground mb-4">
                 Clear them and start again, or search for a single word such as
-                “scheduling”.
+                &quot;scheduling&quot;.
               </p>
               <button
                 type="button"

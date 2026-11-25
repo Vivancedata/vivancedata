@@ -25,22 +25,22 @@ const demoFeatures: DemoFeature[] = [
   {
     title: "I build something first",
     description:
-      "Before the call I run one of your own documents, or a sample of your own call log, through the workflow — so you are looking at your business rather than at a slide.",
+      "Before the call I run one of your own documents, or a sample of your own call log, through the workflow. That way you're looking at your business, not at a slide.",
   },
   {
     title: "An honest read on fit",
     description:
-      "Including when the answer is that the workflow is not worth automating yet. That is a cheaper thing to hear now than after a build.",
+      "Including when the answer is that the workflow isn't worth automating yet. That's cheaper to hear now than after a build.",
   },
   {
     title: "Straight to the builder",
     description:
-      "No account manager in between. You are talking to the person who would do the work.",
+      "No account manager in between. You're talking to the person who'd do the work.",
   },
   {
     title: "A scope and a number",
     description:
-      "If it is a fit you get a fixed price and a defined deliverable in writing before anything starts.",
+      "If it's a fit, you get a fixed price and a defined deliverable in writing before anything starts.",
   },
 ];
 
@@ -159,7 +159,7 @@ function DemoFeatureColumn() {
       </h2>
 
       <p className="mt-lg max-w-[52ch] text-body-lg text-muted-foreground">
-        Book a call with the person who would build it, and find out how this
+        Book a call with the person who&apos;d build it, and find out how this
         would handle the job intake, documents or after-hours calls your
         operation runs on today.
       </p>
@@ -200,7 +200,7 @@ function DemoFormCard({ state, isSubmitting, onChange, onSubmit }: DemoFormProps
               <div className="mb-xl">
                 <h3 className="font-display text-serif-sm text-foreground">Book a call</h3>
                 <p className="mt-2 text-body-sm text-muted-foreground">
-                  Tell me where to reach you and you will hear back within one working day.
+                  Tell me where to reach you and you&apos;ll hear back within one working day.
                 </p>
               </div>
 
@@ -380,7 +380,7 @@ function DemoFormCard({ state, isSubmitting, onChange, onSubmit }: DemoFormProps
                 Call request received
               </h3>
               <p className="mt-md max-w-[46ch] text-body-sm text-muted-foreground">
-                Thanks, {state.formData.name}. I will get back to you at{" "}
+                Thanks, {state.formData.name}. I&apos;ll get back to you at{" "}
                 <span className="font-mono text-data text-foreground">{state.formData.email}</span>{" "}
                 within one working day to arrange a time.
               </p>
@@ -471,15 +471,15 @@ export function DemoBooking(): React.ReactElement {
       dispatch({ type: "submit_success" });
       // Not awaited: the pending state ends with the request, not with the
       // toast chunk's download.
-      void notify("success", "Call request received", "You will hear back within one working day.");
+      void notify("success", "Call request received", "You'll hear back within one working day.");
     } catch (error) {
       console.error("Demo booking submission error:", error);
       dispatch({
         type: "submit_failure",
         message:
-          "I could not take your request just now. Please try again, or use the contact page.",
+          "I couldn't take your request just now. Please try again, or use the contact page.",
       });
-      void notify("error", "Could not submit your request", "Please try again in a moment.");
+      void notify("error", "Couldn't submit your request", "Please try again in a moment.");
     }
   };
 

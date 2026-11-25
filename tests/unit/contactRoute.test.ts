@@ -116,7 +116,7 @@ describe("POST /api/contact", () => {
     );
 
     expect(response.status).toBe(400);
-    await expect(response.json()).resolves.toEqual({ error: "That email address does not look right." });
+    await expect(response.json()).resolves.toEqual({ error: "That email address doesn't look right." });
   });
 
   it("prefers the missing-field message when both are wrong", async () => {

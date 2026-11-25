@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
 
     if (!rateLimit.success) {
       return NextResponse.json(
-        { error: 'That is more reports than this form sends in a short window. Wait a minute and try again.' },
+        { error: 'That\'s more reports than this form sends in a short window. Wait a minute and try again.' },
         { status: 429, headers: rateLimitHeaders }
       );
     }
@@ -83,11 +83,11 @@ export async function POST(request: NextRequest) {
       // The visitor asked for this and did not get it -- tell them.
       return visitorCopy.reason === 'unconfigured'
         ? NextResponse.json(
-            { error: 'Email service not configured, so the report could not be sent. Email lorenzo@vivancedata.com and I will send it by hand.' },
+            { error: 'Email service not configured, so the report couldn\'t be sent. Email lorenzo@vivancedata.com and I\'ll send it by hand.' },
             { status: 503, headers: rateLimitHeaders }
           )
         : NextResponse.json(
-            { error: 'I could not send your report. Check the address for a typo and try again, or email lorenzo@vivancedata.com.' },
+            { error: 'I couldn\'t send your report. Check the address for a typo and try again, or email lorenzo@vivancedata.com.' },
             { status: 502, headers: rateLimitHeaders }
           );
     }
@@ -111,7 +111,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Tool report error:', error);
     return NextResponse.json(
-      { error: 'Something broke on my end and the report did not send. Try again, or email lorenzo@vivancedata.com.' },
+      { error: 'Something broke on my end and the report didn\'t send. Try again, or email lorenzo@vivancedata.com.' },
       { status: 500 }
     );
   }

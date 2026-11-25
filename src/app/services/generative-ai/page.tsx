@@ -51,12 +51,12 @@ const features: Feature[] = [
   },
   {
     title: "Drafting the routine writing",
-    description: "Quotes, follow-up emails and service reports drafted from what is already in the job record, for a person to check and send.",
+    description: "Quotes, follow-up emails and service reports drafted from what's already in the job record, for a person to check and send.",
     icon: <Check className="h-5 w-5 text-mute" />,
   },
   {
     title: "Images and mockups",
-    description: "Visuals generated to a consistent look, so a one-off flyer or a vehicle wrap does not need a whole design cycle.",
+    description: "Visuals generated to a consistent look, so a one-off flyer or a vehicle wrap doesn't need a whole design cycle.",
     icon: <Check className="h-5 w-5 text-mute" />,
   },
   {
@@ -70,7 +70,7 @@ const features: Feature[] = [
     icon: <Check className="h-5 w-5 text-mute" />,
   },
   {
-    title: "Knowing when it is wrong",
+    title: "Knowing when it's wrong",
     description: "Confidence thresholds, a person in the loop where a mistake is expensive, and a record of what the system decided and on what basis.",
     icon: <Check className="h-5 w-5 text-mute" />,
   },
@@ -85,12 +85,12 @@ interface UseCase {
 const useCases: UseCase[] = [
   {
     title: "The call that comes in after hours",
-    description: "Takes the address, the fault and how urgent it sounds. Books what it can, and puts through what it should not be deciding.",
+    description: "Takes the address, the fault and how urgent it sounds. Books what it can, and puts through what it shouldn't be deciding.",
     industry: "Customer service",
   },
   {
     title: "Quotes and follow-ups",
-    description: "The routine outbound writing drafted from what is already in the job record, so it goes out the same day instead of on Friday.",
+    description: "The routine outbound writing drafted from what's already in the job record, so it goes out the same day instead of on Friday.",
     industry: "Sales admin",
   },
   {
@@ -110,7 +110,7 @@ export default function GenerativeAIPage() {
     <Container>
       <ServicePageHeader
         title="Generative AI"
-        intro="Language models put to work on your own material — the documents that arrive as PDFs, the calls that come in after hours, the writing nobody wants to do twice."
+        intro="Language models put to work on your own material: the documents that arrive as PDFs, the calls that come in after hours, the writing nobody wants to do twice."
       />
 
       <ServiceHeroSplit
@@ -148,10 +148,10 @@ export default function GenerativeAIPage() {
       >
         <h2 className="mb-4 font-display text-serif-lg">What a language model is actually good at</h2>
         <p className="text-muted-foreground mb-6">
-          A language model is very good at reading messy text and turning it into something structured, and at drafting the writing nobody wants to do twice. It is bad at anything where being confidently wrong is expensive. Most of the work is deciding which of those two a job is.
+          A language model is very good at reading messy text and turning it into something structured, and at drafting the writing nobody wants to do twice. It&apos;s bad at anything where being confidently wrong is expensive. Most of the work is deciding which of those two a job is.
         </p>
         <p className="text-muted-foreground mb-6">
-          So it starts on material you can already judge: your slips, your voicemails, the PDFs sitting in your inbox, where you know what the right answer is. If it cannot get those right, there is no point going further, and I would rather find that out in week one.
+          So it starts on material you can already judge: your slips, your voicemails, the PDFs sitting in your inbox, where you know what the right answer is. If it can&apos;t get those right, there&apos;s no point going further, and I&apos;d rather find that out in week one.
         </p>
         <Button asChild className="self-start group" variant="outline">
           <Link href="/contact">
@@ -191,7 +191,7 @@ export default function GenerativeAIPage() {
       
       <ServiceCTA
         heading="Sitting on a pile of text nobody has time to read?"
-        body="Tell me the shape of it — the slips, the voicemails, the emailed PDFs — and I will tell you whether a model handles it well enough to be worth building."
+        body="Tell me the shape of it (the slips, the voicemails, the emailed PDFs) and I'll tell you whether a model handles it well enough to be worth building."
         actionLabel="Book a call"
       />
     </Container>

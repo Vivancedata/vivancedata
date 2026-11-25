@@ -6,11 +6,11 @@ import { getAllBlogPosts } from '@/lib/blogPosts';
 export const metadata: Metadata = {
   alternates: { canonical: '/blog' },
   title: 'Notes from the work - VivanceData',
-  description: 'Notes on putting AI into trade and industrial operations: what works on real paperwork and real calls, what breaks, and what is not worth the trouble.',
+  description: "Notes on putting AI into trade and industrial operations: what works on real paperwork and real calls, what breaks, and what isn't worth the trouble.",
   keywords: 'AI blog, artificial intelligence trends, machine learning insights, AI implementation, business AI',
   openGraph: {
     title: 'Notes from the work - VivanceData',
-    description: 'Notes on putting AI into trade and industrial operations: what works, what breaks, what is not worth the trouble.',
+    description: "Notes on putting AI into trade and industrial operations: what works, what breaks, what isn't worth the trouble.",
     type: 'website',
     url: 'https://www.vivancedata.com/blog',
     images: [
@@ -40,7 +40,7 @@ export default async function Blog() {
         * "AI Insights Blog" was the generic half. */}
       <PageHero
         title="Notes from the work"
-        description="What happens when a model meets real paperwork, real calls and real crews, including the parts that do not work."
+        description="What happens when a model meets real paperwork, real calls and real crews, including the parts that don't work."
       />
       <section className="bleed">
         <div className="container mx-auto px-4">

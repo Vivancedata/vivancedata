@@ -46,7 +46,7 @@ export interface InnovationProject {
 export const emergingTechnologies: EmergingTechnology[] = [
   {
     title: "Multimodal Foundation Models",
-    description: "One model that reads text, images and audio together. It is why a photographed delivery slip and the voicemail about the same job can go through one system instead of two.",
+    description: "One model that reads text, images and audio together. It's why a photographed delivery slip and the voicemail about the same job can go through one system instead of two.",
     iconType: "brain",
     maturity: "Growing" as const,
     timeframe: "1-2 years"
@@ -60,14 +60,14 @@ export const emergingTechnologies: EmergingTechnology[] = [
   },
   {
     title: "Federated Learning",
-    description: "Training a model across many devices without the data leaving any of them. The appeal here is plain: a system that gets better without your job records being pooled somewhere you cannot see.",
+    description: "Training a model across many devices without the data leaving any of them. The appeal here is plain: a system that gets better without your job records being pooled somewhere you can't see.",
     iconType: "zap",
     maturity: "Growing" as const,
     timeframe: "Now-1 year"
   },
   {
     title: "Quantum Machine Learning",
-    description: "Quantum hardware pointed at problems like routing and scheduling. The theory is strong; the machines are not there. It is on this list so the timescale is stated honestly rather than sold.",
+    description: "Quantum hardware pointed at problems like routing and scheduling. The theory is strong, but the machines aren't there yet. It's on this list so the timescale is stated honestly rather than sold.",
     iconType: "sparkles",
     maturity: "Emerging" as const,
     timeframe: "5+ years"
@@ -81,7 +81,7 @@ export const emergingTechnologies: EmergingTechnology[] = [
   },
   {
     title: "Explainable AI (XAI)",
-    description: "Making a system show what it read and why it decided. Not an academic concern in this work: an extracted invoice figure nobody can trace is a figure nobody should file.",
+    description: "Making a system show what it read and why it decided. In this work it's a practical need: if nobody can trace where an extracted invoice figure came from, it shouldn't be filed.",
     iconType: "lightbulb",
     maturity: "Maturing" as const,
     timeframe: "Now"
@@ -103,13 +103,13 @@ export const innovationProjects: InnovationProject[] = [
   },
   {
     title: "Autonomous Decision Support System",
-    description: "Watching live data — loads, sensor readings, calls — and putting the exceptions in front of whoever is on the board, ranked, rather than waiting to be asked.",
+    description: "Watching live data (loads, sensor readings, calls) and putting the exceptions in front of whoever's on the board, ranked, rather than waiting to be asked.",
     technologies: ["Reinforcement Learning", "Time Series Analysis", "Causal Inference", "Decision Theory"],
     status: "Research"
   },
   {
     title: "Field Document Understanding",
-    description: "An extraction system for the photographed and scanned paperwork that field work produces, which reports what it could not read instead of guessing at it.",
+    description: "An extraction system for the photographed and scanned paperwork that field work produces, which reports what it couldn't read instead of guessing at it.",
     technologies: ["Document Intelligence", "Optical Character Recognition", "Uncertainty Estimation", "Natural Language Generation"],
     status: "Prototype"
   }
