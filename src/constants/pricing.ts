@@ -31,7 +31,7 @@ export interface PricingTier {
 export const pricingTiers: PricingTier[] = [
   {
     name: "Assessment",
-    description: "For deciding which workflow is worth automating first, and which ones are not worth touching yet.",
+    description: "For deciding which workflow is worth automating first, and which ones aren't worth touching yet.",
     price: {
       setup: "From $2,500",
       ongoing: "One-off, nothing ongoing",
@@ -62,7 +62,7 @@ export const pricingTiers: PricingTier[] = [
       { name: "Tooling and vendor evaluation", included: true },
       { name: "Implementation roadmap with a defined first build", included: true },
       { name: "Written recommendations report", included: true },
-      { name: "Hands-on build", included: true, tooltip: "Typically 2-8 weeks depending on the workflow" },
+      { name: "Hands-on build", included: true, tooltip: "Typically 2 to 8 weeks, depending on the workflow" },
       { name: "Monitoring and upkeep", included: true, tooltip: "Covers upstream API changes, format drift and accuracy checks" },
       { name: "Direct support channel", included: true },
       { name: "Ongoing improvement cycles", included: false },
@@ -96,10 +96,10 @@ export const pricingPageContent = {
   eyebrow: "Pricing",
   title: "What this costs",
   description:
-    "A build has two costs: getting it working, and keeping it working. Both are listed, because only quoting the first one sets a false expectation.",
+    "A build has two costs: getting it working, and keeping it working. I list both, because quoting only the first one sets a false expectation.",
   whyRetainer: {
-    title: "Why there is a monthly cost at all",
-    body: "An automation is not finished when it ships. The APIs it talks to change, the documents it reads drift in format, and accuracy quietly degrades if nobody is watching. The monthly fee covers monitoring, fixing those breakages, and the small adjustments that keep a workflow trustworthy. If you would rather run it yourself, the build tier can be taken as handover-only. Say so during scoping and I will price it that way.",
+    title: "Why there's a monthly cost at all",
+    body: "An automation isn't finished when it ships. The APIs it talks to change, the documents it reads drift in format, and accuracy quietly degrades if nobody is watching. The monthly fee covers monitoring, fixing those breakages, and the small adjustments that keep a workflow trustworthy. If you'd rather run it yourself, you can take the build tier as handover-only. Say so during scoping and I'll price it that way.",
   },
   note:
     "Every figure here is a starting point, not a quote. Scope drives the number, and you get a fixed price in writing before anything begins. If you want a smaller first step, a one-workflow audit is a fixed $750 and is credited in full against a build.",

@@ -51,10 +51,10 @@ export function buildVisitorReport(report: ToolReport): string {
   return layout({
     title: `Your ${toolLabel} results`,
     body: `
-          <p>Here is a copy of the ${escapeHtml(toolLabel)} results you saw, so you can keep them or pass them round the office.</p>
+          <p>Here's a copy of the ${escapeHtml(toolLabel)} results you saw, so you can keep them or pass them round the office.</p>
           ${renderSummaryRows(report.summary)}
           ${renderRecommendations(report.recommendations ?? [])}
-          <p>These figures come from the answers you entered, not from a look at your systems. They are a planning aid, not a forecast &mdash; if you want a real number, send me the job you would automate first and I will scope it.</p>
+          <p>These figures come from the answers you entered, not from a look at your systems. They're a planning aid, not a forecast. If you want a real number, send me the job you'd automate first and I'll scope it.</p>
           <p style="text-align: center;">
             <a href="https://www.vivancedata.com/contact" class="button">Book a call</a>
           </p>`,

@@ -82,7 +82,7 @@ export default function Pricing({ showHeader = true }: PricingProps) {
             </h2>
             <p className="mt-lg text-body-lg text-muted-foreground">
               A build has two costs: getting it working, and keeping it working.
-              Both are listed, and every figure is a starting point rather than a
+              I list both, and every figure is a starting point, not a
               quote.
             </p>
           </div>
@@ -99,7 +99,7 @@ export default function Pricing({ showHeader = true }: PricingProps) {
         <div className="mt-2xl hidden lg:block">
           <div className="grid grid-cols-[minmax(0,1.35fr)_repeat(3,minmax(0,1fr))] border-t border-rule">
             <div className="border-b border-rule py-xl pr-lg">
-              <p className={wallLabel}>What is included</p>
+              <p className={wallLabel}>What&apos;s included</p>
             </div>
             {pricingTiers.map((tier) => (
               <div
@@ -211,18 +211,18 @@ export default function Pricing({ showHeader = true }: PricingProps) {
             price in writing is the real commitment, so that is what is said. */}
         <div className="mt-2xl grid grid-cols-1 gap-x-xl gap-y-lg md:grid-cols-12">
           <h3 className="font-display text-serif-sm text-foreground md:col-span-4">
-            Does not fit one of these?
+            Doesn&apos;t fit one of these?
           </h3>
           <div className="md:col-span-8">
             <p className="max-w-[58ch] text-body text-muted-foreground">
               Every build is scoped around the systems you already run and how
-              much of it you want to run yourself. Tell me what is going wrong and
-              I will come back with a scope and a fixed price in writing.
+              much of it you want to run yourself. Tell me what&apos;s going wrong and
+              I&apos;ll come back with a scope and a fixed price in writing.
             </p>
             <ul data-rows className="mt-lg border-t border-rule">
               {[
                 "Works with the dispatch, accounting and phone systems you already have",
-                "Handover-only if you would rather run it without me",
+                "Handover-only if you'd rather run it without me",
                 "A fixed price in writing before anything starts",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3 border-b border-rule py-3">

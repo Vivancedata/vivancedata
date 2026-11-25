@@ -34,7 +34,7 @@ export default function Error({
         </Heading>
 
         <Paragraph className="text-lg mb-8 text-muted-foreground">
-          We encountered an unexpected error. This has been logged and we&apos;ll look into it.
+          Something broke on this page. It&apos;s been logged and I&apos;ll look into it.
         </Paragraph>
 
         {process.env.NODE_ENV === "development" && (
@@ -65,9 +65,9 @@ export default function Error({
 
         <div className="mt-12 pt-8 border-t border-border">
           <Paragraph className="text-sm text-muted-foreground">
-            If this problem persists, please{" "}
+            If it keeps happening, please{" "}
             <Link href="/contact" className="text-foreground underline decoration-rule underline-offset-4 hover:decoration-current">
-              contact our support team
+              let me know
             </Link>
             .
           </Paragraph>

@@ -56,7 +56,7 @@ export default function UseCasesPage() {
         <Paragraph className="max-w-3xl mx-auto text-lg">
           Practical AI applications for construction, HVAC and the trades,
           logistics and fleet operations, and manufacturing. Search by industry,
-          function or the work you are trying to get off someone&apos;s desk.
+          function or the work you&apos;re trying to get off someone&apos;s desk.
         </Paragraph>
       </div>
 
@@ -67,10 +67,10 @@ export default function UseCasesPage() {
         <div className="space-y-4 text-foreground">
           <p>
             These are the workflows I build most often in construction, the
-            trades, logistics and manufacturing. They are patterns to think
+            trades, logistics and manufacturing. They&apos;re patterns to think
             with, not delivered case studies. Tell me which one matches the job
-            that goes wrong in your operation and I will tell you honestly
-            whether it is worth automating yet.
+            that goes wrong in your operation and I&apos;ll tell you honestly
+            whether it&apos;s worth automating yet.
           </p>
           <div className="grid md:grid-cols-3 gap-6">
             <div>

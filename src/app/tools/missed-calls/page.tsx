@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "What are missed calls costing you?",
     description:
-      "Three questions and a number, from your own figures. Not a benchmark, not anybody else's data.",
+      "Three questions and a number, from your own figures. No benchmarks and nobody else's data.",
     type: "website",
     url: "https://www.vivancedata.com/tools/missed-calls",
   },
@@ -46,7 +46,7 @@ export default function MissedCallsPage() {
             What are the calls you miss <em className="italic">actually</em> costing?
           </>
         }
-        description="Three questions, your own numbers, and a figure you can check on paper. Nothing is stored and there is no form in the way."
+        description="Three questions, your own numbers, and a figure you can check on paper. Nothing is stored and there's no form in the way."
       />
 
       <section className="container mx-auto px-4 py-3xl md:py-4xl">
@@ -58,17 +58,17 @@ export default function MissedCallsPage() {
           </h2>
           <div className="md:col-span-8">
             <p className="max-w-[62ch] text-body text-muted-foreground">
-              Most owners do not know how many calls they miss, because a missed
+              Most owners don&apos;t know how many calls they miss, because a missed
               call leaves no record worth the name. Voicemail catches the ones
-              who bother to leave a message, and the ones who do not are
-              invisible — they ring the next name on the list and you never learn
-              it happened.
+              who bother to leave a message. The ones who don&apos;t are
+              invisible: they ring the next name on the list and you never find
+              out.
             </p>
             <p className="mt-lg max-w-[62ch] text-body text-muted-foreground">
               If you want the real figure, your phone provider&apos;s call log
               has it. Pull one week, count the calls outside your hours that went
               unanswered, and put that number in above. It takes about ten
-              minutes and it is the only part of this page I cannot do for you.
+              minutes and it&apos;s the only part of this page I can&apos;t do for you.
             </p>
           </div>
         </div>

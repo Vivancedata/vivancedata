@@ -14,7 +14,7 @@ import {
 export const metadata: Metadata = {
   alternates: { canonical: "/services/training" },
   title: "AI Training & Workshops - VivanceData",
-  description: "Training for the people who will run these systems day to day: what a model can and cannot do, how to check it, and what to do the first time it is wrong.",
+  description: "Training for the people who will run these systems day to day: what a model can and can't do, how to check it, and what to do the first time it's wrong.",
   keywords: ["AI training", "AI workshops", "AI education", "AI skills", "AI literacy", "AI upskilling"],
   openGraph: {
     title: "AI Training & Workshops - VivanceData",
@@ -54,7 +54,7 @@ const courses: Course[] = [
     duration: "1 Day",
     topics: [
       "The vocabulary, without the hype",
-      "Where it pays and where it does not",
+      "Where it pays and where it doesn't",
       "Picking the first job",
       "What goes wrong, and who notices",
       "What a build actually involves"
@@ -79,7 +79,7 @@ const courses: Course[] = [
     audience: "Product Teams, Marketers, Designers",
     duration: "2 Days",
     topics: [
-      "What an LLM can and cannot do",
+      "What an LLM can and can't do",
       "Writing prompts that hold up",
       "Drafting and checking routine writing",
       "Image and design generation",
@@ -95,7 +95,7 @@ const courses: Course[] = [
       "AI APIs and services",
       "Integration patterns",
       "Cost and latency",
-      "Testing a component that is not deterministic",
+      "Testing a component that isn't deterministic",
       "Designing for an answer that might be wrong"
     ]
   }
@@ -106,7 +106,7 @@ export default function TrainingPage() {
     <Container>
       <ServicePageHeader
         title="AI training and workshops"
-        intro="For the people who will run these systems after the build: what a model can and cannot do, how to check it, and what to do the first time it is wrong."
+        intro="For the people who will run these systems after the build: what a model can and can't do, how to check it, and what to do the first time it's wrong."
       />
 
       <ServiceHeroSplit
@@ -139,7 +139,7 @@ export default function TrainingPage() {
       >
         <h2 className="mb-4 font-display text-serif-lg">Training the people who will run it</h2>
         <p className="text-muted-foreground mb-6">
-          Hand a working system to people who cannot tell when it is wrong and it gets switched off within a year. The handover is the point of the whole engagement, so the training is not an add-on to it.
+          Hand a working system to people who can&apos;t tell when it&apos;s wrong, and it gets switched off within a year. The handover is the point of the whole engagement, so the training isn&apos;t an add-on.
         </p>
         <p className="text-muted-foreground mb-6">
           Sessions run from a day for owners and managers to three days of hands-on work for developers, using your own systems and your own documents throughout.
@@ -209,7 +209,7 @@ export default function TrainingPage() {
           {[
             {
               title: "Built on your own work",
-              description: "The examples are your documents, your call recordings, your job records. Generic exercises do not survive contact with a real week."
+              description: "The examples are your documents, your call recordings, your job records. Generic exercises don't survive contact with a real week."
             },
             {
               title: "Hands on the keyboard",
@@ -217,7 +217,7 @@ export default function TrainingPage() {
             },
             {
               title: "Someone to ask afterwards",
-              description: "Notes to keep, and a follow-up session once people have hit the first thing the course did not cover."
+              description: "Notes to keep, and a follow-up session once people have hit the first thing the course didn't cover."
             }
           ].map((item) => (
             <div key={item.title} className="border border-rule bg-card p-6">
@@ -230,7 +230,7 @@ export default function TrainingPage() {
       
       <ServiceCTA
         heading="Want your own people running this?"
-        body="Tell me who needs to know what, and I will put a session together on your own systems."
+        body="Tell me who needs to know what, and I'll put a session together on your own systems."
         actionLabel="Book a call"
       />
     </Container>

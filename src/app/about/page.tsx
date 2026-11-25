@@ -38,7 +38,7 @@ const AboutPage = () => {
       id: "1",
       name: "Lorenzo Scaturchio",
       role: "Founder & AI Engineer",
-      bio: "Software engineering and applied AI, most of it spent on the gap between a demo that works once and a system that runs every morning. I lead every engagement myself, and there is nobody to hand you off to.",
+      bio: "Software engineering and applied AI, most of it spent on the gap between a demo that works once and a system that runs every morning. I lead every engagement myself, and there's nobody to hand you off to.",
       initials: "LS",
     },
   ];
@@ -52,12 +52,12 @@ const AboutPage = () => {
 
       <AboutDescription
         title="A focused practice, not a large agency"
-        description="VivanceData is my practice, and it has no staff on purpose. I do the work on every engagement myself and bring in vetted specialists, project by project, when a job needs one. You deal with the person who scoped your build, wrote it and will answer you when something changes — not an account manager."
+        description="VivanceData is my practice, and it has no staff on purpose. I do the work on every engagement myself and bring in vetted specialists, project by project, when a job needs one. You deal with the person who scoped your build, wrote it and will answer you when something changes. There's no account manager in between."
       />
 
       <AboutValue
         title="Practical AI, not just demos"
-        description="What I care about is what ships and what sticks. I find the one workflow that is costing you the most first, build it to run in production rather than in a slide deck, and hand it over with the code, prompts and notes your own people can maintain. If the honest answer is that a job is not worth automating yet, you hear that before you have paid for a build."
+        description="What I care about is what ships and what sticks. First I find the one workflow that's costing you the most. I build it to run in production, not in a slide deck, and hand it over with the code, prompts and notes your own people can maintain. If the honest answer is that a job isn't worth automating yet, you'll hear that before you've paid for a build."
       />
 
       <AboutTeam

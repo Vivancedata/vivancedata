@@ -6,7 +6,7 @@ export interface FAQ {
 export const questions: FAQ[] = [
   {
     question: "What do you actually do?",
-    answer: "Three things. I work out which job in your week is worth automating first, I build that automation and keep it running, and I train your own people to run it if you would rather not keep me on."
+    answer: "Three things. I work out which job in your week is worth automating first, I build that automation and keep it running, and I train your own people to run it if you'd rather not keep me on."
   },
   {
     question: "What would this take off my plate?",
@@ -18,6 +18,6 @@ export const questions: FAQ[] = [
   },
   {
     question: "What happens if I get in touch?",
-    answer: "Fill in the form on the contact page and tell me which job keeps going wrong. You will hear back from me within one working day, and the first call costs nothing."
+    answer: "Fill in the form on the contact page and tell me which job keeps going wrong. You'll hear back from me within one working day, and the first call costs nothing."
   }
 ];

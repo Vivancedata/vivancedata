@@ -43,12 +43,12 @@ const collaborationTerms = [
   {
     icon: Users,
     title: "Direct client contact",
-    description: "You work with the people whose problem you are solving. No account-management layer in between and no hand-off to a junior team.",
+    description: "You work with the people whose problem you're solving. No account-management layer in between and no hand-off to a junior team.",
   },
   {
     icon: Rocket,
     title: "Senior-only delivery",
-    description: "I bring specialists in for depth I do not have myself, which means you own your part of the build outright.",
+    description: "I bring specialists in for depth I don't have myself, so you own your part of the build outright.",
   },
   {
     icon: Heart,
@@ -66,8 +66,8 @@ const CareerPage = () => {
           <Heading className="mb-4 font-display text-serif-xl">Work with me</Heading>
           <Paragraph className="max-w-[62ch] text-body-lg">
             VivanceData is one person plus a short list of specialists I bring in per project.
-            I am not hiring employees. I do add people to that list when a job calls for depth
-            I do not have.
+            I&apos;m not hiring employees. I do add people to that list when a job calls for depth
+            I don&apos;t have.
           </Paragraph>
         </div>
 
@@ -104,8 +104,8 @@ const CareerPage = () => {
               * the paragraph left it indented under a flush heading. */}
             <h3 className="mb-3 font-display text-serif-sm">No open roles right now</h3>
             <p className="mb-6 max-w-[58ch] text-muted-foreground">
-              None at the moment. If you are a senior engineer, ML practitioner or domain
-              specialist open to project work, send a note and something you have built. That
+              None at the moment. If you&apos;re a senior engineer, ML practitioner or domain
+              specialist open to project work, send a note and something you&apos;ve built. That
               tells me more than a resume does.
             </p>
             <a

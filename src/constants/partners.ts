@@ -30,19 +30,19 @@ export interface PartnerAudience {
 export const partnerAudiences: PartnerAudience[] = [
   {
     who: "Field-service software resellers and implementers",
-    why: "You already sit between the vendor and the contractor, and your customers keep asking you about AI. Building it yourself means owning a model you did not train and a failure mode you cannot explain at 9pm.",
+    why: "You already sit between the vendor and the contractor, and your customers keep asking you about AI. Building it yourself means owning a model you didn't train and a failure mode you can't explain at 9pm.",
   },
   {
     who: "IT firms and MSPs serving trades",
-    why: "You look after their systems and you are the first call when something stops working. That is exactly the relationship this work needs and exactly the one I do not have.",
+    why: "You look after their systems, and you're the first call when something stops working. That's exactly the relationship this work needs, and it's the one I don't have.",
   },
   {
     who: "Distributors and buying groups",
-    why: "Your reps are in the branch every week. A member who stops losing after-hours calls buys more, and it is the kind of thing a group can offer that a competitor cannot.",
+    why: "Your reps are in the branch every week. A member who stops losing after-hours calls buys more, and it's the kind of thing a group can offer that a competitor can't.",
   },
   {
     who: "Bookkeepers and accountants with trade clients",
-    why: "You see the twice-typed paperwork before anyone else, because you are the one it eventually lands on. You know which clients have the problem badly enough to pay to fix it.",
+    why: "You see the twice-typed paperwork before anyone else, because you're the one it eventually lands on. You know which clients have the problem badly enough to pay to fix it.",
   },
 ];
 
@@ -55,11 +55,11 @@ export interface PartnerCommitment {
 export const partnerCommitments: PartnerCommitment[] = [
   {
     title: "You keep the relationship",
-    body: "I do not want your customer. I want the workflow. Introduce me, sit in, or hand it over entirely — whichever suits how you work — and the contractor stays yours throughout.",
+    body: "I don't want your customer. I want the workflow. Introduce me, sit in, or hand it over entirely, whatever suits how you work. The contractor stays yours throughout.",
   },
   {
-    title: "I do not sell software",
-    body: "There is no subscription of mine competing with the one you already sold them, and no platform they have to move onto. The work runs against the systems they have, including yours.",
+    title: "I don't sell software",
+    body: "There's no subscription of mine competing with the one you already sold them, and no platform they have to move onto. The work runs against the systems they have, including yours.",
   },
   {
     title: "One person builds it",
@@ -67,11 +67,11 @@ export const partnerCommitments: PartnerCommitment[] = [
   },
   {
     title: "Priced as build and run",
-    body: "An automation is not finished when it ships. Upstream APIs change and document formats drift, so every engagement carries a running cost, stated up front. Nothing here degrades quietly and becomes your support ticket.",
+    body: "An automation isn't finished when it ships. Upstream APIs change and document formats drift, so every engagement carries a running cost, stated up front. Nothing here degrades quietly and becomes your support ticket.",
   },
   {
     title: "It refuses to guess",
-    body: "Anything reading a voicemail or a scrawled slip will sometimes not be able to tell. It flags those rather than filling them in confidently, because a wrong callback number is worse than a flagged one — and because you are the one who hears about it if it is wrong.",
+    body: "Anything reading a voicemail or a scrawled slip will sometimes be unable to tell. It flags those instead of filling them in confidently. A wrong callback number is worse than a flagged one, and you're the one who hears about it when it's wrong.",
   },
 ];
 
@@ -85,7 +85,7 @@ export const partnerCommitments: PartnerCommitment[] = [
  */
 export const partnerTerms = {
   heading: "How the commercial side works",
-  note: "These are not settled yet. If you are reading this and the brackets are still here, ask me and I will tell you straight rather than making something up.",
+  note: "These aren't settled yet. If you're reading this and the brackets are still here, ask me and I'll tell you straight instead of making something up.",
   items: [
     { term: "Referral", detail: "[REFERRAL TERMS TO BE SET]" },
     { term: "White-label", detail: "[WHITE-LABEL TERMS TO BE SET]" },

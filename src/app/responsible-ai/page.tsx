@@ -155,15 +155,15 @@ export default function ResponsibleAIPage() {
               </div>
               <p className="text-muted-foreground text-xs leading-relaxed">
                 Applied from the first look at your documents through to what happens months
-                after it is live.
+                after it&apos;s live.
               </p>
             </div>
             <div className="space-y-2">
               {[
-                "Bias detection and mitigation",
-                "Explainability by design",
-                "Privacy preservation",
-                "Human oversight preserved",
+                "Checking for bias, and fixing it",
+                "You can see why it decided",
+                "Private data kept private",
+                "A person still signs off",
               ].map((principle) => (
                 <div key={principle} className="flex items-center gap-2 bg-muted rounded-sm px-3 py-1.5">
                   <div className="w-1.5 h-1.5 rounded-full bg-primary/70 shrink-0" />
@@ -179,12 +179,12 @@ export default function ResponsibleAIPage() {
           <p className="text-muted-foreground mb-6">
             A system that reads your paperwork or answers your phone will get things wrong. The
             question is whether it gets them wrong somewhere a person notices, or quietly, in a
-            way that surfaces three months later in a billing dispute.
+            way that turns up three months later in a billing dispute.
           </p>
           <p className="text-muted-foreground mb-6">
             So most of the design work is about limits. What the system settles by itself, what it
-            hands to a person, what it records, and how you check an answer you did not produce
-            yourself. None of that is a product. It is how the build is put together.
+            hands to a person, what it records, and how you check an answer you didn&apos;t produce
+            yourself. None of that is a product. It&apos;s just how the build is put together.
           </p>
           <Button asChild className="self-start group" variant="outline">
             <Link href="/contact">
@@ -248,8 +248,8 @@ export default function ResponsibleAIPage() {
       <div className="mb-20">
         <h2 className="mb-8 font-display text-serif-lg">How this shows up in a build</h2>
         <p className="mb-10 max-w-[62ch] text-muted-foreground">
-          These are practices applied during delivery using established, mostly open-source tooling.
-They are not products I sell, and nothing here is a platform you would license.
+          These are things I do during a build, with established, mostly open-source tools.
+          They aren&apos;t products I sell, and nothing here is a platform you&apos;d license.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {[
@@ -275,17 +275,17 @@ They are not products I sell, and nothing here is a platform you would license.
             },
             {
               title: "Privacy-preserving techniques",
-              description: "Where data cannot or should not move, the architecture works around that constraint rather than asking you to relax it.",
+              description: "Where data can't or shouldn't move, the build works around that instead of asking you to relax the rule.",
               features: [
                 "Keeping data inside systems that already hold it",
-                "Minimizing what is extracted and retained",
+                "Pulling out and keeping only what's needed",
                 "Differential privacy where aggregate release is needed",
                 "Tiered access with audit trails"
               ]
             },
             {
               title: "Governance and documentation",
-              description: "The paperwork a model needs to survive review: what it is, what it was trained on, who approved it, and what changed since.",
+              description: "The paperwork a model needs to survive review: what it is, what it was trained on, who approved it, and what's changed since.",
               features: [
                 "Model inventory and data lineage",
                 "Versioning of prompts, models and evaluation sets",

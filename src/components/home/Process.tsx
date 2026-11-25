@@ -25,9 +25,9 @@ const Process = () => {
             How an engagement runs
           </h2>
           <p className="mt-lg text-body-lg text-muted-foreground">
-            Five steps, in order. The first two are cheap on purpose — if there is
-            nothing here worth building, that should surface before you have spent
-            anything much finding out.
+            Five steps, in order. The first two are cheap on purpose. If there&apos;s
+            nothing here worth building, you should find that out before you&apos;ve
+            spent much of anything.
           </p>
         </div>
 

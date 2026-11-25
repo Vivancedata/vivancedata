@@ -22,7 +22,7 @@ export interface MethodologyFAQ {
 export const frameworkName = 'How an engagement runs';
 export const frameworkTagline = 'One workflow at a time, proved on your own documents';
 
-export const frameworkDescription = `Six phases from working out whether a workflow is worth automating at all, through building it on your own documents, to running it beside the existing process before anything depends on it. It is written down so you can see what happens next, and where you can stop.`;
+export const frameworkDescription = `Six phases from working out whether a workflow is worth automating at all, through building it on your own documents, to running it beside the existing process before anything depends on it. It's written down so you can see what happens next, and where you can stop.`;
 
 export const methodologyPhases: MethodologyPhase[] = [
   {
@@ -30,7 +30,7 @@ export const methodologyPhases: MethodologyPhase[] = [
     number: 1,
     title: 'Discover',
     subtitle: 'Find where the day actually snags',
-    description: 'I sit with the work as it is actually done: which jobs go wrong, how often, and what it costs when they do. That means your documents, your systems and the people using them, not a questionnaire.',
+    description: "I sit with the work as it's actually done: which jobs go wrong, how often, and what it costs when they do. That means your documents, your systems and the people using them, not a questionnaire.",
     deliverables: [
       'A written read on the documents and systems you actually run',
       'Every candidate workflow ranked by effort against what it saves',
@@ -44,7 +44,7 @@ export const methodologyPhases: MethodologyPhase[] = [
     number: 2,
     title: 'Architect',
     subtitle: 'Small enough to finish, specific enough to test',
-    description: 'I design the smallest system that addresses the workflow we picked, against your real formats and the software you already run. You get the design, the measure of success, and an honest read on what it will not do.',
+    description: "I design the smallest system that addresses the workflow we picked, against your real formats and the software you already run. You get the design, the measure of success, and an honest read on what it won't do.",
     deliverables: [
       'The design for the one workflow we picked, in terms you can argue with',
       'How it fits the project system, dispatch board or line software you already run',
@@ -58,7 +58,7 @@ export const methodologyPhases: MethodologyPhase[] = [
     number: 3,
     title: 'Prototype',
     subtitle: 'See it hold up, or fail, before you commit',
-    description: 'I build it on your own documents before you commission a build, so feasibility is demonstrated rather than asserted. If it does not hold up on your material, this is the cheap place to find out.',
+    description: "I build it on your own documents before you commission a build, so feasibility is demonstrated rather than asserted. If it doesn't hold up on your material, this is the cheap place to find out.",
     deliverables: [
       'A working prototype running on your own material',
       'Where it got things wrong on that material, and how often',
@@ -76,7 +76,7 @@ export const methodologyPhases: MethodologyPhase[] = [
     deliverables: [
       'The production system, integrated rather than sitting beside everything',
       'Written documentation of what it does and what it touches',
-      'Your people trained on it while it is being built, not after',
+      "Your people trained on it while it's being built, not after",
     ],
     duration: '6-12 weeks',
     iconType: 'rocket',
@@ -90,7 +90,7 @@ export const methodologyPhases: MethodologyPhase[] = [
     deliverables: [
       'The system live, with the existing process still running underneath it',
       'Alerts when it goes quiet or starts disagreeing with your people',
-      'A runbook for the morning something breaks and I am asleep',
+      "A runbook for the morning something breaks and I'm asleep",
     ],
     duration: '2-4 weeks',
     iconType: 'zap',
@@ -99,11 +99,11 @@ export const methodologyPhases: MethodologyPhase[] = [
     id: 'scale',
     number: 6,
     title: 'Scale',
-    subtitle: 'It will not stay working on its own',
-    description: 'I stay on to keep it working. Upstream formats drift and APIs change, and an unattended workflow degrades within months -- that is what the monthly retainer is for, not for keeping you dependent.',
+    subtitle: "It won't stay working on its own",
+    description: "I stay on to keep it working. Upstream formats drift and APIs change, and an unattended workflow degrades within months. That's what the monthly retainer is for. It isn't there to keep you dependent.",
     deliverables: [
       'The errors from the last period, reviewed with you rather than filed',
-      'The next workflow scoped, if there is one worth doing',
+      "The next workflow scoped, if there's one worth doing",
       'Fixes for format drift and upstream API changes as they land',
     ],
     duration: 'Ongoing',
@@ -118,7 +118,7 @@ export const frameworkBenefits: FrameworkBenefit[] = [
   },
   {
     title: 'Every phase can be the last',
-    description: 'If the prototype does not hold up on your material, you stop there having paid for an assessment rather than a build.',
+    description: "If the prototype doesn't hold up on your material, you stop there having paid for an assessment rather than a build.",
   },
   {
     title: 'Scoped by payback, not by ambition',
@@ -133,11 +133,11 @@ export const frameworkBenefits: FrameworkBenefit[] = [
 export const methodologyFAQs: MethodologyFAQ[] = [
   {
     question: 'How long does a typical engagement take?',
-    answer: 'It depends on the workflow, and I would rather quote a fixed price on a defined first build than a range for something unscoped. The pilot scope quoted on the industry pages is 3-6 weeks of running beside your existing process.',
+    answer: "It depends on the workflow, and I'd rather quote a fixed price on a defined first build than a range for something unscoped. The pilot scope quoted on the industry pages is 3 to 6 weeks of running beside your existing process.",
   },
   {
     question: 'What if we already have some AI initiatives in progress?',
-    answer: 'That is common, and it does not mean starting over. I can look at what is already running, say plainly where the gaps are, and build alongside it rather than replacing work you have already paid for.',
+    answer: "That's common, and it doesn't mean starting over. I can look at what's already running, say plainly where the gaps are, and build alongside it rather than replacing work you've already paid for.",
   },
   {
     question: 'Do we need a data science team to work with VivanceData?',
@@ -145,10 +145,10 @@ export const methodologyFAQs: MethodologyFAQ[] = [
   },
   {
     question: 'What industries do you work in?',
-    answer: 'Construction, HVAC and the trades, logistics and fleet operations, and manufacturing. The phases run the same way in all four; what changes is what I am designing around — the site, the van, the dispatch board, the line.',
+    answer: "Construction, HVAC and the trades, logistics and fleet operations, and manufacturing. The phases run the same way in all four. What changes is what I'm designing around: the site, the van, the dispatch board, the line.",
   },
   {
-    question: 'What stops it doing something it should not?',
-    answer: 'Every automated decision leaves a record of what it read and why, anything below the confidence threshold goes to a person, and the scope of what the system may use the data for is agreed in writing before it is built. I am not a compliance service: where a regulation applies to your industry, I will build to what you and your advisers specify.',
+    question: "What stops it doing something it shouldn't?",
+    answer: "Every automated decision leaves a record of what it read and why, anything below the confidence threshold goes to a person, and the scope of what the system may use the data for is agreed in writing before it's built. I'm not a compliance service. Where a regulation applies to your industry, I'll build to what you and your advisers specify.",
   },
 ];

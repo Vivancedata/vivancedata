@@ -50,21 +50,21 @@ export const questions: ReadinessQuestion[] = [
     options: [
       { value: 1, label: "Less than 6 months" },
       { value: 2, label: "6 months to 1 year" },
-      { value: 3, label: "1-2 years" },
-      { value: 4, label: "2-5 years" },
+      { value: 3, label: "1 to 2 years" },
+      { value: 4, label: "2 to 5 years" },
       { value: 5, label: "5+ years, kept the same way throughout" },
     ],
   },
   {
     id: "data-4",
     category: "data",
-    question: "Are outcomes recorded — which quote won, which call was an emergency, which delivery was short?",
+    question: "Do you record how things turned out? Which quote won, which call was an emergency, which delivery was short?",
     options: [
       { value: 1, label: "None of that gets written down" },
       { value: 2, label: "Noted informally, in whatever field is handy" },
       { value: 3, label: "Recorded on the jobs that matter most" },
       { value: 4, label: "Recorded consistently across most work" },
-      { value: 5, label: "Recorded, and someone checks it is right" },
+      { value: 5, label: "Recorded, and someone checks it's right" },
     ],
   },
   // Your systems (4 questions)
@@ -75,7 +75,7 @@ export const questions: ReadinessQuestion[] = [
     options: [
       { value: 1, label: "On paper, or on one machine in the office" },
       { value: 2, label: "Mostly local, with email and files online" },
-      { value: 3, label: "A mix — some online, some on the office machine" },
+      { value: 3, label: "A mix: some online, some on the office machine" },
       { value: 4, label: "Online for the main jobs: scheduling, accounts, projects" },
       { value: 5, label: "Online throughout, and built to be connected to" },
     ],
@@ -85,7 +85,7 @@ export const questions: ReadinessQuestion[] = [
     category: "infrastructure",
     question: "Has anyone here used AI tools on real work yet?",
     options: [
-      { value: 1, label: "No, and there is no appetite to try" },
+      { value: 1, label: "No, and there's no appetite to try" },
       { value: 2, label: "Someone has played with a chatbot on their own time" },
       { value: 3, label: "One or two tasks get done with it, unofficially" },
       { value: 4, label: "Used regularly by part of the team" },
@@ -123,7 +123,7 @@ export const questions: ReadinessQuestion[] = [
     question: "Where do you and the other decision-makers stand on this?",
     options: [
       { value: 1, label: "Sceptical, and burned by a software promise before" },
-      { value: 2, label: "Curious, but nobody is pushing for it" },
+      { value: 2, label: "Curious, but nobody's pushing for it" },
       { value: 3, label: "Interested, if someone shows it working first" },
       { value: 4, label: "Behind it, and prepared to spend on it" },
       { value: 5, label: "Driving it, and already clearing obstacles out of the way" },
@@ -146,7 +146,7 @@ export const questions: ReadinessQuestion[] = [
     category: "culture",
     question: "Is there anyone in-house who is good with software?",
     options: [
-      { value: 1, label: "Nobody — software is outsourced or endured" },
+      { value: 1, label: "Nobody. Software is outsourced or put up with" },
       { value: 2, label: "One person who is handy with a spreadsheet" },
       { value: 3, label: "Someone who sets up and fixes the systems you run" },
       { value: 4, label: "A dedicated IT or operations person" },
@@ -158,10 +158,10 @@ export const questions: ReadinessQuestion[] = [
     category: "culture",
     question: "How does the crew take it when the way of working changes?",
     options: [
-      { value: 1, label: "Badly — new tools get quietly abandoned" },
+      { value: 1, label: "Badly. New tools get quietly dropped" },
       { value: 2, label: "Slowly, and only while the old way stays available" },
       { value: 3, label: "Fine, once someone senior has used it first" },
-      { value: 4, label: "Well — people suggest improvements themselves" },
+      { value: 4, label: "Well. People suggest improvements themselves" },
       { value: 5, label: "They try things and tell you what worked" },
     ],
   },
@@ -169,9 +169,9 @@ export const questions: ReadinessQuestion[] = [
   {
     id: "strategy-1",
     category: "strategy",
-    question: "Do you know which job you would automate first?",
+    question: "Do you know which job you'd automate first?",
     options: [
-      { value: 1, label: "No — the interest is general" },
+      { value: 1, label: "No, the interest is general" },
       { value: 2, label: "A rough sense of where the pain is" },
       { value: 3, label: "One or two candidates in mind" },
       { value: 4, label: "A shortlist, with a rough idea of what each saves" },
@@ -183,7 +183,7 @@ export const questions: ReadinessQuestion[] = [
     category: "strategy",
     question: "Six months in, would you be able to tell whether it had worked?",
     options: [
-      { value: 1, label: "No — it would come down to a feeling" },
+      { value: 1, label: "No, it would come down to a feeling" },
       { value: 2, label: "A rough impression, nothing measured" },
       { value: 3, label: "One or two numbers you already track" },
       { value: 4, label: "Before-and-after figures you could hold it to" },
@@ -208,10 +208,10 @@ export const questions: ReadinessQuestion[] = [
     question: "Have you thought about what happens the first time it gets something wrong?",
     options: [
       { value: 1, label: "Not yet" },
-      { value: 2, label: "It is a worry, but nothing is written down" },
+      { value: 2, label: "It's a worry, but nothing is written down" },
       { value: 3, label: "Some ground rules agreed out loud" },
       { value: 4, label: "Written rules for what it may and may not decide on its own" },
-      { value: 5, label: "Written rules, and someone checking they are followed" },
+      { value: 5, label: "Written rules, and someone checking they're followed" },
     ],
   },
 ];

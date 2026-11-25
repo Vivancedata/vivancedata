@@ -13,7 +13,7 @@ import {
 export const metadata: Metadata = {
   alternates: { canonical: "/resources" },
   title: "Resources - VivanceData",
-  description: "The free things on this site: notes from the work, an ROI calculator, a readiness assessment, what I am testing, and how I handle the risky parts.",
+  description: "The free things on this site: notes from the work, an ROI calculator, a readiness assessment, what I'm testing, and how I handle the risky parts.",
   keywords: ["AI resources", "AI tools", "ROI calculator", "AI readiness", "AI blog", "responsible AI"],
   openGraph: {
     title: "Resources - VivanceData",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 const resources = [
   {
     title: "Blog",
-    description: "What happens when a model meets real paperwork, real calls and real crews, including the parts that do not work.",
+    description: "What happens when a model meets real paperwork, real calls and real crews, including the parts that don't work.",
     href: "/blog",
     icon: BookOpen,
   },
@@ -43,13 +43,13 @@ const resources = [
   },
   {
     title: "AI Readiness Assessment",
-    description: "Twenty questions about your records, your systems and your people, and a straight read on whether you are ready yet.",
+    description: "Sixteen questions about your records, your systems and your people, and a straight read on whether you're ready yet.",
     href: "/tools/ai-readiness",
     icon: ClipboardCheck,
   },
   {
     title: "Innovation Hub",
-    description: "What I am testing before it goes near a job someone depends on, and what I am watching but would not build on yet.",
+    description: "What I'm testing before it goes near a job someone depends on, and what I'm watching but wouldn't build on yet.",
     href: "/innovation-hub",
     icon: Lightbulb,
   },

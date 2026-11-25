@@ -46,7 +46,7 @@ Nothing here replaces the judgment of the person signing off. The work is drafte
       description: "Turn field notes, photos and timesheets into the daily report format your client and insurer expect, drafted for a human to check rather than written from scratch.",
       icon: <ClipboardList className="h-6 w-6 text-mute" />,
       benefits: [
-        "Reports drafted in minutes not evenings",
+        "Reports drafted in minutes, not evenings",
         "Consistent format across crews",
         "Photo and note context kept together",
         "Superintendent reviews rather than authors",
@@ -110,7 +110,7 @@ Nothing here replaces the judgment of the person signing off. The work is drafte
     },
     {
       title: "Certification expiry tracking",
-      challenge: "Certifications and training records live in one administrator's spreadsheet, and a lapse gets discovered when a crew arrives at a site that will not let them work.",
+      challenge: "Certifications and training records live in one administrator's spreadsheet, and a lapse gets discovered when a crew arrives at a site that won't let them work.",
       solution: "Certification records go into one searchable set, the expiry date is read off each uploaded document, and renewals are raised ahead of the date on a schedule you set.",
       results: [
         "Renewals raised before the certificate lapses",
@@ -144,7 +144,7 @@ Nothing here replaces the judgment of the person signing off. The work is drafte
     },
     {
       title: "Pilot on a live project",
-      description: "The workflow runs on one active project alongside your current process. Its output gets compared against what your team produces, and tuned before anything depends on it. Typical pilot scope is 3-6 weeks.",
+      description: "The workflow runs on one active project alongside your current process. Its output gets compared against what your team produces, and tuned before anything depends on it. Typical pilot scope is 3 to 6 weeks.",
       checks: [
         "Run in parallel with the current process",
         "Output compared against what your team produces",
@@ -164,7 +164,7 @@ Nothing here replaces the judgment of the person signing off. The work is drafte
     },
   ],
   finalCtaHeading: "Which documents cost your team the most evenings?",
-  finalCtaBody: "Tell me which ones, and I will tell you what it would take to draft them instead of typing them.",
+  finalCtaBody: "Tell me which ones, and I'll tell you what it would take to draft them instead of typing them.",
   finalCtaLabel: "Book a call",
 };
 

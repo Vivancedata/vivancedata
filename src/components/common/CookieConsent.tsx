@@ -20,7 +20,7 @@ const COOKIE_CATEGORIES = [
   {
     key: "essential" as const,
     label: "Essential cookies",
-    description: "The site does not work without these, so they cannot be turned off.",
+    description: "The site doesn't work without these, so they can't be turned off.",
     disabled: true,
   },
   {
@@ -32,7 +32,7 @@ const COOKIE_CATEGORIES = [
   {
     key: "functional" as const,
     label: "Functional cookies",
-    description: "Remember choices you have already made, so the site stops asking.",
+    description: "Remember choices you've already made, so the site stops asking.",
     disabled: false,
   },
   {

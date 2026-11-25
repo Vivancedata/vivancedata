@@ -3,14 +3,14 @@ import { NotFoundContent } from "@/components/common/NotFoundContent"
 
 export const metadata: Metadata = {
   title: "404 - Page Not Found",
-  description: "The page you are looking for could not be found. Navigate back to our homepage or explore our AI solutions, services, and resources.",
+  description: "The page you're looking for couldn't be found. Head back to the homepage, or have a look at the services and resources.",
   robots: {
     index: false,
     follow: true,
   },
   openGraph: {
     title: "404 - Page Not Found | VivanceData",
-    description: "The page you are looking for could not be found. Explore our AI solutions and services.",
+    description: "The page you're looking for couldn't be found. Try the homepage or the services pages.",
     type: "website",
     url: "https://www.vivancedata.com/404",
     images: [
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary",
     title: "404 - Page Not Found | VivanceData",
-    description: "The page you are looking for could not be found. Explore our AI solutions and services.",
+    description: "The page you're looking for couldn't be found. Try the homepage or the services pages.",
   },
 }
 

@@ -71,7 +71,7 @@ export default function ClientLogos() {
               "Run on your own documents and call log before you pay for a build.",
             ],
             [
-              "Yours when it is done",
+              "Yours when it's done",
               "Code, prompts and credentials transfer to you on delivery.",
             ],
           ] as const).map(([term, detail], index) => (

@@ -110,7 +110,7 @@ const PIPELINES: Record<string, Pipeline> = {
       },
       {
         name: "Escalation",
-        note: "Paged only for the calls that cannot wait",
+        note: "Paged only for the calls that can't wait",
         actor: "On-call tech",
         handoff: "a decision either way",
         human: true,
@@ -173,7 +173,7 @@ const CaseStudyIllustration = ({ industry }: { industry: string }) => {
 export const metadata: Metadata = {
   alternates: { canonical: "/case-studies" },
   title: "Example Engagements - VivanceData",
-  description: "Composite examples showing how AI engagements are scoped and delivered in construction, the trades and logistics -- the problem, the approach, and what gets handed over.",
+  description: "Composite examples showing how AI engagements are scoped and delivered in construction, the trades and logistics: the problem, the approach, and what gets handed over.",
   keywords: ["AI engagements", "AI implementation", "AI scoping", "AI delivery", "AI solutions", "machine learning projects"],
   openGraph: {
     title: "Example Engagements - VivanceData",
@@ -261,8 +261,8 @@ export default function CaseStudiesPage() {
       <div className="mt-24 border-t border-rule pt-2xl">
         <h2 className="mb-4 font-display text-serif-lg">Recognize one of these?</h2>
         <p className="mb-8 max-w-[62ch] text-body-lg">
-          If one of them looks like your week, tell me which. I will tell you what it would take,
-          or that it is not worth doing yet.
+          If one of them looks like your week, tell me which. I&apos;ll tell you what it would take,
+          or that it isn&apos;t worth doing yet.
         </p>
         <Button asChild size="lg" >
           <Link href="/contact">Book a call</Link>

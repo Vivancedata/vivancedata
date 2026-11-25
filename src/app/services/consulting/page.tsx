@@ -13,7 +13,7 @@ import {
 export const metadata: Metadata = {
   alternates: { canonical: "/services/consulting" },
   title: "AI Strategy Consulting - VivanceData",
-  description: "Deciding what to automate first, what to leave alone, and what each option costs to build and to run \u2014 before anyone writes code.",
+  description: "Deciding what to automate first, what to leave alone, and what each option costs to build and to run, before anyone writes code.",
   keywords: ["AI strategy", "AI consulting", "digital transformation", "AI roadmap", "AI implementation", "AI governance"],
   openGraph: {
     title: "AI Strategy Consulting - VivanceData",
@@ -46,12 +46,12 @@ interface Service {
 const services: Service[] = [
   {
     title: "What you actually have",
-    description: "Where your documents live, what shape they arrive in, and whether they are consistent enough to build on. Sometimes the answer is not yet, and the cheaper fix is a different one.",
+    description: "Where your documents live, what shape they arrive in, and whether they're consistent enough to build on. Sometimes the answer is not yet, and the cheaper fix is a different one.",
     icon: <Check className="h-5 w-5 text-mute" />,
   },
   {
     title: "An ordered list, not a strategy deck",
-    description: "The jobs worth automating, in the order they are worth doing, with the reason each one sits where it does. Short enough to read in one sitting.",
+    description: "The jobs worth automating, in the order they're worth doing, with the reason each one sits where it does. Short enough to read in one sitting.",
     icon: <Check className="h-5 w-5 text-mute" />,
   },
   {
@@ -66,12 +66,12 @@ const services: Service[] = [
   },
   {
     title: "Picking tools and vendors",
-    description: "Reading the pricing pages and the contracts so you do not end up on a per-seat bill that grows faster than the crew does.",
+    description: "Reading the pricing pages and the contracts so you don't end up on a per-seat bill that grows faster than the crew does.",
     icon: <Check className="h-5 w-5 text-mute" />,
   },
   {
     title: "Getting it used",
-    description: "The dispatcher who has done it the same way for years is who this has to work for. If it does not fit their morning, it sits unopened.",
+    description: "The dispatcher who has done it the same way for years is who this has to work for. If it doesn't fit their morning, it sits unopened.",
     icon: <Check className="h-5 w-5 text-mute" />,
   },
 ];
@@ -88,7 +88,7 @@ const benefits: Benefit[] = [
   },
   {
     title: "One person, start to finish",
-    description: "Whoever sits with your dispatcher is who writes the code and who answers you when it breaks. There is no delivery team to be handed to.",
+    description: "Whoever sits with your dispatcher is who writes the code and who answers you when it breaks. There's no delivery team to hand you off to.",
   },
   {
     title: "Nothing gets replaced on day one",
@@ -96,7 +96,7 @@ const benefits: Benefit[] = [
   },
   {
     title: "The running cost is quoted up front",
-    description: "APIs change and document formats drift, so an automation is not finished when it ships. You get the monthly number before you commit to the build, not after.",
+    description: "APIs change and document formats drift, so an automation isn't finished when it ships. You get the monthly number before you commit to the build.",
   },
 ];
 
@@ -105,7 +105,7 @@ export default function ConsultingPage() {
     <Container>
       <ServicePageHeader
         title="AI strategy consulting"
-        intro="Deciding what to automate first, what to leave alone, and what each option costs to build and to run — before anyone writes code."
+        intro="Deciding what to automate first, what to leave alone, and what each option costs to build and to run, before anyone writes code."
       />
 
       <ServiceHeroSplit
@@ -150,7 +150,7 @@ export default function ConsultingPage() {
           Most of these projects fail on the choice of job rather than the technology. Automate a task that runs twice a month, or one where nobody can say what the right answer looks like, and the budget is gone before a line of code is written.
         </p>
         <p className="text-muted-foreground mb-6">
-          So I start with the people doing the work — whoever answers the phone, whoever keys in the paperwork — and come back with an ordered list of what is worth automating, what each one costs to build and to run, and what to leave alone.
+          So I start with the people doing the work: whoever answers the phone, whoever keys in the paperwork. Then I come back with an ordered list of what&apos;s worth automating, what each one costs to build and to run, and what to leave alone.
         </p>
         <Button asChild className="self-start group" variant="outline">
           <Link href="/contact">
@@ -190,7 +190,7 @@ export default function ConsultingPage() {
           {[
             { step: "1", title: "Watch", description: "A morning with whoever answers the phone and whoever types the paperwork in. Not a workshop." },
             { step: "2", title: "Shortlist", description: "The tasks that repeat often enough, and fail clearly enough, to be worth building for." },
-            { step: "3", title: "Cost", description: "What each one takes to build, and what it costs to keep running once it is live." },
+            { step: "3", title: "Cost", description: "What each one takes to build, and what it costs to keep running once it's live." },
             { step: "4", title: "Decide", description: "You pick one to build, or none. Either way the shortlist and the costing are yours." }
           ].map((phase) => (
             <div key={phase.step} className="border border-rule bg-card p-6">
@@ -206,7 +206,7 @@ export default function ConsultingPage() {
       
       <ServiceCTA
         heading="Not sure what to automate first?"
-        body="Tell me which part of the week goes wrong most often, and I will tell you whether it is worth building for."
+        body="Tell me which part of the week goes wrong most often, and I'll tell you whether it's worth building for."
         actionLabel="Book a call"
       />
     </Container>

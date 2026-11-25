@@ -19,7 +19,7 @@ import {
 // The four places someone who hit a dead link is most likely headed.
 const popularPages = [
   { name: "Services", href: "/services", icon: Briefcase, description: "What I build, and what it costs" },
-  { name: "About", href: "/about", icon: Users, description: "Who you would be working with" },
+  { name: "About", href: "/about", icon: Users, description: "Who you'd be working with" },
   { name: "Contact", href: "/contact", icon: Mail, description: "Book a call, or just write to me" },
   { name: "Blog", href: "/blog", icon: BookOpen, description: "Notes on automating this kind of work" },
 ]
@@ -322,7 +322,7 @@ export function NotFoundContent() {
             variants={itemVariants}
             className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4"
           >
-            This page is not here
+            This page isn&apos;t here
           </m.h1>
 
           {/* Description */}

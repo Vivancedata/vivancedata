@@ -73,7 +73,7 @@ export function BlogLayout({
     } catch (error) {
       // Dismissing the share sheet rejects with AbortError; that is not a failure.
       if (error instanceof DOMException && error.name === "AbortError") return;
-      setShareNote("Could not copy. The address bar has the link.");
+      setShareNote("Couldn't copy. The address bar has the link.");
     }
   };
 

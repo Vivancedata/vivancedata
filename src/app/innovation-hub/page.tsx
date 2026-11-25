@@ -15,7 +15,7 @@ import {
 export const metadata: Metadata = {
   alternates: { canonical: "/innovation-hub" },
   title: "Innovation Hub - VivanceData",
-  description: "What I test before it goes anywhere near a job someone depends on: which new AI techniques are ready for a trade or industrial operation, and which are not.",
+  description: "What I test before it goes anywhere near a job someone depends on: which new AI techniques are ready for a trade or industrial operation, and which aren't.",
   keywords: ["AI innovation", "emerging technology", "R&D", "AI research", "technology trends", "future of AI", "AI experimentation"],
   openGraph: {
     title: "Innovation Hub | VivanceData",
@@ -127,7 +127,7 @@ export default function InnovationHubPage() {
       <div className="mb-16">
         <Heading className="mb-4 font-display text-serif-xl">Innovation Hub</Heading>
         <Paragraph className="max-w-[62ch] text-body-lg">
-          What I test before it goes anywhere near a job someone depends on — which new
+          What I test before it goes anywhere near a job someone depends on: which new
           techniques are ready for a trade or industrial operation, and which are still a demo.
         </Paragraph>
       </div>
@@ -135,7 +135,7 @@ export default function InnovationHubPage() {
       <div className="flex flex-col md:flex-row gap-12 mb-20">
         <div className="w-full md:w-1/2">
           <div className="flex flex-col border border-rule bg-card p-6 md:p-8">
-            <div className="eyebrow mb-4">What is actually running</div>
+            <div className="eyebrow mb-4">What&apos;s actually running</div>
             {/* Three rows carried a colour ladder that made the third demo green
               * and the first two not, for no reason a reader could infer. Here
               * green means what it means everywhere else on this site -- a
@@ -169,12 +169,12 @@ export default function InnovationHubPage() {
           <h2 className="mb-4 font-display text-serif-lg">What I try before you have to live with it</h2>
           <p className="text-muted-foreground mb-6">
             Anything new gets tried here first, on sample data and my own time, rather than on a
-            job somebody is depending on. Most of it does not survive that, which is the reason
-            for doing it in this order.
+            job somebody is depending on. Most of it doesn&apos;t survive that, which is why
+            I do it in this order.
           </p>
           <p className="text-muted-foreground mb-6">
-            The three demos on this site came out of that. They run on made-up sample data, they
-            are rate-limited, and you can open any of them right now without talking to me first.
+            The three demos on this site came out of that. They run on made-up sample data, they&apos;re
+            rate-limited, and you can open any of them right now without talking to me first.
           </p>
           <Button asChild className="self-start group" variant="outline">
             <Link href="/contact">
@@ -188,7 +188,7 @@ export default function InnovationHubPage() {
       <div className="mb-20">
         <h2 className="mb-8 font-display text-serif-lg">Technology radar</h2>
         <p className="mb-10 max-w-[62ch] text-muted-foreground">
-          What I am watching, how ready each one looks, and roughly when it might matter for a trade
+          What I&apos;m watching, how ready each one looks, and roughly when it might matter for a trade
           or industrial job. Nothing here is advice to go and buy something yet.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -208,8 +208,8 @@ export default function InnovationHubPage() {
       <div className="mb-20">
         <h2 className="mb-8 font-display text-serif-lg">Projects</h2>
         <p className="mb-10 max-w-[62ch] text-muted-foreground">
-          What I am building or pulling apart at the moment. The status label says how far along
-          each one is, and most of them are not far.
+          What I&apos;m building or pulling apart at the moment. The status label says how far along
+          each one is, and most of them aren&apos;t far.
         </p>
         {/* Four entries: 2x2 rather than a row of three and a widow. */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -280,8 +280,8 @@ export default function InnovationHubPage() {
       <div className="border-t border-rule pt-2xl">
         <h2 className="mb-4 font-display text-serif-lg">Got the awkward one?</h2>
         <p className="mb-8 max-w-[62ch] text-body-lg">
-          If your problem has no obvious off-the-shelf answer, that is the kind I want to hear
-          about. Bring the job everybody else told you was not worth automating.
+          If your problem has no obvious off-the-shelf answer, that&apos;s the kind I want to hear
+          about. Bring the job everybody else told you wasn&apos;t worth automating.
         </p>
         <Button asChild size="lg">
           <Link href="/contact">Book a call</Link>

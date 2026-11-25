@@ -22,7 +22,7 @@ const config: IndustryPageConfig = {
   introHeading: "Reading what the floor already tells you",
   introBody: `The plant produces more signal than anyone has time to read: sensor history, shift logs, defect records, inspection photos, and the forms that move between the line and the office.
 
-I build workflows over that material — a machine drifting toward failure raised before it stops the line, an out-of-spec part caught during the run, a cause pulled out of logs nobody has time to cross-reference.
+I build workflows over that material: a machine drifting toward failure raised before it stops the line, an out-of-spec part caught during the run, a cause pulled out of logs nobody has time to cross-reference.
 
 It has to work with the MES, historian and quality system you already run. Nothing gets ripped out, and an uncertain call goes to a person rather than being made quietly.`,
   introCtaLabel: "Book a call",
@@ -135,7 +135,7 @@ It has to work with the MES, historian and quality system you already run. Nothi
     },
   ],
   finalCtaHeading: "What does an unplanned stop cost you?",
-  finalCtaBody: "Tell me where the floor loses the most time or the most material, and I will tell you whether it is worth building for.",
+  finalCtaBody: "Tell me where the floor loses the most time or the most material, and I'll tell you whether it's worth building for.",
   finalCtaLabel: "Book a call",
 };
 

@@ -58,7 +58,7 @@ const jsonLd = {
         "width": 180,
         "height": 60
       },
-      "description": "VivanceData builds small, specific AI systems for construction, HVAC, logistics and manufacturing businesses \u2014 after-hours call handling and document intake, built on the client's own paperwork.",
+      "description": "VivanceData builds small, specific AI systems for construction, HVAC, logistics and manufacturing businesses: after-hours call handling and document intake, built on the client's own paperwork.",
       "sameAs": [
         "https://github.com/Vivancedata",
         "https://www.linkedin.com/in/lorenzo-scaturchio"

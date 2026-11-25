@@ -23,7 +23,7 @@ const config: IndustryPageConfig = {
   introHeading: "Working from the paper your drivers already photograph",
   introBody: `Paperwork and exceptions set the pace. Proof of delivery, bills of lading and damage claims arrive as photographs of paper, and a delayed load is found by someone noticing rather than being told.
 
-I build workflows that read those photographs, tie each document back to its load, and put the problem loads in front of a dispatcher while there is still time to do something about them.
+I build workflows that read those photographs, tie each document back to its load, and put the problem loads in front of a dispatcher while there's still time to do something about them.
 
 Everything writes into the TMS or dispatch board your team already watches. An illegible scan is flagged for a person, never guessed at.`,
   introCtaLabel: "Book a call",
@@ -112,7 +112,7 @@ Everything writes into the TMS or dispatch board your team already watches. An i
       challenge: "Assembling a damage claim means chasing photographs, delivery records and email threads weeks after the fact, by which point some of it is gone.",
       solution: "As soon as damage is reported, the photographs, delivery records and correspondence attached to that load are pulled into one claim package, in the same structure every time.",
       results: [
-        "Evidence collected while it is still recoverable",
+        "Evidence collected while it's still recoverable",
         "Consistent structure across claim packages",
         "Faster response to a customer dispute",
         "Every item traceable to the original load",
@@ -143,7 +143,7 @@ Everything writes into the TMS or dispatch board your team already watches. An i
     },
     {
       title: "Pilot on one lane",
-      description: "The workflow runs on a single lane or terminal in parallel with the current process. Its matches and flags get checked against what your team finds, and tuned before anything downstream depends on them. Typical pilot scope is 3-6 weeks.",
+      description: "The workflow runs on a single lane or terminal in parallel with the current process. Its matches and flags get checked against what your team finds, and tuned before anything downstream depends on them. Typical pilot scope is 3 to 6 weeks.",
       checks: [
         "Run in parallel on one lane or terminal",
         "Matches and flags checked against your team's findings",
@@ -163,7 +163,7 @@ Everything writes into the TMS or dispatch board your team already watches. An i
     },
   ],
   finalCtaHeading: "Finding your problem loads by hand?",
-  finalCtaBody: "Tell me how a late or short load gets noticed today, and I will tell you what it would take to have it raised instead of discovered.",
+  finalCtaBody: "Tell me how a late or short load gets noticed today, and I'll tell you what it would take to have it raised instead of discovered.",
   finalCtaLabel: "Book a call",
 };
 

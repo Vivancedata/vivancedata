@@ -68,12 +68,12 @@ export default function Welcome() {
           face has one weight and a real italic, so the italic carries emphasis.
         */}
         <p className="arrive mt-lg max-w-[26ch] font-display text-serif-md italic text-muted-foreground">
-          It does not have to be a person on your payroll.
+          It doesn&apos;t have to be a person on your payroll.
         </p>
 
         <p className="arrive mt-2xl max-w-[62ch] text-body-lg text-muted-foreground" style={{ "--i": 2 } as React.CSSProperties}>
           I build small, specific systems for construction, HVAC, logistics and
-          manufacturing businesses — one workflow at a time, proved on your own
+          manufacturing businesses. One workflow at a time, proved on your own
           documents before you pay for a build.
         </p>
 

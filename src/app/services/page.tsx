@@ -38,7 +38,7 @@ const ServicesPage = () => {
     {
       id: "1",
       title: "LLM engineering",
-      description: "The language-model part: what the model gets asked, what it is allowed to read, and how its answer is checked before anything acts on it."
+      description: "The language-model part: what the model gets asked, what it's allowed to read, and how its answer is checked before anything acts on it."
     },
     {
       id: "2",
@@ -48,7 +48,7 @@ const ServicesPage = () => {
     {
       id: "3",
       title: "Data plumbing",
-      description: "Where documents land, how they are stored, and what feeds the model. It goes on the cloud you already run rather than a new one, and is boring on purpose."
+      description: "Where documents land, how they're stored, and what feeds the model. It goes on the cloud you already run rather than a new one, and it's boring on purpose."
     },
     {
       id: "4",
@@ -112,7 +112,7 @@ const ServicesPage = () => {
     <main className="flex min-h-screen flex-col">
       <PageHero
         title="Services"
-        description="Most of this comes down to one question: which job in your week repeats often enough, and goes wrong clearly enough, to be worth automating first? That is where I start, and sometimes the honest answer is that nothing does yet."
+        description="Most of this comes down to one question: which job in your week repeats often enough, and goes wrong clearly enough, to be worth automating first? That's where I start, and sometimes the honest answer is that nothing does yet."
       />
       
       
@@ -120,7 +120,7 @@ const ServicesPage = () => {
       
       <ServicesCases
         title="What a build looks like"
-        description="Four shapes of work I take on. Each has a fixed scope and a named deliverable, so you know what you are getting before it starts."
+        description="Four shapes of work I take on. Each has a fixed scope and a named deliverable, so you know what you're getting before it starts."
         cases={engagements}
       />
       
@@ -131,7 +131,7 @@ const ServicesPage = () => {
       
       <CTASection 
         title="Not sure which job to start with?"
-        description="Tell me which part of the week goes wrong most, and I will tell you whether it is worth building for."
+        description="Tell me which part of the week goes wrong most, and I'll tell you whether it's worth building for."
         buttonText="Book a call"
         buttonLink="/contact"
       />
